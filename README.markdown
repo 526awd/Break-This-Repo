@@ -42,6 +42,11 @@
 
 <img src="https://breadripper.pages.dev/warnl.png" alt="图片alt" title="null">
 
+# 免费Hypixel Rank领取
+
+<img src="https://breadripper.pages.dev/hypgift.png" alt="图片alt" title="null">
+
+---
 
 # 📜 联合国安理会五常宪法文献（中英俄法）
 
