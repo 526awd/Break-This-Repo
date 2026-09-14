@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="200" viewBox="0 0 1000 200" role="img" aria-label="磁力语言入口 / Language Magnet">
+  <title>磁力语言入口 / Language Magnet</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1120"/>
+      <stop offset="0.5" stop-color="#111c33"/>
+      <stop offset="1" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#a855f7" stop-opacity="0.15"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1000" height="200" rx="14" fill="url(#bg)"/>
+  <ellipse cx="150" cy="100" rx="180" ry="110" fill="url(#glow)"/>
+  <rect x="330" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.5"/>
+  <rect x="438" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.45"/>
+  <rect x="546" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.4"/>
+  <rect x="654" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.35"/>
+  <rect x="762" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.3"/>
+  <rect x="870" y="26" width="86" height="9" rx="4.5" fill="url(#beam)" opacity="0.25"/>
+  <g transform="translate(150 100)">
+    <path d="M-45 18 a45 45 0 0 1 90 0 v31.499999999999996 h-27.9 v-31.499999999999996 a17.1 17.1 0 0 0 -34.2 0 v31.499999999999996 H-45 z" fill="#f8fafc"/>
+  </g>
+  <text x="248" y="84" font-family="-apple-system,'Segoe UI',Roboto,'Noto Sans',sans-serif" font-size="42" font-weight="800" fill="#f8fafc" letter-spacing="1">LANGUAGE MAGNET</text>
+  <text x="250" y="124" font-family="-apple-system,'Segoe UI',Roboto,'Noto Sans CJK SC',sans-serif" font-size="21" fill="#93c5fd">磁力语言入口 · 把 184 种语言吸过来</text>
+  <text x="250" y="158" font-family="-apple-system,'Segoe UI',Roboto,sans-serif" font-size="14" fill="#94a3b8">52 / 184 locales online · pull request 越界即合</text>
+</svg>
