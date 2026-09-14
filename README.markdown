@@ -69,9 +69,6 @@
   - [Debian 是许多其他发行版的基础。](#debian-是许多其他发行版的基础)
   - [Debian 项目是一个社区。](#debian-项目是一个社区)
   - [PR 模板](#pr-模板)
-- [🚀 zzz API 中转站 — 免费 Kimi K3](#-zzz-api-中转站--免费-kimi-k3)
-- [⭐ 安利两个 MCPE 服务端核心（by @mpmp666）](#-安利两个-mcpe-服务端核心by-mpmp666)
-- [一段来自 GPT-4o 的话](#一段来自-gpt-4o-的话)
 - [github 文件加速](#github-文件加速)
 - [真正的 github 文件加速](#真正的-github-文件加速)
 - [冷知识](#冷知识)
@@ -457,6 +454,8 @@ Debian 是一个广泛用于各种设备的基于 Linux 的操作系统，其使
 你们继续玩可以，但最好把它当行为艺术，别当代码仓库用。SCP 基金会那边已经收到报告了。
 (这段文字AI味好浓啊——HQ123-BOOP评)
 
+<!--
+
 ## 🚀 zzz API 中转站 — 免费 Kimi K3
 
 > 稳定高速的大模型 API 中转，注册即送免费额度
@@ -508,6 +507,9 @@ curl http://zzz.1145.lol/v1/chat/completions \
 
 ---
 
+-->
+
+---
 
 [![0d00](https://0d00.cn/assets/see-mine-0721.png)](https://0d00.cn)
 
