@@ -436,6 +436,8 @@
 
 ### [dream away](https://www.bilibili.com/video/BV1nC41137aW)真好听吧
 
+<img src="https://heey.cc.cd/warnl.png" alt="图片alt" title="null">
+
 ## hyw
 
 ```markdown
