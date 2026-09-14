@@ -256,3 +256,6 @@
 [submodule "dream-seeker-core"]
 	path = submodules/dream-seeker-core
 	url = https://github.com/ElecysiaBot/dream-seeker-core
+[submodule "FY4_DAT_Decoder_CLI"]
+	path = FY4_DAT_Decoder_CLI
+	url = https://github.com/YZYMC/FY4_DAT_Decoder_CLI.git
