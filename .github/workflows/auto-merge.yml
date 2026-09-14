@@ -54,6 +54,11 @@ jobs:
         run: |
           set -euo pipefail
           REASON=""
+          # PRs whose merge the API rejected for a reason that will NOT clear on its own.
+          # Conflicts and races are deliberately excluded - the next cycle legitimately
+          # re-tries those. Anything collected here makes the job exit non-zero at the end,
+          # so a wedged PR shows up as a red run instead of a green one that merged nothing.
+          STUCK=""
 
           # Paths a PR adds/modifies/deletes/renames. Computed locally so there is no
           # 3000-file cap: the REST files endpoint pages 100 at a time and `gh api --paginate`
@@ -128,7 +133,7 @@ jobs:
             return 0
           }
 
-          # These four are independent, so run them concurrently: sequential `gh` calls cost
+          # These five are independent, so run them concurrently: sequential `gh` calls cost
           # a full CLI start + round trip each (~0.5-1s) and the labels almost always already
           # exist, meaning the work is pure overhead on every single run.
           # `|| true` keeps a "label already exists" failure from tripping `set -e` via wait.
@@ -136,7 +141,8 @@ jobs:
             "protected|B60205|Touches protected paths; auto-closed" \
             "conflict|FBCA04|Merge conflict; resolves itself once fixed" \
             "was-conflicted|D876E3|Had a merge conflict at some point; resolved and merged" \
-            "check-failed|6A737D|Auto-merge check failed; will re-check next cycle"
+            "check-failed|6A737D|Auto-merge check failed; will re-check next cycle" \
+            "merge-blocked|5319E7|Merge rejected by the API; will not clear on its own"
           do
             IFS='|' read -r name color desc <<<"$spec"
             gh label create "$name" --color "$color" --description "$desc" >/dev/null 2>&1 || true &
@@ -204,8 +210,12 @@ jobs:
               ok)
                 HEAD_SHA=$(git rev-parse FETCH_HEAD^{commit})
                 echo "Merging at $HEAD_SHA ..."
-                if gh api -X PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" \
-                     -f merge_method=merge -f sha="$HEAD_SHA" >/dev/null; then
+                # Capture the API's own message rather than discarding it. The old version
+                # threw stderr away, then guessed the cause from `mergeable` alone - which
+                # is how a hard 403 got reported as "head moved / transient error" and the
+                # run stayed green while merging nothing.
+                if MERGE_ERR=$(gh api -X PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" \
+                     -f merge_method=merge -f sha="$HEAD_SHA" 2>&1); then
                   echo "✅ Merged PR #$pr"
                   # Only PRs that are coming OUT of the conflict state get was-conflicted;
                   # never-conflicted merges must stay unlabeled
@@ -225,10 +235,47 @@ jobs:
                       gh pr comment "$pr" --body-file /tmp/conflict-comment.md >/dev/null || echo "  (comment failed)"
                       gh pr edit "$pr" --add-label conflict >/dev/null || true
                     fi
+                  elif grep -q 'Resource not accessible by integration' <<<"$MERGE_ERR"; then
+                    # The API refused the token outright. Be exact about what is and is not
+                    # known, because the tempting explanation does NOT survive testing.
+                    #
+                    # The obvious story - "GitHub wants `workflows: write` because this PR is
+                    # behind base on a workflow file" (a rule GitHub support has described, and
+                    # one GITHUB_TOKEN can never satisfy: `workflows` is not a key the
+                    # `permissions:` block accepts) - was tested and REFUTED. Four controlled
+                    # reproductions with exactly that shape merged fine, including a 6,500-file
+                    # one from a genuine fork. So no cause is named here.
+                    #
+                    # What IS solid: this is not a conflict, it is not transient (the same
+                    # head is refused on every cycle), and the token cannot be granted more.
+                    # Refreshing the branch is the only thing ever seen to clear it (PR #515
+                    # went 403 -> merged once its head was updated), so the comment offers that
+                    # as a workaround WITHOUT presenting it as the mechanism.
+                    echo "🔒 PR #$pr: merge rejected with a permission error — not a conflict, cause undetermined"
+                    STUCK="$STUCK #$pr"
+                    if ! has_label "$pr" merge-blocked; then
+                      printf '%s\n' \
+                        "🔒 **Auto-merge can't apply this PR yet — and it's nothing you did.**" "" \
+                        "The merge API refuses the automation's token: \`Resource not accessible by integration\` (HTTP 403). It is **not** a merge conflict, and there is nothing wrong with your diff — it would apply unchanged." "" \
+                        "**Workaround:** [update the branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/keeping-your-pull-request-in-sync-with-the-base-branch) so it contains \`main\`'s latest commits — that has cleared this for at least one PR. If it doesn't help, this is an open issue on our side, not yours; sorry for the friction." \
+                        > /tmp/merge-blocked-comment.md
+                      gh pr comment "$pr" --body-file /tmp/merge-blocked-comment.md >/dev/null || echo "  (comment failed)"
+                      gh pr edit "$pr" --add-label merge-blocked >/dev/null || true
+                    fi
                   else
-                    echo "⚠️ Could not merge PR #$pr (head moved / transient error) - retried next cycle if still open"
+                    echo "⚠️ Could not merge PR #$pr: $MERGE_ERR"
+                    echo "   (retried next cycle if still open)"
                   fi
                 fi
                 ;;
             esac
           done
+
+          # Exiting 0 unconditionally is what let a genuinely wedged PR sit behind a green
+          # check for hours. Conflicts and races still exit 0 (the next cycle re-tries them
+          # for real); only a merge the API rejected outright, and that no retry can fix,
+          # goes red.
+          if [ -n "$STUCK" ]; then
+            echo "::error::Merge rejected by the API and will not clear on its own:$STUCK — see the \`merge-blocked\` comment on each. Cause undetermined; a branch update is the only known workaround."
+            exit 1
+          fi
