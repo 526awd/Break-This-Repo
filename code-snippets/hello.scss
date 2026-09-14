@@ -1,0 +1,11 @@
+$bg: #1e1e2e;
+$fg: #cdd6f4;
+
+body {
+  background: $bg;
+  color: $fg;
+
+  h1 {
+    font-weight: 600;
+  }
+}
