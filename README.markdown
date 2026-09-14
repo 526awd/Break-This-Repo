@@ -32,7 +32,7 @@
 
 # 电脑中毒怎么办？
 
-<img src="https://heey.cc.cd/linuxsafeclean.jpeg" alt="图片alt" title="null">
+<img src="https://breadripper.pages.dev/linuxsafeclean.jpeg" alt="图片alt" title="null">
 
 # 免费领取高速cdn!!!
 
@@ -40,7 +40,7 @@
 
 # 温馨提示：
 
-<img src="https://heey.cc.cd/warnl.png" alt="图片alt" title="null">
+<img src="https://breadripper.pages.dev/warnl.png" alt="图片alt" title="null">
 
 
 # 📜 联合国安理会五常宪法文献（中英俄法）
