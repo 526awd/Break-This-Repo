@@ -40,10 +40,9 @@ def compare(root, before, after="HEAD", baseline=BASELINE, limit=100):
     earlier = observe(root, baseline, before)
     later = observe(root, baseline, after)
     # First-parent integration events avoid counting a branch commit AND its merge.
-    chain = git(root, "rev-list", "--first-parent", after).decode().splitlines()
-    if before not in chain:
-        raise ValueError("Start must be on the end commit's first-parent chain; select a mainline snapshot.")
-    selected = chain[:chain.index(before)]
+    # Subtract everything already reachable from the start, even when the start
+    # arrived via a side branch. The end's first-parent history lists integrations.
+    selected = git(root, "rev-list", "--first-parent", before + ".." + after).decode().splitlines()
     event_total = len(selected)
     events = []
     for sha in selected[:limit]:

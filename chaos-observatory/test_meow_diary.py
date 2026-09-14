@@ -43,7 +43,7 @@ class DiaryTest(unittest.TestCase):
         self.assertIn("1 / 2", markdown(report))
         self.assertEqual(len(report["lost"]), 1)
 
-    def test_snapshot_on_side_branch_rejected(self):
+    def test_snapshot_on_side_branch_compares_without_recounting_files(self):
         base = self.baseline()
         main = self.git("branch", "--show-current")
         self.git("checkout", "-qb", "side")
@@ -51,8 +51,11 @@ class DiaryTest(unittest.TestCase):
         side = self.commit("side")
         self.git("checkout", "-q", main)
         self.git("-c", "core.hooksPath=/dev/null", "merge", "--no-ff", "-qm", "merge", "side")
-        with self.assertRaisesRegex(ValueError, "first-parent"):
-            compare(self.root, side, baseline=base)
+        report = compare(self.root, side, baseline=base)
+        self.assertEqual(report["counts"], {})
+        self.assertEqual(report["lost"], [])
+        self.assertEqual(report["event_total"], 1)
+        self.assertEqual(report["events"][0]["subject"], "merge")
 
     def test_empty_interval_and_html_subject(self):
         base = self.baseline()
