@@ -99,3 +99,21 @@ must be a new file and shallow or incomplete history fails explicitly.
 This is a manually generated interval report, not a scheduled job. The included
 `diary.md` / `diary.html` record the inaugural museum merge: the observatory
 itself became an exhibit when it covered its own latest meow footprint.
+
+## 仓库地图 / Repository atlas
+
+```sh
+python3 repo_atlas.py .. --revision HEAD --limit 100000 --output /tmp/atlas.html
+```
+
+The atlas groups tracked paths by top-level directory and shows ordinary file
+counts, extension distributions, locally known logical byte sizes, and separate
+symlink/submodule counts. Search regions, sort by count/known size/name, and
+expand a region's type table. It never traverses checkout paths or submodules.
+Duplicate blobs count once per path, so these sizes are not disk usage. Missing
+partial-clone blobs are explicitly unknown, not zero. No objects are downloaded.
+
+The NUL-delimited tree stream is capped at `--limit` entries (1–1000000). A
+truncated sample is labeled prominently and is not a whole-repository ranking.
+The supplied `atlas.html` records its revision and coverage. Regenerate to a new
+file to obtain a later snapshot. The original metadata survey remains unchanged.
