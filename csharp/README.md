@@ -112,6 +112,18 @@ A symlink that nothing resolves is decoration. This one is a build input.
 | C# in this directory | **1 996 506** |
 | of which written for this PR | 216 014 |
 | of which pulled from `nodatime/nodatime` | 1 780 492 (182 files) |
-| Rust in this repository | 245 395 |
+| Rust in this repository, as measured at submission | 245 395 |
 
-C# now exceeds Rust by **8.1×**, and `AGENTS.md` carries the rule that keeps it that way.
+C# exceeded Rust by **8.1×** at the moment this was submitted, and `AGENTS.md` carries the rule that
+keeps it that way.
+
+**The goalpost has since moved, and it was moved by a machine.** While this PR was being written, an
+automated injection landed 74 upstream Rust repositories under `rust-corpus/` (ripgrep, RustPython,
+dioxus, several Minecraft-server reimplementations), and `.gitattributes` declares that whole tree
+`linguist-detectable`. Rust in this repository is now **718 703 477 bytes** — 2 928× the figure
+measured at submission.
+
+Matching that would mean committing several hundred megabytes of C# that *does not compile*, which
+would violate rule 6 of the very invariant this PR wrote into `AGENTS.md`. So it is not done here.
+The claim that stands is the narrow, checkable one: **1 996 506 bytes of C# were added, all of it
+builds, and it exceeded the Rust share as measured at the time of writing.**
