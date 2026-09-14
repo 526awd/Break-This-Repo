@@ -442,6 +442,8 @@
 
 ## hyw
 
+openpgp177ABD1B671BC99FA4AD20A1A96607E60ECBAC84
+
 ```markdown
 
 # # ###
@@ -725,6 +727,21 @@ https://zhiyuhub.top
 > If you are a Minecraft Server owner, Also try
 > [Minecraft Daemon Reforged](https://github.com/MCDReforged/MCDReforged)
 MCDR是对的！！！
+
+https://dn42.dev https://dn42.eu https://wiki.dn42
+
+> JOIN DN42!
+
+https://www.yzynetwork.org:8443
+https://yzynetwork.dn42
+https://git.yzynetwork.org:8443
+https://weather.dn42
+
+> YZYNetwork
+> MC Server: yzynetwork.org / yzynetwork.dn42
+> openpgp fingerprint 177ABD1B671BC99FA4AD20A1A96607E60ECBAC84
+> openpgp fingerprint 6C2452071E9A0BECB794B37FA1FEF9D696C3077A
+> we support dn42!
 
 https://aria7.wiki
 
