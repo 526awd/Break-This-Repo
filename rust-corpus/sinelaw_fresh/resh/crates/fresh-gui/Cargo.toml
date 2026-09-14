@@ -1,0 +1,52 @@
+[package]
+name = "fresh-gui"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+description = "GUI backend for Fresh editor: windowed ratatui via winit + wgpu"
+license.workspace = true
+repository.workspace = true
+publish = false  # GUI backend is not part of the published editor surface
+
+[dependencies]
+# Shared types (Menu, MenuItem) — the menu model lives here
+fresh-core = { workspace = true }
+# Window management
+winit = { workspace = true }
+# ratatui backend for wgpu
+ratatui-wgpu = "0.5.0"
+# TUI framework (core types: Terminal, Frame, Backend)
+ratatui = { version = "0.30.0", default-features = false, features = ["std", "underline-color"] }
+# Event types (KeyEvent, MouseEvent, KeyModifiers, etc.)
+crossterm = { version = "0.29.0", features = ["osc52"] }
+# Error handling
+anyhow = { workspace = true }
+# Logging
+tracing = { workspace = true }
+# Async runtime for wgpu init (needs rt-multi-thread for Runtime::new())
+tokio = { version = "1.49", features = ["rt", "rt-multi-thread"] }
+# JSON for menu action args
+serde_json = { workspace = true }
+# PNG decoding for window icon (already a transitive dep via ratatui-wgpu)
+png = "0.18"
+
+# macOS: native menu bar
+[target.'cfg(target_os = "macos")'.dependencies]
+muda = "0.17"
+# ObjC interop for NSNotificationCenter (menu tracking detection).
+# Versions match the ones muda 0.15 already pulls in.
+objc2-foundation = { version = "0.2", features = ["NSNotification", "NSString", "NSOperation", "block2"] }
+block2 = "0.5"
+
+# Windows: AppUserModelID registration so taskbar grouping and the pinned-
+# shortcut identity match the running window (see PRODUCTIZATION_PLAN.md §0.1).
+# Also: load the multi-size HICON from the .exe's embedded resource and apply
+# it via WM_SETICON, so the running window's icon is the same one Windows
+# shows in Explorer/Properties/Alt-Tab and gets size-correctly per scale.
+[target.'cfg(target_os = "windows")'.dependencies]
+windows-sys = { version = "0.60", features = [
+    "Win32_Foundation",
+    "Win32_System_LibraryLoader",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }

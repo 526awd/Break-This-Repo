@@ -1,0 +1,371 @@
+[package]
+name = "fresh-editor"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+default-run = "fresh"
+autotests = false
+description = "A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords = ["editor", "terminal", "tui", "text-editor", "lsp"]
+categories = ["command-line-utilities", "text-editors"]
+# web-ui/ itself must ship — build.rs assembles the embedded page from it under
+# the `web` feature — but its Playwright harness is dev-only.
+exclude = ["web-ui/test/**"]
+
+[[bin]]
+name = "fresh"
+path = "src/main.rs"
+required-features = ["runtime"]
+
+[[bin]]
+name = "generate_schema"
+path = "src/bin/generate_schema.rs"
+required-features = ["dev-bins"]
+
+[[bin]]
+name = "event_debug"
+path = "src/bin/event_debug.rs"
+required-features = ["dev-bins", "runtime"]
+
+[[bin]]
+name = "measure_startup"
+path = "src/bin/measure_startup.rs"
+required-features = ["dev-bins", "runtime"]
+
+[lib]
+name = "fresh"
+path = "src/lib.rs"
+
+# The web-UI bridge server example and the web/TUI scene-parity test both use
+# the `webui` module, which only exists under the `web` feature. Declaring
+# them here lets `cargo build`/`cargo test` skip them cleanly when `web` is off
+# instead of failing to resolve `fresh::webui`.
+[[example]]
+name = "webui_server"
+path = "examples/webui_server.rs"
+required-features = ["web"]
+
+# Integration tests are one binary, not one per file. cargo builds a separate
+# binary per `tests/*.rs` root, each statically linking the whole editor and
+# its dependency graph, so 59 roots meant 59 compiles and 59 links on every
+# rebuild. `autotests = false` turns off that auto-discovery; `all_tests`
+# pulls every root in as a module instead (see tests/all_tests.rs).
+[[test]]
+name = "all_tests"
+path = "tests/all_tests.rs"
+
+[[test]]
+name = "scene_parity"
+path = "tests/scene_parity.rs"
+required-features = ["web"]
+
+[features]
+default = ["plugins", "runtime", "embed-plugins", "tree-sitter", "http", "self-update"]
+plugins = [
+    "dep:fresh-plugin-runtime",
+    "dep:fresh-parser-js",
+    # oxc parses init.ts, which only the plugin runtime can execute.
+    "dep:oxc_allocator",
+    "dep:oxc_parser",
+    "dep:oxc_span",
+]
+# Tree-sitter AST features (precise indent, scope-aware reference highlighting,
+# and tree-sitter syntax highlighting for the languages syntect can't cover).
+# Enabled by default, but only bundles the grammars that *must* use tree-sitter
+# — JavaScript, TypeScript, JSONC, Templ and Go (see
+# `fresh-languages/bundled-languages`). Every other language is highlighted by
+# syntect and indented by the regex indent-rules tier, so its parse table is
+# not linked. When this feature is disabled entirely, all tree-sitter code is
+# dropped and indentation is pattern/rules-based. Requires `runtime`.
+tree-sitter = ["fresh-editor-core/tree-sitter", "fresh-languages/bundled-languages"]
+# Embed plugins into the binary as a fallback when no disk plugins are found
+embed-plugins = ["plugins", "dep:include_dir", "dep:trash"]
+# Feature for optional development binaries (generate_schema, event_debug)
+# Includes ratatui for theme type definitions needed by schema generation
+dev-bins = ["dep:ratatui", "dep:vt100"]
+# Runtime feature includes all heavy dependencies needed for the actual editor
+runtime = [
+    "fresh-editor-core/runtime",
+    "dep:crossterm",
+    "dep:fresh-input-parser",
+    "dep:ratatui",
+    "ratatui/crossterm",  # Enable ratatui's crossterm backend for native terminal
+    "dep:chrono",
+    "dep:clap",
+    "dep:tracing-subscriber",
+    "dep:fresh-languages",
+    "dep:lsp-types",
+    "dep:tokio",
+    "dep:async-trait",
+
+    "dep:ignore",
+    "dep:notify",
+    "dep:libc",
+    "dep:libloading",
+    "dep:nix",
+    "dep:pulldown-cmark",
+    "dep:sha2",
+    "dep:arboard",
+    "dep:syntect",
+    # Use onig regex engine for runtime (faster than fancy-regex)
+    "syntect/regex-onig",
+    "syntect/parsing",
+    "syntect/dump-load",
+    "syntect/dump-create",
+    "syntect/yaml-load",  # Needed for SyntaxDefinition::load_from_str
+    "syntect/default-syntaxes",
+    "syntect/default-themes",
+
+    "dep:alacritty_terminal",
+    "dep:vte",  # see the vte entry below: keeps build/test feature resolution identical
+    "dep:portable-pty",
+    "dep:trash",
+    "dep:open",
+
+]
+# HTTP(S) networking: the update/release checker, anonymous open-count
+# telemetry, and the `editor.httpFetch` plugin API. Enabled by default.
+# When disabled, those paths become no-ops / return errors and the whole
+# TLS stack (ureq + rustls + ring + webpki) is dropped from the binary.
+http = ["dep:ureq", "fresh-update/net"]
+# In-place self-update for self-contained installs (raw tarball / AppImage):
+# download the release asset, verify its SHA-256, extract, and atomically swap
+# the binary. Needs HTTP plus archive extraction (tar + xz + zip). Enabled by
+# default; dropped from min-size/no-default builds so they stay small and never
+# link the extraction/TLS stack.
+self-update = ["http", "fresh-update/engine"]
+# Web UI: `fresh --web [ADDR]` serves the real editor to a browser over a
+# local HTTP + WebSocket bridge (the `webui` module), hosted inside the session
+# daemon so `fresh -a` can attach a terminal to the same editor. The frontend
+# (the page
+# build.rs assembles from web-ui/) is embedded into the binary so the build
+# is self-contained. Opt-in (not in `default`) because it embeds ~140 KiB of
+# HTML and pulls in the sha1 WebSocket-handshake dep. Requires the full
+# editor `runtime`.
+web = ["runtime", "dep:sha1"]
+# GUI mode - native window with GPU-accelerated rendering via wgpu
+# All windowing/GPU dependencies live in the fresh-gui crate.
+gui = [
+    "runtime",
+    "dep:fresh-gui",
+]
+# Schema-only feature for minimal builds (just schema generation)
+schema-only = []
+# WASM browser build - shared editor core without native dependencies
+# Enables the same pure Rust modules as runtime but without platform-specific deps
+wasm = [
+    "fresh-editor-core/wasm",
+    "dep:ratatui",  # ratatui core is WASM-compatible (no crossterm backend)
+    "dep:crossterm",  # crossterm event types are pure Rust data structures
+    "dep:fresh-input-parser",
+    "dep:syntect",
+    # Use fancy-regex instead of onig for WASM (pure Rust, no C dependencies)
+    "syntect/regex-fancy",
+    "syntect/parsing",
+    "syntect/dump-load",
+    "syntect/yaml-load",  # yaml-rust is pure Rust, WASM-compatible
+    "syntect/default-syntaxes",
+    "syntect/default-themes",
+
+]
+
+[dependencies]
+# Local crates
+fresh-core.workspace = true
+# The data / presentation-primitives layer: config, the text model, the
+# render primitives, the widget tree and the theme data. Split out so an
+# edit anywhere in `app`/`view`/`services` does not recompile 85k lines that
+# cannot depend on them. `default-features = false` because this crate
+# forwards its own feature flags below.
+fresh-editor-core = { workspace = true, default-features = false }
+# The retained UI tree; see docs/internal/retained-mode-ui.md.
+fresh-ui.workspace = true
+fresh-update.workspace = true
+fresh-parser-js = { workspace = true, optional = true }
+# Provides the shared `Language` / `HighlightCategory` types (small, always
+# needed by the syntect grammar catalog). The heavy tree-sitter grammar
+# crates are pulled in separately via the `tree-sitter` feature so they can
+# be dropped from minimal builds.
+fresh-languages = { workspace = true, optional = true }
+fresh-plugin-runtime = { workspace = true, optional = true }
+# Terminal input (VT/ANSI) parser — turns the raw client byte stream into
+# crossterm events. Pulled in wherever crossterm is (runtime / wasm).
+fresh-input-parser = { workspace = true, optional = true }
+
+# oxc syntax-checks the user's `init.ts` (`fresh --cmd init check` and the
+# pre-load check). `init.ts` is config-as-code executed by the QuickJS plugin
+# runtime, so it is only meaningful when `plugins` is enabled — these deps are
+# pulled in by that feature and dropped from plugin-less builds.
+oxc_allocator = { workspace = true, optional = true }
+oxc_parser = { workspace = true, optional = true }
+oxc_span = { workspace = true, optional = true }
+
+# Always required (for schema generation and runtime)
+serde.workspace = true
+serde_json.workspace = true
+# Random capability tokens for the agent command channel (server-minted,
+# unforgeable per-workspace ids stamped into `$FRESH_CMD_TOKEN`).
+uuid = { version = "1", features = ["v4"] }
+# Comment- and trailing-comma-tolerant JSON parsing for config files (JSONC).
+jsonc-parser.workspace = true
+schemars.workspace = true
+fresh-i18n.workspace = true
+once_cell.workspace = true
+# Cross-platform PATH / binary resolution.  Handles Windows PATHEXT
+# (.CMD/.BAT/.PS1 wrappers that npm -g creates for Node-based LSPs),
+# the Unix executable bit, symlinks, and App Execution Aliases on
+# Windows — all of which our previous hand-rolled probe missed.
+which = "6"
+
+# Runtime dependencies (optional, enabled by "runtime" feature)
+crossterm = { version = "0.29.0", features = ["osc52"], optional = true }
+# ratatui with default-features=false is WASM-compatible (no crossterm backend)
+# Runtime feature adds the crossterm backend for native terminal rendering
+ratatui = { version = "0.30.0", default-features = false, features = ["std", "underline-color"], optional = true }
+chrono = { version = "0.4", default-features = false, features = ["std", "clock"], optional = true }
+clap = { version = "4.5", default-features = false, features = ["derive", "std", "help", "usage", "error-context"], optional = true }
+# tracing is always needed for logging throughout the codebase
+tracing = { workspace = true }
+tracing-subscriber = { version = "0.3", features = ["env-filter"], optional = true }
+
+lsp-types = { workspace = true, optional = true }
+tokio = { version = "1.49", features = ["fs", "io-util", "process", "rt", "rt-multi-thread", "sync", "time", "macros"], optional = true }
+async-trait = { version = "0.1", optional = true }
+
+ignore = { version = "0.4", default-features = false, optional = true }
+# notify backs the watchPath plugin API. macros_only / debouncing
+# features stay off; we want raw events forwarded straight to
+# plugins so the collision-radar matrix can dedupe at the plugin
+# level (different debouncing policy than auto-revert wants).
+notify = { version = "8.2", default-features = false, features = ["macos_kqueue"], optional = true }
+# regex is always needed for model::buffer search functionality
+regex = { version = "1.12" }
+libc = { version = "0.2", optional = true }
+libloading = { version = "0.9", optional = true }
+nix = { version = "0.31", features = ["signal", "pthread", "resource", "poll", "fs"], optional = true }
+
+# anyhow is always needed for model error handling
+anyhow = { workspace = true }
+# base64 for remote protocol encoding (and the webui WebSocket handshake)
+base64 = { version = "0.22" }
+# sha1 for the webui WebSocket handshake (Sec-WebSocket-Accept); already in
+# Cargo.lock as a transitive dep, so enabling `web` adds no new compilation.
+# Gated behind the `web` feature — the only place it is used.
+sha1 = { version = "0.11", optional = true }
+# thiserror for custom error types
+thiserror = { version = "2.0" }
+# dirs is always needed for path_utils home directory expansion
+dirs = { version = "6.0" }
+pulldown-cmark = { version = "0.13", default-features = false, optional = true }
+sha2 = { version = "0.10", optional = true }
+arboard = { version = "3.6", default-features = false, features = ["wayland-data-control"], optional = true }
+# syntect with default-features=false so we can choose regex engine per build target
+# runtime uses onig (faster), wasm uses fancy-regex (pure Rust, WASM-compatible)
+syntect = { version = "5.3", default-features = false, optional = true }
+
+ureq = { version = "3.1.4", default-features = false, features = ["rustls", "platform-verifier"], optional = true }
+# Archive extraction for self-update (behind the `self-update` feature).
+# Unicode handling - always needed for primitives
+unicode-width = { version = "0.2" }
+unicode-segmentation = { version = "1.12" }
+
+# Encoding support - detection and conversion for various text encodings
+encoding_rs = "0.8"
+chardetng = "0.1"
+
+# Terminal emulation (optional)
+alacritty_terminal = { version = "0.26", optional = true }
+# Not used in code. `alacritty_terminal` pulls vte *without* default features,
+# while the dev-dependency `vt100` pulls it *with* them. Under resolver 2 that
+# one flag makes the lib's dependency closure differ between `cargo build` and
+# `cargo test`, so the whole 387k-line crate gets compiled twice -- once per
+# resolution -- and switching between the two costs a full lib rebuild. Naming
+# vte here with the features the dev graph already asks for makes the two
+# closures identical, which is worth a measured ~70s the first time and ~7s on
+# every later switch.
+#
+# It changes no code: vte's `default` is exactly `["std"]`, and `std` is already
+# on in both resolutions. Optional and enabled by `runtime` alongside
+# alacritty_terminal, so builds without a terminal do not gain a dependency.
+vte = { version = "0.15", features = ["default"], optional = true }
+portable-pty = { version = "0.9", optional = true }
+
+# Session persistence / client-server IPC
+interprocess = { version = "2.2", features = ["tokio"] }
+
+# Embedded plugins support (optional)
+include_dir = { version = "0.7", optional = true }
+tempfile = { version = "3.25", optional = true }
+trash = { version = "5.2.5", optional = true }
+open = { version = "5.3", optional = true }
+vt100 = { version = "0.16", optional = true }
+
+# GUI mode — all windowing/GPU deps are encapsulated in fresh-gui
+fresh-gui = { workspace = true, optional = true }
+
+[dev-dependencies]
+# Also a normal dependency; declared here so integration tests can reach
+# TARGET_TRIPLE / archive_ext when driving the built binary against a fake
+# release (tests/self_update_spine.rs).
+fresh-update.workspace = true
+proptest = "1.9"
+tempfile = "3.25"
+insta = { version = "1.46", features = ["yaml"] }
+vt100 = "0.16"  # Virtual terminal emulator for testing real ANSI output
+ctor = "0.6.3"
+tiny_http = "0.12"  # Lightweight HTTP server for testing release checker
+unicode-segmentation = "1.12"  # For grapheme cluster testing
+
+[target.'cfg(windows)'.dependencies]
+fresh-winterm.workspace = true
+windows-sys = { version = "0.61", features = [
+    "Win32_Foundation",
+    "Win32_System_Threading",
+    "Win32_System_Console",
+    "Win32_System_LibraryLoader",
+    "Win32_Storage_FileSystem",
+    "Win32_Security",
+] }
+
+# No `[build-dependencies]`: the syntect packdump, the builtin-theme table and
+# the locale list are generated by `fresh-editor-core`'s build script now, so
+# this crate's build.rs is plain std and does not drag a second (host-target)
+# copy of syntect + onig into the build graph.
+
+[target.'cfg(windows)'.build-dependencies]
+winresource = "0.1"
+
+[package.metadata.dist]
+# Point dist at the changelog so GitHub Releases get populated
+changelog = "../../CHANGELOG.md"
+
+# RPM package configuration for cargo-generate-rpm
+[package.metadata.generate-rpm]
+assets = [
+    # Binary directly in /usr/bin (CI creates symlink: crates/fresh-editor/target -> ../../target).
+    # Plugins and themes are compiled into the binary (embed-plugins feature +
+    # build.rs BUILTIN_THEMES), so nothing under /usr/share/fresh-editor/ ships.
+    { source = "target/release/fresh", dest = "/usr/bin/fresh", mode = "755" },
+    { source = "../../README.md", dest = "/usr/share/doc/fresh-editor/README.md", mode = "644" },
+    # Freedesktop hicolor icons
+    { source = "../../docs/icons/linux/hicolor/16x16/apps/fresh.png", dest = "/usr/share/icons/hicolor/16x16/apps/fresh.png", mode = "644" },
+    { source = "../../docs/icons/linux/hicolor/22x22/apps/fresh.png", dest = "/usr/share/icons/hicolor/22x22/apps/fresh.png", mode = "644" },
+    { source = "../../docs/icons/linux/hicolor/24x24/apps/fresh.png", dest = "/usr/share/icons/hicolor/24x24/apps/fresh.png", mode = "644" },
+    { source = "../../docs/icons/linux/hicolor/32x32/apps/fresh.png", dest = "/usr/share/icons/hicolor/32x32/apps/fresh.png", mode = "644" },
+    { source = "../../docs/icons/linux/hicolor/48x48/apps/fresh.png", dest = "/usr/share/icons/hicolor/48x48/apps/fresh.png", mode = "644" },
+    { source = "../../docs/icons/linux/hicolor/64x64/apps/fresh.png", dest = "/usr/share/icons/hicolor/64x64/apps/fresh.png", mode = "644" },
+    { source = "../../docs/icons/linux/hicolor/128x128/apps/fresh.png", dest = "/usr/share/icons/hicolor/128x128/apps/fresh.png", mode = "644" },
+    { source = "../../docs/icons/linux/hicolor/256x256/apps/fresh.png", dest = "/usr/share/icons/hicolor/256x256/apps/fresh.png", mode = "644" },
+    { source = "../../docs/icons/linux/hicolor/512x512/apps/fresh.png", dest = "/usr/share/icons/hicolor/512x512/apps/fresh.png", mode = "644" },
+    # Freedesktop desktop entry
+    { source = "resources/fresh.desktop", dest = "/usr/share/applications/fresh.desktop", mode = "644" },
+    # Man page
+    { source = "resources/fresh.1", dest = "/usr/share/man/man1/fresh.1", mode = "644" },
+    # Provenance receipt (generated in CI before `cargo generate-rpm`; see
+    # .github/workflows/linux-packages.yml). Tells the editor it was installed
+    # via dnf/rpm so updates defer to the system package manager.
+    { source = "target/install-receipt.toml", dest = "/usr/share/fresh-editor/install-receipt.toml", mode = "644" },
+]

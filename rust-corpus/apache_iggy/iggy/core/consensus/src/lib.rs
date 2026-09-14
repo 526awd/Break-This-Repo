@@ -1,0 +1,213 @@
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+use iggy_binary_protocol::ConsensusHeader;
+use message_bus::MessageBus;
+use server_common::ConsensusMessage;
+
+pub trait Project<T, C: Consensus> {
+    type Consensus: Consensus;
+    fn project(self, consensus: &Self::Consensus) -> T;
+}
+
+pub trait Pipeline {
+    type Entry;
+    /// Accepted-but-not-yet-prepared client request. For `LocalPipeline`,
+    /// `RequestEntry` wrapping `Message<RoutedRequestHeader>`.
+    type Request;
+
+    fn push(&mut self, entry: Self::Entry);
+
+    fn pop(&mut self) -> Option<Self::Entry>;
+
+    /// Drop the newest entry when it is exactly `(op, checksum)`, returning it;
+    /// `None` and no mutation otherwise. Unwinds a push that proved not to be durable.
+    ///
+    /// The checksum is not redundant: op numbers repeat across views, so matching on
+    /// `op` alone can pop a live entry belonging to a later one.
+    fn remove_tail(&mut self, op: u64, checksum: u128) -> Option<Self::Entry>;
+
+    fn clear(&mut self);
+
+    fn entry_by_op(&self, op: u64) -> Option<&Self::Entry>;
+
+    fn entry_by_op_mut(&mut self, op: u64) -> Option<&mut Self::Entry>;
+
+    fn entry_by_op_and_checksum(&self, op: u64, checksum: u128) -> Option<&Self::Entry>;
+
+    fn head(&self) -> Option<&Self::Entry>;
+
+    /// True iff prepare queue is full. Callers route to
+    /// [`Self::push_request`] on `true`.
+    fn is_full(&self) -> bool;
+
+    fn is_empty(&self) -> bool;
+
+    fn len(&self) -> usize;
+
+    /// Requests parked waiting for a prepare slot (the second queue).
+    fn request_queue_len(&self) -> usize;
+
+    /// In-flight prepare-queue capacity. `VsrConsensus` snapshots it at
+    /// construction to size the loopback queue and to bound the uncommitted
+    /// range a new primary may rebuild after a view change.
+    fn prepare_queue_max(&self) -> usize;
+
+    fn verify(&self);
+
+    /// True iff either queue carries `client_id`. Used by metadata-plane
+    /// preflight for in-flight dedup; the partition plane uses the narrower
+    /// [`Self::has_message_from_client_request`] instead, to keep a client's
+    /// pipeline depth. Default `false`; falls through to slot dedup in
+    /// `check_request`.
+    fn has_message_from_client(&self, _client_id: u128) -> bool {
+        false
+    }
+
+    /// True iff either queue carries this exact `(client, request)`. The
+    /// partition-plane in-flight dedup check: narrow on purpose, so a client
+    /// keeps its pipeline depth and only an exact replay is absorbed.
+    /// Default `false`.
+    fn has_message_from_client_request(&self, _client_id: u128, _request: u64) -> bool {
+        false
+    }
+
+    /// Drop reply senders on every entry; receivers wake `Canceled`.
+    /// View-change reset uses this to unblock awaiters while preserving
+    /// pipeline for DVC reconciliation.
+    fn cancel_all_subscribers(&mut self) {}
+
+    /// Drop `request_queue`, preserve `prepare_queue` (DVC reconciliation).
+    /// Stale primary-era requests must not outlive the transition;
+    /// clients re-send via read-timeout.
+    fn clear_request_queue(&mut self) {}
+
+    /// Buffer a request behind a full prepare queue.
+    ///
+    /// # Errors
+    /// `Err(request)` if request queue full (or no queue — default impl).
+    /// Caller drops; client retries.
+    fn push_request(&mut self, request: Self::Request) -> Result<(), Self::Request> {
+        Err(request)
+    }
+
+    /// Pop request-queue head. Called when a prepare commits and frees
+    /// a slot. Default `None` (no queue).
+    fn pop_request(&mut self) -> Option<Self::Request> {
+        None
+    }
+}
+
+pub type RequestMessage<C> = <C as Consensus>::Message<<C as Consensus>::RoutedRequestHeader>;
+pub type ReplicateMessage<C> = <C as Consensus>::Message<<C as Consensus>::ReplicateHeader>;
+pub type AckMessage<C> = <C as Consensus>::Message<<C as Consensus>::AckHeader>;
+
+pub trait Consensus: Sized {
+    type MessageBus: MessageBus;
+    type Message<H>: ConsensusMessage<H>
+    where
+        H: ConsensusHeader;
+
+    type RoutedRequestHeader: ConsensusHeader;
+    type ReplicateHeader: ConsensusHeader;
+    type AckHeader: ConsensusHeader;
+
+    type Sequencer: Sequencer;
+    type Pipeline: Pipeline;
+
+    fn pipeline_message(&self, plane: PlaneKind, message: &Self::Message<Self::ReplicateHeader>);
+    fn verify_pipeline(&self);
+
+    fn is_follower(&self) -> bool;
+    fn is_normal(&self) -> bool;
+    fn is_transferring(&self) -> bool;
+}
+
+/// Shared consensus lifecycle interface for control/data planes.
+///
+/// This abstracts the VSR message flow:
+/// - request -> prepare
+/// - replicate (prepare)
+/// - ack (`prepare_ok`)
+pub trait Plane<C>
+where
+    C: Consensus,
+{
+    fn on_request(&self, message: RequestMessage<C>) -> impl Future<Output = ()>
+    where
+        RequestMessage<C>: Project<ReplicateMessage<C>, C, Consensus = C>;
+
+    fn on_replicate(&self, message: ReplicateMessage<C>) -> impl Future<Output = ()>
+    where
+        ReplicateMessage<C>: Project<AckMessage<C>, C, Consensus = C>;
+
+    fn on_ack(&self, message: AckMessage<C>) -> impl Future<Output = ()>;
+}
+
+pub trait PlaneIdentity<C>
+where
+    C: Consensus,
+{
+    fn is_applicable<H>(&self, message: &C::Message<H>) -> bool
+    where
+        H: ConsensusHeader;
+}
+
+pub mod client_table;
+pub mod le_cursor;
+pub use client_table::{
+    CachedReply, ClientEntrySnapshot, ClientTable, ClientTableDecodeError, ClientTableMode,
+    ClientTableSnapshot, ClientTableWireError, CommitReply, DISCONNECT_LOGOUT_REQUEST_ID,
+    DedupWatermark, FenceSnapshot, SessionEnd,
+};
+pub mod state_manifest;
+pub use state_manifest::{
+    StateArtifact, StateArtifactHasher, StateManifestError, artifact_kind, decode_state_manifest,
+    encode_state_manifest, state_artifact_checksum,
+};
+pub mod state_transfer;
+pub use state_transfer::{
+    ArtifactProgress, ChunkProgress, STATE_TRANSFER_MAX_DECODE_RETRIES,
+    STATE_TRANSFER_MAX_STALL_RETRIES, append_chunk, next_pending_chunk, verify_state_artifact,
+};
+// One-shot per `PipelineEntry` for in-process commit awaiters.
+pub(crate) mod oneshot;
+pub use oneshot::{Canceled, Receiver, Sender, channel as oneshot_channel};
+
+mod fatal;
+pub use fatal::{FatalReason, fatal};
+
+mod impls;
+pub use impls::*;
+mod plane_mux;
+pub use plane_mux::*;
+mod plane_helpers;
+pub use plane_helpers::*;
+mod metadata_helpers;
+pub use metadata_helpers::*;
+mod observability;
+pub use observability::*;
+
+mod view_change_quorum;
+pub use view_change_quorum::*;
+
+mod dvc_merge;
+pub use dvc_merge::*;
+mod vsr_state;
+pub use vsr_state::{VsrState, VsrStateError};
+mod vsr_timeout;
+pub use vsr_timeout::{TICK_INTERVAL, TimeoutManager};

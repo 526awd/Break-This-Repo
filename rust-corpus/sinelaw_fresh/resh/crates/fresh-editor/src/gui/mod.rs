@@ -1,0 +1,393 @@
+//! GUI backend integration for Fresh.
+//!
+//! This module provides a thin adapter between the [`fresh_gui`] crate
+//! (windowed ratatui via winit + wgpu) and the editor core.  All windowing,
+//! GPU, and input-translation logic lives in `fresh-gui`; this module only
+//! implements the [`fresh_gui::GuiApplication`] trait for [`Editor`].
+
+use std::path::PathBuf;
+use std::sync::Arc;
+
+use anyhow::{Context, Result as AnyhowResult};
+use crossterm::event::{
+    KeyEvent as CtKeyEvent, KeyEventKind, KeyEventState, MouseEvent as CtMouseEvent,
+};
+use fresh_input_parser::Event;
+
+use crate::app::Editor;
+use crate::config;
+use crate::config_io::DirectoryContext;
+use crate::model::filesystem::{FileSystem, StdFileSystem};
+
+// Re-export helpers from fresh-gui so existing code (e.g. e2e tests) can
+// continue to access them via `fresh::gui::*`.
+pub use fresh_gui::{
+    cell_dimensions_to_grid, pixel_to_cell, translate_key_event, translate_modifiers,
+    translate_mouse_button, translate_named_key, GuiApplication, GuiConfig,
+};
+
+// ---------------------------------------------------------------------------
+// Public entry point
+// ---------------------------------------------------------------------------
+
+/// Launch the editor in GUI mode. Called from `main()` when `--gui` is passed.
+pub fn run_gui(
+    files: &[String],
+    no_plugins: bool,
+    no_init: bool,
+    config_path: Option<&PathBuf>,
+    locale: Option<&str>,
+    no_session: bool,
+    log_file: Option<&PathBuf>,
+) -> AnyhowResult<()> {
+    if let Some(loc) = locale {
+        crate::i18n::set_locale(loc);
+    }
+
+    // Set up tracing subscriber (same as terminal path)
+    let log_path = log_file
+        .cloned()
+        .unwrap_or_else(crate::services::log_dirs::main_log_path);
+    let _tracing_handles = crate::services::tracing_setup::init_global(&log_path);
+    tracing::info!("GUI mode starting");
+
+    let dir_context = DirectoryContext::from_system()?;
+    let working_dir = std::env::current_dir().unwrap_or_default();
+
+    #[allow(unused_mut)]
+    let mut loaded_config = if let Some(path) = config_path {
+        config::Config::load_from_file(path)
+            .with_context(|| format!("Failed to load config from {}", path.display()))?
+    } else {
+        config::Config::load_with_layers(&dir_context, &working_dir)
+    };
+
+    // On macOS GUI, auto-select the macos-gui keybinding map (Cmd-key shortcuts)
+    // unless the user has explicitly set a different keymap.
+    #[cfg(target_os = "macos")]
+    {
+        let default_macos_map = config::KeybindingMapName("macos".to_string());
+        let default_map = config::KeybindingMapName("default".to_string());
+        if loaded_config.active_keybinding_map == default_macos_map
+            || loaded_config.active_keybinding_map == default_map
+        {
+            loaded_config.active_keybinding_map =
+                config::KeybindingMapName("macos-gui".to_string());
+        }
+    }
+
+    let file_locations: Vec<(PathBuf, Option<usize>, Option<usize>)> =
+        files.iter().map(|f| parse_file_location(f)).collect();
+
+    let show_file_explorer = file_locations.is_empty();
+    let no_session_flag = no_session;
+
+    // Configure wgpu reset colors and ANSI color table based on theme.
+    // Load the theme to check its editor_bg luminance rather than relying
+    // on the theme name — this works for custom themes too.
+    let is_light = crate::view::theme::Theme::load_builtin(&loaded_config.theme)
+        .map_or(false, |t| t.is_light());
+    let gui_config = {
+        let mut cfg = GuiConfig::default();
+        if is_light {
+            cfg.reset_bg = ratatui::style::Color::White;
+            cfg.reset_fg = ratatui::style::Color::Black;
+            cfg.color_table = Some(fresh_gui::light_color_table());
+        } else {
+            cfg.reset_bg = ratatui::style::Color::Black;
+            cfg.reset_fg = ratatui::style::Color::White;
+            cfg.color_table = Some(fresh_gui::dark_color_table());
+        }
+        cfg
+    };
+
+    // Bind this process's in-process control socket so a `fresh` run inside an
+    // embedded terminal forwards opens *and* drives the command channel
+    // (`ListCommands` / `RunCommand`) back to this editor — same as the TUI
+    // path (main.rs) and the web path (webui::run). GUI mode used to bind it
+    // only lazily, when an agent terminal minted a `FRESH_CMD_TOKEN`; a plain
+    // terminal therefore never advertised `FRESH_SESSION` at all. Best-effort:
+    // on failure the editor still runs and nested launches open inline.
+    if let Err(e) = crate::server::local_control::start() {
+        tracing::warn!("Local control socket unavailable: {}", e);
+    }
+
+    // Move all captured state into the closure that creates the editor app.
+    fresh_gui::run(gui_config, move |cols, rows| {
+        // For GUI, we always have true color.
+        let color_capability = crate::view::color_support::ColorCapability::TrueColor;
+        let filesystem: Arc<dyn FileSystem + Send + Sync> = Arc::new(StdFileSystem);
+
+        let mut editor = Editor::with_working_dir(
+            loaded_config,
+            cols,
+            rows,
+            Some(working_dir),
+            dir_context,
+            !no_plugins,
+            color_capability,
+            filesystem,
+        )
+        .context("Failed to create editor instance")?;
+
+        // Auto-load ~/.config/fresh/init.ts via the plugin pipeline.
+        editor.load_init_script(!no_init);
+        editor.fire_plugins_loaded_hook();
+
+        // ratatui-wgpu does not render a hardware cursor.
+        editor.set_software_cursor_only(true);
+
+        let workspace_enabled = !no_session_flag && file_locations.is_empty();
+        // Writes hang off `--no-session` alone, as in the TUI path: a GUI run
+        // that merely opened files is still an ordinary session whose
+        // checkpoints must work. `workspace_enabled` only gates restore (#2735).
+        editor.set_workspace_persistence(!no_session_flag);
+
+        if !file_locations.is_empty() {
+            for (path, line, col) in &file_locations {
+                editor.queue_file_open(path.clone(), *line, *col, None, None, None, None);
+            }
+        }
+
+        if workspace_enabled {
+            // Shared restore flow (same as the TUI launch and the dock's
+            // `materialize_window`): a restored workspace keeps its
+            // persisted explorer visibility, and only a brand-new
+            // directory defaults to the tree — so a closed explorer is
+            // not re-opened on every relaunch.
+            match editor.restore_active_window_on_launch(!show_file_explorer) {
+                Ok(true) => tracing::info!("Workspace restored"),
+                Ok(false) => tracing::debug!("No previous workspace"),
+                Err(e) => tracing::warn!("Failed to restore workspace: {}", e),
+            }
+        } else if show_file_explorer {
+            // No session restore (e.g. --no-session) but a bare directory:
+            // still default to showing the tree.
+            editor.apply_active_window_explorer_default(!show_file_explorer, false);
+        }
+
+        if let Err(e) = editor.start_recovery_session() {
+            tracing::warn!("Failed to start recovery session: {}", e);
+        }
+
+        let last_theme = editor.theme().name.clone();
+        Ok(EditorApp {
+            editor,
+            workspace_enabled,
+            last_theme,
+        })
+    })
+}
+
+// ---------------------------------------------------------------------------
+// GuiApplication implementation for Editor
+// ---------------------------------------------------------------------------
+
+struct EditorApp {
+    editor: Editor,
+    workspace_enabled: bool,
+    /// Last theme name seen — used to detect theme switches and push
+    /// an updated ANSI color table to the wgpu backend.
+    last_theme: String,
+}
+
+impl GuiApplication for EditorApp {
+    fn on_key(&mut self, key_event: CtKeyEvent) -> AnyhowResult<()> {
+        tracing::trace!(
+            "GUI key event: code={:?}, modifiers={:?}",
+            key_event.code,
+            key_event.modifiers
+        );
+
+        // The interactive wave animation runs until the reader does something:
+        // the first key press dismisses it and is CONSUMED (it only stops the
+        // show, it doesn't also act on the editor). Parity with the TUI loops
+        // in `main.rs` and the daemon server, and with the web bridge — this
+        // window used to be the one frontend where the wave could not be
+        // stopped at all, so it ran to its 600-second safety cap.
+        if self
+            .editor
+            .maybe_dismiss_wave_animation(&Event::key(key_event))
+        {
+            return Ok(());
+        }
+
+        // Event debug dialog intercepts ALL key events before normal processing.
+        if self.editor.active_window().is_event_debug_active() {
+            let raw_event = crossterm::event::KeyEvent {
+                code: key_event.code,
+                modifiers: key_event.modifiers,
+                kind: KeyEventKind::Press,
+                state: KeyEventState::NONE,
+            };
+            self.editor
+                .active_window_mut()
+                .handle_event_debug_input(&raw_event);
+            return Ok(());
+        }
+
+        self.editor
+            .handle_key(key_event.code, key_event.modifiers)?;
+        Ok(())
+    }
+
+    fn on_mouse(&mut self, mouse: CtMouseEvent) -> AnyhowResult<bool> {
+        // Same rule as the key path above: any mouse activity — a move, a
+        // click, a wheel notch — ends the wave and is consumed. The window
+        // reports pointer motion the moment the pointer is over it, so this
+        // is the dismissal a reader coming back to the screensaver reaches
+        // for first.
+        if self
+            .editor
+            .maybe_dismiss_wave_animation(&Event::Mouse(mouse))
+        {
+            return Ok(true);
+        }
+        self.editor.handle_mouse(mouse)
+    }
+
+    fn render(&mut self, frame: &mut ratatui::Frame) {
+        self.editor.render(frame);
+    }
+
+    fn tick(&mut self) -> AnyhowResult<bool> {
+        // Drain nested-forward requests (file/dir opens from a `fresh` run in an
+        // embedded terminal, and the `fresh --cmd` command channel) before the
+        // tick, exactly like the TUI loop (main.rs) and the web loop
+        // (webui::run), so queued work is applied on this same pass. Without
+        // this, a request reaches the editor thread's queue and is never drained:
+        // the handler thread parks on its reply forever and `fresh --cmd cmd
+        // list` hangs in the agent's terminal. Cheap no-op until `start()` has
+        // bound the socket; never blocks.
+        let control_changed = crate::server::local_control::pump(&mut self.editor);
+        let ticked = crate::app::editor_tick(&mut self.editor, || Ok(()))?;
+        Ok(control_changed || ticked)
+    }
+
+    fn should_quit(&self) -> bool {
+        self.editor.should_quit()
+    }
+
+    fn resize(&mut self, cols: u16, rows: u16) {
+        self.editor.resize(cols, rows);
+    }
+
+    fn on_close(&mut self) {
+        // End recovery session first (flushes dirty buffers + assigns recovery IDs),
+        // then save workspace (captures those IDs for next session restore).
+        if let Err(e) = self.editor.end_recovery_session() {
+            tracing::warn!("Failed to end recovery session: {}", e);
+        }
+        if self.workspace_enabled {
+            if let Err(e) = self.editor.save_all_windows_workspaces() {
+                tracing::warn!("Failed to save workspaces: {}", e);
+            }
+        }
+    }
+
+    fn menu_definitions(&self) -> Vec<fresh_core::menu::Menu> {
+        self.editor.expanded_menu_definitions()
+    }
+
+    fn menu_context(&self) -> fresh_core::menu::MenuContext {
+        self.editor.menu_context()
+    }
+
+    fn on_menu_action(
+        &mut self,
+        action: &str,
+        args: &std::collections::HashMap<String, serde_json::Value>,
+    ) {
+        use crate::input::keybindings::Action;
+        if let Some(editor_action) = Action::from_str(action, args) {
+            if let Err(e) = self.editor.handle_action(editor_action) {
+                tracing::error!("Menu action '{}' error: {}", action, e);
+            }
+        } else {
+            tracing::warn!("Unknown menu action: {}", action);
+        }
+    }
+
+    fn take_color_update(&mut self) -> Option<fresh_gui::ColorTable> {
+        let current = &self.editor.theme().name;
+        if *current == self.last_theme {
+            return None;
+        }
+        self.last_theme = current.clone();
+        if self.editor.theme().is_light() {
+            Some(fresh_gui::light_color_table())
+        } else {
+            Some(fresh_gui::dark_color_table())
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// File-location parsing (editor-specific utility)
+// ---------------------------------------------------------------------------
+
+/// Parse a CLI file argument in `file:line:col` format.
+pub fn parse_file_location(f: &str) -> (PathBuf, Option<usize>, Option<usize>) {
+    let parts: Vec<&str> = f.rsplitn(3, ':').collect();
+    match parts.as_slice() {
+        [col, line, path] => {
+            let l = line.parse().ok();
+            let c = col.parse().ok();
+            if l.is_some() {
+                (PathBuf::from(path), l, c)
+            } else {
+                (PathBuf::from(f), None, None)
+            }
+        }
+        [line, path] => {
+            let l = line.parse().ok();
+            if l.is_some() {
+                (PathBuf::from(path), l, None)
+            } else {
+                (PathBuf::from(f), None, None)
+            }
+        }
+        _ => (PathBuf::from(f), None, None),
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Tests
+// ---------------------------------------------------------------------------
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_parse_file_location_plain() {
+        let (path, line, col) = parse_file_location("src/main.rs");
+        assert_eq!(path, PathBuf::from("src/main.rs"));
+        assert_eq!(line, None);
+        assert_eq!(col, None);
+    }
+
+    #[test]
+    fn test_parse_file_location_line_col() {
+        let (path, line, col) = parse_file_location("src/main.rs:42:10");
+        assert_eq!(path, PathBuf::from("src/main.rs"));
+        assert_eq!(line, Some(42));
+        assert_eq!(col, Some(10));
+    }
+
+    #[test]
+    fn test_parse_file_location_line_only() {
+        let (path, line, col) = parse_file_location("src/main.rs:42");
+        assert_eq!(path, PathBuf::from("src/main.rs"));
+        assert_eq!(line, Some(42));
+        assert_eq!(col, None);
+    }
+
+    #[test]
+    fn test_parse_file_location_non_numeric() {
+        let (path, line, col) = parse_file_location("foo:bar");
+        assert_eq!(path, PathBuf::from("foo:bar"));
+        assert_eq!(line, None);
+        assert_eq!(col, None);
+    }
+}

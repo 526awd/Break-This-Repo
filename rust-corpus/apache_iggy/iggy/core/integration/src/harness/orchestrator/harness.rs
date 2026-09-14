@@ -1,0 +1,841 @@
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+use super::builder::TestHarnessBuilder;
+use crate::harness::config::{ClientConfig, JwksConfig};
+use crate::harness::context::TestContext;
+use crate::harness::error::TestBinaryError;
+use crate::harness::handle::{
+    ClientBuilder, ClientHandle, ConnectorsRuntimeHandle, McpClient, McpHandle, ServerHandle,
+    ServerLogs,
+};
+use crate::harness::traits::{Restartable, TestBinary};
+use futures::executor::block_on;
+use iggy::prelude::{ClientWrapper, IggyClient};
+use iggy_common::Client;
+use iggy_common::TransportProtocol;
+use std::path::Path;
+use std::sync::Arc;
+use std::time::{Duration, Instant};
+use tokio::time::{sleep, timeout};
+use tracing::warn;
+use wiremock::matchers::{method, path};
+use wiremock::{Mock, MockServer, ResponseTemplate};
+
+/// Collected logs from all binaries in the harness.
+#[derive(Debug)]
+pub struct TestLogs {
+    pub servers: Vec<ServerLogs>,
+}
+
+/// Orchestrates test binaries and clients for integration tests.
+pub struct TestHarness {
+    pub(super) context: Arc<TestContext>,
+    pub(super) servers: Vec<ServerHandle>,
+    pub(super) clients: Vec<ClientHandle>,
+    pub(super) client_configs: Vec<ClientConfig>,
+    pub(super) primary_transport: Option<TransportProtocol>,
+    pub(super) primary_client_config: Option<ClientConfig>,
+    pub(super) jwks_config: Option<JwksConfig>,
+    pub(super) jwks_server: Option<MockServer>,
+    pub(super) started: bool,
+}
+
+impl std::fmt::Debug for TestHarness {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let has_mcp = self.servers.iter().any(|s| s.mcp().is_some());
+        let has_connectors = self
+            .servers
+            .iter()
+            .any(|s| s.connectors_runtime().is_some());
+        f.debug_struct("TestHarness")
+            .field("test_name", &self.context.test_name())
+            .field("started", &self.started)
+            .field("server_count", &self.servers.len())
+            .field("has_mcp", &has_mcp)
+            .field("has_connectors_runtime", &has_connectors)
+            .field("client_count", &self.clients.len())
+            .finish()
+    }
+}
+
+impl TestHarness {
+    pub fn builder() -> TestHarnessBuilder {
+        TestHarnessBuilder::default()
+    }
+
+    /// Start all configured binaries and create clients.
+    pub async fn start(&mut self) -> Result<(), TestBinaryError> {
+        self.start_internal(
+            None::<
+                fn(
+                    IggyClient,
+                )
+                    -> std::future::Ready<Result<(), Box<dyn std::error::Error + Send + Sync>>>,
+            >,
+        )
+        .await
+    }
+
+    /// Start all configured binaries with a seed function that runs before dependent binaries.
+    ///
+    /// The seed function is called after the server starts but before MCP and connector,
+    /// allowing streams/topics to be created that dependent binaries may need.
+    pub async fn start_with_seed<F, Fut>(&mut self, seed: F) -> Result<(), TestBinaryError>
+    where
+        F: FnOnce(IggyClient) -> Fut,
+        Fut: std::future::Future<Output = Result<(), Box<dyn std::error::Error + Send + Sync>>>,
+    {
+        self.start_internal(Some(seed)).await
+    }
+
+    async fn start_internal<F, Fut>(&mut self, seed: Option<F>) -> Result<(), TestBinaryError>
+    where
+        F: FnOnce(IggyClient) -> Fut,
+        Fut: std::future::Future<Output = Result<(), Box<dyn std::error::Error + Send + Sync>>>,
+    {
+        if self.started {
+            return Err(TestBinaryError::AlreadyStarted);
+        }
+
+        if let Some(jwks_config) = &self.jwks_config
+            && jwks_config.enabled
+        {
+            let mock_server = MockServer::start().await;
+
+            if let Some(store_path) = &jwks_config.store_path {
+                let content = std::fs::read_to_string(store_path).map_err(|e| {
+                    TestBinaryError::InvalidState {
+                        message: format!("Failed to read JWKS file at {}: {}", store_path, e),
+                    }
+                })?;
+
+                Mock::given(method("GET"))
+                    .and(path("/.well-known/jwks.json"))
+                    .respond_with(ResponseTemplate::new(200).set_body_string(content))
+                    .mount(&mock_server)
+                    .await;
+            }
+
+            let jwks_url = format!("{}/.well-known/jwks.json", mock_server.uri());
+            let issuer = jwks_config
+                .issuer_url
+                .as_deref()
+                .unwrap_or("https://test-issuer.com");
+
+            for server in &mut self.servers {
+                server.add_env("IGGY_HTTP_JWT_TRUSTED_ISSUERS_0_ISSUER", issuer);
+                server.add_env(
+                    "IGGY_HTTP_JWT_TRUSTED_ISSUERS_0_JWKS_URL",
+                    jwks_url.as_str(),
+                );
+                server.add_env("IGGY_HTTP_JWT_TRUSTED_ISSUERS_0_AUDIENCE", "iggy");
+                server.add_env("IGGY_HTTP_JWT_TRUSTED_ISSUERS_0_USER_ID", "1");
+            }
+
+            self.jwks_server = Some(mock_server);
+        }
+
+        // Cluster startup can hit a transient replica-handshake blip that
+        // leaves the mesh incomplete (a peer link drops mid-handshake, so a
+        // node never reaches "all peers connected"). Rather than fail the whole
+        // test on a startup blip, retry spawn + mesh-readiness a few times,
+        // tearing down and respawning between attempts. `ServerHandle::start`
+        // truncates the captured stdout (`File::create`), so the readiness
+        // log-grep never matches a stale marker from a prior attempt.
+        {
+            const CLUSTER_STARTUP_ATTEMPTS: usize = 3;
+            for attempt in 1..=CLUSTER_STARTUP_ATTEMPTS {
+                let mut spawn_error = None;
+                for server in &mut self.servers {
+                    if let Err(error) = server.start() {
+                        spawn_error = Some(error);
+                        break;
+                    }
+                }
+                if let Some(error) = spawn_error {
+                    // Mirror the not-ready arm below: never bail with earlier
+                    // nodes of this attempt still running.
+                    for server in &mut self.servers {
+                        let _ = server.stop();
+                    }
+                    return Err(error);
+                }
+                match self.wait_for_cluster_ready().await {
+                    Ok(()) => break,
+                    Err(error) if attempt < CLUSTER_STARTUP_ATTEMPTS => {
+                        warn!(
+                            attempt,
+                            max_attempts = CLUSTER_STARTUP_ATTEMPTS,
+                            error = %error,
+                            "cluster not ready; tearing down and respawning"
+                        );
+                        for server in &mut self.servers {
+                            let _ = server.stop();
+                        }
+                        sleep(Duration::from_millis(500)).await;
+                    }
+                    Err(error) => return Err(error),
+                }
+            }
+        }
+
+        if let Some(seed_fn) = seed {
+            let client = self.tcp_root_client().await?;
+            seed_fn(client)
+                .await
+                .map_err(|e| TestBinaryError::SeedFailed(e.to_string()))?;
+        }
+
+        self.start_dependents().await?;
+        self.create_clients().await?;
+
+        self.started = true;
+        Ok(())
+    }
+
+    async fn wait_for_cluster_ready(&self) -> Result<(), TestBinaryError> {
+        {
+            if self.servers.len() <= 1 {
+                return Ok(());
+            }
+
+            const CLUSTER_READY_TIMEOUT: Duration = Duration::from_secs(15);
+            const CLUSTER_READY_RETRY_INTERVAL: Duration = Duration::from_millis(200);
+
+            let deadline = Instant::now() + CLUSTER_READY_TIMEOUT;
+
+            // Wait for the full replica mesh BEFORE the login probe below.
+            // The probe is the cluster's first metadata op; if it commits
+            // while a replica is still joining the mesh, that replica misses
+            // the op and -- with no log-repair path yet -- wedges, dropping
+            // every later op as a gap. Gating on all nodes meshed means the
+            // test runs against a fully constructed cluster with no late
+            // joiners.
+            while Instant::now() < deadline
+                && !self.servers.iter().all(ServerHandle::replica_mesh_complete)
+            {
+                sleep(CLUSTER_READY_RETRY_INTERVAL).await;
+            }
+            if !self.servers.iter().all(ServerHandle::replica_mesh_complete) {
+                let per_node: Vec<String> = self
+                    .servers
+                    .iter()
+                    .enumerate()
+                    .map(|(i, s)| format!("node{i}={}", s.replica_mesh_complete()))
+                    .collect();
+                return Err(TestBinaryError::InvalidState {
+                    message: format!(
+                        "Timed out waiting for VSR replica mesh to form on all nodes [{}]",
+                        per_node.join(", ")
+                    ),
+                });
+            }
+
+            self.wait_for_login_ready(deadline).await
+        }
+    }
+
+    /// Poll a root login until one succeeds or `deadline` passes.
+    ///
+    /// A root login is a replicated `Register`, so it cannot commit without a
+    /// commit quorum. One succeeding is therefore direct evidence that the
+    /// nodes which ARE up formed a working quorum, which is what the mesh
+    /// marker cannot tell you: that marker only reports peer TCP links, and
+    /// `mesh_expected_peers` counts every CONFIGURED peer, so a deliberately
+    /// partial cluster never emits it however healthy its quorum is.
+    async fn wait_for_login_ready(&self, deadline: Instant) -> Result<(), TestBinaryError> {
+        const RETRY_INTERVAL: Duration = Duration::from_millis(200);
+        const LOGIN_ATTEMPT_TIMEOUT: Duration = Duration::from_millis(750);
+
+        let mut last_error = None;
+        while Instant::now() < deadline {
+            match timeout(LOGIN_ATTEMPT_TIMEOUT, self.tcp_root_client()).await {
+                Ok(Ok(client)) => {
+                    let _ = client.disconnect().await;
+                    return Ok(());
+                }
+                Ok(Err(error)) => {
+                    last_error = Some(error.to_string());
+                    sleep(RETRY_INTERVAL).await;
+                }
+                Err(_) => {
+                    last_error = Some("login attempt timed out".to_string());
+                    sleep(RETRY_INTERVAL).await;
+                }
+            }
+        }
+
+        Err(TestBinaryError::InvalidState {
+            message: format!(
+                "Timed out waiting for VSR cluster readiness: {}",
+                last_error.unwrap_or_else(|| "unknown error".to_string())
+            ),
+        })
+    }
+
+    /// Spawn only the nodes at `indexes` and wait for them to form a quorum.
+    ///
+    /// The counterpart of [`Self::start`] for boot-ordering tests: it models a
+    /// cluster that begins serving before every configured node has arrived,
+    /// which is what production does (nothing in the server's bootstrap waits
+    /// for peers) and what `start` deliberately does not.
+    ///
+    /// Readiness is a root login succeeding, not the all-nodes mesh gate
+    /// `start` uses: `mesh_expected_peers` counts every CONFIGURED peer, so a
+    /// deliberately partial cluster never reports a complete mesh however
+    /// healthy its quorum is. A login is a replicated `Register` and cannot
+    /// commit without quorum, which is the stronger signal anyway.
+    ///
+    /// Dependents (MCP, connectors runtime) and the configured clients are NOT
+    /// started: their addresses resolve against nodes this call deliberately
+    /// left down. Bring the rest up with [`Self::start_node`] and build clients
+    /// per node with [`Self::root_client_for_node`].
+    pub async fn start_nodes(&mut self, indexes: &[usize]) -> Result<(), TestBinaryError> {
+        if self.started {
+            return Err(TestBinaryError::AlreadyStarted);
+        }
+        const READY_TIMEOUT: Duration = Duration::from_secs(15);
+
+        for &index in indexes {
+            let server = self
+                .servers
+                .get_mut(index)
+                .ok_or(TestBinaryError::MissingServer)?;
+            server.start()?;
+        }
+        self.started = true;
+
+        let deadline = Instant::now() + READY_TIMEOUT;
+        self.wait_for_login_ready(deadline).await
+    }
+
+    /// Spawn one node into an already-running cluster, without waiting for it.
+    ///
+    /// The late-joiner half of [`Self::start_nodes`]. No readiness wait: what
+    /// "ready" means for a node joining an established cluster is the caller's
+    /// question (rejoin at the live view, journal repair, state transfer), and
+    /// each has its own observable.
+    pub fn start_node(&mut self, index: usize) -> Result<(), TestBinaryError> {
+        let server = self
+            .servers
+            .get_mut(index)
+            .ok_or(TestBinaryError::MissingServer)?;
+        server.start()
+    }
+
+    async fn start_dependents(&mut self) -> Result<(), TestBinaryError> {
+        for server in &mut self.servers {
+            server.start_dependents().await?;
+        }
+        Ok(())
+    }
+
+    /// Stop all binaries and disconnect clients.
+    pub async fn stop(&mut self) -> Result<(), TestBinaryError> {
+        for client in &mut self.clients {
+            client.disconnect().await;
+        }
+        self.clients.clear();
+
+        for server in self.servers.iter_mut().rev() {
+            server.stop_dependents()?;
+            server.stop()?;
+        }
+
+        self.started = false;
+        Ok(())
+    }
+
+    /// Restart the node at index 0 and reconnect all clients. Index 0 is not
+    /// "the primary" (see [`Self::running_server`]); use
+    /// [`Self::restart_node`] to name a different one.
+    pub async fn restart_server(&mut self) -> Result<(), TestBinaryError> {
+        if self.servers.is_empty() {
+            return Err(TestBinaryError::MissingServer);
+        }
+
+        for client in &mut self.clients {
+            client.disconnect().await;
+        }
+
+        self.servers[0].restart()?;
+
+        self.update_client_addresses();
+        for client in &mut self.clients {
+            client.connect().await?;
+        }
+
+        Ok(())
+    }
+
+    /// Restart node `index` with its data directory INTACT, so it rejoins the
+    /// still-live cluster from its own recovered state (superblock, segments,
+    /// offset files). The counterpart of
+    /// [`Self::restart_node_from_clean_slate`] for the crash-and-return
+    /// shape rather than the provisioned-replacement one.
+    pub fn restart_node(&mut self, index: usize) -> Result<(), TestBinaryError> {
+        let server = self
+            .servers
+            .get_mut(index)
+            .ok_or(TestBinaryError::MissingServer)?;
+        server.stop()?;
+        server.start()
+    }
+
+    /// Restart node `index` with its data directory wiped, so it rejoins the
+    /// still-live cluster as a fresh replica with no local history. The other
+    /// nodes stay up throughout (they hold quorum and keep committing), which
+    /// is the late-joiner / provisioned-replacement scenario rather than a
+    /// full-cluster restart. Clients are left connected to their own nodes.
+    pub fn restart_node_from_clean_slate(&mut self, index: usize) -> Result<(), TestBinaryError> {
+        let server = self
+            .servers
+            .get_mut(index)
+            .ok_or(TestBinaryError::MissingServer)?;
+        server.restart_from_clean_slate()
+    }
+
+    /// Stop node `index` and leave it down. The surviving nodes keep quorum
+    /// (in a 3-node cluster, 2 of 3), and if the stopped node was the primary
+    /// they elect a new one, advancing the view. Pairs with
+    /// [`Self::restart_node_from_clean_slate`] to model a node that misses an
+    /// election entirely and rejoins at a stale view.
+    pub fn stop_node(&mut self, index: usize) -> Result<(), TestBinaryError> {
+        let server = self
+            .servers
+            .get_mut(index)
+            .ok_or(TestBinaryError::MissingServer)?;
+        server.stop()
+    }
+
+    /// SIGKILL node `index` and leave it down: the crash counterpart of
+    /// [`Self::stop_node`]. No shutdown hook runs, so nothing buffered in
+    /// process memory reaches disk. Restart via [`Self::restart_node`] to
+    /// exercise crash recovery.
+    pub fn kill_node(&mut self, index: usize) -> Result<(), TestBinaryError> {
+        let server = self
+            .servers
+            .get_mut(index)
+            .ok_or(TestBinaryError::MissingServer)?;
+        server.kill()
+    }
+
+    /// SIGKILL EVERY node, in ascending index order: the whole-cluster
+    /// power-loss shape, versus [`Self::restart_cluster`]'s graceful
+    /// stop-all-then-start-all. The kills spread over at most a couple hundred
+    /// milliseconds (a watchdog join plus a reap each), far below the 5s
+    /// heartbeat timeout, so no election starts between them. Restart via
+    /// [`Self::restart_cluster`].
+    pub fn kill_cluster(&mut self) -> Result<(), TestBinaryError> {
+        if self.servers.is_empty() {
+            return Err(TestBinaryError::MissingServer);
+        }
+        for server in &mut self.servers {
+            server.kill()?;
+        }
+        Ok(())
+    }
+
+    /// Restart EVERY node and reconnect all clients: the full-cluster
+    /// restart path, where no settled primary survives to answer the rejoin
+    /// probes and the replicas must fall back to an election among their
+    /// recovered logs. All nodes stop BEFORE any starts, so no rejoiner can
+    /// lean on a still-live peer (that would be a rolling restart).
+    pub async fn restart_cluster(&mut self) -> Result<(), TestBinaryError> {
+        if self.servers.is_empty() {
+            return Err(TestBinaryError::MissingServer);
+        }
+
+        for client in &mut self.clients {
+            client.disconnect().await;
+        }
+
+        for server in self.servers.iter_mut().rev() {
+            server.stop_dependents()?;
+            server.stop()?;
+        }
+        for server in &mut self.servers {
+            server.restart()?;
+        }
+
+        self.update_client_addresses();
+        for client in &mut self.clients {
+            client.connect().await?;
+        }
+
+        Ok(())
+    }
+
+    /// The node client helpers dial when the caller names none: node 0 while
+    /// it is alive, otherwise the lowest-indexed node whose process is.
+    ///
+    /// Index 0 is a default, not a role. It carries no leadership: the
+    /// metadata primary is `view % replica_count` and moves on every
+    /// election, and the SDK redirects to whoever that is on connect. Pinning
+    /// these helpers to node 0 meant every client helper failed outright once
+    /// a test stopped it, which is why cluster tests reach for
+    /// [`Self::root_client_for_node`] instead. Preferring 0 keeps the common
+    /// case deterministic; falling through keeps the harness usable with it
+    /// down.
+    pub fn running_server(&self) -> Result<&ServerHandle, TestBinaryError> {
+        if self.servers.is_empty() {
+            return Err(TestBinaryError::MissingServer);
+        }
+        self.servers
+            .iter()
+            .find(|server| server.is_running())
+            .ok_or(TestBinaryError::MissingServer)
+    }
+
+    /// Get reference to the node at index 0.
+    ///
+    /// Index 0 is not "the primary": see [`Self::running_server`]. Use
+    /// [`Self::node`] when the index matters and `running_server` when any
+    /// live node will do.
+    pub fn server(&self) -> &ServerHandle {
+        self.servers.first().expect("No servers configured")
+    }
+
+    /// Get mutable reference to the node at index 0. Index 0 is not "the
+    /// primary": see [`Self::running_server`].
+    pub fn server_mut(&mut self) -> &mut ServerHandle {
+        self.servers.first_mut().expect("No servers configured")
+    }
+
+    /// Get reference to a specific server node by index (for clusters).
+    pub fn node(&self, index: usize) -> &ServerHandle {
+        self.servers.get(index).unwrap_or_else(|| {
+            panic!(
+                "Node {} not configured (cluster has {} nodes)",
+                index,
+                self.servers.len()
+            )
+        })
+    }
+
+    /// Get mutable reference to a specific server node by index (for clusters).
+    pub fn node_mut(&mut self, index: usize) -> &mut ServerHandle {
+        let len = self.servers.len();
+        self.servers
+            .get_mut(index)
+            .unwrap_or_else(|| panic!("Node {} not configured (cluster has {} nodes)", index, len))
+    }
+
+    /// Get reference to all servers.
+    pub fn all_servers(&self) -> &[ServerHandle] {
+        &self.servers
+    }
+
+    /// Number of requests the trusted-issuer JWKS mock has served, or 0 when no
+    /// JWKS mock is configured. Lets a test bound the server's outbound JWKS
+    /// fetches (e.g. assert an unknown-`kid` flood does not amplify).
+    pub async fn jwks_request_count(&self) -> usize {
+        match &self.jwks_server {
+            Some(server) => server
+                .received_requests()
+                .await
+                .map_or(0, |reqs| reqs.len()),
+            None => 0,
+        }
+    }
+
+    /// Get the number of server nodes (1 for single server, N for cluster).
+    pub fn cluster_size(&self) -> usize {
+        self.servers.len()
+    }
+
+    /// Get the first client (panics if no clients configured).
+    pub fn client(&self) -> &ClientWrapper {
+        self.clients
+            .first()
+            .expect("No clients configured")
+            .inner()
+            .expect("Client not connected")
+    }
+
+    /// Get all client handles.
+    pub fn clients(&self) -> &[ClientHandle] {
+        &self.clients
+    }
+
+    /// Get mutable reference to all client handles.
+    pub fn clients_mut(&mut self) -> &mut [ClientHandle] {
+        &mut self.clients
+    }
+
+    /// Get the MCP handle from the primary server if configured.
+    ///
+    /// MCP is attached to the primary (first) server for both single-server and
+    /// cluster setups (see the builder), so this returns the primary's handle in
+    /// either case.
+    pub fn mcp(&self) -> Option<&McpHandle> {
+        self.servers.first().and_then(|s| s.mcp())
+    }
+
+    /// Create an MCP client (convenience method). Targets the primary's MCP
+    /// handle, for both single-server and cluster setups.
+    pub async fn mcp_client(&self) -> Result<McpClient, TestBinaryError> {
+        self.mcp()
+            .ok_or(TestBinaryError::MissingMcp)?
+            .create_client()
+            .await
+    }
+
+    /// Get the connectors runtime handle if configured. Targets the primary's
+    /// handle, for both single-server and cluster setups (the builder attaches
+    /// the runtime to node 0, mirroring `mcp()`).
+    pub fn connectors_runtime(&self) -> Option<&ConnectorsRuntimeHandle> {
+        self.servers.first().and_then(|s| s.connectors_runtime())
+    }
+
+    /// Get the test directory path.
+    pub fn test_dir(&self) -> &Path {
+        self.context.base_dir()
+    }
+
+    /// Collect logs from all binaries.
+    pub fn collect_logs(&self) -> TestLogs {
+        TestLogs {
+            servers: self.servers.iter().map(|s| s.collect_all_logs()).collect(),
+        }
+    }
+
+    pub async fn root_client_for(
+        &self,
+        transport: TransportProtocol,
+    ) -> Result<IggyClient, TestBinaryError> {
+        self.client_builder_for(transport)?
+            .with_root_login()
+            .connect()
+            .await
+    }
+
+    /// Root-authenticated TCP client bound to ONE node of a cluster, unlike
+    /// [`Self::root_client_for`], which always targets node 0.
+    ///
+    /// # Errors
+    ///
+    /// [`TestBinaryError::MissingServer`] when `index` is out of range, or the
+    /// underlying connect/login failure.
+    pub async fn root_client_for_node(&self, index: usize) -> Result<IggyClient, TestBinaryError> {
+        self.servers
+            .get(index)
+            .ok_or(TestBinaryError::MissingServer)?
+            .tcp_client()?
+            .with_root_login()
+            .connect()
+            .await
+    }
+
+    /// Create a new client logged in as root for the specified transport.
+    pub fn client_builder_for(
+        &self,
+        transport: TransportProtocol,
+    ) -> Result<ClientBuilder, TestBinaryError> {
+        let server = self.running_server()?;
+        match transport {
+            TransportProtocol::Tcp => server.tcp_client(),
+            TransportProtocol::Http => server.http_client(),
+            TransportProtocol::Quic => server.quic_client(),
+            TransportProtocol::WebSocket => server.websocket_client(),
+        }
+    }
+
+    /// Create multiple root clients for the specified transport.
+    pub async fn root_clients_for(
+        &self,
+        transport: TransportProtocol,
+        count: usize,
+    ) -> Result<Vec<IggyClient>, TestBinaryError> {
+        let mut clients = Vec::with_capacity(count);
+        for _ in 0..count {
+            clients.push(self.root_client_for(transport).await?);
+        }
+        Ok(clients)
+    }
+
+    /// Create a new unauthenticated client for the specified transport.
+    pub async fn new_client_for(
+        &self,
+        transport: TransportProtocol,
+    ) -> Result<IggyClient, TestBinaryError> {
+        let server = self.running_server()?;
+        let builder = match transport {
+            TransportProtocol::Tcp => server.tcp_client()?,
+            TransportProtocol::Http => server.http_client()?,
+            TransportProtocol::Quic => server.quic_client()?,
+            TransportProtocol::WebSocket => server.websocket_client()?,
+        };
+        builder.connect().await
+    }
+
+    pub async fn tcp_root_client(&self) -> Result<IggyClient, TestBinaryError> {
+        self.root_client_for(TransportProtocol::Tcp).await
+    }
+
+    pub async fn http_root_client(&self) -> Result<IggyClient, TestBinaryError> {
+        self.root_client_for(TransportProtocol::Http).await
+    }
+
+    pub async fn quic_root_client(&self) -> Result<IggyClient, TestBinaryError> {
+        self.root_client_for(TransportProtocol::Quic).await
+    }
+
+    pub async fn websocket_root_client(&self) -> Result<IggyClient, TestBinaryError> {
+        self.root_client_for(TransportProtocol::WebSocket).await
+    }
+
+    pub fn transport(&self) -> Result<TransportProtocol, TestBinaryError> {
+        self.client_configs
+            .first()
+            .map(|c| c.transport)
+            .or(self.primary_transport)
+            .ok_or_else(|| TestBinaryError::InvalidState {
+                message: "No client transport configured".to_string(),
+            })
+    }
+
+    pub async fn root_client(&self) -> Result<IggyClient, TestBinaryError> {
+        self.root_client_for(self.transport()?).await
+    }
+
+    pub async fn root_clients(&self, count: usize) -> Result<Vec<IggyClient>, TestBinaryError> {
+        self.root_clients_for(self.transport()?, count).await
+    }
+
+    pub async fn new_client(&self) -> Result<IggyClient, TestBinaryError> {
+        let transport = self
+            .client_configs
+            .first()
+            .map(|c| c.transport)
+            .or(self.primary_client_config.as_ref().map(|c| c.transport))
+            .ok_or_else(|| TestBinaryError::InvalidState {
+                message: "No client transport configured".to_string(),
+            })?;
+        self.new_client_for(transport).await
+    }
+
+    pub async fn new_clients(&self, count: usize) -> Result<Vec<IggyClient>, TestBinaryError> {
+        let mut clients = Vec::with_capacity(count);
+        for _ in 0..count {
+            clients.push(self.new_client().await?);
+        }
+        Ok(clients)
+    }
+
+    pub async fn tcp_new_client(&self) -> Result<IggyClient, TestBinaryError> {
+        self.new_client_for(TransportProtocol::Tcp).await
+    }
+
+    pub async fn tcp_root_clients(&self, count: usize) -> Result<Vec<IggyClient>, TestBinaryError> {
+        self.root_clients_for(TransportProtocol::Tcp, count).await
+    }
+
+    pub async fn http_new_client(&self) -> Result<IggyClient, TestBinaryError> {
+        self.new_client_for(TransportProtocol::Http).await
+    }
+
+    pub async fn http_root_clients(
+        &self,
+        count: usize,
+    ) -> Result<Vec<IggyClient>, TestBinaryError> {
+        self.root_clients_for(TransportProtocol::Http, count).await
+    }
+
+    pub async fn quic_new_client(&self) -> Result<IggyClient, TestBinaryError> {
+        self.new_client_for(TransportProtocol::Quic).await
+    }
+
+    pub async fn quic_root_clients(
+        &self,
+        count: usize,
+    ) -> Result<Vec<IggyClient>, TestBinaryError> {
+        self.root_clients_for(TransportProtocol::Quic, count).await
+    }
+
+    pub async fn websocket_new_client(&self) -> Result<IggyClient, TestBinaryError> {
+        self.new_client_for(TransportProtocol::WebSocket).await
+    }
+
+    pub async fn websocket_root_clients(
+        &self,
+        count: usize,
+    ) -> Result<Vec<IggyClient>, TestBinaryError> {
+        self.root_clients_for(TransportProtocol::WebSocket, count)
+            .await
+    }
+
+    pub(super) async fn create_clients(&mut self) -> Result<(), TestBinaryError> {
+        let Some(server) = self.servers.first() else {
+            return Ok(());
+        };
+
+        for config in &self.client_configs {
+            let address = match config.transport {
+                TransportProtocol::Tcp => server.tcp_addr(),
+                TransportProtocol::Http => server.http_addr(),
+                TransportProtocol::Quic => server.quic_addr(),
+                TransportProtocol::WebSocket => server.websocket_addr(),
+            };
+
+            let Some(address) = address else {
+                return Err(TestBinaryError::InvalidState {
+                    message: format!("{:?} transport not available on server", config.transport),
+                });
+            };
+
+            let mut config = config.clone();
+            if config.tls_enabled
+                && let Some(ca_cert_path) = server.tls_ca_cert_path()
+            {
+                config.tls_ca_file = Some(ca_cert_path);
+            }
+
+            let mut client = ClientHandle::new(config, address);
+            client.connect().await?;
+            self.clients.push(client);
+        }
+
+        Ok(())
+    }
+
+    fn update_client_addresses(&mut self) {
+        let Some(server) = self.servers.first() else {
+            return;
+        };
+
+        for client in &mut self.clients {
+            let address = match client.transport() {
+                TransportProtocol::Tcp => server.tcp_addr(),
+                TransportProtocol::Http => server.http_addr(),
+                TransportProtocol::Quic => server.quic_addr(),
+                TransportProtocol::WebSocket => server.websocket_addr(),
+            };
+
+            if let Some(addr) = address {
+                client.update_address(addr);
+            }
+        }
+    }
+}
+
+impl Drop for TestHarness {
+    fn drop(&mut self) {
+        let _ = block_on(self.stop());
+    }
+}

@@ -1,0 +1,372 @@
+//! Parsing and extraction engine for fallow codebase intelligence.
+//!
+//! This crate handles all file parsing: JS/TS via Oxc, Vue/Svelte SFC extraction,
+//! Astro frontmatter, MDX import/export extraction, CSS Module class name extraction,
+//! HTML asset reference extraction, and incremental caching of parse results.
+
+#![warn(missing_docs)]
+#![cfg_attr(not(test), deny(clippy::disallowed_methods))]
+#![cfg_attr(
+    test,
+    allow(
+        clippy::unwrap_used,
+        clippy::expect_used,
+        reason = "tests use unwrap and expect to keep fixture setup concise"
+    )
+)]
+
+mod asset_url;
+pub mod astro;
+pub mod cache;
+pub(crate) mod complexity;
+pub mod css;
+pub mod css_classes;
+pub mod css_in_js;
+pub mod css_metrics;
+pub mod flags;
+pub mod glimmer;
+pub(crate) mod graphql;
+pub(crate) mod html;
+pub(crate) mod iconify;
+pub mod inventory;
+pub mod mdx;
+mod module_info;
+mod parse;
+pub mod sfc;
+pub mod sfc_css;
+mod sfc_props;
+mod sfc_template;
+pub mod similar_code;
+mod source_map;
+pub mod suppress;
+/// Tailwind CSS arbitrary-value detection.
+pub mod tailwind;
+pub(crate) mod template_complexity;
+mod template_expression_scan;
+mod template_usage;
+/// Visitor utilities for AST extraction.
+pub mod visitor;
+
+use std::path::Path;
+use std::sync::atomic::{AtomicBool, Ordering};
+
+use rayon::prelude::*;
+
+use cache::CacheStore;
+use fallow_types::discover::{DiscoveredFile, FileId};
+
+pub use fallow_types::extract::{
+    AngularComponentFieldArrayTypeFact, AngularTemplateMemberAccessFact, AngularThisSpreadFact,
+    ClassHeritageInfo, ClassThisMemberAccessFact, ClassThisWholeObjectUseFact,
+    ComputedEnumKeyUseFact, DefaultImportWholeObjectUseFact, DynamicCustomElementRenderFact,
+    DynamicImportInfo, DynamicImportPattern, ExportInfo, ExportName,
+    ExportedObjectInstancePropertyFact, FactoryCallMemberAccessFact, FactoryFnMemberAccessFact,
+    FactoryFnWholeObjectFact, FactoryReturnExport, FactoryReturnObjectPropertyAccessFact,
+    FactoryReturnObjectShapeExport, FluentChainMemberAccessFact, FluentChainNewMemberAccessFact,
+    ImportInfo, ImportedName, InstanceExportBindingFact, LocalTypeDeclaration, MemberAccess,
+    MemberInfo, MemberKind, ModuleInfo, ModuleLoadMechanism, ParseResult,
+    PlaywrightFixtureAliasFact, PlaywrightFixtureDefinitionFact, PlaywrightFixtureTypeFact,
+    PlaywrightFixtureUseFact, PublicSignatureTypeReference, QualifiedClassMemberAccessFact,
+    ReExportInfo, RequireCallInfo, RequiredTypeMemberFact, SemanticFact, SourceParseDegradation,
+    SourceReadFailure, StringEnumMemberValueFact, TypeAliasSurfaceTargetFact, TypeMemberTypeEntry,
+    TypedPropertyMemberAccessFact, VisibilityTag, VitestModuleMockAction,
+    VitestModuleMockOperationFact, compute_line_offsets,
+};
+
+pub use astro::{
+    extract_astro_frontmatter, extract_astro_style_regions, extract_astro_template_regions,
+};
+pub use css::{
+    ThemeScan, ThemeTokenDef, extract_apply_tokens, extract_apply_tokens_located,
+    extract_css_module_exports, extract_css_var_reads_located, scan_theme_blocks,
+};
+pub use css_classes::{
+    MarkupClassScan, MarkupClassToken, is_edit_distance_one, is_typo_edit, scan_markup_class_tokens,
+};
+pub use css_in_js::{
+    ConsumerQuery, CssInJsObjectSheets, CssInJsToken, CssInJsTokenDef, CssInJsTokenOrigin,
+    TokenConsumerHit, css_in_js_consumer_scan, css_in_js_object_sheets, css_in_js_theme_consumers,
+    css_in_js_theme_token_defs, css_in_js_token_consumers, css_in_js_token_defs,
+    css_in_js_virtual_stylesheet, panda_style_value_consumers, panda_token_call_consumers,
+};
+pub use css_metrics::{compute_css_analytics, parse_css_color_rgb};
+pub use glimmer::{is_glimmer_file, strip_glimmer_templates};
+pub use mdx::{extract_mdx_statements, extract_mdx_statements_mapped};
+pub use sfc::{
+    SourceRegion, extract_sfc_scripts, extract_sfc_styles, extract_sfc_template_regions,
+    is_sfc_file,
+};
+pub use sfc_css::{
+    scoped_unused_classes, sfc_preprocessor_virtual_stylesheet, sfc_virtual_stylesheet,
+};
+pub use similar_code::extract_similar_code_functions;
+pub use source_map::ExtractionResult;
+pub use tailwind::{TailwindArbitraryUse, scan_tailwind_arbitrary_values};
+
+#[expect(
+    clippy::expect_used,
+    reason = "static regex patterns are hard-coded analyzer invariants covered by extraction tests"
+)]
+fn static_regex(pattern: &str) -> regex::Regex {
+    regex::Regex::new(pattern).expect("static regex pattern should compile")
+}
+
+pub use parse::parse_source_to_module;
+
+/// Leading UTF-8 byte order mark codepoint.
+///
+/// Windows editors (Notepad, older VS settings, some IDE plugins) emit a UTF-8
+/// BOM at the start of source files. fallow's contract is "UTF-8 with or
+/// without BOM; line offsets are computed against the post-BOM view; the BOM,
+/// if present on input, is preserved on output by `fallow fix`."
+const BOM_CHAR: char = '\u{FEFF}';
+// Small, cache-hot inputs are faster on one thread than through Rayon setup.
+// Larger file sets still use parallel parsing where parse work dominates.
+const PARALLEL_PARSE_FILE_THRESHOLD: usize = 32;
+
+/// Strip the leading UTF-8 BOM if present.
+///
+/// Called at every file-read entry point in this crate so the rest of the
+/// pipeline (content hash, `compute_line_offsets`, oxc parser, downstream
+/// analyses) sees a consistent post-BOM view. Mirrors the
+/// `fallow_config` layer (`config_writer.rs::BOM`) so config-shaped sources
+/// and source-code-shaped sources are processed symmetrically. See issue #475.
+#[must_use]
+fn strip_bom(source: &str) -> &str {
+    source.strip_prefix(BOM_CHAR).unwrap_or(source)
+}
+
+/// Parse all files, extracting imports and exports.
+///
+/// Small file sets use a sequential fast path to avoid parallel scheduling
+/// overhead; larger file sets use parallel extraction.
+/// Uses the cache to skip reparsing files whose content hasn't changed.
+///
+/// When `need_complexity` is true, per-function cyclomatic/cognitive complexity
+/// metrics are computed during parsing (needed by the `health` command).
+/// Pass `false` for dead-code analysis where complexity data is unused.
+pub fn parse_all_files(
+    files: &[DiscoveredFile],
+    cache: Option<&CacheStore>,
+    need_complexity: bool,
+) -> ParseResult {
+    parse_all_files_cancellable(files, cache, need_complexity, None)
+}
+
+/// Parse all files, abandoning the remaining ones once `cancellation` is set.
+///
+/// Rayon's `map`/`collect` cannot short-circuit, so cancellation makes the
+/// per-file body a no-op instead of stopping the iteration: the scheduled
+/// items still drain, but at one atomic load each. The returned
+/// [`ParseResult`] is therefore truncated whenever the token flipped, and
+/// callers must treat a set token as a failed run rather than as a project
+/// with fewer modules.
+pub fn parse_all_files_cancellable(
+    files: &[DiscoveredFile],
+    cache: Option<&CacheStore>,
+    need_complexity: bool,
+    cancellation: Option<&AtomicBool>,
+) -> ParseResult {
+    let parse_one = |file: &DiscoveredFile| {
+        if cancellation.is_some_and(|cancelled| cancelled.load(Ordering::SeqCst)) {
+            return ParseFileResult::default();
+        }
+        parse_single_file_cached(file, cache, need_complexity)
+    };
+    let results: Vec<ParseFileResult> = if files.len() <= PARALLEL_PARSE_FILE_THRESHOLD {
+        files.iter().map(parse_one).collect()
+    } else {
+        files.par_iter().map(parse_one).collect()
+    };
+
+    let mut modules = Vec::with_capacity(results.len());
+    let mut read_failures = Vec::new();
+    let mut parse_degradations = Vec::new();
+    let mut hits = 0usize;
+    let mut misses = 0usize;
+    let mut parse_cpu_nanos = 0u64;
+
+    // `results` is a positional map over `files`, so zipping recovers the path
+    // for a module without carrying one on `ModuleInfo`.
+    for (file, result) in files.iter().zip(results) {
+        hits += result.cache_hits;
+        misses += result.cache_misses;
+        parse_cpu_nanos = parse_cpu_nanos.saturating_add(result.parse_cpu_nanos);
+        if let Some(module) = result.module {
+            if module.parse_error_count > 0 {
+                parse_degradations.push(SourceParseDegradation {
+                    file_id: module.file_id,
+                    path: file.path.clone(),
+                    error_count: module.parse_error_count,
+                    panicked: module.parse_panicked,
+                });
+            }
+            modules.push(module);
+        }
+        if let Some(failure) = result.read_failure {
+            read_failures.push(failure);
+        }
+    }
+
+    if hits > 0 || misses > 0 {
+        tracing::info!(
+            cache_hits = hits,
+            cache_misses = misses,
+            "incremental cache stats"
+        );
+    }
+
+    ParseResult {
+        modules,
+        read_failures,
+        parse_degradations,
+        cache_hits: hits,
+        cache_misses: misses,
+        parse_cpu_ms: parse_cpu_nanos as f64 / 1_000_000.0,
+    }
+}
+
+#[derive(Default)]
+struct ParseFileResult {
+    module: Option<ModuleInfo>,
+    read_failure: Option<SourceReadFailure>,
+    cache_hits: usize,
+    cache_misses: usize,
+    parse_cpu_nanos: u64,
+}
+
+impl ParseFileResult {
+    fn cache_hit(module: ModuleInfo) -> Self {
+        Self {
+            module: Some(module),
+            read_failure: None,
+            cache_hits: 1,
+            cache_misses: 0,
+            parse_cpu_nanos: 0,
+        }
+    }
+
+    fn cache_miss(module: ModuleInfo, parse_cpu_nanos: u64) -> Self {
+        Self {
+            module: Some(module),
+            read_failure: None,
+            cache_hits: 0,
+            cache_misses: 1,
+            parse_cpu_nanos,
+        }
+    }
+
+    fn read_failure(file: &DiscoveredFile, error: &std::io::Error) -> Self {
+        Self {
+            module: None,
+            read_failure: Some(SourceReadFailure {
+                file_id: file.id,
+                path: file.path.clone(),
+                error: error.to_string(),
+            }),
+            cache_hits: 0,
+            cache_misses: 0,
+            parse_cpu_nanos: 0,
+        }
+    }
+}
+
+/// Parse a single file, consulting the cache first.
+///
+/// Cache validation strategy (fast path -> slow path):
+/// 1. Open the file so unreadable sources cannot use stale cached analysis
+/// 2. Read mtime + ctime + size from the open handle
+/// 3. If all three match the cached entry -> cache hit, return immediately
+/// 4. Otherwise -> read file, compute content hash
+/// 5. If content hash matches cached entry -> cache hit (file was rewritten or
+///    `touch`ed but its content is unchanged)
+/// 6. Otherwise -> cache miss, full parse
+///
+/// Step 3 requires ctime as well as mtime because mtime is writer-controlled:
+/// a same-length rewrite whose mtime is restored (`touch -r`, a codemod, a
+/// `git checkout` of an equal-length revision) leaves `(mtime, size)`
+/// unchanged, and serving the cached module for it means reporting the OLD
+/// file's unused exports with an auto-fixable `remove-export` action. A file
+/// whose ctime moved falls through to step 4 and still hits on the content
+/// hash, so the cost of the stricter gate is one read, not a reparse.
+fn parse_single_file_cached(
+    file: &DiscoveredFile,
+    cache: Option<&CacheStore>,
+    need_complexity: bool,
+) -> ParseFileResult {
+    let cached_by_path = cache.and_then(|store| store.get_by_path_only(&file.path));
+
+    if let Some(cached) = cached_by_path
+        && cached.file_size == file.size_bytes
+    {
+        let source_file = match std::fs::File::open(&file.path) {
+            Ok(source_file) => source_file,
+            Err(error) => return ParseFileResult::read_failure(file, &error),
+        };
+        if let Ok(metadata) = source_file.metadata()
+            && metadata.len() == cached.file_size
+        {
+            let fingerprint =
+                fallow_types::source_fingerprint::SourceFingerprint::from_metadata(&metadata);
+            if cached.source_fingerprint() == fingerprint
+                && fingerprint.is_trustworthy_without_content()
+                && (!need_complexity || cached.complexity_extracted)
+            {
+                return ParseFileResult::cache_hit(cache::cached_to_module_opts(
+                    cached,
+                    file.id,
+                    need_complexity,
+                ));
+            }
+        }
+    }
+
+    let raw = match std::fs::read_to_string(&file.path) {
+        Ok(raw) => raw,
+        Err(error) => return ParseFileResult::read_failure(file, &error),
+    };
+    let source = strip_bom(&raw);
+    let content_hash = xxhash_rust::xxh3::xxh3_64(source.as_bytes());
+
+    if let Some(cached) = cached_by_path
+        && cached.content_hash == content_hash
+        && (!need_complexity || cached.complexity_extracted)
+    {
+        return ParseFileResult::cache_hit(cache::cached_to_module_opts(
+            cached,
+            file.id,
+            need_complexity,
+        ));
+    }
+
+    let parse_start = std::time::Instant::now();
+    let module = parse_source_to_module(file.id, &file.path, source, content_hash, need_complexity);
+    let parse_cpu_nanos = u64::try_from(parse_start.elapsed().as_nanos()).unwrap_or(u64::MAX);
+    ParseFileResult::cache_miss(module, parse_cpu_nanos)
+}
+
+/// Parse a single file and extract module information (without complexity).
+#[must_use]
+pub fn parse_single_file(file: &DiscoveredFile) -> Option<ModuleInfo> {
+    let raw = std::fs::read_to_string(&file.path).ok()?;
+    let source = strip_bom(&raw);
+    let content_hash = xxhash_rust::xxh3::xxh3_64(source.as_bytes());
+    Some(parse_source_to_module(
+        file.id,
+        &file.path,
+        source,
+        content_hash,
+        false,
+    ))
+}
+
+/// Parse from in-memory content (for LSP, includes complexity).
+#[must_use]
+pub fn parse_from_content(file_id: FileId, path: &Path, content: &str) -> ModuleInfo {
+    let content = strip_bom(content);
+    let content_hash = xxhash_rust::xxh3::xxh3_64(content.as_bytes());
+    parse_source_to_module(file_id, path, content, content_hash, true)
+}
+
+#[cfg(all(test, not(miri)))]
+mod tests;

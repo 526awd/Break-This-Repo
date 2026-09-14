@@ -1,0 +1,369 @@
+# Clean commands that should always pass (exit 0)
+
+[[fixture]]
+name = "simple_ls"
+min_milestone = 0
+input = "ls -la"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "cd_home"
+min_milestone = 0
+input = "cd ~"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "echo_hello"
+min_milestone = 0
+input = "echo hello world"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "git_status"
+min_milestone = 0
+input = "git status"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "git_add"
+min_milestone = 0
+input = "git add ."
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "git_commit"
+min_milestone = 0
+input = "git commit -m 'fix: update readme'"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "make_build"
+min_milestone = 0
+input = "make build"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "cargo_build"
+min_milestone = 0
+input = "cargo build --release"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "cargo_test"
+min_milestone = 0
+input = "cargo test"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "npm_start"
+min_milestone = 0
+input = "npm start"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "python_script"
+min_milestone = 0
+input = "python3 script.py"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "mkdir"
+min_milestone = 0
+input = "mkdir -p /tmp/test"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "cp_file"
+min_milestone = 0
+input = "cp file1 file2"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "cat_file"
+min_milestone = 0
+input = "cat README.md"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "grep_pattern"
+min_milestone = 0
+input = "grep -r 'pattern' src/"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "find_files"
+min_milestone = 0
+input = "find . -name '*.rs' -type f"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "docker_ps"
+min_milestone = 0
+input = "docker ps"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "kubectl_get"
+min_milestone = 0
+input = "kubectl get pods"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "vim_file"
+min_milestone = 0
+input = "vim src/main.rs"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "less_file"
+min_milestone = 0
+input = "less /var/log/syslog"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "empty_command"
+min_milestone = 0
+input = ""
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "whitespace_only"
+min_milestone = 0
+input = "   "
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "pipe_grep_sort"
+min_milestone = 0
+input = "ps aux | grep nginx | sort"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "complex_pipe_chain"
+min_milestone = 0
+input = "find . -name '*.log' | xargs grep 'error' | sort | uniq -c | sort -rn | head -10"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "alias_set"
+min_milestone = 0
+input = "alias ll='ls -la'"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "export_path"
+min_milestone = 0
+input = "export PATH=$PATH:/usr/local/bin"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "source_bashrc"
+min_milestone = 0
+input = "source ~/.bashrc"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "chmod_script"
+min_milestone = 0
+input = "chmod +x script.sh"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "tar_extract"
+min_milestone = 0
+input = "tar xzf archive.tar.gz"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "ssh_local"
+min_milestone = 0
+input = "ssh user@192.168.1.100"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "ssh_git_github"
+min_milestone = 0
+input = "ssh git@github.com"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "scp_user_host_no_colon"
+min_milestone = 0
+input = "scp user@server.com file.txt"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "rsync_user_host_no_colon"
+min_milestone = 0
+input = "rsync user@server.com file.txt"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "curl_auth_flag"
+min_milestone = 0
+input = "curl -u admin@example.com https://api.example.com/data"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "curl_user_flag_cred"
+min_milestone = 0
+input = "curl --user admin:my.pass https://api.example.com/data"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "curl_proxy_user_flag"
+min_milestone = 0
+input = "curl -U admin:my.pass https://api.example.com/data"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "wget_user_flag"
+min_milestone = 0
+input = "wget --user admin:my.pass https://example.com/file"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "wget_password_flag"
+min_milestone = 0
+input = "wget --password my.pass https://example.com/file"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "wget_http_user_flag"
+min_milestone = 0
+input = "wget --http-user admin:my.pass https://example.com/file"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "wget_http_password_flag"
+min_milestone = 0
+input = "wget --http-password my.pass https://example.com/file"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "wget_ftp_user_flag"
+min_milestone = 0
+input = "wget --ftp-user admin:my.pass ftp://example.com/file"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "wget_ftp_password_flag"
+min_milestone = 0
+input = "wget --ftp-password my.pass ftp://example.com/file"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "wget_proxy_user_flag"
+min_milestone = 0
+input = "wget --proxy-user admin:my.pass https://example.com/file"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "wget_proxy_password_flag"
+min_milestone = 0
+input = "wget --proxy-password my.pass https://example.com/file"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "httpie_auth_flag"
+min_milestone = 0
+input = "http -a admin:my.pass https://api.example.com/data"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "xh_auth_flag"
+min_milestone = 0
+input = "xh -a admin:my.pass https://api.example.com/data"
+context = "exec"
+expected_action = "allow"
+expected_rules = []

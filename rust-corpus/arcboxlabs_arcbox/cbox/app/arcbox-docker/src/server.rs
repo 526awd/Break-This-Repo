@@ -1,0 +1,183 @@
+//! Docker API server.
+
+use crate::api::{router_with_proxy, strip_api_version_prefix};
+use crate::error::{DockerError, Result};
+use crate::proxy::ProxyState;
+use crate::proxy::VsockConnector;
+use arcbox_core::Runtime;
+use hyper::body::Incoming;
+use hyper::server::conn::http1;
+use hyper_util::rt::TokioIo;
+use std::path::{Path, PathBuf};
+use std::sync::Arc;
+use tokio::net::UnixListener;
+use tokio::task::JoinSet;
+use tokio_util::sync::CancellationToken;
+use tower::{Layer, Service};
+use tower_http::trace::TraceLayer;
+
+/// Docker API server configuration.
+#[derive(Debug, Clone)]
+pub struct ServerConfig {
+    /// Unix socket path.
+    pub socket_path: PathBuf,
+}
+
+impl Default for ServerConfig {
+    fn default() -> Self {
+        Self {
+            socket_path: default_socket_path(),
+        }
+    }
+}
+
+fn default_socket_path() -> PathBuf {
+    dirs::home_dir()
+        .unwrap_or_else(|| PathBuf::from("/tmp"))
+        .join(".arcbox")
+        .join("docker.sock")
+}
+
+/// Docker API server.
+pub struct DockerApiServer {
+    config: ServerConfig,
+    runtime: Arc<Runtime>,
+}
+
+impl DockerApiServer {
+    /// Creates a new Docker API server.
+    #[must_use]
+    pub const fn new(config: ServerConfig, runtime: Arc<Runtime>) -> Self {
+        Self { config, runtime }
+    }
+
+    /// Returns the socket path.
+    #[must_use]
+    pub fn socket_path(&self) -> &Path {
+        &self.config.socket_path
+    }
+
+    /// Binds the Docker API socket, returning the listener to serve on.
+    ///
+    /// Separate from [`Self::serve`] so a caller that spawns the serving task
+    /// can still fail startup on a bind error: the daemon's Docker socket is
+    /// its primary API, and a background task that only logs the failure
+    /// leaves clients hitting connection-refused against a daemon that
+    /// reported itself ready.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the socket cannot be bound.
+    pub fn bind(&self) -> Result<UnixListener> {
+        // Remove existing socket
+        let _ = std::fs::remove_file(&self.config.socket_path);
+
+        // Create parent directory if needed
+        if let Some(parent) = self.config.socket_path.parent() {
+            let _ = std::fs::create_dir_all(parent);
+        }
+
+        let listener = UnixListener::bind(&self.config.socket_path)
+            .map_err(|e| crate::error::DockerError::Server(e.to_string()))?;
+
+        tracing::info!(
+            "Docker API server listening on {}",
+            self.config.socket_path.display()
+        );
+        tracing::info!("Docker API backend: smart proxy to guest dockerd");
+
+        Ok(listener)
+    }
+
+    /// Serves on an already-bound listener until `shutdown` is cancelled.
+    ///
+    /// There is deliberately no `bind`-and-serve convenience wrapper: it
+    /// would only be useful from a spawned task, which is exactly the shape
+    /// that swallows the bind error and lets startup report READY for a
+    /// daemon nobody can reach (CORE-71).
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if serving fails.
+    pub async fn serve(&self, listener: UnixListener, shutdown: CancellationToken) -> Result<()> {
+        self.run_native_http(listener, shutdown).await
+    }
+}
+
+impl DockerApiServer {
+    async fn run_native_http(
+        &self,
+        listener: UnixListener,
+        shutdown: CancellationToken,
+    ) -> Result<()> {
+        let connector = Arc::new(VsockConnector::new(Arc::clone(&self.runtime)));
+        let activity_hook: crate::proxy::ActivityHook = {
+            let runtime = Arc::clone(&self.runtime);
+            Arc::new(move || Box::new(runtime.begin_system_vm_activity()) as _)
+        };
+        let proxy = Arc::new(ProxyState::new(connector).with_activity_hook(activity_hook));
+
+        // Backstop host-networking teardown for containers that stop without a
+        // stop/kill/remove API call (natural exit, --rm, prune, OOM, guest-side
+        // stop). The handlers do immediate teardown; this reconciles the rest.
+        // It shares the router's ProxyState so its queries go through the same
+        // pooled client — including the restart-generation reset.
+        crate::host_reconciler::spawn(
+            Arc::clone(&self.runtime),
+            Arc::clone(&proxy),
+            shutdown.clone(),
+        );
+
+        // Wrap the Axum Router with a MapRequestLayer that strips API version
+        // prefixes *before* route matching. `Router::layer` runs after routing
+        // and cannot be used for URI rewriting.
+        let version_layer = tower::util::MapRequestLayer::new(strip_api_version_prefix);
+        let app = version_layer.layer(
+            router_with_proxy(Arc::clone(&self.runtime), proxy).layer(TraceLayer::new_for_http()),
+        );
+
+        let mut connections = JoinSet::new();
+
+        loop {
+            let stream = tokio::select! {
+                result = listener.accept() => {
+                    let (stream, _) = result.map_err(|e| DockerError::Server(e.to_string()))?;
+                    stream
+                }
+                () = shutdown.cancelled() => {
+                    tracing::info!("Docker API server shutting down, waiting for {} in-flight connection(s)", connections.len());
+                    break;
+                }
+            };
+
+            let tower_service = app.clone();
+            connections.spawn(async move {
+                let hyper_service =
+                    hyper::service::service_fn(move |request: hyper::Request<Incoming>| {
+                        tower_service.clone().call(request)
+                    });
+
+                if let Err(err) = http1::Builder::new()
+                    .serve_connection(TokioIo::new(stream), hyper_service)
+                    .with_upgrades()
+                    .await
+                {
+                    let err_str = err.to_string().to_lowercase();
+                    if !err_str.contains("shutting down")
+                        && !err_str.contains("connection reset")
+                        && !err_str.contains("broken pipe")
+                        && !err_str.contains("connection closed")
+                        && !err_str.contains("incomplete")
+                    {
+                        tracing::error!("Error serving connection: {}", err);
+                    }
+                }
+            });
+        }
+
+        // Drain in-flight connections before returning.
+        while connections.join_next().await.is_some() {}
+
+        Ok(())
+    }
+}

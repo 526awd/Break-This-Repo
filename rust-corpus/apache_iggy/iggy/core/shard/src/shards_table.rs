@@ -1,0 +1,156 @@
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+use hash32::{Hasher, Murmur3Hasher};
+use server_common::sharding::{IggyNamespace, PartitionLocation};
+use std::hash::Hasher as _;
+
+/// Lookup table that maps partition namespaces to their owning shard.
+///
+/// Implementations can be:
+/// - A shared concurrent map (`DashMap`, papaya, etc.) referenced by all shards.
+/// - A per-shard local `HashMap` replica, updated via a
+///   broadcast when partitions are created, deleted, or moved.
+pub trait ShardsTable {
+    /// Returns the shard id that owns `namespace`, or `None` if the
+    /// namespace is not yet registered (partition not created or update
+    /// hasn't propagated).
+    fn shard_for(&self, namespace: IggyNamespace) -> Option<u16>;
+
+    /// Epoch (`Partition::created_revision`) stored on the row, if any.
+    /// The reconciler compares it to the committed value to detect a
+    /// stale local partition after slab-key reuse.
+    fn epoch_for(&self, namespace: IggyNamespace) -> Option<u64>;
+
+    fn insert(&self, namespace: IggyNamespace, location: PartitionLocation);
+
+    fn remove(&self, namespace: &IggyNamespace) -> Option<PartitionLocation>;
+
+    fn namespaces(&self) -> Vec<IggyNamespace>;
+}
+
+/// Always-`None` impl. Satisfies the trait for test / simulator paths
+/// that never route via the table (e.g. [`crate::IggyShard::without_inbox`]).
+/// Do not use in production: the router drops any partition frame whose
+/// `shard_for` returns `None`, so a real cluster wired to this impl would
+/// silently shed every partition request.
+impl ShardsTable for () {
+    fn shard_for(&self, _namespace: IggyNamespace) -> Option<u16> {
+        None
+    }
+
+    fn epoch_for(&self, _namespace: IggyNamespace) -> Option<u64> {
+        None
+    }
+
+    fn insert(&self, _namespace: IggyNamespace, _location: PartitionLocation) {}
+
+    fn remove(&self, _namespace: &IggyNamespace) -> Option<PartitionLocation> {
+        None
+    }
+
+    fn namespaces(&self) -> Vec<IggyNamespace> {
+        Vec::new()
+    }
+}
+
+/// Lock-free shards table backed by [`papaya::HashMap`].
+pub struct PapayaShardsTable {
+    inner: papaya::HashMap<IggyNamespace, PartitionLocation>,
+}
+
+impl Default for PapayaShardsTable {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl PapayaShardsTable {
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            inner: papaya::HashMap::new(),
+        }
+    }
+
+    #[must_use]
+    pub fn with_capacity(capacity: usize) -> Self {
+        Self {
+            inner: papaya::HashMap::with_capacity(capacity),
+        }
+    }
+}
+
+impl ShardsTable for PapayaShardsTable {
+    fn shard_for(&self, namespace: IggyNamespace) -> Option<u16> {
+        let guard = self.inner.guard();
+        self.inner.get(&namespace, &guard).map(|loc| *loc.shard_id)
+    }
+
+    fn epoch_for(&self, namespace: IggyNamespace) -> Option<u64> {
+        let guard = self.inner.guard();
+        self.inner.get(&namespace, &guard).map(|loc| loc.epoch)
+    }
+
+    fn insert(&self, namespace: IggyNamespace, location: PartitionLocation) {
+        self.inner.pin().insert(namespace, location);
+    }
+
+    fn remove(&self, namespace: &IggyNamespace) -> Option<PartitionLocation> {
+        let guard = self.inner.guard();
+        self.inner.remove(namespace, &guard).copied()
+    }
+
+    /// Snapshot: papaya guards cannot escape the call site.
+    fn namespaces(&self) -> Vec<IggyNamespace> {
+        let guard = self.inner.guard();
+        self.inner.iter(&guard).map(|(ns, _)| *ns).collect()
+    }
+}
+
+/// Deterministic partition-to-shard assignment using Murmur3 hash.
+///
+/// Given a packed `IggyNamespace` and the total number of shards, returns the
+/// shard id that should own the partition.  The upper bits of the Murmur3 hash
+/// are used to avoid the weak lower bits for small integer inputs.
+#[must_use]
+pub fn calculate_shard_assignment(ns: &IggyNamespace, shard_count: u32) -> u16 {
+    calculate_shard_from_consensus_ns(ns.inner(), shard_count)
+}
+
+/// Raw-`u64` variant of [`calculate_shard_assignment`].
+///
+/// Consensus control-plane messages (`StartViewChange`, `DoViewChange`,
+/// `StartView`, `Commit`) carry a `namespace: u64` in their header that is
+/// NOT an [`IggyNamespace`] bit-packed layout — it's an opaque consensus
+/// namespace picked by the partition group. Hash the raw `u64` with the
+/// same algorithm as partition lookups so the shard that owns the
+/// consensus group is deterministically the same across every node. Single
+/// shard (`shard_count == 1`) always returns `0` regardless of `ns`.
+#[must_use]
+pub fn calculate_shard_from_consensus_ns(ns: u64, shard_count: u32) -> u16 {
+    // Zero shards is a bootstrap invariant violation: the cluster validator
+    // rejects it at config load, and `IggyShard` ctors also guarantee at
+    // least one shard. A debug_assert here makes the invariant explicit so
+    // any future code path that skips the validator trips loudly before
+    // the `%` panics with an opaque "attempt to mod by zero".
+    debug_assert!(shard_count > 0, "shard_count must be > 0");
+    let mut hasher = Murmur3Hasher::default();
+    hasher.write_u64(ns);
+    let hash = hasher.finish32();
+    ((hash >> 16) % shard_count) as u16
+}
