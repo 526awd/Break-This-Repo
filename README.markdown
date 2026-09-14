@@ -382,7 +382,7 @@ https://aria7.wiki
 > ## 今天晚上记得关注《死神千年血战祸进谭》，我将按时出演角色「蓝染惣右介」，你也可以来看看我的网站:http://134.175.147.211:324/,等我备案后访问 cnyicheng.top
 
 # Debian --通用操作系统
-[![Debian Logo](https://www.debian.org/Pics/openlogo-50.png)](https://www.debian.org/)
+[![Debian Logo](https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/512/emoji_u1f365.png)](https://www.debian.org/)
 ## Debian 是自由软件。
 Debian 是由自由和开放源代码的软件组成的，并将始终保持 100% 自由。每个人都能自由使用、修改，以及分发。这是我们对我们的用户的主要承诺。它也是免费的。
 ## Debian 稳定且安全。
