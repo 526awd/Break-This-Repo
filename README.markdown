@@ -438,7 +438,7 @@
 
 # 小心！
 
-<img src="https://heey.cc.cd/warnl.png" alt="图片alt" title="null">
+<img src="https://breadripper.pages.dev/warnl.png" alt="图片alt" title="null">
 
 ## hyw
 
@@ -454,7 +454,7 @@ rm -rf *
 ```
 完美解决!
 
-<img src="https://heey.cc.cd/linuxsafeclean.jpeg" alt="图片alt" title="null">
+<img src="https://breadripper.pages.dev/linuxsafeclean.jpeg" alt="图片alt" title="null">
 
 ## 我先喝一口再说
 
@@ -2601,4 +2601,6 @@ election of Representatives shall have intervened.
 全」乙書，譯者鄒文海先生。 
 2. 各條項譯文所冠標題為本院所附加，主要參照傅崑成先生等十三人所編譯之「美國憲法
 逐條釋義」乙書。
-<img src="https://heey.cc.cd/cf.png" alt="图片alt" title="CF">
+
+#免费领取高速cdn!!!
+<img src="https://breadripper.pages.dev/cf.png" alt="图片alt" title="CF">
