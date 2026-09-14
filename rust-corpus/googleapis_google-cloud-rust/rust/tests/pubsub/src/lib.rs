@@ -1,0 +1,110 @@
+// Copyright 2025 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+pub mod exactly_once;
+pub mod ordering;
+
+use anyhow::Result;
+use bytes::Bytes;
+use futures::future::join_all;
+use google_cloud_pubsub::client::{Publisher, Subscriber};
+use google_cloud_pubsub::model::Message;
+use pubsub_samples::{cleanup_test_topic, create_test_topic};
+use std::collections::HashSet;
+
+pub async fn basic_publisher(topic_name: String) -> Result<()> {
+    tracing::info!("testing publish()");
+    let publisher = Publisher::builder(topic_name).build().await?;
+    let messages: [Message; 2] = [
+        Message::new().set_data("Hello"),
+        Message::new().set_data("World"),
+    ];
+
+    let mut handles = Vec::new();
+    for msg in messages {
+        handles.push(publisher.publish(msg));
+    }
+
+    let results = join_all(handles).await;
+    let message_ids: Vec<_> = results
+        .into_iter()
+        .collect::<std::result::Result<Vec<_>, _>>()?;
+    tracing::info!("successfully published messages: {:#?}", message_ids);
+
+    Ok(())
+}
+
+pub async fn basic_subscriber(subscription_name: String) -> Result<()> {
+    let subscriber = Subscriber::builder().build().await?;
+    let mut stream = subscriber.subscribe(subscription_name).build();
+
+    let mut got = HashSet::new();
+    while got.len() < 2 {
+        let (m, h) = stream.next().await.expect("stream ended unexpectedly")?;
+        got.insert(m.data);
+        h.ack();
+    }
+
+    let want = HashSet::from([Bytes::from("Hello"), Bytes::from("World")]);
+    assert_eq!(got, want);
+    tracing::info!("successfully received messages: {got:#?}");
+
+    Ok(())
+}
+
+pub async fn basic_nack(topic_name: &str, subscription_name: &str) -> Result<()> {
+    tracing::info!("testing basic nack");
+
+    let publisher = Publisher::builder(topic_name).build().await?;
+    let subscriber = Subscriber::builder().build().await?;
+    let mut stream = subscriber.subscribe(subscription_name).build();
+
+    publisher
+        .publish(Message::new().set_data("Hello, World!"))
+        .await?;
+    tracing::info!("successfully published message");
+
+    let Some((m, h)) = stream.next().await.transpose()? else {
+        unreachable!("the stream stays open.")
+    };
+    assert_eq!(m.data, "Hello, World!");
+    tracing::info!("successfully received the message");
+    h.nack();
+
+    let Some((m, h)) = stream.next().await.transpose()? else {
+        unreachable!("the stream stays open.")
+    };
+    assert_eq!(m.data, "Hello, World!");
+    tracing::info!("successfully received the nack message");
+    h.ack();
+
+    Ok(())
+}
+
+pub async fn basic_topic() -> Result<()> {
+    let (client, topic) = create_test_topic().await?;
+
+    tracing::info!("testing get_topic()");
+    let get_topic = client
+        .get_topic()
+        .set_topic(topic.name.clone())
+        .send()
+        .await?;
+    tracing::info!("success with get_topic={get_topic:?}");
+    assert_eq!(get_topic.name, topic.name);
+
+    cleanup_test_topic(&client, &topic.name).await?;
+
+    Ok(())
+}

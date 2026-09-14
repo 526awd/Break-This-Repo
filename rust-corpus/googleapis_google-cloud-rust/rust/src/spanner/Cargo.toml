@@ -1,0 +1,107 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+[package]
+name        = "google-cloud-spanner"
+version     = "0.34.5-preview"
+description = "Google Cloud Client Libraries for Rust - Spanner"
+# Inherit other attributes from the workspace.
+edition.workspace      = true
+authors.workspace      = true
+license.workspace      = true
+repository.workspace   = true
+keywords.workspace     = true
+categories.workspace   = true
+rust-version.workspace = true
+
+[features]
+default = ["builtin-metrics", "default-rustls-provider"]
+# Enabled by default. Use the default rustls crypto provider ([aws-lc-rs]) for
+# TLS and authentication. Applications with specific requirements for
+# cryptography (such as exclusively using the [ring] crate) should disable this
+# default and call `rustls::CryptoProvider::install_default()`.
+default-rustls-provider = ["gaxi/_default-rustls-provider"]
+unstable-stream         = ["dep:futures"]
+
+# Enables collecting and recording metrics on a caller-owned OpenTelemetry MeterProvider.
+# Pulls in only the lightweight OpenTelemetry API trait definitions and UUID generator.
+# When enabled without `builtin-metrics`, applications can record both Client metrics and
+# Spanner built-in request/attempt latency metrics to a custom MeterProvider (e.g. exporting
+# to Datadog, Prometheus, or an OpenTelemetry Collector) without compiling Google Cloud
+# Monitoring dependencies.
+metrics = ["dep:opentelemetry", "dep:uuid"]
+
+# Enabled by default. Includes the background Google Cloud Monitoring (GCM) export pipeline
+# that automatically publishes Spanner built-in request and latency metrics to Cloud Monitoring.
+#
+# Applications that run outside GCP (such as Spanner Omni), or that send metrics to third-party
+# monitoring systems instead of Cloud Monitoring, can disable this feature while keeping the
+# `metrics` feature enabled to record built-in metrics directly to their own OpenTelemetry
+# MeterProvider.
+builtin-metrics = [
+  "dep:google-cloud-api",
+  "dep:google-cloud-monitoring-v3",
+  "dep:opentelemetry_sdk",
+  "gaxi/_internal-http-client",
+  "metrics",
+]
+
+[dependencies]
+async-trait.workspace                  = true
+base64.workspace                       = true
+bytes.workspace                        = true
+futures                                = { workspace = true, optional = true }
+gaxi                                   = { workspace = true, features = ["_internal-common", "_internal-grpc-client"] }
+google-cloud-auth                      = { workspace = true }
+google-cloud-gax                       = { workspace = true }
+google-cloud-spanner-admin-database-v1 = { workspace = true }
+google-cloud-spanner-admin-instance-v1 = { workspace = true }
+google-cloud-rpc                       = { workspace = true }
+http.workspace                         = true
+prost.workspace                        = true
+prost-types.workspace                  = true
+rand                                   = { workspace = true }
+rust_decimal                           = { workspace = true }
+serde.workspace                        = true
+serde_json.workspace                   = true
+serde_with.workspace                   = true
+thiserror.workspace                    = true
+time                                   = { workspace = true, features = ["formatting", "macros", "parsing"] }
+tokio                                  = { workspace = true, features = ["time"] }
+tracing.workspace                      = true
+url.workspace                          = true
+wkt                                    = { workspace = true, features = ["time"] }
+
+# Optional dependencies for built-in metrics
+google-cloud-api           = { workspace = true, optional = true }
+google-cloud-monitoring-v3 = { workspace = true, optional = true }
+opentelemetry              = { workspace = true, optional = true, features = ["metrics"] }
+opentelemetry_sdk          = { workspace = true, optional = true, features = ["metrics", "rt-tokio"] }
+uuid                       = { workspace = true, optional = true }
+
+[dev-dependencies]
+anyhow.workspace                   = true
+crc32c.workspace                   = true
+google-cloud-test-macros.workspace = true
+mockall.workspace                  = true
+opentelemetry_sdk                  = { workspace = true, features = ["metrics", "testing"] }
+scoped-env.workspace               = true
+serial_test.workspace              = true
+spanner-grpc-mock                  = { path = "grpc-mock" }
+static_assertions.workspace        = true
+rustls                             = { workspace = true, features = ["aws_lc_rs", "std"] }
+tokio                              = { workspace = true, features = ["test-util"] }
+
+[lints]
+workspace = true
