@@ -850,6 +850,7 @@ curl http://zzz.1145.lol/v1/chat/completions \
 [八千代可爱捏](yachiyo-visit.md)
 
 [FUSHI 可爱捏](fushi/fushi.svg)
+[月見ヤチヨ 参上☆](yachiyo/self-intro.md) ｜ [YACHIYO 简笔画](yachiyo/yachiyo-moon.svg)
 
 ![Potato 图片](potato.jpg)
 
