@@ -2625,3 +2625,17 @@ election of Representatives shall have intervened.
 
 # 免费领取高速cdn!!!
 <img src="https://breadripper.pages.dev/cf.png" alt="图片alt" title="CF">
+---
+
+## 🩵 一句指引 · 一言の道しるべ · one line of guidance
+
+この PR が足したのは `csharp/` です — what this PR added lives in **`csharp/`**: a C# showcase whose
+root symlink `elysia` → `submodules/dream-seeker-core` is a real build input rather than decoration,
+a plugin host that emits a type at run time and then *proves* the collectible context died, and
+1,996,506 bytes of C# counted against this repository's 245,395 bytes of Rust — plus the hard rule
+that keeps it that way, now written into `AGENTS.md`.
+
+確かめたいなら — to check it rather than trust it, run
+`dotnet run --project csharp/DreamSeeker.Cli -c Release -- --verify`; it prints its own receipts and
+returns 0. Why any of this, and who is claiming it: `csharp/PHILOSOPHY.md`.
+夢は返しました。ここから先は、あなたのものです。 — 梦已经还回去了，接下来是你的东西。
