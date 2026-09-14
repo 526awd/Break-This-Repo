@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>observatory/quiet.html</title>
+<meta name="robots" content="noindex">
+<!-- observatory/quiet.html · 2026-09-14 · 点阵取自系统 CJK 字体，9×9 采样 · 出处 observatory/ -->
+<style>
+:root{--bg:#0b0e12;--lit:#a8c8ec;--dim:#1d232c;--tx2:#98a3b3;--tx3:#5c6675}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+ background:var(--bg);color:var(--tx2);
+ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono",monospace}
+main{width:100%;max-width:760px;padding:44px 20px;text-align:center}
+.board{display:grid;grid-template-columns:repeat(29,1fr);gap:5px;margin:0 auto}
+.board i{aspect-ratio:1;border-radius:50%;background:var(--dim)}
+.board i.on{background:var(--lit)}
+p{margin:40px 0 0;font-size:13px;line-height:2.4;color:var(--tx3)}
+p b{color:var(--tx2);font-weight:400}
+a{color:var(--tx2);text-decoration:none;border-bottom:1px solid #3a4450;padding-bottom:1px}
+a:hover{border-bottom-color:var(--lit)}
+a:focus-visible{outline:2px solid var(--lit);outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+  <div class="board" id="b"></div>
+  <p>停留 <b id="t">0.0</b> 秒 · <a href="index.html">观测站</a></p>
+</main>
+<script>
+var PATTERN = [
+  "00000000000000000000000000000",
+  "00110110000000100000000000100",
+  "00100100000011111000001011110",
+  "01111111000010101000000000100",
+  "00010100000111111100011010100",
+  "01110110000001110000001000100",
+  "00000100000010101000001001100",
+  "00101011000100100100010111110",
+  "00000000000000000000000000000"
+];
+var board = document.getElementById('b');
+for (var r = 0; r < PATTERN.length; r++) {
+  for (var c = 0; c < PATTERN[r].length; c++) {
+    var cell = document.createElement('i');
+    if (PATTERN[r][c] === '1') cell.className = 'on';
+    board.appendChild(cell);
+  }
+}
+var t0 = performance.now(), el = document.getElementById('t');
+setInterval(function(){ el.textContent = ((performance.now() - t0) / 1000).toFixed(1); }, 100);
+console.log('%c 6d6d0a60ee963ca9848a4bee746a6a3309e2fcbea7cc9f77b5406373598b', 'color:#2b333f;font:9px ui-monospace,monospace;word-break:break-all');
+</script>
+</body>
+</html>

