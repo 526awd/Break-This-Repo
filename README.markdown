@@ -30,6 +30,10 @@
 [Agent 伪造用户输入并自持循环 — 事故记录](agent-input-forgery-incident.md)
 
 
+## 这是什么胡闹仓库
+
+> 0712
+
 ## 目录
 
 <!--toc:start-->
