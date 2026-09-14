@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="224" viewBox="0 0 220 224" role="img" aria-label="手绘 360 图标">
+  <title>手绘的 360 图标（歪的）</title>
+  <!-- 盾牌外框：描两遍，故意不重合，假装手抖 -->
+  <path d="M110 14 C159 25 191 39 193 62 C196 93 187 152 110 206 C33 152 24 93 27 62 C29 39 61 25 110 14 Z"
+        fill="#eafaf0" stroke="#1fa15c" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M110 23 C155 32 184 45 186 65 C189 94 181 147 110 198 C39 147 31 94 34 65 C36 45 65 32 110 23 Z"
+        fill="none" stroke="#1fa15c" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+  <!-- 左上高光（手绘的，没对齐） -->
+  <path d="M57 62 C67 45 91 36 107 37" fill="none" stroke="#93dcb5" stroke-width="6" stroke-linecap="round"/>
+  <!-- 手写 360，整体是歪的 -->
+  <g transform="rotate(-5 110 112)">
+    <text x="110" y="130" text-anchor="middle"
+          font-family="'Comic Sans MS','Segoe Print','Bradley Hand',cursive"
+          font-size="58" font-weight="bold" fill="#1fa15c">360</text>
+    <path d="M63 141 C87 149 133 149 159 139" fill="none" stroke="#1fa15c" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <!-- 歪歪扭扭的小扫帚 -->
+  <path d="M38 178 L62 197" fill="none" stroke="#f0a13a" stroke-width="7" stroke-linecap="round"/>
+  <path d="M62 197 C73 202 82 197 84 189" fill="none" stroke="#f0a13a" stroke-width="5" stroke-linecap="round"/>
+  <!-- 几颗歪火花 -->
+  <path d="M176 44 l9 -13 M185 56 l14 -5 M167 33 l1 -14" fill="none" stroke="#f0c060" stroke-width="5" stroke-linecap="round"/>
+  <!-- 手写批注 -->
+  <text x="112" y="219" text-anchor="middle" font-family="'Comic Sans MS',cursive" font-size="15" fill="#8a8a8a">（手绘的，歪的）</text>
+</svg>
